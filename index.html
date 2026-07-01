@@ -3,1539 +3,896 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Staged De-Risking Framework: Mackenzie Precious Metals Fund Series F</title>
+  <title>Ricky Kwok | Financial Planning, Investment Research, Mortgage Decisions</title>
+  <meta name="description" content="Personal website for Ricky Kwok, a Vancouver financial planner focused on investment and retirement planning, practical mortgage decisions, and disciplined research.">
+  <link rel="canonical" href="https://rickykwok.com/">
+  <meta property="og:title" content="Ricky Kwok">
+  <meta property="og:description" content="Financial planning, investment research, and mortgage decision support from Vancouver.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rickykwok.com/">
+  <meta property="og:image" content="https://rickykwok.com/assets/hero-financial-planning.jpg">
+  <meta name="theme-color" content="#123c3f">
   <style>
     :root {
-      --ink: #202226;
-      --muted: #626a73;
-      --line: #d9dee5;
-      --paper: #ffffff;
-      --panel: #f6f7f9;
-      --gold: #b38322;
-      --green: #267257;
-      --red: #a23a34;
-      --blue: #2f5c8e;
-      --violet: #68589a;
-      --amber: #9b681b;
+      --ink: #121719;
+      --muted: #5d6868;
+      --paper: #fbfcfa;
+      --panel: #ffffff;
+      --line: #dfe5df;
+      --teal: #123c3f;
+      --teal-soft: #e6f0ef;
+      --gold: #b98b30;
+      --green: #3f745e;
+      --clay: #975b46;
+      --blue: #2f6075;
+      --shadow: 0 18px 48px rgba(18, 23, 25, .12);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       color: var(--ink);
       background: var(--paper);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.45;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
     }
 
-    a { color: #245f93; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }
 
     .wrap {
-      width: min(1180px, calc(100vw - 40px));
+      width: min(1160px, calc(100% - 40px));
       margin: 0 auto;
     }
 
-    header {
-      border-bottom: 1px solid var(--line);
-      background: #fff;
-    }
-
-    .masthead {
-      display: grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(280px, .75fr);
-      gap: 34px;
-      align-items: end;
-      padding: 34px 0 24px;
-    }
-
-    .eyebrow {
-      margin: 0 0 8px;
-      color: var(--gold);
-      font-weight: 850;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      max-width: 900px;
-      font-size: clamp(32px, 5vw, 56px);
-      line-height: 1.02;
-      letter-spacing: 0;
-    }
-
-    .subtitle {
-      margin: 14px 0 0;
-      max-width: 830px;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .meta {
-      border-left: 4px solid var(--gold);
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .meta p { margin: 0 0 10px; }
-    .meta strong { color: var(--ink); }
-
-    nav {
-      display: flex;
-      gap: 18px;
-      overflow-x: auto;
-      white-space: nowrap;
-      border-top: 1px solid var(--line);
-      padding: 12px 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    nav a { color: var(--muted); font-weight: 700; }
-
-    section {
-      padding: 30px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    h2 {
-      margin: 0 0 15px;
-      font-size: 24px;
-      letter-spacing: 0;
-    }
-
-    h3 {
-      margin: 0 0 9px;
-      font-size: 17px;
-      letter-spacing: 0;
-    }
-
-    p { margin: 0 0 12px; }
-
-    .lead-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(320px, .75fr);
-      gap: 26px;
-      align-items: start;
-    }
-
-    .masthead > *,
-    .lead-grid > *,
-    .two-col > * {
-      min-width: 0;
-    }
-
-    .callout {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      padding: 18px;
-    }
-
-    .decision {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .tile {
-      min-height: 112px;
-      border: 1px solid var(--line);
+    .skip-link {
+      position: absolute;
+      left: 20px;
+      top: 12px;
+      z-index: 10;
+      transform: translateY(-140%);
+      padding: 10px 14px;
       border-radius: 8px;
       background: #fff;
-      padding: 14px;
-    }
-
-    .tile .label {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .tile .value {
-      margin-top: 7px;
-      font-size: 25px;
-      font-weight: 850;
       color: var(--ink);
+      font-weight: 700;
+      box-shadow: var(--shadow);
     }
 
-    .tile .note {
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 12px;
+    .skip-link:focus {
+      transform: translateY(0);
     }
 
-    .view-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 18px;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid rgba(255, 255, 255, .22);
+      background: rgba(18, 60, 63, .92);
+      color: #fff;
+      backdrop-filter: blur(18px);
     }
 
-    .view-item {
-      border-top: 3px solid var(--line);
-      padding-top: 12px;
-    }
-
-    .view-item:nth-child(1) { border-color: var(--green); }
-    .view-item:nth-child(2) { border-color: var(--gold); }
-    .view-item:nth-child(3) { border-color: var(--red); }
-
-    .view-item p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .table-scroll {
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-    }
-
-    .section-note {
-      margin-top: 12px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    table {
-      width: 100%;
-      min-width: 860px;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    th {
-      text-align: left;
-      padding: 10px 8px;
-      border-bottom: 2px solid #bdc6d1;
-      background: #f1f4f7;
-      color: #394049;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-    }
-
-    td {
-      padding: 11px 8px;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-    }
-
-    tr:last-child td { border-bottom: 0; }
-    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-
-    .tag {
-      display: inline-flex;
+    .nav {
+      display: flex;
       align-items: center;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 3px 8px;
-      font-size: 11px;
-      font-weight: 800;
-      white-space: nowrap;
-      background: #fff;
-    }
-
-    .tag.hold { color: var(--blue); background: #eef5fb; border-color: #b9d2e7; }
-    .tag.trim { color: var(--amber); background: #fbf4e8; border-color: #dfc99e; }
-    .tag.sell { color: var(--red); background: #fbefee; border-color: #e2b8b4; }
-    .tag.watch { color: var(--violet); background: #f3f1fa; border-color: #c9c3e2; }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      justify-content: space-between;
+      min-height: 68px;
       gap: 22px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .cards.two {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      padding: 16px;
-    }
-
-    .card p { color: var(--muted); font-size: 14px; }
-
-    .ladder {
-      display: grid;
-      gap: 12px;
-    }
-
-    .ladder-step {
-      display: grid;
-      grid-template-columns: 190px minmax(0, 1fr) 190px;
-      gap: 14px;
-      align-items: stretch;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 14px;
-      background: #fff;
-    }
-
-    .price-band {
-      font-size: 22px;
-      font-weight: 850;
-      color: var(--ink);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .step-action {
-      align-self: center;
-      text-align: right;
-    }
-
-    .step-action strong {
-      display: block;
-      font-size: 17px;
-      margin-bottom: 3px;
-    }
-
-    .step-action span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .source-chip {
+    .brand {
       display: inline-flex;
       align-items: center;
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: #eef1f5;
-      color: #4f5965;
-      font-size: 11px;
-      font-weight: 800;
+      gap: 10px;
+      font-weight: 850;
+      font-size: 18px;
       white-space: nowrap;
     }
 
-    .small {
-      color: var(--muted);
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, .46);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      padding: 10px 11px;
+      border-radius: 8px;
+      color: rgba(255, 255, 255, .86);
+      font-size: 14px;
+      font-weight: 730;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, .12);
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 78svh;
+      display: flex;
+      align-items: center;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(8, 15, 16, .88) 0%, rgba(12, 34, 36, .72) 42%, rgba(12, 34, 36, .08) 78%),
+        url("assets/hero-financial-planning.jpg") center / cover no-repeat;
+    }
+
+    .hero-inner {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 82px 0 72px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: #f4d68d;
+      font-size: 13px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin-bottom: 18px;
+      font-size: 76px;
+      line-height: .98;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 640px;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, .9);
+      font-size: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 12px 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 840;
+      line-height: 1;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: #fff;
+      color: var(--teal);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, .16);
+    }
+
+    .button-secondary {
+      border-color: rgba(255, 255, 255, .42);
+      color: #fff;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .section {
+      padding: 76px 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-band {
+      background: #eef5f3;
+    }
+
+    .section-dark {
+      background: var(--teal);
+      color: #fff;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, .78fr) minmax(0, 1fr);
+      gap: 42px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      margin-bottom: 9px;
+      color: var(--gold);
       font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
     }
 
-    .source-ledger {
-      columns: 2;
-      column-gap: 30px;
-      font-size: 12px;
+    h2 {
+      margin-bottom: 0;
+      font-size: 42px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .section-heading p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .section-dark .section-heading p,
+    .section-dark .eyebrow {
+      color: rgba(255, 255, 255, .76);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .signal-card,
+    .research-card,
+    .contact-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .signal-card {
+      min-height: 238px;
+      padding: 24px;
+    }
+
+    .signal-number {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .signal-card p,
+    .research-card p,
+    .contact-panel p {
       color: var(--muted);
     }
 
-    .source-ledger p {
-      break-inside: avoid;
-      margin: 0 0 8px;
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: start;
     }
 
-    footer {
-      padding: 22px 0 34px;
+    .profile-block {
+      padding: 30px;
+      border-left: 5px solid var(--gold);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-block p {
       color: var(--muted);
-      font-size: 12px;
+      font-size: 17px;
     }
 
-    @media (max-width: 940px) {
-      .masthead,
-      .lead-grid,
-      .two-col,
-      .view-strip,
-      .cards {
+    .facts {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .fact {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 14px;
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .fact strong {
+      font-weight: 780;
+    }
+
+    .approach-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .approach-item {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(18, 23, 25, .12);
+    }
+
+    .approach-item:last-child {
+      border-bottom: 0;
+    }
+
+    .approach-icon {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--green);
+      font-weight: 900;
+    }
+
+    .approach-item p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 20px;
+    }
+
+    .research-card {
+      overflow: hidden;
+    }
+
+    .research-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: contain;
+      padding: 18px;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .research-content {
+      padding: 24px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--teal-soft);
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 830;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--teal);
+      font-weight: 850;
+    }
+
+    .section-dark .text-link {
+      color: #f4d68d;
+    }
+
+    .resource-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, .05);
+    }
+
+    .resource {
+      min-height: 208px;
+      padding: 24px;
+      border-right: 1px solid rgba(255, 255, 255, .22);
+    }
+
+    .resource:last-child {
+      border-right: 0;
+    }
+
+    .resource h3 {
+      color: #fff;
+    }
+
+    .resource p {
+      color: rgba(255, 255, 255, .74);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .58fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .contact-panel {
+      padding: 28px;
+    }
+
+    .contact-panel.primary {
+      border-color: rgba(18, 60, 63, .22);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .contact-actions .button-primary {
+      background: var(--teal);
+      color: #fff;
+      box-shadow: none;
+    }
+
+    .contact-actions .button-secondary {
+      border-color: var(--line);
+      color: var(--teal);
+      background: #fff;
+    }
+
+    .fine-print {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .site-footer {
+      padding: 28px 0;
+      background: #0b1516;
+      color: rgba(255, 255, 255, .72);
+      font-size: 13px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner a {
+      color: #fff;
+      font-weight: 750;
+    }
+
+    @media (max-width: 920px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+        gap: 10px;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .hero {
+        min-height: 72svh;
+        background:
+          linear-gradient(180deg, rgba(8, 15, 16, .9) 0%, rgba(12, 34, 36, .76) 54%, rgba(12, 34, 36, .2) 100%),
+          url("assets/hero-financial-planning.jpg") center / cover no-repeat;
+      }
+
+      h1 {
+        font-size: 56px;
+      }
+
+      .hero-copy {
+        font-size: 18px;
+      }
+
+      .section-heading,
+      .two-column,
+      .research-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .decision {
+      .intro-grid,
+      .resource-strip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .ladder-step {
-        grid-template-columns: 1fr;
+      .resource:nth-child(2) {
+        border-right: 0;
       }
 
-      .step-action { text-align: left; }
-      .source-ledger { columns: 1; }
+      .resource:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255, 255, 255, .22);
+      }
     }
 
     @media (max-width: 620px) {
-      .wrap { width: min(100% - 24px, 1180px); }
-      .decision { grid-template-columns: 1fr; }
-      table { font-size: 12px; min-width: 760px; }
-      th, td { padding: 9px 6px; }
+      .wrap,
+      .hero-inner {
+        width: min(100% - 28px, 1160px);
+      }
+
+      .hero-inner {
+        padding: 62px 0 54px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      h2 {
+        font-size: 32px;
+      }
+
+      .section {
+        padding: 54px 0;
+      }
+
+      .intro-grid,
+      .resource-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .resource,
+      .resource:nth-child(2) {
+        border-right: 0;
+      }
+
+      .resource {
+        border-bottom: 1px solid rgba(255, 255, 255, .22);
+      }
+
+      .resource:last-child {
+        border-bottom: 0;
+      }
+
+      .fact {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .button {
+        width: 100%;
+      }
     }
   </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ricky Kwok",
+      "url": "https://rickykwok.com/",
+      "jobTitle": "Financial Planner, Investment and Retirement Planning",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vancouver",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "sameAs": [
+        "https://advisor.rbcfinancialplanning.com/ricky-kwok/",
+        "https://ca.linkedin.com/in/rickykwok"
+      ]
+    }
+  </script>
 </head>
 <body>
-  <header>
-    <div class="wrap masthead">
-      <div>
-        <p class="eyebrow">Conditional portfolio risk-management memo | 12-month horizon | Mackenzie Precious Metals Fund Series F</p>
-        <h1>Staged De-Risking Framework: Mackenzie Precious Metals Fund Series F</h1>
-        <p class="subtitle">
-          Using US$4,900-US$5,050 gold as a provisional core reduction zone, subject to client suitability, tax,
-          liquidity, and portfolio constraints.
-        </p>
-      </div>
-      <div class="meta">
-        <p><strong>Report date:</strong> July 1, 2026</p>
-        <p><strong>Position:</strong> Mackenzie Precious Metals Fund Series F, CAD purchase option assumed.</p>
-        <p><strong>Horizon:</strong> 12 months, ending June 30, 2027.</p>
-        <p><strong>Status:</strong> Conditional risk screen. Your exact cost basis, account type, and tax situation were not provided.</p>
-      </div>
-    </div>
-    <div class="wrap">
-      <nav aria-label="Report navigation">
-        <a href="#decision">Decision</a>
-        <a href="#why-4900">Why $4,900</a>
-        <a href="#sensitivity">Sensitivity</a>
-        <a href="#sell-ladder">Sell Ladder</a>
-        <a href="#fund">Fund Anatomy</a>
-        <a href="#benchmark">Benchmark</a>
-        <a href="#scenarios">Scenarios</a>
-        <a href="#monitoring">Monitoring</a>
-        <a href="#implementation">Implementation</a>
-        <a href="#sources">Sources</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Ricky Kwok home">
+        <span class="brand-mark">RK</span>
+        <span>Ricky Kwok</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#planning">Planning</a>
+        <a href="#research">Research</a>
+        <a href="#resources">Resources</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section id="decision">
-      <div class="wrap lead-grid">
-        <div>
-          <h2>Executive Summary</h2>
-          <p>
-            <strong>The market-level risk view supports a conditional hold, not an immediate full redemption.</strong>
-            A full redemption solely in response to the June pullback is not supported by the market-level framework
-            unless the position is oversized, unsuitable, or needed for liquidity. The better 12-month discipline is
-            to hold only within a defined risk budget and sell in stages into a rebound.
-          </p>
-          <p>
-            <strong>US$4,900-US$5,050 gold is the provisional core reduction zone.</strong> At that level, gold would be
-            roughly 23%-27% above the current reference price and the fund may have captured much of the miner operating
-            leverage. The level is not a forecast ceiling; it is where risk/reward becomes less attractive for a
-            12-month holder.
-          </p>
-          <p>
-            <strong>This is research-ready, not a final personalized recommendation.</strong> Final trade sizing requires
-            book cost or ACB, account type, taxable gain/loss, current portfolio weight, target portfolio weight, risk
-            profile, liquidity needs, and dealer execution details.
-          </p>
+  <main id="main">
+    <section id="top" class="hero">
+      <div class="hero-inner">
+        <p class="kicker">Vancouver financial planning</p>
+        <h1>Ricky Kwok</h1>
+        <p class="hero-copy">Financial planning, investment and retirement planning, and practical research for people who want clearer decisions around money, mortgages, and long-term goals.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Official RBC profile</a>
+          <a class="button button-secondary" href="#research">Explore research</a>
+        </div>
+      </div>
+    </section>
 
-          <h3>30-Second Decision Table</h3>
-          <div class="table-scroll" role="region" aria-label="30-second decision table" tabindex="0">
-            <table>
-              <thead>
-                <tr>
-                  <th>Question</th>
-                  <th>Decision</th>
-                  <th>Why It Matters</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Should the full position be sold now?</strong></td>
-                  <td>No, unless oversized, unsuitable, or needed for liquidity.</td>
-                  <td>Market evidence supports staged risk reduction rather than a panic sale after the June pullback.</td>
-                </tr>
-                <tr>
-                  <td><strong>Main plan</strong></td>
-                  <td>Hold conditionally; sell in stages into a rebound.</td>
-                  <td>Preserves upside while preventing a high-volatility sector holding from becoming an open-ended bet.</td>
-                </tr>
-                <tr>
-                  <td><strong>First trim</strong></td>
-                  <td>US$4,600-US$4,800 gold.</td>
-                  <td>Begin harvesting gains once the rebound thesis is visible in miners and account value.</td>
-                </tr>
-                <tr>
-                  <td><strong>Core sell</strong></td>
-                  <td>US$4,900-US$5,050 gold.</td>
-                  <td>Primary de-risking zone where the easy part of the rebound may be priced.</td>
-                </tr>
-                <tr>
-                  <td><strong>Discipline zone</strong></td>
-                  <td>US$5,200+ gold.</td>
-                  <td>Reduce to target allocation or redeem remaining units, subject to suitability, tax, liquidity, and account-type review.</td>
-                </tr>
-                <tr>
-                  <td><strong>Thesis break</strong></td>
-                  <td>Weekly close below US$3,700 with rising real yields, strong USD, or miner operating misses.</td>
-                  <td>Would signal that the rebound thesis is failing and the fund should be re-underwritten.</td>
-                </tr>
-                <tr>
-                  <td><strong>Implementation caveat</strong></td>
-                  <td>Not trade-ready without client inputs.</td>
-                  <td>ACB, account type, tax status, position weight, liquidity needs, and KYC/suitability can change sizing.</td>
-                </tr>
-              </tbody>
-            </table>
+    <section id="planning" class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">What this site is for</p>
+            <h2>A personal hub for planning, analysis, and decision support.</h2>
           </div>
+          <p>This site brings together Ricky's public professional profile, educational resources, and personal research work. It is meant to make complex financial choices easier to frame before you take action through the proper advisory channel.</p>
+        </div>
 
-          <h3>Market View vs. Client Recommendation</h3>
-          <div class="table-scroll" role="region" aria-label="Market view versus client recommendation table" tabindex="0">
-            <table>
-              <thead>
-                <tr>
-                  <th>Layer</th>
-                  <th>Current Conclusion</th>
-                  <th>What Is Still Needed</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Market-level risk view</strong></td>
-                  <td>Conditional hold with staged selling into US$4,600-US$5,050 gold; discipline zone at US$5,200+.</td>
-                  <td>Monitor gold, USD, real yields, ETF flows, miner participation, and fund account value.</td>
-                </tr>
-                <tr>
-                  <td><strong>Client recommendation</strong></td>
-                  <td>Not finalized.</td>
-                  <td>Requires ACB/book cost, account type, taxable gain/loss, portfolio weight, target allocation, liquidity needs, and KYC/suitability review.</td>
-                </tr>
-                <tr>
-                  <td><strong>Immediate action</strong></td>
-                  <td>Reduce now only if the position is oversized, unsuitable, or needed for liquidity.</td>
-                  <td>If not oversized, pre-authorize a staged framework and update triggers monthly.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="intro-grid">
+          <article class="signal-card">
+            <span class="signal-number">01</span>
+            <h3>Financial planning</h3>
+            <p>Retirement, cash flow, registered accounts, education savings, and goal-based planning that starts with what matters most.</p>
+          </article>
+          <article class="signal-card">
+            <span class="signal-number">02</span>
+            <h3>Investment research</h3>
+            <p>Disciplined notes and chart-led analysis for evaluating risk, concentration, drawdowns, and portfolio fit.</p>
+          </article>
+          <article class="signal-card">
+            <span class="signal-number">03</span>
+            <h3>Mortgage decisions</h3>
+            <p>Practical frameworks for weighing home purchases, debt reduction, renewal choices, and competing savings goals.</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-          <h3>Implementation Status</h3>
-          <div class="table-scroll" role="region" aria-label="Implementation status table" tabindex="0">
-            <table>
-              <thead>
-                <tr>
-                  <th>Workstream</th>
-                  <th>Status</th>
-                  <th>Read-Through</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>Market framework</strong></td><td>Complete</td><td>Gold, USD, rates, ETF flows, and miner participation drive the plan.</td></tr>
-                <tr><td><strong>Fund facts</strong></td><td>Complete, subject to latest NAV confirmation</td><td>High-risk precious-metals equity fund; NAV and holdings should be refreshed before trade entry.</td></tr>
-                <tr><td><strong>Sell ladder</strong></td><td>Complete</td><td>Trim, core sell, and discipline zones are defined.</td></tr>
-                <tr><td><strong>Sensitivity model</strong></td><td>Complete, assumption-driven</td><td>C$180-C$188 account-value trigger depends on fund sensitivity and CAD/USD.</td></tr>
-                <tr><td><strong>Benchmark comparison</strong></td><td>Partial</td><td>Current public snapshots are included; same-date total-return comparison should be refreshed before implementation.</td></tr>
-                <tr><td><strong>Client tax analysis</strong></td><td>Missing</td><td>Non-registered gains/losses could change sale sequencing.</td></tr>
-                <tr><td><strong>Position-size analysis</strong></td><td>Missing</td><td>Portfolio weight determines urgency.</td></tr>
-                <tr><td><strong>Suitability confirmation</strong></td><td>Missing</td><td>KYC/KYP review is required for a final recommendation.</td></tr>
-                <tr><td><strong>Final trade instruction</strong></td><td>Not complete</td><td>Research-ready framework only; not a personalized order.</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="view-strip">
-            <div class="view-item">
-              <h3>Current Action</h3>
-              <p>A full redemption solely in response to the June pullback is not supported unless the position is oversized, unsuitable, or needed for liquidity.</p>
+    <section class="section section-band">
+      <div class="wrap two-column">
+        <div class="profile-block">
+          <p class="eyebrow">Profile</p>
+          <h2>Advice should be useful before it is complicated.</h2>
+          <p>Ricky is a Vancouver-based financial planner focused on investment and retirement planning. The aim is straightforward: understand the full picture, build a plan that can survive real life, and review it with discipline.</p>
+          <div class="facts">
+            <div class="fact">
+              <span>Focus</span>
+              <strong>Investment and retirement planning</strong>
             </div>
-            <div class="view-item">
-              <h3>Decision Hinge</h3>
-              <p>Whether a gold rebound comes with miner multiple expansion, or whether miners already price peak margins.</p>
+            <div class="fact">
+              <span>Location</span>
+              <strong>Vancouver, British Columbia</strong>
             </div>
-            <div class="view-item">
-              <h3>Thesis Invalidation</h3>
-              <p>A weekly gold close below US$3,700, stronger real yields/USD, or broad operating misses across miners.</p>
+            <div class="fact">
+              <span>Languages</span>
+              <strong>English, Cantonese, Mandarin</strong>
             </div>
           </div>
         </div>
 
-        <aside class="callout">
-          <h3>Provisional Research View</h3>
-          <p><strong>Market-level view:</strong> Conditional hold with sell discipline, not a personalized trade instruction.</p>
-          <p><strong>Primary sell level:</strong> US$4,900-$5,050 gold.</p>
-          <p><strong>Fund-value trigger:</strong> approximately C$180-C$188 total-return account value if using C$139.07 as the profile NAV baseline and assuming 1.3x-1.5x fund sensitivity to a +23% gold move.</p>
-          <p><strong>Downside stop:</strong> gold weekly close below US$3,700, roughly 7% below current spot, especially if paired with rising real yields, stronger USD, and ETF outflows.</p>
-          <p><strong>Readiness:</strong> Market-trigger plan is usable; exact sizing needs your cost basis, position size, account type, tax constraints, and KYC/risk-tolerance confirmation.</p>
+        <div class="approach-list" aria-label="Planning approach">
+          <article class="approach-item">
+            <span class="approach-icon">1</span>
+            <div>
+              <h3>Clarify the real question</h3>
+              <p>Separate the urgent from the important: retirement income, tax efficiency, investment risk, debt strategy, family goals, and liquidity.</p>
+            </div>
+          </article>
+          <article class="approach-item">
+            <span class="approach-icon">2</span>
+            <div>
+              <h3>Turn tradeoffs into a plan</h3>
+              <p>Compare options in plain language so the next step is visible: save, invest, pay down debt, adjust timelines, or revisit assumptions.</p>
+            </div>
+          </article>
+          <article class="approach-item">
+            <span class="approach-icon">3</span>
+            <div>
+              <h3>Review with evidence</h3>
+              <p>Use portfolio context, market history, and personal constraints to keep decisions grounded when headlines get noisy.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="section">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Research desk</p>
+            <h2>Current notes, dashboards, and risk frameworks.</h2>
+          </div>
+          <p>Research here is educational and personal in nature. It is useful for understanding risk, but it is not a substitute for personalized advice.</p>
+        </div>
+
+        <div class="research-grid">
+          <article class="research-card">
+            <img src="assets/lipper-growth.svg" alt="Portfolio growth comparison chart">
+            <div class="research-content">
+              <div class="pill-row">
+                <span class="pill">Portfolio context</span>
+                <span class="pill">Long-term view</span>
+              </div>
+              <h3>Growth and risk context</h3>
+              <p>A chart-led way to compare growth, volatility, and drawdown tradeoffs before deciding whether a position still fits the plan.</p>
+              <a class="text-link" href="#contact">Discuss fit</a>
+            </div>
+          </article>
+
+          <article class="research-card">
+            <img src="assets/lipper-risk.svg" alt="Portfolio volatility comparison chart">
+            <div class="research-content">
+              <div class="pill-row">
+                <span class="pill">Featured report</span>
+                <span class="pill">Precious metals</span>
+              </div>
+              <h3>Staged de-risking framework</h3>
+              <p>The existing Mackenzie Precious Metals Fund risk-management report has been preserved as a dedicated page on the new site.</p>
+              <a class="text-link" href="metal/">Open metal report</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="section section-dark">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Resources</p>
+            <h2>Useful starting points for the next conversation.</h2>
+          </div>
+          <p>Use these links to route to the right place: official advisory profile for client work, research pages for education, and LinkedIn for public professional context.</p>
+        </div>
+
+        <div class="resource-strip">
+          <article class="resource">
+            <h3>Official profile</h3>
+            <p>Use RBC's official planner page for regulated financial planning information and appointment requests.</p>
+            <a class="text-link" href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Open profile</a>
+          </article>
+          <article class="resource">
+            <h3>Research report</h3>
+            <p>Review the preserved precious-metals de-risking report and its staged action framework.</p>
+            <a class="text-link" href="metal/">Open report</a>
+          </article>
+          <article class="resource">
+            <h3>Mortgage notes</h3>
+            <p>Mortgage decision content will live here as the site grows: renewals, cash flow, and debt strategy.</p>
+            <a class="text-link" href="#contact">Ask about mortgages</a>
+          </article>
+          <article class="resource">
+            <h3>LinkedIn</h3>
+            <p>Connect with Ricky's public professional updates and credentials through LinkedIn.</p>
+            <a class="text-link" href="https://ca.linkedin.com/in/rickykwok" rel="noopener">View LinkedIn</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="wrap contact-grid">
+        <article class="contact-panel primary">
+          <p class="eyebrow">Contact</p>
+          <h2>Start through the official channel.</h2>
+          <p>For confidential financial planning, appointment requests, or personalized advice, use Ricky's official RBC Financial Planning profile. For public professional context, use LinkedIn.</p>
+          <div class="contact-actions">
+            <a class="button button-primary" href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Book through RBC</a>
+            <a class="button button-secondary" href="https://ca.linkedin.com/in/rickykwok" rel="noopener">LinkedIn</a>
+          </div>
+        </article>
+
+        <aside class="contact-panel">
+          <h3>Site note</h3>
+          <p>This is Ricky Kwok's personal website and research hub. It is designed to make public information and educational material easier to find.</p>
+          <div class="fine-print">
+            General information only. This site is not an official RBC website and does not provide individualized financial, investment, tax, legal, or mortgage advice. Please use the official advisory channel for advice about your situation.
+          </div>
         </aside>
-      </div>
-
-      <div class="wrap decision">
-        <div class="tile">
-          <div class="label">Spot Gold</div>
-          <div class="value">~$3,978</div>
-          <div class="note">Trading Economics, July 1, 2026.</div>
-        </div>
-        <div class="tile">
-          <div class="label">Core Sell Zone</div>
-          <div class="value">$4,900</div>
-          <div class="note">Roughly +23% from spot gold.</div>
-        </div>
-        <div class="tile">
-          <div class="label">Fund Risk</div>
-          <div class="value">High</div>
-          <div class="note">Mackenzie profile risk rating.</div>
-        </div>
-        <div class="tile">
-          <div class="label">3Y Std. Dev.</div>
-          <div class="value">33.91%</div>
-          <div class="note">Fund profile as of May 29, 2026.</div>
-        </div>
-      </div>
-    </section>
-
-    <section id="why-4900">
-      <div class="wrap two-col">
-        <div>
-          <h2>Why US$4,900-US$5,050 Is the Core Reduction Zone</h2>
-          <p>
-            US$4,900 is not a claim that gold cannot go higher. It is the level where the reward-to-risk changes.
-            From a spot price near US$3,978, US$4,900 is a large rebound. For a gold-miner fund, the equity move could
-            be larger than the metal move because miner operating margins expand as gold rises while many costs are
-            slower-moving. That convexity is exactly why the position works, but it is also why discipline is needed.
-          </p>
-          <p>
-            At US$4,900, the fund would likely have captured a meaningful portion of the rebound thesis. The risk then
-            shifts from "gold rebound not priced" to "how much of peak margin and peak sentiment is already in the miners."
-            This matters because Mackenzie Precious Metals Fund Series F delivered a very large 2025 return and carries
-            a high volatility profile. A 12-month holder should harvest part of the upside before the trade becomes a
-            bet on another full speculative leg higher.
-          </p>
-        </div>
-        <div class="callout">
-          <h3>The $4,900 Logic</h3>
-          <p><strong>1. It is a big move:</strong> about +23% from current gold.</p>
-          <p><strong>2. It is near major-bank upside targets:</strong> Goldman reportedly moved to US$4,900 after the selloff, while UBS was more bullish around US$5,200.</p>
-          <p><strong>3. It likely reprices miners:</strong> producer FCF and NAV sensitivity should be visibly better at US$4,900.</p>
-          <p><strong>4. It is not the all-time high:</strong> gold reached about US$5,608 in January 2026, so this is a rational trim level before the old high.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="sensitivity">
-      <div class="wrap">
-        <h2>Sensitivity Model: Gold to Fund Value</h2>
-        <p>
-          The C$180-C$188 sell zone is not a stand-alone NAV forecast. It is a modeled total-return account-value
-          trigger using C$139.07 as the latest official profile NAV baseline, a gold reference price near US$3,980,
-          and an assumed <strong>1.3x-1.5x fund sensitivity</strong> to gold through miner operating leverage and
-          multiple expansion. The actual account value should be adjusted for distributions, fees, taxes, CAD/USD,
-          and whether miners participate in the gold move.
-        </p>
-        <div class="callout" style="margin-bottom:18px;">
-          <h3>Formula Audit Trail</h3>
-          <p><strong>Implied fund value</strong> = starting fund value x [1 + gold return x fund sensitivity]</p>
-          <p><strong>Gold return</strong> = target gold price / current gold price - 1</p>
-          <p><strong>Example:</strong> US$4,900 / US$3,980 - 1 = 23.1%</p>
-          <p><strong>Low sensitivity case:</strong> C$139.07 x [1 + 23.1% x 1.3] = approximately C$181</p>
-          <p><strong>High sensitivity case:</strong> C$139.07 x [1 + 23.1% x 1.5] = approximately C$187</p>
-        </div>
-        <div class="table-scroll" role="region" aria-label="Gold sensitivity table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Gold Price</th>
-                <th class="num">Gold Return From ~$3,980</th>
-                <th class="num">Fund Sensitivity</th>
-                <th class="num">Implied Fund Value From C$139.07</th>
-                <th>Action Read-Through</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>US$4,500</strong></td>
-                <td class="num">+13%</td>
-                <td class="num">1.2x</td>
-                <td class="num">~C$161</td>
-                <td>Hold / review. Rebound is helpful but not enough to force a large exit.</td>
-              </tr>
-              <tr>
-                <td><strong>US$4,700</strong></td>
-                <td class="num">+18%</td>
-                <td class="num">1.3x</td>
-                <td class="num">~C$172</td>
-                <td>Trim 25% if account-value gain is confirmed and miners have participated.</td>
-              </tr>
-              <tr>
-                <td><strong>US$4,900</strong></td>
-                <td class="num">+23%</td>
-                <td class="num">1.3x</td>
-                <td class="num">~C$181</td>
-                <td>Core sell begins. This is the low end of the target fund-value zone.</td>
-              </tr>
-              <tr>
-                <td><strong>US$4,900</strong></td>
-                <td class="num">+23%</td>
-                <td class="num">1.5x</td>
-                <td class="num">~C$187</td>
-                <td>Sell 50%-75% if miner equities have delivered full operating leverage.</td>
-              </tr>
-              <tr>
-                <td><strong>US$5,200</strong></td>
-                <td class="num">+31%</td>
-                <td class="num">1.4x</td>
-                <td class="num">~C$199</td>
-                <td>Reduce to target allocation or redeem remaining units, subject to suitability, tax, liquidity, and account-type review.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="section-note">
-          These are modeled total-return triggers, not guaranteed NAVPS targets. Mackenzie reports historical total returns
-          inclusive of reinvested distributions, and distributions can mechanically reduce NAV per unit even when account
-          value is preserved through reinvestment.
-        </p>
-
-        <div class="two-col" style="margin-top:22px;">
-          <div>
-            <h2>CAD/USD Adjustment</h2>
-            <p>
-              The fund is held in Canadian dollars, while gold is priced in U.S. dollars. USD/CAD was around 1.42 on
-              July 1, 2026, so a stronger Canadian dollar would reduce the CAD benefit of a USD gold rally. This is why
-              the sell discipline should use total account value and not gold alone.
-            </p>
-          </div>
-          <div class="table-scroll" role="region" aria-label="CAD sensitivity table" tabindex="0">
-            <table>
-              <thead>
-                <tr>
-                  <th>Scenario</th>
-                  <th>Gold Return</th>
-                  <th>CAD/USD Effect</th>
-                  <th>Miner Effect</th>
-                  <th>Expected CAD Fund Result</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Clean bull rally</strong></td>
-                  <td>+23%</td>
-                  <td>Neutral</td>
-                  <td>Multiple expansion</td>
-                  <td>+30%-35%</td>
-                </tr>
-                <tr>
-                  <td><strong>Gold up, CAD strong</strong></td>
-                  <td>+23%</td>
-                  <td>-5% drag</td>
-                  <td>Normal</td>
-                  <td>+22%-28%</td>
-                </tr>
-                <tr>
-                  <td><strong>Gold up, miners lag</strong></td>
-                  <td>+23%</td>
-                  <td>Neutral</td>
-                  <td>Multiple compression</td>
-                  <td>+15%-22%</td>
-                </tr>
-                <tr>
-                  <td><strong>Gold up, costs spike</strong></td>
-                  <td>+23%</td>
-                  <td>Neutral</td>
-                  <td>Margin disappointment</td>
-                  <td>+10%-18%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <h2 style="margin-top:24px;">What Could Make the Model Wrong</h2>
-        <p>
-          The sensitivity model is useful because it turns a gold level into an account-value trigger, but it is not a
-          guarantee. The biggest risk is that gold moves while miners, currency translation, costs, or valuation multiples
-          move differently from the model assumptions.
-        </p>
-        <div class="table-scroll" role="region" aria-label="Model risk table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Assumption</th>
-                <th>How It Can Be Wrong</th>
-                <th>Effect on Sell Trigger</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Fund sensitivity of 1.3x-1.5x</strong></td>
-                <td>Miners may not participate in the gold rally because investors discount peak margins or prefer bullion.</td>
-                <td>The C$180-C$188 account-value target may not be reached even if gold reaches US$4,900.</td>
-              </tr>
-              <tr>
-                <td><strong>CAD/USD neutral</strong></td>
-                <td>A stronger Canadian dollar can reduce the CAD value of a USD gold move.</td>
-                <td>Use CAD account value, not gold price alone, before triggering the ladder.</td>
-              </tr>
-              <tr>
-                <td><strong>Miner costs stable</strong></td>
-                <td>Labor, energy, royalties, sustaining capex, or development costs may rise with gold.</td>
-                <td>Margin expansion may disappoint and the fund may lag the metal.</td>
-              </tr>
-              <tr>
-                <td><strong>Multiples expand</strong></td>
-                <td>The market may already price peak gold or discount political, reserve, and operating risk.</td>
-                <td>The fund could underperform even with higher earnings estimates.</td>
-              </tr>
-              <tr>
-                <td><strong>Distribution-adjusted value tracked correctly</strong></td>
-                <td>Looking only at NAVPS can misread the account return if distributions are paid in cash or reinvested.</td>
-                <td>Confirm total account value and distribution treatment before acting on NAVPS bands.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="sell-ladder">
-      <div class="wrap">
-        <h2>12-Month Sell Ladder</h2>
-        <div class="ladder">
-          <div class="ladder-step">
-            <div>
-              <div class="price-band">$4,250-$4,500</div>
-              <span class="tag hold">Hold / review</span>
-            </div>
-            <div>
-              <h3>Base recovery, not enough to force exit</h3>
-              <p class="small">
-                The fund can still work if gold stabilizes and miners convert high margins into buybacks, dividends,
-                and better earnings. Keep exposure if position size is tolerable.
-              </p>
-            </div>
-            <div class="step-action">
-              <strong>Hold</strong>
-              <span>Trim only if allocation is oversized.</span>
-            </div>
-          </div>
-
-          <div class="ladder-step">
-            <div>
-              <div class="price-band">$4,600-$4,800</div>
-              <span class="tag trim">First trim</span>
-            </div>
-            <div>
-              <h3>Rebound confirmation</h3>
-              <p class="small">
-                This zone should begin to reprice miner NAVs and earnings. If the fund is up about 20%-25% from your
-                baseline, take risk down before sentiment turns crowded again.
-              </p>
-            </div>
-            <div class="step-action">
-              <strong>Sell 25%-50%</strong>
-              <span>Protect gains; keep upside optionality.</span>
-            </div>
-          </div>
-
-          <div class="ladder-step">
-            <div>
-              <div class="price-band">$4,900-$5,050</div>
-              <span class="tag sell">Core sell zone</span>
-            </div>
-            <div>
-              <h3>Risk/reward changes</h3>
-              <p class="small">
-                This is where the provisional research view says the easy part of the rebound is likely harvested. If the fund is around
-                C$180-C$188 on a distribution-adjusted total-return account-value basis using C$139.07 as a starting
-                NAVPS reference, the position has likely delivered enough for a 12-month mandate.
-              </p>
-            </div>
-            <div class="step-action">
-              <strong>Sell 50%-75%</strong>
-              <span>Leave only a residual if macro is still improving.</span>
-            </div>
-          </div>
-
-          <div class="ladder-step">
-            <div>
-              <div class="price-band">$5,200+</div>
-              <span class="tag sell">Discipline zone</span>
-            </div>
-            <div>
-              <h3>Old-high retest psychology</h3>
-              <p class="small">
-                If gold pushes into this zone and miners are euphoric, the fund may be priced for a very bullish
-                commodity tape. Do not let a 12-month position become an open-ended macro bet by accident.
-              </p>
-            </div>
-            <div class="step-action">
-              <strong>Reduce to target</strong>
-              <span>Redeem residual only after suitability, tax, liquidity, and account review.</span>
-            </div>
-          </div>
-        </div>
-        <p class="small" style="margin-top:12px;">
-          Use total account value, net of reinvested or cash distributions, as the primary trigger. NAVPS targets should
-          be adjusted downward for any future distributions paid during the holding period. This mutual fund transacts at
-          the next available end-of-day NAV through the dealer platform, so intraday stop-loss language is not appropriate
-          for execution.
-        </p>
-      </div>
-    </section>
-
-    <section id="fund">
-      <div class="wrap">
-        <h2>Fund Anatomy and Exposure</h2>
-        <div class="table-scroll" role="region" aria-label="Fund profile table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Latest Sourced Data</th>
-                <th>Investment Read-Through</th>
-                <th>Source</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Fund</strong></td>
-                <td>Mackenzie Precious Metals Fund Series F, MFC 8532 CAD purchase option.</td>
-                <td>Sector-specialty fund, not a diversified core holding.</td>
-                <td><span class="source-chip">S1</span></td>
-              </tr>
-              <tr>
-                <td><strong>Risk rating</strong></td>
-                <td>High risk; 3-year annual standard deviation 33.91%.</td>
-                <td>Exit discipline matters; drawdowns can be violent even when the long-term thesis is intact.</td>
-                <td><span class="source-chip">S2</span></td>
-              </tr>
-              <tr>
-                <td><strong>Fee load</strong></td>
-                <td>Series F MER 1.04%; management fee 0.80%.</td>
-                <td>Reasonable for active sector exposure, but not cheap enough to hold without a thesis.</td>
-                <td><span class="source-chip">S2</span></td>
-              </tr>
-              <tr>
-                <td><strong>Commodity exposure</strong></td>
-                <td>Gold 76.1%, silver 4.6%, diversified metals and mining 6.5%, cash 6.0%.</td>
-                <td>The fund is primarily a gold-miner equity bet with some silver torque and cash buffer.</td>
-                <td><span class="source-chip">S2</span></td>
-              </tr>
-              <tr>
-                <td><strong>Geography</strong></td>
-                <td>Canada 64.2%, Australia 9.9%, United States 5.8%, South Africa 4.0%, Tanzania 3.6%.</td>
-                <td>CAD investor exposure includes global mining operations but heavy Canadian listed equity concentration.</td>
-                <td><span class="source-chip">S2</span></td>
-              </tr>
-              <tr>
-                <td><strong>Top holdings</strong></td>
-                <td>Barrick 8.4%, Agnico Eagle 8.1%, Gold Fields 4.0%, Discovery Silver 3.9%, AngloGold 3.6%.</td>
-                <td>Large-cap gold producers anchor the fund, but mid-cap and development exposure increases cyclicality.</td>
-                <td><span class="source-chip">S2</span></td>
-              </tr>
-              <tr>
-                <td><strong>Track record setup</strong></td>
-                <td>2025 calendar-year return 176.94%; YTD 5.87% through May 31, 2026.</td>
-                <td>After a huge prior-year move, the bar for holding through another cycle is higher.</td>
-                <td><span class="source-chip">S2</span></td>
-              </tr>
-              <tr>
-                <td><strong>Distribution mechanics</strong></td>
-                <td>Series F showed a C$17.9418 annual distribution paid Dec. 23, 2025 in the profile.</td>
-                <td>Use total account value and total return, not raw NAVPS alone, because distributions can affect NAVPS and tax reporting.</td>
-                <td><span class="source-chip">S2</span> <span class="source-chip">S10</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="benchmark">
-      <div class="wrap">
-        <h2>Benchmark and Vehicle Check</h2>
-        <p>
-          Mackenzie lists the S&P/TSX Global Gold Index as the benchmark. That matters because the sell decision is not
-          only "gold up or down"; it is whether this active fund is the right vehicle versus a lower-cost benchmark ETF,
-          a global miner ETF, or bullion. The current source packet supports a screen-grade comparison, but a full
-          vehicle recommendation needs same-date total-return and tax data.
-        </p>
-        <div class="table-scroll" role="region" aria-label="Benchmark comparison table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Vehicle</th>
-                <th>Role</th>
-                <th>Available Public Snapshot</th>
-                <th>What It Proves</th>
-                <th>What Is Missing</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Mackenzie Precious Metals F</strong></td>
-                <td>Active precious-metals equity fund</td>
-                <td>YTD 5.87% and 2025 return 176.94% through Mackenzie May profile; 3-year standard deviation 33.91%.</td>
-                <td>High active sector exposure with meaningful gold-miner beta and manager selection risk.</td>
-                <td>Same-date total return to July 1, realized tax impact, and your account-level return.</td>
-              </tr>
-              <tr>
-                <td><strong>S&P/TSX Global Gold / XGD</strong></td>
-                <td>Stated benchmark exposure</td>
-                <td>BlackRock XGD NAV was C$47.76 on June 30, 2026; NAV total return YTD was -5.95% as of June 29, 2026.</td>
-                <td>Provides a lower-cost benchmark proxy for Canadian-listed gold equities.</td>
-                <td>Same-date Mackenzie total return and after-fee active return versus benchmark.</td>
-              </tr>
-              <tr>
-                <td><strong>GDX</strong></td>
-                <td>Global senior gold-miner ETF</td>
-                <td>Yahoo Finance showed GDX YTD return 11.76%, 1-year return 50.23%, and 3-year return 38.30% as of June 29, 2026.</td>
-                <td>Useful global peer for miner beta, but USD-listed and not the fund benchmark.</td>
-                <td>CAD translation, withholding/tax treatment, and same-date performance.</td>
-              </tr>
-              <tr>
-                <td><strong>Gold bullion / bullion ETF</strong></td>
-                <td>Metal exposure without miner operating leverage</td>
-                <td>Gold spot near US$3,978 on July 1, 2026; all-time high about US$5,608 in January 2026.</td>
-                <td>Clean macro exposure to gold, but no miner operating leverage.</td>
-                <td>CAD bullion return, storage/ETF cost, tax treatment, and portfolio role.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p class="section-note">
-          PM read-through: Mackenzie remains acceptable if you want active miner exposure. If the goal is cleaner gold
-          exposure, bullion is simpler. If the goal is benchmark gold-equity beta at lower cost, XGD/GDX deserve comparison
-          before extending the 12-month holding period.
-        </p>
-      </div>
-    </section>
-
-    <section id="scenarios">
-      <div class="wrap">
-        <h2>Scenario Analysis</h2>
-        <div class="table-scroll" role="region" aria-label="Scenario table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Case</th>
-                <th class="num">Gold Level</th>
-                <th>What Happens</th>
-                <th>Expected Fund Behavior</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><span class="tag sell">Stress</span></td>
-                <td class="num">&lt;$3,700</td>
-                <td>Real yields and USD pressure dominate; gold's safe-haven bid weakens.</td>
-                <td>Fund likely underperforms gold because miner multiples compress and small/mid-cap holdings de-risk.</td>
-                <td>Redeem at next available NAV or reduce by at least 50% and re-underwrite. Do not wait for miner earnings to confirm what gold already signaled.</td>
-              </tr>
-              <tr>
-                <td><span class="tag watch">Downside</span></td>
-                <td class="num">$3,700-$4,000</td>
-                <td>Current pressure persists; market doubts 2026 commodity forecasts.</td>
-                <td>High volatility, drawdown risk remains. Fund could churn or retest June lows.</td>
-                <td>Hold only if the allocation fits documented risk tolerance, risk capacity, liquidity needs, and portfolio concentration; otherwise reduce earlier.</td>
-              </tr>
-              <tr>
-                <td><span class="tag hold">Base</span></td>
-                <td class="num">$4,250-$4,500</td>
-                <td>Gold stabilizes, miners show FCF, but not enough to re-rate aggressively.</td>
-                <td>Fund likely recovers but may lag the most bullish sell-side miner targets.</td>
-                <td>Hold; review position size monthly.</td>
-              </tr>
-              <tr>
-                <td><span class="tag trim">Upside</span></td>
-                <td class="num">$4,600-$4,800</td>
-                <td>Consensus bullish case begins to work; miner earnings power becomes visible again.</td>
-                <td>Fund should be materially higher if miners participate.</td>
-                <td>Trim 25%-50%; reduce regret risk while keeping residual upside.</td>
-              </tr>
-              <tr>
-                <td><span class="tag sell">Bull / exit</span></td>
-                <td class="num">$4,900-$5,050</td>
-                <td>Gold reaches a major-bank upside target zone and a large rebound from current spot.</td>
-                <td>Fund may be priced for peak cash margins and renewed capital-return optimism.</td>
-                <td>Sell 50%-75%; keep only a smaller residual if macro confirms further upside.</td>
-              </tr>
-              <tr>
-                <td><span class="tag sell">Euphoria</span></td>
-                <td class="num">&gt;$5,200</td>
-                <td>Speculative momentum likely reappears; old high near $5,608 becomes the market anchor.</td>
-                <td>Fund upside can continue, but forward return skew worsens for a 12-month mandate.</td>
-                <td>Reduce to target allocation or redeem remaining units, subject to suitability, tax, liquidity, and account-type review.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="monitoring">
-      <div class="wrap">
-        <div class="two-col">
-          <div>
-            <h2>Monitoring Rules</h2>
-            <div class="cards">
-              <div class="card">
-                <h3>Trim Trigger</h3>
-                <p>Gold US$4,600-$4,800, fund +20%-25% from your actual baseline, or GDX/miner basket breaks higher while gold stalls.</p>
-              </div>
-              <div class="card">
-                <h3>Sell Trigger</h3>
-                <p>Gold US$4,900-$5,050, fund +30%-35%, or miners appear priced for peak FCF with no further estimate upgrade path.</p>
-              </div>
-              <div class="card">
-                <h3>Thesis Break</h3>
-                <p>Gold weekly close below US$3,700, fund -15%-20%, rising real yields/USD, or broad miner cost/production misses.</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2>What Would Make US$4,900 Too Early?</h2>
-            <p>
-              The framework would be less aggressive selling at US$4,900 if the rally is accompanied by falling real yields,
-              a weakening U.S. dollar, renewed gold ETF inflows, and miner equities lagging the metal rather than leading it.
-              In that case, sell 50% and let the rest run only with a weekly-close and end-of-day NAV discipline.
-            </p>
-            <p>
-              The framework would be more aggressive selling below US$4,900 if gold rebounds but miners fail to participate,
-              if fund holdings report cost inflation or production misses, or if the move is driven by a short-lived
-              geopolitical spike rather than a durable rates/USD regime shift.
-            </p>
-            <p>
-              The US$3,700 stop is not a technical magic number. It is roughly 7% below the current gold reference price and
-              would suggest the rebound thesis is failing if it arrives with a stronger U.S. dollar, rising real yields, and
-              renewed gold ETF outflows. Under that condition, reduce exposure by at least 50% and re-underwrite instead of
-              waiting for the fund's next published profile.
-            </p>
-          </div>
-        </div>
-
-        <h2 style="margin-top:24px;">Monitored Signal Table</h2>
-        <div class="table-scroll" role="region" aria-label="Monitored signal table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Signal</th>
-                <th>Source / Proxy</th>
-                <th>Trigger</th>
-                <th>Action Read-Through</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Gold price</strong></td>
-                <td>Spot gold or front-month gold futures</td>
-                <td>US$4,600-US$4,800 first trim; US$4,900-US$5,050 core sell; weekly close below US$3,700 thesis break.</td>
-                <td>Use gold as the primary market trigger, but confirm fund account value before trading.</td>
-              </tr>
-              <tr>
-                <td><strong>U.S. dollar</strong></td>
-                <td>DXY and USD/CAD</td>
-                <td>Sustained USD strength, especially if paired with gold weakness.</td>
-                <td>Raises probability of reducing early; a stronger CAD can also lower CAD fund returns.</td>
-              </tr>
-              <tr>
-                <td><strong>Real yields</strong></td>
-                <td>10-year TIPS real yield and real-rate trend</td>
-                <td>Rising real yields while gold fails to rebound.</td>
-                <td>Weakens the macro case for gold and miners.</td>
-              </tr>
-              <tr>
-                <td><strong>ETF flows</strong></td>
-                <td>World Gold Council ETF flow data and public ETF flow summaries</td>
-                <td>Renewed outflows after a price rebound.</td>
-                <td>Suggests investor demand is fading; tighten sell discipline.</td>
-              </tr>
-              <tr>
-                <td><strong>Miner performance</strong></td>
-                <td>GDX, XGD, and Mackenzie fund value versus gold</td>
-                <td>Miners materially lag gold or fail to confirm the rally.</td>
-                <td>Assumed fund sensitivity may be too high; trim on account-value strength rather than waiting for a gold target.</td>
-              </tr>
-              <tr>
-                <td><strong>Fund value</strong></td>
-                <td>Client account value and latest fund NAV</td>
-                <td>-15% to -20% from baseline/high, or C$180-C$188 modeled total-return trigger.</td>
-                <td>Use total account value, including distributions, as the implementation trigger.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="implementation">
-      <div class="wrap">
-        <h2>Client-Specific Implementation Checklist</h2>
-        <p>
-          The market-level sell framework is usable now, but a client-ready recommendation requires the following inputs.
-          Until these are confirmed, the correct label is <strong>conditional risk plan</strong>, not execution-ready advice.
-        </p>
-        <h3>Portfolio-Weight Risk Budget</h3>
-        <p>
-          The same gold price trigger should not lead to the same trade size for every investor. A small satellite holding
-          can be managed patiently; a concentrated sector exposure needs earlier risk control even if the gold thesis is
-          still intact.
-        </p>
-        <div class="table-scroll" role="region" aria-label="Portfolio weight risk budget table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Current Portfolio Weight</th>
-                <th>Risk Budget Interpretation</th>
-                <th>Implementation Rule</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>0%-3%</strong></td>
-                <td>Small satellite exposure.</td>
-                <td>Hold if suitable; follow ladder with lower urgency.</td>
-              </tr>
-              <tr>
-                <td><strong>3%-5%</strong></td>
-                <td>Moderate precious-metals satellite.</td>
-                <td>Follow the ladder; first trim at US$4,600-US$4,800 if account value confirms.</td>
-              </tr>
-              <tr>
-                <td><strong>5%-10%</strong></td>
-                <td>High-conviction sector allocation.</td>
-                <td>Trim earlier if risk tolerance is not high or if the fund creates portfolio-level drawdown stress.</td>
-              </tr>
-              <tr>
-                <td><strong>10%+</strong></td>
-                <td>Concentrated sector exposure.</td>
-                <td>Immediate suitability review; consider reducing even before the first gold trim band.</td>
-              </tr>
-              <tr>
-                <td><strong>20%+</strong></td>
-                <td>Potentially excessive for many retail portfolios unless the mandate is explicitly aggressive.</td>
-                <td>Consider immediate reduction unless written portfolio mandate, risk capacity, and liquidity needs support it.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Account-Type Implementation</h3>
-        <div class="table-scroll" role="region" aria-label="Account type implementation table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Account Type</th>
-                <th>Implication</th>
-                <th>Sell-Plan Adjustment</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>TFSA</strong></td>
-                <td>No tax on gains, but contribution room is valuable.</td>
-                <td>Trim based on risk budget and suitability rather than capital-gains timing.</td>
-              </tr>
-              <tr>
-                <td><strong>RRSP / RRIF</strong></td>
-                <td>No immediate capital-gains tax; withdrawals are taxable when taken out.</td>
-                <td>The ladder is cleaner, but RRIF cash-flow needs may justify earlier reduction.</td>
-              </tr>
-              <tr>
-                <td><strong>Non-registered</strong></td>
-                <td>Capital gains/losses and ACB matter.</td>
-                <td>Stage sales around tax impact; coordinate with advisor or tax professional before redemption.</td>
-              </tr>
-              <tr>
-                <td><strong>RESP</strong></td>
-                <td>Education cash needs can create a shorter real horizon.</td>
-                <td>Reduce earlier if withdrawals are likely within 12-24 months.</td>
-              </tr>
-              <tr>
-                <td><strong>FHSA</strong></td>
-                <td>Home-purchase timing may conflict with high-volatility sector exposure.</td>
-                <td>Avoid relying on a rebound if funds may be needed soon.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Tax Scenario Lens</h3>
-        <div class="table-scroll" role="region" aria-label="Tax scenario table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Scenario</th>
-                <th>Placeholder Inputs</th>
-                <th>Planning Implication</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Large embedded gain</strong></td>
-                <td>Market value: C$____; ACB: C$____; unrealized gain: C$____.</td>
-                <td>Stage sales if tax cost is material, but do not let tax avoidance override concentration risk.</td>
-              </tr>
-              <tr>
-                <td><strong>Small gain</strong></td>
-                <td>Market value: C$____; ACB: C$____; unrealized gain: C$____.</td>
-                <td>Follow the sell ladder more directly because tax friction may be modest.</td>
-              </tr>
-              <tr>
-                <td><strong>Loss position</strong></td>
-                <td>Market value: C$____; ACB: C$____; unrealized loss: C$____.</td>
-                <td>Consider tax-loss harvesting only if it fits the broader portfolio and superficial-loss rules are reviewed.</td>
-              </tr>
-              <tr>
-                <td><strong>Registered account</strong></td>
-                <td>Account type: TFSA / RRSP / RRIF / RESP / FHSA.</td>
-                <td>Tax is less likely to drive timing; suitability, liquidity, and risk budget dominate.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="table-scroll" role="region" aria-label="Implementation checklist table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Missing Input</th>
-                <th>Why It Matters</th>
-                <th>Required Before Trade?</th>
-                <th>How It Changes the Plan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Book cost / ACB</strong></td>
-                <td>Determines taxable gain or loss in a non-registered account.</td>
-                <td>Yes</td>
-                <td>Large embedded gain may justify staged redemptions or tax-aware timing.</td>
-              </tr>
-              <tr>
-                <td><strong>Account type</strong></td>
-                <td>RRSP, TFSA, FHSA, RESP, and taxable accounts have different tax and withdrawal implications.</td>
-                <td>Yes</td>
-                <td>Tax-sheltered accounts can follow the sell ladder more cleanly.</td>
-              </tr>
-              <tr>
-                <td><strong>Position size</strong></td>
-                <td>"Too large" must be defined relative to total portfolio value and risk tolerance.</td>
-                <td>Yes</td>
-                <td>Oversized positions should trim earlier, even before gold reaches US$4,600.</td>
-              </tr>
-              <tr>
-                <td><strong>Total portfolio value</strong></td>
-                <td>Determines concentration risk and portfolio drawdown impact.</td>
-                <td>Yes</td>
-                <td>A 5% holding and a 25% holding require different urgency.</td>
-              </tr>
-              <tr>
-                <td><strong>Risk tolerance / KYC</strong></td>
-                <td>The fund is officially high risk with high return variability.</td>
-                <td>Yes</td>
-                <td>Low or medium risk tolerance would argue for immediate reduction.</td>
-              </tr>
-              <tr>
-                <td><strong>Liquidity needs</strong></td>
-                <td>A 12-month horizon may conflict with near-term cash needs.</td>
-                <td>Yes</td>
-                <td>Known cash needs should move the sell trigger closer to today's value.</td>
-              </tr>
-              <tr>
-                <td><strong>Distribution treatment</strong></td>
-                <td>Cash distributions reduce NAVPS; reinvested distributions preserve account exposure.</td>
-                <td>Yes</td>
-                <td>Use total account value, not raw NAVPS, for the sell bands.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Advisor Action Checklist</h3>
-        <div class="table-scroll" role="region" aria-label="Advisor action checklist table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>Action Item</th>
-                <th>Status Needed Before Trade</th>
-                <th>Why It Matters</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td><strong>Confirm current fund value and units</strong></td><td>Required</td><td>Determines exact redemption amount and whether modeled account-value triggers are reached.</td></tr>
-              <tr><td><strong>Confirm ACB/book cost</strong></td><td>Required for non-registered accounts</td><td>Determines taxable gain or loss.</td></tr>
-              <tr><td><strong>Confirm account type</strong></td><td>Required</td><td>Changes tax, withdrawal, and liquidity implications.</td></tr>
-              <tr><td><strong>Calculate current and target portfolio weight</strong></td><td>Required</td><td>Defines whether the position is a satellite or concentration risk.</td></tr>
-              <tr><td><strong>Review risk profile and liquidity needs</strong></td><td>Required</td><td>High-risk sector funds must fit risk tolerance and risk capacity.</td></tr>
-              <tr><td><strong>Refresh KYC/KYP and suitability notes</strong></td><td>Required</td><td>CIRO guidance expects suitability to reflect client circumstances, risk profile, and product risk.</td></tr>
-              <tr><td><strong>Confirm trade cutoff and next NAV process</strong></td><td>Required</td><td>Mutual fund redemptions execute at the next available NAV, not intraday prices.</td></tr>
-              <tr><td><strong>Document client communication</strong></td><td>Required</td><td>Records that the decision is conditional on client-specific facts and not just a market call.</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Decision Tree</h3>
-        <div class="table-scroll" role="region" aria-label="Decision tree table" tabindex="0">
-          <table>
-            <thead>
-              <tr>
-                <th>If</th>
-                <th>Then</th>
-                <th>Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Position is 10%+ of portfolio, unsuitable, or needed for liquidity</strong></td>
-                <td>Reduce immediately to a suitable target allocation.</td>
-                <td>Portfolio risk overrides the market-level hold thesis.</td>
-              </tr>
-              <tr>
-                <td><strong>Gold remains between US$3,700 and US$4,500</strong></td>
-                <td>Hold only if the allocation fits the risk budget; review monthly.</td>
-                <td>Rebound has not yet paid enough to force a large exit.</td>
-              </tr>
-              <tr>
-                <td><strong>Gold reaches US$4,600-US$4,800 and fund value confirms</strong></td>
-                <td>Trim 25%-50% unless tax or account constraints require a different sequence.</td>
-                <td>First proof point that the rebound is working.</td>
-              </tr>
-              <tr>
-                <td><strong>Gold reaches US$4,900-US$5,050 and miners participate</strong></td>
-                <td>Sell 50%-75% or reduce to target allocation.</td>
-                <td>Core risk/reward handoff from rebound capture to peak-margin risk.</td>
-              </tr>
-              <tr>
-                <td><strong>Gold exceeds US$5,200 with euphoric miner behavior</strong></td>
-                <td>Redeem residual exposure or keep only a small, pre-sized allocation.</td>
-                <td>Forward return skew is less attractive for a 12-month mandate.</td>
-              </tr>
-              <tr>
-                <td><strong>Weekly close below US$3,700 with rising real yields, strong USD, or miner misses</strong></td>
-                <td>Reduce by at least 50% and re-underwrite the thesis.</td>
-                <td>Thesis invalidation criteria are met.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section id="sources">
-      <div class="wrap">
-        <h2>Source Ledger</h2>
-        <div class="table-scroll" role="region" aria-label="Source hierarchy table" tabindex="0" style="margin-bottom:18px;">
-          <table>
-            <thead>
-              <tr>
-                <th>Source Type</th>
-                <th>Use in This Report</th>
-                <th>Confidence</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Official fund documents</strong></td>
-                <td>Fund facts, fees, holdings, benchmark, NAVPS, risk rating, distributions, and performance disclosure.</td>
-                <td>High</td>
-              </tr>
-              <tr>
-                <td><strong>Official market / institutional sources</strong></td>
-                <td>Gold price, gold demand, central-bank demand, benchmark index and ETF snapshots.</td>
-                <td>Medium-high</td>
-              </tr>
-              <tr>
-                <td><strong>Primary bank commentary</strong></td>
-                <td>UBS gold target and macro rationale, used as a named upside case rather than a guarantee.</td>
-                <td>Medium</td>
-              </tr>
-              <tr>
-                <td><strong>Regulatory guidance</strong></td>
-                <td>KYC, KYP, risk profile, liquidity, and suitability framing for client-specific implementation.</td>
-                <td>High for process requirements</td>
-              </tr>
-              <tr>
-                <td><strong>Media summaries</strong></td>
-                <td>Secondary confirmation of bank forecast changes where primary research is not publicly available.</td>
-                <td>Medium-low</td>
-              </tr>
-              <tr>
-                <td><strong>Internal calculations</strong></td>
-                <td>Gold-to-fund sensitivity, CAD/USD adjustment, account-value sell bands, and trigger logic.</td>
-                <td>Assumption-driven</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <h3>Source-to-Claim Map</h3>
-        <div class="table-scroll" role="region" aria-label="Source to claim table" tabindex="0" style="margin-bottom:18px;">
-          <table>
-            <thead>
-              <tr>
-                <th>Report Claim</th>
-                <th>Primary Evidence</th>
-                <th>Remaining Limitation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Fund is high risk and sector-specific</strong></td>
-                <td>Mackenzie fund page and Series F profile for mandate, risk rating, fees, holdings, performance, standard deviation, and distributions.</td>
-                <td>Latest daily NAV and account-level return must be confirmed before trade sizing.</td>
-              </tr>
-              <tr>
-                <td><strong>US$4,900-US$5,050 is a rational core reduction zone</strong></td>
-                <td>Current gold reference price, bank upside cases, and internal gold-to-fund sensitivity model.</td>
-                <td>Bank targets are not guarantees; miner participation and CAD/USD can change fund return.</td>
-              </tr>
-              <tr>
-                <td><strong>Gold macro backdrop still supports conditional hold</strong></td>
-                <td>World Gold Council demand and central-bank survey; UBS macro commentary.</td>
-                <td>ETF outflows, stronger USD, and rising real yields can invalidate the view.</td>
-              </tr>
-              <tr>
-                <td><strong>Mutual fund execution should use end-of-day NAV language</strong></td>
-                <td>Investopedia mutual fund execution explainer and Mackenzie AIF mechanics.</td>
-                <td>Dealer platform cutoffs and current redemption process must be confirmed.</td>
-              </tr>
-              <tr>
-                <td><strong>Final advice requires KYC/KYP and suitability review</strong></td>
-                <td>CIRO KYC and suitability guidance for retail clients.</td>
-                <td>Client-specific facts were not provided in the source packet.</td>
-              </tr>
-              <tr>
-                <td><strong>Benchmark comparison is screen-grade, not final vehicle selection</strong></td>
-                <td>S&P/TSX Global Gold, BlackRock XGD, Yahoo GDX, and Mackenzie profile snapshots.</td>
-                <td>Same-date total-return and tax-adjusted comparison remains incomplete.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="source-ledger">
-          <p><strong>S1.</strong> Mackenzie Investments, <a href="https://www.mackenzieinvestments.com/en/products/mutual-funds/mackenzie-precious-metals-fund">Mackenzie Precious Metals Fund page</a>, accessed July 1, 2026.</p>
-          <p><strong>S2.</strong> Mackenzie Investments, <a href="https://www.mackenzieinvestments.com/content/dam/mackenzie/en/mackenzie-fundprofiles/fundprofile-precious-metals-fund-f-08532-en.pdf">Mackenzie Precious Metals Fund Series F profile</a>, May 31, 2026 / NAVPS May 29, 2026.</p>
-          <p><strong>S3.</strong> Trading Economics, <a href="https://tradingeconomics.com/commodity/gold">gold price and forecast page</a>, July 1, 2026.</p>
-          <p><strong>S4.</strong> World Gold Council, <a href="https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q1-2026">Gold Demand Trends Q1 2026</a>, April 29, 2026.</p>
-          <p><strong>S5.</strong> World Gold Council, <a href="https://www.gold.org/goldhub/research/central-bank-gold-reserves-survey-2026">Central Bank Gold Reserves Survey 2026</a>, June 2026.</p>
-          <p><strong>S6.</strong> UBS CIO, <a href="https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-25062026.html">Why gold could stage a rebound</a>, June 25, 2026.</p>
-          <p><strong>S7.</strong> Reuters, <a href="https://www.reuters.com/business/gold-etfs-could-see-fresh-outflows-rising-bets-fed-monetary-tightening-2026-06-24/">gold ETF outflow risk and monetary tightening backdrop</a>, June 24, 2026.</p>
-          <p><strong>S8.</strong> Business Insider, <a href="https://www.businessinsider.com/gold-price-today-forecast-outlook-etf-interest-rates-sell-off-2026-6">bank forecast revisions after gold selloff</a>, June 2026. Used as a secondary source for publicly summarized bank targets.</p>
-          <p><strong>S9.</strong> Investopedia, <a href="https://www.investopedia.com/ask/answers/110615/when-are-mutual-fund-orders-executed.asp">mutual fund order execution explainer</a>, accessed July 1, 2026.</p>
-          <p><strong>S10.</strong> Mackenzie Investments, <a href="https://www.mackenzieinvestments.com/content/dam/mackenzie/en/mutual-funds/mi-aif-2024-june-27-en.pdf">Annual Information Form</a>, June 27, 2024, for redemption/distribution/tax mechanics.</p>
-          <p><strong>S11.</strong> Trading Economics, <a href="https://tradingeconomics.com/canada/currency">USD/CAD exchange-rate page</a>, July 1, 2026.</p>
-          <p><strong>S12.</strong> S&P Dow Jones Indices, <a href="https://www.spglobal.com/spdji/en/indices/equity/sp-tsx-global-gold-index/">S&P/TSX Global Gold Index page</a>, accessed July 1, 2026.</p>
-          <p><strong>S13.</strong> BlackRock, <a href="https://www.blackrock.com/ca/investors/en/products/239848/ishares-sptsx-global-gold-index-etf">iShares S&P/TSX Global Gold Index ETF</a>, accessed July 1, 2026.</p>
-          <p><strong>S14.</strong> Yahoo Finance, <a href="https://finance.yahoo.com/quote/GDX/performance/">GDX performance page</a>, accessed July 1, 2026.</p>
-          <p><strong>S15.</strong> Canadian Investment Regulatory Organization, <a href="https://www.ciro.ca/newsroom/publications/know-your-client-and-suitability-determination-retail-clients">Know-your-client and suitability determination for retail clients</a>, accessed July 1, 2026.</p>
-          <p><strong>S16.</strong> Canadian Investment Regulatory Organization, <a href="https://www.ciro.ca/newsroom/publications/know-your-client-kyc-and-suitability">Know-your-client and suitability</a>, accessed July 1, 2026.</p>
-        </div>
-        <p class="small" style="margin-top:12px;">
-          Evidence confidence is high for official Mackenzie fund profile items and current public gold prices. Evidence confidence is medium for bank forecast aggregates because some paid bank research is available publicly only through summaries. Position-specific readiness is conditional because account-level cost basis, tax status, portfolio size, risk tolerance, and distribution treatment are missing.
-        </p>
       </div>
     </section>
   </main>
 
-  <footer class="wrap">
-    This report is research support and risk-planning commentary, not individualized financial, legal, or tax advice. Mutual funds are not guaranteed, their values change frequently, and past performance may not be repeated. Confirm current fund NAV, your book cost, account type, and tax consequences before any transaction.
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <span>&copy; 2026 Ricky Kwok. Personal website.</span>
+      <span><a href="metal/">Metal report</a> &middot; <a href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Official RBC profile</a></span>
+    </div>
   </footer>
 </body>
 </html>
