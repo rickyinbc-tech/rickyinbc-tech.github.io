@@ -3,29 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ricky Kwok | Financial Planning, Investment Research, Mortgage Decisions</title>
-  <meta name="description" content="Personal website for Ricky Kwok, a Vancouver financial planner focused on investment and retirement planning, practical mortgage decisions, and disciplined research.">
+  <title>Ricky Kwok 郭文棣, ARPS | Fine Art Photography</title>
+  <meta name="description" content="Fine art photography portfolio of Ricky Kwok 郭文棣, ARPS: award-winning documentary, motion, urban light, and high-speed photographic works.">
   <link rel="canonical" href="https://rickykwok.com/">
-  <meta property="og:title" content="Ricky Kwok">
-  <meta property="og:description" content="Financial planning, investment research, and mortgage decision support from Vancouver.">
+  <link rel="icon" href='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%3Crect width="64" height="64" fill="%23070707"/%3E%3Ccircle cx="32" cy="32" r="18" fill="none" stroke="%23e9bd65" stroke-width="4"/%3E%3Ccircle cx="38" cy="26" r="5" fill="%234ed5de"/%3E%3C/svg%3E'>
+  <meta property="og:title" content="Ricky Kwok 郭文棣, ARPS">
+  <meta property="og:description" content="Fine art photography shaped by witness, motion, impact, and light.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rickykwok.com/">
-  <meta property="og:image" content="https://rickykwok.com/assets/hero-financial-planning.jpg">
-  <meta name="theme-color" content="#123c3f">
+  <meta property="og:image" content="https://rickykwok.com/assets/art/light-encroached-homes.jpg">
+  <meta name="theme-color" content="#070707">
   <style>
     :root {
-      --ink: #121719;
-      --muted: #5d6868;
-      --paper: #fbfcfa;
-      --panel: #ffffff;
-      --line: #dfe5df;
-      --teal: #123c3f;
-      --teal-soft: #e6f0ef;
-      --gold: #b98b30;
-      --green: #3f745e;
-      --clay: #975b46;
-      --blue: #2f6075;
-      --shadow: 0 18px 48px rgba(18, 23, 25, .12);
+      --ink: #f7f3eb;
+      --muted: #bdb5aa;
+      --quiet: #898177;
+      --black: #070707;
+      --charcoal: #111111;
+      --panel: #171717;
+      --line: rgba(247, 243, 235, .16);
+      --gold: #e9bd65;
+      --ember: #e75d36;
+      --cyan: #4ed5de;
+      --green: #b8d95a;
+      --shadow: 0 22px 70px rgba(0, 0, 0, .38);
     }
 
     * {
@@ -34,12 +35,13 @@
 
     html {
       scroll-behavior: smooth;
+      background: var(--black);
     }
 
     body {
       margin: 0;
       color: var(--ink);
-      background: var(--paper);
+      background: var(--black);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.55;
       text-rendering: optimizeLegibility;
@@ -57,12 +59,17 @@
 
     a:hover {
       text-decoration: underline;
+      text-decoration-color: var(--gold);
       text-decoration-thickness: 2px;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
+    }
+
+    button {
+      font: inherit;
     }
 
     .wrap {
-      width: min(1160px, calc(100% - 40px));
+      width: min(1220px, calc(100% - 40px));
       margin: 0 auto;
     }
 
@@ -70,14 +77,14 @@
       position: absolute;
       left: 20px;
       top: 12px;
-      z-index: 10;
-      transform: translateY(-140%);
+      z-index: 30;
+      transform: translateY(-150%);
       padding: 10px 14px;
+      border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fff;
-      color: var(--ink);
-      font-weight: 700;
-      box-shadow: var(--shadow);
+      background: var(--ink);
+      color: var(--black);
+      font-weight: 800;
     }
 
     .skip-link:focus {
@@ -85,49 +92,46 @@
     }
 
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 5;
-      border-bottom: 1px solid rgba(255, 255, 255, .22);
-      background: rgba(18, 60, 63, .92);
-      color: #fff;
-      backdrop-filter: blur(18px);
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 20;
+      color: var(--ink);
+      background: linear-gradient(180deg, rgba(7, 7, 7, .86), rgba(7, 7, 7, .44) 65%, transparent);
+      backdrop-filter: blur(12px);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 68px;
-      gap: 22px;
+      min-height: 72px;
+      gap: 18px;
     }
 
     .brand {
       display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 850;
-      font-size: 18px;
-      white-space: nowrap;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 158px;
+      color: #fff;
+      font-weight: 780;
+      line-height: 1.05;
     }
 
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(255, 255, 255, .46);
-      border-radius: 8px;
-      color: #fff;
-      font-size: 14px;
-      font-weight: 900;
-      background: rgba(255, 255, 255, .12);
+    .brand small {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 680;
+      letter-spacing: .18em;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 4px;
+      max-width: 100%;
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -139,48 +143,51 @@
     .nav-links a {
       padding: 10px 11px;
       border-radius: 8px;
-      color: rgba(255, 255, 255, .86);
-      font-size: 14px;
-      font-weight: 730;
+      color: rgba(247, 243, 235, .82);
+      font-size: 13px;
+      font-weight: 720;
       white-space: nowrap;
     }
 
     .nav-links a:hover {
-      background: rgba(255, 255, 255, .12);
+      background: rgba(247, 243, 235, .09);
       text-decoration: none;
     }
 
     .hero {
-      min-height: 78svh;
-      display: flex;
-      align-items: center;
+      min-height: 88svh;
+      display: grid;
+      align-items: end;
+      isolation: isolate;
       color: #fff;
       background:
-        linear-gradient(90deg, rgba(8, 15, 16, .88) 0%, rgba(12, 34, 36, .72) 42%, rgba(12, 34, 36, .08) 78%),
-        url("assets/hero-financial-planning.jpg") center / cover no-repeat;
+        linear-gradient(90deg, rgba(0, 0, 0, .86), rgba(0, 0, 0, .34) 48%, rgba(0, 0, 0, .08)),
+        linear-gradient(0deg, rgba(7, 7, 7, .9), rgba(7, 7, 7, 0) 38%),
+        url("assets/art/light-encroached-homes.jpg") center / cover no-repeat;
     }
 
     .hero-inner {
-      width: min(1160px, calc(100% - 40px));
+      width: min(1220px, calc(100% - 40px));
       margin: 0 auto;
-      padding: 82px 0 72px;
+      padding: 126px 0 48px;
     }
 
-    .kicker {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      margin: 0 0 18px;
-      color: #f4d68d;
-      font-size: 13px;
-      font-weight: 850;
+      gap: 12px;
+      margin: 0 0 22px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 860;
+      letter-spacing: .18em;
       text-transform: uppercase;
     }
 
-    .kicker::before {
+    .eyebrow::before {
       content: "";
       width: 34px;
-      height: 2px;
+      height: 1px;
       background: currentColor;
     }
 
@@ -192,473 +199,605 @@
     }
 
     h1 {
-      max-width: 720px;
-      margin-bottom: 18px;
-      font-size: 76px;
-      line-height: .98;
+      max-width: 920px;
+      margin-bottom: 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: .95;
       letter-spacing: 0;
+      text-wrap: balance;
     }
 
     .hero-copy {
-      max-width: 640px;
+      max-width: 720px;
       margin-bottom: 0;
-      color: rgba(255, 255, 255, .9);
-      font-size: 20px;
+      color: rgba(255, 255, 255, .86);
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.36;
     }
 
-    .hero-actions {
+    .hero-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
+      align-items: center;
+      gap: 14px 26px;
+      margin-top: 34px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
       min-height: 46px;
-      padding: 12px 18px;
-      border: 1px solid transparent;
+      padding: 12px 17px;
+      border: 1px solid rgba(247, 243, 235, .36);
       border-radius: 8px;
-      font-size: 14px;
-      font-weight: 840;
+      background: rgba(247, 243, 235, .09);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 850;
       line-height: 1;
     }
 
     .button:hover {
+      background: var(--ink);
+      color: var(--black);
       text-decoration: none;
-      transform: translateY(-1px);
     }
 
-    .button-primary {
-      background: #fff;
-      color: var(--teal);
-      box-shadow: 0 14px 36px rgba(0, 0, 0, .16);
+    .hero-stat {
+      color: rgba(247, 243, 235, .74);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
-    .button-secondary {
-      border-color: rgba(255, 255, 255, .42);
-      color: #fff;
-      background: rgba(255, 255, 255, .12);
+    .hero-reel {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 46px;
+      max-width: 760px;
+    }
+
+    .hero-reel img {
+      width: 100%;
+      aspect-ratio: 7 / 4;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(247, 243, 235, .18);
+      box-shadow: var(--shadow);
     }
 
     .section {
-      padding: 76px 0;
+      padding: 86px 0;
     }
 
     .section + .section {
       border-top: 1px solid var(--line);
     }
 
-    .section-band {
-      background: #eef5f3;
+    .section-warm {
+      color: #201b16;
+      background: #f5f0e8;
     }
 
-    .section-dark {
-      background: var(--teal);
-      color: #fff;
+    .section-blue {
+      background:
+        linear-gradient(90deg, rgba(7, 7, 7, .94), rgba(7, 7, 7, .78)),
+        url("assets/art/li-river-mist.jpg") center / cover no-repeat;
     }
 
-    .section-heading {
+    .section-head {
       display: grid;
-      grid-template-columns: minmax(0, .78fr) minmax(0, 1fr);
-      gap: 42px;
+      grid-template-columns: minmax(0, .72fr) minmax(300px, 1fr);
+      gap: 44px;
       align-items: end;
-      margin-bottom: 34px;
+      margin-bottom: 40px;
     }
 
-    .eyebrow {
-      margin-bottom: 9px;
+    .section-label {
+      margin-bottom: 12px;
       color: var(--gold);
       font-size: 12px;
       font-weight: 850;
+      letter-spacing: .18em;
       text-transform: uppercase;
+    }
+
+    .section-warm .section-label {
+      color: #9a4a20;
     }
 
     h2 {
       margin-bottom: 0;
-      font-size: 42px;
-      line-height: 1.1;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 5vw, 70px);
+      line-height: 1;
       letter-spacing: 0;
+      text-wrap: balance;
     }
 
-    .section-heading p {
+    .lead {
       margin-bottom: 0;
       color: var(--muted);
       font-size: 18px;
     }
 
-    .section-dark .section-heading p,
-    .section-dark .eyebrow {
-      color: rgba(255, 255, 255, .76);
+    .section-warm .lead,
+    .section-warm .prose {
+      color: #51493f;
     }
 
-    .intro-grid {
+    .statement-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: minmax(280px, .8fr) minmax(320px, 1fr);
+      gap: 44px;
+      align-items: center;
     }
 
-    .signal-card,
-    .research-card,
-    .contact-panel {
-      border: 1px solid var(--line);
+    .statement-image {
+      position: relative;
+      min-height: 560px;
+      overflow: hidden;
       border-radius: 8px;
-      background: var(--panel);
+      background: #151515;
     }
 
-    .signal-card {
-      min-height: 238px;
-      padding: 24px;
+    .statement-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      object-fit: cover;
     }
 
-    .signal-number {
-      display: inline-grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      background: var(--teal-soft);
-      color: var(--teal);
-      font-weight: 900;
-      font-variant-numeric: tabular-nums;
+    .statement {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.08;
+      text-wrap: balance;
     }
 
-    h3 {
-      margin-bottom: 10px;
-      font-size: 20px;
-      line-height: 1.25;
-      letter-spacing: 0;
-    }
-
-    .signal-card p,
-    .research-card p,
-    .contact-panel p {
-      color: var(--muted);
-    }
-
-    .two-column {
-      display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: 34px;
-      align-items: start;
-    }
-
-    .profile-block {
-      padding: 30px;
-      border-left: 5px solid var(--gold);
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .profile-block p {
+    .prose {
+      max-width: 760px;
+      margin-bottom: 0;
       color: var(--muted);
       font-size: 17px;
     }
 
-    .facts {
-      display: grid;
-      gap: 12px;
-      margin-top: 24px;
+    .prose + .prose {
+      margin-top: 18px;
     }
 
-    .fact {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: 128px minmax(0, 1fr);
-      gap: 14px;
-      padding: 14px 0;
-      border-top: 1px solid var(--line);
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 10px;
     }
 
-    .fact span {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 800;
+    .work-card {
+      position: relative;
+      min-height: 280px;
+      grid-column: span 4;
+      overflow: hidden;
+      border: 1px solid rgba(247, 243, 235, .12);
+      border-radius: 8px;
+      background: #111;
+      color: #fff;
+      cursor: zoom-in;
+      padding: 0;
+      text-align: left;
+    }
+
+    .work-card.wide {
+      grid-column: span 8;
+      min-height: 360px;
+    }
+
+    .work-card.tall {
+      grid-row: span 2;
+      min-height: 570px;
+    }
+
+    .work-card.square {
+      min-height: 360px;
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform .7s ease, filter .7s ease;
+    }
+
+    .work-card:hover img,
+    .work-card:focus-visible img {
+      filter: saturate(1.08) contrast(1.06);
+      transform: scale(1.035);
+    }
+
+    .work-caption {
+      position: absolute;
+      inset: auto 0 0;
+      display: grid;
+      gap: 4px;
+      padding: 54px 18px 17px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, .86), rgba(0, 0, 0, 0));
+      color: #fff;
+    }
+
+    .work-caption strong {
+      font-size: 15px;
+      line-height: 1.16;
+    }
+
+    .work-caption small {
+      color: rgba(255, 255, 255, .68);
+      font-size: 12px;
+      font-weight: 720;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
 
-    .fact strong {
-      font-weight: 780;
-    }
-
-    .approach-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .approach-item {
-      display: grid;
-      grid-template-columns: 36px minmax(0, 1fr);
-      gap: 16px;
-      align-items: start;
-      padding: 20px 0;
-      border-bottom: 1px solid rgba(18, 23, 25, .12);
-    }
-
-    .approach-item:last-child {
-      border-bottom: 0;
-    }
-
-    .approach-icon {
-      display: grid;
-      place-items: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      color: #fff;
-      background: var(--green);
-      font-weight: 900;
-    }
-
-    .approach-item p {
-      margin-bottom: 0;
-      color: var(--muted);
-    }
-
-    .research-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-      gap: 20px;
-    }
-
-    .research-card {
-      overflow: hidden;
-    }
-
-    .research-card img {
-      width: 100%;
-      height: 260px;
-      object-fit: contain;
-      padding: 18px;
-      background: #fff;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .research-content {
-      padding: 24px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--teal-soft);
-      color: var(--teal);
-      font-size: 12px;
-      font-weight: 830;
-    }
-
-    .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-      color: var(--teal);
-      font-weight: 850;
-    }
-
-    .section-dark .text-link {
-      color: #f4d68d;
-    }
-
-    .resource-strip {
+    .series-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0;
-      border: 1px solid rgba(255, 255, 255, .24);
-      border-radius: 8px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, .05);
+      gap: 12px;
     }
 
-    .resource {
-      min-height: 208px;
-      padding: 24px;
-      border-right: 1px solid rgba(255, 255, 255, .22);
-    }
-
-    .resource:last-child {
-      border-right: 0;
-    }
-
-    .resource h3 {
-      color: #fff;
-    }
-
-    .resource p {
-      color: rgba(255, 255, 255, .74);
-    }
-
-    .contact-grid {
+    .series {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, .58fr);
-      gap: 20px;
-      align-items: stretch;
+      grid-template-rows: 260px 1fr;
+      overflow: hidden;
+      border: 1px solid rgba(247, 243, 235, .14);
+      border-radius: 8px;
+      background: var(--panel);
     }
 
-    .contact-panel {
+    .series img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .series-body {
+      padding: 20px;
+    }
+
+    .series-body h3 {
+      margin-bottom: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .series-body p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .award-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, .72fr) minmax(320px, 1fr);
+      gap: 42px;
+      align-items: start;
+    }
+
+    .award-callout {
+      position: sticky;
+      top: 92px;
       padding: 28px;
+      border: 1px solid rgba(32, 27, 22, .16);
+      border-radius: 8px;
+      background: #fffaf1;
+      box-shadow: 0 18px 54px rgba(39, 27, 14, .08);
     }
 
-    .contact-panel.primary {
-      border-color: rgba(18, 60, 63, .22);
-      background: #fff;
-      box-shadow: var(--shadow);
+    .award-callout strong {
+      display: block;
+      margin-bottom: 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1;
     }
 
-    .contact-actions {
+    .award-callout p {
+      margin-bottom: 0;
+      color: #5b5146;
+    }
+
+    .award-group {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border-top: 1px solid rgba(32, 27, 22, .16);
+    }
+
+    .award-group li {
+      display: grid;
+      grid-template-columns: 78px minmax(0, 1fr);
+      gap: 18px;
+      padding: 17px 0;
+      border-bottom: 1px solid rgba(32, 27, 22, .16);
+      color: #2a241e;
+    }
+
+    .award-group time {
+      color: #9a4a20;
+      font-size: 12px;
+      font-weight: 860;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .award-group span {
+      font-weight: 680;
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 42px;
+    }
+
+    .note {
+      padding: 20px;
+      border: 1px solid rgba(32, 27, 22, .16);
+      border-radius: 8px;
+      background: #fffaf1;
+    }
+
+    .note h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+    }
+
+    .note p {
+      margin-bottom: 0;
+      color: #5b5146;
+      font-size: 14px;
+    }
+
+    .link-list {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 20px;
+      padding: 0;
+      margin: 28px 0 0;
+      list-style: none;
     }
 
-    .contact-actions .button-primary {
-      background: var(--teal);
-      color: #fff;
-      box-shadow: none;
-    }
-
-    .contact-actions .button-secondary {
-      border-color: var(--line);
-      color: var(--teal);
-      background: #fff;
-    }
-
-    .fine-print {
-      margin-top: 28px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
+    .link-list a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 10px 13px;
+      border: 1px solid rgba(247, 243, 235, .18);
+      border-radius: 8px;
+      color: var(--ink);
       font-size: 13px;
+      font-weight: 800;
+    }
+
+    .link-list a:hover {
+      background: var(--ink);
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: minmax(300px, .9fr) minmax(300px, 1fr);
+      gap: 38px;
+      align-items: center;
+    }
+
+    .contact-panel img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(247, 243, 235, .16);
     }
 
     .site-footer {
-      padding: 28px 0;
-      background: #0b1516;
-      color: rgba(255, 255, 255, .72);
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
       font-size: 13px;
     }
 
-    .footer-inner {
+    .footer-row {
       display: flex;
-      justify-content: space-between;
-      gap: 18px;
       flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    .footer-inner a {
-      color: #fff;
-      font-weight: 750;
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      display: none;
+      place-items: center;
+      padding: 28px;
+      background: rgba(0, 0, 0, .92);
     }
 
-    @media (max-width: 920px) {
+    .modal.is-open {
+      display: grid;
+    }
+
+    .modal-inner {
+      width: min(1180px, 100%);
+      max-height: calc(100svh - 56px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .modal img {
+      width: 100%;
+      max-height: calc(100svh - 80px);
+      object-fit: contain;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    .modal-copy {
+      padding: 20px;
+      border: 1px solid rgba(247, 243, 235, .16);
+      border-radius: 8px;
+      background: rgba(17, 17, 17, .92);
+    }
+
+    .modal-copy h3 {
+      margin-bottom: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .modal-copy p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(247, 243, 235, .32);
+      border-radius: 50%;
+      background: rgba(7, 7, 7, .76);
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 28px;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      background: var(--ink);
+      color: var(--black);
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 980px) {
+      .site-header {
+        position: absolute;
+      }
+
       .nav {
         align-items: flex-start;
         flex-direction: column;
-        padding: 14px 0;
-        gap: 10px;
+        padding: 18px 0;
       }
 
       .nav-links {
         width: 100%;
+        justify-content: flex-start;
       }
 
       .hero {
-        min-height: 72svh;
-        background:
-          linear-gradient(180deg, rgba(8, 15, 16, .9) 0%, rgba(12, 34, 36, .76) 54%, rgba(12, 34, 36, .2) 100%),
-          url("assets/hero-financial-planning.jpg") center / cover no-repeat;
+        min-height: 88svh;
+        background-position: center;
       }
 
-      h1 {
-        font-size: 56px;
+      .hero-inner {
+        padding-top: 160px;
       }
 
-      .hero-copy {
-        font-size: 18px;
-      }
-
-      .section-heading,
-      .two-column,
-      .research-grid,
-      .contact-grid {
+      .section-head,
+      .statement-grid,
+      .award-layout,
+      .contact-panel {
         grid-template-columns: 1fr;
       }
 
-      .intro-grid,
-      .resource-strip {
+      .statement-image,
+      .statement-image img {
+        min-height: 420px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .work-card,
+      .work-card.wide {
+        grid-column: span 3;
+      }
+
+      .series-grid,
+      .notes-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .resource:nth-child(2) {
-        border-right: 0;
+      .award-callout {
+        position: static;
       }
 
-      .resource:nth-child(-n+2) {
-        border-bottom: 1px solid rgba(255, 255, 255, .22);
+      .modal-inner {
+        grid-template-columns: 1fr;
       }
     }
 
-    @media (max-width: 620px) {
+    @media (max-width: 640px) {
       .wrap,
       .hero-inner {
-        width: min(100% - 28px, 1160px);
+        width: min(100% - 28px, 1220px);
       }
 
-      .hero-inner {
-        padding: 62px 0 54px;
+      .hero {
+        min-height: 90svh;
       }
 
-      h1 {
-        font-size: 44px;
+      .hero-copy {
+        font-size: 17px;
       }
 
-      h2 {
-        font-size: 32px;
+      .hero-reel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .section {
-        padding: 54px 0;
+        padding: 62px 0;
       }
 
-      .intro-grid,
-      .resource-strip {
+      .gallery-grid,
+      .series-grid,
+      .notes-grid {
         grid-template-columns: 1fr;
       }
 
-      .resource,
-      .resource:nth-child(2) {
-        border-right: 0;
+      .work-card,
+      .work-card.wide,
+      .work-card.tall,
+      .work-card.square {
+        grid-column: span 1;
+        min-height: 340px;
       }
 
-      .resource {
-        border-bottom: 1px solid rgba(255, 255, 255, .22);
+      .work-card.tall {
+        min-height: 560px;
       }
 
-      .resource:last-child {
-        border-bottom: 0;
-      }
-
-      .fact {
+      .award-group li {
         grid-template-columns: 1fr;
-        gap: 4px;
-      }
-
-      .button {
-        width: 100%;
+        gap: 5px;
       }
     }
   </style>
@@ -667,232 +806,376 @@
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Ricky Kwok",
+      "alternateName": ["郭文棣", "Kwok Man Tai"],
+      "honorificSuffix": "ARPS",
       "url": "https://rickykwok.com/",
-      "jobTitle": "Financial Planner, Investment and Retirement Planning",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Vancouver",
-        "addressRegion": "BC",
-        "addressCountry": "CA"
-      },
+      "image": "https://rickykwok.com/assets/art/light-encroached-homes.jpg",
       "sameAs": [
-        "https://advisor.rbcfinancialplanning.com/ricky-kwok/",
-        "https://ca.linkedin.com/in/rickykwok"
-      ]
+        "https://www.behance.net/rickykwok",
+        "https://www.dcfever.com/column/info.php?id=461",
+        "https://kwokmantai.wordpress.com/"
+      ],
+      "knowsAbout": ["Fine art photography", "Documentary photography", "High-speed photography", "Urban light photography"]
     }
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="wrap nav" aria-label="Primary navigation">
+  <a class="skip-link" href="#main">Skip to artwork</a>
+  <header class="site-header" aria-label="Primary">
+    <nav class="nav wrap">
       <a class="brand" href="#top" aria-label="Ricky Kwok home">
-        <span class="brand-mark">RK</span>
-        <span>Ricky Kwok</span>
+        <span>Ricky Kwok 郭文棣</span>
+        <small>Fine Art Photography</small>
       </a>
-      <nav class="nav-links">
-        <a href="#planning">Planning</a>
-        <a href="#research">Research</a>
-        <a href="#resources">Resources</a>
+      <div class="nav-links" aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#series">Series</a>
+        <a href="#awards">Awards</a>
+        <a href="#biography">Biography</a>
         <a href="#contact">Contact</a>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
 
   <main id="main">
-    <section id="top" class="hero">
+    <section id="top" class="hero" aria-label="Ricky Kwok fine art photography">
       <div class="hero-inner">
-        <p class="kicker">Vancouver financial planning</p>
-        <h1>Ricky Kwok</h1>
-        <p class="hero-copy">Financial planning, investment and retirement planning, and practical research for people who want clearer decisions around money, mortgages, and long-term goals.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Official RBC profile</a>
-          <a class="button button-secondary" href="#research">Explore research</a>
+        <p class="eyebrow">Fine Art Photography</p>
+        <h1>Ricky Kwok 郭文棣, ARPS</h1>
+        <p class="hero-copy">Images held at the edge of witness and invention: village ritual, urban electricity, water in collision, and bodies becoming pure motion.</p>
+        <div class="hero-row">
+          <a class="button" href="#work">View Selected Works</a>
+          <a class="button" href="#awards">Selected Awards</a>
+          <span class="hero-stat">100+ awards in Hong Kong and overseas</span>
+        </div>
+        <div class="hero-reel" aria-label="Featured photographs">
+          <img src="assets/art/night-fishermen-li-river.jpg" alt="Two fishermen holding lamps at night beside a river.">
+          <img src="assets/art/green-orb-water-study.jpg" alt="A green suspended water droplet against a saturated background.">
+          <img src="assets/art/swimming-motion.jpg" alt="Swimmers rendered as painterly motion in a pool.">
+          <img src="assets/art/flower-impact.jpg" alt="A flower exploding into fragments against black.">
         </div>
       </div>
     </section>
 
-    <section id="planning" class="section">
+    <section id="biography" class="section section-warm">
+      <div class="wrap statement-grid">
+        <div class="statement-image">
+          <img src="assets/art/hearth-ritual.jpg" alt="Three women cooking around a fire inside a dark wooden room.">
+        </div>
+        <div>
+          <p class="section-label">Artist Statement</p>
+          <p class="statement">Ricky Kwok photographs the instant when ordinary matter becomes theatre.</p>
+          <p class="prose">Known publicly as Ricky Kwok and Kwok Man Tai, the artist began photographing as a student and built an award-winning body of work across documentary, sport, abstract studio practice, and urban night photography. Public profiles record more than 100 awards in Hong Kong and overseas between 2013 and 2015.</p>
+          <p class="prose">His images move between human tenderness and precise physical force. A lantern on a river, a child mid-laugh, a swimmer dissolving into turquoise, a cigarette breaking apart in blue smoke: each frame treats time as a sculptural material.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section">
       <div class="wrap">
-        <div class="section-heading">
+        <div class="section-head">
           <div>
-            <p class="eyebrow">What this site is for</p>
-            <h2>A personal hub for planning, analysis, and decision support.</h2>
+            <p class="section-label">Selected Works</p>
+            <h2>A gallery of light, motion, ritual, and impact.</h2>
           </div>
-          <p>This site brings together Ricky's public professional profile, educational resources, and personal research work. It is meant to make complex financial choices easier to frame before you take action through the proper advisory channel.</p>
+          <p class="lead">This edit uses Ricky's uploaded photographs and avoids repeated versions of the same frame. Captions describe the work or series; award matches are named only where public records identify the title or contest.</p>
         </div>
 
-        <div class="intro-grid">
-          <article class="signal-card">
-            <span class="signal-number">01</span>
-            <h3>Financial planning</h3>
-            <p>Retirement, cash flow, registered accounts, education savings, and goal-based planning that starts with what matters most.</p>
-          </article>
-          <article class="signal-card">
-            <span class="signal-number">02</span>
-            <h3>Investment research</h3>
-            <p>Disciplined notes and chart-led analysis for evaluating risk, concentration, drawdowns, and portfolio fit.</p>
-          </article>
-          <article class="signal-card">
-            <span class="signal-number">03</span>
-            <h3>Mortgage decisions</h3>
-            <p>Practical frameworks for weighing home purchases, debt reduction, renewal choices, and competing savings goals.</p>
-          </article>
+        <div class="gallery-grid">
+          <button class="work-card wide" type="button" data-full="assets/art/light-encroached-homes.jpg" data-title="Light Encroached Homes / 光染民居" data-meta="Urban Light, Hong Kong" data-note="HKU lists Kwok Man Tai as Champion of the 2014 Light Pollution Photography Competition for this title.">
+            <img src="assets/art/light-encroached-homes.jpg" alt="Fisheye view of Hong Kong neon signs and buildings surrounding a dark sky.">
+            <span class="work-caption"><strong>Light Encroached Homes / 光染民居</strong><small>Urban Light</small></span>
+          </button>
+          <button class="work-card tall" type="button" data-full="assets/art/swimming-start-sequence.jpg" data-title="Start Sequence" data-meta="Motion Study" data-note="One selected version from the swimming sequence to avoid repetition.">
+            <img src="assets/art/swimming-start-sequence.jpg" alt="Swimmers diving into lanes in a vertical sequence.">
+            <span class="work-caption"><strong>Start Sequence</strong><small>Motion Study</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/night-fishermen-li-river.jpg" data-title="Night Fishermen" data-meta="Documentary Theatre" data-note="Lantern light turns a working river scene into a staged nocturne.">
+            <img src="assets/art/night-fishermen-li-river.jpg" alt="Two fishermen at night with glowing lamps and dark mountains behind them.">
+            <span class="work-caption"><strong>Night Fishermen</strong><small>Documentary Theatre</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/blue-hour-cormorant-fishermen.jpg" data-title="Blue Hour, River Stage" data-meta="Documentary Theatre" data-note="Cinematic blue light and river stillness frame the fishermen as performers.">
+            <img src="assets/art/blue-hour-cormorant-fishermen.jpg" alt="Cormorant fishermen on bamboo rafts under blue evening light.">
+            <span class="work-caption"><strong>Blue Hour, River Stage</strong><small>Documentary Theatre</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/rice-terraces-golden-hour.jpg" data-title="Terraces at Golden Hour" data-meta="Landscape" data-note="Layered terraces become a luminous topographic drawing.">
+            <img src="assets/art/rice-terraces-golden-hour.jpg" alt="Golden rice terraces with small figures walking through reflective fields.">
+            <span class="work-caption"><strong>Terraces at Golden Hour</strong><small>Landscape</small></span>
+          </button>
+          <button class="work-card square" type="button" data-full="assets/art/green-orb-water-study.jpg" data-title="Green Orb" data-meta="Water Study" data-note="A minimal high-speed water study built from balance, color, and suspended form.">
+            <img src="assets/art/green-orb-water-study.jpg" alt="A dark green water droplet hovering over a liquid surface.">
+            <span class="work-caption"><strong>Green Orb</strong><small>Water Study</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/blue-column-water-study.jpg" data-title="Blue Column" data-meta="Water Study" data-note="A single vertical collision holds the poise of a small glass figure.">
+            <img src="assets/art/blue-column-water-study.jpg" alt="A tall blue water column with a rounded droplet head.">
+            <span class="work-caption"><strong>Blue Column</strong><small>Water Study</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/magenta-collision-water-study.jpg" data-title="Magenta Collision" data-meta="Water Study" data-note="Liquid form reads like sculpture under saturated theatrical color.">
+            <img src="assets/art/magenta-collision-water-study.jpg" alt="Magenta water droplets and splashes frozen mid-collision.">
+            <span class="work-caption"><strong>Magenta Collision</strong><small>Water Study</small></span>
+          </button>
+          <button class="work-card wide" type="button" data-full="assets/art/cigarette-impact.jpg" data-title="瞬間" data-meta="High-Speed Impact" data-note="Photoblog.hk names Kwok Man Tai's 瞬間 as the winning work in its high-speed photography challenge.">
+            <img src="assets/art/cigarette-impact.jpg" alt="Cigarettes exploding into ash and blue smoke against a dark background.">
+            <span class="work-caption"><strong>瞬間</strong><small>High-Speed Impact</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/flower-impact.jpg" data-title="Flower Impact" data-meta="High-Speed Impact" data-note="A blossom ruptures into dust, holding beauty and violence in one exposure.">
+            <img src="assets/art/flower-impact.jpg" alt="Pink flower bursting apart with fragments flying through black space.">
+            <span class="work-caption"><strong>Flower Impact</strong><small>High-Speed Impact</small></span>
+          </button>
+          <button class="work-card tall" type="button" data-full="assets/art/boxer-ice-impact.jpg" data-title="Ice Crown" data-meta="Portrait Impact" data-note="A fighter portrait where impact becomes a crown of water.">
+            <img src="assets/art/boxer-ice-impact.jpg" alt="Boxer with gloves as water explodes over his head.">
+            <span class="work-caption"><strong>Ice Crown</strong><small>Portrait Impact</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/swimming-motion.jpg" data-title="Swimming in Motion" data-meta="Sport Abstraction" data-note="Only one version of this motion-blur swim study is included.">
+            <img src="assets/art/swimming-motion.jpg" alt="Multiple swimmers blurred into painterly strokes across a pool.">
+            <span class="work-caption"><strong>Swimming in Motion</strong><small>Sport Abstraction</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/horse-racing-pack.jpg" data-title="The Pack" data-meta="Sport" data-note="Color and force compress into one turning mass.">
+            <img src="assets/art/horse-racing-pack.jpg" alt="Racehorses packed tightly around a turn.">
+            <span class="work-caption"><strong>The Pack</strong><small>Sport</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/bank-of-china-light-trails.jpg" data-title="Bank of China Light Trails" data-meta="Hong Kong Night" data-note="The city is drawn by motion, rain, and neon line.">
+            <img src="assets/art/bank-of-china-light-trails.jpg" alt="Hong Kong skyscrapers and buses with sweeping light trails at night.">
+            <span class="work-caption"><strong>Bank of China Light Trails</strong><small>Hong Kong Night</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/hong-kong-cranes-monochrome.jpg" data-title="Cranes and Towers" data-meta="Monochrome City" data-note="A black-and-white city study of verticals, construction, and enclosure.">
+            <img src="assets/art/hong-kong-cranes-monochrome.jpg" alt="Hong Kong skyline seen through vertical bars and cranes in black and white.">
+            <span class="work-caption"><strong>Cranes and Towers</strong><small>Monochrome City</small></span>
+          </button>
+          <button class="work-card square" type="button" data-full="assets/art/coil-field-monochrome.jpg" data-title="Coil Field" data-meta="Monochrome Documentary" data-note="Repetition, labor, and circular form create a field of quiet precision.">
+            <img src="assets/art/coil-field-monochrome.jpg" alt="Rows of circular coils drying in a black-and-white field.">
+            <span class="work-caption"><strong>Coil Field</strong><small>Monochrome Documentary</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/fishpond-harvest.jpg" data-title="Fishpond Harvest" data-meta="Documentary" data-note="Public fishpond contest results list Kwok Man Tai wins for works titled 漁獲 and 閒來休息.">
+            <img src="assets/art/fishpond-harvest.jpg" alt="Workers in waterproof gear hauling fish from a pond.">
+            <span class="work-caption"><strong>Fishpond Harvest</strong><small>Documentary</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/street-art-procession.jpg" data-title="Street Procession" data-meta="Street Photography" data-note="The wall and pedestrians briefly share the same choreography.">
+            <img src="assets/art/street-art-procession.jpg" alt="Pedestrians walking past monochrome figures painted on a white wall.">
+            <span class="work-caption"><strong>Street Procession</strong><small>Street Photography</small></span>
+          </button>
+          <button class="work-card wide" type="button" data-full="assets/art/festival-dragon.jpg" data-title="Dragon Night" data-meta="Festival" data-note="Festival movement is held as smoke, flame, and crowd memory.">
+            <img src="assets/art/festival-dragon.jpg" alt="A bright fire dragon procession moving through a crowded Hong Kong street.">
+            <span class="work-caption"><strong>Dragon Night</strong><small>Festival</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/egg-impact.jpg" data-title="Breaking Point" data-meta="High-Speed Impact" data-note="An egg opens into glasslike force.">
+            <img src="assets/art/egg-impact.jpg" alt="A cracked egg breaking apart with liquid and shell fragments flying.">
+            <span class="work-caption"><strong>Breaking Point</strong><small>High-Speed Impact</small></span>
+          </button>
+          <button class="work-card" type="button" data-full="assets/art/color-powder-fish.jpg" data-title="Color Burst" data-meta="Impact Study" data-note="Fish forms and color powder become a single kinetic composition.">
+            <img src="assets/art/color-powder-fish.jpg" alt="Red, yellow, and green fish forms struck by powder against black.">
+            <span class="work-caption"><strong>Color Burst</strong><small>Impact Study</small></span>
+          </button>
         </div>
       </div>
     </section>
 
-    <section class="section section-band">
-      <div class="wrap two-column">
-        <div class="profile-block">
-          <p class="eyebrow">Profile</p>
-          <h2>Advice should be useful before it is complicated.</h2>
-          <p>Ricky is a Vancouver-based financial planner focused on investment and retirement planning. The aim is straightforward: understand the full picture, build a plan that can survive real life, and review it with discipline.</p>
-          <div class="facts">
-            <div class="fact">
-              <span>Focus</span>
-              <strong>Investment and retirement planning</strong>
-            </div>
-            <div class="fact">
-              <span>Location</span>
-              <strong>Vancouver, British Columbia</strong>
-            </div>
-            <div class="fact">
-              <span>Languages</span>
-              <strong>English, Cantonese, Mandarin</strong>
-            </div>
-          </div>
-        </div>
-
-        <div class="approach-list" aria-label="Planning approach">
-          <article class="approach-item">
-            <span class="approach-icon">1</span>
-            <div>
-              <h3>Clarify the real question</h3>
-              <p>Separate the urgent from the important: retirement income, tax efficiency, investment risk, debt strategy, family goals, and liquidity.</p>
-            </div>
-          </article>
-          <article class="approach-item">
-            <span class="approach-icon">2</span>
-            <div>
-              <h3>Turn tradeoffs into a plan</h3>
-              <p>Compare options in plain language so the next step is visible: save, invest, pay down debt, adjust timelines, or revisit assumptions.</p>
-            </div>
-          </article>
-          <article class="approach-item">
-            <span class="approach-icon">3</span>
-            <div>
-              <h3>Review with evidence</h3>
-              <p>Use portfolio context, market history, and personal constraints to keep decisions grounded when headlines get noisy.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="research" class="section">
+    <section id="series" class="section section-blue">
       <div class="wrap">
-        <div class="section-heading">
+        <div class="section-head">
           <div>
-            <p class="eyebrow">Research desk</p>
-            <h2>Current notes, dashboards, and risk frameworks.</h2>
+            <p class="section-label">Bodies of Work</p>
+            <h2>Four visual languages, one eye for charged time.</h2>
           </div>
-          <p>Research here is educational and personal in nature. It is useful for understanding risk, but it is not a substitute for personalized advice.</p>
+          <p class="lead">The work moves fluidly between documentary witness and studio construction. The emotional center stays consistent: a decisive instant made unfamiliar, luminous, and alive.</p>
         </div>
-
-        <div class="research-grid">
-          <article class="research-card">
-            <img src="assets/lipper-growth.svg" alt="Portfolio growth comparison chart">
-            <div class="research-content">
-              <div class="pill-row">
-                <span class="pill">Portfolio context</span>
-                <span class="pill">Long-term view</span>
-              </div>
-              <h3>Growth and risk context</h3>
-              <p>A chart-led way to compare growth, volatility, and drawdown tradeoffs before deciding whether a position still fits the plan.</p>
-              <a class="text-link" href="#contact">Discuss fit</a>
+        <div class="series-grid">
+          <article class="series">
+            <img src="assets/art/ancestral-kitchen-light.jpg" alt="A warm shaft of light inside a rustic kitchen.">
+            <div class="series-body">
+              <h3>Ritual</h3>
+              <p>Human scenes where gesture, smoke, lamp light, and laughter carry the gravity of lived tradition.</p>
             </div>
           </article>
-
-          <article class="research-card">
-            <img src="assets/lipper-risk.svg" alt="Portfolio volatility comparison chart">
-            <div class="research-content">
-              <div class="pill-row">
-                <span class="pill">Featured report</span>
-                <span class="pill">Precious metals</span>
-              </div>
-              <h3>Staged de-risking framework</h3>
-              <p>The existing Mackenzie Precious Metals Fund risk-management report has been preserved as a dedicated page on the new site.</p>
-              <a class="text-link" href="metal/">Open metal report</a>
+          <article class="series">
+            <img src="assets/art/yellow-arc-water-study.jpg" alt="Yellow water arc with droplets suspended mid-air.">
+            <div class="series-body">
+              <h3>Collision</h3>
+              <p>Water, powder, ash, and shell are treated as sculptural material inside fractions of a second.</p>
+            </div>
+          </article>
+          <article class="series">
+            <img src="assets/art/divers-motion.jpg" alt="Divers streaking in motion over a swimming pool.">
+            <div class="series-body">
+              <h3>Motion</h3>
+              <p>Sport is translated into abstraction, rhythm, blur, and the visual pressure of speed.</p>
+            </div>
+          </article>
+          <article class="series">
+            <img src="assets/art/hong-kong-fisheye-street.jpg" alt="Fisheye view of a Hong Kong street under a dramatic evening sky.">
+            <div class="series-body">
+              <h3>City Light</h3>
+              <p>Hong Kong appears as theatre: dense, reflective, electric, and always in motion.</p>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="resources" class="section section-dark">
+    <section id="awards" class="section section-warm">
       <div class="wrap">
-        <div class="section-heading">
+        <div class="award-layout">
+          <aside class="award-callout">
+            <p class="section-label">Recognition</p>
+            <strong>100+</strong>
+            <p>Public artist profiles and archives describe more than 100 awards in Hong Kong and overseas. The list below emphasizes named distinctions and independently traceable results.</p>
+          </aside>
           <div>
-            <p class="eyebrow">Resources</p>
-            <h2>Useful starting points for the next conversation.</h2>
+            <ul class="award-group" aria-label="Selected awards">
+              <li><time>2015</time><span>4th edition of the international competition Show Us the World | FVM, Grand Prize.</span></li>
+              <li><time>2015</time><span>Sony World Photography Awards, Youth Commended Photographer.</span></li>
+              <li><time>2014</time><span>Nat Geo Awards, National Geographic Channel, Winner.</span></li>
+              <li><time>2014</time><span>International Students' Visual Arts Contest-cum-Exhibition of Hong Kong, Grand Prize.</span></li>
+              <li><time>2014</time><span>Egypt International Photo Contest, Gold Award, General Section.</span></li>
+              <li><time>2014</time><span>Egypt International Photo Contest, Gold Award, Sports and Dynamics Section.</span></li>
+              <li><time>2014</time><span>Egypt International Photo Contest, Gold Award, Landscape Section.</span></li>
+              <li><time>2014</time><span>Indian IPA International Circuit, PSA Gold Medal.</span></li>
+              <li><time>2014</time><span>1st Jodhpur International Circuit, JPS CM Award.</span></li>
+              <li><time>2014</time><span>Prix de la Photographie, Paris (PX3), Honorable Mention, Political Section.</span></li>
+              <li><time>2014</time><span>Prix de la Photographie, Paris (PX3), Honorable Mention, Landscape Section.</span></li>
+              <li><time>2014</time><span>Prix de la Photographie, Paris (PX3), Honorable Mention, Sports Section.</span></li>
+              <li><time>2014</time><span>HKU Light Pollution Photography Competition, Champion, 光染民居.</span></li>
+              <li><time>2014</time><span>Fishpond Conservation Photo Competition, Student Landscape Champion, 漁獲.</span></li>
+              <li><time>2014</time><span>Fishpond Conservation Photo Competition, Student Ecology Champion, 閒來休息.</span></li>
+              <li><time>2014</time><span>Hong Kong Post Photo Taking Competition, Best Photo.</span></li>
+              <li><time>2014</time><span>The University of Hong Kong Light Pollution Photography Competition, Winner.</span></li>
+              <li><time>2014</time><span>Youth Council Hong Kong Photo Competition, Winner.</span></li>
+              <li><time>2013</time><span>Youth Council Hong Kong Photo Competition, Secondary School Group Champion, 今昔中銀大廈.</span></li>
+              <li><time>2013</time><span>Victoria Harbour Photo Competition, Hong Kong Business Forum, Winner.</span></li>
+            </ul>
           </div>
-          <p>Use these links to route to the right place: official advisory profile for client work, research pages for education, and LinkedIn for public professional context.</p>
         </div>
 
-        <div class="resource-strip">
-          <article class="resource">
-            <h3>Official profile</h3>
-            <p>Use RBC's official planner page for regulated financial planning information and appointment requests.</p>
-            <a class="text-link" href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Open profile</a>
+        <div class="notes-grid" aria-label="Documented work notes">
+          <article class="note">
+            <h3>光染民居</h3>
+            <p>HKU's 2014 result names Kwok Man Tai as Champion for Light Encroached Homes, a low-angle fisheye image made in Mong Kok.</p>
           </article>
-          <article class="resource">
-            <h3>Research report</h3>
-            <p>Review the preserved precious-metals de-risking report and its staged action framework.</p>
-            <a class="text-link" href="metal/">Open report</a>
+          <article class="note">
+            <h3>瞬間</h3>
+            <p>Photoblog.hk lists 瞬間 by Kwok Man Tai as the winning high-speed work, connected to the cigarette-impact series.</p>
           </article>
-          <article class="resource">
-            <h3>Mortgage notes</h3>
-            <p>Mortgage decision content will live here as the site grows: renewals, cash flow, and debt strategy.</p>
-            <a class="text-link" href="#contact">Ask about mortgages</a>
+          <article class="note">
+            <h3>漁獲 / 閒來休息</h3>
+            <p>Hong Kong Bird Watching Society contest records list Kwok Man Tai as Student Landscape Champion and Student Ecology Champion.</p>
           </article>
-          <article class="resource">
-            <h3>LinkedIn</h3>
-            <p>Connect with Ricky's public professional updates and credentials through LinkedIn.</p>
-            <a class="text-link" href="https://ca.linkedin.com/in/rickykwok" rel="noopener">View LinkedIn</a>
+          <article class="note">
+            <h3>今昔中銀大廈</h3>
+            <p>Youth Council results record Kwok Man Tai as Secondary School Group Champion for this Hong Kong city work.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
-      <div class="wrap contact-grid">
-        <article class="contact-panel primary">
-          <p class="eyebrow">Contact</p>
-          <h2>Start through the official channel.</h2>
-          <p>For confidential financial planning, appointment requests, or personalized advice, use Ricky's official RBC Financial Planning profile. For public professional context, use LinkedIn.</p>
-          <div class="contact-actions">
-            <a class="button button-primary" href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Book through RBC</a>
-            <a class="button button-secondary" href="https://ca.linkedin.com/in/rickykwok" rel="noopener">LinkedIn</a>
-          </div>
-        </article>
+    <section class="section">
+      <div class="wrap contact-panel">
+        <div>
+          <p class="section-label">Sources and Archive</p>
+          <h2>Public records, portfolios, and artist pages.</h2>
+          <p class="lead">The site copy is based on the uploaded photographs and public photography sources. Exact award-to-image notes are limited to records that name the work or contest result.</p>
+          <ul class="link-list" aria-label="External photography links">
+            <li><a href="https://www.behance.net/rickykwok" target="_blank" rel="noopener">Behance Portfolio</a></li>
+            <li><a href="https://www.dcfever.com/column/info.php?id=461" target="_blank" rel="noopener">DCFever Profile</a></li>
+            <li><a href="https://kwokmantai.wordpress.com/awards/" target="_blank" rel="noopener">Award Archive</a></li>
+            <li><a href="https://www.hku.hk/press/news_detail_11253.html" target="_blank" rel="noopener">HKU Result</a></li>
+            <li><a href="https://www.hkbws.org.hk/BBS/viewthread.php?tid=21658" target="_blank" rel="noopener">Fishpond Results</a></li>
+            <li><a href="https://photoblog.hk/108118/" target="_blank" rel="noopener">High-Speed Result</a></li>
+            <li><a href="https://www.youthcouncil.hk/photocontest%20results" target="_blank" rel="noopener">Youth Council Result</a></li>
+          </ul>
+        </div>
+        <img src="assets/art/sea-of-clouds.jpg" alt="A calm pastel sea of clouds at dawn.">
+      </div>
+    </section>
 
-        <aside class="contact-panel">
-          <h3>Site note</h3>
-          <p>This is Ricky Kwok's personal website and research hub. It is designed to make public information and educational material easier to find.</p>
-          <div class="fine-print">
-            General information only. This site is not an official RBC website and does not provide individualized financial, investment, tax, legal, or mortgage advice. Please use the official advisory channel for advice about your situation.
-          </div>
-        </aside>
+    <section id="contact" class="section section-blue">
+      <div class="wrap contact-panel">
+        <img src="assets/art/orange-suspension-water-study.jpg" alt="An orange water droplet suspended over a liquid peak.">
+        <div>
+          <p class="section-label">Contact</p>
+          <h2>For exhibitions, print inquiries, and art conversations.</h2>
+          <p class="lead">Ricky's photographic work spans documentary journeys, Hong Kong night studies, sport abstraction, and studio experiments in water, powder, smoke, and impact.</p>
+          <ul class="link-list" aria-label="Contact links">
+            <li><a href="https://www.behance.net/rickykwok" target="_blank" rel="noopener">View Behance</a></li>
+            <li><a href="https://kwokmantai.wordpress.com/" target="_blank" rel="noopener">Photography Archive</a></li>
+            <li><a href="https://www.dcfever.com/column/info.php?id=461" target="_blank" rel="noopener">Read DCFever</a></li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <span>&copy; 2026 Ricky Kwok. Personal website.</span>
-      <span><a href="metal/">Metal report</a> &middot; <a href="https://advisor.rbcfinancialplanning.com/ricky-kwok/" rel="noopener">Official RBC profile</a></span>
+    <div class="wrap footer-row">
+      <span>© <span id="year">2026</span> Ricky Kwok 郭文棣, ARPS.</span>
+      <span>Fine art photography portfolio.</span>
     </div>
   </footer>
+
+  <div class="modal" id="artModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <button class="modal-close" type="button" aria-label="Close artwork view">×</button>
+    <div class="modal-inner">
+      <img id="modalImage" src="assets/art/light-encroached-homes.jpg" alt="">
+      <div class="modal-copy">
+        <h3 id="modalTitle">Artwork</h3>
+        <p id="modalMeta"></p>
+        <p id="modalNote"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const year = document.querySelector("#year");
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
+
+    const modal = document.querySelector("#artModal");
+    const modalImage = document.querySelector("#modalImage");
+    const modalTitle = document.querySelector("#modalTitle");
+    const modalMeta = document.querySelector("#modalMeta");
+    const modalNote = document.querySelector("#modalNote");
+    const closeButton = document.querySelector(".modal-close");
+    let previousFocus = null;
+
+    function openModal(card) {
+      previousFocus = document.activeElement;
+      modalImage.src = card.dataset.full;
+      modalImage.alt = card.querySelector("img").alt;
+      modalTitle.textContent = card.dataset.title;
+      modalMeta.textContent = card.dataset.meta;
+      modalNote.textContent = card.dataset.note;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeButton.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (previousFocus) {
+        previousFocus.focus();
+      }
+    }
+
+    document.querySelectorAll(".work-card").forEach((card) => {
+      card.addEventListener("click", () => openModal(card));
+    });
+
+    closeButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("is-open")) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
