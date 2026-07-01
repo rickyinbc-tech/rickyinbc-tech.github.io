@@ -577,6 +577,46 @@ h3 {
   color: inherit;
 }
 
+.artwork-meta a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(233, 189, 101, .55);
+  text-underline-offset: 3px;
+}
+
+.artwork-index-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 34px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid var(--paper-line);
+}
+
+.artwork-index-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.artwork-index-list a {
+  color: var(--paper-ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.artwork-index-list span {
+  color: #9a4a20;
+  font-size: 11px;
+  font-weight: 860;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
 .recognition-list,
 .award-list {
   padding: 0;
@@ -923,6 +963,7 @@ h3 {
   .proof-grid,
   .notes-grid,
   .source-grid,
+  .artwork-index-list,
   .series-jump {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -977,8 +1018,14 @@ h3 {
   .proof-grid,
   .notes-grid,
   .source-grid,
+  .artwork-index-list,
   .series-jump {
     grid-template-columns: 1fr;
+  }
+
+  .artwork-index-list li {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 
   .split .notes-grid {
