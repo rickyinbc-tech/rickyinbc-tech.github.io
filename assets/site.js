@@ -3,6 +3,47 @@ if (year) {
   year.textContent = new Date().getFullYear();
 }
 
+function trackEvent(eventName, params = {}, callback) {
+  if (typeof window.gtag !== "function") {
+    if (callback) callback();
+    return;
+  }
+
+  const eventParams = {
+    site_area: "fine_art",
+    ...params
+  };
+
+  if (callback) {
+    let callbackFired = false;
+    const runCallback = () => {
+      if (callbackFired) return;
+      callbackFired = true;
+      callback();
+    };
+    eventParams.event_callback = runCallback;
+    eventParams.event_timeout = 800;
+    window.gtag("event", eventName, eventParams);
+    window.setTimeout(runCallback, 900);
+    return;
+  }
+
+  window.gtag("event", eventName, eventParams);
+}
+
+function linkLabel(link) {
+  return (link.textContent || link.getAttribute("aria-label") || "").replace(/\s+/g, " ").trim().slice(0, 90);
+}
+
+function destinationPath(href) {
+  try {
+    const url = new URL(href, window.location.href);
+    return url.origin === window.location.origin ? url.pathname : url.hostname;
+  } catch {
+    return href.slice(0, 90);
+  }
+}
+
 const modal = document.querySelector("#artModal");
 const modalImage = document.querySelector("#modalImage");
 const modalTitle = document.querySelector("#modalTitle");
@@ -27,6 +68,11 @@ function openModal(card) {
   modal.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
   closeButton.focus();
+  trackEvent("artwork_view", {
+    artwork_title: card.dataset.title || "Artwork",
+    artwork_series: card.dataset.series || card.dataset.meta || "",
+    artwork_asset: destinationPath(card.dataset.full || "")
+  });
 }
 
 function closeModal() {
@@ -73,7 +119,61 @@ filterButtons.forEach((button) => {
       const show = filter === "all" || item.dataset.series === filter;
       item.hidden = !show;
     });
+    trackEvent("portfolio_filter", {
+      filter_name: filter || "all"
+    });
   });
+});
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest?.("a[href]");
+  if (!link) return;
+
+  const href = link.getAttribute("href") || "";
+  const label = linkLabel(link);
+  const lowerSignal = `${href} ${label}`.toLowerCase();
+
+  if (href.startsWith("mailto:")) {
+    trackEvent("contact_click", {
+      contact_method: "email",
+      link_label: label
+    });
+    return;
+  }
+
+  if (lowerSignal.includes("print") || lowerSignal.includes("licens") || lowerSignal.includes("exhibition") || lowerSignal.includes("inquir") || href.includes("/contact/")) {
+    trackEvent("inquiry_click", {
+      link_label: label,
+      destination: destinationPath(href)
+    });
+    return;
+  }
+
+  if (link.closest(".nav-links") || link.classList.contains("brand")) {
+    trackEvent("navigation_click", {
+      link_label: label,
+      destination: destinationPath(href)
+    });
+    return;
+  }
+
+  if (link.classList.contains("button")) {
+    trackEvent("cta_click", {
+      link_label: label,
+      destination: destinationPath(href)
+    });
+    return;
+  }
+
+  if (/^https?:\/\//.test(href)) {
+    const url = new URL(href, window.location.href);
+    if (url.hostname !== window.location.hostname) {
+      trackEvent("external_link_click", {
+        link_label: label,
+        link_domain: url.hostname
+      });
+    }
+  }
 });
 
 const inquiryForm = document.querySelector("[data-inquiry-form]");
@@ -90,6 +190,12 @@ if (inquiryForm) {
       "",
       data.get("message") || ""
     ];
-    window.location.href = `mailto:studio@rickykwok.com?subject=${subject}&body=${encodeURIComponent(lines.join("\n"))}`;
+    const mailto = `mailto:studio@rickykwok.com?subject=${subject}&body=${encodeURIComponent(lines.join("\n"))}`;
+    trackEvent("contact_form_submit", {
+      inquiry_type: String(data.get("type") || "Unspecified"),
+      has_artwork_context: data.get("artwork") ? "yes" : "no"
+    }, () => {
+      window.location.href = mailto;
+    });
   });
 }
