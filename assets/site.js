@@ -1,3 +1,58 @@
+const ANALYTICS_ID = "G-07PQV08YPD";
+const ANALYTICS_LOAD_DELAY = 7000;
+
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function gtag() {
+  window.dataLayer.push(arguments);
+};
+
+let analyticsLoaded = false;
+
+function loadAnalytics() {
+  if (analyticsLoaded) return;
+  analyticsLoaded = true;
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`;
+  document.head.appendChild(script);
+
+  window.gtag("js", new Date());
+  window.gtag("config", ANALYTICS_ID, {
+    send_page_view: true,
+    site_area: "fine_art"
+  });
+}
+
+function scheduleAnalytics() {
+  const startTimer = () => {
+    window.setTimeout(loadAnalytics, ANALYTICS_LOAD_DELAY);
+  };
+
+  if (document.readyState === "complete") {
+    startTimer();
+  } else {
+    window.addEventListener("load", startTimer, { once: true });
+  }
+
+  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
+    window.addEventListener(eventName, loadAnalytics, {
+      once: true,
+      passive: true
+    });
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      loadAnalytics();
+    }
+  }, { once: true });
+
+  window.addEventListener("pagehide", loadAnalytics, { once: true });
+}
+
+scheduleAnalytics();
+
 const year = document.querySelector("#year");
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -56,6 +111,8 @@ let previousFocus = null;
 function openModal(card) {
   if (!modal || !modalImage || !closeButton) return;
   previousFocus = document.activeElement;
+  modalImage.removeAttribute("srcset");
+  modalImage.removeAttribute("sizes");
   modalImage.src = card.dataset.full;
   modalImage.alt = card.querySelector("img")?.alt || "";
   modalTitle.textContent = card.dataset.title || "Artwork";
