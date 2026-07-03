@@ -1,0 +1,56 @@
+{
+  "baseUrl": "https://rickykwok.com",
+  "checks": [
+    {
+      "detail": "200 local/fallback",
+      "name": "robots.txt is reachable",
+      "ok": true
+    },
+    {
+      "detail": "robots.txt declares sitemap.xml",
+      "name": "Main sitemap is declared",
+      "ok": true
+    },
+    {
+      "detail": "robots.txt declares image-sitemap.xml",
+      "name": "Image sitemap is declared",
+      "ok": true
+    },
+    {
+      "detail": "200 local/fallback",
+      "name": "Main sitemap is reachable",
+      "ok": true
+    },
+    {
+      "detail": "55 page URLs found",
+      "name": "Main sitemap has expected page inventory",
+      "ok": true
+    },
+    {
+      "detail": "200 local/fallback",
+      "name": "Image sitemap is reachable",
+      "ok": true
+    },
+    {
+      "detail": "55 landing pages and 298 image URLs found",
+      "name": "Image sitemap has artwork inventory",
+      "ok": true
+    },
+    {
+      "detail": "200 local/fallback",
+      "name": "Home page is reachable",
+      "ok": true
+    },
+    {
+      "detail": "Daily report is technical monitoring only",
+      "name": "No automated Google result scraping",
+      "ok": true
+    }
+  ],
+  "generatedAt": "2026-07-03T03:28:44.008Z",
+  "imageAssetCount": 298,
+  "imageSitemapPageCount": 55,
+  "note": "This report monitors technical SEO health only. Ranking and query data should come from Google Search Console and Google Analytics, not automated Google result scraping.",
+  "sitemapPageCount": 55,
+  "status": "pass"
+}
