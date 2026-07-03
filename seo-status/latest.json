@@ -22,7 +22,7 @@
       "ok": true
     },
     {
-      "detail": "55 page URLs found",
+      "detail": "57 page URLs found",
       "name": "Main sitemap has expected page inventory",
       "ok": true
     },
@@ -47,10 +47,10 @@
       "ok": true
     }
   ],
-  "generatedAt": "2026-07-03T03:30:52.172Z",
+  "generatedAt": "2026-07-03T18:04:20.358Z",
   "imageAssetCount": 298,
   "imageSitemapPageCount": 55,
   "note": "This report monitors technical SEO health only. Ranking and query data should come from Google Search Console and Google Analytics, not automated Google result scraping.",
-  "sitemapPageCount": 55,
+  "sitemapPageCount": 57,
   "status": "pass"
 }
