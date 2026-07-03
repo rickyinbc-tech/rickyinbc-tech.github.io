@@ -170,7 +170,7 @@ h2,
   background:
     linear-gradient(90deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .36) 52%, rgba(0, 0, 0, .08)),
     linear-gradient(0deg, rgba(7, 7, 7, .92), rgba(7, 7, 7, 0) 42%),
-    var(--hero-image, url("/assets/optimized/art/light-encroached-homes-1280.webp")) center / cover no-repeat;
+    var(--hero-image, url("/assets/optimized-v2/art/light-encroached-homes-1280.webp")) center / cover no-repeat;
 }
 
 .page-hero {
@@ -361,7 +361,7 @@ h3 {
 .section-blue {
   background:
     linear-gradient(90deg, rgba(7, 7, 7, .94), rgba(7, 7, 7, .78)),
-    url("/assets/optimized/art/li-river-mist-1280.webp") center / cover no-repeat;
+    url("/assets/optimized-v2/art/li-river-mist-1280.webp") center / cover no-repeat;
 }
 
 .section-head {
