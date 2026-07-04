@@ -46,7 +46,7 @@
       --line: #d9dee5;
       --paper: #ffffff;
       --panel: #f6f7f9;
-      --gold: #b38322;
+      --gold: #8a650f;
       --green: #267257;
       --red: #a23a34;
       --blue: #2f5c8e;
@@ -65,8 +65,13 @@
       overflow-x: hidden;
     }
 
-    a { color: #245f93; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: #245f93;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+    a:hover { text-decoration-thickness: 2px; }
 
     .wrap {
       width: min(1180px, calc(100vw - 40px));
@@ -131,7 +136,8 @@
       font-size: 13px;
     }
 
-    nav a { color: var(--muted); font-weight: 700; }
+    nav a { color: var(--muted); font-weight: 700; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
 
     section {
       padding: 30px 0;
@@ -498,7 +504,7 @@
             <tbody>
               <tr>
                 <td><strong>Gold price</strong></td>
-                <td><a href="https://tradingeconomics.com/commodity/gold">Trading Economics</a> showed gold at US$4,170.25/oz on July 3, up 1.15% on the session and down 6.81% over the past month; <a href="https://www.gold.org/goldhub/data/gold-prices">World Gold Council</a> also listed July 3 gold spot price data.</td>
+                <td><a href="https://tradingeconomics.com/commodity/gold" aria-label="Trading Economics gold price page">Trading Economics</a> showed gold at US$4,170.25/oz on July 3, up 1.15% on the session and down 6.81% over the past month; <a href="https://www.gold.org/goldhub/data/gold-prices" aria-label="World Gold Council gold price data page">World Gold Council</a> also listed July 3 gold spot price data.</td>
                 <td>Positive repair rally with improving short-term momentum; first trim is approaching but not triggered.</td>
               </tr>
               <tr>
@@ -508,12 +514,12 @@
               </tr>
               <tr>
                 <td><strong>Real yields</strong></td>
-                <td><a href="https://fred.stlouisfed.org/series/DFII10">FRED</a> showed the 10-year TIPS real yield at 2.25% on July 1, up from 2.20% on June 30; <a href="https://tradingeconomics.com/united-states/10-year-tips-yield">Trading Economics</a> also showed 2.25% on July 2, up 15 bps over the past month.</td>
+                <td><a href="https://fred.stlouisfed.org/series/DFII10">FRED</a> showed the 10-year TIPS real yield at 2.25% on July 1, up from 2.20% on June 30; <a href="https://tradingeconomics.com/united-states/10-year-tips-yield" aria-label="Trading Economics U.S. 10-year TIPS yield page">Trading Economics</a> also showed 2.25% on July 2, up 15 bps over the past month.</td>
                 <td>Still a headwind for non-yielding gold; lower rate-hike odds helped the bounce, but real-rate pressure has not cleared.</td>
               </tr>
               <tr>
                 <td><strong>ETF-flow demand</strong></td>
-                <td><a href="https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/06">World Gold Council</a> reported that May gold ETF flows slowed to a trickle, with global AUM down 2% month over month and holdings easing to 4,121t; its <a href="https://www.gold.org/goldhub/research/gold-mid-year-outlook-2026">mid-year outlook</a> also framed H2 gold performance around geopolitics, rates, and investor sentiment.</td>
+                <td><a href="https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/06" aria-label="World Gold Council gold ETF holdings and flows report">World Gold Council</a> reported that May gold ETF flows slowed to a trickle, with global AUM down 2% month over month and holdings easing to 4,121t; its <a href="https://www.gold.org/goldhub/research/gold-mid-year-outlook-2026">mid-year outlook</a> also framed H2 gold performance around geopolitics, rates, and investor sentiment.</td>
                 <td>Demand is not broken, but the marginal ETF buyer is less aggressive; keep the ladder rather than chase the rally.</td>
               </tr>
               <tr>
