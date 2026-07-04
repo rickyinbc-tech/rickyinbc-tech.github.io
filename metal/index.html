@@ -27,6 +27,7 @@
       background: var(--paper);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.45;
+      overflow-x: hidden;
     }
 
     a { color: #245f93; text-decoration: none; }
@@ -372,7 +373,28 @@
     }
 
     @media (max-width: 620px) {
-      .wrap { width: min(100% - 24px, 1180px); }
+      .wrap {
+        width: calc(100% - 24px);
+        max-width: 1180px;
+      }
+      .masthead { padding-top: 30px; }
+      .eyebrow { font-size: 11px; line-height: 1.35; }
+      h1 {
+        font-size: 28px;
+        line-height: 1.08;
+        max-width: 100%;
+        overflow-wrap: break-word;
+      }
+      h2 {
+        font-size: 22px;
+        line-height: 1.18;
+        overflow-wrap: break-word;
+      }
+      .subtitle { font-size: 16px; }
+      .meta { font-size: 12px; padding-left: 14px; }
+      p, .meta, .section-note, .card, .callout {
+        overflow-wrap: break-word;
+      }
       .decision { grid-template-columns: 1fr; }
       table { font-size: 12px; min-width: 760px; }
       th, td { padding: 9px 6px; }
@@ -391,8 +413,8 @@
         </p>
       </div>
       <div class="meta">
-        <p><strong>Report date:</strong> July 3, 2026</p>
-        <p><strong>Latest update:</strong> July 3, 2026, 11:47 PM PDT</p>
+        <p><strong>Report date:</strong> July 4, 2026</p>
+        <p><strong>Latest update:</strong> July 4, 2026, 8:01 AM PDT</p>
         <p><strong>Position:</strong> Mackenzie Precious Metals Fund Series F, CAD purchase option assumed.</p>
         <p><strong>Horizon:</strong> 12 months, ending June 30, 2027.</p>
         <p><strong>Status:</strong> Conditional risk screen. Your exact cost basis, account type, and tax situation were not provided.</p>
@@ -418,12 +440,14 @@
   <main>
     <section id="daily-update">
       <div class="wrap">
-        <h2>Daily Update: July 3, 2026, 11:47 PM PDT</h2>
+        <h2>Daily Update: July 4, 2026, 8:01 AM PDT</h2>
         <p>
           <strong>Status: hold conditionally; first trim is closer, but still requires account-value confirmation.</strong>
-          Gold held near US$4,170-US$4,189/oz into the July 3 close and miner proxies participated, keeping the position nearer
-          to the first trim band than it was after the June selloff. The signal mix is not strong enough to raise the sell target or force an immediate
-          redemption because real yields remain elevated, the U.S. dollar has firmed over the past month, and the latest ETF-flow evidence is mixed-to-soft.
+          The July 4 Vancouver morning check falls in a weekend/holiday market window, so the freshest official public market
+          inputs remain the July 3 close and the latest available fund/ETF NAV files. Gold held near US$4,170/oz, miner proxies
+          participated, and Fund Library's secondary Mackenzie Series F NAVPS check advanced to C$131.29 as of July 3. The signal mix is
+          still not strong enough to raise the sell target or force an immediate redemption because real yields remain elevated,
+          the U.S. dollar has firmed over the past month, and official ETF-flow evidence remains mixed-to-soft.
           The plan remains staged: keep the position only inside a defined risk budget, begin trimming into
           US$4,600-US$4,800 gold if account value participates, and use US$4,900-US$5,050 as the core reduction zone.
         </p>
@@ -439,7 +463,7 @@
             <tbody>
               <tr>
                 <td><strong>Gold price</strong></td>
-                <td><a href="https://tradingeconomics.com/commodity/gold">Trading Economics</a> showed gold at US$4,170.25/oz on July 3, up 1.15% on the session and down 6.81% over the past month; <a href="https://www.jmbullion.com/charts/gold-price/">JM Bullion</a> showed a live weekend spot indication near US$4,188.57 early July 4 EDT.</td>
+                <td><a href="https://tradingeconomics.com/commodity/gold">Trading Economics</a> showed gold at US$4,170.25/oz on July 3, up 1.15% on the session and down 6.81% over the past month; <a href="https://www.gold.org/goldhub/data/gold-prices">World Gold Council</a> also listed July 3 gold spot price data.</td>
                 <td>Positive repair rally with improving short-term momentum; first trim is approaching but not triggered.</td>
               </tr>
               <tr>
@@ -454,17 +478,17 @@
               </tr>
               <tr>
                 <td><strong>ETF-flow demand</strong></td>
-                <td><a href="https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/06">World Gold Council</a> reported that May gold ETF flows slowed to a trickle, with global AUM down 2% month over month and holdings easing to 4,121t; <a href="https://www.businessinsider.com/gold-price-crash-death-cross-worst-quarter-outlook-interest-rates-2026-7">public market summaries</a> also flagged Q2 ETF outflows as part of the June selloff.</td>
+                <td><a href="https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/06">World Gold Council</a> reported that May gold ETF flows slowed to a trickle, with global AUM down 2% month over month and holdings easing to 4,121t; its <a href="https://www.gold.org/goldhub/research/gold-mid-year-outlook-2026">mid-year outlook</a> also framed H2 gold performance around geopolitics, rates, and investor sentiment.</td>
                 <td>Demand is not broken, but the marginal ETF buyer is less aggressive; keep the ladder rather than chase the rally.</td>
               </tr>
               <tr>
                 <td><strong>Miner participation</strong></td>
-                <td><a href="https://robinhood.com/us/en/stocks/GDX/">GDX</a> was shown near US$78.83 on July 3, within a US$76.09-US$79.20 range; <a href="https://www.blackrock.com/ca/investors/en/products/239848/ishares-sptsx-global-gold-index-etf">XGD</a>'s official NAV was C$50.67 on July 3, up 2.38% on the day.</td>
+                <td><a href="https://robinhood.com/us/en/stocks/GDX/">GDX</a> was shown near US$78.83 on July 3, within a US$76.09-US$79.20 range; <a href="https://www.blackrock.com/ca/investors/en/products/239848/ishares-sptsx-global-gold-index-etf">XGD</a>'s official NAV was C$50.67 and market price was C$50.16 on July 3.</td>
                 <td>Miner participation improved materially; confirm the Mackenzie account value before using this as a sell trigger.</td>
               </tr>
               <tr>
                 <td><strong>Mackenzie fund/NAV</strong></td>
-                <td><a href="https://www.mackenzieinvestments.com/content/dam/mackenzie/en/mackenzie-fundprofiles/fundprofile-precious-metals-fund-f-08532-en.pdf">Mackenzie's official Series F profile</a> still shows NAVPS C$139.07 as of May 29, Series F MER 1.04%, high risk, and a C$17.9418 annual distribution paid Dec. 23, 2025; <a href="https://fundlibrary.com/MutualFunds/Detail/689568">Fund Library</a> showed secondary daily NAVPS of C$127.15 as of July 2, up C$4.40 or 3.58%.</td>
+                <td><a href="https://www.mackenzieinvestments.com/content/dam/mackenzie/en/mackenzie-fundprofiles/fundprofile-precious-metals-fund-f-08532-en.pdf">Mackenzie's official Series F profile</a> still shows NAVPS C$139.07 as of May 29, Series F MER 1.04%, high risk, and a C$17.9418 annual distribution paid Dec. 23, 2025; <a href="https://fundlibrary.com/MutualFunds/Detail/689568">Fund Library</a> showed secondary daily NAVPS of C$131.29 as of July 3, up C$4.15 or 3.26%.</td>
                 <td>Do not use the modeled trigger blindly. Re-anchor to actual account value before any trade instruction.</td>
               </tr>
             </tbody>
@@ -472,8 +496,9 @@
         </div>
         <p class="section-note">
           What changed today: the current reference gold price remains about US$4,170, so the move needed to
-          reach US$4,900 is still about +17.5%. The larger change is confirmation from public miner proxies and Fund Library: XGD's July 3 NAV rose to C$50.67 and the secondary Mackenzie daily NAVPS check rose to C$127.15 as of July 2. Real yields and the dollar remain headwinds, so the status remains a
-          risk-managed hold, not a fresh buy signal or a client-specific sell order.
+          reach US$4,900 is still about +17.5%. The larger data update is Fund Library's secondary Mackenzie Series F
+          NAVPS moving from C$127.15 on July 2 to C$131.29 on July 3, while XGD's July 3 official NAV rose to C$50.67.
+          Real yields and the dollar remain headwinds, so the status remains a risk-managed hold, not a fresh buy signal or a client-specific sell order.
         </p>
       </div>
     </section>
@@ -624,7 +649,7 @@
           <h3>Provisional Research View</h3>
           <p><strong>Market-level view:</strong> Conditional hold with sell discipline, not a personalized trade instruction.</p>
           <p><strong>Primary sell level:</strong> US$4,900-$5,050 gold.</p>
-          <p><strong>Fund-value trigger:</strong> approximately C$171-C$176 from the C$139.07 profile NAV baseline at US$4,900, or C$156-C$161 from the latest secondary C$127.15 daily NAVPS baseline, assuming unchanged 1.3x-1.5x fund sensitivity.</p>
+          <p><strong>Fund-value trigger:</strong> approximately C$171-C$176 from the C$139.07 profile NAV baseline at US$4,900, or C$161-C$166 from the latest secondary C$131.29 daily NAVPS baseline, assuming unchanged 1.3x-1.5x fund sensitivity.</p>
           <p><strong>Downside stop:</strong> gold weekly close below US$3,700, roughly 11% below the current reference spot, especially if paired with rising real yields, stronger USD, and ETF outflows.</p>
           <p><strong>Readiness:</strong> Market-trigger plan is usable; exact sizing needs your cost basis, position size, account type, tax constraints, and KYC/risk-tolerance confirmation.</p>
         </aside>
@@ -634,7 +659,7 @@
         <div class="tile">
           <div class="label">Spot Gold</div>
           <div class="value">~$4,170</div>
-          <div class="note">Trading Economics, July 3, 2026.</div>
+          <div class="note">Trading Economics, July 4, 2026 update for July 3 close.</div>
         </div>
         <div class="tile">
           <div class="label">Core Sell Zone</div>
@@ -693,7 +718,7 @@
           and whether miners participate in the gold move.
         </p>
         <p>
-          A secondary daily NAV source showed C$127.15 as of July 2, 2026, below the May official profile NAV but up materially on the latest miner rebound. That
+          A secondary daily NAV source showed C$131.29 as of July 3, 2026, below the May official profile NAV but up materially on the latest miner rebound. That
           means the report should use two baselines: the official Mackenzie profile baseline for continuity, and the
           latest daily-account-value baseline before any actual trade instruction.
         </p>
@@ -704,7 +729,7 @@
           <p><strong>Example:</strong> US$4,900 / US$4,170.25 - 1 = 17.5%</p>
           <p><strong>Official-profile low sensitivity case:</strong> C$139.07 x [1 + 17.5% x 1.3] = approximately C$171</p>
           <p><strong>Official-profile high sensitivity case:</strong> C$139.07 x [1 + 17.5% x 1.5] = approximately C$176</p>
-          <p><strong>Latest daily NAVPS check:</strong> C$127.15 x [1 + 17.5% x 1.3-1.5] = approximately C$156-C$161.</p>
+          <p><strong>Latest daily NAVPS check:</strong> C$131.29 x [1 + 17.5% x 1.3-1.5] = approximately C$161-C$166.</p>
         </div>
         <div class="table-scroll" role="region" aria-label="Gold sensitivity table" tabindex="0">
           <table>
@@ -714,7 +739,7 @@
                 <th class="num">Gold Return From ~$4,170</th>
                 <th class="num">Fund Sensitivity</th>
                 <th class="num">Implied Fund Value From C$139.07</th>
-                <th class="num">Implied Fund Value From C$127.15</th>
+                <th class="num">Implied Fund Value From C$131.29</th>
                 <th>Action Read-Through</th>
               </tr>
             </thead>
@@ -724,7 +749,7 @@
                 <td class="num">+10.3%</td>
                 <td class="num">1.3x-1.5x</td>
                 <td class="num">~C$158-C$161</td>
-                <td class="num">~C$144-C$147</td>
+                <td class="num">~C$149-C$152</td>
                 <td>First trim watch. Require account-value confirmation and miner participation.</td>
               </tr>
               <tr>
@@ -732,7 +757,7 @@
                 <td class="num">+15.1%</td>
                 <td class="num">1.3x-1.5x</td>
                 <td class="num">~C$166-C$171</td>
-                <td class="num">~C$152-C$156</td>
+                <td class="num">~C$157-C$161</td>
                 <td>Trim 25% if account-value gain is confirmed and miners have participated.</td>
               </tr>
               <tr>
@@ -740,7 +765,7 @@
                 <td class="num">+17.5%</td>
                 <td class="num">1.3x-1.5x</td>
                 <td class="num">~C$171-C$176</td>
-                <td class="num">~C$156-C$161</td>
+                <td class="num">~C$161-C$166</td>
                 <td>Core sell begins. This is the low end of the target fund-value zone.</td>
               </tr>
               <tr>
@@ -748,7 +773,7 @@
                 <td class="num">+21.1%</td>
                 <td class="num">1.3x-1.5x</td>
                 <td class="num">~C$177-C$183</td>
-                <td class="num">~C$162-C$167</td>
+                <td class="num">~C$167-C$173</td>
                 <td>Sell 50%-75% if miner equities have delivered full operating leverage.</td>
               </tr>
               <tr>
@@ -756,7 +781,7 @@
                 <td class="num">+24.7%</td>
                 <td class="num">1.3x-1.5x</td>
                 <td class="num">~C$184-C$191</td>
-                <td class="num">~C$168-C$174</td>
+                <td class="num">~C$173-C$180</td>
                 <td>Reduce to target allocation or redeem remaining units, subject to suitability, tax, liquidity, and account-type review.</td>
               </tr>
             </tbody>
@@ -773,7 +798,7 @@
             <h2>CAD/USD Adjustment</h2>
             <p>
               The fund is held in Canadian dollars, while gold is priced in U.S. dollars. USD/CAD was around 1.4189 on
-              July 3, 2026, so a stronger Canadian dollar would reduce the CAD benefit of a USD gold rally. This is why
+              July 3, 2026, with Trading Economics last updated on July 4, so a stronger Canadian dollar would reduce the CAD benefit of a USD gold rally. This is why
               the sell discipline should use total account value and not gold alone.
             </p>
           </div>
@@ -1048,28 +1073,28 @@
               <tr>
                 <td><strong>Mackenzie Precious Metals F</strong></td>
                 <td>Active precious-metals equity fund</td>
-                <td>YTD 5.87% and 2025 return 176.94% through Mackenzie May profile; secondary Fund Library daily NAVPS was C$127.15 on July 2; 3-year standard deviation 33.91%.</td>
+                <td>YTD 5.87% and 2025 return 176.94% through Mackenzie May profile; secondary Fund Library daily NAVPS was C$131.29 on July 3; 3-year standard deviation 33.91%.</td>
                 <td>High active sector exposure with meaningful gold-miner beta and manager selection risk.</td>
                 <td>Same-date total return to July 3, realized tax impact, and your account-level return.</td>
               </tr>
               <tr>
                 <td><strong>S&P/TSX Global Gold / XGD</strong></td>
                 <td>Stated benchmark exposure</td>
-                <td>BlackRock XGD NAV was C$50.67 on July 3, 2026, up 2.38% on the day; NAV total return YTD was -2.69% as of July 2, 2026.</td>
+                <td>BlackRock XGD NAV was C$50.67 and market price was C$50.16 on July 3, 2026; NAV total return YTD was -2.69% as of July 2, 2026.</td>
                 <td>Provides a lower-cost benchmark proxy for Canadian-listed gold equities.</td>
                 <td>Same-date Mackenzie total return and after-fee active return versus benchmark.</td>
               </tr>
               <tr>
                 <td><strong>GDX</strong></td>
                 <td>Global senior gold-miner ETF</td>
-                <td>Robinhood showed GDX near US$78.83 on July 3, after a US$76.09-US$79.20 trading range.</td>
+                <td>Robinhood showed GDX near US$78.83 on July 3, after a US$76.09-US$79.20 trading range; MarketWatch showed a US$78.43 close and a US$76.78-US$79.20 day range.</td>
                 <td>Useful global peer for miner beta, but USD-listed and not the fund benchmark.</td>
                 <td>CAD translation, withholding/tax treatment, and same-date performance.</td>
               </tr>
               <tr>
                 <td><strong>Gold bullion / bullion ETF</strong></td>
                 <td>Metal exposure without miner operating leverage</td>
-                <td>Gold spot near US$4,170 on July 3, 2026, with a weekend live indication near US$4,189 early July 4 EDT; all-time high about US$5,608 in January 2026.</td>
+                <td>Gold spot near US$4,170 on July 3, 2026; Trading Economics listed the all-time high at about US$5,608 in January 2026.</td>
                 <td>Clean macro exposure to gold, but no miner operating leverage.</td>
                 <td>CAD bullion return, storage/ETF cost, tax treatment, and portfolio role.</td>
               </tr>
@@ -1233,7 +1258,7 @@
               <tr>
                 <td><strong>Fund value</strong></td>
                 <td>Client account value and latest fund NAV</td>
-                <td>-15% to -20% from baseline/high, C$171-C$176 modeled trigger from the official profile baseline at US$4,900, or C$156-C$161 from the secondary daily NAVPS check.</td>
+                <td>-15% to -20% from baseline/high, C$171-C$176 modeled trigger from the official profile baseline at US$4,900, or C$161-C$166 from the secondary daily NAVPS check.</td>
                 <td>Use total account value, including distributions, as the implementation trigger.</td>
               </tr>
             </tbody>
@@ -1587,28 +1612,29 @@
           </table>
         </div>
         <div class="source-ledger">
-          <p><strong>S1.</strong> Mackenzie Investments, <a href="https://www.mackenzieinvestments.com/en/products/mutual-funds/mackenzie-precious-metals-fund">Mackenzie Precious Metals Fund page</a>, accessed July 3, 2026.</p>
+          <p><strong>S1.</strong> Mackenzie Investments, <a href="https://www.mackenzieinvestments.com/en/products/mutual-funds/mackenzie-precious-metals-fund">Mackenzie Precious Metals Fund page</a>, accessed July 4, 2026.</p>
           <p><strong>S2.</strong> Mackenzie Investments, <a href="https://www.mackenzieinvestments.com/content/dam/mackenzie/en/mackenzie-fundprofiles/fundprofile-precious-metals-fund-f-08532-en.pdf">Mackenzie Precious Metals Fund Series F profile</a>, May 31, 2026 / NAVPS May 29, 2026.</p>
-          <p><strong>S3.</strong> Trading Economics, <a href="https://tradingeconomics.com/commodity/gold">gold price and forecast page</a>, July 3, 2026.</p>
+          <p><strong>S3.</strong> Trading Economics, <a href="https://tradingeconomics.com/commodity/gold">gold price and forecast page</a>, accessed July 4, 2026; latest market data shown for July 3 close.</p>
           <p><strong>S4.</strong> World Gold Council, <a href="https://www.gold.org/goldhub/research/gold-demand-trends/gold-demand-trends-q1-2026">Gold Demand Trends Q1 2026</a>, April 29, 2026.</p>
           <p><strong>S5.</strong> World Gold Council, <a href="https://www.gold.org/goldhub/research/central-bank-gold-reserves-survey-2026">Central Bank Gold Reserves Survey 2026</a>, June 2026.</p>
           <p><strong>S6.</strong> UBS CIO, <a href="https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-25062026.html">Why gold could stage a rebound</a>, June 25, 2026.</p>
           <p><strong>S7.</strong> Reuters, <a href="https://www.reuters.com/business/gold-etfs-could-see-fresh-outflows-rising-bets-fed-monetary-tightening-2026-06-24/">gold ETF outflow risk and monetary tightening backdrop</a>, June 24, 2026.</p>
           <p><strong>S8.</strong> Business Insider, <a href="https://www.businessinsider.com/gold-price-today-forecast-outlook-etf-interest-rates-sell-off-2026-6">bank forecast revisions after gold selloff</a>, June 2026. Used as a secondary source for publicly summarized bank targets.</p>
-          <p><strong>S9.</strong> Investopedia, <a href="https://www.investopedia.com/ask/answers/110615/when-are-mutual-fund-orders-executed.asp">mutual fund order execution explainer</a>, accessed July 3, 2026.</p>
+          <p><strong>S9.</strong> Investopedia, <a href="https://www.investopedia.com/ask/answers/110615/when-are-mutual-fund-orders-executed.asp">mutual fund order execution explainer</a>, accessed July 4, 2026.</p>
           <p><strong>S10.</strong> Mackenzie Investments, <a href="https://www.mackenzieinvestments.com/content/dam/mackenzie/en/mutual-funds/mi-aif-2024-june-27-en.pdf">Annual Information Form</a>, June 27, 2024, for redemption/distribution/tax mechanics.</p>
-          <p><strong>S11.</strong> Trading Economics, <a href="https://tradingeconomics.com/canada/currency">USD/CAD exchange-rate page</a>, July 3, 2026.</p>
-          <p><strong>S12.</strong> S&P Dow Jones Indices, <a href="https://www.spglobal.com/spdji/en/indices/equity/sp-tsx-global-gold-index/">S&P/TSX Global Gold Index page</a>, accessed July 3, 2026.</p>
-          <p><strong>S13.</strong> BlackRock, <a href="https://www.blackrock.com/ca/investors/en/products/239848/ishares-sptsx-global-gold-index-etf">iShares S&P/TSX Global Gold Index ETF</a>, accessed July 3, 2026.</p>
-          <p><strong>S14.</strong> Robinhood, <a href="https://robinhood.com/us/en/stocks/GDX/">VanEck Gold Miners ETF quote page</a>, accessed July 3, 2026, used for current GDX trading context.</p>
-          <p><strong>S15.</strong> Canadian Investment Regulatory Organization, <a href="https://www.ciro.ca/newsroom/publications/know-your-client-and-suitability-determination-retail-clients">Know-your-client and suitability determination for retail clients</a>, accessed July 3, 2026.</p>
-          <p><strong>S16.</strong> Canadian Investment Regulatory Organization, <a href="https://www.ciro.ca/newsroom/publications/know-your-client-kyc-and-suitability">Know-your-client and suitability</a>, accessed July 3, 2026.</p>
-          <p><strong>S17.</strong> Trading Economics, <a href="https://tradingeconomics.com/united-states/currency">DXY Dollar Index page</a>, accessed July 3, 2026.</p>
-          <p><strong>S18.</strong> FRED, <a href="https://fred.stlouisfed.org/series/DFII10">10-year TIPS real-yield series</a>, July 1, 2026, cross-checked with Trading Economics' <a href="https://tradingeconomics.com/united-states/10-year-tips-yield">U.S. 10-year TIPS yield page</a>, accessed July 3, 2026.</p>
-          <p><strong>S19.</strong> Fund Library, <a href="https://fundlibrary.com/MutualFunds/Detail/689568">Mackenzie Precious Metals Fund Series F detail page</a>, accessed July 3, 2026, used as a secondary daily NAVPS check.</p>
-          <p><strong>S20.</strong> World Gold Council, <a href="https://www.gold.org/goldhub/data/gold-prices">gold spot price data page</a>, accessed July 3, 2026.</p>
-          <p><strong>S21.</strong> JM Bullion, <a href="https://www.jmbullion.com/charts/gold-price/">live gold spot price page</a>, accessed July 3, 2026 Vancouver time / early July 4 EDT, used as a secondary weekend spot indication.</p>
+          <p><strong>S11.</strong> Trading Economics, <a href="https://tradingeconomics.com/canada/currency">USD/CAD exchange-rate page</a>, accessed July 4, 2026; latest market data shown for July 3 close.</p>
+          <p><strong>S12.</strong> S&P Dow Jones Indices, <a href="https://www.spglobal.com/spdji/en/indices/equity/sp-tsx-global-gold-index/">S&P/TSX Global Gold Index page</a>, accessed July 4, 2026.</p>
+          <p><strong>S13.</strong> BlackRock, <a href="https://www.blackrock.com/ca/investors/en/products/239848/ishares-sptsx-global-gold-index-etf">iShares S&P/TSX Global Gold Index ETF</a>, accessed July 4, 2026.</p>
+          <p><strong>S14.</strong> Robinhood, <a href="https://robinhood.com/us/en/stocks/GDX/">VanEck Gold Miners ETF quote page</a>, accessed July 4, 2026, used for current GDX trading context; cross-checked against MarketWatch for close/range context.</p>
+          <p><strong>S15.</strong> Canadian Investment Regulatory Organization, <a href="https://www.ciro.ca/newsroom/publications/know-your-client-and-suitability-determination-retail-clients">Know-your-client and suitability determination for retail clients</a>, accessed July 4, 2026.</p>
+          <p><strong>S16.</strong> Canadian Investment Regulatory Organization, <a href="https://www.ciro.ca/newsroom/publications/know-your-client-kyc-and-suitability">Know-your-client and suitability</a>, accessed July 4, 2026.</p>
+          <p><strong>S17.</strong> Trading Economics, <a href="https://tradingeconomics.com/united-states/currency">DXY Dollar Index page</a>, accessed July 4, 2026.</p>
+          <p><strong>S18.</strong> FRED, <a href="https://fred.stlouisfed.org/series/DFII10">10-year TIPS real-yield series</a>, July 1, 2026, cross-checked with Trading Economics' <a href="https://tradingeconomics.com/united-states/10-year-tips-yield">U.S. 10-year TIPS yield page</a>, accessed July 4, 2026.</p>
+          <p><strong>S19.</strong> Fund Library, <a href="https://fundlibrary.com/MutualFunds/Detail/689568">Mackenzie Precious Metals Fund Series F detail page</a>, accessed July 4, 2026, used as a secondary daily NAVPS check showing C$131.29 as of July 3, 2026.</p>
+          <p><strong>S20.</strong> World Gold Council, <a href="https://www.gold.org/goldhub/data/gold-prices">gold spot price data page</a>, accessed July 4, 2026.</p>
+          <p><strong>S21.</strong> GoldPrice.org, <a href="https://goldprice.org/">gold spot price page</a>, accessed July 4, 2026, used only as a secondary weekend price indication.</p>
           <p><strong>S22.</strong> Business Insider, <a href="https://www.businessinsider.com/gold-price-crash-death-cross-worst-quarter-outlook-interest-rates-2026-7">gold selloff and ETF-flow summary</a>, July 2026, used as secondary public context for Q2 ETF outflows and bank target changes.</p>
+          <p><strong>S23.</strong> World Gold Council, <a href="https://www.gold.org/goldhub/research/gold-mid-year-outlook-2026">Gold Mid-Year Outlook 2026</a>, July 2026, used for H2 macro scenario framing around geopolitics, rates, and investor sentiment.</p>
         </div>
         <p class="small" style="margin-top:12px;">
           Evidence confidence is high for official Mackenzie fund profile items and current public gold prices. Evidence confidence is medium for bank forecast aggregates because some paid bank research is available publicly only through summaries. Position-specific readiness is conditional because account-level cost basis, tax status, portfolio size, risk tolerance, and distribution treatment are missing.
