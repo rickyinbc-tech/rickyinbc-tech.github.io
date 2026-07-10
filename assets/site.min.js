@@ -1,5 +1,5 @@
 const ANALYTICS_ID = "G-07PQV08YPD";
-const ANALYTICS_LOAD_DELAY = 7000;
+const ANALYTICS_LOAD_DELAY = 30000;
 
 window.dataLayer = window.dataLayer || [];
 window.gtag = window.gtag || function gtag() {

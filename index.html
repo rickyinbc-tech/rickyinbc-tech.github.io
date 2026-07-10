@@ -24,11 +24,19 @@
   <meta name="twitter:description" content="Hong Kong fine-art photography: ritual, city light, motion, and constructed impact.">
   <meta name="twitter:image" content="https://rickykwok.com/assets/art/light-encroached-homes.jpg">
   <meta name="theme-color" content="#070707">
-  <link rel="preload" as="image" href="/assets/optimized-v2/art/light-encroached-homes-1280.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/optimized-v2/art/light-encroached-homes-800.webp" media="(max-width: 640px)" fetchpriority="high">
+  <link rel="preload" as="image" href="/assets/optimized-v2/art/light-encroached-homes-1280.webp" media="(min-width: 641px)" fetchpriority="high">
   <link rel="stylesheet" href="/assets/site.min.css">
+  <style>
+    @media (max-width: 640px) {
+      body.home .hero { --hero-image: url('/assets/optimized-v2/art/light-encroached-homes-800.webp') !important; }
+      body.home .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; }
+      body.home .series-jump a { background: linear-gradient(135deg, #171717, #26211c); box-shadow: none; }
+    }
+  </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://rickykwok.com/#profile","url":"https://rickykwok.com/","name":"Ricky Kwok 郭文棣, ARPS","description":"Official fine-art photography portfolio of Ricky Kwok 郭文棣, ARPS, also known as Kwok Man Tai.","inLanguage":"en","dateModified":"2026-07-08T00:00:00-07:00","mainEntity":{"@type":"Person","@id":"https://rickykwok.com/#person","name":"Ricky Kwok","alternateName":["郭文棣","Kwok Man Tai"],"honorificSuffix":"ARPS","url":"https://rickykwok.com/","sameAs":["https://www.dcfever.com/column/info.php?id=461","https://kwokmantai.wordpress.com/awards/","https://www.facebook.com/rickykwokbc/"]}},{"@type":"WebSite","@id":"https://rickykwok.com/#website","url":"https://rickykwok.com/","name":"Ricky Kwok Photography","alternateName":"Ricky Kwok Fine Art Photography","inLanguage":"en","publisher":{"@id":"https://rickykwok.com/#person"}},{"@type":"Person","@id":"https://rickykwok.com/#person","name":"Ricky Kwok","alternateName":["郭文棣","Kwok Man Tai"],"honorificSuffix":"ARPS","url":"https://rickykwok.com/","image":"https://rickykwok.com/assets/art/light-encroached-homes.jpg","sameAs":["https://www.dcfever.com/column/info.php?id=461","https://kwokmantai.wordpress.com/awards/","https://www.facebook.com/rickykwokbc/"],"knowsAbout":["Fine art photography","Documentary photography","High-speed photography","Urban light photography","Hong Kong night photography","Archival pigment prints"],"subjectOf":{"@id":"https://rickykwok.com/#profile"}},{"@type":"CollectionPage","@id":"https://rickykwok.com/selected-works/#collection","name":"Selected Works by Ricky Kwok","url":"https://rickykwok.com/selected-works/","isPartOf":{"@id":"https://rickykwok.com/#website"},"about":{"@id":"https://rickykwok.com/#person"}},{"@type":"ImageObject","@id":"https://rickykwok.com/assets/art/light-encroached-homes.jpg#image","name":"Light Encroached Homes / 光染民居","contentUrl":"https://rickykwok.com/assets/art/light-encroached-homes.jpg","creator":{"@type":"Person","@id":"https://rickykwok.com/#person","name":"Ricky Kwok","alternateName":["郭文棣","Kwok Man Tai"],"honorificSuffix":"ARPS","url":"https://rickykwok.com/","sameAs":["https://www.dcfever.com/column/info.php?id=461","https://kwokmantai.wordpress.com/awards/","https://www.facebook.com/rickykwokbc/"]},"representativeOfPage":true,"creditText":"Ricky Kwok","copyrightNotice":"Copyright Ricky Kwok","copyrightHolder":{"@type":"Person","@id":"https://rickykwok.com/#person","name":"Ricky Kwok","alternateName":["郭文棣","Kwok Man Tai"],"honorificSuffix":"ARPS","url":"https://rickykwok.com/","sameAs":["https://www.dcfever.com/column/info.php?id=461","https://kwokmantai.wordpress.com/awards/","https://www.facebook.com/rickykwokbc/"]},"license":"https://rickykwok.com/licensing/","acquireLicensePage":"https://rickykwok.com/contact/"}]}</script>
 </head>
-<body>
+<body class="home">
   <a class="skip-link" href="#main">Skip to artwork</a>
   <header class="site-header" aria-label="Primary">
     <nav class="nav wrap">
