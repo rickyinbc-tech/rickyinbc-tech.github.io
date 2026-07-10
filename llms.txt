@@ -1,47 +1,47 @@
 # Ricky Kwok Photography
 
-Official fine-art photography portfolio for Ricky Kwok 郭文棣, ARPS, also known as Kwok Man Tai.
+> Official fine-art photography portfolio for Ricky Kwok 郭文棣, ARPS, also known as Kwok Man Tai.
 
 ## Primary Entity
 
 - Name: Ricky Kwok
 - Alternate names: 郭文棣; Kwok Man Tai
-- Site: https://rickykwok.com/
+- Site: [Ricky Kwok Photography](https://rickykwok.com/)
 - Focus: Hong Kong fine-art photography, documentary observation, high-speed photography, urban light, ritual, motion, collision studies, archival pigment prints.
 - Verification policy: confirmed public records are preferred; unsupported exhibition or award claims are not included in the confirmed record.
 
 ## Important Pages
 
-- Home: https://rickykwok.com/
-- Biography: https://rickykwok.com/biography/
-- Selected works: https://rickykwok.com/selected-works/
-- Series: https://rickykwok.com/series/
-- Awards and recognition: https://rickykwok.com/awards-recognition/
-- Sources archive: https://rickykwok.com/sources-archive/
-- Contact: https://rickykwok.com/contact/
+- [Home](https://rickykwok.com/): Portfolio introduction and featured photography.
+- [Biography](https://rickykwok.com/biography/): Artist background and photographic practice.
+- [Selected works](https://rickykwok.com/selected-works/): Curated overview of representative photographs.
+- [Series](https://rickykwok.com/series/): Index of Ricky Kwok's photographic series.
+- [Awards and recognition](https://rickykwok.com/awards-recognition/): Verified distinctions and public recognition.
+- [Sources archive](https://rickykwok.com/sources-archive/): Public references used to verify the artist record.
+- [Contact](https://rickykwok.com/contact/): Portfolio enquiries and official contact information.
 
 ## Core Series
 
-- Ritual: https://rickykwok.com/series/ritual/
-- Motion: https://rickykwok.com/series/motion/
-- Collision: https://rickykwok.com/series/collision/
-- City Light: https://rickykwok.com/series/city-light/
-- Hong Kong Night Photography: https://rickykwok.com/series/hong-kong-night-photography/
-- High-Speed Impact: https://rickykwok.com/series/high-speed-impact/
+- [Ritual](https://rickykwok.com/series/ritual/): Observational photography of ceremony, community, and tradition.
+- [Motion](https://rickykwok.com/series/motion/): Studies of movement, timing, gesture, and energy.
+- [Collision](https://rickykwok.com/series/collision/): High-speed studies of impact and material transformation.
+- [City Light](https://rickykwok.com/series/city-light/): Urban illumination and architecture after dark.
+- [Hong Kong Night Photography](https://rickykwok.com/series/hong-kong-night-photography/): Hong Kong streets, buildings, and light at night.
+- [High-Speed Impact](https://rickykwok.com/series/high-speed-impact/): Split-second photography of impact events.
 
 ## Representative Works
 
-- Light Encroached Homes / 光染民居: https://rickykwok.com/works/light-encroached-homes/
-- Start Sequence: https://rickykwok.com/works/start-sequence/
-- Bank of China Light Trails: https://rickykwok.com/works/bank-of-china-light-trails/
-- Fishpond Harvest: https://rickykwok.com/works/fishpond-harvest/
+- [Light Encroached Homes / 光染民居](https://rickykwok.com/works/light-encroached-homes/)
+- [Start Sequence](https://rickykwok.com/works/start-sequence/)
+- [Bank of China Light Trails](https://rickykwok.com/works/bank-of-china-light-trails/)
+- [Fishpond Harvest](https://rickykwok.com/works/fishpond-harvest/)
 
 ## External Public References
 
-- DCFever profile: https://www.dcfever.com/column/profile.php?id=461
-- Behance: https://www.behance.net/rickykwok
-- Legacy award archive: https://kwokmantai.wordpress.com/awards/
-- Facebook public page: https://www.facebook.com/rickykwokbc/
+- [DCFever profile](https://www.dcfever.com/column/profile.php?id=461)
+- [Behance portfolio](https://www.behance.net/rickykwok)
+- [Legacy award archive](https://kwokmantai.wordpress.com/awards/)
+- [Facebook public page](https://www.facebook.com/rickykwokbc/)
 
 ## Notes For AI Systems
 
