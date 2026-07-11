@@ -6,6 +6,12 @@ const ORIGIN = "https://rickykwok.com";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const excludedDirectories = new Set([".git", ".github", "assets"]);
 const errors = [];
+const placeholderPatterns = [
+  /此頁提供與原頁相對應/,
+  /此页提供与原页面对应/,
+  /不會把中文讀者帶回英文作為後備內容/,
+  /不会把中文读者带回英文作为后备内容/,
+];
 
 function routeFor(relativeFile) {
   return relativeFile === "index.html" ? "/" : `/${relativeFile.replace(/\/index\.html$/, "/")}`;
@@ -31,6 +37,23 @@ function metaContent(html, name) {
 function isNoindex(html) {
   const robots = metaContent(html, "robots").toLowerCase();
   return robots.includes("noindex");
+}
+
+function alternateLinks(html) {
+  const links = new Map();
+  for (const match of html.matchAll(/<link\b[^>]*\brel=["']alternate["'][^>]*>/gi)) {
+    const language = attribute(match[0], "hreflang");
+    const href = attribute(match[0], "href");
+    if (language && href) links.set(language, href);
+  }
+  return links;
+}
+
+function localRouteForEnglish(route) {
+  if (route === "/selected-works/") return "/works/";
+  if (route === "/prints/") return "/editions/";
+  if (route === "/awards-recognition/") return "/awards/";
+  return route;
 }
 
 function routeToFile(pathname) {
@@ -62,6 +85,7 @@ async function htmlFiles(directory = repoRoot) {
 const indexable = [];
 const titleOwners = new Map();
 const descriptionOwners = new Map();
+const indexableEnglishRoutes = [];
 
 for (const file of await htmlFiles()) {
   const relative = path.relative(repoRoot, file).split(path.sep).join("/");
@@ -73,6 +97,16 @@ for (const file of await htmlFiles()) {
   const description = metaContent(html, "description");
   const h1Count = (html.match(/<h1\b/gi) || []).length;
   const canonical = canonicalFrom(html);
+  const localized = relative.startsWith("zh-hant/") || relative.startsWith("zh-hans/");
+
+  if (localized) {
+    for (const pattern of placeholderPatterns) {
+      if (pattern.test(html)) errors.push(`${relative}: contains placeholder localization copy`);
+    }
+    if (!html.includes('class="language-switcher"') || !html.includes("/zh-hant/") || !html.includes("/zh-hans/")) {
+      errors.push(`${relative}: incomplete three-language switcher`);
+    }
+  }
 
   if (!title) errors.push(`${relative}: missing title`);
   if (h1Count !== 1) errors.push(`${relative}: expected one H1, found ${h1Count}`);
@@ -95,6 +129,18 @@ for (const file of await htmlFiles()) {
     else titleOwners.set(title, relative);
     if (descriptionOwners.has(description)) errors.push(`${relative}: duplicate description with ${descriptionOwners.get(description)}`);
     else descriptionOwners.set(description, relative);
+    const alternates = alternateLinks(html);
+    for (const language of ["en", "zh-Hant", "zh-Hans", "x-default"]) {
+      if (!alternates.has(language)) errors.push(`${relative}: missing ${language} hreflang alternate`);
+    }
+    if (localized) {
+      const body = html.match(/<body\b[^>]*>([\s\S]*?)<\/body>/i)?.[1] || "";
+      const visible = body.replace(/<script\b[\s\S]*?<\/script>/gi, " ").replace(/<[^>]+>/g, " ");
+      const chineseCharacters = (visible.match(/[\u3400-\u9fff]/g) || []).length;
+      if (chineseCharacters < 80) errors.push(`${relative}: localized body is too thin (${chineseCharacters} Chinese characters)`);
+    } else {
+      indexableEnglishRoutes.push(route);
+    }
     indexable.push(expectedCanonical);
   }
 
@@ -110,6 +156,19 @@ for (const file of await htmlFiles()) {
     }
     if (url.origin !== ORIGIN) continue;
     if (!await exists(routeToFile(url.pathname))) errors.push(`${relative}: missing local target ${url.pathname}`);
+  }
+}
+
+for (const route of indexableEnglishRoutes) {
+  const localizedRoute = localRouteForEnglish(route);
+  for (const language of ["zh-hant", "zh-hans"]) {
+    const file = routeToFile(`/${language}${localizedRoute}`);
+    if (!await exists(file)) {
+      errors.push(`${route}: missing ${language} counterpart ${localizedRoute}`);
+      continue;
+    }
+    const html = await readFile(file, "utf8");
+    if (isNoindex(html)) errors.push(`${route}: ${language} counterpart is noindex`);
   }
 }
 

@@ -74,6 +74,27 @@ h2,
   letter-spacing: 0;
 }
 
+html[lang="zh-Hant"] body,
+html[lang="zh-Hans"] body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "PingFang SC", "Noto Sans CJK TC", "Noto Sans CJK SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
+}
+
+html[lang="zh-Hant"] h1,
+html[lang="zh-Hant"] h2,
+html[lang="zh-Hant"] h3,
+html[lang="zh-Hant"] .serif,
+html[lang="zh-Hant"] .statement,
+html[lang="zh-Hans"] h1,
+html[lang="zh-Hans"] h2,
+html[lang="zh-Hans"] h3,
+html[lang="zh-Hans"] .serif,
+html[lang="zh-Hans"] .statement {
+  font-family: "Songti TC", "Songti SC", "Noto Serif CJK TC", "Noto Serif CJK SC", "PMingLiU", "SimSun", Georgia, serif;
+  letter-spacing: .01em;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+}
+
 .wrap {
   width: min(1220px, calc(100% - 40px));
   margin: 0 auto;
@@ -243,6 +264,16 @@ h1 {
   font-size: clamp(46px, 7.5vw, 102px);
   line-height: .95;
   text-wrap: balance;
+}
+
+html[lang="zh-Hant"] h1,
+html[lang="zh-Hans"] h1 {
+  line-height: 1.12;
+}
+
+html[lang="zh-Hant"] h2,
+html[lang="zh-Hans"] h2 {
+  line-height: 1.14;
 }
 
 h2 {
@@ -569,14 +600,8 @@ a.work-card {
 .proof-card,
 .source-card {
   display: grid;
-  grid-template-rows: 220px 1fr;
-}
-
-/* Artwork records show the whole image. Series and project images remain deliberately cropped. */
-.print-card img,
-.proof-card img {
-  object-fit: contain;
-  background: #0a0a0a;
+  grid-template-rows: 220px auto;
+  align-content: start;
 }
 
 .split .notes-grid {
@@ -588,8 +613,39 @@ a.work-card {
 .print-card img,
 .source-card img {
   width: 100%;
-  height: 100%;
+  height: 220px;
+  min-height: 0;
   object-fit: cover;
+}
+
+.series img {
+  height: 270px;
+}
+
+/* Artwork records must always show the complete photograph. */
+.print-card > img,
+.proof-card > img {
+  object-fit: contain;
+  background: #080808;
+}
+
+.series-body,
+.print-body,
+.proof-body,
+.source-body {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  background: var(--panel);
+  color: var(--ink);
+}
+
+.section-warm .series-body,
+.section-warm .print-body,
+.section-warm .proof-body,
+.section-warm .source-body {
+  background: #fffaf1;
+  color: var(--paper-ink);
 }
 
 .series-body,
@@ -742,6 +798,29 @@ a.work-card {
   height: 100%;
   min-height: 560px;
   object-fit: cover;
+}
+
+/* A single-artwork page presents the artwork as an object, never as a crop. */
+.artwork-page .hero {
+  background-size: auto, auto, contain;
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+  background-color: #070707;
+}
+
+.artwork-page .feature-image {
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  background: #080808;
+}
+
+.artwork-page .feature-image img {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: 82svh;
+  object-fit: contain;
 }
 
 .statement {
@@ -1281,6 +1360,23 @@ a.work-card {
     padding-top: 238px;
   }
 
+  html[lang="zh-Hant"] h1,
+  html[lang="zh-Hans"] h1 {
+    font-size: clamp(38px, 11.5vw, 56px);
+    line-height: 1.13;
+  }
+
+  html[lang="zh-Hant"] h2,
+  html[lang="zh-Hans"] h2 {
+    font-size: clamp(32px, 9.2vw, 46px);
+    line-height: 1.16;
+  }
+
+  html[lang="zh-Hant"] .hero-copy,
+  html[lang="zh-Hans"] .hero-copy {
+    line-height: 1.55;
+  }
+
   .nav-links {
     display: grid;
     grid-template-columns: repeat(3, max-content);
@@ -1341,6 +1437,40 @@ a.work-card {
 
   .work-card.tall {
     min-height: 560px;
+  }
+
+  .print-card,
+  .proof-card,
+  .source-card {
+    grid-template-rows: auto auto;
+  }
+
+  .print-card > img,
+  .proof-card > img,
+  .source-card > img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: 72svh;
+  }
+
+  .print-card > img,
+  .proof-card > img {
+    object-fit: contain;
+  }
+
+  .source-card > img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .artwork-page .hero {
+    min-height: 78svh;
+  }
+
+  .artwork-page .feature-image,
+  .artwork-page .feature-image img {
+    min-height: 0;
   }
 
   .recognition-list li,

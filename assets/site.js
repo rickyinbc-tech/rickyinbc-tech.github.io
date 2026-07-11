@@ -421,6 +421,36 @@ const INQUIRY_LABELS = {
   general: "General inquiry"
 };
 
+const PAGE_LANGUAGE = document.documentElement.lang;
+const INQUIRY_LABELS_LOCALIZED = {
+  "zh-Hant": {
+    print: "作品收藏",
+    exhibition: "展覽提案",
+    curatorial: "策展查詢",
+    licensing: "圖片授權",
+    press: "媒體或訪問",
+    general: "一般查詢"
+  },
+  "zh-Hans": {
+    print: "作品收藏",
+    exhibition: "展览提案",
+    curatorial: "策展查询",
+    licensing: "图片授权",
+    press: "媒体或访问",
+    general: "一般查询"
+  }
+};
+
+function inquiryLabel(type) {
+  return INQUIRY_LABELS_LOCALIZED[PAGE_LANGUAGE]?.[type] || INQUIRY_LABELS[type] || INQUIRY_LABELS.general;
+}
+
+function localizedPath(path) {
+  if (PAGE_LANGUAGE === "zh-Hant") return `/zh-hant${path}`;
+  if (PAGE_LANGUAGE === "zh-Hans") return `/zh-hans${path}`;
+  return path;
+}
+
 const INQUIRY_EVENT_PREFIXES = {
   print: "print_inquiry",
   exhibition: "curatorial_inquiry",
@@ -537,13 +567,13 @@ function prepareInquiryForm(form) {
 
   function updateRoutingFields() {
     const type = currentInquiryType(form);
-    const label = INQUIRY_LABELS[type] || INQUIRY_LABELS.general;
+    const label = inquiryLabel(type);
     const subjectField = form.querySelector("[data-form-subject]");
     const nextField = form.querySelector("[data-form-next]");
     if (subjectField) subjectField.value = `${label} — Ricky Kwok Photography website`;
 
     if (nextField) {
-      const nextUrl = new URL("/contact/thanks/", window.location.origin);
+      const nextUrl = new URL(localizedPath("/contact/thanks/"), window.location.origin);
       nextUrl.searchParams.set("type", type);
       nextUrl.searchParams.set("lead", leadId);
       nextField.value = nextUrl.href;
@@ -598,7 +628,7 @@ function prepareInquiryForm(form) {
     const pendingInquiry = {
       lead_id: leadId,
       type,
-      label: INQUIRY_LABELS[type] || INQUIRY_LABELS.general,
+      label: inquiryLabel(type),
       artwork,
       source_page: window.location.pathname,
       submitted_at: new Date().toISOString()
@@ -613,7 +643,13 @@ function prepareInquiryForm(form) {
 
     const status = form.querySelector("[data-form-status]");
     const submitButton = form.querySelector("button[type='submit']");
-    if (status) status.textContent = "Sending securely… You may be asked to complete a spam check.";
+    if (status) {
+      status.textContent = PAGE_LANGUAGE === "zh-Hant"
+        ? "正在安全傳送……你可能需要完成防垃圾驗證。"
+        : PAGE_LANGUAGE === "zh-Hans"
+          ? "正在安全传送……你可能需要完成防垃圾验证。"
+          : "Sending securely… You may be asked to complete a spam check.";
+    }
     if (submitButton) submitButton.disabled = true;
     form.setAttribute("aria-busy", "true");
   });
@@ -655,8 +691,8 @@ if (confirmationPage) {
   const introduction = confirmationPage.querySelector("[data-confirmation-introduction]");
 
   if (leadOutput && leadId) leadOutput.textContent = leadId;
-  if (typeOutput) typeOutput.textContent = pendingInquiry?.label || INQUIRY_LABELS[type] || INQUIRY_LABELS.general;
-  if (artworkOutput) artworkOutput.textContent = pendingInquiry?.artwork || "Not specified";
+  if (typeOutput) typeOutput.textContent = pendingInquiry?.label || inquiryLabel(type);
+  if (artworkOutput) artworkOutput.textContent = pendingInquiry?.artwork || (PAGE_LANGUAGE === "zh-Hant" ? "未有指定" : PAGE_LANGUAGE === "zh-Hans" ? "未有指定" : "Not specified");
   if (deadlineEmail && leadId) {
     deadlineEmail.href = `mailto:studio@rickykwok.com?subject=${encodeURIComponent(`Time-sensitive inquiry ${leadId}`)}`;
   }
@@ -664,9 +700,19 @@ if (confirmationPage) {
   if (pendingInquiry?.lead_id && pendingInquiry.lead_id === leadId) {
     if (successContent) successContent.hidden = false;
     if (unverifiedContent) unverifiedContent.hidden = true;
-    if (eyebrow) eyebrow.textContent = "Inquiry received";
-    if (heading) heading.textContent = "Thank you. Your request has been sent.";
-    if (introduction) introduction.textContent = "Your structured form submission has been forwarded to the studio. You should also receive an automatic confirmation from the form service.";
+    if (PAGE_LANGUAGE === "zh-Hant") {
+      if (eyebrow) eyebrow.textContent = "查詢已收到";
+      if (heading) heading.textContent = "多謝，你的要求已經送出。";
+      if (introduction) introduction.textContent = "結構化表格已轉交工作室；表格服務亦應向你發出自動確認。";
+    } else if (PAGE_LANGUAGE === "zh-Hans") {
+      if (eyebrow) eyebrow.textContent = "查询已收到";
+      if (heading) heading.textContent = "谢谢，你的要求已经送出。";
+      if (introduction) introduction.textContent = "结构化表格已转交工作室；表格服务也应向你发出自动确认。";
+    } else {
+      if (eyebrow) eyebrow.textContent = "Inquiry received";
+      if (heading) heading.textContent = "Thank you. Your request has been sent.";
+      if (introduction) introduction.textContent = "Your structured form submission has been forwarded to the studio. You should also receive an automatic confirmation from the form service.";
+    }
     loadAnalytics();
     trackEvent(inquiryEventName(pendingInquiry.type || type, "submit"), {
       inquiry_type: pendingInquiry.type || type,

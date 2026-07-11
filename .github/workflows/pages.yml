@@ -28,8 +28,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Build Chinese language coverage
-        run: node .github/scripts/build-language-coverage.mjs
       - name: Build canonical sitemaps
         run: node .github/scripts/build-sitemaps.mjs
       - name: Validate site
