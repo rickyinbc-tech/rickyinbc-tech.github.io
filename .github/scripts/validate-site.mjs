@@ -86,6 +86,7 @@ const indexable = [];
 const titleOwners = new Map();
 const descriptionOwners = new Map();
 const indexableEnglishRoutes = [];
+const englishImageCounts = new Map();
 
 for (const file of await htmlFiles()) {
   const relative = path.relative(repoRoot, file).split(path.sep).join("/");
@@ -105,6 +106,11 @@ for (const file of await htmlFiles()) {
     }
     if (!html.includes('class="language-switcher"') || !html.includes("/zh-hant/") || !html.includes("/zh-hans/")) {
       errors.push(`${relative}: incomplete three-language switcher`);
+    }
+    for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>\s*English(?:\s+[^<]*)?<\/a>/gi)) {
+      if (/^\/zh-(?:hant|hans)\//i.test(match[1])) {
+        errors.push(`${relative}: English-labelled link points to localized route ${match[1]}`);
+      }
     }
   }
 
@@ -140,6 +146,7 @@ for (const file of await htmlFiles()) {
       if (chineseCharacters < 80) errors.push(`${relative}: localized body is too thin (${chineseCharacters} Chinese characters)`);
     } else {
       indexableEnglishRoutes.push(route);
+      englishImageCounts.set(route, (html.match(/<img\b/gi) || []).length);
     }
     indexable.push(expectedCanonical);
   }
@@ -169,6 +176,12 @@ for (const route of indexableEnglishRoutes) {
     }
     const html = await readFile(file, "utf8");
     if (isNoindex(html)) errors.push(`${route}: ${language} counterpart is noindex`);
+    const englishImages = englishImageCounts.get(route) || 0;
+    const localizedImages = (html.match(/<img\b/gi) || []).length;
+    const minimumImages = Math.max(englishImages - 1, 0);
+    if (localizedImages < minimumImages) {
+      errors.push(`${route}: ${language} counterpart has ${localizedImages} images; expected at least ${minimumImages}`);
+    }
   }
 }
 

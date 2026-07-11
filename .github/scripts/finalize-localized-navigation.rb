@@ -49,6 +49,10 @@ Dir.glob(File.join(ROOT, "zh-hant/**/index.html")).sort.each do |file|
 
   document.css("body a[href]").each do |anchor|
     next if anchor.ancestors(".language-switcher").any? || anchor["lang"]
+    if anchor.text.strip.start_with?("English")
+      anchor["href"] = english_route(route)
+      next
+    end
     anchor["href"] = localized_href(anchor["href"])
   end
 
