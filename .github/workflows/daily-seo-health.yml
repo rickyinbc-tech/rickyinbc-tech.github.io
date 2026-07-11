@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-seo-health:
@@ -23,14 +23,10 @@ jobs:
       - name: Build SEO health report
         run: node .github/scripts/build-seo-health.mjs
 
-      - name: Commit daily report
-        run: |
-          git config user.name "Codex SEO Monitor"
-          git config user.email "codex-seo-monitor@users.noreply.github.com"
-          git add seo-status/index.html seo-status/latest.json
-          if git diff --cached --quiet; then
-            echo "No SEO health changes to commit."
-          else
-            git commit -m "Update daily SEO health report"
-            git push
-          fi
+      - name: Upload diagnostic report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-health-${{ github.run_id }}
+          path: seo-status/
+          retention-days: 14
