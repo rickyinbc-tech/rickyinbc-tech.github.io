@@ -190,10 +190,6 @@
       <image:loc>https://rickykwok.com/assets/optimized-v2/art/sack-race-village-1200.webp</image:loc>
       <image:title>Children racing in sacks near brick buildings.</image:title>
     </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/festival-dragon-1200.webp</image:loc>
-      <image:title>Night festival with dragon and glowing wheels.</image:title>
-    </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/bank-of-china-light-trails/</loc>
@@ -315,6 +311,55 @@
     <image:image>
       <image:loc>https://rickykwok.com/assets/optimized-v2/art/horse-racing-pack-1200.webp</image:loc>
       <image:title>A pack of racehorses and jockeys turning tightly on a dirt track.</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/zh-hans/projects/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/light-encroached-homes.jpg</image:loc>
+      <image:title>香港光污染摄影项目代表影像</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/fishpond-harvest.jpg</image:loc>
+      <image:title>香港鱼塘保育摄影项目代表影像</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/behance/nepal-documentary/nepal-documentary-05.jpg</image:loc>
+      <image:title>尼泊尔纪实摄影代表影像</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/behance/infrared-hong-kong/infrared-hong-kong-02.jpg</image:loc>
+      <image:title>香港红外线摄影代表影像</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/behance/horse-riding/horse-riding-02.jpg</image:loc>
+      <image:title>赛马与骑术摄影代表影像</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/behance/travel/travel-08.jpg</image:loc>
+      <image:title>中国纪实摄影研究代表影像</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/zh-hans/series/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/blue-hour-cormorant-fishermen.jpg</image:loc>
+      <image:title>仪式 Ritual系列代表影像</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/cigarette-impact.jpg</image:loc>
+      <image:title>碰撞 Collision系列代表影像</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/swimming-motion.jpg</image:loc>
+      <image:title>动态 Motion系列代表影像</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/zh-hans/works/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/optimized-v2/art/festival-dragon-1200.webp</image:loc>
+      <image:title>郭文棣摄影作品《火龙之夜》</image:title>
     </image:image>
   </url>
 </urlset>
