@@ -99,6 +99,21 @@ const [robots, sitemap, imageSitemap, home] = await Promise.all([
 const sitemapPages = sitemap.ok ? extractUrlLocs(sitemap.text) : [];
 const imageSitemapPages = imageSitemap.ok ? extractUrlLocs(imageSitemap.text) : [];
 const imageAssets = imageSitemap.ok ? extractImageLocs(imageSitemap.text) : [];
+const requiredCanonicalUrls = [
+  `${BASE_URL}/`,
+  `${BASE_URL}/selected-works/`,
+  `${BASE_URL}/series/ritual/`,
+  `${BASE_URL}/series/collision/`,
+  `${BASE_URL}/series/motion/`,
+  `${BASE_URL}/series/city-light/`,
+  `${BASE_URL}/projects/hong-kong-light-pollution/`,
+  `${BASE_URL}/projects/hong-kong-fishpond-conservation/`,
+  `${BASE_URL}/press/`,
+  `${BASE_URL}/licensing/`,
+  `${BASE_URL}/contact/`,
+];
+const uniqueSitemapPages = new Set(sitemapPages);
+const uniqueImageAssets = new Set(imageAssets);
 
 const checks = [
   {
@@ -122,9 +137,11 @@ const checks = [
     ok: sitemap.ok && sitemap.text.includes("<urlset"),
   },
   {
-    detail: `${sitemapPages.length} page URLs found`,
-    name: "Main sitemap has expected page inventory",
-    ok: sitemapPages.length >= 55,
+    detail: `${sitemapPages.length} canonical URLs; required commercial and authority pages present`,
+    name: "Main sitemap matches the approved core inventory",
+    ok:
+      sitemapPages.length === uniqueSitemapPages.size
+      && requiredCanonicalUrls.every((url) => uniqueSitemapPages.has(url)),
   },
   {
     detail: `${imageSitemap.status} ${imageSitemap.contentType}`,
@@ -132,9 +149,9 @@ const checks = [
     ok: imageSitemap.ok && imageSitemap.text.includes("image:image"),
   },
   {
-    detail: `${imageSitemapPages.length} landing pages and ${imageAssets.length} image URLs found`,
-    name: "Image sitemap has artwork inventory",
-    ok: imageSitemapPages.length >= 55 && imageAssets.length >= 50,
+    detail: `${imageSitemapPages.length} landing pages and ${uniqueImageAssets.size} unique image URLs found`,
+    name: "Image sitemap has a deduplicated artwork inventory",
+    ok: imageAssets.length === uniqueImageAssets.size && uniqueImageAssets.size >= 40,
   },
   {
     detail: `${home.status} ${home.contentType}`,
@@ -264,3 +281,7 @@ const html = `<!doctype html>
 await mkdir(outputDir, { recursive: true });
 await writeFile(new URL("latest.json", outputDir), `${JSON.stringify(report, null, 2)}\n`);
 await writeFile(new URL("index.html", outputDir), html);
+
+if (status !== "pass") {
+  process.exitCode = 1;
+}

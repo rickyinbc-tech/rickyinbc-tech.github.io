@@ -24,6 +24,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Build canonical sitemaps
+        run: node .github/scripts/build-sitemaps.mjs
+      - name: Validate site
+        run: node .github/scripts/validate-site.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
