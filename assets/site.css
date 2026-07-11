@@ -1,13 +1,13 @@
 :root {
   --ink: #f7f3eb;
-  --muted: #bfb7aa;
-  --quiet: #8f867a;
+  --muted: #d7d0c4;
+  --quiet: #c3baad;
   --black: #070707;
   --charcoal: #111111;
   --panel: #171717;
   --paper: #f5f0e8;
   --paper-ink: #201b16;
-  --paper-muted: #5b5146;
+  --paper-muted: #4b4035;
   --line: rgba(247, 243, 235, .16);
   --paper-line: rgba(32, 27, 22, .16);
   --gold: #e9bd65;
@@ -168,8 +168,8 @@ h2,
   isolation: isolate;
   color: #fff;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .36) 52%, rgba(0, 0, 0, .08)),
-    linear-gradient(0deg, rgba(7, 7, 7, .92), rgba(7, 7, 7, 0) 42%),
+    linear-gradient(90deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, .52) 54%, rgba(0, 0, 0, .18)),
+    linear-gradient(0deg, rgba(7, 7, 7, .94), rgba(7, 7, 7, 0) 48%),
     var(--hero-image, url("/assets/optimized-v2/art/light-encroached-homes-1280.webp")) center / cover no-repeat;
 }
 
@@ -238,7 +238,7 @@ h3 {
 .hero-copy {
   max-width: 780px;
   margin-bottom: 0;
-  color: rgba(255, 255, 255, .88);
+  color: rgba(255, 255, 255, .96);
   font-size: clamp(18px, 2vw, 25px);
   line-height: 1.36;
 }
@@ -246,7 +246,7 @@ h3 {
 .credential {
   max-width: 620px;
   margin: 8px 0 0;
-  color: rgba(255, 255, 255, .7);
+  color: rgba(255, 255, 255, .86);
   font-size: 14px;
 }
 
@@ -364,8 +364,19 @@ h3 {
 
 .section-blue {
   background:
-    linear-gradient(90deg, rgba(7, 7, 7, .94), rgba(7, 7, 7, .78)),
+    linear-gradient(90deg, rgba(7, 7, 7, .92), rgba(7, 7, 7, .72)),
     url("/assets/optimized-v2/art/li-river-mist-1280.webp") center / cover no-repeat;
+}
+
+.section-blue .lead,
+.section-blue .prose,
+.section-blue .note p,
+.section-blue .series-body p,
+.section-blue .print-body p,
+.section-blue .proof-body p,
+.section-blue .source-body p,
+.section-blue .meta-list {
+  color: rgba(255, 255, 255, .9);
 }
 
 .section-head {
@@ -445,7 +456,8 @@ a.work-card {
   width: 100%;
   height: 100%;
   min-height: inherit;
-  object-fit: cover;
+  object-fit: contain;
+  background: #080808;
   transform: scale(1);
   transition: transform .7s ease, filter .7s ease;
 }
@@ -462,7 +474,7 @@ a.work-card {
   display: grid;
   gap: 5px;
   padding: 64px 18px 18px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, 0));
+  background: linear-gradient(0deg, rgba(0, 0, 0, .94), rgba(0, 0, 0, .62) 54%, rgba(0, 0, 0, 0));
   color: #fff;
 }
 
@@ -472,7 +484,7 @@ a.work-card {
 }
 
 .work-caption small {
-  color: rgba(255, 255, 255, .72);
+  color: rgba(255, 255, 255, .88);
   font-size: 12px;
   font-weight: 720;
   letter-spacing: .08em;
@@ -531,6 +543,13 @@ a.work-card {
 .source-card {
   display: grid;
   grid-template-rows: 220px 1fr;
+}
+
+/* Artwork records show the whole image. Series and project images remain deliberately cropped. */
+.print-card img,
+.proof-card img {
+  object-fit: contain;
+  background: #0a0a0a;
 }
 
 .split .notes-grid {
@@ -1116,7 +1135,7 @@ a.work-card {
 
 .modal-copy p {
   margin-bottom: 0;
-  color: var(--muted);
+  color: rgba(255, 255, 255, .88);
   font-size: 14px;
 }
 
