@@ -100,6 +100,33 @@ if (year) {
   year.textContent = new Date().getFullYear();
 }
 
+function canonicalLanguagePath(language) {
+  const raw = window.location.pathname.replace(/^\/zh-hant|^\/zh-hans/, "") || "/";
+  if (language === "en") return raw;
+  return `/${language}${raw}`.replace(/\/\/$/, "/");
+}
+
+function addLanguageSwitcher() {
+  if (document.querySelector(".language-switcher")) return;
+  const nav = document.querySelector(".site-header .nav");
+  if (!nav) return;
+  const language = document.documentElement.lang.toLowerCase();
+  const labels = { en: "English", "zh-hant": "繁中", "zh-hans": "简体" };
+  const switcher = document.createElement("div");
+  switcher.className = "language-switcher";
+  switcher.setAttribute("aria-label", "Language");
+  [["en", "English"], ["zh-hant", "繁中"], ["zh-hans", "简体"]].forEach(([code, label]) => {
+    const link = document.createElement("a");
+    link.href = canonicalLanguagePath(code);
+    link.textContent = label;
+    if (language === code) link.setAttribute("aria-current", "page");
+    switcher.append(link);
+  });
+  nav.append(switcher);
+}
+
+addLanguageSwitcher();
+
 function trackEvent(eventName, params = {}, callback) {
   if (typeof window.gtag !== "function") {
     if (callback) callback();

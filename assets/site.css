@@ -161,6 +161,33 @@ h2,
   text-decoration: none;
 }
 
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(247, 243, 235, .18);
+  border-radius: 8px;
+  background: rgba(7, 7, 7, .36);
+  white-space: nowrap;
+}
+
+.language-switcher a {
+  padding: 6px 7px;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, .8);
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.language-switcher a:hover,
+.language-switcher a[aria-current="page"] {
+  background: var(--ink);
+  color: var(--black);
+  text-decoration: none;
+}
+
 .hero {
   min-height: 94svh;
   display: grid;
@@ -1193,6 +1220,11 @@ a.work-card {
     justify-content: flex-start;
   }
 
+  .language-switcher {
+    align-self: flex-end;
+    margin-top: -42px;
+  }
+
   .hero-inner {
     padding-top: 164px;
   }
@@ -1255,6 +1287,11 @@ a.work-card {
     gap: 12px 24px;
     flex-wrap: wrap;
     overflow: visible;
+  }
+
+  .language-switcher {
+    align-self: flex-start;
+    margin: 0;
   }
 
   .nav-links a {
