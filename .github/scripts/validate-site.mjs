@@ -392,6 +392,7 @@ const expectedForwardedHosts = [
   "resource.rickykwok.com",
   "retired.rickykwok.com",
   "spy.rickykwok.com",
+  "www.blog.rickykwok.com",
   "whymf.rickykwok.com"
 ];
 const configuredForwardedHosts = new Set(edgeRedirectConfig.forwardedHosts || []);
@@ -399,7 +400,7 @@ for (const hostname of expectedForwardedHosts) {
   if (!configuredForwardedHosts.has(hostname)) errors.push(`edge redirect map is missing preserved forwarding host ${hostname}`);
 }
 for (const hostname of configuredForwardedHosts) {
-  if (!/^[a-z0-9-]+\.rickykwok\.com$/.test(hostname)) errors.push(`edge forwarded host is invalid: ${hostname}`);
+  if (!/^(?:[a-z0-9-]+\.)+rickykwok\.com$/.test(hostname)) errors.push(`edge forwarded host is invalid: ${hostname}`);
 }
 
 const imageSitemap = await readFile(path.join(repoRoot, "image-sitemap.xml"), "utf8");

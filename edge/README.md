@@ -18,7 +18,9 @@ The Worker redirects only explicitly mapped paths:
 
 It does not wildcard redirect unknown `blog` or `photo` paths. Those requests
 continue to the origin and preserve a genuine 404 until an exact historical
-mapping has been verified.
+mapping has been verified. A proxied wildcard DNS record is used only as an
+edge entry point for the historical forwarding hosts; the Worker returns a
+genuine 404 for other unknown subdomains rather than forwarding them.
 
 Before attaching this Worker:
 

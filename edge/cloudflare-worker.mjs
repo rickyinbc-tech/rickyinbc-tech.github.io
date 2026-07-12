@@ -6,6 +6,12 @@ const forwardedHosts = new Set((redirectConfig.forwardedHosts || []).map((hostna
 const safeQueryParameters = new Set(redirectConfig.preserveQueryParameters);
 const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
+const passThroughHosts = new Set([
+  canonicalHost,
+  `www.${canonicalHost}`,
+  "blog.rickykwok.com",
+  "photo.rickykwok.com"
+]);
 
 function redirectDestination(requestUrl, destination) {
   const target = new URL(destination, canonicalOrigin);
@@ -39,7 +45,12 @@ export default {
     if (request.method !== "GET" && request.method !== "HEAD") return fetch(request);
 
     const destination = mappedDestination(requestUrl);
-    if (!destination) return fetch(request);
+    if (!destination) {
+      if (requestUrl.hostname.toLowerCase().endsWith(`.${canonicalHost}`) && !passThroughHosts.has(requestUrl.hostname.toLowerCase())) {
+        return new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8" } });
+      }
+      return fetch(request);
+    }
 
     return Response.redirect(redirectDestination(requestUrl, destination).toString(), redirectConfig.status);
   }
