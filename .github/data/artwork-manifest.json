@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Authoritative artwork-to-primary-image ownership for image discovery, structured data, artwork navigation, and multilingual pages.",
+  "rights": {
+    "copyrightNotice": "Copyright Ricky Kwok",
+    "creditText": "Ricky Kwok",
+    "licensePath": "/licensing/",
+    "acquireLicensePath": "/licensing/"
+  },
+  "artworks": [
+    {
+      "id": "bank-of-china-light-trails",
+      "canonicalPath": "/works/bank-of-china-light-trails/",
+      "primaryImage": { "url": "/assets/art/bank-of-china-light-trails.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Bank of China Light Trails",
+      "series": "City Light",
+      "seriesPath": "/series/city-light/",
+      "alt": "Hong Kong skyscrapers and buses with sweeping light trails at night.",
+      "caption": "Bank of China Light Trails, City Light series. © Ricky Kwok."
+    },
+    {
+      "id": "blue-column",
+      "canonicalPath": "/works/blue-column/",
+      "primaryImage": { "url": "/assets/art/blue-column-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Blue Column",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A vertical blue water column and droplet suspended against a blue background.",
+      "caption": "Blue Column, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "blue-hour-river-stage",
+      "canonicalPath": "/works/blue-hour-river-stage/",
+      "primaryImage": { "url": "/assets/art/blue-hour-cormorant-fishermen.jpg", "width": 800, "height": 519, "mimeType": "image/jpeg" },
+      "title": "Blue Hour, River Stage",
+      "series": "Ritual",
+      "seriesPath": "/series/ritual/",
+      "alt": "Cormorant fishermen on a river at blue hour with warm lamps reflected in the water.",
+      "caption": "Blue Hour, River Stage, Ritual series. © Ricky Kwok."
+    },
+    {
+      "id": "breaking-point",
+      "canonicalPath": "/works/breaking-point/",
+      "primaryImage": { "url": "/assets/art/egg-impact.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Breaking Point",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "An egg cracking with shell and liquid fragments suspended against black.",
+      "caption": "Breaking Point, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "coil-field",
+      "canonicalPath": "/works/coil-field/",
+      "primaryImage": { "url": "/assets/art/coil-field-monochrome.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Coil Field",
+      "series": "Ritual",
+      "seriesPath": "/series/ritual/",
+      "alt": "A worker among repeated coils in a monochrome industrial landscape.",
+      "caption": "Coil Field, Ritual series. © Ricky Kwok."
+    },
+    {
+      "id": "color-burst",
+      "canonicalPath": "/works/color-burst/",
+      "primaryImage": { "url": "/assets/art/color-powder-fish.jpg", "width": 1280, "height": 933, "mimeType": "image/jpeg" },
+      "title": "Color Burst",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A fish interrupted by an explosion of coloured powder against black.",
+      "caption": "Color Burst, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "cranes-and-towers",
+      "canonicalPath": "/works/cranes-and-towers/",
+      "primaryImage": { "url": "/assets/art/hong-kong-cranes-monochrome.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Cranes and Towers",
+      "series": "City Light",
+      "seriesPath": "/series/city-light/",
+      "alt": "Construction cranes and Hong Kong towers seen through a foreground barrier in monochrome.",
+      "caption": "Cranes and Towers, City Light series. © Ricky Kwok."
+    },
+    {
+      "id": "dragon-night-festival",
+      "canonicalPath": "/works/dragon-night-festival/",
+      "primaryImage": { "url": "/assets/art/fire-dragon-procession.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Dragon Night Festival",
+      "series": "Ritual",
+      "seriesPath": "/series/ritual/",
+      "alt": "A fire dragon procession moving through a Hong Kong street at night.",
+      "caption": "Dragon Night Festival, Ritual series. © Ricky Kwok."
+    },
+    {
+      "id": "fishpond-harvest",
+      "canonicalPath": "/works/fishpond-harvest/",
+      "primaryImage": { "url": "/assets/art/fishpond-harvest.jpg", "width": 1000, "height": 649, "mimeType": "image/jpeg" },
+      "title": "Fishpond Harvest / 漁獲",
+      "series": "Documentary",
+      "projectPath": "/projects/hong-kong-fishpond-conservation/",
+      "dateCreated": "2014",
+      "alt": "A fishpond worker standing among nets and fish during a harvest in Hong Kong.",
+      "caption": "Fishpond Harvest / 漁獲, Hong Kong, 2014. © Ricky Kwok.",
+      "recognition": "Student Landscape Champion, Hong Kong Bird Watching Society's 2014 Hong Kong Fishpond Photography Competition"
+    },
+    {
+      "id": "flower-impact",
+      "canonicalPath": "/works/flower-impact/",
+      "primaryImage": { "url": "/assets/art/flower-impact.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Flower Impact",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A flower breaking into petals and fragments against a black background.",
+      "caption": "Flower Impact, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "green-orb",
+      "canonicalPath": "/works/green-orb/",
+      "primaryImage": { "url": "/assets/art/green-orb-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Green Orb",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A dark green water droplet hovering above a liquid surface against a bright green field.",
+      "caption": "Green Orb, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "ice-crown",
+      "canonicalPath": "/works/ice-crown/",
+      "primaryImage": { "url": "/assets/art/boxer-ice-impact.jpg", "width": 1280, "height": 1908, "mimeType": "image/jpeg" },
+      "title": "Ice Crown",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A boxer with water exploding over his head against a dark background.",
+      "caption": "Ice Crown, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "light-encroached-homes",
+      "canonicalPath": "/works/light-encroached-homes/",
+      "primaryImage": { "url": "/assets/art/light-encroached-homes.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Light Encroached Homes / 光染民居",
+      "series": "City Light",
+      "seriesPath": "/series/city-light/",
+      "projectPath": "/projects/hong-kong-light-pollution/",
+      "dateCreated": "2014",
+      "contentLocation": "Mong Kok, Hong Kong",
+      "alt": "Low-angle fisheye photograph of illuminated advertising signs and residential buildings around the Mong Kok night sky.",
+      "caption": "Light Encroached Homes / 光染民居, Mong Kok, Hong Kong, 2014. © Ricky Kwok.",
+      "recognition": "Champion, Light Pollution Photography Competition 2014, The University of Hong Kong; selected from 154 entries"
+    },
+    {
+      "id": "magenta-collision",
+      "canonicalPath": "/works/magenta-collision/",
+      "primaryImage": { "url": "/assets/art/magenta-collision-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Magenta Collision",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A dense water collision illuminated in saturated magenta.",
+      "caption": "Magenta Collision, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "night-fishermen",
+      "canonicalPath": "/works/night-fishermen/",
+      "primaryImage": { "url": "/assets/art/night-fishermen-li-river.jpg", "width": 1000, "height": 649, "mimeType": "image/jpeg" },
+      "title": "Night Fishermen",
+      "series": "Ritual",
+      "seriesPath": "/series/ritual/",
+      "alt": "Two fishermen holding glowing lamps beside a river at night.",
+      "caption": "Night Fishermen, Ritual series. © Ricky Kwok."
+    },
+    {
+      "id": "orange-droplet",
+      "canonicalPath": "/works/orange-droplet/",
+      "primaryImage": { "url": "/assets/art/orange-suspension-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Orange Droplet",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A falling orange droplet almost touching a rising peak of water.",
+      "caption": "Orange Droplet, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "shunkan-instant",
+      "canonicalPath": "/works/shunkan-instant/",
+      "primaryImage": { "url": "/assets/art/cigarette-impact.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Shunkan / Instant",
+      "series": "Collision",
+      "seriesPath": "/series/collision/",
+      "alt": "A cigarette breaking into ash and blue smoke against a black background.",
+      "caption": "Shunkan / Instant, Collision series. © Ricky Kwok."
+    },
+    {
+      "id": "start-sequence",
+      "canonicalPath": "/works/start-sequence/",
+      "primaryImage": { "url": "/assets/art/swimming-start-sequence.jpg", "width": 1280, "height": 1909, "mimeType": "image/jpeg" },
+      "title": "Start Sequence",
+      "series": "Motion",
+      "seriesPath": "/series/motion/",
+      "alt": "Swimmers diving in sequence over coloured lane lines.",
+      "caption": "Start Sequence, Motion series. © Ricky Kwok."
+    },
+    {
+      "id": "street-procession",
+      "canonicalPath": "/works/street-procession/",
+      "primaryImage": { "url": "/assets/art/street-art-procession.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Street Procession",
+      "series": "City Light",
+      "seriesPath": "/series/city-light/",
+      "alt": "Pedestrians walking past a wall mural whose painted figures mirror their movement.",
+      "caption": "Street Procession, City Light series. © Ricky Kwok."
+    },
+    {
+      "id": "swimming-in-motion",
+      "canonicalPath": "/works/swimming-in-motion/",
+      "primaryImage": { "url": "/assets/art/swimming-motion.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "Swimming in Motion",
+      "series": "Motion",
+      "seriesPath": "/series/motion/",
+      "alt": "Swimmers blurred into layered colour and water across racing lanes.",
+      "caption": "Swimming in Motion, Motion series. © Ricky Kwok."
+    },
+    {
+      "id": "terraces-at-golden-hour",
+      "canonicalPath": "/works/terraces-at-golden-hour/",
+      "primaryImage": { "url": "/assets/art/rice-terraces-golden-hour.jpg", "width": 1000, "height": 649, "mimeType": "image/jpeg" },
+      "title": "Terraces at Golden Hour",
+      "series": "Ritual",
+      "seriesPath": "/series/ritual/",
+      "alt": "Rice terraces reflecting golden light across a mountain slope.",
+      "caption": "Terraces at Golden Hour, Ritual series. © Ricky Kwok."
+    },
+    {
+      "id": "the-pack",
+      "canonicalPath": "/works/the-pack/",
+      "primaryImage": { "url": "/assets/art/horse-racing-pack.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "title": "The Pack",
+      "series": "Motion",
+      "seriesPath": "/series/motion/",
+      "alt": "A tightly packed group of racehorses and riders turning at speed.",
+      "caption": "The Pack, Motion series. © Ricky Kwok."
+    }
+  ]
+}

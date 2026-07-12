@@ -1,365 +1,157 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://rickykwok.com/projects/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-05-1200.webp</image:loc>
-      <image:title>Portrait from Ricky Kwok</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/infrared-hong-kong/infrared-hong-kong-02-1200.webp</image:loc>
-      <image:title>Hong Kong garden and temple architecture photographed in infrared colour.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/horse-riding/horse-riding-02-1200.webp</image:loc>
-      <image:title>Jockey in yellow and green silks riding a racehorse at speed.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-08-1200.webp</image:loc>
-      <image:title>Documentary photograph from Ricky Kwok</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/projects/horse-riding/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/horse-riding/horse-riding-01-1200.webp</image:loc>
-      <image:title>Racehorses rounding a green turf track in a dense pack.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/horse-riding/horse-riding-03-1200.webp</image:loc>
-      <image:title>Racehorses passing below a large screen at a Hong Kong racecourse.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/horse-riding/horse-riding-04-1200.webp</image:loc>
-      <image:title>Jockey in blue silks leaning low over a horse in a racing pack.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/horse-riding/horse-riding-05-1200.webp</image:loc>
-      <image:title>Racehorses entering a turn on a dark track surface.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/projects/infrared-hong-kong/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/infrared-hong-kong/infrared-hong-kong-01-1200.webp</image:loc>
-      <image:title>Infrared photograph of a pavilion framed by trees.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/infrared-hong-kong/infrared-hong-kong-03-1200.webp</image:loc>
-      <image:title>Infrared garden path with pavilion and person.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/infrared-hong-kong/infrared-hong-kong-04-1200.webp</image:loc>
-      <image:title>Infrared photograph of temple roofs and trees.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/infrared-hong-kong/infrared-hong-kong-05-1200.webp</image:loc>
-      <image:title>Infrared view of ornate garden architecture and pale trees.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/infrared-hong-kong/infrared-hong-kong-06-1200.webp</image:loc>
-      <image:title>Infrared photograph of a pagoda under blue sky.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/projects/nepal-documentary/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-01-1200.webp</image:loc>
-      <image:title>Man cooking skewers in a small kitchen.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-02-1200.webp</image:loc>
-      <image:title>Children sitting on concrete steps.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-03-1200.webp</image:loc>
-      <image:title>Mother holding a crying child outdoors.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-04-1200.webp</image:loc>
-      <image:title>Woman holding a child close outdoors.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-06-1200.webp</image:loc>
-      <image:title>Child standing in an open yard near buildings.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-07-1200.webp</image:loc>
-      <image:title>Man working with a suspended sack at a market.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-08-1200.webp</image:loc>
-      <image:title>Woman seated against a weathered wall.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-09-1200.webp</image:loc>
-      <image:title>Elderly person using a walker on a road.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-10-1200.webp</image:loc>
-      <image:title>A boy shaving a seated man outdoors.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/nepal-documentary/nepal-documentary-11-1200.webp</image:loc>
-      <image:title>Elderly woman in pink clothing looking toward the camera.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/projects/travel/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-01-1200.webp</image:loc>
-      <image:title>Person standing by a red doorway in a dim interior.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-02-1200.webp</image:loc>
-      <image:title>Workers harvesting fish from a pond.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-03-1200.webp</image:loc>
-      <image:title>Black-and-white view of circular coils drying in rows with a worker.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-04-1200.webp</image:loc>
-      <image:title>Two people sitting among many woven baskets.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-05-1200.webp</image:loc>
-      <image:title>Workers and fire inside a dark industrial foundry.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-06-1200.webp</image:loc>
-      <image:title>Boats on a river at dusk with karst mountains.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-07-1200.webp</image:loc>
-      <image:title>Two fishermen at night holding lanterns beside water.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-09-1200.webp</image:loc>
-      <image:title>Women cooking around a hearth in a dark wooden room.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-10-1200.webp</image:loc>
-      <image:title>Warm shaft of light and smoke in a rustic kitchen.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/behance/travel/travel-11-1200.webp</image:loc>
-      <image:title>Elders and children laughing in a village setting.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/series/city-light/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/hong-kong-fisheye-street-1200.webp</image:loc>
-      <image:title>Fisheye Hong Kong street.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/series/collision/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/yellow-arc-water-study-1200.webp</image:loc>
-      <image:title>Yellow water arc.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/chalk-impact-1200.webp</image:loc>
-      <image:title>Chalk exploding.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/candle-impact-1200.webp</image:loc>
-      <image:title>Candle struck with water.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/series/motion/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/divers-motion-1200.webp</image:loc>
-      <image:title>Divers entering a pool.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/series/ritual/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/ancestral-kitchen-light-1000.webp</image:loc>
-      <image:title>Old kitchen with smoke and warm light.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/village-elders-laughter-1000.webp</image:loc>
-      <image:title>Elders and children laughing.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/sack-race-village-1200.webp</image:loc>
-      <image:title>Children racing in sacks near brick buildings.</image:title>
-    </image:image>
-  </url>
-  <url>
     <loc>https://rickykwok.com/works/bank-of-china-light-trails/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/bank-of-china-light-trails-1200.webp</image:loc>
-      <image:title>Hong Kong skyscrapers and buses with sweeping light trails at night.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/light-encroached-homes-1200.webp</image:loc>
-      <image:title>Low-angle fisheye photograph of Hong Kong neon signs and residential buildings around a dark sky.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/hong-kong-cranes-monochrome-1200.webp</image:loc>
-      <image:title>Black-and-white view of Hong Kong skyscrapers and cranes seen through vertical bars.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/bank-of-china-light-trails.jpg</image:loc>
+      <image:title>Bank of China Light Trails</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/blue-column/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/blue-column-water-study-1200.webp</image:loc>
-      <image:title>A vertical blue water column and droplet suspended against a blue background.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/green-orb-water-study-1200.webp</image:loc>
-      <image:title>Dark green water droplet hovering above a liquid surface against a bright green field.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/magenta-collision-water-study-1200.webp</image:loc>
-      <image:title>Magenta liquid column with small droplets suspended in a saturated pink field.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/blue-column-water-study.jpg</image:loc>
+      <image:title>Blue Column</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/blue-hour-river-stage/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp</image:loc>
-      <image:title>Cormorant fishermen on bamboo rafts under blue evening light.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/night-fishermen-li-river-1000.webp</image:loc>
-      <image:title>Two fishermen at night holding glowing lamps beside dark mountains and water.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/hearth-ritual-1000.webp</image:loc>
-      <image:title>Women cooking around a hearth in a dark wooden room.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/blue-hour-cormorant-fishermen.jpg</image:loc>
+      <image:title>Blue Hour, River Stage</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/breaking-point/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/egg-impact-1200.webp</image:loc>
-      <image:title>Egg cracking with shell and liquid fragments suspended against black.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/cigarette-impact-1200.webp</image:loc>
-      <image:title>Cigarettes exploding into ash and blue smoke against a black background.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/flower-impact-1200.webp</image:loc>
-      <image:title>Pink flower bursting apart with fragments and dust against a black background.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/egg-impact.jpg</image:loc>
+      <image:title>Breaking Point</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/coil-field/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/coil-field-monochrome-1200.webp</image:loc>
-      <image:title>Monochrome photograph of a worker surrounded by many circular coils laid out in rows.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/rice-terraces-golden-hour-1000.webp</image:loc>
-      <image:title>Golden rice terraces with small figures walking through reflective fields.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/fishpond-harvest-1000.webp</image:loc>
-      <image:title>Workers in waterproof clothing harvesting fish from a pond.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/coil-field-monochrome.jpg</image:loc>
+      <image:title>Coil Field</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/color-burst/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/color-powder-fish-1200.webp</image:loc>
-      <image:title>Three fish-shaped forms hit by red, yellow, and green powder against black.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/color-powder-fish.jpg</image:loc>
+      <image:title>Color Burst</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/cranes-and-towers/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/hong-kong-cranes-monochrome.jpg</image:loc>
+      <image:title>Cranes and Towers</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/dragon-night-festival/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/fire-dragon-procession-1200.webp</image:loc>
-      <image:title>Crowded Hong Kong night festival with a fire dragon procession and smoke.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/fire-dragon-procession.jpg</image:loc>
+      <image:title>Dragon Night Festival</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/fishpond-harvest/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/street-art-procession-1200.webp</image:loc>
-      <image:title>People walking beside black-and-white street art figures painted on a wall.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/fishpond-harvest.jpg</image:loc>
+      <image:title>Fishpond Harvest / 漁獲</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/flower-impact/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/flower-impact.jpg</image:loc>
+      <image:title>Flower Impact</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/green-orb/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/orange-suspension-water-study-1200.webp</image:loc>
-      <image:title>Orange droplet suspended above a small liquid peak against an orange background.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/green-orb-water-study.jpg</image:loc>
+      <image:title>Green Orb</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://rickykwok.com/works/ice-crown/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/boxer-ice-impact-1200.webp</image:loc>
-      <image:title>Boxer wearing gloves as water explodes over his head like a crown.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/swimming-start-sequence-1200.webp</image:loc>
-      <image:title>Swimmers diving into pool lanes in a descending vertical sequence.</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/swimming-motion-1200.webp</image:loc>
-      <image:title>Blurred swimmers moving through a pool.</image:title>
+      <image:loc>https://rickykwok.com/assets/art/boxer-ice-impact.jpg</image:loc>
+      <image:title>Ice Crown</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://rickykwok.com/works/sport-abstraction/</loc>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/horse-racing-pack-1200.webp</image:loc>
-      <image:title>A pack of racehorses and jockeys turning tightly on a dirt track.</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://rickykwok.com/zh-hans/projects/</loc>
+    <loc>https://rickykwok.com/works/light-encroached-homes/</loc>
     <image:image>
       <image:loc>https://rickykwok.com/assets/art/light-encroached-homes.jpg</image:loc>
-      <image:title>香港光污染摄影项目代表影像</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/art/fishpond-harvest.jpg</image:loc>
-      <image:title>香港鱼塘保育摄影项目代表影像</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/behance/nepal-documentary/nepal-documentary-05.jpg</image:loc>
-      <image:title>尼泊尔纪实摄影代表影像</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/behance/infrared-hong-kong/infrared-hong-kong-02.jpg</image:loc>
-      <image:title>香港红外线摄影代表影像</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/behance/horse-riding/horse-riding-02.jpg</image:loc>
-      <image:title>赛马与骑术摄影代表影像</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/behance/travel/travel-08.jpg</image:loc>
-      <image:title>中国纪实摄影研究代表影像</image:title>
+      <image:title>Light Encroached Homes / 光染民居</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://rickykwok.com/zh-hans/series/</loc>
+    <loc>https://rickykwok.com/works/magenta-collision/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/art/blue-hour-cormorant-fishermen.jpg</image:loc>
-      <image:title>仪式 Ritual系列代表影像</image:title>
+      <image:loc>https://rickykwok.com/assets/art/magenta-collision-water-study.jpg</image:loc>
+      <image:title>Magenta Collision</image:title>
     </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/night-fishermen/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/night-fishermen-li-river.jpg</image:loc>
+      <image:title>Night Fishermen</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/orange-droplet/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/orange-suspension-water-study.jpg</image:loc>
+      <image:title>Orange Droplet</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/shunkan-instant/</loc>
     <image:image>
       <image:loc>https://rickykwok.com/assets/art/cigarette-impact.jpg</image:loc>
-      <image:title>碰撞 Collision系列代表影像</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://rickykwok.com/assets/art/swimming-motion.jpg</image:loc>
-      <image:title>动态 Motion系列代表影像</image:title>
+      <image:title>Shunkan / Instant</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://rickykwok.com/zh-hans/works/</loc>
+    <loc>https://rickykwok.com/works/start-sequence/</loc>
     <image:image>
-      <image:loc>https://rickykwok.com/assets/optimized-v2/art/festival-dragon-1200.webp</image:loc>
-      <image:title>郭文棣摄影作品《火龙之夜》</image:title>
+      <image:loc>https://rickykwok.com/assets/art/swimming-start-sequence.jpg</image:loc>
+      <image:title>Start Sequence</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/street-procession/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/street-art-procession.jpg</image:loc>
+      <image:title>Street Procession</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/swimming-in-motion/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/swimming-motion.jpg</image:loc>
+      <image:title>Swimming in Motion</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/terraces-at-golden-hour/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/rice-terraces-golden-hour.jpg</image:loc>
+      <image:title>Terraces at Golden Hour</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://rickykwok.com/works/the-pack/</loc>
+    <image:image>
+      <image:loc>https://rickykwok.com/assets/art/horse-racing-pack.jpg</image:loc>
+      <image:title>The Pack</image:title>
     </image:image>
   </url>
 </urlset>

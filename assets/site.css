@@ -213,19 +213,47 @@ html[lang="zh-Hans"] .statement {
   min-height: 94svh;
   display: grid;
   align-items: end;
+  position: relative;
+  overflow: hidden;
   isolation: isolate;
   color: #fff;
-  background:
-    linear-gradient(90deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, .52) 54%, rgba(0, 0, 0, .18)),
-    linear-gradient(0deg, rgba(7, 7, 7, .94), rgba(7, 7, 7, 0) 48%),
-    var(--hero-image, url("/assets/optimized-v2/art/light-encroached-homes-1280.webp")) center / cover no-repeat;
+  background: #070707;
 }
 
 .page-hero {
   min-height: 56svh;
 }
 
+.hero-media,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media {
+  z-index: 0;
+  display: block;
+  margin: 0;
+}
+
+.hero-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, .94), rgba(0, 0, 0, .62) 54%, rgba(0, 0, 0, .25)),
+    linear-gradient(0deg, rgba(7, 7, 7, .96), rgba(7, 7, 7, .12) 54%, rgba(7, 7, 7, .08));
+}
+
 .hero-inner {
+  position: relative;
+  z-index: 2;
   width: min(1220px, calc(100% - 40px));
   margin: 0 auto;
   padding: 128px 0 54px;
@@ -495,6 +523,46 @@ a.work-card {
   cursor: pointer;
 }
 
+article.work-card {
+  cursor: default;
+}
+
+.work-card-link {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.work-card-link:focus-visible {
+  outline-offset: -5px;
+}
+
+.work-zoom {
+  position: absolute;
+  z-index: 3;
+  top: 12px;
+  right: 12px;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, .52);
+  border-radius: 999px;
+  background: rgba(7, 7, 7, .82);
+  color: #fff;
+  cursor: zoom-in;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.work-zoom:hover,
+.work-zoom:focus-visible {
+  background: var(--ink);
+  color: var(--black);
+}
+
 .work-card.wide {
   grid-column: span 8;
   min-height: 390px;
@@ -624,8 +692,14 @@ a.work-card {
 
 /* Artwork records must always show the complete photograph. */
 .print-card > img,
+.print-card > .print-image-link > img,
 .proof-card > img {
   object-fit: contain;
+  background: #080808;
+}
+
+.print-image-link {
+  display: block;
   background: #080808;
 }
 
@@ -808,6 +882,25 @@ a.work-card {
   background-color: #070707;
 }
 
+.artwork-page .hero.has-semantic-media {
+  background: #070707;
+}
+
+.artwork-page .hero.has-semantic-media .hero-media {
+  display: block;
+  overflow: hidden;
+  background: #070707;
+}
+
+.artwork-page .hero.has-semantic-media .hero-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-height: 100%;
+  object-fit: contain;
+  background: #070707;
+}
+
 .artwork-page .feature-image {
   min-height: 0;
   display: grid;
@@ -821,6 +914,14 @@ a.work-card {
   min-height: 0;
   max-height: 82svh;
   object-fit: contain;
+}
+
+.artwork-caption {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .statement {
@@ -1446,6 +1547,7 @@ a.work-card {
   }
 
   .print-card > img,
+  .print-card > .print-image-link > img,
   .proof-card > img,
   .source-card > img {
     width: 100%;
@@ -1455,6 +1557,7 @@ a.work-card {
   }
 
   .print-card > img,
+  .print-card > .print-image-link > img,
   .proof-card > img {
     object-fit: contain;
   }
@@ -1466,6 +1569,39 @@ a.work-card {
 
   .artwork-page .hero {
     min-height: 78svh;
+  }
+
+  /* On a narrow screen the artwork is shown whole before its page text, so a
+     portrait or wide composition is never hidden behind the title and CTAs. */
+  .artwork-page .hero.has-semantic-media {
+    display: block;
+    min-height: 0;
+    padding-top: 210px;
+  }
+
+  .artwork-page .hero.has-semantic-media .hero-media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .artwork-page .hero.has-semantic-media .hero-media img {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .artwork-page .hero.has-semantic-media .hero-overlay {
+    display: none;
+  }
+
+  .artwork-page .hero.has-semantic-media .hero-inner {
+    width: min(100% - 28px, 1220px);
+    padding: 30px 0 50px;
   }
 
   .artwork-page .feature-image,

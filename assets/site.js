@@ -101,7 +101,7 @@ if (year) {
 }
 
 function canonicalLanguagePath(language) {
-  const raw = window.location.pathname.replace(/^\/zh-hant|^\/zh-hans/, "") || "/";
+  const raw = window.location.pathname.replace(/^\/(?:zh-hant|zh-hans)(?=\/|$)/, "") || "/";
   if (language === "en") return raw;
   return `/${language}${raw}`.replace(/\/\/$/, "/");
 }
@@ -127,6 +127,44 @@ function addLanguageSwitcher() {
 
 addLanguageSwitcher();
 
+function pageContentContext() {
+  const pathname = window.location.pathname;
+  const localeMatch = pathname.match(/^\/(zh-hant|zh-hans)(?=\/|$)/i);
+  const contentLanguage = localeMatch
+    ? (localeMatch[1].toLowerCase() === "zh-hant" ? "zh-Hant" : "zh-Hans")
+    : "en";
+  let normalizedPath = localeMatch ? pathname.replace(/^\/(?:zh-hant|zh-hans)(?=\/|$)/i, "") || "/" : pathname;
+  if (!normalizedPath.endsWith("/")) normalizedPath = `${normalizedPath}/`;
+  const aliases = {
+    "/selected-works/": "/works/",
+    "/prints/": "/editions/",
+    "/awards-recognition/": "/awards/"
+  };
+  normalizedPath = aliases[normalizedPath] || normalizedPath;
+  const artworkMatch = normalizedPath.match(/^\/works\/([^/]+)\/$/);
+  const seriesMatch = normalizedPath.match(/^\/series\/([^/]+)\/$/);
+  const projectMatch = normalizedPath.match(/^\/projects\/([^/]+)\/$/);
+
+  if (artworkMatch && document.body.classList.contains("artwork-page")) {
+    return { content_language: contentLanguage, content_type: "artwork", content_id: artworkMatch[1], normalized_path: normalizedPath };
+  }
+  if (seriesMatch) {
+    return { content_language: contentLanguage, content_type: "series", content_id: seriesMatch[1], normalized_path: normalizedPath };
+  }
+  if (projectMatch) {
+    return { content_language: contentLanguage, content_type: "project", content_id: projectMatch[1], normalized_path: normalizedPath };
+  }
+  if (normalizedPath === "/editions/") {
+    return { content_language: contentLanguage, content_type: "edition", content_id: "available-works", normalized_path: normalizedPath };
+  }
+  if (normalizedPath === "/licensing/") {
+    return { content_language: contentLanguage, content_type: "licensing", content_id: "image-licensing", normalized_path: normalizedPath };
+  }
+  return { content_language: contentLanguage, content_type: "page", content_id: normalizedPath === "/" ? "home" : normalizedPath.slice(1, -1).replaceAll("/", "-"), normalized_path: normalizedPath };
+}
+
+const PAGE_CONTENT_CONTEXT = pageContentContext();
+
 function trackEvent(eventName, params = {}, callback) {
   if (typeof window.gtag !== "function") {
     if (callback) callback();
@@ -135,6 +173,7 @@ function trackEvent(eventName, params = {}, callback) {
 
   const eventParams = {
     site_area: "fine_art",
+    ...PAGE_CONTENT_CONTEXT,
     ...params
   };
 
@@ -169,19 +208,19 @@ function destinationPath(href) {
 }
 
 function trackTemplateView() {
-  const path = window.location.pathname;
   const pageName = (document.querySelector("h1")?.textContent || document.title).replace(/\s+/g, " ").trim().slice(0, 120);
+  const context = PAGE_CONTENT_CONTEXT;
 
-  if (/^\/works\/[^/]+\/$/.test(path)) {
-    trackEvent("view_artwork", { artwork_title: pageName, page_path: path });
-  } else if (/^\/series\/[^/]+\/$/.test(path)) {
-    trackEvent("view_series", { series_name: pageName, page_path: path });
-  } else if (/^\/projects\/[^/]+\/$/.test(path)) {
-    trackEvent("view_project", { project_name: pageName, page_path: path });
-  } else if (path === "/prints/") {
-    trackEvent("view_edition", { page_path: path });
-  } else if (path === "/licensing/") {
-    trackEvent("view_licensing", { page_path: path });
+  if (context.content_type === "artwork") {
+    trackEvent("view_artwork", { artwork_id: context.content_id, artwork_title: pageName, page_path: context.normalized_path });
+  } else if (context.content_type === "series") {
+    trackEvent("view_series", { series_id: context.content_id, series_name: pageName, page_path: context.normalized_path });
+  } else if (context.content_type === "project") {
+    trackEvent("view_project", { project_id: context.content_id, project_name: pageName, page_path: context.normalized_path });
+  } else if (context.content_type === "edition") {
+    trackEvent("view_edition", { page_path: context.normalized_path });
+  } else if (context.content_type === "licensing") {
+    trackEvent("view_licensing", { page_path: context.normalized_path });
   }
 }
 
@@ -199,11 +238,12 @@ let modalInertTargets = [];
 
 function openModal(card) {
   if (!modal || !modalImage || !closeButton) return;
+  const artworkCard = card.closest(".work-card");
   previousFocus = document.activeElement;
   modalImage.removeAttribute("srcset");
   modalImage.removeAttribute("sizes");
   modalImage.src = card.dataset.full;
-  modalImage.alt = card.querySelector("img")?.alt || "";
+  modalImage.alt = artworkCard?.querySelector("img")?.alt || card.querySelector("img")?.alt || "";
   modalTitle.textContent = card.dataset.title || "Artwork";
   modalMeta.textContent = card.dataset.meta || "";
   modalNote.textContent = card.dataset.note || "";
@@ -218,10 +258,12 @@ function openModal(card) {
   });
   document.body.style.overflow = "hidden";
   closeButton.focus();
-  trackEvent("image_zoom", {
+  trackEvent("open_lightbox", {
+    artwork_id: artworkCard?.dataset.artworkId || "",
     artwork_title: card.dataset.title || "Artwork",
     artwork_series: card.dataset.series || card.dataset.meta || "",
-    artwork_asset: destinationPath(card.dataset.full || "")
+    artwork_asset: destinationPath(card.dataset.full || ""),
+    source_module: artworkCard?.closest(".gallery-grid") ? "series_gallery" : "gallery"
   });
 }
 
@@ -239,8 +281,12 @@ function closeModal() {
   }
 }
 
-document.querySelectorAll(".work-card").forEach((card) => {
-  card.addEventListener("click", () => openModal(card));
+document.querySelectorAll(".work-zoom, button.work-card[data-full]").forEach((card) => {
+  card.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    openModal(card);
+  });
 });
 
 if (closeButton) {
@@ -306,6 +352,16 @@ document.addEventListener("click", (event) => {
   const label = linkLabel(link);
   const lowerSignal = `${href} ${label}`.toLowerCase();
 
+  if (link.classList.contains("work-card-link") || link.classList.contains("print-image-link")) {
+    const artworkCard = link.closest("[data-artwork-id]");
+    trackEvent("select_artwork", {
+      artwork_id: artworkCard?.dataset.artworkId || "",
+      destination: destinationPath(href),
+      source_module: link.classList.contains("print-image-link") ? "edition_card" : "series_gallery"
+    });
+    return;
+  }
+
   if (href.startsWith("mailto:")) {
     trackEvent("contact_click", {
       contact_method: "email",
@@ -315,7 +371,14 @@ document.addEventListener("click", (event) => {
   }
 
   if (lowerSignal.includes("print") || lowerSignal.includes("licens") || lowerSignal.includes("exhibition") || lowerSignal.includes("inquir") || href.includes("/contact/")) {
-    trackEvent("inquiry_click", {
+    const inquiryEvent = /\/licensing\/|type=licensing/i.test(href)
+      ? "licensing_cta_click"
+      : /type=print|\/prints\/|\/editions\//i.test(href)
+        ? "acquisition_cta_click"
+        : /type=exhibition|type=curatorial|exhibition|curatorial/i.test(lowerSignal)
+          ? "curatorial_inquiry_click"
+          : "inquiry_click";
+    trackEvent(inquiryEvent, {
       link_label: label,
       destination: destinationPath(href)
     });
@@ -528,7 +591,7 @@ function routeLicensingQuery() {
   const contactForm = document.querySelector('[data-inquiry-form][data-form-kind="contact"]');
   if (!contactForm || requestedType !== "licensing") return false;
 
-  const licensingUrl = new URL("/licensing/", window.location.origin);
+  const licensingUrl = new URL(localizedPath("/licensing/"), window.location.origin);
   licensingUrl.search = params.toString();
   licensingUrl.searchParams.set("type", "licensing");
   licensingUrl.hash = "licensing-form";

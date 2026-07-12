@@ -25,7 +25,7 @@
   <meta name="twitter:image" content="https://rickykwok.com/assets/art/blue-hour-cormorant-fishermen.jpg">
   <meta name="theme-color" content="#070707">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="preload" as="image" href="/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp" fetchpriority="high">
+
   <link rel="stylesheet" href="/assets/site.min.css">
   <script type="application/ld+json">
     {
@@ -54,6 +54,10 @@
       ]
     }
   </script>
+
+
+
+
 <link rel="alternate" hreflang="en" href="https://rickykwok.com/series/">
 <link rel="alternate" hreflang="zh-Hant" href="https://rickykwok.com/zh-hant/series/">
 <link rel="alternate" hreflang="zh-Hans" href="https://rickykwok.com/zh-hans/series/">
@@ -72,7 +76,10 @@
 </div></nav>
   </header>
   <main id="main">
-    <section class="hero page-hero" style="--hero-image: url('/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp')">
+    <section class="hero page-hero has-semantic-media"><picture class="hero-media">
+  <source type="image/webp" srcset="/assets/optimized-v2/art/blue-hour-cormorant-fishermen-480.webp 480w, /assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp 800w" sizes="100vw">
+  <img src="/assets/art/blue-hour-cormorant-fishermen.jpg" width="800" height="519" alt="Four bodies of work, one practice of charged time. — photography by Ricky Kwok" sizes="100vw" loading="eager" decoding="async" fetchpriority="high">
+</source></picture><span class="hero-overlay" aria-hidden="true"></span>
       <div class="hero-inner">
         <p class="eyebrow">Photography Series</p>
         <h1>Four bodies of work, one practice of charged time.</h1>
@@ -137,7 +144,8 @@
     </section>
   </main>
   <footer class="site-footer"><div class="wrap footer-row">
-<span>© <span id="year">2026</span> Ricky Kwok 郭文棣, ARPS.</span><span>Portfolio updated July 2026.</span><div class="language-switcher" aria-label="Language">
+<span>© <span id="year">2026</span> Ricky Kwok 郭文棣, ARPS.</span><span>Portfolio updated July 2026.</span>
+<div class="language-switcher" aria-label="Language">
 <a href="/series/" lang="en" aria-current="page">English</a><a href="/zh-hant/series/" lang="zh-Hant">繁中</a><a href="/zh-hans/series/" lang="zh-Hans">简体</a>
 </div>
 </div></footer>

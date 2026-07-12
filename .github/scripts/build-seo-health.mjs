@@ -5,6 +5,7 @@ const generatedAt = new Date();
 const repoRoot = new URL("../../", import.meta.url);
 const outputDir = new URL("../../seo-status/", import.meta.url);
 const allowLocalFallback = typeof globalThis.nodeRepl !== "undefined";
+const artworkManifest = JSON.parse(await readFile(new URL("../data/artwork-manifest.json", import.meta.url), "utf8"));
 
 const fetchOptions = {
   headers: {
@@ -81,6 +82,13 @@ function extractImageLocs(xml) {
   );
 }
 
+function extractImageOwners(xml) {
+  return new Map(Array.from(xml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g), (match) => [
+    match[1].trim(),
+    Array.from(match[2].matchAll(/<image:loc>([^<]+)<\/image:loc>/g), (image) => image[1].trim()),
+  ]));
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -114,6 +122,16 @@ const requiredCanonicalUrls = [
 ];
 const uniqueSitemapPages = new Set(sitemapPages);
 const uniqueImageAssets = new Set(imageAssets);
+const imageOwners = imageSitemap.ok ? extractImageOwners(imageSitemap.text) : new Map();
+const expectedImageOwners = new Map(artworkManifest.artworks.map((artwork) => [
+  `${BASE_URL}${artwork.canonicalPath}`,
+  `${BASE_URL}${artwork.primaryImage.url}`,
+]));
+const imageOwnershipMatchesManifest = imageOwners.size === expectedImageOwners.size
+  && [...expectedImageOwners].every(([pageUrl, imageUrl]) => {
+    const imageUrls = imageOwners.get(pageUrl) || [];
+    return imageUrls.length === 1 && imageUrls[0] === imageUrl;
+  });
 
 const checks = [
   {
@@ -149,9 +167,9 @@ const checks = [
     ok: imageSitemap.ok && imageSitemap.text.includes("image:image"),
   },
   {
-    detail: `${imageSitemapPages.length} landing pages and ${uniqueImageAssets.size} unique image URLs found`,
-    name: "Image sitemap has a deduplicated artwork inventory",
-    ok: imageAssets.length === uniqueImageAssets.size && uniqueImageAssets.size >= 40,
+    detail: `${imageSitemapPages.length} artwork landing pages and ${uniqueImageAssets.size} primary image URLs; manifest expects ${expectedImageOwners.size} one-to-one records`,
+    name: "Image sitemap has an artwork-owned primary-image inventory",
+    ok: imageAssets.length === uniqueImageAssets.size && imageOwnershipMatchesManifest,
   },
   {
     detail: `${home.status} ${home.contentType}`,

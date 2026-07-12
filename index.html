@@ -26,30 +26,21 @@
   <meta name="twitter:description" content="Hong Kong fine-art photography: ritual, city light, motion, and constructed impact.">
   <meta name="twitter:image" content="https://rickykwok.com/assets/art/light-encroached-homes.jpg">
   <meta name="theme-color" content="#070707">
-  <link rel="preload" as="image" href="/assets/optimized-v2/art/light-encroached-homes-800.avif" type="image/avif" media="(max-width: 640px)" fetchpriority="high">
-  <link rel="preload" as="image" href="/assets/optimized-v2/art/light-encroached-homes-1024.avif" type="image/avif" media="(min-width: 641px)" fetchpriority="high">
+
+
   <link rel="stylesheet" href="/assets/site.min.css">
   <style>
-    body.home .hero {
-      background-image:
-        linear-gradient(90deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .36) 52%, rgba(0, 0, 0, .08)),
-        linear-gradient(0deg, rgba(7, 7, 7, .92), rgba(7, 7, 7, 0) 42%),
-        image-set(url('/assets/optimized-v2/art/light-encroached-homes-1024.avif') type('image/avif'), url('/assets/optimized-v2/art/light-encroached-homes-1280.webp') type('image/webp'));
-    }
     body.home .work-card picture { display: contents; }
     @media (max-width: 640px) {
-      body.home .hero {
-        --hero-image: url('/assets/optimized-v2/art/light-encroached-homes-800.webp') !important;
-        background-image:
-          linear-gradient(90deg, rgba(0, 0, 0, .84), rgba(0, 0, 0, .36) 52%, rgba(0, 0, 0, .08)),
-          linear-gradient(0deg, rgba(7, 7, 7, .92), rgba(7, 7, 7, 0) 42%),
-          image-set(url('/assets/optimized-v2/art/light-encroached-homes-800.avif') type('image/avif'), url('/assets/optimized-v2/art/light-encroached-homes-800.webp') type('image/webp'));
-      }
       body.home .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; }
       body.home .series-jump a { background: linear-gradient(135deg, #171717, #26211c); box-shadow: none; }
     }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://rickykwok.com/#profile","url":"https://rickykwok.com/","name":"Ricky Kwok 郭文棣, ARPS","description":"Official portfolio of Hong Kong fine-art and documentary photographer Ricky Kwok 郭文棣, also known as Kwok Man Tai.","inLanguage":"en","dateModified":"2026-07-11T00:00:00-07:00","mainEntity":{"@type":"Person","@id":"https://rickykwok.com/#person","name":"Ricky Kwok","alternateName":["郭文棣","Kwok Man Tai"],"honorificSuffix":"ARPS","jobTitle":"Fine-art and documentary photographer","url":"https://rickykwok.com/","sameAs":["https://www.dcfever.com/column/profile.php?id=461","https://www.facebook.com/rickykwokbc/"]}},{"@type":"WebSite","@id":"https://rickykwok.com/#website","url":"https://rickykwok.com/","name":"Ricky Kwok Photography","inLanguage":"en","publisher":{"@id":"https://rickykwok.com/#person"}},{"@type":"CollectionPage","@id":"https://rickykwok.com/selected-works/#collection","name":"Selected Works by Ricky Kwok","url":"https://rickykwok.com/selected-works/","isPartOf":{"@id":"https://rickykwok.com/#website"},"about":{"@id":"https://rickykwok.com/#person"}},{"@type":"ImageObject","@id":"https://rickykwok.com/assets/art/light-encroached-homes.jpg#image","name":"Light Encroached Homes / 光染民居","contentUrl":"https://rickykwok.com/assets/art/light-encroached-homes.jpg","creator":{"@id":"https://rickykwok.com/#person"},"representativeOfPage":true,"creditText":"Ricky Kwok","copyrightNotice":"© Ricky Kwok","copyrightHolder":{"@id":"https://rickykwok.com/#person"},"license":"https://rickykwok.com/licensing/","acquireLicensePage":"https://rickykwok.com/licensing/"}]}</script>
+
+
+
+
 <link rel="alternate" hreflang="en" href="https://rickykwok.com/">
 <link rel="alternate" hreflang="zh-Hant" href="https://rickykwok.com/zh-hant/">
 <link rel="alternate" hreflang="zh-Hans" href="https://rickykwok.com/zh-hans/">
@@ -72,7 +63,11 @@
   </header>
 
   <main id="main">
-    <section class="hero" style="--hero-image: url('/assets/optimized-v2/art/light-encroached-homes-1280.webp')" aria-label="Ricky Kwok fine art photography">
+    <section class="hero has-semantic-media" aria-label="Ricky Kwok fine art photography"><picture class="hero-media">
+  <source type="image/avif" srcset="/assets/optimized-v2/art/light-encroached-homes-480.avif 480w, /assets/optimized-v2/art/light-encroached-homes-720.avif 720w, /assets/optimized-v2/art/light-encroached-homes-800.avif 800w, /assets/optimized-v2/art/light-encroached-homes-1024.avif 1024w" sizes="100vw">
+<source type="image/webp" srcset="/assets/optimized-v2/art/light-encroached-homes-480.webp 480w, /assets/optimized-v2/art/light-encroached-homes-800.webp 800w, /assets/optimized-v2/art/light-encroached-homes-1200.webp 1200w, /assets/optimized-v2/art/light-encroached-homes-1280.webp 1280w" sizes="100vw">
+  <img src="/assets/art/light-encroached-homes.jpg" width="1280" height="831" alt="Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky." sizes="100vw" loading="eager" decoding="async" fetchpriority="high">
+</source></source></picture><span class="hero-overlay" aria-hidden="true"></span>
       <div class="hero-inner">
         <p class="eyebrow">Hong Kong Fine-Art &amp; Documentary Photographer</p>
         <h1>Ricky Kwok <span class="name-lock">郭文棣</span>, ARPS</h1>
@@ -306,7 +301,8 @@
     <div class="wrap footer-row">
       <span>© <span id="year">2026</span> Ricky Kwok 郭文棣, ARPS.</span>
       <span><a href="/zh-hant/" lang="zh-Hant">繁體中文</a> · <a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a></span>
-    <div class="language-switcher" aria-label="Language">
+
+<div class="language-switcher" aria-label="Language">
 <a href="/" lang="en" aria-current="page">English</a><a href="/zh-hant/" lang="zh-Hant">繁中</a><a href="/zh-hans/" lang="zh-Hans">简体</a>
 </div>
 </div>

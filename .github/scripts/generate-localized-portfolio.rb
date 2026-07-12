@@ -189,17 +189,42 @@ def item_record(href)
 end
 
 def localized_work_card(card)
-  href = card.name == "a" ? card["href"] : card.at_css("a")&.[]("href")
+  direct_link = card.name == "a" ? card : card.at_css("a.work-card-link, a[href]")
+  href = direct_link&.[]("href")
   record = item_record(href) || {}
   title = record["title"] || card.at_css(".work-caption strong, h3")&.text&.strip || "攝影作品"
   detail = record["series"] || card.at_css(".work-caption small")&.text&.strip || "郭文棣攝影作品"
   image = card.at_css("img")
   classes = ["work-card", card["class"].to_s.split.reject { |name| name == "work-card" }].flatten.join(" ")
+  zoom = card.at_css(".work-zoom, button.work-card")
+  zoom_data = %w[data-full data-title data-meta data-note data-print data-series].map do |name|
+    value = zoom&.[](name) || card[name]
+    %(#{name}="#{esc(value)}") unless value.to_s.empty?
+  end.compact.join(" ")
+  if href.to_s.empty?
+    # A series may legitimately include a preview-only image without an approved
+    # artwork record. Keep it as a zoom control rather than emitting an empty link.
+    return <<~HTML
+      <button class="#{esc(classes)}" type="button" #{zoom_data} aria-label="放大檢視#{esc(title)}">
+        #{image_tag(image, alt: "郭文棣攝影作品《#{title}》")}
+        <span class="work-caption"><strong>#{esc(title)}</strong><small>#{esc(detail)}</small><span class="work-status">放大檢視</span></span>
+      </button>
+    HTML
+  end
+
+  zoom_button = if zoom_data.empty?
+                  ""
+                else
+                  %(<button class="work-zoom" type="button" #{zoom_data} aria-label="放大檢視#{esc(title)}">放大</button>)
+                end
   <<~HTML
-    <a class="#{esc(classes)}" href="#{esc(local_href(href))}">
-      #{image_tag(image, alt: "郭文棣攝影作品《#{title}》")}
-      <span class="work-caption"><strong>#{esc(title)}</strong><small>#{esc(detail)}</small><span class="work-status">查看完整作品資料</span></span>
-    </a>
+    <article class="#{esc(classes)}" data-artwork-id="#{esc(href.to_s[%r{/works/([^/]+)/}, 1])}">
+      <a class="work-card-link" href="#{esc(local_href(href))}" aria-label="查看完整作品：#{esc(title)}">
+        #{image_tag(image, alt: "郭文棣攝影作品《#{title}》")}
+        <span class="work-caption"><strong>#{esc(title)}</strong><small>#{esc(detail)}</small><span class="work-status">查看完整作品資料</span></span>
+      </a>
+      #{zoom_button}
+    </article>
   HTML
 end
 

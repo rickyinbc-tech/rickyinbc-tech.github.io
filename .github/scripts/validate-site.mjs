@@ -6,6 +6,8 @@ const ORIGIN = "https://rickykwok.com";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const excludedDirectories = new Set([".git", ".github", "assets"]);
 const errors = [];
+const artworkManifest = JSON.parse(await readFile(path.join(repoRoot, ".github/data/artwork-manifest.json"), "utf8"));
+const edgeRedirectConfig = JSON.parse(await readFile(path.join(repoRoot, "edge/redirect-map.json"), "utf8"));
 const placeholderPatterns = [
   /此頁提供與原頁相對應/,
   /此页提供与原页面对应/,
@@ -83,6 +85,7 @@ async function htmlFiles(directory = repoRoot) {
 }
 
 const indexable = [];
+const indexableDocuments = new Map();
 const titleOwners = new Map();
 const descriptionOwners = new Map();
 const indexableEnglishRoutes = [];
@@ -148,12 +151,17 @@ for (const file of await htmlFiles()) {
       indexableEnglishRoutes.push(route);
       englishImageCounts.set(route, (html.match(/<img\b/gi) || []).length);
     }
+    indexableDocuments.set(route, { html, relative });
     indexable.push(expectedCanonical);
   }
 
   for (const match of html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)) {
     const value = match[1].trim();
-    if (!value || value.startsWith("#") || /^(?:mailto:|tel:|javascript:|data:)/i.test(value)) continue;
+    if (!value) {
+      errors.push(`${relative}: empty href or src attribute`);
+      continue;
+    }
+    if (value.startsWith("#") || /^(?:mailto:|tel:|javascript:|data:)/i.test(value)) continue;
     let url;
     try {
       url = new URL(value, expectedCanonical);
@@ -185,12 +193,155 @@ for (const route of indexableEnglishRoutes) {
   }
 }
 
+function schemaNodes(value) {
+  if (Array.isArray(value)) return value.flatMap(schemaNodes);
+  if (!value || typeof value !== "object") return [];
+  return [value, ...Object.values(value).flatMap(schemaNodes)];
+}
+
+function parsedSchemaNodes(html) {
+  const values = [];
+  for (const match of html.matchAll(/<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      values.push(...schemaNodes(JSON.parse(match[1])));
+    } catch {
+      // The earlier generic JSON-LD check reports a useful parsing error.
+    }
+  }
+  return values;
+}
+
+function matchesType(node, type) {
+  return node?.["@type"] === type || (Array.isArray(node?.["@type"]) && node["@type"].includes(type));
+}
+
+function heroImageSource(html) {
+  return html.match(/<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1] || "";
+}
+
+function featureImageSource(html) {
+  return html.match(/class=["'][^"']*\bfeature-image\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1] || "";
+}
+
+const manifestIds = new Set();
+const manifestCanonicalPaths = new Set();
+if (!Array.isArray(artworkManifest.artworks) || !artworkManifest.artworks.length) {
+  errors.push("artwork manifest has no artwork records");
+}
+
+for (const artwork of artworkManifest.artworks || []) {
+  const { id, canonicalPath, primaryImage } = artwork;
+  if (!id || !canonicalPath || !primaryImage?.url || !primaryImage?.width || !primaryImage?.height || !primaryImage?.mimeType) {
+    errors.push(`artwork manifest record is incomplete: ${id || "unknown"}`);
+    continue;
+  }
+  if (manifestIds.has(id)) errors.push(`artwork manifest duplicate id: ${id}`);
+  manifestIds.add(id);
+  if (manifestCanonicalPaths.has(canonicalPath)) errors.push(`artwork manifest duplicate canonical path: ${canonicalPath}`);
+  manifestCanonicalPaths.add(canonicalPath);
+  const expectedImageUrl = new URL(primaryImage.url, ORIGIN).href;
+  const expectedImageId = `${expectedImageUrl}#image`;
+  const expectedEntityId = `${ORIGIN}/#artwork-${id}`;
+
+  for (const [language, prefix] of [["en", ""], ["zh-Hant", "/zh-hant"], ["zh-Hans", "/zh-hans"]]) {
+    const route = `${prefix}${canonicalPath}`.replace(/\/\//g, "/");
+    const page = indexableDocuments.get(route);
+    if (!page) {
+      errors.push(`${id}: missing indexable ${language} artwork page ${route}`);
+      continue;
+    }
+    const { html, relative } = page;
+    if (heroImageSource(html) !== primaryImage.url) {
+      errors.push(`${relative}: hero primary image does not match artwork manifest for ${id}`);
+    }
+    if (featureImageSource(html) !== primaryImage.url) {
+      errors.push(`${relative}: feature primary image does not match artwork manifest for ${id}`);
+    }
+    const ogImage = html.match(/<meta\b[^>]*property=["']og:image["'][^>]*content=["']([^"']+)["']/i)?.[1] || "";
+    if (ogImage !== expectedImageUrl) {
+      errors.push(`${relative}: Open Graph image does not match artwork manifest for ${id}`);
+    }
+    const nodes = parsedSchemaNodes(html);
+    const webpage = nodes.find((node) => matchesType(node, "WebPage") && node["@id"] === `${ORIGIN}${route}#webpage`);
+    const visual = nodes.find((node) => matchesType(node, "VisualArtwork") && node["@id"] === expectedEntityId);
+    const image = nodes.find((node) => matchesType(node, "ImageObject") && node["@id"] === expectedImageId);
+    if (!webpage || webpage.mainEntity?.["@id"] !== expectedEntityId || webpage.primaryImageOfPage?.["@id"] !== expectedImageId) {
+      errors.push(`${relative}: WebPage image/entity graph does not match artwork manifest for ${id}`);
+    }
+    if (!visual || visual.image?.["@id"] !== expectedImageId) {
+      errors.push(`${relative}: VisualArtwork image graph does not match artwork manifest for ${id}`);
+    }
+    if (!image || image.contentUrl !== expectedImageUrl || Number(image.width) !== Number(primaryImage.width) || Number(image.height) !== Number(primaryImage.height) || image.encodingFormat !== primaryImage.mimeType) {
+      errors.push(`${relative}: ImageObject does not match artwork manifest for ${id}`);
+    }
+  }
+}
+
+for (const [route, page] of indexableDocuments) {
+  const hasHero = /<[^>]+class=["'][^"']*\bhero\b[^"']*["'][^>]*>/i.test(page.html);
+  if (hasHero && !heroImageSource(page.html)) {
+    errors.push(`${page.relative}: visual hero lacks semantic responsive image media`);
+  }
+  if (hasHero && /--hero-image/i.test(page.html)) {
+    errors.push(`${page.relative}: visual hero still relies on CSS-only image media`);
+  }
+}
+
+const staticAliasTargets = new Map();
+for (const [route, page] of indexableDocuments) {
+  // Indexable pages must never be legacy redirect sources.
+  if (/<meta\s+http-equiv=["']refresh["']/i.test(page.html)) errors.push(`${page.relative}: indexable page contains a client redirect`);
+}
+for (const file of await htmlFiles()) {
+  const relative = path.relative(repoRoot, file).split(path.sep).join("/");
+  const route = routeFor(relative);
+  const html = await readFile(file, "utf8");
+  const target = html.match(/<meta\s+http-equiv=["']refresh["']\s+content=["'][^"']*url\s*=\s*([^"']+)["']/i)?.[1]?.trim();
+  if (target) staticAliasTargets.set(route, target);
+}
+for (const [route, target] of staticAliasTargets) {
+  if (edgeRedirectConfig.redirects?.[route] !== target) {
+    errors.push(`${route}: edge redirect map does not match static fallback target ${target}`);
+  }
+  const destination = new URL(target, ORIGIN);
+  const destinationFile = routeToFile(destination.pathname);
+  if (!await exists(destinationFile)) errors.push(`${route}: edge redirect target is missing ${destination.pathname}`);
+  else if (isNoindex(await readFile(destinationFile, "utf8"))) errors.push(`${route}: edge redirect target is noindex ${destination.pathname}`);
+}
+for (const route of Object.keys(edgeRedirectConfig.redirects || {})) {
+  if (!staticAliasTargets.has(route)) errors.push(`${route}: edge redirect map has no matching static fallback alias`);
+}
+
 const sitemap = await readFile(path.join(repoRoot, "sitemap.xml"), "utf8");
 const sitemapUrls = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (match) => match[1]);
 const expected = [...indexable].sort();
 const actual = [...sitemapUrls].sort();
 if (JSON.stringify(expected) !== JSON.stringify(actual)) {
   errors.push(`sitemap parity failed: ${expected.length} indexable pages vs ${actual.length} sitemap URLs`);
+}
+
+const imageSitemap = await readFile(path.join(repoRoot, "image-sitemap.xml"), "utf8");
+const imageBlocks = Array.from(imageSitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g));
+const imageEntries = new Map(imageBlocks.map((block) => [
+  block[1],
+  Array.from(block[2].matchAll(/<image:loc>([^<]+)<\/image:loc>/g), (match) => match[1])
+]));
+const expectedImageOwners = new Map((artworkManifest.artworks || []).map((artwork) => [
+  new URL(artwork.canonicalPath, ORIGIN).href,
+  new URL(artwork.primaryImage.url, ORIGIN).href
+]));
+if (imageEntries.size !== expectedImageOwners.size) {
+  errors.push(`image sitemap ownership parity failed: ${imageEntries.size} entries vs ${expectedImageOwners.size} artwork records`);
+}
+for (const [pageUrl, imageUrl] of expectedImageOwners) {
+  const actualImages = imageEntries.get(pageUrl) || [];
+  if (actualImages.length !== 1 || actualImages[0] !== imageUrl) {
+    errors.push(`image sitemap does not assign exactly one declared primary image to ${pageUrl}`);
+  }
+}
+for (const [pageUrl, images] of imageEntries) {
+  if (!expectedImageOwners.has(pageUrl)) errors.push(`image sitemap has non-artwork owner ${pageUrl}`);
+  if (images.length !== 1) errors.push(`image sitemap owner has ${images.length} images: ${pageUrl}`);
 }
 
 if (errors.length) {

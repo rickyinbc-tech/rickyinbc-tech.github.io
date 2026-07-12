@@ -1,4 +1,4 @@
-import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { access, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -13,11 +13,6 @@ function escapeXml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&apos;");
-}
-
-function attribute(tag, name) {
-  const match = tag.match(new RegExp(`\\b${name}=["']([^"']*)["']`, "i"));
-  return match?.[1]?.trim() || "";
 }
 
 function pagePath(relativeFile) {
@@ -42,28 +37,6 @@ function modificationDate(html, fallback) {
     || html.match(/"dateModified"\s*:\s*"([^"]+)"/i)?.[1]
     || "";
   return /^\d{4}-\d{2}-\d{2}/.test(value) ? value.slice(0, 10) : fallback;
-}
-
-function imageRecords(html) {
-  const records = [];
-  for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
-    const src = attribute(match[0], "src");
-    if (!src || src.startsWith("data:")) continue;
-    const url = new URL(src, SITE_ORIGIN).href;
-    if (!url.startsWith(`${SITE_ORIGIN}/assets/`)) continue;
-    const alt = attribute(match[0], "alt");
-    records.push({ alt, url });
-  }
-  return records;
-}
-
-function pagePriority(url) {
-  if (url.includes("/works/")) return 0;
-  if (url.includes("/projects/")) return 1;
-  if (url.includes("/series/")) return 2;
-  if (url.endsWith("/selected-works/")) return 3;
-  if (url === `${SITE_ORIGIN}/`) return 4;
-  return 5;
 }
 
 async function htmlFiles(directory = repoRoot) {
@@ -93,8 +66,6 @@ for (const file of await htmlFiles()) {
   if (!isIndexable(html, url)) continue;
   const fileDate = (await stat(file)).mtime.toISOString().slice(0, 10);
   pages.push({
-    html,
-    images: imageRecords(html),
     lastmod: modificationDate(html, existingDates.get(url) || fileDate),
     url,
   });
@@ -108,22 +79,59 @@ ${pages.map((page) => `  <url>\n    <loc>${escapeXml(page.url)}</loc>\n    <last
 </urlset>
 `;
 
-const claimedImages = new Set();
-const imagePages = [];
-for (const page of [...pages].sort((a, b) => pagePriority(a.url) - pagePriority(b.url) || a.url.localeCompare(b.url))) {
-  const uniqueImages = [];
-  for (const image of page.images) {
-    if (claimedImages.has(image.url)) continue;
-    claimedImages.add(image.url);
-    uniqueImages.push(image);
-  }
-  if (uniqueImages.length) imagePages.push({ ...page, images: uniqueImages });
+// Image discovery is deliberately artwork-owned, not DOM-order-owned. A work can
+// appear as a thumbnail or related image on many pages; none of those appearances
+// may take ownership of its canonical image-sitemap entry.
+const manifestPath = path.join(repoRoot, ".github/data/artwork-manifest.json");
+const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+const artworks = manifest.artworks;
+if (!Array.isArray(artworks) || !artworks.length) {
+  throw new Error("Artwork manifest must contain a non-empty artworks array.");
 }
 
-imagePages.sort((a, b) => a.url.localeCompare(b.url));
+const manifestIds = new Set();
+const manifestPages = new Set();
+const indexablePageUrls = new Set(pages.map((page) => page.url));
+for (const artwork of artworks) {
+  const id = artwork?.id;
+  const canonicalPath = artwork?.canonicalPath;
+  const image = artwork?.primaryImage;
+  if (!id || !canonicalPath || !image?.url || !image?.width || !image?.height || !image?.mimeType) {
+    throw new Error(`Artwork manifest record is incomplete: ${id || "unknown"}`);
+  }
+  if (manifestIds.has(id)) throw new Error(`Artwork manifest has duplicate id: ${id}`);
+  manifestIds.add(id);
+
+  const pageUrl = new URL(canonicalPath, SITE_ORIGIN).href;
+  if (manifestPages.has(pageUrl)) throw new Error(`Artwork manifest has duplicate canonical URL: ${pageUrl}`);
+  manifestPages.add(pageUrl);
+  if (!indexablePageUrls.has(pageUrl)) {
+    throw new Error(`Artwork manifest URL is not an indexable canonical page: ${pageUrl}`);
+  }
+
+  const imageUrl = new URL(image.url, SITE_ORIGIN);
+  if (imageUrl.origin !== SITE_ORIGIN || !imageUrl.pathname.startsWith("/assets/")) {
+    throw new Error(`Artwork manifest image must be a local public asset: ${id}`);
+  }
+  try {
+    await access(path.join(repoRoot, decodeURIComponent(imageUrl.pathname).replace(/^\//, "")));
+  } catch {
+    throw new Error(`Artwork manifest image is missing from the repository: ${id} (${image.url})`);
+  }
+}
+
+const imagePages = artworks
+  .map((artwork) => ({
+    image: {
+      title: artwork.title,
+      url: new URL(artwork.primaryImage.url, SITE_ORIGIN).href,
+    },
+    url: new URL(artwork.canonicalPath, SITE_ORIGIN).href,
+  }))
+  .sort((a, b) => a.url.localeCompare(b.url));
 const imageSitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${imagePages.map((page) => `  <url>\n    <loc>${escapeXml(page.url)}</loc>\n${page.images.map((image) => `    <image:image>\n      <image:loc>${escapeXml(image.url)}</image:loc>${image.alt ? `\n      <image:title>${escapeXml(image.alt)}</image:title>` : ""}\n    </image:image>`).join("\n")}\n  </url>`).join("\n")}
+${imagePages.map((page) => `  <url>\n    <loc>${escapeXml(page.url)}</loc>\n    <image:image>\n      <image:loc>${escapeXml(page.image.url)}</image:loc>\n      <image:title>${escapeXml(page.image.title)}</image:title>\n    </image:image>\n  </url>`).join("\n")}
 </urlset>
 `;
 
@@ -132,4 +140,4 @@ await Promise.all([
   writeFile(path.join(repoRoot, "image-sitemap.xml"), imageSitemap),
 ]);
 
-console.log(`Generated ${pages.length} canonical pages and ${claimedImages.size} unique image records.`);
+console.log(`Generated ${pages.length} canonical pages and ${imagePages.length} artwork-owned image records.`);
