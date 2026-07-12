@@ -374,6 +374,33 @@ const actual = [...sitemapUrls].sort();
 if (JSON.stringify(expected) !== JSON.stringify(actual)) {
   errors.push(`sitemap parity failed: ${expected.length} indexable pages vs ${actual.length} sitemap URLs`);
 }
+const expectedForwardedHosts = [
+  "balanced.rickykwok.com",
+  "calculator.rickykwok.com",
+  "early.rickykwok.com",
+  "finn.rickykwok.com",
+  "grid.rickykwok.com",
+  "infrastructure.rickykwok.com",
+  "interest.rickykwok.com",
+  "lipper.rickykwok.com",
+  "mortgage.rickykwok.com",
+  "mtg.rickykwok.com",
+  "notes.rickykwok.com",
+  "photos.rickykwok.com",
+  "poker.rickykwok.com",
+  "portfolio.rickykwok.com",
+  "resource.rickykwok.com",
+  "retired.rickykwok.com",
+  "spy.rickykwok.com",
+  "whymf.rickykwok.com"
+];
+const configuredForwardedHosts = new Set(edgeRedirectConfig.forwardedHosts || []);
+for (const hostname of expectedForwardedHosts) {
+  if (!configuredForwardedHosts.has(hostname)) errors.push(`edge redirect map is missing preserved forwarding host ${hostname}`);
+}
+for (const hostname of configuredForwardedHosts) {
+  if (!/^[a-z0-9-]+\.rickykwok\.com$/.test(hostname)) errors.push(`edge forwarded host is invalid: ${hostname}`);
+}
 
 const imageSitemap = await readFile(path.join(repoRoot, "image-sitemap.xml"), "utf8");
 const imageBlocks = Array.from(imageSitemap.matchAll(/<url>\s*<loc>([^<]+)<\/loc>([\s\S]*?)<\/url>/g));

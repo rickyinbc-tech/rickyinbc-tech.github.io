@@ -74,5 +74,25 @@
     "photo.rickykwok.com": {
       "/": "/"
     }
-  }
+  },
+  "forwardedHosts": [
+    "balanced.rickykwok.com",
+    "calculator.rickykwok.com",
+    "early.rickykwok.com",
+    "finn.rickykwok.com",
+    "grid.rickykwok.com",
+    "infrastructure.rickykwok.com",
+    "interest.rickykwok.com",
+    "lipper.rickykwok.com",
+    "mortgage.rickykwok.com",
+    "mtg.rickykwok.com",
+    "notes.rickykwok.com",
+    "photos.rickykwok.com",
+    "poker.rickykwok.com",
+    "portfolio.rickykwok.com",
+    "resource.rickykwok.com",
+    "retired.rickykwok.com",
+    "spy.rickykwok.com",
+    "whymf.rickykwok.com"
+  ]
 }

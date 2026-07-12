@@ -5,8 +5,6 @@
   "compatibility_date": "2026-07-11",
   "routes": [
     { "pattern": "rickykwok.com/*", "zone_name": "rickykwok.com" },
-    { "pattern": "www.rickykwok.com/*", "zone_name": "rickykwok.com" },
-    { "pattern": "blog.rickykwok.com/*", "zone_name": "rickykwok.com" },
-    { "pattern": "photo.rickykwok.com/*", "zone_name": "rickykwok.com" }
+    { "pattern": "*.rickykwok.com/*", "zone_name": "rickykwok.com" }
   ]
 }

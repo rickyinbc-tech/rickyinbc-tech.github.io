@@ -2,6 +2,7 @@ import redirectConfig from "./redirect-map.json" with { type: "json" };
 
 const redirects = redirectConfig.redirects;
 const hostRedirects = redirectConfig.hostRedirects || {};
+const forwardedHosts = new Set((redirectConfig.forwardedHosts || []).map((hostname) => hostname.toLowerCase()));
 const safeQueryParameters = new Set(redirectConfig.preserveQueryParameters);
 const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
@@ -28,6 +29,7 @@ function mappedDestination(requestUrl) {
   if (hostname === `www.${canonicalHost}`) {
     return exactOrTrailingSlashRedirect(redirects, requestUrl.pathname) || requestUrl.pathname;
   }
+  if (forwardedHosts.has(hostname)) return "/";
   return exactOrTrailingSlashRedirect(hostRedirects[hostname], requestUrl.pathname);
 }
 
