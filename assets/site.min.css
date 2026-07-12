@@ -866,7 +866,7 @@ article.work-card {
   padding: 0;
   margin: 0;
   list-style: none;
-  border-top: 1px solid var(--paper-line);
+  border-top: 1px solid var(--line);
 }
 
 .recognition-list li,
@@ -875,17 +875,33 @@ article.work-card {
   grid-template-columns: 86px minmax(0, 1fr);
   gap: 18px;
   padding: 17px 0;
-  border-bottom: 1px solid var(--paper-line);
-  color: #2a241e;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
 }
 
 .recognition-list time,
 .award-list time {
-  color: #9a4a20;
+  color: var(--gold);
   font-size: 12px;
   font-weight: 860;
   letter-spacing: .12em;
   text-transform: uppercase;
+}
+
+.section-warm .recognition-list,
+.section-warm .award-list {
+  border-top-color: var(--paper-line);
+}
+
+.section-warm .recognition-list li,
+.section-warm .award-list li {
+  border-bottom-color: var(--paper-line);
+  color: #2a241e;
+}
+
+.section-warm .recognition-list time,
+.section-warm .award-list time {
+  color: #9a4a20;
 }
 
 .recognition-list span,
