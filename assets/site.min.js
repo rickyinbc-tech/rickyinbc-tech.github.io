@@ -766,22 +766,22 @@ if (confirmationPage) {
     if (PAGE_LANGUAGE === "zh-Hant") {
       if (eyebrow) eyebrow.textContent = "查詢已收到";
       if (heading) heading.textContent = "多謝，你的要求已經送出。";
-      if (introduction) introduction.textContent = "結構化表格已轉交工作室；表格服務亦應向你發出自動確認。";
+      if (introduction) introduction.textContent = "你的瀏覽器已從表格服務返回這個工作室確認頁。請保留以下編號，待工作室覆核你的查詢。";
     } else if (PAGE_LANGUAGE === "zh-Hans") {
       if (eyebrow) eyebrow.textContent = "查询已收到";
       if (heading) heading.textContent = "谢谢，你的要求已经送出。";
-      if (introduction) introduction.textContent = "结构化表格已转交工作室；表格服务也应向你发出自动确认。";
+      if (introduction) introduction.textContent = "你的浏览器已从表单服务返回这个工作室确认页面。请保留下方编号，等待工作室审核你的查询。";
     } else {
       if (eyebrow) eyebrow.textContent = "Inquiry received";
       if (heading) heading.textContent = "Thank you. Your request has been sent.";
-      if (introduction) introduction.textContent = "Your structured form submission has been forwarded to the studio. You should also receive an automatic confirmation from the form service.";
+      if (introduction) introduction.textContent = "Your browser has returned from the form service to this studio confirmation page. Keep the reference below while the studio reviews your request.";
     }
     loadAnalytics();
-    trackEvent(inquiryEventName(pendingInquiry.type || type, "submit"), {
+    trackEvent(inquiryEventName(pendingInquiry.type || type, "returned"), {
       inquiry_type: pendingInquiry.type || type,
       source_page: pendingInquiry.source_page || "",
       has_artwork_context: pendingInquiry.artwork ? "yes" : "no",
-      confirmation_page_reached: "yes"
+      form_returned_to_confirmation: "yes"
     });
     sessionRemove(INQUIRY_STORAGE.pending);
   }

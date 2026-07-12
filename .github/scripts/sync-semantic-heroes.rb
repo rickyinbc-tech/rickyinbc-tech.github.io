@@ -9,11 +9,17 @@ require "cgi"
 require "fileutils"
 require "nokogiri"
 require "shellwords"
+require "set"
 
 ROOT = File.expand_path("../..", __dir__)
 ORIGIN = "https://rickykwok.com"
 EXCLUDED = %w[.git .github assets].freeze
 DIMENSIONS = {}
+ONLY = ARGV.each_with_object(Set.new) do |argument, paths|
+  next unless argument.start_with?("--only=")
+
+  argument.delete_prefix("--only=").split(",").each { |path| paths << path }
+end
 
 def esc(value)
   CGI.escapeHTML(value.to_s)
@@ -118,8 +124,16 @@ def html_files(directory = ROOT)
   end
 end
 
+def selected?(file)
+  return true if ONLY.empty?
+
+  relative = file.delete_prefix(ROOT + "/")
+  without_index = relative.sub(%r{/index\.html\z}, "")
+  ONLY.include?(relative) || ONLY.include?(without_index)
+end
+
 changed = 0
-(html_files + [File.join(ROOT, "404.html")]).uniq.each do |file|
+(html_files + [File.join(ROOT, "404.html")]).uniq.select { |file| selected?(file) }.each do |file|
   document = Nokogiri::HTML(File.read(file))
   hero = document.at_css("main .hero")
   next unless hero

@@ -5,6 +5,7 @@ require "cgi"
 require "fileutils"
 require "json"
 require "nokogiri"
+require "set"
 require "yaml"
 
 ROOT = File.expand_path("../..", __dir__)
@@ -16,6 +17,75 @@ PROJECTS = DATA.fetch("projects")
 COLLECTIONS = DATA.fetch("collections")
 CORE = DATA.fetch("core")
 AWARDS = DATA.fetch("awards")
+ONLY = ARGV.each_with_object(Set.new) do |argument, paths|
+  next unless argument.start_with?("--only=")
+
+  argument.delete_prefix("--only=").split(",").each { |path| paths << path }
+end
+
+# These previews are intentionally zoom-only: there is no approved permanent
+# artwork record for them yet. Their existing English notes are translated here
+# so Chinese visitors never open an English-only lightbox.
+PREVIEW_LIGHTBOX = {
+  "/assets/art/ancestral-kitchen-light.jpg" => {
+    "title" => "祖屋廚房之光",
+    "meta" => "儀式系列",
+    "note" => "一道光把煙霧與身體動作塑成室內景觀。"
+  },
+  "/assets/art/candle-impact.jpg" => {
+    "title" => "燭光衝擊",
+    "meta" => "碰撞系列",
+    "note" => "火焰與水在深黑空間中凝住猛烈的一刻。"
+  },
+  "/assets/art/chalk-impact.jpg" => {
+    "title" => "粉筆衝擊",
+    "meta" => "碰撞系列",
+    "note" => "粉筆折成粉塵、碎片與明確的力量方向。"
+  },
+  "/assets/art/divers-motion.jpg" => {
+    "title" => "躍入水中的動態",
+    "meta" => "動態系列",
+    "note" => "比賽起跳化成一道由色彩與身體組成的水平節奏。"
+  },
+  "/assets/art/festival-dragon.jpg" => {
+    "title" => "節慶舞龍",
+    "meta" => "儀式系列",
+    "note" => "節慶能量在光線與街道中化成集體編舞。"
+  },
+  "/assets/art/hearth-ritual.jpg" => {
+    "title" => "爐火儀式",
+    "meta" => "儀式系列",
+    "note" => "家中的火光把劇場、記憶與動作聚在一起。"
+  },
+  "/assets/art/hong-kong-fisheye-street.jpg" => {
+    "title" => "香港魚眼街景",
+    "meta" => "城市之光系列",
+    "note" => "彎曲的空間與黃昏色彩把城市壓縮成一個舞台。"
+  },
+  "/assets/art/sack-race-village.jpg" => {
+    "title" => "鄉村麻包競賽",
+    "meta" => "儀式系列",
+    "note" => "遊戲、建築與孩童動作組成公共的鄉村場景。"
+  },
+  "/assets/art/village-elders-laughter.jpg" => {
+    "title" => "鄉村長者笑聲",
+    "meta" => "儀式系列",
+    "note" => "村屋外的笑聲呈現世代之間的溫度與互動。"
+  },
+  "/assets/art/yellow-arc-water-study.jpg" => {
+    "title" => "黃色弧線",
+    "meta" => "碰撞系列・水滴研究",
+    "note" => "扭轉的水流在空間中短暫畫出一條弧線。"
+  }
+}.freeze
+LIGHTBOX_PRINT = "收藏、展覽及圖片授權狀態由工作室按作品書面確認。".freeze
+LIGHTBOX_SERIES = {
+  "Ritual" => "儀式",
+  "Collision" => "碰撞",
+  "Motion" => "動態",
+  "City Light" => "城市之光",
+  "Documentary" => "紀實"
+}.freeze
 ALIASES = {
   "archive" => "/projects/",
   "available-prints" => "/editions/",
@@ -35,6 +105,10 @@ ALIASES = {
   "series/water-studies" => "/series/collision/",
   "sources-archive" => "/press/"
 }.freeze
+
+def generate?(key)
+  ONLY.empty? || ONLY.include?(key)
+end
 
 def esc(value)
   CGI.escapeHTML(value.to_s)
@@ -188,19 +262,70 @@ def item_record(href)
   SERIES[series_slug]
 end
 
+def localized_lightbox_data(card, zoom, record)
+  full = zoom&.[]("data-full") || card["data-full"]
+  return nil if full.to_s.empty?
+
+  preview = PREVIEW_LIGHTBOX[full]
+  if record && !record.empty?
+    series = record["series"].to_s
+    series_name = LIGHTBOX_SERIES.fetch(series, series)
+    return {
+      "data-full" => full,
+      "data-title" => record.fetch("title"),
+      "data-meta" => "#{series_name}系列",
+      "data-note" => record.fetch("summary"),
+      "data-print" => LIGHTBOX_PRINT,
+      "data-series" => zoom&.[]("data-series") || card["data-series"]
+    }
+  end
+
+  return nil unless preview
+
+  {
+    "data-full" => full,
+    "data-title" => preview.fetch("title"),
+    "data-meta" => preview.fetch("meta"),
+    "data-note" => preview.fetch("note"),
+    "data-print" => LIGHTBOX_PRINT,
+    "data-series" => zoom&.[]("data-series") || card["data-series"]
+  }
+end
+
+def localized_modal(image)
+  return "" unless image
+
+  modal_image = image_tag(image, alt: "作品預覽影像", eager: false).sub("<img ", '<img id="modalImage" ')
+  <<~HTML
+    <div class="modal" id="artModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalNote modalPrint" aria-hidden="true">
+      <button class="modal-close" type="button" aria-label="關閉作品檢視">×</button>
+      <div class="modal-inner">
+        #{modal_image}
+        <div class="modal-copy"><h3 id="modalTitle">作品預覽</h3><p id="modalMeta"></p><p id="modalNote"></p><p id="modalPrint">#{LIGHTBOX_PRINT}</p></div>
+      </div>
+    </div>
+  HTML
+end
+
 def localized_work_card(card)
   direct_link = card.name == "a" ? card : card.at_css("a.work-card-link, a[href]")
   href = direct_link&.[]("href")
   record = item_record(href) || {}
   title = record["title"] || card.at_css(".work-caption strong, h3")&.text&.strip || "攝影作品"
-  detail = record["series"] || card.at_css(".work-caption small")&.text&.strip || "郭文棣攝影作品"
+  detail = if record && !record.empty?
+             LIGHTBOX_SERIES.fetch(record["series"].to_s, record["series"].to_s)
+           else
+             card.at_css(".work-caption small")&.text&.strip || "郭文棣攝影作品"
+           end
   image = card.at_css("img")
   classes = ["work-card", card["class"].to_s.split.reject { |name| name == "work-card" }].flatten.join(" ")
   zoom = card.at_css(".work-zoom, button.work-card")
-  zoom_data = %w[data-full data-title data-meta data-note data-print data-series].map do |name|
-    value = zoom&.[](name) || card[name]
+  lightbox = localized_lightbox_data(card, zoom, record)
+  title = lightbox.fetch("data-title", title) if lightbox
+  detail = lightbox.fetch("data-meta", detail) if lightbox
+  zoom_data = lightbox&.map do |name, value|
     %(#{name}="#{esc(value)}") unless value.to_s.empty?
-  end.compact.join(" ")
+  end&.compact&.join(" ").to_s
   if href.to_s.empty?
     # A series may legitimately include a preview-only image without an approved
     # artwork record. Keep it as a zoom control rather than emitting an empty link.
@@ -329,6 +454,7 @@ def series_page(slug, record)
   doc = document("series/#{slug}/index.html")
   image = doc.at_css('meta[property="og:image"]')&.[]("content") || doc.at_css("main img")&.[]("src")
   cards = doc.css(".work-card").map { |card| localized_work_card(card) }.join
+  modal = localized_modal(doc.css(".gallery-grid img").first)
   <<~HTML
     #{page_head(title: "#{record.fetch("title")}攝影系列", description: record.fetch("summary"), english_route: english_route, local_route: local_route, image: image, type: "CollectionPage")}
     <body><a class="skip-link" href="#main">跳至系列</a>#{navigation(english_route, local_route, current: "series")}
@@ -336,6 +462,7 @@ def series_page(slug, record)
     <section class="section"><div class="wrap split start"><div><p class="section-label">藝術家自述</p><p class="statement">#{esc(record.fetch("title"))}</p></div><div><p class="prose">#{esc(record.fetch("summary"))}</p><p class="prose">這個系列以影像之間的關係為核心，而不是把獎項或器材當成觀看起點。個別作品頁保留完整構圖、作品文字與查詢狀態；策展、出版或收藏安排會按具體作品和用途確認。</p></div></div></section>
     <section class="section section-warm"><div class="wrap"><div class="section-head"><div><p class="section-label">系列作品</p><h2>完整構圖與固定作品記錄。</h2></div><p class="lead">每張照片均連到同一語言的完整作品頁，保留影像脈絡和查詢資料。</p></div><div class="gallery-grid">#{cards}</div></div></section>
     <section class="section"><div class="wrap notes-grid"><article class="note"><h3>收藏</h3><p>工作室會按作品確認版數、尺寸、媒介、證書、價格與交付安排。</p></article><article class="note"><h3>展覽與策展</h3><p>請提供場地、日期、主題、所需作品及技術條件，以便評估可行性。</p></article><article class="note"><h3>圖片授權</h3><p>出版、編輯、教育或商業使用須按媒體、地區、期限和修改方式書面授權。</p></article></div></section></main>
+    #{modal}
     #{footer(english_route, local_route)}
   HTML
 end
@@ -505,15 +632,15 @@ def redirect_page(route, target)
   HTML
 end
 
-ARTWORKS.each { |slug, record| write_page("zh-hant/works/#{slug}", artwork_page(slug, record)) }
-COLLECTIONS.each { |slug, record| write_page("zh-hant/works/#{slug}", collection_page(slug, record)) }
-SERIES.each { |slug, record| write_page("zh-hant/series/#{slug}", series_page(slug, record)) }
-PROJECTS.each { |slug, record| write_page("zh-hant/projects/#{slug}", project_page(slug, record)) }
-write_page("zh-hant/works", works_index)
-write_page("zh-hant/series", series_index)
-write_page("zh-hant/projects", projects_index)
-CORE.each { |route, record| write_page("zh-hant/#{route}", core_page(route, record)) }
-write_page("zh-hant/awards", awards_page)
-ALIASES.each { |route, target| write_page("zh-hant/#{route}", redirect_page(route, target)) }
+ARTWORKS.each { |slug, record| write_page("zh-hant/works/#{slug}", artwork_page(slug, record)) } if generate?("artworks")
+COLLECTIONS.each { |slug, record| write_page("zh-hant/works/#{slug}", collection_page(slug, record)) } if generate?("collections")
+SERIES.each { |slug, record| write_page("zh-hant/series/#{slug}", series_page(slug, record)) } if generate?("series")
+write_page("zh-hant/works", works_index) if generate?("works-index")
+write_page("zh-hant/series", series_index) if generate?("series-index")
+write_page("zh-hant/projects", projects_index) if generate?("projects-index")
+PROJECTS.each { |slug, record| write_page("zh-hant/projects/#{slug}", project_page(slug, record)) } if generate?("projects")
+CORE.each { |route, record| write_page("zh-hant/#{route}", core_page(route, record)) } if generate?("core")
+write_page("zh-hant/awards", awards_page) if generate?("awards")
+ALIASES.each { |route, target| write_page("zh-hant/#{route}", redirect_page(route, target)) } if generate?("aliases")
 
 puts "Generated #{ARTWORKS.size + COLLECTIONS.size + SERIES.size + PROJECTS.size + CORE.size + 3} substantive Traditional Chinese pages and #{ALIASES.size} consolidated redirects."

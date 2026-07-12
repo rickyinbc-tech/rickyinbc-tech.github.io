@@ -287,6 +287,34 @@ for (const [route, page] of indexableDocuments) {
   }
 }
 
+const confirmationPages = [
+  "contact/thanks/index.html",
+  "zh-hant/contact/thanks/index.html",
+  "zh-hans/contact/thanks/index.html"
+];
+const confirmationContract = [
+  "data-confirmation-page",
+  "data-confirmation-eyebrow",
+  "data-confirmation-heading",
+  "data-confirmation-introduction",
+  "data-confirmation-unverified",
+  "data-confirmation-success",
+  "data-confirmation-lead",
+  "data-confirmation-type",
+  "data-confirmation-artwork",
+  "data-deadline-email",
+  "noscript-confirmation"
+];
+for (const relative of confirmationPages) {
+  const html = await readFile(path.join(repoRoot, relative), "utf8");
+  for (const attributeName of confirmationContract) {
+    if (!html.includes(attributeName)) errors.push(`${relative}: missing confirmation contract attribute ${attributeName}`);
+  }
+  if (!/<body\b[^>]*\bdata-confirmation-page(?:\b|=)/i.test(html)) {
+    errors.push(`${relative}: confirmation page body lacks data-confirmation-page`);
+  }
+}
+
 const staticAliasTargets = new Map();
 for (const [route, page] of indexableDocuments) {
   // Indexable pages must never be legacy redirect sources.

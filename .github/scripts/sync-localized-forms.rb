@@ -86,8 +86,10 @@ TEXT = {
   "This form is protected by a honeypot and FormSubmit reCAPTCHA. Do not send payment-card details, identity documents, or confidential unreleased materials." => "表格使用隱藏防垃圾欄位及 FormSubmit reCAPTCHA 保護。請勿提交付款卡資料、身份文件或未公開機密材料。",
   "Send licensing request" => "提交授權要求",
   "Inquiry status" => "查詢狀態",
+  "Browser summary unavailable" => "瀏覽器摘要不可用",
+  "JavaScript is off, so this page cannot show the in-browser inquiry summary. If you receive a confirmation from the form service, retain that email for your records; if not, return to the appropriate form or email studio@rickykwok.com." => "JavaScript 已關閉，因此本頁無法顯示瀏覽器內的查詢摘要。如你收到表格服務的確認，請保留該電郵作記錄；如未收到確認，請返回合適的表格或電郵 studio@rickykwok.com。",
   "No recent submission can be verified in this browser." => "此瀏覽器目前沒有可核實的近期提交。",
-  "This page only confirms a request when it is reached directly from a completed studio form in the same browser session." => "只有在同一瀏覽器工作階段完成工作室表格並直接到達本頁，系統才會確認查詢。",
+  "This page displays a browser-side reference only when it is reached directly from a completed studio form in the same browser session." => "只有在同一瀏覽器工作階段完成工作室表格並直接到達本頁，系統才會顯示瀏覽器內的查詢編號。",
   "No verified reference" => "未有可核實編號",
   "Return to the appropriate form." => "請返回合適的表格。",
   "A bookmarked or shared confirmation URL does not prove that a request was delivered. If you recently tried to submit and did not receive a reference or confirmation, review the form and try again." => "收藏或分享確認頁網址並不代表查詢已送達。如你剛才嘗試提交但沒有收到編號或確認，請檢查表格後再試。",
@@ -97,7 +99,7 @@ TEXT = {
   "Image licensing" => "圖片授權",
   "Selected works" => "精選作品",
   "Your reference" => "你的查詢編號",
-  "Keep the lead ID for follow-up." => "請保留 Lead ID 以便跟進。",
+  "Keep the reference for follow-up." => "請保留編號以便跟進。",
   "Lead ID" => "Lead ID",
   "Unavailable in this view" => "此畫面未能提供",
   "Your submitted pathway" => "你提交的查詢途徑",
@@ -166,7 +168,7 @@ def sync_page(source_path, target_path, selector, next_url:, source_url:)
   section.at_css('input[name="_url"]')["value"] = source_url
   section.at_css('input[name="_subject"]')["value"] = "網站查詢 — Ricky Kwok Photography"
   if (response = section.at_css('input[name="_autoresponse"]'))
-    response["value"] = "多謝聯絡 Ricky Kwok Photography 工作室。你的查詢已收到，工作室目標在三個工作天內回覆。請保留提交資料內的查詢編號作日後參考。"
+    response["value"] = "多謝聯絡 Ricky Kwok Photography 工作室。工作室目標在三個工作天內回覆。請保留此確認電郵及確認頁所示的編號，以便日後跟進。"
   end
 
   hero = target.at_css("main .hero")

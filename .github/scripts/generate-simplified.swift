@@ -7,6 +7,16 @@ let scriptURL = URL(fileURLWithPath: #filePath)
 let root = scriptURL.deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
 let sourceRoot = root.appendingPathComponent("zh-hant", isDirectory: true)
 let targetRoot = root.appendingPathComponent("zh-hans", isDirectory: true)
+let requestedPaths = Set(CommandLine.arguments.dropFirst().flatMap { argument -> [String] in
+    guard argument.hasPrefix("--only=") else { return [] }
+    return argument.dropFirst("--only=".count).split(separator: ",").map(String.init)
+})
+
+func shouldGenerate(_ relative: String) -> Bool {
+    guard !requestedPaths.isEmpty else { return true }
+    let withoutIndex = relative.replacingOccurrences(of: "/index.html", with: "")
+    return requestedPaths.contains(relative) || requestedPaths.contains(withoutIndex)
+}
 
 func protectedMatches(_ pattern: String, in source: String, prefix: String) throws -> (String, [String]) {
     let regex = try NSRegularExpression(pattern: pattern, options: [.caseInsensitive])
@@ -55,6 +65,7 @@ guard let enumerator = fileManager.enumerator(at: sourceRoot, includingPropertie
 var count = 0
 for case let sourceURL as URL in enumerator where sourceURL.lastPathComponent == "index.html" {
     let relative = sourceURL.path.replacingOccurrences(of: sourceRoot.path + "/", with: "")
+    guard shouldGenerate(relative) else { continue }
     let targetURL = targetRoot.appendingPathComponent(relative)
     try fileManager.createDirectory(at: targetURL.deletingLastPathComponent(), withIntermediateDirectories: true)
     let source = try String(contentsOf: sourceURL, encoding: .utf8)
