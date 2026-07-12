@@ -67,7 +67,8 @@ end
 def localized_alt(document, artwork, locale)
   return artwork.fetch("alt") if locale == "en"
 
-  "郭文棣作品《#{title_for(document, artwork, locale)}》完整構圖"
+  composition_label = locale == "zh-Hans" ? "完整构图" : "完整構圖"
+  "郭文棣作品《#{title_for(document, artwork, locale)}》#{composition_label}"
 end
 
 def responsive_webp_srcset(existing, artwork)

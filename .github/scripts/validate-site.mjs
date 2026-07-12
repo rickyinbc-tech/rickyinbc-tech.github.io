@@ -115,6 +115,9 @@ for (const file of await htmlFiles()) {
         errors.push(`${relative}: English-labelled link points to localized route ${match[1]}`);
       }
     }
+    if (relative.startsWith("zh-hans/") && html.includes("完整構圖")) {
+      errors.push(`${relative}: Simplified Chinese page contains the Traditional Chinese composition label`);
+    }
   }
 
   if (!title) errors.push(`${relative}: missing title`);
