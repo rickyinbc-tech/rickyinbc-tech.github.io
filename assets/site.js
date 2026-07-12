@@ -777,12 +777,14 @@ if (confirmationPage) {
       if (introduction) introduction.textContent = "Your browser has returned from the form service to this studio confirmation page. Keep the reference below while the studio reviews your request.";
     }
     loadAnalytics();
-    trackEvent(inquiryEventName(pendingInquiry.type || type, "returned"), {
+    const confirmedInquiryParams = {
       inquiry_type: pendingInquiry.type || type,
       source_page: pendingInquiry.source_page || "",
       has_artwork_context: pendingInquiry.artwork ? "yes" : "no",
       form_returned_to_confirmation: "yes"
-    });
+    };
+    trackEvent(inquiryEventName(pendingInquiry.type || type, "returned"), confirmedInquiryParams);
+    trackEvent("generate_lead", confirmedInquiryParams);
     sessionRemove(INQUIRY_STORAGE.pending);
   }
 }
