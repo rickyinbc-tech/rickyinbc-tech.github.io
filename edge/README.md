@@ -6,13 +6,34 @@ one-hop migration map. `cloudflare-worker.mjs` applies it at the edge and lets
 all unmapped paths continue to GitHub Pages, preserving a real 404 for unknown
 URLs.
 
-Before attaching this Worker to `rickykwok.com/*`:
+The Worker redirects only explicitly mapped paths:
 
-1. Confirm the domain is proxied through the Cloudflare zone.
-2. Test every source in `redirect-map.json` in a staging or preview route.
-3. Confirm each destination is a direct HTTP 200 self-canonical page.
-4. Attach the Worker route, then check `curl -I` for one 308 hop only.
-5. Keep the static noindex meta-refresh pages as a temporary fallback until
+* `rickykwok.com` legacy aliases to their canonical site pages
+* `www.rickykwok.com` to the canonical host, without adding a second hop
+* `blog.rickykwok.com/` and its retired feed to `/journal/`
+* `photo.rickykwok.com/` to the canonical homepage
+
+It does not wildcard redirect unknown `blog` or `photo` paths. Those requests
+continue to the origin and preserve a genuine 404 until an exact historical
+mapping has been verified.
+
+Before attaching this Worker:
+
+1. Import every active Namecheap record into Cloudflare. Preserve all GitHub
+   Pages A/CNAME records, email-forwarding MX records, SPF, and Google site
+   verification TXT records. Keep mail records DNS-only.
+2. Confirm `@`, `www`, `blog`, and `photo` are proxied through the Cloudflare
+   zone. Leave unrelated subdomains DNS-only until their service has been
+   checked.
+3. Set SSL/TLS encryption mode to **Full (strict)**. The GitHub Pages origins
+   currently have valid certificates.
+4. Deploy with `wrangler deploy` from this directory. `wrangler.jsonc` defines
+   the four worker routes.
+5. Test every source in `redirect-map.json` in a staging or preview route.
+6. Confirm each destination is a direct HTTP 200 self-canonical page.
+7. Check `curl -I` for a single 308 hop only; verify unknown legacy-host paths
+   still return 404.
+8. Keep the static noindex meta-refresh pages as a temporary fallback until
    production checks pass. Remove them only after the edge redirect has been
    observed in Search Console.
 

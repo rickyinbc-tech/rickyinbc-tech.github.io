@@ -1,6 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "status": 308,
+  "canonicalOrigin": "https://rickykwok.com",
   "preserveQueryParameters": [
     "utm_source",
     "utm_medium",
@@ -64,5 +65,14 @@
     "/zh-hans/series/hong-kong-night-photography/": "/zh-hans/series/city-light/",
     "/zh-hans/series/water-studies/": "/zh-hans/series/collision/",
     "/zh-hans/sources-archive/": "/zh-hans/press/"
+  },
+  "hostRedirects": {
+    "blog.rickykwok.com": {
+      "/": "/journal/",
+      "/feed": "/journal/"
+    },
+    "photo.rickykwok.com": {
+      "/": "/"
+    }
   }
 }

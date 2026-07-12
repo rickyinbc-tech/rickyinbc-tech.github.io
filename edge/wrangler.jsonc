@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "rickykwok-edge-redirects",
+  "main": "cloudflare-worker.mjs",
+  "compatibility_date": "2026-07-11",
+  "routes": [
+    { "pattern": "rickykwok.com/*", "zone_name": "rickykwok.com" },
+    { "pattern": "www.rickykwok.com/*", "zone_name": "rickykwok.com" },
+    { "pattern": "blog.rickykwok.com/*", "zone_name": "rickykwok.com" },
+    { "pattern": "photo.rickykwok.com/*", "zone_name": "rickykwok.com" }
+  ]
+}

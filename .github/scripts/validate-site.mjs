@@ -342,6 +342,30 @@ for (const [route, target] of staticAliasTargets) {
 for (const route of Object.keys(edgeRedirectConfig.redirects || {})) {
   if (!staticAliasTargets.has(route)) errors.push(`${route}: edge redirect map has no matching static fallback alias`);
 }
+if (edgeRedirectConfig.canonicalOrigin !== ORIGIN) {
+  errors.push(`edge redirect canonical origin must be ${ORIGIN}`);
+}
+const expectedLegacyHostRedirects = {
+  "blog.rickykwok.com": { "/": "/journal/", "/feed": "/journal/" },
+  "photo.rickykwok.com": { "/": "/" }
+};
+for (const [hostname, expectedPaths] of Object.entries(expectedLegacyHostRedirects)) {
+  const hostMap = edgeRedirectConfig.hostRedirects?.[hostname];
+  if (!hostMap) {
+    errors.push(`edge redirect map is missing host redirects for ${hostname}`);
+    continue;
+  }
+  for (const [source, target] of Object.entries(expectedPaths)) {
+    if (hostMap[source] !== target) errors.push(`edge redirect ${hostname}${source} must map to ${target}`);
+  }
+  for (const [source, target] of Object.entries(hostMap)) {
+    if (!source.startsWith("/") || source.includes("*")) errors.push(`edge host redirect ${hostname}${source} is not an exact path`);
+    const destination = new URL(target, ORIGIN);
+    if (!await exists(routeToFile(destination.pathname))) {
+      errors.push(`edge host redirect ${hostname}${source} has a missing destination ${destination.pathname}`);
+    }
+  }
+}
 
 const sitemap = await readFile(path.join(repoRoot, "sitemap.xml"), "utf8");
 const sitemapUrls = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (match) => match[1]);
