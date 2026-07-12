@@ -759,6 +759,51 @@ article.work-card {
   color: var(--paper-muted);
 }
 
+.archive-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.archive-photo {
+  overflow: hidden;
+  margin: 0;
+  border: 1px solid rgba(247, 243, 235, .14);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.section-warm .archive-photo {
+  border-color: var(--paper-line);
+  background: #fffaf1;
+}
+
+.archive-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background: #0d0d0d;
+}
+
+.archive-photo figcaption {
+  padding: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.section-warm .archive-photo figcaption {
+  color: var(--paper-muted);
+}
+
+.archive-photo figcaption strong {
+  display: block;
+  margin-bottom: 5px;
+  color: inherit;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
 .meta-list {
   display: grid;
   gap: 8px;
@@ -1433,6 +1478,7 @@ article.work-card {
   .proof-grid,
   .notes-grid,
   .source-grid,
+  .archive-photo-grid,
   .artwork-index-list,
   .series-jump {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1514,6 +1560,7 @@ article.work-card {
   .proof-grid,
   .notes-grid,
   .source-grid,
+  .archive-photo-grid,
   .artwork-index-list,
   .series-jump {
     grid-template-columns: 1fr;
