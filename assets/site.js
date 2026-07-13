@@ -1,5 +1,5 @@
 const ANALYTICS_ID = "G-07PQV08YPD";
-const ANALYTICS_LOAD_DELAY = 3000;
+const ANALYTICS_CONSENT_KEY = "rickykwok_analytics_consent";
 
 window.dataLayer = window.dataLayer || [];
 window.gtag = window.gtag || function gtag() {
@@ -43,57 +43,108 @@ function sanitizedCampaignPath(value) {
   return `${url.pathname}${url.search}`;
 }
 
-window.gtag("js", new Date());
-window.gtag("config", ANALYTICS_ID, {
-  send_page_view: true,
-  site_area: "fine_art",
-  allow_google_signals: false,
-  allow_ad_personalization_signals: false,
-  page_location: sanitizedAnalyticsUrl(window.location.href, true),
-  page_referrer: sanitizedAnalyticsUrl(document.referrer)
-});
-
 let analyticsLoaded = false;
 
+function analyticsConsentChoice() {
+  try {
+    return window.localStorage.getItem(ANALYTICS_CONSENT_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function analyticsConsentGranted() {
+  return analyticsConsentChoice() === "granted";
+}
+
 function loadAnalytics() {
-  if (analyticsLoaded) return;
+  if (analyticsLoaded || !analyticsConsentGranted()) return;
   analyticsLoaded = true;
+
+  window.gtag("consent", "default", {
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied"
+  });
+  window.gtag("consent", "update", { analytics_storage: "granted" });
+  window.gtag("js", new Date());
+  window.gtag("config", ANALYTICS_ID, {
+    send_page_view: true,
+    site_area: "fine_art",
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+    page_location: sanitizedAnalyticsUrl(window.location.href, true),
+    page_referrer: sanitizedAnalyticsUrl(document.referrer)
+  });
 
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`;
   document.head.appendChild(script);
-
 }
 
-function scheduleAnalytics() {
-  const startTimer = () => {
-    window.setTimeout(loadAnalytics, ANALYTICS_LOAD_DELAY);
-  };
-
-  if (document.readyState === "complete") {
-    startTimer();
-  } else {
-    window.addEventListener("load", startTimer, { once: true });
+function analyticsConsentLabels() {
+  const language = document.documentElement.lang.toLowerCase();
+  if (language === "zh-hant") {
+    return {
+      title: "分析資料選擇",
+      copy: "只有在你同意後，網站才會載入 Google Analytics。必要的網站功能不受影響。",
+      accept: "同意分析資料",
+      decline: "只使用必要功能",
+      privacy: "私隱通知"
+    };
   }
-
-  ["pointerdown", "keydown", "touchstart"].forEach((eventName) => {
-    window.addEventListener(eventName, loadAnalytics, {
-      once: true,
-      passive: true
-    });
-  });
-
-  document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "hidden") {
-      loadAnalytics();
-    }
-  }, { once: true });
-
-  window.addEventListener("pagehide", loadAnalytics, { once: true });
+  if (language === "zh-hans") {
+    return {
+      title: "分析数据选择",
+      copy: "只有在你同意后，网站才会载入 Google Analytics。必要的网站功能不受影响。",
+      accept: "同意分析数据",
+      decline: "只使用必要功能",
+      privacy: "私隐通知"
+    };
+  }
+  return {
+    title: "Analytics choice",
+    copy: "Google Analytics loads only if you agree. Essential site functions are unaffected.",
+    accept: "Accept analytics",
+    decline: "Essential only",
+    privacy: "Privacy notice"
+  };
 }
 
-scheduleAnalytics();
+function setAnalyticsConsent(choice) {
+  try {
+    window.localStorage.setItem(ANALYTICS_CONSENT_KEY, choice);
+  } catch {
+    // The visitor's browser may disable persistent storage; the site still works.
+  }
+  document.querySelector(".analytics-consent")?.remove();
+  if (choice === "granted") loadAnalytics();
+}
+
+function addAnalyticsConsent() {
+  if (analyticsConsentGranted()) {
+    loadAnalytics();
+    return;
+  }
+  if (analyticsConsentChoice() === "denied" || document.querySelector(".analytics-consent")) return;
+
+  const labels = analyticsConsentLabels();
+  const locale = document.documentElement.lang.toLowerCase();
+  const privacyPath = locale === "zh-hant" ? "/zh-hant/privacy/" : locale === "zh-hans" ? "/zh-hans/privacy/" : "/privacy/";
+  const region = document.createElement("section");
+  region.className = "analytics-consent";
+  region.setAttribute("aria-labelledby", "analytics-consent-title");
+  region.innerHTML = `<div><strong id="analytics-consent-title">${labels.title}</strong><p>${labels.copy} <a href="${privacyPath}">${labels.privacy}</a></p></div><div class="analytics-consent-actions"><button class="button" type="button" data-analytics-choice="granted">${labels.accept}</button><button class="button ghost-dark" type="button" data-analytics-choice="denied">${labels.decline}</button></div>`;
+  region.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-analytics-choice]");
+    if (button) setAnalyticsConsent(button.dataset.analyticsChoice);
+  });
+  document.body.appendChild(region);
+}
+
+addAnalyticsConsent();
 
 const year = document.querySelector("#year");
 if (year) {
@@ -145,6 +196,10 @@ function pageContentContext() {
   const seriesMatch = normalizedPath.match(/^\/series\/([^/]+)\/$/);
   const projectMatch = normalizedPath.match(/^\/projects\/([^/]+)\/$/);
 
+  if (document.body.dataset.pageType === "thematic-edit") {
+    return { content_language: contentLanguage, content_type: "thematic_edit", content_id: artworkMatch?.[1] || "thematic-edit", normalized_path: normalizedPath };
+  }
+
   if (artworkMatch && document.body.classList.contains("artwork-page")) {
     return { content_language: contentLanguage, content_type: "artwork", content_id: artworkMatch[1], normalized_path: normalizedPath };
   }
@@ -169,7 +224,7 @@ function pageContentContext() {
 const PAGE_CONTENT_CONTEXT = pageContentContext();
 
 function trackEvent(eventName, params = {}, callback) {
-  if (typeof window.gtag !== "function") {
+  if (!analyticsConsentGranted() || typeof window.gtag !== "function") {
     if (callback) callback();
     return;
   }

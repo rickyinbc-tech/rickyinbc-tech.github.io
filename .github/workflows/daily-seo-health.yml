@@ -23,6 +23,15 @@ jobs:
       - name: Build SEO health report
         run: node .github/scripts/build-seo-health.mjs
 
+      - name: Build image and performance governance report
+        run: node .github/scripts/build-governance-report.mjs
+
+      - name: Validate site contracts
+        run: node .github/scripts/validate-site.mjs
+
+      - name: Test edge routing and security headers
+        run: node .github/scripts/test-edge-worker.mjs
+
       - name: Upload diagnostic report
         if: always()
         uses: actions/upload-artifact@v4

@@ -8,6 +8,11 @@ const excludedDirectories = new Set([".git", ".github", "assets"]);
 const errors = [];
 const artworkManifest = JSON.parse(await readFile(path.join(repoRoot, ".github/data/artwork-manifest.json"), "utf8"));
 const edgeRedirectConfig = JSON.parse(await readFile(path.join(repoRoot, "edge/redirect-map.json"), "utf8"));
+const translationGovernance = JSON.parse(await readFile(path.join(repoRoot, ".github/data/translation-governance.json"), "utf8"));
+const measurementGovernance = JSON.parse(await readFile(path.join(repoRoot, ".github/data/measurement-governance.json"), "utf8"));
+const imageInventory = JSON.parse(await readFile(path.join(repoRoot, ".github/data/image-asset-inventory.json"), "utf8"));
+const performanceReport = JSON.parse(await readFile(path.join(repoRoot, ".github/data/performance-report.json"), "utf8"));
+const indexNowKey = (await readFile(path.join(repoRoot, "813e7287fc405b123c1373ff6e9c4567.txt"), "utf8")).trim();
 const placeholderPatterns = [
   /此頁提供與原頁相對應/,
   /此页提供与原页面对应/,
@@ -95,6 +100,7 @@ const titleOwners = new Map();
 const descriptionOwners = new Map();
 const indexableEnglishRoutes = [];
 const englishImageCounts = new Map();
+let validatedImageUses = 0;
 
 for (const file of await htmlFiles()) {
   const relative = path.relative(repoRoot, file).split(path.sep).join("/");
@@ -127,6 +133,20 @@ for (const file of await htmlFiles()) {
 
   for (const pattern of implementationCommentaryPatterns) {
     if (pattern.test(html)) errors.push(`${relative}: contains public implementation commentary`);
+  }
+
+  if (/<\/source>/i.test(html)) errors.push(`${relative}: contains an invalid closing source tag`);
+  for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
+    const tag = match[0];
+    validatedImageUses += 1;
+    for (const required of ["alt", "width", "height", "sizes"]) {
+      if (!attribute(tag, required)) errors.push(`${relative}: image is missing ${required}`);
+    }
+  }
+  const heroPicture = html.match(/<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>/i)?.[0] || "";
+  const heroTag = heroPicture.match(/<img\b[^>]*>/i)?.[0] || "";
+  if (heroTag && (attribute(heroTag, "loading") !== "eager" || attribute(heroTag, "fetchpriority") !== "high")) {
+    errors.push(`${relative}: hero image must load eagerly with high fetch priority`);
   }
 
   if (!title) errors.push(`${relative}: missing title`);
@@ -317,6 +337,67 @@ for (const [route, marker] of [
   if (!page || !page.html.includes(marker)) errors.push(`${route}: missing governed archive or studio-standards content`);
 }
 
+const thematicEditIds = [
+  "hong-kong-urban-light-studies",
+  "monochrome-documentary",
+  "sport-abstraction",
+  "studio-collision-studies",
+  "village-ritual-photography"
+];
+for (const [language, prefix] of [["en", ""], ["zh-Hant", "/zh-hant"], ["zh-Hans", "/zh-hans"]]) {
+  for (const id of thematicEditIds) {
+    const route = `${prefix}/works/${id}/`;
+    const page = indexableDocuments.get(route);
+    if (!page || !page.html.includes('data-page-type="thematic-edit"')) errors.push(`${route}: missing governed thematic-edit marker`);
+    const collection = page && parsedSchemaNodes(page.html).find((node) => matchesType(node, "CollectionPage"));
+    if (!collection) errors.push(`${route}: thematic edit lacks CollectionPage schema`);
+  }
+  const selectedRoute = language === "en" ? "/selected-works/" : `${prefix}/works/`;
+  const selected = indexableDocuments.get(selectedRoute);
+  for (const id of thematicEditIds) {
+    if (!selected?.html.includes(`${prefix}/works/${id}/`)) errors.push(`${selectedRoute}: missing thematic edit ${id}`);
+  }
+}
+
+if (translationGovernance.schemaVersion !== 1 || translationGovernance.identity?.displayName !== "Ricky Kwok 郭文棣") {
+  errors.push("translation governance is missing the approved identity contract");
+}
+for (const series of ["ritual", "collision", "motion", "city-light"]) {
+  for (const locale of ["en", "zh-Hant", "zh-Hans"]) {
+    if (!translationGovernance.series?.[series]?.[locale]) errors.push(`translation governance lacks ${series} ${locale}`);
+  }
+}
+
+const siteJs = await readFile(path.join(repoRoot, "assets/site.min.js"), "utf8");
+const siteCss = await readFile(path.join(repoRoot, "assets/site.min.css"), "utf8");
+for (const marker of ["ANALYTICS_CONSENT_KEY", 'analyticsConsentChoice() === "denied"', "data-analytics-choice", "allow_google_signals: false"]) {
+  if (!siteJs.includes(marker)) errors.push(`analytics consent implementation lacks ${marker}`);
+}
+for (const marker of ["prefers-reduced-motion", "forced-colors", ".analytics-consent"]) {
+  if (!siteCss.includes(marker)) errors.push(`accessibility stylesheet lacks ${marker}`);
+}
+const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
+for (const eventName of measurementGovernance.events || []) {
+  if (!implementedEvents.has(eventName)) errors.push(`measurement governance event is not implemented: ${eventName}`);
+}
+for (const eventName of implementedEvents) {
+  if (!measurementGovernance.events?.includes(eventName)) errors.push(`implemented event is not governed: ${eventName}`);
+}
+for (const [route, marker] of [["/privacy/", "Essential only"], ["/zh-hant/privacy/", "只使用必要功能"], ["/zh-hans/privacy/", "只使用必要功能"]]) {
+  if (!indexableDocuments.get(route)?.html.includes(marker)) errors.push(`${route}: privacy notice does not describe analytics opt-in`);
+}
+if (imageInventory.summary?.missingDimensions !== 0 || imageInventory.summary?.missingSizes !== 0 || imageInventory.summary?.imageUses !== validatedImageUses) {
+  errors.push("image inventory is stale or violates the complete image-attribute contract");
+}
+if (performanceReport.status !== "pass" || performanceReport.measured?.maxMissingImageDimensions !== 0 || performanceReport.measured?.maxMissingImageSizes !== 0) {
+  errors.push("performance governance report does not pass");
+}
+
+const workerSource = await readFile(path.join(repoRoot, "edge/cloudflare-worker.mjs"), "utf8");
+for (const header of ["content-security-policy", "permissions-policy", "referrer-policy", "x-content-type-options", "x-frame-options"]) {
+  if (!workerSource.includes(`"${header}"`)) errors.push(`edge worker lacks ${header}`);
+}
+
 for (const route of ["/licensing/", "/zh-hant/licensing/", "/zh-hans/licensing/"]) {
   const page = indexableDocuments.get(route);
   if (!page) {
@@ -401,7 +482,8 @@ if (edgeRedirectConfig.canonicalOrigin !== ORIGIN) {
 }
 const expectedLegacyHostRedirects = {
   "blog.rickykwok.com": { "/": "/journal/", "/feed": "/journal/" },
-  "photo.rickykwok.com": { "/": "/" }
+  "photo.rickykwok.com": { "/": "/" },
+  "select.rickykwok.com": { "/": "/" }
 };
 for (const [hostname, expectedPaths] of Object.entries(expectedLegacyHostRedirects)) {
   const hostMap = edgeRedirectConfig.hostRedirects?.[hostname];
@@ -428,6 +510,7 @@ const actual = [...sitemapUrls].sort();
 if (JSON.stringify(expected) !== JSON.stringify(actual)) {
   errors.push(`sitemap parity failed: ${expected.length} indexable pages vs ${actual.length} sitemap URLs`);
 }
+if (!/^[a-f0-9]{32}$/.test(indexNowKey)) errors.push("IndexNow key file is invalid");
 const expectedForwardedHosts = [
   "balanced.rickykwok.com",
   "calculator.rickykwok.com",

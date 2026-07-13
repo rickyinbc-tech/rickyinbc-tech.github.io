@@ -30,8 +30,12 @@ jobs:
           node-version: "24"
       - name: Build canonical sitemaps
         run: node .github/scripts/build-sitemaps.mjs
+      - name: Build image and performance governance report
+        run: node .github/scripts/build-governance-report.mjs
       - name: Validate site
         run: node .github/scripts/validate-site.mjs
+      - name: Test edge routing and security headers
+        run: node .github/scripts/test-edge-worker.mjs
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
@@ -41,3 +45,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify participating search engines through IndexNow
+        continue-on-error: true
+        run: node .github/scripts/submit-indexnow.mjs
