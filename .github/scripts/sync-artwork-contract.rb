@@ -16,9 +16,33 @@ ARTWORKS = MANIFEST.fetch("artworks")
 RIGHTS = MANIFEST.fetch("rights")
 
 LOCALES = {
-  "en" => { prefix: "", path_prefix: "", label: "View artwork", zoom: "Open full composition" },
-  "zh-Hant" => { prefix: "/zh-hant", path_prefix: "zh-hant/", label: "查看完整作品", zoom: "放大檢視完整構圖" },
-  "zh-Hans" => { prefix: "/zh-hans", path_prefix: "zh-hans/", label: "查看完整作品", zoom: "放大查看完整构图" }
+  "en" => {
+    prefix: "", path_prefix: "", label: "View artwork", zoom: "Open full composition",
+    artist_label: "Artist", type_label: "Artwork type", type_value: "Photograph",
+    copyright_label: "Copyright", copyright_value: "© Ricky Kwok. Written permission is required for reproduction.",
+    acquisition_label: "Acquisition", acquisition_value: "Format, edition, price, availability, production and delivery are confirmed in a written studio offer.",
+    licensing_label: "Licensing", licensing_value: "Scope, fee, credit, file specifications and approval conditions are confirmed in a written license.",
+    acquisition_cta: "Ask about acquisition", licensing_cta: "Request image licensing", exhibition_cta: "Propose an exhibition",
+    standards_label: "Studio Standards", standards_path: "/studio-standards/", selected_path: "/selected-works/"
+  },
+  "zh-Hant" => {
+    prefix: "/zh-hant", path_prefix: "zh-hant/", label: "查看完整作品", zoom: "放大檢視完整構圖",
+    artist_label: "藝術家", type_label: "作品類型", type_value: "攝影作品",
+    copyright_label: "版權", copyright_value: "© 郭文棣 Ricky Kwok。任何複製或使用均須事先取得書面許可。",
+    acquisition_label: "收藏", acquisition_value: "作品形式、版本、價格、供應狀態、製作及運送安排，均以工作室書面要約為準。",
+    licensing_label: "授權", licensing_value: "使用範圍、費用、署名、檔案規格及審批條件，均以書面授權協議為準。",
+    acquisition_cta: "查詢作品收藏", licensing_cta: "申請圖片授權", exhibition_cta: "提出展覽合作",
+    standards_label: "工作室標準", standards_path: "/zh-hant/studio-standards/", selected_path: "/zh-hant/works/"
+  },
+  "zh-Hans" => {
+    prefix: "/zh-hans", path_prefix: "zh-hans/", label: "查看完整作品", zoom: "放大查看完整构图",
+    artist_label: "艺术家", type_label: "作品类型", type_value: "摄影作品",
+    copyright_label: "版权", copyright_value: "© 郭文棣 Ricky Kwok。任何复制或使用均须事先取得书面许可。",
+    acquisition_label: "收藏", acquisition_value: "作品形式、版本、价格、供应状态、制作及运送安排，均以工作室书面要约为准。",
+    licensing_label: "授权", licensing_value: "使用范围、费用、署名、文件规格及审批条件，均以书面授权协议为准。",
+    acquisition_cta: "查询作品收藏", licensing_cta: "申请图片授权", exhibition_cta: "提出展览合作",
+    standards_label: "工作室标准", standards_path: "/zh-hans/studio-standards/", selected_path: "/zh-hans/works/"
+  }
 }.freeze
 
 ARTWORK_BY_ID = ARTWORKS.to_h { |artwork| [artwork.fetch("id"), artwork] }.freeze
@@ -33,6 +57,10 @@ end
 
 def local_file(path)
   File.join(ROOT, path.sub(%r{^/}, ""))
+end
+
+def write_document(file, document)
+  File.write(file, document.to_html.gsub(/[ \t]+$/, ""))
 end
 
 def public_path(path)
@@ -51,6 +79,84 @@ end
 
 def route_for(artwork, locale)
   "#{LOCALES.fetch(locale).fetch(:prefix)}#{artwork.fetch("canonicalPath")}".gsub(%r{//+}, "/")
+end
+
+def encoded(value)
+  CGI.escape(value.to_s).gsub("+", "%20")
+end
+
+def localized_studio_path(locale, path)
+  "#{LOCALES.fetch(locale).fetch(:prefix)}#{path}".gsub(%r{//+}, "/")
+end
+
+def pathway_row(document, artwork, locale)
+  settings = LOCALES.fetch(locale)
+  title = title_for(document, artwork, locale)
+  title_param = encoded(title)
+  contact_path = localized_studio_path(locale, "/contact/")
+  licensing_path = localized_studio_path(locale, "/licensing/")
+  Nokogiri::HTML.fragment(<<~HTML).at_css(".button-row")
+    <div class="button-row artwork-cta-row" data-artwork-pathways>
+      <a class="button" href="#{contact_path}?type=print&amp;artwork=#{title_param}#inquiry-form">#{settings.fetch(:acquisition_cta)}</a>
+      <a class="button" href="#{licensing_path}?artwork=#{title_param}#licensing-form">#{settings.fetch(:licensing_cta)}</a>
+      <a class="button" href="#{contact_path}?type=exhibition&amp;artwork=#{title_param}#inquiry-form">#{settings.fetch(:exhibition_cta)}</a>
+    </div>
+  HTML
+end
+
+def metadata_label(item)
+  item.at_css("strong")&.text.to_s.sub(/[：:]\s*\z/, "").strip
+end
+
+def append_metadata_item(document, list, label, value, link: nil)
+  item = Nokogiri::XML::Node.new("li", document)
+  strong = Nokogiri::XML::Node.new("strong", document)
+  strong.content = "#{label}:"
+  item.add_child(strong)
+  item.add_child(Nokogiri::XML::Text.new(" #{value}", document))
+  if link
+    item.add_child(Nokogiri::XML::Text.new(" ", document))
+    item.add_child(link)
+  end
+  list.add_child(item)
+end
+
+def sync_artwork_governance(document, artwork, locale)
+  settings = LOCALES.fetch(locale)
+  hero_inner = document.at_css("main .hero .hero-inner")
+  if hero_inner
+    existing = hero_inner.element_children.find { |child| child["class"].to_s.split.include?("button-row") }
+    row = pathway_row(document, artwork, locale)
+    existing ? existing.replace(row) : hero_inner.add_child(row)
+  end
+
+  # Remove legacy generic inquiry links from the facts section. The hero now
+  # exposes the same three governed pathways on every artwork record.
+  details_section = document.css("main .section").find { |section| section.at_css(".artwork-meta") }
+  details_section&.css(".button-row a").to_a.each do |link|
+    href = link["href"].to_s
+    link.remove if href.include?("/contact/") || href.include?("/licensing/")
+  end
+  details_section&.css(".button-row").to_a.each { |row| row.remove if row.css("a").empty? }
+
+  list = document.at_css(".artwork-meta")
+  return unless list
+
+  governed_labels = LOCALES.values.flat_map do |values|
+    [values[:copyright_label], values[:acquisition_label], values[:licensing_label]]
+  end.compact + ["Status", "狀態", "状态"]
+  list.element_children.select { |item| item.name == "li" }.each { |item| item.remove if governed_labels.include?(metadata_label(item)) }
+
+  labels = list.element_children.select { |item| item.name == "li" }.map { |item| metadata_label(item) }
+  append_metadata_item(document, list, settings.fetch(:artist_label), "Ricky Kwok / 郭文棣 / Kwok Man Tai") unless labels.include?(settings.fetch(:artist_label))
+  append_metadata_item(document, list, settings.fetch(:type_label), settings.fetch(:type_value)) unless labels.include?(settings.fetch(:type_label))
+  append_metadata_item(document, list, settings.fetch(:copyright_label), settings.fetch(:copyright_value))
+  standards_link = Nokogiri::XML::Node.new("a", document)
+  standards_link["href"] = settings.fetch(:standards_path)
+  standards_link.content = settings.fetch(:standards_label)
+  append_metadata_item(document, list, settings.fetch(:acquisition_label), settings.fetch(:acquisition_value), link: standards_link)
+  append_metadata_item(document, list, settings.fetch(:licensing_label), settings.fetch(:licensing_value))
+  list["data-artwork-governance"] = "v2"
 end
 
 def file_for(artwork, locale)
@@ -214,7 +320,7 @@ def replace_artwork_schema(document, artwork, locale)
         "name" => page_title,
         "description" => description,
         "inLanguage" => language,
-        "dateModified" => "2026-07-11",
+        "dateModified" => "2026-07-13",
         "mainEntity" => { "@id" => artwork_entity_id(artwork) },
         "primaryImageOfPage" => { "@id" => image_id }
       },
@@ -251,7 +357,8 @@ def update_social_metadata(document, artwork, locale)
   {
     'meta[property="og:image"]' => image_url,
     'meta[name="twitter:image"]' => image_url,
-    'meta[property="og:image:alt"]' => alt
+    'meta[property="og:image:alt"]' => alt,
+    'meta[property="og:updated_time"]' => "2026-07-13T00:00:00-07:00"
   }.each do |selector, value|
     node = document.at_css(selector)
     unless node
@@ -277,9 +384,10 @@ def sync_artwork_page(artwork, locale)
   feature["srcset"] = original_srcset if feature && original_srcset && !original_srcset.empty?
   add_caption(document, document.at_css(".feature-image"), artwork) if document.at_css(".feature-image")
   hero_media(document, artwork, locale, feature)
+  sync_artwork_governance(document, artwork, locale)
   update_social_metadata(document, artwork, locale)
   replace_artwork_schema(document, artwork, locale)
-  File.write(file, document.to_html)
+  write_document(file, document)
 end
 
 def image_to_artwork
@@ -324,7 +432,7 @@ def convert_series_cards
       article.add_child(zoom)
       card.replace(article)
     end
-    File.write(file, document.to_html)
+    write_document(file, document)
   end
 end
 
@@ -358,7 +466,7 @@ def link_print_cards
       heading.children.remove
       heading.add_child(link)
     end
-    File.write(file, document.to_html)
+    write_document(file, document)
   end
 end
 

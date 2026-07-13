@@ -1,6 +1,12 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "purpose": "Authoritative artwork-to-primary-image ownership for image discovery, structured data, artwork navigation, and multilingual pages.",
+  "recordPolicy": {
+    "publicModel": "One governed core record in three languages, with extended evidence modules only where verified.",
+    "requiredCore": ["identity", "artwork type", "series or project", "copyright", "acquisition status", "licensing status", "related content"],
+    "requiredPathways": ["acquisition", "image licensing", "exhibition"],
+    "unknownCommercialFacts": "Do not infer edition, process, dimensions, signature, certificate, framing, price, availability, production, shipping, or care facts. Confirm them in a work-specific written offer."
+  },
   "rights": {
     "copyrightNotice": "Copyright Ricky Kwok",
     "creditText": "Ricky Kwok",

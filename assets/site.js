@@ -160,6 +160,9 @@ function pageContentContext() {
   if (normalizedPath === "/licensing/") {
     return { content_language: contentLanguage, content_type: "licensing", content_id: "image-licensing", normalized_path: normalizedPath };
   }
+  if (normalizedPath === "/studio-standards/") {
+    return { content_language: contentLanguage, content_type: "collector_resource", content_id: "studio-standards", normalized_path: normalizedPath };
+  }
   return { content_language: contentLanguage, content_type: "page", content_id: normalizedPath === "/" ? "home" : normalizedPath.slice(1, -1).replaceAll("/", "-"), normalized_path: normalizedPath };
 }
 
@@ -221,6 +224,8 @@ function trackTemplateView() {
     trackEvent("view_edition", { page_path: context.normalized_path });
   } else if (context.content_type === "licensing") {
     trackEvent("view_licensing", { page_path: context.normalized_path });
+  } else if (context.content_type === "collector_resource") {
+    trackEvent("view_collector_resource", { resource_id: context.content_id, page_path: context.normalized_path });
   }
 }
 
