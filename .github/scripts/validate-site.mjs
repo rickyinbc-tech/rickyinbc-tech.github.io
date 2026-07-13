@@ -14,6 +14,11 @@ const placeholderPatterns = [
   /不會把中文讀者帶回英文作為後備內容/,
   /不会把中文读者带回英文作为后备内容/,
 ];
+const implementationCommentaryPatterns = [
+  /bilingual title gives the page a clear identity/i,
+  /English and Chinese-name searches/i,
+  /search[- ]engine (?:visibility|ranking|query)/i,
+];
 
 function routeFor(relativeFile) {
   return relativeFile === "index.html" ? "/" : `/${relativeFile.replace(/\/index\.html$/, "/")}`;
@@ -118,6 +123,10 @@ for (const file of await htmlFiles()) {
     if (relative.startsWith("zh-hans/") && html.includes("完整構圖")) {
       errors.push(`${relative}: Simplified Chinese page contains the Traditional Chinese composition label`);
     }
+  }
+
+  for (const pattern of implementationCommentaryPatterns) {
+    if (pattern.test(html)) errors.push(`${relative}: contains public implementation commentary`);
   }
 
   if (!title) errors.push(`${relative}: missing title`);
@@ -228,6 +237,9 @@ function featureImageSource(html) {
 
 const manifestIds = new Set();
 const manifestCanonicalPaths = new Set();
+if (artworkManifest.schemaVersion !== 2 || !artworkManifest.recordPolicy) {
+  errors.push("artwork manifest must declare the governed v2 record policy");
+}
 if (!Array.isArray(artworkManifest.artworks) || !artworkManifest.artworks.length) {
   errors.push("artwork manifest has no artwork records");
 }
@@ -276,6 +288,48 @@ for (const artwork of artworkManifest.artworks || []) {
     }
     if (!image || image.contentUrl !== expectedImageUrl || Number(image.width) !== Number(primaryImage.width) || Number(image.height) !== Number(primaryImage.height) || image.encodingFormat !== primaryImage.mimeType) {
       errors.push(`${relative}: ImageObject does not match artwork manifest for ${id}`);
+    }
+    if (!html.includes('data-artwork-governance="v2"')) {
+      errors.push(`${relative}: artwork facts do not use governance contract v2`);
+    }
+    if ((html.match(/data-artwork-pathways/g) || []).length !== 1) {
+      errors.push(`${relative}: expected one governed artwork pathway row`);
+    }
+    for (const pathway of ["type=print", "/licensing/", "type=exhibition"]) {
+      if (!html.includes(pathway)) errors.push(`${relative}: missing artwork pathway ${pathway}`);
+    }
+    const standardsPath = language === "en" ? "/studio-standards/" : `${prefix}/studio-standards/`;
+    if (!html.includes(`href="${standardsPath}"`)) {
+      errors.push(`${relative}: missing localized Studio Standards link`);
+    }
+  }
+}
+
+for (const [route, marker] of [
+  ["/", "Archive Guide"],
+  ["/zh-hant/", "檔案導覽"],
+  ["/zh-hans/", "档案导览"],
+  ["/studio-standards/", "Six groups of facts"],
+  ["/zh-hant/studio-standards/", "必須確認六組資料"],
+  ["/zh-hans/studio-standards/", "必须确认六组资料"],
+]) {
+  const page = indexableDocuments.get(route);
+  if (!page || !page.html.includes(marker)) errors.push(`${route}: missing governed archive or studio-standards content`);
+}
+
+for (const route of ["/licensing/", "/zh-hant/licensing/", "/zh-hans/licensing/"]) {
+  const page = indexableDocuments.get(route);
+  if (!page) {
+    errors.push(`${route}: missing indexable licensing page`);
+    continue;
+  }
+  if (!/<details\b[^>]*class=["'][^"']*\bform-disclosure\b/i.test(page.html)) {
+    errors.push(`${page.relative}: licensing form lacks progressive disclosure`);
+  }
+  for (const optionalField of ["duration", "distribution_audience", "exclusivity", "release_requirements"]) {
+    const tag = page.html.match(new RegExp(`<(?:input|select)\\b[^>]*\\bname=["']${optionalField}["'][^>]*>`, "i"))?.[0] || "";
+    if (!tag || /\brequired\b/i.test(tag)) {
+      errors.push(`${page.relative}: advanced licensing field ${optionalField} must exist and remain optional`);
     }
   }
 }

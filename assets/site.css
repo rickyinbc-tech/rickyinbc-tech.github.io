@@ -1154,6 +1154,55 @@ article.work-card {
   line-height: 1.45;
 }
 
+.form-disclosure {
+  padding: 0 16px 16px;
+  border: 1px solid rgba(32, 27, 22, .18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .48);
+}
+
+.form-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  color: var(--paper-ink);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  list-style: none;
+}
+
+.form-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.form-disclosure summary::after {
+  content: "+";
+  margin-left: 16px;
+  color: #7c3f20;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.form-disclosure[open] summary::after {
+  content: "−";
+}
+
+.form-disclosure summary:focus-visible {
+  border-radius: 4px;
+  outline: 3px solid rgba(154, 74, 32, .28);
+  outline-offset: 3px;
+}
+
+.form-disclosure > .field-hint {
+  margin: 0 0 14px;
+}
+
+.form-disclosure .form-grid {
+  margin-top: 4px;
+}
+
 .checkbox-field {
   display: flex !important;
   align-items: flex-start;
