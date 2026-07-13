@@ -1,10 +1,4 @@
-const ANALYTICS_ID = "G-07PQV08YPD";
-const ANALYTICS_CONSENT_KEY = "rickykwok_analytics_consent";
-
-window.dataLayer = window.dataLayer || [];
-window.gtag = window.gtag || function gtag() {
-  window.dataLayer.push(arguments);
-};
+const ANALYTICS_DISABLED = true;
 
 const ANALYTICS_CAMPAIGN_PARAMS = new Set([
   "utm_source",
@@ -42,109 +36,6 @@ function sanitizedCampaignPath(value) {
   const url = new URL(sanitized);
   return `${url.pathname}${url.search}`;
 }
-
-let analyticsLoaded = false;
-
-function analyticsConsentChoice() {
-  try {
-    return window.localStorage.getItem(ANALYTICS_CONSENT_KEY);
-  } catch {
-    return null;
-  }
-}
-
-function analyticsConsentGranted() {
-  return analyticsConsentChoice() === "granted";
-}
-
-function loadAnalytics() {
-  if (analyticsLoaded || !analyticsConsentGranted()) return;
-  analyticsLoaded = true;
-
-  window.gtag("consent", "default", {
-    analytics_storage: "denied",
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied"
-  });
-  window.gtag("consent", "update", { analytics_storage: "granted" });
-  window.gtag("js", new Date());
-  window.gtag("config", ANALYTICS_ID, {
-    send_page_view: true,
-    site_area: "fine_art",
-    allow_google_signals: false,
-    allow_ad_personalization_signals: false,
-    page_location: sanitizedAnalyticsUrl(window.location.href, true),
-    page_referrer: sanitizedAnalyticsUrl(document.referrer)
-  });
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`;
-  document.head.appendChild(script);
-}
-
-function analyticsConsentLabels() {
-  const language = document.documentElement.lang.toLowerCase();
-  if (language === "zh-hant") {
-    return {
-      title: "分析資料選擇",
-      copy: "只有在你同意後，網站才會載入 Google Analytics。必要的網站功能不受影響。",
-      accept: "同意分析資料",
-      decline: "只使用必要功能",
-      privacy: "私隱通知"
-    };
-  }
-  if (language === "zh-hans") {
-    return {
-      title: "分析数据选择",
-      copy: "只有在你同意后，网站才会载入 Google Analytics。必要的网站功能不受影响。",
-      accept: "同意分析数据",
-      decline: "只使用必要功能",
-      privacy: "私隐通知"
-    };
-  }
-  return {
-    title: "Analytics choice",
-    copy: "Google Analytics loads only if you agree. Essential site functions are unaffected.",
-    accept: "Accept analytics",
-    decline: "Essential only",
-    privacy: "Privacy notice"
-  };
-}
-
-function setAnalyticsConsent(choice) {
-  try {
-    window.localStorage.setItem(ANALYTICS_CONSENT_KEY, choice);
-  } catch {
-    // The visitor's browser may disable persistent storage; the site still works.
-  }
-  document.querySelector(".analytics-consent")?.remove();
-  if (choice === "granted") loadAnalytics();
-}
-
-function addAnalyticsConsent() {
-  if (analyticsConsentGranted()) {
-    loadAnalytics();
-    return;
-  }
-  if (analyticsConsentChoice() === "denied" || document.querySelector(".analytics-consent")) return;
-
-  const labels = analyticsConsentLabels();
-  const locale = document.documentElement.lang.toLowerCase();
-  const privacyPath = locale === "zh-hant" ? "/zh-hant/privacy/" : locale === "zh-hans" ? "/zh-hans/privacy/" : "/privacy/";
-  const region = document.createElement("section");
-  region.className = "analytics-consent";
-  region.setAttribute("aria-labelledby", "analytics-consent-title");
-  region.innerHTML = `<div><strong id="analytics-consent-title">${labels.title}</strong><p>${labels.copy} <a href="${privacyPath}">${labels.privacy}</a></p></div><div class="analytics-consent-actions"><button class="button" type="button" data-analytics-choice="granted">${labels.accept}</button><button class="button ghost-dark" type="button" data-analytics-choice="denied">${labels.decline}</button></div>`;
-  region.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-analytics-choice]");
-    if (button) setAnalyticsConsent(button.dataset.analyticsChoice);
-  });
-  document.body.appendChild(region);
-}
-
-addAnalyticsConsent();
 
 const year = document.querySelector("#year");
 if (year) {
@@ -223,33 +114,8 @@ function pageContentContext() {
 
 const PAGE_CONTENT_CONTEXT = pageContentContext();
 
-function trackEvent(eventName, params = {}, callback) {
-  if (!analyticsConsentGranted() || typeof window.gtag !== "function") {
-    if (callback) callback();
-    return;
-  }
-
-  const eventParams = {
-    site_area: "fine_art",
-    ...PAGE_CONTENT_CONTEXT,
-    ...params
-  };
-
-  if (callback) {
-    let callbackFired = false;
-    const runCallback = () => {
-      if (callbackFired) return;
-      callbackFired = true;
-      callback();
-    };
-    eventParams.event_callback = runCallback;
-    eventParams.event_timeout = 800;
-    window.gtag("event", eventName, eventParams);
-    window.setTimeout(runCallback, 900);
-    return;
-  }
-
-  window.gtag("event", eventName, eventParams);
+function trackEvent(_eventName, _params = {}, callback) {
+  if (ANALYTICS_DISABLED && callback) callback();
 }
 
 function linkLabel(link) {
