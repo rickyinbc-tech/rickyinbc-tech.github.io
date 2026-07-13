@@ -13,6 +13,25 @@ const passThroughHosts = new Set([
   "photo.rickykwok.com"
 ]);
 
+const securityHeaders = {
+  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; img-src 'self' data: https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; font-src 'self'; upgrade-insecure-requests",
+  "cross-origin-opener-policy": "same-origin",
+  "permissions-policy": "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "x-content-type-options": "nosniff",
+  "x-frame-options": "DENY"
+};
+
+function withSecurityHeaders(response) {
+  const headers = new Headers(response.headers);
+  for (const [name, value] of Object.entries(securityHeaders)) headers.set(name, value);
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers
+  });
+}
+
 function redirectDestination(requestUrl, destination) {
   const target = new URL(destination, canonicalOrigin);
   for (const [key, value] of requestUrl.searchParams) {
@@ -42,16 +61,16 @@ function mappedDestination(requestUrl) {
 export default {
   async fetch(request, env, context) {
     const requestUrl = new URL(request.url);
-    if (request.method !== "GET" && request.method !== "HEAD") return fetch(request);
+    if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request));
 
     const destination = mappedDestination(requestUrl);
     if (!destination) {
       if (requestUrl.hostname.toLowerCase().endsWith(`.${canonicalHost}`) && !passThroughHosts.has(requestUrl.hostname.toLowerCase())) {
-        return new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8" } });
+        return withSecurityHeaders(new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8" } }));
       }
-      return fetch(request);
+      return withSecurityHeaders(await fetch(request));
     }
 
-    return Response.redirect(redirectDestination(requestUrl, destination).toString(), redirectConfig.status);
+    return withSecurityHeaders(Response.redirect(redirectDestination(requestUrl, destination).toString(), redirectConfig.status));
   }
 };

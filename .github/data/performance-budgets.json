@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "budgets": {
+    "maxHtmlBytes": 50000,
+    "siteCssBytes": 50000,
+    "siteJsBytes": 50000,
+    "largestResponsiveImageBytes": 375000,
+    "maxMissingImageDimensions": 0,
+    "maxMissingImageSizes": 0
+  }
+}
