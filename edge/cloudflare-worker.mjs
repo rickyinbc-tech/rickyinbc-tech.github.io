@@ -14,7 +14,7 @@ const passThroughHosts = new Set([
 ]);
 
 const securityHeaders = {
-  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; img-src 'self' data: https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; font-src 'self'; upgrade-insecure-requests",
+  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests",
   "cross-origin-opener-policy": "same-origin",
   "permissions-policy": "camera=(), microphone=(), geolocation=(), browsing-topics=()",
   "referrer-policy": "strict-origin-when-cross-origin",

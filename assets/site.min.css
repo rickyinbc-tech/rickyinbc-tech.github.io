@@ -1492,60 +1492,6 @@ article.work-card {
   outline-offset: 3px;
 }
 
-.analytics-consent {
-  position: fixed;
-  z-index: 100;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  width: min(100% - 40px, 960px);
-  margin-inline: auto;
-  padding: 18px 20px;
-  color: var(--paper-ink);
-  background: var(--paper);
-  border: 1px solid var(--paper-line);
-  box-shadow: var(--shadow);
-}
-
-.analytics-consent strong {
-  display: block;
-  margin-bottom: 3px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 19px;
-}
-
-.analytics-consent p {
-  margin: 0;
-  color: var(--paper-muted);
-  font-size: 14px;
-}
-
-.analytics-consent p a {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.analytics-consent-actions {
-  display: flex;
-  flex: 0 0 auto;
-  gap: 9px;
-}
-
-.analytics-consent .button {
-  min-height: 44px;
-  color: var(--paper-ink);
-  border-color: var(--paper-ink);
-}
-
-.analytics-consent .button:first-child {
-  color: var(--black);
-  background: var(--gold);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1563,26 +1509,8 @@ article.work-card {
 
 @media (forced-colors: active) {
   .button,
-  .filter-button,
-  .analytics-consent {
+  .filter-button {
     border: 1px solid CanvasText;
-  }
-}
-
-@media (max-width: 680px) {
-  .analytics-consent {
-    align-items: stretch;
-    flex-direction: column;
-    gap: 14px;
-    right: 10px;
-    bottom: 10px;
-    left: 10px;
-    width: calc(100% - 20px);
-  }
-
-  .analytics-consent-actions,
-  .analytics-consent-actions .button {
-    width: 100%;
   }
 }
 

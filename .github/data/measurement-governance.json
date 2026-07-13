@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
-  "property": "G-07PQV08YPD",
-  "consentMode": "explicit-opt-in",
+  "property": null,
+  "collectionStatus": "disabled",
+  "consentMode": "not-applicable",
   "privacy": {
     "prohibitedParameters": ["name", "email", "phone", "message", "organization", "lead_id"],
     "urlPolicy": "Remove all non-campaign query parameters and fragments before analytics collection.",
@@ -24,6 +25,6 @@
     "view_project",
     "view_series"
   ],
-  "conversionRule": "generate_lead is emitted only on the return confirmation page after a FormSubmit attempt has been preserved in the same browser session.",
+  "conversionRule": "Event names remain documented for future governance, but the current site does not transmit analytics events.",
   "externalReconciliation": "Submission receipt must be reconciled against the studio inbox or CRM; the public repository cannot prove inbox delivery."
 }

@@ -370,12 +370,16 @@ for (const series of ["ritual", "collision", "motion", "city-light"]) {
 
 const siteJs = await readFile(path.join(repoRoot, "assets/site.min.js"), "utf8");
 const siteCss = await readFile(path.join(repoRoot, "assets/site.min.css"), "utf8");
-for (const marker of ["ANALYTICS_CONSENT_KEY", 'analyticsConsentChoice() === "denied"', "data-analytics-choice", "allow_google_signals: false"]) {
-  if (!siteJs.includes(marker)) errors.push(`analytics consent implementation lacks ${marker}`);
+if (!siteJs.includes("const ANALYTICS_DISABLED = true;") || /googletagmanager|google-analytics|data-analytics-choice|analytics-consent/i.test(siteJs)) {
+  errors.push("analytics must remain disabled without a consent banner or Google loader");
 }
-for (const marker of ["prefers-reduced-motion", "forced-colors", ".analytics-consent"]) {
+if (measurementGovernance.collectionStatus !== "disabled" || measurementGovernance.property !== null) {
+  errors.push("measurement governance must declare analytics disabled");
+}
+for (const marker of ["prefers-reduced-motion", "forced-colors"]) {
   if (!siteCss.includes(marker)) errors.push(`accessibility stylesheet lacks ${marker}`);
 }
+if (/\.analytics-consent/i.test(siteCss)) errors.push("stylesheet still contains the removed analytics banner");
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
 for (const eventName of measurementGovernance.events || []) {
   if (!implementedEvents.has(eventName)) errors.push(`measurement governance event is not implemented: ${eventName}`);
@@ -383,8 +387,8 @@ for (const eventName of measurementGovernance.events || []) {
 for (const eventName of implementedEvents) {
   if (!measurementGovernance.events?.includes(eventName)) errors.push(`implemented event is not governed: ${eventName}`);
 }
-for (const [route, marker] of [["/privacy/", "Essential only"], ["/zh-hant/privacy/", "只使用必要功能"], ["/zh-hans/privacy/", "只使用必要功能"]]) {
-  if (!indexableDocuments.get(route)?.html.includes(marker)) errors.push(`${route}: privacy notice does not describe analytics opt-in`);
+for (const [route, marker] of [["/privacy/", "does not currently use Google Analytics"], ["/zh-hant/privacy/", "目前不載入 Google Analytics"], ["/zh-hans/privacy/", "目前不载入 Google Analytics"]]) {
+  if (!indexableDocuments.get(route)?.html.includes(marker)) errors.push(`${route}: privacy notice does not describe analytics as disabled`);
 }
 if (imageInventory.summary?.missingDimensions !== 0 || imageInventory.summary?.missingSizes !== 0 || imageInventory.summary?.imageUses !== validatedImageUses) {
   errors.push("image inventory is stale or violates the complete image-attribute contract");
