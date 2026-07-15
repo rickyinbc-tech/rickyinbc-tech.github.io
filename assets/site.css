@@ -39,6 +39,8 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  object-fit: contain !important;
+  object-position: center !important;
 }
 
 a {
@@ -234,13 +236,14 @@ html[lang="zh-Hans"] .statement {
   z-index: 0;
   display: block;
   margin: 0;
+  background: #070707;
 }
 
 .hero-media img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .hero-overlay {
@@ -585,13 +588,12 @@ article.work-card {
   object-fit: contain;
   background: #080808;
   transform: scale(1);
-  transition: transform .7s ease, filter .7s ease;
+  transition: filter .7s ease;
 }
 
 .work-card:hover img,
 .work-card:focus-visible img {
   filter: saturate(1.08) contrast(1.06);
-  transform: scale(1.035);
 }
 
 .work-caption {
@@ -683,7 +685,8 @@ article.work-card {
   width: 100%;
   height: 220px;
   min-height: 0;
-  object-fit: cover;
+  object-fit: contain;
+  background: #080808;
 }
 
 .series img {
@@ -1696,24 +1699,15 @@ article.work-card {
     object-fit: contain;
   }
 
-  .source-card > img {
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-  }
-
-  .artwork-page .hero {
-    min-height: 78svh;
-  }
-
-  /* On a narrow screen the artwork is shown whole before its page text, so a
-     portrait or wide composition is never hidden behind the title and CTAs. */
-  .artwork-page .hero.has-semantic-media {
+  /* On a narrow screen every photograph is shown whole before its page text,
+     preserving the composition across the complete site. */
+  .hero.has-semantic-media {
     display: block;
     min-height: 0;
     padding-top: 210px;
   }
 
-  .artwork-page .hero.has-semantic-media .hero-media {
+  .hero.has-semantic-media .hero-media {
     position: relative;
     inset: auto;
     width: 100%;
@@ -1721,7 +1715,7 @@ article.work-card {
     overflow: visible;
   }
 
-  .artwork-page .hero.has-semantic-media .hero-media img {
+  .hero.has-semantic-media .hero-media img {
     width: 100%;
     height: auto;
     min-height: 0;
@@ -1729,11 +1723,11 @@ article.work-card {
     object-fit: contain;
   }
 
-  .artwork-page .hero.has-semantic-media .hero-overlay {
+  .hero.has-semantic-media .hero-overlay {
     display: none;
   }
 
-  .artwork-page .hero.has-semantic-media .hero-inner {
+  .hero.has-semantic-media .hero-inner {
     width: min(100% - 28px, 1220px);
     padding: 30px 0 50px;
   }

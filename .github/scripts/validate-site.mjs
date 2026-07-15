@@ -380,6 +380,16 @@ for (const marker of ["prefers-reduced-motion", "forced-colors"]) {
   if (!siteCss.includes(marker)) errors.push(`accessibility stylesheet lacks ${marker}`);
 }
 if (/\.analytics-consent/i.test(siteCss)) errors.push("stylesheet still contains the removed analytics banner");
+if (/object-fit\s*:\s*cover/i.test(siteCss)) {
+  errors.push("stylesheet must not crop photography with object-fit: cover");
+}
+for (const marker of [
+  "object-fit: contain !important",
+  ".hero.has-semantic-media",
+  ".hero.has-semantic-media .hero-media img",
+]) {
+  if (!siteCss.includes(marker)) errors.push(`stylesheet lacks the no-crop artwork contract: ${marker}`);
+}
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
 for (const eventName of measurementGovernance.events || []) {
   if (!implementedEvents.has(eventName)) errors.push(`measurement governance event is not implemented: ${eventName}`);
