@@ -12,6 +12,7 @@ The Worker redirects only explicitly mapped paths:
 * `www.rickykwok.com` to the canonical host, without adding a second hop
 * `blog.rickykwok.com/` and its retired feed to `/journal/`
 * `photo.rickykwok.com/` to the canonical homepage
+* `wine.rickykwok.com` through to its dedicated GitHub Pages site
 * the 18 historical Namecheap forwarding hosts to the canonical homepage,
   preserving their existing host-wide forwarding behavior over both HTTP and
   HTTPS

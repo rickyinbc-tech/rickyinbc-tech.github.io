@@ -24,6 +24,9 @@ check(legacy.headers.get("location") === "https://rickykwok.com/series/collision
 const select = await worker.fetch(new Request("https://select.rickykwok.com/"));
 check(select.status === 308 && select.headers.get("location") === "https://rickykwok.com/", "select host must redirect to the canonical origin when proxied");
 
+const wine = await worker.fetch(new Request("https://wine.rickykwok.com/"));
+check(wine.status === 200 && await wine.text() === "origin:/", "wine host must pass through to its GitHub Pages origin");
+
 const unknown = await worker.fetch(new Request("https://unknown.rickykwok.com/"));
 check(unknown.status === 404, "unknown proxied subdomain must fail closed");
 

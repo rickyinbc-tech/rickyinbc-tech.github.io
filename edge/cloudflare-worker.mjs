@@ -10,7 +10,8 @@ const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`,
   "blog.rickykwok.com",
-  "photo.rickykwok.com"
+  "photo.rickykwok.com",
+  "wine.rickykwok.com"
 ]);
 
 const securityHeaders = {
