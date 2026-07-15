@@ -25,11 +25,12 @@ genuine 404 for other unknown subdomains rather than forwarding them.
 
 `wine.rickykwok.com` is served from its dedicated public GitHub repository. The
 Worker resolves that repository's `main` branch to a commit SHA for five minutes
-and fetches the homepage, chart JSON, crawler files, styles, scripts, favicon,
-and social image from the immutable SHA. `/index.html` permanently redirects to
-the canonical `/` URL, and the JSON response is marked `noindex`. This avoids
-mixed old/new responses while GitHub's moving-branch cache propagates a daily
-data commit.
+and fetches the homepage, chart JSON, crawler files, styles, scripts, consent-first
+analytics loader, favicon, and social image from the immutable SHA. The analytics
+loader does not contact Google until a visitor opts in. `/index.html` permanently
+redirects to the canonical `/` URL, and the JSON response is marked `noindex`.
+This avoids mixed old/new responses while GitHub's moving-branch cache propagates
+a daily data commit.
 
 Before attaching this Worker:
 

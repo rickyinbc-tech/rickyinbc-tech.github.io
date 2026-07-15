@@ -19,6 +19,7 @@ const wineAssets = new Map([
   ["/favicon-48.png", { source: "assets/favicon-48.png", contentType: "image/png", cacheControl: "public, max-age=86400" }],
   ["/apple-touch-icon.png", { source: "assets/apple-touch-icon.png", contentType: "image/png", cacheControl: "public, max-age=86400" }],
   ["/assets/site.css", { source: "assets/site.css", contentType: "text/css; charset=utf-8", cacheControl: "public, max-age=300" }],
+  ["/assets/analytics.js", { source: "assets/analytics.js", contentType: "text/javascript; charset=utf-8", cacheControl: "public, max-age=300" }],
   ["/assets/site.js", { source: "assets/site.js", contentType: "text/javascript; charset=utf-8", cacheControl: "public, max-age=300" }],
   ["/assets/bc-wine-rank-social.jpg", { source: "assets/bc-wine-rank-social.jpg", contentType: "image/jpeg", cacheControl: "public, max-age=86400" }]
 ]);
@@ -40,7 +41,7 @@ const securityHeaders = {
 
 const wineSecurityHeaders = {
   ...securityHeaders,
-  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests"
+  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com; style-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; upgrade-insecure-requests"
 };
 
 function withSecurityHeaders(response, hostname = canonicalHost) {
