@@ -25,7 +25,14 @@ const select = await worker.fetch(new Request("https://select.rickykwok.com/"));
 check(select.status === 308 && select.headers.get("location") === "https://rickykwok.com/", "select host must redirect to the canonical origin when proxied");
 
 const wine = await worker.fetch(new Request("https://wine.rickykwok.com/"));
-check(wine.status === 200 && await wine.text() === "origin:/", "wine host must pass through to its GitHub Pages origin");
+check(wine.status === 200 && await wine.text() === "origin:/rickyinbc-tech/wine.rickykwok.com/main/index.html", "wine host must serve its GitHub repository homepage");
+check(wine.headers.get("content-security-policy")?.includes("https://cdn.jsdelivr.net"), "wine host must allow its Chart.js dependency");
+
+const wineData = await worker.fetch(new Request("https://wine.rickykwok.com/data/wine-chart.json"));
+check(wineData.status === 200 && wineData.headers.get("content-type")?.startsWith("application/json"), "wine chart data must be served as JSON");
+
+const unknownWineAsset = await worker.fetch(new Request("https://wine.rickykwok.com/private"));
+check(unknownWineAsset.status === 404, "unknown wine-site assets must fail closed");
 
 const unknown = await worker.fetch(new Request("https://unknown.rickykwok.com/"));
 check(unknown.status === 404, "unknown proxied subdomain must fail closed");

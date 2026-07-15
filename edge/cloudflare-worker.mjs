@@ -6,12 +6,18 @@ const forwardedHosts = new Set((redirectConfig.forwardedHosts || []).map((hostna
 const safeQueryParameters = new Set(redirectConfig.preserveQueryParameters);
 const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
+const wineHost = "wine.rickykwok.com";
+const wineRepositoryOrigin = new URL("https://raw.githubusercontent.com/rickyinbc-tech/wine.rickykwok.com/main/");
+const wineAssets = new Map([
+  ["/", "index.html"],
+  ["/index.html", "index.html"],
+  ["/data/wine-chart.json", "data/wine-chart.json"]
+]);
 const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`,
   "blog.rickykwok.com",
-  "photo.rickykwok.com",
-  "wine.rickykwok.com"
+  "photo.rickykwok.com"
 ]);
 
 const securityHeaders = {
@@ -23,14 +29,59 @@ const securityHeaders = {
   "x-frame-options": "DENY"
 };
 
-function withSecurityHeaders(response) {
+const wineSecurityHeaders = {
+  ...securityHeaders,
+  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; font-src 'self'; upgrade-insecure-requests"
+};
+
+function withSecurityHeaders(response, hostname = canonicalHost) {
   const headers = new Headers(response.headers);
-  for (const [name, value] of Object.entries(securityHeaders)) headers.set(name, value);
+  const selectedHeaders = hostname.toLowerCase() === wineHost ? wineSecurityHeaders : securityHeaders;
+  for (const [name, value] of Object.entries(selectedHeaders)) headers.set(name, value);
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
     headers
   });
+}
+
+async function serveWineSite(request, requestUrl) {
+  if (request.method !== "GET" && request.method !== "HEAD") {
+    return withSecurityHeaders(new Response("Method not allowed", {
+      status: 405,
+      headers: { "content-type": "text/plain; charset=utf-8", "allow": "GET, HEAD" }
+    }), wineHost);
+  }
+
+  const asset = wineAssets.get(requestUrl.pathname);
+  if (!asset) {
+    return withSecurityHeaders(new Response("Not found", {
+      status: 404,
+      headers: { "content-type": "text/plain; charset=utf-8" }
+    }), wineHost);
+  }
+
+  const upstreamUrl = new URL(asset, wineRepositoryOrigin);
+  const upstream = await fetch(new Request(upstreamUrl, {
+    method: request.method,
+    headers: { "accept": request.headers.get("accept") || "*/*" }
+  }));
+
+  if (!upstream.ok) {
+    return withSecurityHeaders(new Response("Wine site origin unavailable", {
+      status: 502,
+      headers: { "content-type": "text/plain; charset=utf-8" }
+    }), wineHost);
+  }
+
+  const headers = new Headers(upstream.headers);
+  headers.set("cache-control", asset.endsWith(".json") ? "public, max-age=300" : "public, max-age=60");
+  headers.set("content-type", asset.endsWith(".json") ? "application/json; charset=utf-8" : "text/html; charset=utf-8");
+  return withSecurityHeaders(new Response(upstream.body, {
+    status: upstream.status,
+    statusText: upstream.statusText,
+    headers
+  }), wineHost);
 }
 
 function redirectDestination(requestUrl, destination) {
@@ -62,16 +113,18 @@ function mappedDestination(requestUrl) {
 export default {
   async fetch(request, env, context) {
     const requestUrl = new URL(request.url);
-    if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request));
+    const hostname = requestUrl.hostname.toLowerCase();
+    if (hostname === wineHost) return serveWineSite(request, requestUrl);
+    if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request), hostname);
 
     const destination = mappedDestination(requestUrl);
     if (!destination) {
-      if (requestUrl.hostname.toLowerCase().endsWith(`.${canonicalHost}`) && !passThroughHosts.has(requestUrl.hostname.toLowerCase())) {
-        return withSecurityHeaders(new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8" } }));
+      if (hostname.endsWith(`.${canonicalHost}`) && !passThroughHosts.has(hostname)) {
+        return withSecurityHeaders(new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8" } }), hostname);
       }
-      return withSecurityHeaders(await fetch(request));
+      return withSecurityHeaders(await fetch(request), hostname);
     }
 
-    return withSecurityHeaders(Response.redirect(redirectDestination(requestUrl, destination).toString(), redirectConfig.status));
+    return withSecurityHeaders(Response.redirect(redirectDestination(requestUrl, destination).toString(), redirectConfig.status), hostname);
   }
 };
