@@ -50,6 +50,18 @@ check(wine.headers.get("x-wine-source-commit") === wineCommitSha, "wine homepage
 const wineIndex = await worker.fetch(new Request("https://wine.rickykwok.com/index.html"));
 check(wineIndex.status === 301 && wineIndex.headers.get("location") === "https://wine.rickykwok.com/", "wine index.html must redirect to the canonical root URL");
 
+const wineTraditional = await worker.fetch(new Request("https://wine.rickykwok.com/zh-hant/"));
+check(wineTraditional.status === 200 && await wineTraditional.text() === "origin:/rickyinbc-tech/wine.rickykwok.com/" + wineCommitSha + "/zh-hant/index.html", "traditional Chinese wine page must be served from the immutable wine commit");
+
+const wineSimplified = await worker.fetch(new Request("https://wine.rickykwok.com/zh-hans/"));
+check(wineSimplified.status === 200 && await wineSimplified.text() === "origin:/rickyinbc-tech/wine.rickykwok.com/" + wineCommitSha + "/zh-hans/index.html", "simplified Chinese wine page must be served from the immutable wine commit");
+
+const wineTraditionalCanonical = await worker.fetch(new Request("https://wine.rickykwok.com/zh-hant"));
+check(wineTraditionalCanonical.status === 301 && wineTraditionalCanonical.headers.get("location") === "https://wine.rickykwok.com/zh-hant/", "traditional Chinese path must redirect to its trailing-slash canonical URL");
+
+const wineSimplifiedIndex = await worker.fetch(new Request("https://wine.rickykwok.com/zh-hans/index.html"));
+check(wineSimplifiedIndex.status === 301 && wineSimplifiedIndex.headers.get("location") === "https://wine.rickykwok.com/zh-hans/", "simplified Chinese index path must redirect to its canonical URL");
+
 const wineStyles = await worker.fetch(new Request("https://wine.rickykwok.com/assets/site.css"));
 check(wineStyles.status === 200 && wineStyles.headers.get("content-type")?.startsWith("text/css"), "wine stylesheet must be served with its CSS MIME type");
 
