@@ -23,6 +23,12 @@ mapping has been verified. A proxied wildcard DNS record is used only as an
 edge entry point for the historical forwarding hosts; the Worker returns a
 genuine 404 for other unknown subdomains rather than forwarding them.
 
+`wine.rickykwok.com` is served from its dedicated public GitHub repository. The
+Worker resolves that repository's `main` branch to a commit SHA for five minutes
+and fetches both the homepage and chart JSON from the immutable SHA. This avoids
+mixed old/new responses while GitHub's moving-branch cache propagates a daily
+data commit.
+
 Before attaching this Worker:
 
 1. Import every active Namecheap record into Cloudflare. Preserve all GitHub

@@ -7,7 +7,9 @@ const safeQueryParameters = new Set(redirectConfig.preserveQueryParameters);
 const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
 const wineHost = "wine.rickykwok.com";
-const wineRepositoryOrigin = new URL("https://raw.githubusercontent.com/rickyinbc-tech/wine.rickykwok.com/main/");
+const wineRepositoryName = "rickyinbc-tech/wine.rickykwok.com";
+const wineRepositoryOrigin = new URL(`https://raw.githubusercontent.com/${wineRepositoryName}/`);
+const wineMainCommitApi = new URL(`https://api.github.com/repos/${wineRepositoryName}/commits/main`);
 const wineAssets = new Map([
   ["/", "index.html"],
   ["/index.html", "index.html"],
@@ -45,6 +47,25 @@ function withSecurityHeaders(response, hostname = canonicalHost) {
   });
 }
 
+async function resolveWineCommitSha() {
+  const response = await fetch(wineMainCommitApi, {
+    headers: {
+      "accept": "application/vnd.github+json",
+      "user-agent": "rickykwok-edge-redirects",
+      "x-github-api-version": "2022-11-28"
+    },
+    cf: {
+      cacheEverything: true,
+      cacheTtl: 300
+    }
+  });
+
+  if (!response.ok) throw new Error(`GitHub commit lookup failed with HTTP ${response.status}`);
+  const payload = await response.json();
+  if (!/^[0-9a-f]{40}$/.test(payload.sha || "")) throw new Error("GitHub commit lookup returned an invalid SHA");
+  return payload.sha;
+}
+
 async function serveWineSite(request, requestUrl) {
   if (request.method !== "GET" && request.method !== "HEAD") {
     return withSecurityHeaders(new Response("Method not allowed", {
@@ -61,11 +82,26 @@ async function serveWineSite(request, requestUrl) {
     }), wineHost);
   }
 
-  const upstreamUrl = new URL(asset, wineRepositoryOrigin);
-  const upstream = await fetch(new Request(upstreamUrl, {
-    method: request.method,
-    headers: { "accept": request.headers.get("accept") || "*/*" }
-  }));
+  let commitSha;
+  let upstream;
+  try {
+    commitSha = await resolveWineCommitSha();
+    const upstreamUrl = new URL(`${commitSha}/${asset}`, wineRepositoryOrigin);
+    upstream = await fetch(new Request(upstreamUrl, {
+      method: request.method,
+      headers: { "accept": request.headers.get("accept") || "*/*" }
+    }), {
+      cf: {
+        cacheEverything: true,
+        cacheTtl: 31_536_000
+      }
+    });
+  } catch {
+    return withSecurityHeaders(new Response("Wine site origin unavailable", {
+      status: 502,
+      headers: { "content-type": "text/plain; charset=utf-8" }
+    }), wineHost);
+  }
 
   if (!upstream.ok) {
     return withSecurityHeaders(new Response("Wine site origin unavailable", {
@@ -77,6 +113,7 @@ async function serveWineSite(request, requestUrl) {
   const headers = new Headers(upstream.headers);
   headers.set("cache-control", asset.endsWith(".json") ? "public, max-age=300" : "public, max-age=60");
   headers.set("content-type", asset.endsWith(".json") ? "application/json; charset=utf-8" : "text/html; charset=utf-8");
+  headers.set("x-wine-source-commit", commitSha);
   return withSecurityHeaders(new Response(upstream.body, {
     status: upstream.status,
     statusText: upstream.statusText,
