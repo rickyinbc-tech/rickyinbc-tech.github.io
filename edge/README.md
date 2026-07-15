@@ -12,7 +12,7 @@ The Worker redirects only explicitly mapped paths:
 * `www.rickykwok.com` to the canonical host, without adding a second hop
 * `blog.rickykwok.com/` and its retired feed to `/journal/`
 * `photo.rickykwok.com/` to the canonical homepage
-* `wine.rickykwok.com` from its dedicated GitHub repository, including the daily chart data
+* `wine.rickykwok.com` from its dedicated GitHub repository, including the daily ranking, crawler files, and static assets
 * the 18 historical Namecheap forwarding hosts to the canonical homepage,
   preserving their existing host-wide forwarding behavior over both HTTP and
   HTTPS
@@ -25,7 +25,9 @@ genuine 404 for other unknown subdomains rather than forwarding them.
 
 `wine.rickykwok.com` is served from its dedicated public GitHub repository. The
 Worker resolves that repository's `main` branch to a commit SHA for five minutes
-and fetches both the homepage and chart JSON from the immutable SHA. This avoids
+and fetches the homepage, chart JSON, crawler files, styles, scripts, favicon,
+and social image from the immutable SHA. `/index.html` permanently redirects to
+the canonical `/` URL, and the JSON response is marked `noindex`. This avoids
 mixed old/new responses while GitHub's moving-branch cache propagates a daily
 data commit.
 

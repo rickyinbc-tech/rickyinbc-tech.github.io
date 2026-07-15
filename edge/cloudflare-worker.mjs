@@ -11,9 +11,16 @@ const wineRepositoryName = "rickyinbc-tech/wine.rickykwok.com";
 const wineRepositoryOrigin = new URL(`https://raw.githubusercontent.com/${wineRepositoryName}/`);
 const wineMainCommitApi = new URL(`https://api.github.com/repos/${wineRepositoryName}/commits/main`);
 const wineAssets = new Map([
-  ["/", "index.html"],
-  ["/index.html", "index.html"],
-  ["/data/wine-chart.json", "data/wine-chart.json"]
+  ["/", { source: "index.html", contentType: "text/html; charset=utf-8", cacheControl: "public, max-age=60" }],
+  ["/data/wine-chart.json", { source: "data/wine-chart.json", contentType: "application/json; charset=utf-8", cacheControl: "public, max-age=300", noIndex: true }],
+  ["/robots.txt", { source: "robots.txt", contentType: "text/plain; charset=utf-8", cacheControl: "public, max-age=3600" }],
+  ["/sitemap.xml", { source: "sitemap.xml", contentType: "application/xml; charset=utf-8", cacheControl: "public, max-age=3600" }],
+  ["/favicon.svg", { source: "assets/favicon.svg", contentType: "image/svg+xml", cacheControl: "public, max-age=86400" }],
+  ["/favicon-48.png", { source: "assets/favicon-48.png", contentType: "image/png", cacheControl: "public, max-age=86400" }],
+  ["/apple-touch-icon.png", { source: "assets/apple-touch-icon.png", contentType: "image/png", cacheControl: "public, max-age=86400" }],
+  ["/assets/site.css", { source: "assets/site.css", contentType: "text/css; charset=utf-8", cacheControl: "public, max-age=300" }],
+  ["/assets/site.js", { source: "assets/site.js", contentType: "text/javascript; charset=utf-8", cacheControl: "public, max-age=300" }],
+  ["/assets/bc-wine-rank-social.jpg", { source: "assets/bc-wine-rank-social.jpg", contentType: "image/jpeg", cacheControl: "public, max-age=86400" }]
 ]);
 const passThroughHosts = new Set([
   canonicalHost,
@@ -33,7 +40,7 @@ const securityHeaders = {
 
 const wineSecurityHeaders = {
   ...securityHeaders,
-  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; connect-src 'self'; font-src 'self'; upgrade-insecure-requests"
+  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self'; script-src 'self' 'unsafe-inline'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests"
 };
 
 function withSecurityHeaders(response, hostname = canonicalHost) {
@@ -74,6 +81,13 @@ async function serveWineSite(request, requestUrl) {
     }), wineHost);
   }
 
+  if (requestUrl.pathname === "/index.html") {
+    return withSecurityHeaders(new Response(null, {
+      status: 301,
+      headers: { "location": "https://wine.rickykwok.com/" }
+    }), wineHost);
+  }
+
   const asset = wineAssets.get(requestUrl.pathname);
   if (!asset) {
     return withSecurityHeaders(new Response("Not found", {
@@ -86,7 +100,7 @@ async function serveWineSite(request, requestUrl) {
   let upstream;
   try {
     commitSha = await resolveWineCommitSha();
-    const upstreamUrl = new URL(`${commitSha}/${asset}`, wineRepositoryOrigin);
+    const upstreamUrl = new URL(`${commitSha}/${asset.source}`, wineRepositoryOrigin);
     upstream = await fetch(new Request(upstreamUrl, {
       method: request.method,
       headers: { "accept": request.headers.get("accept") || "*/*" }
@@ -111,8 +125,9 @@ async function serveWineSite(request, requestUrl) {
   }
 
   const headers = new Headers(upstream.headers);
-  headers.set("cache-control", asset.endsWith(".json") ? "public, max-age=300" : "public, max-age=60");
-  headers.set("content-type", asset.endsWith(".json") ? "application/json; charset=utf-8" : "text/html; charset=utf-8");
+  headers.set("cache-control", asset.cacheControl);
+  headers.set("content-type", asset.contentType);
+  if (asset.noIndex) headers.set("x-robots-tag", "noindex");
   headers.set("x-wine-source-commit", commitSha);
   return withSecurityHeaders(new Response(upstream.body, {
     status: upstream.status,
