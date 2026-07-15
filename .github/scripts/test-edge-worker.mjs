@@ -42,11 +42,21 @@ check(select.status === 308 && select.headers.get("location") === "https://ricky
 
 const wine = await worker.fetch(new Request("https://wine.rickykwok.com/"));
 check(wine.status === 200 && await wine.text() === `origin:/rickyinbc-tech/wine.rickykwok.com/${wineCommitSha}/index.html`, "wine host must serve its GitHub repository homepage from an immutable commit");
-check(wine.headers.get("content-security-policy")?.includes("https://cdn.jsdelivr.net"), "wine host must allow its Chart.js dependency");
+check(!wine.headers.get("content-security-policy")?.includes("https://cdn.jsdelivr.net"), "wine host must not allow the removed Chart.js dependency");
 check(wine.headers.get("x-wine-source-commit") === wineCommitSha, "wine homepage must disclose its source commit");
+
+const wineIndex = await worker.fetch(new Request("https://wine.rickykwok.com/index.html"));
+check(wineIndex.status === 301 && wineIndex.headers.get("location") === "https://wine.rickykwok.com/", "wine index.html must redirect to the canonical root URL");
+
+const wineStyles = await worker.fetch(new Request("https://wine.rickykwok.com/assets/site.css"));
+check(wineStyles.status === 200 && wineStyles.headers.get("content-type")?.startsWith("text/css"), "wine stylesheet must be served with its CSS MIME type");
+
+const wineScript = await worker.fetch(new Request("https://wine.rickykwok.com/assets/site.js"));
+check(wineScript.status === 200 && wineScript.headers.get("content-type")?.startsWith("text/javascript"), "wine script must be served with its JavaScript MIME type");
 
 const wineData = await worker.fetch(new Request("https://wine.rickykwok.com/data/wine-chart.json"));
 check(wineData.status === 200 && wineData.headers.get("content-type")?.startsWith("application/json"), "wine chart data must be served as JSON");
+check(wineData.headers.get("x-robots-tag") === "noindex", "wine chart data must be excluded from search results");
 check(wineData.headers.get("x-wine-source-commit") === wineCommitSha, "wine data must use the same immutable source commit");
 check(!fetchedUrls.some((url) => url.includes("raw.githubusercontent.com/rickyinbc-tech/wine.rickykwok.com/main/")), "wine assets must never use a moving branch URL");
 
