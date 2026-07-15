@@ -227,7 +227,7 @@ def page_head(title:, description:, english_route:, local_route:, image:, type: 
       <meta name="theme-color" content="#070707">
       <link rel="icon" href="/favicon.svg" type="image/svg+xml">
       <link rel="preload" as="image" href="#{esc(image)}" fetchpriority="high">
-      <link rel="stylesheet" href="/assets/site.min.css">
+      <link rel="stylesheet" href="/assets/site.min.css?v=20260715-header-flow-v3">
       <script type="application/ld+json">#{JSON.generate(graph)}</script>
     </head>
   HTML
@@ -628,7 +628,7 @@ def redirect_page(route, target)
   destination = "/zh-hant#{target}"
   canonical = "#{ORIGIN}#{destination.sub(/#.*$/, "")}"
   <<~HTML
-    <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, follow"><title>頁面已整合｜郭文棣 Ricky Kwok</title><meta name="description" content="此舊網址已整合至相應的繁體中文權威頁面。"><link rel="canonical" href="#{canonical}"><link rel="alternate" hreflang="en" href="#{ORIGIN}#{english_route}"><link rel="alternate" hreflang="zh-Hant" href="#{ORIGIN}#{destination}"><link rel="alternate" hreflang="zh-Hans" href="#{ORIGIN}#{destination.sub("/zh-hant/", "/zh-hans/")}"><meta http-equiv="refresh" content="0; url=#{destination}"><link rel="stylesheet" href="/assets/site.min.css"><script>location.replace(#{destination.to_json});</script></head><body class="redirect-page"><main class="redirect-card"><p class="eyebrow">頁面整合</p><h1>內容已移至更清晰的中文頁面。</h1><p class="prose">網站已把重複分類整合至一個權威目的地，避免讀者在相近頁面之間迷失。</p><div class="button-row"><a class="button" href="#{destination}">前往整合後頁面</a></div>#{language_switcher(english_route, local_route)}</main></body></html>
+    <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, follow"><title>頁面已整合｜郭文棣 Ricky Kwok</title><meta name="description" content="此舊網址已整合至相應的繁體中文權威頁面。"><link rel="canonical" href="#{canonical}"><link rel="alternate" hreflang="en" href="#{ORIGIN}#{english_route}"><link rel="alternate" hreflang="zh-Hant" href="#{ORIGIN}#{destination}"><link rel="alternate" hreflang="zh-Hans" href="#{ORIGIN}#{destination.sub("/zh-hant/", "/zh-hans/")}"><meta http-equiv="refresh" content="0; url=#{destination}"><link rel="stylesheet" href="/assets/site.min.css?v=20260715-header-flow-v3"><script>location.replace(#{destination.to_json});</script></head><body class="redirect-page"><main class="redirect-card"><p class="eyebrow">頁面整合</p><h1>內容已移至更清晰的中文頁面。</h1><p class="prose">網站已把重複分類整合至一個權威目的地，避免讀者在相近頁面之間迷失。</p><div class="button-row"><a class="button" href="#{destination}">前往整合後頁面</a></div>#{language_switcher(english_route, local_route)}</main></body></html>
   HTML
 end
 

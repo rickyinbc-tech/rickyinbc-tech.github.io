@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ORIGIN = "https://rickykwok.com";
+const STYLESHEET_URL = "/assets/site.min.css?v=20260715-header-flow-v3";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const excludedDirectories = new Set([".git", ".github", "assets"]);
 const errors = [];
@@ -113,6 +114,10 @@ for (const file of await htmlFiles()) {
   const h1Count = (html.match(/<h1\b/gi) || []).length;
   const canonical = canonicalFrom(html);
   const localized = relative.startsWith("zh-hant/") || relative.startsWith("zh-hans/");
+
+  if (html.includes("/assets/site.min.css") && !html.includes(STYLESHEET_URL)) {
+    errors.push(`${relative}: stylesheet cache key does not include the responsive header-flow fix`);
+  }
 
   if (localized) {
     for (const pattern of placeholderPatterns) {
@@ -389,6 +394,12 @@ for (const marker of [
   ".hero.has-semantic-media .hero-media img",
 ]) {
   if (!siteCss.includes(marker)) errors.push(`stylesheet lacks the no-crop artwork contract: ${marker}`);
+}
+if (!/@media\s*\(max-width:\s*980px\)[\s\S]*?\.site-header\s*\{[\s\S]*?position:\s*relative/i.test(siteCss)) {
+  errors.push("responsive header must remain in normal flow so translated navigation cannot cover artwork");
+}
+if (!/\.hero\.has-semantic-media\s*\{[\s\S]*?padding-top:\s*0/i.test(siteCss)) {
+  errors.push("responsive artwork hero must not use a fixed header-height offset");
 }
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
 for (const eventName of measurementGovernance.events || []) {
