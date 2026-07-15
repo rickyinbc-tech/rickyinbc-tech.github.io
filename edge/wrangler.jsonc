@@ -5,6 +5,7 @@
   "compatibility_date": "2026-07-11",
   "workers_dev": false,
   "routes": [
+    { "pattern": "wine.rickykwok.com/*", "zone_name": "rickykwok.com" },
     { "pattern": "rickykwok.com/*", "zone_name": "rickykwok.com" },
     { "pattern": "*.rickykwok.com/*", "zone_name": "rickykwok.com" }
   ]

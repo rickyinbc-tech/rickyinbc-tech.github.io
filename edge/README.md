@@ -35,8 +35,8 @@ Before attaching this Worker:
 3. Set SSL/TLS encryption mode to **Full (strict)**. The GitHub Pages origins
    currently have valid certificates.
 4. Deploy with `wrangler deploy` from this directory. `wrangler.jsonc` defines
-   the apex and wildcard-subdomain worker routes; only proxied host records
-   receive the Worker.
+   the apex, wildcard-subdomain, and explicit wine-site worker routes; only
+   proxied host records receive the Worker.
 5. Test every source in `redirect-map.json` in a staging or preview route.
 6. Confirm each destination is a direct HTTP 200 self-canonical page.
 7. Check `curl -I` for a single 308 hop only; verify unknown legacy-host paths
