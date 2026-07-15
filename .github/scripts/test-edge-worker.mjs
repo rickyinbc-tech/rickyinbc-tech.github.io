@@ -43,6 +43,8 @@ check(select.status === 308 && select.headers.get("location") === "https://ricky
 const wine = await worker.fetch(new Request("https://wine.rickykwok.com/"));
 check(wine.status === 200 && await wine.text() === `origin:/rickyinbc-tech/wine.rickykwok.com/${wineCommitSha}/index.html`, "wine host must serve its GitHub repository homepage from an immutable commit");
 check(!wine.headers.get("content-security-policy")?.includes("https://cdn.jsdelivr.net"), "wine host must not allow the removed Chart.js dependency");
+check(wine.headers.get("content-security-policy")?.includes("https://www.googletagmanager.com"), "wine host must allow the consent-gated Google tag script");
+check(wine.headers.get("content-security-policy")?.includes("https://*.google-analytics.com"), "wine host must allow Google Analytics collection after consent");
 check(wine.headers.get("x-wine-source-commit") === wineCommitSha, "wine homepage must disclose its source commit");
 
 const wineIndex = await worker.fetch(new Request("https://wine.rickykwok.com/index.html"));
@@ -53,6 +55,9 @@ check(wineStyles.status === 200 && wineStyles.headers.get("content-type")?.start
 
 const wineScript = await worker.fetch(new Request("https://wine.rickykwok.com/assets/site.js"));
 check(wineScript.status === 200 && wineScript.headers.get("content-type")?.startsWith("text/javascript"), "wine script must be served with its JavaScript MIME type");
+
+const wineAnalytics = await worker.fetch(new Request("https://wine.rickykwok.com/assets/analytics.js"));
+check(wineAnalytics.status === 200 && wineAnalytics.headers.get("content-type")?.startsWith("text/javascript"), "wine analytics script must be served with its JavaScript MIME type");
 
 const wineData = await worker.fetch(new Request("https://wine.rickykwok.com/data/wine-chart.json"));
 check(wineData.status === 200 && wineData.headers.get("content-type")?.startsWith("application/json"), "wine chart data must be served as JSON");
