@@ -12,6 +12,8 @@ const wineRepositoryOrigin = new URL(`https://raw.githubusercontent.com/${wineRe
 const wineMainCommitApi = new URL(`https://api.github.com/repos/${wineRepositoryName}/commits/main`);
 const wineAssets = new Map([
   ["/", { source: "index.html", contentType: "text/html; charset=utf-8", cacheControl: "public, max-age=60" }],
+  ["/zh-hant/", { source: "zh-hant/index.html", contentType: "text/html; charset=utf-8", cacheControl: "public, max-age=60" }],
+  ["/zh-hans/", { source: "zh-hans/index.html", contentType: "text/html; charset=utf-8", cacheControl: "public, max-age=60" }],
   ["/data/wine-chart.json", { source: "data/wine-chart.json", contentType: "application/json; charset=utf-8", cacheControl: "public, max-age=300", noIndex: true }],
   ["/robots.txt", { source: "robots.txt", contentType: "text/plain; charset=utf-8", cacheControl: "public, max-age=3600" }],
   ["/sitemap.xml", { source: "sitemap.xml", contentType: "application/xml; charset=utf-8", cacheControl: "public, max-age=3600" }],
@@ -22,6 +24,13 @@ const wineAssets = new Map([
   ["/assets/analytics.js", { source: "assets/analytics.js", contentType: "text/javascript; charset=utf-8", cacheControl: "public, max-age=300" }],
   ["/assets/site.js", { source: "assets/site.js", contentType: "text/javascript; charset=utf-8", cacheControl: "public, max-age=300" }],
   ["/assets/bc-wine-rank-social.jpg", { source: "assets/bc-wine-rank-social.jpg", contentType: "image/jpeg", cacheControl: "public, max-age=86400" }]
+]);
+const wineCanonicalRedirects = new Map([
+  ["/index.html", "/"],
+  ["/zh-hant", "/zh-hant/"],
+  ["/zh-hant/index.html", "/zh-hant/"],
+  ["/zh-hans", "/zh-hans/"],
+  ["/zh-hans/index.html", "/zh-hans/"]
 ]);
 const passThroughHosts = new Set([
   canonicalHost,
@@ -82,10 +91,11 @@ async function serveWineSite(request, requestUrl) {
     }), wineHost);
   }
 
-  if (requestUrl.pathname === "/index.html") {
+  const canonicalPath = wineCanonicalRedirects.get(requestUrl.pathname);
+  if (canonicalPath) {
     return withSecurityHeaders(new Response(null, {
       status: 301,
-      headers: { "location": "https://wine.rickykwok.com/" }
+      headers: { "location": new URL(canonicalPath, requestUrl).toString() }
     }), wineHost);
   }
 
