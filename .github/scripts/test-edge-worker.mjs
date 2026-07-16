@@ -71,6 +71,16 @@ check(wineScript.status === 200 && wineScript.headers.get("content-type")?.start
 const wineAnalytics = await worker.fetch(new Request("https://wine.rickykwok.com/assets/analytics.js"));
 check(wineAnalytics.status === 200 && wineAnalytics.headers.get("content-type")?.startsWith("text/javascript"), "wine analytics script must be served with its JavaScript MIME type");
 
+const wineBottleJpeg = await worker.fetch(new Request("https://wine.rickykwok.com/assets/wine-bottles/138432.jpg"));
+check(wineBottleJpeg.status === 200 && wineBottleJpeg.headers.get("content-type") === "image/jpeg", "wine JPEG bottle images must be served with the correct MIME type");
+check(await wineBottleJpeg.text() === `origin:/rickyinbc-tech/wine.rickykwok.com/${wineCommitSha}/assets/wine-bottles/138432.jpg`, "wine bottle images must use the immutable source commit");
+
+const wineBottleWebp = await worker.fetch(new Request("https://wine.rickykwok.com/assets/wine-bottles/618780.webp"));
+check(wineBottleWebp.status === 200 && wineBottleWebp.headers.get("content-type") === "image/webp", "wine WebP bottle images must be served with the correct MIME type");
+
+const invalidWineBottle = await worker.fetch(new Request("https://wine.rickykwok.com/assets/wine-bottles/../../private.jpg"));
+check(invalidWineBottle.status === 404, "invalid wine bottle paths must fail closed");
+
 const wineData = await worker.fetch(new Request("https://wine.rickykwok.com/data/wine-chart.json"));
 check(wineData.status === 200 && wineData.headers.get("content-type")?.startsWith("application/json"), "wine chart data must be served as JSON");
 check(wineData.headers.get("x-robots-tag") === "noindex", "wine chart data must be excluded from search results");
