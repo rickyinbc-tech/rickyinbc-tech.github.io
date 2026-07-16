@@ -32,6 +32,7 @@ const wineCanonicalRedirects = new Map([
   ["/zh-hans", "/zh-hans/"],
   ["/zh-hans/index.html", "/zh-hans/"]
 ]);
+const wineBottleImagePattern = /^\/assets\/wine-bottles\/[0-9A-Za-z_-]+\.(jpg|png|webp)$/;
 const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`,
@@ -62,6 +63,24 @@ function withSecurityHeaders(response, hostname = canonicalHost) {
     statusText: response.statusText,
     headers
   });
+}
+
+function wineAssetForPath(pathname) {
+  const fixedAsset = wineAssets.get(pathname);
+  if (fixedAsset) return fixedAsset;
+
+  const bottleMatch = pathname.match(wineBottleImagePattern);
+  if (!bottleMatch) return null;
+  const contentTypes = {
+    jpg: "image/jpeg",
+    png: "image/png",
+    webp: "image/webp"
+  };
+  return {
+    source: pathname.slice(1),
+    contentType: contentTypes[bottleMatch[1]],
+    cacheControl: "public, max-age=86400"
+  };
 }
 
 async function resolveWineCommitSha() {
@@ -99,7 +118,7 @@ async function serveWineSite(request, requestUrl) {
     }), wineHost);
   }
 
-  const asset = wineAssets.get(requestUrl.pathname);
+  const asset = wineAssetForPath(requestUrl.pathname);
   if (!asset) {
     return withSecurityHeaders(new Response("Not found", {
       status: 404,
