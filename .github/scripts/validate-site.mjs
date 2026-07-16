@@ -408,8 +408,8 @@ for (const eventName of measurementGovernance.events || []) {
 for (const eventName of implementedEvents) {
   if (!measurementGovernance.events?.includes(eventName)) errors.push(`implemented event is not governed: ${eventName}`);
 }
-for (const [route, marker] of [["/privacy/", "does not currently use Google Analytics"], ["/zh-hant/privacy/", "目前不載入 Google Analytics"], ["/zh-hans/privacy/", "目前不载入 Google Analytics"]]) {
-  if (!indexableDocuments.get(route)?.html.includes(marker)) errors.push(`${route}: privacy notice does not describe analytics as disabled`);
+for (const [route, marker] of [["/privacy/", "wine.rickykwok.com</a> uses Google Analytics 4"], ["/zh-hant/privacy/", "wine.rickykwok.com</a> 服務使用 Google Analytics 4"], ["/zh-hans/privacy/", "wine.rickykwok.com</a> 服务使用 Google Analytics 4"]]) {
+  if (!indexableDocuments.get(route)?.html.includes(marker)) errors.push(`${route}: privacy notice does not disclose wine-site analytics`);
 }
 if (imageInventory.summary?.missingDimensions !== 0 || imageInventory.summary?.missingSizes !== 0 || imageInventory.summary?.imageUses !== validatedImageUses) {
   errors.push("image inventory is stale or violates the complete image-attribute contract");
