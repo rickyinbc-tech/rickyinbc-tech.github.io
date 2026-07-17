@@ -47,6 +47,10 @@ check(wine.headers.get("content-security-policy")?.includes("https://www.googlet
 check(wine.headers.get("content-security-policy")?.includes("https://*.google-analytics.com"), "wine host must allow Google Analytics collection after consent");
 check(wine.headers.get("x-wine-source-commit") === wineCommitSha, "wine homepage must disclose its source commit");
 
+const insecureWine = await worker.fetch(new Request("http://wine.rickykwok.com/zh-hant/?utm_source=seo"));
+check(insecureWine.status === 308, "HTTP wine URLs must redirect permanently to HTTPS");
+check(insecureWine.headers.get("location") === "https://wine.rickykwok.com/zh-hant/?utm_source=seo", "wine HTTPS redirects must preserve the path and query string");
+
 const wineIndex = await worker.fetch(new Request("https://wine.rickykwok.com/index.html"));
 check(wineIndex.status === 301 && wineIndex.headers.get("location") === "https://wine.rickykwok.com/", "wine index.html must redirect to the canonical root URL");
 

@@ -103,6 +103,15 @@ async function resolveWineCommitSha() {
 }
 
 async function serveWineSite(request, requestUrl) {
+  if (requestUrl.protocol !== "https:") {
+    const secureUrl = new URL(requestUrl);
+    secureUrl.protocol = "https:";
+    return withSecurityHeaders(new Response(null, {
+      status: 308,
+      headers: { "location": secureUrl.toString() }
+    }), wineHost);
+  }
+
   if (request.method !== "GET" && request.method !== "HEAD") {
     return withSecurityHeaders(new Response("Method not allowed", {
       status: 405,

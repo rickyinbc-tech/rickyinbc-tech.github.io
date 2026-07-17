@@ -311,8 +311,14 @@ for (const artwork of artworkManifest.artworks || []) {
     if (!visual || visual.image?.["@id"] !== expectedImageId) {
       errors.push(`${relative}: VisualArtwork image graph does not match artwork manifest for ${id}`);
     }
+    if (!visual || !matchesType(visual.creator, "Person") || visual.creator.name !== "Ricky Kwok") {
+      errors.push(`${relative}: VisualArtwork creator must be a named Person for ${id}`);
+    }
     if (!image || image.contentUrl !== expectedImageUrl || Number(image.width) !== Number(primaryImage.width) || Number(image.height) !== Number(primaryImage.height) || image.encodingFormat !== primaryImage.mimeType) {
       errors.push(`${relative}: ImageObject does not match artwork manifest for ${id}`);
+    }
+    if (!image || !matchesType(image.creator, "Person") || image.creator.name !== "Ricky Kwok") {
+      errors.push(`${relative}: ImageObject creator must be a named Person for ${id}`);
     }
     if (!html.includes('data-artwork-governance="v2"')) {
       errors.push(`${relative}: artwork facts do not use governance contract v2`);
