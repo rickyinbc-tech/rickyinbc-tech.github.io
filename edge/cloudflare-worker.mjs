@@ -9,6 +9,7 @@ const canonicalHost = canonicalOrigin.hostname.toLowerCase();
 const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`,
+  "top.rickykwok.com",
   "blog.rickykwok.com",
   "photo.rickykwok.com"
 ]);
