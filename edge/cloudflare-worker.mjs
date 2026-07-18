@@ -209,7 +209,15 @@ async function fetchTopWineSite(request) {
   const upstreamUrl = new URL(`${topWineRawOrigin}${sourcePath}`);
   upstreamUrl.search = requestUrl.search;
   upstreamUrl.searchParams.set('_top_version', 'main');
-  const upstream = await fetch(new Request(upstreamUrl, request));
+  upstreamUrl.searchParams.set('_top_cache_bust', String(Date.now()));
+  const upstreamRequest = new Request(upstreamUrl, {
+    method: request.method,
+    headers: request.headers,
+    redirect: 'follow'
+  });
+  const upstream = await fetch(upstreamRequest, {
+    cf: { cacheTtl: 0, cacheEverything: false }
+  });
   const headers = new Headers(upstream.headers);
   const contentTypes = {
     html: 'text/html; charset=utf-8',
