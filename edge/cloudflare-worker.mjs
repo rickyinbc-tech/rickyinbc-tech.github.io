@@ -6,10 +6,11 @@ const forwardedHosts = new Set((redirectConfig.forwardedHosts || []).map((hostna
 const safeQueryParameters = new Set(redirectConfig.preserveQueryParameters);
 const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
+const topWineHost = "top.rickykwok.com";
+const topWineRawOrigin = "https://raw.githubusercontent.com/rickyinbc-tech/top.rickykwok.com/b00b30e8fa37313d86ac80849882ac1d1a613284";
 const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`,
-  "top.rickykwok.com",
   "blog.rickykwok.com",
   "photo.rickykwok.com"
 ]);
@@ -59,10 +60,33 @@ function mappedDestination(requestUrl) {
   return exactOrTrailingSlashRedirect(hostRedirects[hostname], requestUrl.pathname);
 }
 
+async function fetchTopWineSite(request) {
+  const requestUrl = new URL(request.url);
+  const sourcePath = requestUrl.pathname.endsWith('/') ? `${requestUrl.pathname}index.html` : requestUrl.pathname;
+  const upstreamUrl = new URL(`${topWineRawOrigin}${sourcePath}`);
+  upstreamUrl.search = requestUrl.search;
+  upstreamUrl.searchParams.set('_top_version', 'b00b30e');
+  const upstream = await fetch(new Request(upstreamUrl, request));
+  const headers = new Headers(upstream.headers);
+  const contentTypes = {
+    html: 'text/html; charset=utf-8',
+    css: 'text/css; charset=utf-8',
+    js: 'application/javascript; charset=utf-8',
+    json: 'application/json; charset=utf-8',
+    xml: 'application/xml; charset=utf-8',
+    svg: 'image/svg+xml'
+  };
+  const extension = sourcePath.split('.').pop().toLowerCase();
+  if (contentTypes[extension]) headers.set('content-type', contentTypes[extension]);
+  headers.set('cache-control', extension === 'html' ? 'no-store' : 'public, max-age=3600');
+  return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers });
+}
+
 export default {
   async fetch(request, env, context) {
     const requestUrl = new URL(request.url);
     if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request));
+    if (requestUrl.hostname.toLowerCase() === topWineHost) return withSecurityHeaders(await fetchTopWineSite(request));
 
     const destination = mappedDestination(requestUrl);
     if (!destination) {
