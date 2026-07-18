@@ -10,7 +10,8 @@ The Worker redirects only explicitly mapped paths:
 
 * `rickykwok.com` legacy aliases to their canonical site pages
 * `www.rickykwok.com` to the canonical host, without adding a second hop
-* `blog.rickykwok.com/` and its retired feed to `/journal/`
+* verified `blog.rickykwok.com` legacy pages to their closest canonical journal,
+  biography, artist-statement, awards, or project destination
 * `photo.rickykwok.com/` to the canonical homepage
 * the 18 historical Namecheap forwarding hosts to the canonical homepage,
   preserving their existing host-wide forwarding behavior over both HTTP and

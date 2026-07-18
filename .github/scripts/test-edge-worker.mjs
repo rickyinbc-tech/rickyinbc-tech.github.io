@@ -24,6 +24,13 @@ check(legacy.headers.get("location") === "https://rickykwok.com/series/collision
 const select = await worker.fetch(new Request("https://select.rickykwok.com/"));
 check(select.status === 308 && select.headers.get("location") === "https://rickykwok.com/", "select host must redirect to the canonical origin when proxied");
 
+const blogAward = await worker.fetch(new Request("https://blog.rickykwok.com/the-salon-era-2013-2015-a-trajectory-of-dominance/?utm_campaign=archive&private=drop"));
+check(blogAward.status === 308, "verified legacy blog pages must redirect permanently");
+check(blogAward.headers.get("location") === "https://rickykwok.com/awards-recognition/?utm_campaign=archive", "legacy blog redirects must be one hop and retain only governed campaign parameters");
+
+const unknownBlogPath = await worker.fetch(new Request("https://blog.rickykwok.com/unverified-legacy-path/"));
+check(unknownBlogPath.status === 200, "unverified blog paths must continue to the origin instead of receiving an unrelated redirect");
+
 const unknown = await worker.fetch(new Request("https://unknown.rickykwok.com/"));
 check(unknown.status === 404, "unknown proxied subdomain must fail closed");
 

@@ -69,7 +69,17 @@
   "hostRedirects": {
     "blog.rickykwok.com": {
       "/": "/journal/",
-      "/feed": "/journal/"
+      "/feed": "/journal/",
+      "/aesthetic-philosophy-the-dual-lens-of-realism-and-spectacle/": "/artist-statement/",
+      "/biographical-context-and-academic-foundations/": "/biography/",
+      "/category/uncategorized/": "/journal/",
+      "/comprehensive-award-and-exhibition-catalog/": "/awards-recognition/",
+      "/mentorship-and-the-digital-community/": "/journal/",
+      "/ricky-kwok-photography-essays/": "/journal/",
+      "/ricky-kwok-photography-seo/": "/journal/",
+      "/social-advocacy-and-environmental-impact/": "/projects/hong-kong-light-pollution/",
+      "/the-emergence-of-a-visual-auteur-in-the-digital-age/": "/artist-statement/",
+      "/the-salon-era-2013-2015-a-trajectory-of-dominance/": "/awards-recognition/"
     },
     "photo.rickykwok.com": {
       "/": "/"
