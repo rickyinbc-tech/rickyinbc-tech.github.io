@@ -34,7 +34,7 @@ const wineCanonicalRedirects = new Map([
 ]);
 const wineBottleImagePattern = /^\/assets\/wine-bottles\/[0-9A-Za-z_-]+\.(jpg|png|webp)$/;
 const topWineHost = "top.rickykwok.com";
-const topWineRawOrigin = "https://raw.githubusercontent.com/rickyinbc-tech/top.rickykwok.com/419e76a454fef59d33587cb9ad12dfcfca38d870";
+const topWineRawOrigin = "https://raw.githubusercontent.com/rickyinbc-tech/top.rickykwok.com/main";
 const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`,
@@ -208,7 +208,7 @@ async function fetchTopWineSite(request) {
   const sourcePath = requestUrl.pathname.endsWith('/') ? `${requestUrl.pathname}index.html` : requestUrl.pathname;
   const upstreamUrl = new URL(`${topWineRawOrigin}${sourcePath}`);
   upstreamUrl.search = requestUrl.search;
-  upstreamUrl.searchParams.set('_top_version', '419e76a');
+  upstreamUrl.searchParams.set('_top_version', 'main');
   const upstream = await fetch(new Request(upstreamUrl, request));
   const headers = new Headers(upstream.headers);
   const contentTypes = {
