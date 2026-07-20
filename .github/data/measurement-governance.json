@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "property": null,
+  "collectionStatus": "disabled",
+  "consentMode": "not-applicable",
+  "privacy": {
+    "prohibitedParameters": ["name", "email", "phone", "message", "organization"],
+    "urlPolicy": "No analytics collection is enabled.",
+    "googleSignals": false,
+    "adPersonalization": false
+  },
+  "events": [],
+  "collectionRule": "The current site does not transmit analytics events or collect visitor information."
+}

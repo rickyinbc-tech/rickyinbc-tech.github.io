@@ -1,0 +1,2572 @@
+{
+  "schemaVersion": 1,
+  "summary": {
+    "pages": 181,
+    "uniquePrimarySources": 98,
+    "imageUses": 800,
+    "missingDimensions": 0,
+    "missingSizes": 0
+  },
+  "images": [
+    {
+      "source": "/assets/archive/ricky-kwok-hku-light-pollution-award-2014.jpg",
+      "pages": [
+        "awards-recognition/index.html",
+        "zh-hans/awards/index.html",
+        "zh-hant/awards/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Ricky Kwok receiving the student-group champion award at the HKU light-pollution photography competition presentation.",
+        "郭文棣在香港大学光污染摄影比赛颁奖典礼领取学生组冠军奖项",
+        "郭文棣在香港大學光污染攝影比賽頒獎典禮領取學生組冠軍獎項"
+      ],
+      "declaredWidths": [
+        1024
+      ],
+      "responsiveUses": 0,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017.jpg",
+      "pages": [
+        "awards-recognition/index.html",
+        "zh-hans/awards/index.html",
+        "zh-hant/awards/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Ricky Kwok receiving a certificate at the Open University of Hong Kong Outstanding Students Award and Dean's List ceremony.",
+        "郭文棣在香港公开大学优异生颁奖暨院长嘉许名单典礼领取证书",
+        "郭文棣在香港公開大學優異生頒獎暨院長嘉許名單典禮領取證書"
+      ],
+      "declaredWidths": [
+        1024
+      ],
+      "responsiveUses": 0,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/archive/ricky-kwok-student-award-presentation.jpg",
+      "pages": [
+        "awards-recognition/index.html",
+        "zh-hans/awards/index.html",
+        "zh-hant/awards/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Ricky Kwok receiving a framed certificate at a student award presentation in Hong Kong.",
+        "郭文棣在香港一个学生颁奖典礼领取镶框嘉许状",
+        "郭文棣在香港一個學生頒獎典禮領取鑲框嘉許狀"
+      ],
+      "declaredWidths": [
+        1024
+      ],
+      "responsiveUses": 0,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/art/bank-of-china-light-trails.jpg",
+      "pages": [
+        "works/bank-of-china-light-trails/index.html",
+        "zh-hans/works/bank-of-china-light-trails/index.html",
+        "zh-hant/works/bank-of-china-light-trails/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Hong Kong skyscrapers and buses with sweeping light trails at night.",
+        "郭文棣作品《中銀大廈光軌》完整構圖",
+        "郭文棣作品《中银大厦光轨》完整构图"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/blue-column-water-study.jpg",
+      "pages": [
+        "works/blue-column/index.html",
+        "zh-hans/works/blue-column/index.html",
+        "zh-hant/works/blue-column/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A vertical blue water column and droplet suspended against a blue background.",
+        "郭文棣作品《蓝色水柱》完整构图",
+        "郭文棣作品《藍色水柱》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/blue-hour-cormorant-fishermen.jpg",
+      "pages": [
+        "works/blue-hour-river-stage/index.html",
+        "zh-hans/works/blue-hour-river-stage/index.html",
+        "zh-hant/works/blue-hour-river-stage/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Cormorant fishermen on a river at blue hour with warm lamps reflected in the water.",
+        "郭文棣作品《蓝调时刻・河上舞台》完整构图",
+        "郭文棣作品《藍調時刻・河上舞台》完整構圖"
+      ],
+      "declaredWidths": [
+        800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/boxer-ice-impact.jpg",
+      "pages": [
+        "works/ice-crown/index.html",
+        "zh-hans/works/ice-crown/index.html",
+        "zh-hant/works/ice-crown/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A boxer with water exploding over his head against a dark background.",
+        "郭文棣作品《冰冠》完整构图",
+        "郭文棣作品《冰冠》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/cigarette-impact.jpg",
+      "pages": [
+        "works/shunkan-instant/index.html",
+        "zh-hans/works/shunkan-instant/index.html",
+        "zh-hant/works/shunkan-instant/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A cigarette breaking into ash and blue smoke against a black background.",
+        "郭文棣作品《瞬間》完整構圖",
+        "郭文棣作品《瞬间》完整构图"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/coil-field-monochrome.jpg",
+      "pages": [
+        "works/coil-field/index.html",
+        "works/monochrome-documentary/index.html",
+        "zh-hans/works/coil-field/index.html",
+        "zh-hans/works/monochrome-documentary/index.html",
+        "zh-hant/works/coil-field/index.html",
+        "zh-hant/works/monochrome-documentary/index.html"
+      ],
+      "uses": 9,
+      "altVariants": [
+        "A worker among repeated coils in a monochrome industrial landscape.",
+        "Monochrome photograph of a worker surrounded by many circular coils laid out in rows.",
+        "郭文棣作品《線圈之田》完整構圖",
+        "郭文棣作品《线圈之田》完整构图",
+        "黑白紀實作品 — photography by Ricky Kwok",
+        "黑白纪实作品 — photography by Ricky Kwok"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 6
+    },
+    {
+      "source": "/assets/art/color-powder-fish.jpg",
+      "pages": [
+        "works/color-burst/index.html",
+        "zh-hans/works/color-burst/index.html",
+        "zh-hant/works/color-burst/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A fish interrupted by an explosion of coloured powder against black.",
+        "郭文棣作品《色彩爆发》完整构图",
+        "郭文棣作品《色彩爆發》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/egg-impact.jpg",
+      "pages": [
+        "works/breaking-point/index.html",
+        "zh-hans/works/breaking-point/index.html",
+        "zh-hant/works/breaking-point/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "An egg cracking with shell and liquid fragments suspended against black.",
+        "郭文棣作品《破裂临界》完整构图",
+        "郭文棣作品《破裂臨界》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/fire-dragon-procession.jpg",
+      "pages": [
+        "works/dragon-night-festival/index.html",
+        "zh-hans/works/dragon-night-festival/index.html",
+        "zh-hant/works/dragon-night-festival/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A fire dragon procession moving through a Hong Kong street at night.",
+        "郭文棣作品《火龍之夜》完整構圖",
+        "郭文棣作品《火龙之夜》完整构图"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/fishpond-harvest.jpg",
+      "pages": [
+        "works/fishpond-harvest/index.html",
+        "zh-hans/works/fishpond-harvest/index.html",
+        "zh-hant/works/fishpond-harvest/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A fishpond worker standing among nets and fish during a harvest in Hong Kong.",
+        "郭文棣作品《渔获》完整构图",
+        "郭文棣作品《漁獲》完整構圖"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/flower-impact.jpg",
+      "pages": [
+        "works/flower-impact/index.html",
+        "zh-hans/works/flower-impact/index.html",
+        "zh-hant/works/flower-impact/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A flower breaking into petals and fragments against a black background.",
+        "郭文棣作品《花之冲击》完整构图",
+        "郭文棣作品《花之衝擊》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/green-orb-water-study.jpg",
+      "pages": [
+        "artist-statement/index.html",
+        "works/green-orb/index.html",
+        "zh-hans/works/green-orb/index.html",
+        "zh-hant/works/green-orb/index.html"
+      ],
+      "uses": 7,
+      "altVariants": [
+        "A dark green water droplet hovering above a liquid surface against a bright green field.",
+        "The instant is a material. — photography by Ricky Kwok",
+        "郭文棣作品《綠色星體》完整構圖",
+        "郭文棣作品《绿色星体》完整构图"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 4
+    },
+    {
+      "source": "/assets/art/hearth-ritual.jpg",
+      "pages": [
+        "works/village-ritual-photography/index.html",
+        "zh-hans/works/village-ritual-photography/index.html",
+        "zh-hant/works/village-ritual-photography/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Village Ritual Photography — photography by Ricky Kwok",
+        "乡村仪式摄影 — photography by Ricky Kwok",
+        "鄉村儀式攝影 — photography by Ricky Kwok"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 0,
+      "lazyUses": 0,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/hong-kong-cranes-monochrome.jpg",
+      "pages": [
+        "works/cranes-and-towers/index.html",
+        "zh-hans/works/cranes-and-towers/index.html",
+        "zh-hant/works/cranes-and-towers/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Construction cranes and Hong Kong towers seen through a foreground barrier in monochrome.",
+        "郭文棣作品《吊臂与高楼》完整构图",
+        "郭文棣作品《吊臂與高樓》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/horse-racing-pack.jpg",
+      "pages": [
+        "works/the-pack/index.html",
+        "zh-hans/works/the-pack/index.html",
+        "zh-hant/works/the-pack/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A tightly packed group of racehorses and riders turning at speed.",
+        "郭文棣作品《馬群》完整構圖",
+        "郭文棣作品《马群》完整构图"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/light-encroached-homes.jpg",
+      "pages": [
+        "works/light-encroached-homes/index.html",
+        "zh-hans/works/light-encroached-homes/index.html",
+        "zh-hant/works/light-encroached-homes/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Low-angle fisheye photograph of illuminated advertising signs and residential buildings around the Mong Kok night sky.",
+        "郭文棣作品《光染民居》完整构图",
+        "郭文棣作品《光染民居》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/magenta-collision-water-study.jpg",
+      "pages": [
+        "works/magenta-collision/index.html",
+        "zh-hans/works/magenta-collision/index.html",
+        "zh-hant/works/magenta-collision/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A dense water collision illuminated in saturated magenta.",
+        "郭文棣作品《洋紅碰撞》完整構圖",
+        "郭文棣作品《洋红碰撞》完整构图"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/night-fishermen-li-river.jpg",
+      "pages": [
+        "works/night-fishermen/index.html",
+        "zh-hans/works/night-fishermen/index.html",
+        "zh-hant/works/night-fishermen/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Two fishermen holding glowing lamps beside a river at night.",
+        "郭文棣作品《夜渔》完整构图",
+        "郭文棣作品《夜漁》完整構圖"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/orange-suspension-water-study.jpg",
+      "pages": [
+        "works/orange-droplet/index.html",
+        "zh-hans/works/orange-droplet/index.html",
+        "zh-hant/works/orange-droplet/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A falling orange droplet almost touching a rising peak of water.",
+        "郭文棣作品《橙色水滴》完整构图",
+        "郭文棣作品《橙色水滴》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/rice-terraces-golden-hour.jpg",
+      "pages": [
+        "works/terraces-at-golden-hour/index.html",
+        "zh-hans/works/terraces-at-golden-hour/index.html",
+        "zh-hant/works/terraces-at-golden-hour/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Rice terraces reflecting golden light across a mountain slope.",
+        "郭文棣作品《金色时分的梯田》完整构图",
+        "郭文棣作品《金色時分的梯田》完整構圖"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/sea-of-clouds.jpg",
+      "pages": [
+        "404.html"
+      ],
+      "uses": 1,
+      "altVariants": [
+        "This page is no longer here. — photography by Ricky Kwok"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 0,
+      "lazyUses": 0,
+      "eagerUses": 1
+    },
+    {
+      "source": "/assets/art/street-art-procession.jpg",
+      "pages": [
+        "works/street-procession/index.html",
+        "zh-hans/works/street-procession/index.html",
+        "zh-hant/works/street-procession/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Pedestrians walking past a wall mural whose painted figures mirror their movement.",
+        "郭文棣作品《街头队列》完整构图",
+        "郭文棣作品《街頭隊列》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/swimming-motion.jpg",
+      "pages": [
+        "works/swimming-in-motion/index.html",
+        "zh-hans/works/swimming-in-motion/index.html",
+        "zh-hant/works/swimming-in-motion/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Swimmers blurred into layered colour and water across racing lanes.",
+        "郭文棣作品《游动之间》完整构图",
+        "郭文棣作品《游動之間》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/art/swimming-start-sequence.jpg",
+      "pages": [
+        "works/start-sequence/index.html",
+        "zh-hans/works/start-sequence/index.html",
+        "zh-hant/works/start-sequence/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Swimmers diving in sequence over coloured lane lines.",
+        "郭文棣作品《起跳序列》完整构图",
+        "郭文棣作品《起跳序列》完整構圖"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/optimized-v2/art/ancestral-kitchen-light-1000.webp",
+      "pages": [
+        "index.html",
+        "series/ritual/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/ritual/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A warm shaft of light inside a rustic kitchen.",
+        "Old kitchen with smoke and warm light.",
+        "祖屋厨房内穿过烟雾的暖光",
+        "祖屋廚房內穿過煙霧的暖光",
+        "郭文棣摄影作品《祖屋厨房之光》",
+        "郭文棣攝影作品《祖屋廚房之光》"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 6,
+      "lazyUses": 6,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/bank-of-china-light-trails-1200.webp",
+      "pages": [
+        "index.html",
+        "selected-works/index.html",
+        "series/city-light/index.html",
+        "series/index.html",
+        "works/bank-of-china-light-trails/index.html",
+        "works/cranes-and-towers/index.html",
+        "works/dragon-night-festival/index.html",
+        "works/hong-kong-urban-light-studies/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/city-light/index.html",
+        "zh-hans/works/bank-of-china-light-trails/index.html",
+        "zh-hans/works/cranes-and-towers/index.html",
+        "zh-hans/works/dragon-night-festival/index.html",
+        "zh-hans/works/hong-kong-urban-light-studies/index.html",
+        "zh-hans/works/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/city-light/index.html",
+        "zh-hant/works/bank-of-china-light-trails/index.html",
+        "zh-hant/works/cranes-and-towers/index.html",
+        "zh-hant/works/dragon-night-festival/index.html",
+        "zh-hant/works/hong-kong-urban-light-studies/index.html",
+        "zh-hant/works/index.html"
+      ],
+      "uses": 22,
+      "altVariants": [
+        "Hong Kong light trails and skyscrapers at night.",
+        "Hong Kong light trails at night.",
+        "Hong Kong skyscrapers and buses with sweeping light trails at night.",
+        "Hong Kong skyscrapers and traffic light trails at night.",
+        "中銀大廈與夜間交通光軌",
+        "中银大厦与夜间交通光轨",
+        "相关摄影作品《中银大厦光轨》",
+        "相关摄影作品《城市之光 City Light》",
+        "相關攝影作品《中銀大廈光軌》",
+        "相關攝影作品《城市之光 City Light》",
+        "郭文棣摄影作品《中银大厦光轨》",
+        "郭文棣攝影作品《中銀大廈光軌》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 22,
+      "lazyUses": 22,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/blue-column-water-study-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "works/green-orb/index.html",
+        "works/magenta-collision/index.html",
+        "works/orange-droplet/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/green-orb/index.html",
+        "zh-hans/works/magenta-collision/index.html",
+        "zh-hans/works/orange-droplet/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/green-orb/index.html",
+        "zh-hant/works/magenta-collision/index.html",
+        "zh-hant/works/orange-droplet/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 15,
+      "altVariants": [
+        "A vertical blue water column and droplet suspended against a blue background.",
+        "Blue water column.",
+        "相关摄影作品《蓝色水柱》",
+        "相關攝影作品《藍色水柱》",
+        "郭文棣摄影作品《蓝色水柱》",
+        "郭文棣攝影作品《藍色水柱》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 15,
+      "lazyUses": 15,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp",
+      "pages": [
+        "biography/index.html",
+        "index.html",
+        "selected-works/index.html",
+        "series/index.html",
+        "series/ritual/index.html",
+        "works/blue-hour-river-stage/index.html",
+        "works/night-fishermen/index.html",
+        "works/terraces-at-golden-hour/index.html",
+        "works/village-ritual-photography/index.html",
+        "zh-hans/biography/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hans/works/blue-hour-river-stage/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/night-fishermen/index.html",
+        "zh-hans/works/terraces-at-golden-hour/index.html",
+        "zh-hans/works/village-ritual-photography/index.html",
+        "zh-hant/biography/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/index.html",
+        "zh-hant/series/ritual/index.html",
+        "zh-hant/works/blue-hour-river-stage/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/night-fishermen/index.html",
+        "zh-hant/works/terraces-at-golden-hour/index.html",
+        "zh-hant/works/village-ritual-photography/index.html"
+      ],
+      "uses": 35,
+      "altVariants": [
+        "Artwork preview image.",
+        "Cormorant fishermen on bamboo rafts in blue light.",
+        "Cormorant fishermen on bamboo rafts under blue evening light.",
+        "Four bodies of work, one practice of charged time. — photography by Ricky Kwok",
+        "Ricky Kwok 郭文棣, ARPS — photography by Ricky Kwok",
+        "仪式 Ritual — photography by Ricky Kwok",
+        "仪式 Ritual系列代表影像",
+        "作品預覽影像",
+        "作品预览影像",
+        "儀式 Ritual — photography by Ricky Kwok",
+        "儀式 Ritual系列代表影像",
+        "相关摄影作品《仪式 Ritual》",
+        "相关摄影作品《蓝调时刻・河上舞台》",
+        "相關攝影作品《儀式 Ritual》",
+        "相關攝影作品《藍調時刻・河上舞台》",
+        "蓝调时刻的鸬鶿渔民与竹筏",
+        "藍調時刻的鸕鶿漁民與竹筏",
+        "郭文棣 Ricky Kwok, ARPS — photography by Ricky Kwok",
+        "郭文棣摄影作品《蓝调时刻・河上舞台》",
+        "郭文棣攝影作品《藍調時刻・河上舞台》"
+      ],
+      "declaredWidths": [
+        800
+      ],
+      "responsiveUses": 35,
+      "lazyUses": 26,
+      "eagerUses": 9
+    },
+    {
+      "source": "/assets/optimized-v2/art/boxer-ice-impact-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "works/sport-abstraction/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/sport-abstraction/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/sport-abstraction/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Boxer wearing gloves as water explodes over his head like a crown.",
+        "Boxer with water exploding over head.",
+        "郭文棣摄影作品《冰冠》",
+        "郭文棣攝影作品《冰冠》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 6,
+      "lazyUses": 6,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/candle-impact-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hant/series/collision/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Candle struck with water.",
+        "郭文棣摄影作品《烛光冲击》",
+        "郭文棣攝影作品《燭光衝擊》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/chalk-impact-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hant/series/collision/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Chalk exploding.",
+        "郭文棣摄影作品《粉笔冲击》",
+        "郭文棣攝影作品《粉筆衝擊》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/cigarette-impact-1200.webp",
+      "pages": [
+        "artist-statement/index.html",
+        "index.html",
+        "journal/index.html",
+        "selected-works/index.html",
+        "series/collision/index.html",
+        "series/index.html",
+        "works/breaking-point/index.html",
+        "works/color-burst/index.html",
+        "works/flower-impact/index.html",
+        "works/ice-crown/index.html",
+        "works/magenta-collision/index.html",
+        "works/shunkan-instant/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/artist-statement/index.html",
+        "zh-hans/index.html",
+        "zh-hans/journal/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/breaking-point/index.html",
+        "zh-hans/works/color-burst/index.html",
+        "zh-hans/works/flower-impact/index.html",
+        "zh-hans/works/ice-crown/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/magenta-collision/index.html",
+        "zh-hans/works/shunkan-instant/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/artist-statement/index.html",
+        "zh-hant/index.html",
+        "zh-hant/journal/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/breaking-point/index.html",
+        "zh-hant/works/color-burst/index.html",
+        "zh-hant/works/flower-impact/index.html",
+        "zh-hant/works/ice-crown/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/magenta-collision/index.html",
+        "zh-hant/works/shunkan-instant/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 46,
+      "altVariants": [
+        "Artwork preview image.",
+        "Ash and blue smoke exploding from cigarettes against a dark background.",
+        "Cigarettes breaking apart in a blue high-speed impact photograph.",
+        "Cigarettes exploding into ash and blue smoke against a black background.",
+        "Cigarettes exploding into ash and blue smoke against a dark background.",
+        "Cigarettes exploding into ash and blue smoke.",
+        "个人摄影笔记资料影像 1",
+        "作品預覽影像",
+        "作品预览影像",
+        "個人攝影筆記資料影像 1",
+        "摄影笔记资料影像 4",
+        "攝影筆記資料影像 4",
+        "相关摄影作品《摄影棚碰撞研究》",
+        "相关摄影作品《瞬间》",
+        "相关摄影作品《碰撞 Collision》",
+        "相關攝影作品《攝影棚碰撞研究》",
+        "相關攝影作品《瞬間》",
+        "相關攝影作品《碰撞 Collision》",
+        "郭文棣摄影作品《瞬间》",
+        "郭文棣攝影作品《瞬間》",
+        "香烟裂成灰烬、碎片与蓝烟的完整画面",
+        "香煙裂成灰燼、碎片與藍煙的完整畫面"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 46,
+      "lazyUses": 46,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/cigarette-impact-1280.webp",
+      "pages": [
+        "series/collision/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/artist-statement/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/series/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/artist-statement/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/series/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 10,
+      "altVariants": [
+        "Cigarettes exploding into ash and blue smoke against a black background.",
+        "Cigarettes exploding into ash and blue smoke.",
+        "个人摄影笔记资料影像 1",
+        "個人攝影筆記資料影像 1",
+        "摄影棚碰撞研究 — photography by Ricky Kwok",
+        "攝影棚碰撞研究 — photography by Ricky Kwok",
+        "碰撞 Collision — photography by Ricky Kwok",
+        "碰撞 Collision系列代表影像"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 10,
+      "lazyUses": 2,
+      "eagerUses": 8
+    },
+    {
+      "source": "/assets/optimized-v2/art/coil-field-monochrome-1200.webp",
+      "pages": [
+        "works/coil-field/index.html",
+        "works/cranes-and-towers/index.html",
+        "works/monochrome-documentary/index.html",
+        "works/terraces-at-golden-hour/index.html",
+        "zh-hans/works/coil-field/index.html",
+        "zh-hans/works/cranes-and-towers/index.html",
+        "zh-hans/works/monochrome-documentary/index.html",
+        "zh-hans/works/terraces-at-golden-hour/index.html",
+        "zh-hant/works/coil-field/index.html",
+        "zh-hant/works/cranes-and-towers/index.html",
+        "zh-hant/works/monochrome-documentary/index.html",
+        "zh-hant/works/terraces-at-golden-hour/index.html"
+      ],
+      "uses": 12,
+      "altVariants": [
+        "Monochrome photograph of a worker surrounded by many circular coils laid out in rows.",
+        "Worker among repeated circular coils in a monochrome field.",
+        "相关摄影作品《线圈之田》",
+        "相关摄影作品《黑白纪实作品》",
+        "相關攝影作品《線圈之田》",
+        "相關攝影作品《黑白紀實作品》",
+        "郭文棣摄影作品《线圈之田》",
+        "郭文棣攝影作品《線圈之田》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 12,
+      "lazyUses": 12,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/color-powder-fish-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "works/flower-impact/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/flower-impact/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/flower-impact/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 9,
+      "altVariants": [
+        "Fish hit by coloured powder.",
+        "Three fish-shaped forms hit by red, yellow, and green powder against black.",
+        "相关摄影作品《色彩爆发》",
+        "相關攝影作品《色彩爆發》",
+        "郭文棣摄影作品《色彩爆发》",
+        "郭文棣攝影作品《色彩爆發》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 9,
+      "lazyUses": 9,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/divers-motion-1200.webp",
+      "pages": [
+        "index.html",
+        "series/motion/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/motion/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/motion/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Divers entering a pool.",
+        "Divers streaking in motion over a swimming pool.",
+        "跳水者在泳池上留下动态轨迹",
+        "跳水者在泳池上留下動態軌跡",
+        "郭文棣摄影作品《跃入水中的动态》",
+        "郭文棣攝影作品《躍入水中的動態》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 6,
+      "lazyUses": 6,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/egg-impact-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "works/color-burst/index.html",
+        "works/shunkan-instant/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/color-burst/index.html",
+        "zh-hans/works/shunkan-instant/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/color-burst/index.html",
+        "zh-hant/works/shunkan-instant/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 12,
+      "altVariants": [
+        "Egg cracking with shell and liquid fragments suspended against black.",
+        "Egg cracking.",
+        "相关摄影作品《破裂临界》",
+        "相關攝影作品《破裂臨界》",
+        "郭文棣摄影作品《破裂临界》",
+        "郭文棣攝影作品《破裂臨界》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 12,
+      "lazyUses": 12,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/festival-dragon-1200.webp",
+      "pages": [
+        "selected-works/index.html",
+        "series/ritual/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hans/works/index.html",
+        "zh-hant/series/ritual/index.html",
+        "zh-hant/works/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "A festival dragon surrounded by a dense crowd at night.",
+        "Night festival with dragon and glowing wheels.",
+        "郭文棣摄影作品《火龙之夜》",
+        "郭文棣摄影作品《节庆舞龙》",
+        "郭文棣攝影作品《火龍之夜》",
+        "郭文棣攝影作品《節慶舞龍》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 6,
+      "lazyUses": 6,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/fire-dragon-procession-1200.webp",
+      "pages": [
+        "series/ritual/index.html",
+        "works/hong-kong-urban-light-studies/index.html",
+        "works/street-procession/index.html",
+        "works/village-ritual-photography/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hans/works/hong-kong-urban-light-studies/index.html",
+        "zh-hans/works/street-procession/index.html",
+        "zh-hans/works/village-ritual-photography/index.html",
+        "zh-hant/series/ritual/index.html",
+        "zh-hant/works/hong-kong-urban-light-studies/index.html",
+        "zh-hant/works/street-procession/index.html",
+        "zh-hant/works/village-ritual-photography/index.html"
+      ],
+      "uses": 12,
+      "altVariants": [
+        "Crowded Hong Kong night festival with a fire dragon procession and smoke.",
+        "Fire dragon procession in Hong Kong.",
+        "相关摄影作品《火龙之夜》",
+        "相關攝影作品《火龍之夜》",
+        "郭文棣摄影作品《火龙之夜》",
+        "郭文棣攝影作品《火龍之夜》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 12,
+      "lazyUses": 12,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/fishpond-harvest-1000.webp",
+      "pages": [
+        "awards-recognition/index.html",
+        "index.html",
+        "journal/index.html",
+        "projects/hong-kong-fishpond-conservation/index.html",
+        "projects/index.html",
+        "works/coil-field/index.html",
+        "works/monochrome-documentary/index.html",
+        "works/village-ritual-photography/index.html",
+        "zh-hans/awards/index.html",
+        "zh-hans/index.html",
+        "zh-hans/journal/index.html",
+        "zh-hans/projects/hong-kong-fishpond-conservation/index.html",
+        "zh-hans/projects/index.html",
+        "zh-hans/works/coil-field/index.html",
+        "zh-hans/works/monochrome-documentary/index.html",
+        "zh-hans/works/village-ritual-photography/index.html",
+        "zh-hant/awards/index.html",
+        "zh-hant/index.html",
+        "zh-hant/journal/index.html",
+        "zh-hant/projects/hong-kong-fishpond-conservation/index.html",
+        "zh-hant/projects/index.html",
+        "zh-hant/works/coil-field/index.html",
+        "zh-hant/works/monochrome-documentary/index.html",
+        "zh-hant/works/village-ritual-photography/index.html"
+      ],
+      "uses": 30,
+      "altVariants": [
+        "Fishpond Harvest in Hong Kong.",
+        "Workers harvesting fish from a Hong Kong pond.",
+        "Workers in waterproof clothing harvesting fish from a Hong Kong fishpond.",
+        "Workers in waterproof clothing harvesting fish from a Hong Kong pond.",
+        "Workers in waterproof clothing harvesting fish from a pond.",
+        "《渔获》，香港鱼塘，2014",
+        "《漁獲》，香港魚塘，2014",
+        "摄影笔记资料影像 2",
+        "攝影筆記資料影像 2",
+        "相关摄影作品《渔获》",
+        "相關攝影作品《漁獲》",
+        "郭文棣摄影作品《渔获》",
+        "郭文棣攝影作品《漁獲》",
+        "香港魚塘保育攝影項目 — photography by Ricky Kwok",
+        "香港魚塘保育攝影項目代表影像",
+        "香港魚塘保育攝影項目相關影像 1",
+        "香港魚塘內工人收魚的完整場景",
+        "香港魚塘收成的勞動現場",
+        "香港鱼塘保育摄影项目 — photography by Ricky Kwok",
+        "香港鱼塘保育摄影项目代表影像",
+        "香港鱼塘保育摄影项目相关影像 1",
+        "香港鱼塘内工人收鱼的完整场景",
+        "香港鱼塘收成的劳动现场"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 30,
+      "lazyUses": 27,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/optimized-v2/art/flower-impact-1200.webp",
+      "pages": [
+        "selected-works/index.html",
+        "series/collision/index.html",
+        "works/breaking-point/index.html",
+        "works/color-burst/index.html",
+        "works/shunkan-instant/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/breaking-point/index.html",
+        "zh-hans/works/color-burst/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/shunkan-instant/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/breaking-point/index.html",
+        "zh-hant/works/color-burst/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/shunkan-instant/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 18,
+      "altVariants": [
+        "A pink flower bursting apart with fragments moving through black space.",
+        "Flower breaking apart.",
+        "Pink flower bursting apart with fragments and dust against a black background.",
+        "相关摄影作品《花之冲击》",
+        "相關攝影作品《花之衝擊》",
+        "郭文棣摄影作品《花之冲击》",
+        "郭文棣攝影作品《花之衝擊》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 18,
+      "lazyUses": 18,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/green-orb-water-study-1280.webp",
+      "pages": [
+        "index.html",
+        "journal/index.html",
+        "selected-works/index.html",
+        "series/collision/index.html",
+        "works/blue-column/index.html",
+        "works/green-orb/index.html",
+        "works/magenta-collision/index.html",
+        "works/orange-droplet/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/index.html",
+        "zh-hans/journal/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/blue-column/index.html",
+        "zh-hans/works/green-orb/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/magenta-collision/index.html",
+        "zh-hans/works/orange-droplet/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/index.html",
+        "zh-hant/journal/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/blue-column/index.html",
+        "zh-hant/works/green-orb/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/magenta-collision/index.html",
+        "zh-hant/works/orange-droplet/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 33,
+      "altVariants": [
+        "A dark green water droplet hovering over a liquid surface.",
+        "Dark green water droplet hovering above a liquid surface against a bright green field.",
+        "Green droplet suspended above a liquid surface.",
+        "Green water droplet.",
+        "Green water form suspended against a dark background in a high-speed photographic study.",
+        "摄影笔记资料影像 3",
+        "攝影筆記資料影像 3",
+        "深綠色水滴懸於液面之上",
+        "深绿色水滴悬于液面之上",
+        "相关摄影作品《碰撞 Collision》",
+        "相关摄影作品《绿色星体》",
+        "相關攝影作品《碰撞 Collision》",
+        "相關攝影作品《綠色星體》",
+        "郭文棣摄影作品《绿色星体》",
+        "郭文棣攝影作品《綠色星體》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 33,
+      "lazyUses": 33,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/hearth-ritual-1000.webp",
+      "pages": [
+        "series/index.html",
+        "series/ritual/index.html",
+        "works/blue-hour-river-stage/index.html",
+        "works/dragon-night-festival/index.html",
+        "works/night-fishermen/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hans/works/blue-hour-river-stage/index.html",
+        "zh-hans/works/dragon-night-festival/index.html",
+        "zh-hans/works/night-fishermen/index.html",
+        "zh-hant/series/ritual/index.html",
+        "zh-hant/works/blue-hour-river-stage/index.html",
+        "zh-hant/works/dragon-night-festival/index.html",
+        "zh-hant/works/night-fishermen/index.html"
+      ],
+      "uses": 13,
+      "altVariants": [
+        "Women around a fire.",
+        "Women cooking around a hearth in a dark wooden room.",
+        "Women gathered around a hearth in a dark wooden room.",
+        "相关摄影作品《乡村仪式摄影》",
+        "相關攝影作品《鄉村儀式攝影》",
+        "郭文棣摄影作品《炉火仪式》",
+        "郭文棣攝影作品《爐火儀式》"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 13,
+      "lazyUses": 13,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/hong-kong-cranes-monochrome-1200.webp",
+      "pages": [
+        "series/city-light/index.html",
+        "works/bank-of-china-light-trails/index.html",
+        "works/hong-kong-urban-light-studies/index.html",
+        "works/monochrome-documentary/index.html",
+        "works/street-procession/index.html",
+        "zh-hans/series/city-light/index.html",
+        "zh-hans/works/bank-of-china-light-trails/index.html",
+        "zh-hans/works/hong-kong-urban-light-studies/index.html",
+        "zh-hans/works/monochrome-documentary/index.html",
+        "zh-hans/works/street-procession/index.html",
+        "zh-hant/series/city-light/index.html",
+        "zh-hant/works/bank-of-china-light-trails/index.html",
+        "zh-hant/works/hong-kong-urban-light-studies/index.html",
+        "zh-hant/works/monochrome-documentary/index.html",
+        "zh-hant/works/street-procession/index.html"
+      ],
+      "uses": 15,
+      "altVariants": [
+        "Black-and-white view of Hong Kong skyscrapers and cranes seen through vertical bars.",
+        "Hong Kong cranes through bars.",
+        "相关摄影作品《吊臂与高楼》",
+        "相關攝影作品《吊臂與高樓》",
+        "郭文棣摄影作品《吊臂与高楼》",
+        "郭文棣攝影作品《吊臂與高樓》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 15,
+      "lazyUses": 15,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/hong-kong-fisheye-street-1200.webp",
+      "pages": [
+        "index.html",
+        "series/city-light/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/city-light/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/city-light/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Fisheye Hong Kong street.",
+        "Fisheye view of a Hong Kong street under a dramatic evening sky.",
+        "郭文棣摄影作品《香港鱼眼街景》",
+        "郭文棣攝影作品《香港魚眼街景》",
+        "魚眼視角下的香港街道與黃昏天空",
+        "鱼眼视角下的香港街道与黄昏天空"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 6,
+      "lazyUses": 6,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/horse-racing-pack-1200.webp",
+      "pages": [
+        "selected-works/index.html",
+        "series/motion/index.html",
+        "works/sport-abstraction/index.html",
+        "works/start-sequence/index.html",
+        "works/swimming-in-motion/index.html",
+        "zh-hans/series/motion/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/sport-abstraction/index.html",
+        "zh-hans/works/start-sequence/index.html",
+        "zh-hans/works/swimming-in-motion/index.html",
+        "zh-hant/series/motion/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/sport-abstraction/index.html",
+        "zh-hant/works/start-sequence/index.html",
+        "zh-hant/works/swimming-in-motion/index.html"
+      ],
+      "uses": 15,
+      "altVariants": [
+        "A pack of racehorses and jockeys turning tightly on a dirt track.",
+        "A tightly grouped pack of racehorses turning on a track.",
+        "Horse racing pack.",
+        "相关摄影作品《马群》",
+        "相關攝影作品《馬群》",
+        "郭文棣摄影作品《马群》",
+        "郭文棣攝影作品《馬群》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 15,
+      "lazyUses": 15,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/light-encroached-homes-1280.webp",
+      "pages": [
+        "awards-recognition/index.html",
+        "index.html",
+        "journal/index.html",
+        "projects/hong-kong-light-pollution/index.html",
+        "projects/index.html",
+        "selected-works/index.html",
+        "series/city-light/index.html",
+        "series/index.html",
+        "works/cranes-and-towers/index.html",
+        "works/hong-kong-urban-light-studies/index.html",
+        "works/street-procession/index.html",
+        "zh-hans/awards/index.html",
+        "zh-hans/index.html",
+        "zh-hans/journal/index.html",
+        "zh-hans/projects/hong-kong-light-pollution/index.html",
+        "zh-hans/projects/index.html",
+        "zh-hans/series/city-light/index.html",
+        "zh-hans/works/bank-of-china-light-trails/index.html",
+        "zh-hans/works/cranes-and-towers/index.html",
+        "zh-hans/works/hong-kong-urban-light-studies/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/street-procession/index.html",
+        "zh-hant/awards/index.html",
+        "zh-hant/index.html",
+        "zh-hant/journal/index.html",
+        "zh-hant/projects/hong-kong-light-pollution/index.html",
+        "zh-hant/projects/index.html",
+        "zh-hant/series/city-light/index.html",
+        "zh-hant/works/bank-of-china-light-trails/index.html",
+        "zh-hant/works/cranes-and-towers/index.html",
+        "zh-hant/works/hong-kong-urban-light-studies/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/street-procession/index.html"
+      ],
+      "uses": 59,
+      "altVariants": [
+        "Artwork preview image.",
+        "Fisheye photograph of Hong Kong neon signs and residential buildings.",
+        "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
+        "Hong Kong neon signs and residential buildings surrounding a dark sky.",
+        "Hong Kong neon signs surrounding dark sky.",
+        "Illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
+        "Light Encroached Homes in Mong Kok.",
+        "Light Encroached Homes, photographed among Mong Kok signboards in 2014.",
+        "Low-angle fisheye photograph of Hong Kong neon signs and residential buildings around a dark sky.",
+        "Low-angle fisheye photograph of illuminated advertising signs and residential buildings around the Mong Kok night sky.",
+        "Low-angle fisheye photograph of illuminated signs and residential buildings in Mong Kok at night.",
+        "《光染民居》完整构图：旺角招牌与住宅围绕夜空",
+        "《光染民居》完整構圖：旺角招牌與住宅圍繞夜空",
+        "《光染民居》，旺角，2014",
+        "《光染民居》：旺角霓虹招牌与住宅",
+        "《光染民居》：旺角霓虹招牌與住宅",
+        "作品預覽影像",
+        "作品预览影像",
+        "城市之光 City Light — photography by Ricky Kwok",
+        "摄影笔记资料影像 1",
+        "攝影筆記資料影像 1",
+        "由香港夜光到高速碰撞的完整作品入口。 — photography by Ricky Kwok",
+        "相关摄影作品《光染民居》",
+        "相关摄影作品《香港都市光线研究》",
+        "相關攝影作品《光染民居》",
+        "相關攝影作品《香港都市光線研究》",
+        "郭文棣摄影作品《光染民居》",
+        "郭文棣攝影作品《光染民居》",
+        "香港光污染摄影项目 — photography by Ricky Kwok",
+        "香港光污染摄影项目代表影像",
+        "香港光污染摄影项目相关影像 1",
+        "香港光污染攝影項目 — photography by Ricky Kwok",
+        "香港光污染攝影項目代表影像",
+        "香港光污染攝影項目相關影像 1",
+        "香港都市光線研究 — photography by Ricky Kwok",
+        "香港都市光线研究 — photography by Ricky Kwok"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 59,
+      "lazyUses": 37,
+      "eagerUses": 22
+    },
+    {
+      "source": "/assets/optimized-v2/art/magenta-collision-water-study-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "works/blue-column/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/blue-column/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/blue-column/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 9,
+      "altVariants": [
+        "Magenta liquid collision.",
+        "Magenta liquid column with small droplets suspended in a saturated pink field.",
+        "相关摄影作品《洋红碰撞》",
+        "相關攝影作品《洋紅碰撞》",
+        "郭文棣摄影作品《洋红碰撞》",
+        "郭文棣攝影作品《洋紅碰撞》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 9,
+      "lazyUses": 9,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/night-fishermen-li-river-1000.webp",
+      "pages": [
+        "index.html",
+        "selected-works/index.html",
+        "series/ritual/index.html",
+        "works/blue-hour-river-stage/index.html",
+        "works/village-ritual-photography/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hans/works/blue-hour-river-stage/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/village-ritual-photography/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/ritual/index.html",
+        "zh-hant/works/blue-hour-river-stage/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/village-ritual-photography/index.html"
+      ],
+      "uses": 15,
+      "altVariants": [
+        "Two fishermen at night holding glowing lamps beside dark mountains and water.",
+        "Two fishermen at night with glowing lamps and dark mountains behind them.",
+        "Two night fishermen with lanterns.",
+        "夜色中两名渔民手持灯火",
+        "夜色中兩名漁民手持燈火",
+        "相关摄影作品《夜渔》",
+        "相關攝影作品《夜漁》",
+        "郭文棣摄影作品《夜渔》",
+        "郭文棣攝影作品《夜漁》"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 15,
+      "lazyUses": 15,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/orange-suspension-water-study-1200.webp",
+      "pages": [
+        "series/collision/index.html",
+        "works/green-orb/index.html",
+        "works/studio-collision-studies/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hans/works/green-orb/index.html",
+        "zh-hans/works/studio-collision-studies/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/green-orb/index.html",
+        "zh-hant/works/studio-collision-studies/index.html"
+      ],
+      "uses": 11,
+      "altVariants": [
+        "Orange droplet suspended above a small liquid peak against an orange background.",
+        "Orange water droplet.",
+        "橙色水滴悬于液体尖峰上方",
+        "橙色水滴懸於液體尖峰上方",
+        "相关摄影作品《橙色水滴》",
+        "相關攝影作品《橙色水滴》",
+        "郭文棣摄影作品《橙色水滴》",
+        "郭文棣攝影作品《橙色水滴》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 11,
+      "lazyUses": 11,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/rice-terraces-golden-hour-1000.webp",
+      "pages": [
+        "biography/index.html",
+        "works/coil-field/index.html",
+        "zh-hans/biography/index.html",
+        "zh-hans/works/coil-field/index.html",
+        "zh-hant/biography/index.html",
+        "zh-hant/works/coil-field/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Golden rice terraces with figures walking.",
+        "Golden rice terraces with small figures walking through reflective fields.",
+        "相关摄影作品《金色时分的梯田》",
+        "相關攝影作品《金色時分的梯田》",
+        "金色时分的梯田与行人",
+        "金色時分的梯田與行人"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 6,
+      "lazyUses": 6,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/sack-race-village-1200.webp",
+      "pages": [
+        "series/ritual/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hant/series/ritual/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Children racing in sacks near brick buildings.",
+        "郭文棣摄影作品《乡村麻包竞赛》",
+        "郭文棣攝影作品《鄉村麻包競賽》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/street-art-procession-1200.webp",
+      "pages": [
+        "selected-works/index.html",
+        "series/city-light/index.html",
+        "works/dragon-night-festival/index.html",
+        "works/hong-kong-urban-light-studies/index.html",
+        "works/monochrome-documentary/index.html",
+        "zh-hans/series/city-light/index.html",
+        "zh-hans/works/dragon-night-festival/index.html",
+        "zh-hans/works/hong-kong-urban-light-studies/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/monochrome-documentary/index.html",
+        "zh-hant/series/city-light/index.html",
+        "zh-hant/works/dragon-night-festival/index.html",
+        "zh-hant/works/hong-kong-urban-light-studies/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/monochrome-documentary/index.html"
+      ],
+      "uses": 15,
+      "altVariants": [
+        "Pedestrians beside street art.",
+        "Pedestrians walking beside black-and-white street-art figures.",
+        "People walking beside black-and-white street art figures painted on a wall.",
+        "相关摄影作品《街头队列》",
+        "相關攝影作品《街頭隊列》",
+        "郭文棣摄影作品《街头队列》",
+        "郭文棣攝影作品《街頭隊列》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 15,
+      "lazyUses": 15,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/swimming-motion-1200.webp",
+      "pages": [
+        "index.html",
+        "selected-works/index.html",
+        "series/index.html",
+        "series/motion/index.html",
+        "works/ice-crown/index.html",
+        "works/sport-abstraction/index.html",
+        "works/start-sequence/index.html",
+        "works/swimming-in-motion/index.html",
+        "works/the-pack/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/motion/index.html",
+        "zh-hans/works/ice-crown/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/sport-abstraction/index.html",
+        "zh-hans/works/start-sequence/index.html",
+        "zh-hans/works/swimming-in-motion/index.html",
+        "zh-hans/works/the-pack/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/motion/index.html",
+        "zh-hant/works/ice-crown/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/sport-abstraction/index.html",
+        "zh-hant/works/start-sequence/index.html",
+        "zh-hant/works/swimming-in-motion/index.html",
+        "zh-hant/works/the-pack/index.html"
+      ],
+      "uses": 34,
+      "altVariants": [
+        "Artwork preview image.",
+        "Blurred swimmers across a pool.",
+        "Blurred swimmers moving across a pool.",
+        "Blurred swimmers moving through a pool.",
+        "Multiple swimmers blurred into painterly strokes across a pool.",
+        "Multiple swimmers blurred into painterly strokes across a turquoise pool.",
+        "作品預覽影像",
+        "作品预览影像",
+        "游泳者化成层叠色彩与水花",
+        "游泳者化成層疊色彩與水花",
+        "相关摄影作品《游动之间》",
+        "相关摄影作品《运动抽象研究》",
+        "相關攝影作品《游動之間》",
+        "相關攝影作品《運動抽象研究》",
+        "郭文棣摄影作品《游动之间》",
+        "郭文棣攝影作品《游動之間》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 34,
+      "lazyUses": 34,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/swimming-motion-1280.webp",
+      "pages": [
+        "selected-works/index.html",
+        "series/motion/index.html",
+        "works/sport-abstraction/index.html",
+        "zh-hans/series/index.html",
+        "zh-hans/series/motion/index.html",
+        "zh-hans/works/sport-abstraction/index.html",
+        "zh-hant/series/index.html",
+        "zh-hant/series/motion/index.html",
+        "zh-hant/works/sport-abstraction/index.html"
+      ],
+      "uses": 9,
+      "altVariants": [
+        "Blurred swimmers across a pool.",
+        "Multiple swimmers blurred into painterly strokes across a pool.",
+        "Multiple swimmers blurred into painterly strokes across a turquoise pool.",
+        "动态 Motion — photography by Ricky Kwok",
+        "动态 Motion系列代表影像",
+        "動態 Motion — photography by Ricky Kwok",
+        "動態 Motion系列代表影像",
+        "运动抽象研究 — photography by Ricky Kwok",
+        "運動抽象研究 — photography by Ricky Kwok"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 9,
+      "lazyUses": 2,
+      "eagerUses": 7
+    },
+    {
+      "source": "/assets/optimized-v2/art/swimming-start-sequence-1200.webp",
+      "pages": [
+        "index.html",
+        "selected-works/index.html",
+        "series/motion/index.html",
+        "works/ice-crown/index.html",
+        "works/sport-abstraction/index.html",
+        "works/swimming-in-motion/index.html",
+        "works/the-pack/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/motion/index.html",
+        "zh-hans/works/ice-crown/index.html",
+        "zh-hans/works/index.html",
+        "zh-hans/works/sport-abstraction/index.html",
+        "zh-hans/works/swimming-in-motion/index.html",
+        "zh-hans/works/the-pack/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/motion/index.html",
+        "zh-hant/works/ice-crown/index.html",
+        "zh-hant/works/index.html",
+        "zh-hant/works/sport-abstraction/index.html",
+        "zh-hant/works/swimming-in-motion/index.html",
+        "zh-hant/works/the-pack/index.html"
+      ],
+      "uses": 21,
+      "altVariants": [
+        "Swimmers diving in sequence.",
+        "Swimmers diving into lanes in a vertical sequence.",
+        "Swimmers diving into pool lanes in a descending vertical sequence.",
+        "Swimmers diving into pool lanes in sequence.",
+        "多名泳手依次起跳入水的垂直构图",
+        "多名泳手依次起跳入水的垂直構圖",
+        "相关摄影作品《起跳序列》",
+        "相關攝影作品《起跳序列》",
+        "郭文棣摄影作品《起跳序列》",
+        "郭文棣攝影作品《起跳序列》"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 21,
+      "lazyUses": 21,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/village-elders-laughter-1000.webp",
+      "pages": [
+        "series/ritual/index.html",
+        "zh-hans/series/ritual/index.html",
+        "zh-hant/series/ritual/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Elders and children laughing.",
+        "郭文棣摄影作品《乡村长者笑声》",
+        "郭文棣攝影作品《鄉村長者笑聲》"
+      ],
+      "declaredWidths": [
+        1000
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/art/yellow-arc-water-study-1200.webp",
+      "pages": [
+        "index.html",
+        "series/collision/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/collision/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/collision/index.html"
+      ],
+      "uses": 6,
+      "altVariants": [
+        "Yellow water arc with droplets suspended mid-air.",
+        "Yellow water arc.",
+        "郭文棣摄影作品《黄色弧线》",
+        "郭文棣攝影作品《黃色弧線》",
+        "黃色水弧與懸浮水滴",
+        "黄色水弧与悬浮水滴"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 6,
+      "lazyUses": 6,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-01-1200.webp",
+      "pages": [
+        "projects/horse-riding/index.html",
+        "zh-hans/projects/horse-riding/index.html",
+        "zh-hant/projects/horse-riding/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Racehorses rounding a green turf track in a dense pack.",
+        "賽馬與騎術攝影相關影像 1",
+        "赛马与骑术摄影相关影像 1"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1200.webp",
+      "pages": [
+        "projects/horse-riding/index.html",
+        "projects/index.html",
+        "zh-hans/projects/horse-riding/index.html",
+        "zh-hant/projects/horse-riding/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Artwork preview image.",
+        "Close view of a jockey in yellow and green silks riding at speed.",
+        "Jockey in yellow and green silks riding a racehorse at speed.",
+        "賽馬與騎術攝影相關影像 2",
+        "赛马与骑术摄影相关影像 2"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 5,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1800.webp",
+      "pages": [
+        "projects/horse-riding/index.html",
+        "zh-hans/projects/horse-riding/index.html",
+        "zh-hans/projects/index.html",
+        "zh-hant/projects/horse-riding/index.html",
+        "zh-hant/projects/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Close view of a jockey in yellow and green silks riding at speed.",
+        "賽馬與騎術攝影 — photography by Ricky Kwok",
+        "賽馬與騎術攝影代表影像",
+        "赛马与骑术摄影 — photography by Ricky Kwok",
+        "赛马与骑术摄影代表影像"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 2,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-03-1200.webp",
+      "pages": [
+        "projects/horse-riding/index.html",
+        "zh-hans/projects/horse-riding/index.html",
+        "zh-hant/projects/horse-riding/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Racehorses passing below a large screen at a Hong Kong racecourse.",
+        "賽馬與騎術攝影相關影像 3",
+        "赛马与骑术摄影相关影像 3"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-04-1200.webp",
+      "pages": [
+        "projects/horse-riding/index.html",
+        "zh-hans/projects/horse-riding/index.html",
+        "zh-hant/projects/horse-riding/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Jockey in blue silks leaning low over a horse in a racing pack.",
+        "賽馬與騎術攝影相關影像 4",
+        "赛马与骑术摄影相关影像 4"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-05-1200.webp",
+      "pages": [
+        "projects/horse-riding/index.html",
+        "zh-hans/projects/horse-riding/index.html",
+        "zh-hant/projects/horse-riding/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Racehorses entering a turn on a dark track surface.",
+        "賽馬與騎術攝影相關影像 5",
+        "赛马与骑术摄影相关影像 5"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-1200.webp",
+      "pages": [
+        "projects/infrared-hong-kong/index.html",
+        "zh-hans/projects/infrared-hong-kong/index.html",
+        "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Infrared photograph of a pavilion framed by trees.",
+        "香港紅外線攝影相關影像 1",
+        "香港红外线摄影相关影像 1"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1200.webp",
+      "pages": [
+        "projects/index.html",
+        "projects/infrared-hong-kong/index.html",
+        "zh-hans/projects/infrared-hong-kong/index.html",
+        "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Artwork preview image.",
+        "Hong Kong garden and temple architecture photographed in infrared colour.",
+        "Infrared view of a garden pond with red bridge and foliage.",
+        "香港紅外線攝影相關影像 2",
+        "香港红外线摄影相关影像 2"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 5,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1800.webp",
+      "pages": [
+        "projects/infrared-hong-kong/index.html",
+        "zh-hans/projects/index.html",
+        "zh-hans/projects/infrared-hong-kong/index.html",
+        "zh-hant/projects/index.html",
+        "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Infrared view of a garden pond with red bridge and foliage.",
+        "香港紅外線攝影 — photography by Ricky Kwok",
+        "香港紅外線攝影代表影像",
+        "香港红外线摄影 — photography by Ricky Kwok",
+        "香港红外线摄影代表影像"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 2,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1200.webp",
+      "pages": [
+        "projects/infrared-hong-kong/index.html",
+        "zh-hans/projects/infrared-hong-kong/index.html",
+        "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Infrared garden path with pavilion and person.",
+        "香港紅外線攝影相關影像 3",
+        "香港红外线摄影相关影像 3"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1200.webp",
+      "pages": [
+        "projects/infrared-hong-kong/index.html",
+        "zh-hans/projects/infrared-hong-kong/index.html",
+        "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Infrared photograph of temple roofs and trees.",
+        "香港紅外線攝影相關影像 4",
+        "香港红外线摄影相关影像 4"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1200.webp",
+      "pages": [
+        "projects/infrared-hong-kong/index.html",
+        "zh-hans/projects/infrared-hong-kong/index.html",
+        "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Infrared view of ornate garden architecture and pale trees.",
+        "香港紅外線攝影相關影像 5",
+        "香港红外线摄影相关影像 5"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-1200.webp",
+      "pages": [
+        "projects/infrared-hong-kong/index.html",
+        "zh-hans/projects/infrared-hong-kong/index.html",
+        "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Infrared photograph of a pagoda under blue sky.",
+        "香港紅外線攝影相關影像 6",
+        "香港红外线摄影相关影像 6"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Man cooking skewers in a small kitchen.",
+        "尼泊尔纪实摄影相关影像 1",
+        "尼泊爾紀實攝影相關影像 1"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Children sitting on concrete steps.",
+        "尼泊尔纪实摄影相关影像 2",
+        "尼泊爾紀實攝影相關影像 2"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Mother holding a crying child outdoors.",
+        "尼泊尔纪实摄影相关影像 3",
+        "尼泊爾紀實攝影相關影像 3"
+      ],
+      "declaredWidths": [
+        1201
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Woman holding a child close outdoors.",
+        "尼泊尔纪实摄影相关影像 4",
+        "尼泊爾紀實攝影相關影像 4"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1200.webp",
+      "pages": [
+        "projects/index.html",
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Artwork preview image.",
+        "Portrait from Ricky Kwok's Nepal documentary project.",
+        "Young girl wearing a red shawl near a window.",
+        "尼泊尔纪实摄影相关影像 5",
+        "尼泊爾紀實攝影相關影像 5"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 5,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1800.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Young girl wearing a red shawl near a window.",
+        "尼泊尔纪实摄影 — photography by Ricky Kwok",
+        "尼泊尔纪实摄影代表影像",
+        "尼泊爾紀實攝影 — photography by Ricky Kwok",
+        "尼泊爾紀實攝影代表影像"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 2,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Child standing in an open yard near buildings.",
+        "尼泊尔纪实摄影相关影像 6",
+        "尼泊爾紀實攝影相關影像 6"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Man working with a suspended sack at a market.",
+        "尼泊尔纪实摄影相关影像 7",
+        "尼泊爾紀實攝影相關影像 7"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Woman seated against a weathered wall.",
+        "尼泊尔纪实摄影相关影像 8",
+        "尼泊爾紀實攝影相關影像 8"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Elderly person using a walker on a road.",
+        "尼泊尔纪实摄影相关影像 9",
+        "尼泊爾紀實攝影相關影像 9"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "A boy shaving a seated man outdoors.",
+        "尼泊尔纪实摄影相关影像 10",
+        "尼泊爾紀實攝影相關影像 10"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-1200.webp",
+      "pages": [
+        "projects/nepal-documentary/index.html",
+        "zh-hans/projects/nepal-documentary/index.html",
+        "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Elderly woman in pink clothing looking toward the camera.",
+        "尼泊尔纪实摄影相关影像 11",
+        "尼泊爾紀實攝影相關影像 11"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-01-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Person standing by a red doorway in a dim interior.",
+        "香港与中国内地纪实摄影研究相关影像 1",
+        "香港與中國內地紀實攝影研究相關影像 1"
+      ],
+      "declaredWidths": [
+        1200
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-02-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Workers harvesting fish from a pond.",
+        "香港与中国内地纪实摄影研究相关影像 2",
+        "香港與中國內地紀實攝影研究相關影像 2"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-03-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Black-and-white view of circular coils drying in rows with a worker.",
+        "香港与中国内地纪实摄影研究相关影像 3",
+        "香港與中國內地紀實攝影研究相關影像 3"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-04-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Two people sitting among many woven baskets.",
+        "香港与中国内地纪实摄影研究相关影像 4",
+        "香港與中國內地紀實攝影研究相關影像 4"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-05-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Workers and fire inside a dark industrial foundry.",
+        "香港与中国内地纪实摄影研究相关影像 5",
+        "香港與中國內地紀實攝影研究相關影像 5"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-06-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Boats on a river at dusk with karst mountains.",
+        "香港与中国内地纪实摄影研究相关影像 6",
+        "香港與中國內地紀實攝影研究相關影像 6"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-07-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Two fishermen at night holding lanterns beside water.",
+        "香港与中国内地纪实摄影研究相关影像 7",
+        "香港與中國內地紀實攝影研究相關影像 7"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-08-1200.webp",
+      "pages": [
+        "projects/index.html",
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Artwork preview image.",
+        "Documentary photograph from Ricky Kwok's China travel studies.",
+        "Golden rice terraces with people walking through reflective fields.",
+        "香港与中国内地纪实摄影研究相关影像 8",
+        "香港與中國內地紀實攝影研究相關影像 8"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 5,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-08-1800.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 5,
+      "altVariants": [
+        "Golden rice terraces with people walking through reflective fields.",
+        "香港与中国内地纪实摄影研究 — photography by Ricky Kwok",
+        "香港与中国内地纪实摄影研究代表影像",
+        "香港與中國內地紀實攝影研究 — photography by Ricky Kwok",
+        "香港與中國內地紀實攝影研究代表影像"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 5,
+      "lazyUses": 2,
+      "eagerUses": 3
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-09-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Women cooking around a hearth in a dark wooden room.",
+        "香港与中国内地纪实摄影研究相关影像 9",
+        "香港與中國內地紀實攝影研究相關影像 9"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-10-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Warm shaft of light and smoke in a rustic kitchen.",
+        "香港与中国内地纪实摄影研究相关影像 10",
+        "香港與中國內地紀實攝影研究相關影像 10"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-11-1200.webp",
+      "pages": [
+        "projects/travel/index.html",
+        "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/travel/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Elders and children laughing in a village setting.",
+        "香港与中国内地纪实摄影研究相关影像 11",
+        "香港與中國內地紀實攝影研究相關影像 11"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 3,
+      "eagerUses": 0
+    }
+  ]
+}

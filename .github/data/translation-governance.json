@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "locales": {
+    "en": { "prefix": "", "htmlLang": "en", "label": "English" },
+    "zh-Hant": { "prefix": "/zh-hant", "htmlLang": "zh-Hant", "label": "繁體中文" },
+    "zh-Hans": { "prefix": "/zh-hans", "htmlLang": "zh-Hans", "label": "简体中文" }
+  },
+  "identity": {
+    "displayName": "Ricky Kwok 郭文棣",
+    "professionalName": "Ricky Kwok",
+    "chineseName": "郭文棣",
+    "distinction": "ARPS"
+  },
+  "pageTypes": {
+    "selectedWorks": { "en": "Selected Works", "zh-Hant": "精選作品", "zh-Hans": "精选作品" },
+    "series": { "en": "Series", "zh-Hant": "系列", "zh-Hans": "系列" },
+    "projects": { "en": "Projects", "zh-Hant": "項目", "zh-Hans": "项目" },
+    "thematicEdits": { "en": "Thematic edits", "zh-Hant": "主題編選", "zh-Hans": "主题编选" },
+    "artworkRecords": { "en": "Artwork records", "zh-Hant": "作品記錄", "zh-Hans": "作品记录" }
+  },
+  "series": {
+    "ritual": { "en": "Ritual", "zh-Hant": "儀式", "zh-Hans": "仪式" },
+    "collision": { "en": "Collision", "zh-Hant": "碰撞", "zh-Hans": "碰撞" },
+    "motion": { "en": "Motion", "zh-Hant": "動態", "zh-Hans": "动态" },
+    "city-light": { "en": "City Light", "zh-Hant": "城市之光", "zh-Hans": "城市之光" }
+  },
+  "rightsTerms": {
+    "acquisition": { "en": "Acquisition", "zh-Hant": "收藏", "zh-Hans": "收藏" },
+    "licensing": { "en": "Licensing", "zh-Hant": "授權", "zh-Hans": "授权" },
+    "exhibition": { "en": "Exhibition", "zh-Hant": "展覽", "zh-Hans": "展览" },
+    "copyright": { "en": "Copyright", "zh-Hant": "版權", "zh-Hans": "版权" }
+  },
+  "reviewPolicy": "Identity, artwork facts, rights language and institutional claims require source-backed editorial review. Native-language review remains required before materially changing published Chinese prose."
+}

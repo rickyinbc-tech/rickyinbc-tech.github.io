@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "status": "pass",
+  "measured": {
+    "maxHtmlBytes": 30231,
+    "siteCssBytes": 25289,
+    "siteJsBytes": 4867,
+    "largestResponsiveImageBytes": 346128,
+    "maxMissingImageDimensions": 0,
+    "maxMissingImageSizes": 0
+  },
+  "budgets": {
+    "maxHtmlBytes": 50000,
+    "siteCssBytes": 50000,
+    "siteJsBytes": 50000,
+    "largestResponsiveImageBytes": 375000,
+    "maxMissingImageDimensions": 0,
+    "maxMissingImageSizes": 0
+  },
+  "largestHtml": [
+    {
+      "file": "projects/nepal-documentary/index.html",
+      "bytes": 30231
+    },
+    {
+      "file": "projects/travel/index.html",
+      "bytes": 28777
+    },
+    {
+      "file": "awards-recognition/index.html",
+      "bytes": 25544
+    },
+    {
+      "file": "index.html",
+      "bytes": 24389
+    },
+    {
+      "file": "zh-hant/awards/index.html",
+      "bytes": 22081
+    },
+    {
+      "file": "zh-hans/awards/index.html",
+      "bytes": 22021
+    },
+    {
+      "file": "series/collision/index.html",
+      "bytes": 21143
+    },
+    {
+      "file": "projects/infrared-hong-kong/index.html",
+      "bytes": 20657
+    },
+    {
+      "file": "zh-hant/index.html",
+      "bytes": 19639
+    },
+    {
+      "file": "zh-hans/index.html",
+      "bytes": 19631
+    }
+  ],
+  "largestResponsiveImages": [
+    {
+      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1800.webp",
+      "bytes": 346128
+    },
+    {
+      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1800.webp",
+      "bytes": 330316
+    },
+    {
+      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1800.webp",
+      "bytes": 290516
+    },
+    {
+      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1600.webp",
+      "bytes": 289440
+    },
+    {
+      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-1800.webp",
+      "bytes": 285638
+    },
+    {
+      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1600.webp",
+      "bytes": 275712
+    },
+    {
+      "file": "assets/optimized-v2/art/swimming-start-sequence-1280.webp",
+      "bytes": 272058
+    },
+    {
+      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1800.webp",
+      "bytes": 257600
+    },
+    {
+      "file": "assets/optimized-v2/projects/horse-riding/horse-riding-05-1800.webp",
+      "bytes": 257344
+    },
+    {
+      "file": "assets/optimized-v2/projects/travel/travel-03-1800.webp",
+      "bytes": 246674
+    }
+  ],
+  "failures": []
+}
