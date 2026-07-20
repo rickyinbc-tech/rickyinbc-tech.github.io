@@ -43,10 +43,11 @@ const passThroughHosts = new Set([
 ]);
 
 const securityHeaders = {
-  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests",
+  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests",
   "cross-origin-opener-policy": "same-origin",
   "permissions-policy": "camera=(), microphone=(), geolocation=(), browsing-topics=()",
   "referrer-policy": "strict-origin-when-cross-origin",
+  "strict-transport-security": "max-age=31536000",
   "x-content-type-options": "nosniff",
   "x-frame-options": "DENY"
 };
@@ -237,9 +238,7 @@ export default {
   async fetch(request, env, context) {
     const requestUrl = new URL(request.url);
     const hostname = requestUrl.hostname.toLowerCase();
-    if (hostname === wineHost) return serveWineSite(request, requestUrl);
     if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request), hostname);
-    if (hostname === topWineHost) return withSecurityHeaders(await fetchTopWineSite(request), hostname);
 
     const destination = mappedDestination(requestUrl);
     if (!destination) {

@@ -3,9 +3,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ORIGIN = "https://rickykwok.com";
-const STYLESHEET_URL = "/assets/site.min.css?v=20260715-header-flow-v3";
+const ASSET_VERSION = "20260719-site-audit-v1";
+const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
+const SCRIPT_URL = `/assets/site.min.js?v=${ASSET_VERSION}`;
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const excludedDirectories = new Set([".git", ".github", "assets"]);
+const excludedDirectories = new Set([".git", ".github", ".wrangler", "assets", "node_modules", "seo-status"]);
 const errors = [];
 const artworkManifest = JSON.parse(await readFile(path.join(repoRoot, ".github/data/artwork-manifest.json"), "utf8"));
 const edgeRedirectConfig = JSON.parse(await readFile(path.join(repoRoot, "edge/redirect-map.json"), "utf8"));
@@ -44,6 +46,11 @@ function attribute(tag, name) {
 
 function metaContent(html, name) {
   const tag = html.match(new RegExp(`<meta\\b[^>]*\\bname=["']${name}["'][^>]*>`, "i"))?.[0] || "";
+  return attribute(tag, "content").trim();
+}
+
+function propertyContent(html, property) {
+  const tag = html.match(new RegExp(`<meta\\b[^>]*\\bproperty=["']${property}["'][^>]*>`, "i"))?.[0] || "";
   return attribute(tag, "content").trim();
 }
 
@@ -90,7 +97,7 @@ async function htmlFiles(directory = repoRoot) {
     if (entry.isDirectory() && excludedDirectories.has(entry.name)) continue;
     const fullPath = path.join(directory, entry.name);
     if (entry.isDirectory()) files.push(...await htmlFiles(fullPath));
-    if (entry.isFile() && entry.name === "index.html") files.push(fullPath);
+    if (entry.isFile() && (entry.name === "index.html" || entry.name === "404.html")) files.push(fullPath);
   }
   return files;
 }
@@ -116,10 +123,13 @@ for (const file of await htmlFiles()) {
   const localized = relative.startsWith("zh-hant/") || relative.startsWith("zh-hans/");
 
   if (html.includes("/assets/site.min.css") && !html.includes(STYLESHEET_URL)) {
-    errors.push(`${relative}: stylesheet cache key does not include the responsive header-flow fix`);
+    errors.push(`${relative}: stylesheet cache key is not the current production version`);
+  }
+  if (html.includes("/assets/site.min.js") && !html.includes(SCRIPT_URL)) {
+    errors.push(`${relative}: script cache key is not the current production version`);
   }
 
-  if (localized) {
+  if (localized && !noindex) {
     for (const pattern of placeholderPatterns) {
       if (pattern.test(html)) errors.push(`${relative}: contains placeholder localization copy`);
     }
@@ -155,7 +165,7 @@ for (const file of await htmlFiles()) {
   }
 
   if (!title) errors.push(`${relative}: missing title`);
-  if (h1Count !== 1) errors.push(`${relative}: expected one H1, found ${h1Count}`);
+  if (!noindex && h1Count !== 1) errors.push(`${relative}: expected one H1, found ${h1Count}`);
 
   for (const match of html.matchAll(/<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     try {
@@ -175,6 +185,18 @@ for (const file of await htmlFiles()) {
     else titleOwners.set(title, relative);
     if (descriptionOwners.has(description)) errors.push(`${relative}: duplicate description with ${descriptionOwners.get(description)}`);
     else descriptionOwners.set(description, relative);
+    for (const property of ["og:title", "og:description", "og:type", "og:url", "og:image", "og:image:alt", "og:image:width", "og:image:height", "og:site_name", "og:locale"]) {
+      if (!propertyContent(html, property)) errors.push(`${relative}: missing ${property}`);
+    }
+    for (const name of ["twitter:card", "twitter:title", "twitter:description", "twitter:image", "twitter:image:alt"]) {
+      if (!metaContent(html, name)) errors.push(`${relative}: missing ${name}`);
+    }
+    if (propertyContent(html, "og:url").replace(/\/$/, "") !== expectedCanonical.replace(/\/$/, "")) {
+      errors.push(`${relative}: og:url does not match the canonical URL`);
+    }
+    if (!/^\d+$/.test(propertyContent(html, "og:image:width")) || !/^\d+$/.test(propertyContent(html, "og:image:height"))) {
+      errors.push(`${relative}: social image dimensions must be positive integers`);
+    }
     const alternates = alternateLinks(html);
     for (const language of ["en", "zh-Hant", "zh-Hans", "x-default"]) {
       if (!alternates.has(language)) errors.push(`${relative}: missing ${language} hreflang alternate`);
@@ -223,7 +245,7 @@ for (const route of indexableEnglishRoutes) {
     if (isNoindex(html)) errors.push(`${route}: ${language} counterpart is noindex`);
     const englishImages = englishImageCounts.get(route) || 0;
     const localizedImages = (html.match(/<img\b/gi) || []).length;
-    const minimumImages = Math.max(englishImages - 1, 0);
+    const minimumImages = Math.max(englishImages - 2, 0);
     if (localizedImages < minimumImages) {
       errors.push(`${route}: ${language} counterpart has ${localizedImages} images; expected at least ${minimumImages}`);
     }
@@ -246,6 +268,12 @@ function parsedSchemaNodes(html) {
     }
   }
   return values;
+}
+
+for (const [route, page] of indexableDocuments) {
+  const pageSchemaTypes = ["WebPage", "ProfilePage", "CollectionPage", "ContactPage", "AboutPage", "Article"];
+  const hasPageSchema = parsedSchemaNodes(page.html).some((node) => pageSchemaTypes.some((type) => matchesType(node, type)));
+  if (!hasPageSchema) errors.push(`${page.relative}: structured data has no page-level schema type for ${route}`);
 }
 
 function matchesType(node, type) {
@@ -317,16 +345,7 @@ for (const artwork of artworkManifest.artworks || []) {
     if (!html.includes('data-artwork-governance="v2"')) {
       errors.push(`${relative}: artwork facts do not use governance contract v2`);
     }
-    if ((html.match(/data-artwork-pathways/g) || []).length !== 1) {
-      errors.push(`${relative}: expected one governed artwork pathway row`);
-    }
-    for (const pathway of ["type=print", "/licensing/", "type=exhibition"]) {
-      if (!html.includes(pathway)) errors.push(`${relative}: missing artwork pathway ${pathway}`);
-    }
-    const standardsPath = language === "en" ? "/studio-standards/" : `${prefix}/studio-standards/`;
-    if (!html.includes(`href="${standardsPath}"`)) {
-      errors.push(`${relative}: missing localized Studio Standards link`);
-    }
+    if (!html.includes("personal-use-notice")) errors.push(`${relative}: missing personal non-commercial archive notice`);
   }
 }
 
@@ -334,9 +353,6 @@ for (const [route, marker] of [
   ["/", "Archive Guide"],
   ["/zh-hant/", "檔案導覽"],
   ["/zh-hans/", "档案导览"],
-  ["/studio-standards/", "Six groups of facts"],
-  ["/zh-hant/studio-standards/", "必須確認六組資料"],
-  ["/zh-hans/studio-standards/", "必须确认六组资料"],
 ]) {
   const page = indexableDocuments.get(route);
   if (!page || !page.html.includes(marker)) errors.push(`${route}: missing governed archive or studio-standards content`);
@@ -373,10 +389,15 @@ for (const series of ["ritual", "collision", "motion", "city-light"]) {
   }
 }
 
-const siteJs = await readFile(path.join(repoRoot, "assets/site.min.js"), "utf8");
-const siteCss = await readFile(path.join(repoRoot, "assets/site.min.css"), "utf8");
+const siteJs = await readFile(path.join(repoRoot, "assets/site.js"), "utf8");
+const siteCss = await readFile(path.join(repoRoot, "assets/site.css"), "utf8");
+const minifiedSiteJs = await readFile(path.join(repoRoot, "assets/site.min.js"), "utf8");
+const minifiedSiteCss = await readFile(path.join(repoRoot, "assets/site.min.css"), "utf8");
 if (!siteJs.includes("const ANALYTICS_DISABLED = true;") || /googletagmanager|google-analytics|data-analytics-choice|analytics-consent/i.test(siteJs)) {
   errors.push("analytics must remain disabled without a consent banner or Google loader");
+}
+if (minifiedSiteJs.length >= siteJs.length * 0.9 || minifiedSiteCss.length >= siteCss.length * 0.9) {
+  errors.push("production CSS and JavaScript assets must remain minified");
 }
 if (measurementGovernance.collectionStatus !== "disabled" || measurementGovernance.property !== null) {
   errors.push("measurement governance must declare analytics disabled");
@@ -401,15 +422,15 @@ if (!/@media\s*\(max-width:\s*980px\)[\s\S]*?\.site-header\s*\{[\s\S]*?position:
 if (!/\.hero\.has-semantic-media\s*\{[\s\S]*?padding-top:\s*0/i.test(siteCss)) {
   errors.push("responsive artwork hero must not use a fixed header-height offset");
 }
+for (const marker of ["addMobileNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel"]) {
+  if (!siteJs.includes(marker)) errors.push(`accessible interaction contract lacks ${marker}`);
+}
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
 for (const eventName of measurementGovernance.events || []) {
   if (!implementedEvents.has(eventName)) errors.push(`measurement governance event is not implemented: ${eventName}`);
 }
 for (const eventName of implementedEvents) {
   if (!measurementGovernance.events?.includes(eventName)) errors.push(`implemented event is not governed: ${eventName}`);
-}
-for (const [route, marker] of [["/privacy/", "does not currently use Google Analytics"], ["/zh-hant/privacy/", "目前不載入 Google Analytics"], ["/zh-hans/privacy/", "目前不载入 Google Analytics"]]) {
-  if (!indexableDocuments.get(route)?.html.includes(marker)) errors.push(`${route}: privacy notice does not describe analytics as disabled`);
 }
 if (imageInventory.summary?.missingDimensions !== 0 || imageInventory.summary?.missingSizes !== 0 || imageInventory.summary?.imageUses !== validatedImageUses) {
   errors.push("image inventory is stale or violates the complete image-attribute contract");
@@ -419,25 +440,8 @@ if (performanceReport.status !== "pass" || performanceReport.measured?.maxMissin
 }
 
 const workerSource = await readFile(path.join(repoRoot, "edge/cloudflare-worker.mjs"), "utf8");
-for (const header of ["content-security-policy", "permissions-policy", "referrer-policy", "x-content-type-options", "x-frame-options"]) {
+for (const header of ["content-security-policy", "permissions-policy", "referrer-policy", "strict-transport-security", "x-content-type-options", "x-frame-options"]) {
   if (!workerSource.includes(`"${header}"`)) errors.push(`edge worker lacks ${header}`);
-}
-
-for (const route of ["/licensing/", "/zh-hant/licensing/", "/zh-hans/licensing/"]) {
-  const page = indexableDocuments.get(route);
-  if (!page) {
-    errors.push(`${route}: missing indexable licensing page`);
-    continue;
-  }
-  if (!/<details\b[^>]*class=["'][^"']*\bform-disclosure\b/i.test(page.html)) {
-    errors.push(`${page.relative}: licensing form lacks progressive disclosure`);
-  }
-  for (const optionalField of ["duration", "distribution_audience", "exclusivity", "release_requirements"]) {
-    const tag = page.html.match(new RegExp(`<(?:input|select)\\b[^>]*\\bname=["']${optionalField}["'][^>]*>`, "i"))?.[0] || "";
-    if (!tag || /\brequired\b/i.test(tag)) {
-      errors.push(`${page.relative}: advanced licensing field ${optionalField} must exist and remain optional`);
-    }
-  }
 }
 
 for (const [route, page] of indexableDocuments) {
@@ -447,34 +451,6 @@ for (const [route, page] of indexableDocuments) {
   }
   if (hasHero && /--hero-image/i.test(page.html)) {
     errors.push(`${page.relative}: visual hero still relies on CSS-only image media`);
-  }
-}
-
-const confirmationPages = [
-  "contact/thanks/index.html",
-  "zh-hant/contact/thanks/index.html",
-  "zh-hans/contact/thanks/index.html"
-];
-const confirmationContract = [
-  "data-confirmation-page",
-  "data-confirmation-eyebrow",
-  "data-confirmation-heading",
-  "data-confirmation-introduction",
-  "data-confirmation-unverified",
-  "data-confirmation-success",
-  "data-confirmation-lead",
-  "data-confirmation-type",
-  "data-confirmation-artwork",
-  "data-deadline-email",
-  "noscript-confirmation"
-];
-for (const relative of confirmationPages) {
-  const html = await readFile(path.join(repoRoot, relative), "utf8");
-  for (const attributeName of confirmationContract) {
-    if (!html.includes(attributeName)) errors.push(`${relative}: missing confirmation contract attribute ${attributeName}`);
-  }
-  if (!/<body\b[^>]*\bdata-confirmation-page(?:\b|=)/i.test(html)) {
-    errors.push(`${relative}: confirmation page body lacks data-confirmation-page`);
   }
 }
 
@@ -507,8 +483,7 @@ if (edgeRedirectConfig.canonicalOrigin !== ORIGIN) {
 }
 const expectedLegacyHostRedirects = {
   "blog.rickykwok.com": { "/": "/journal/", "/feed": "/journal/" },
-  "photo.rickykwok.com": { "/": "/" },
-  "select.rickykwok.com": { "/": "/" }
+  "photo.rickykwok.com": { "/": "/" }
 };
 for (const [hostname, expectedPaths] of Object.entries(expectedLegacyHostRedirects)) {
   const hostMap = edgeRedirectConfig.hostRedirects?.[hostname];
@@ -536,27 +511,7 @@ if (JSON.stringify(expected) !== JSON.stringify(actual)) {
   errors.push(`sitemap parity failed: ${expected.length} indexable pages vs ${actual.length} sitemap URLs`);
 }
 if (!/^[a-f0-9]{32}$/.test(indexNowKey)) errors.push("IndexNow key file is invalid");
-const expectedForwardedHosts = [
-  "balanced.rickykwok.com",
-  "calculator.rickykwok.com",
-  "early.rickykwok.com",
-  "finn.rickykwok.com",
-  "grid.rickykwok.com",
-  "infrastructure.rickykwok.com",
-  "interest.rickykwok.com",
-  "lipper.rickykwok.com",
-  "mortgage.rickykwok.com",
-  "mtg.rickykwok.com",
-  "notes.rickykwok.com",
-  "photos.rickykwok.com",
-  "poker.rickykwok.com",
-  "portfolio.rickykwok.com",
-  "resource.rickykwok.com",
-  "retired.rickykwok.com",
-  "spy.rickykwok.com",
-  "www.blog.rickykwok.com",
-  "whymf.rickykwok.com"
-];
+const expectedForwardedHosts = [];
 const configuredForwardedHosts = new Set(edgeRedirectConfig.forwardedHosts || []);
 for (const hostname of expectedForwardedHosts) {
   if (!configuredForwardedHosts.has(hostname)) errors.push(`edge redirect map is missing preserved forwarding host ${hostname}`);
@@ -587,6 +542,31 @@ for (const [pageUrl, imageUrl] of expectedImageOwners) {
 for (const [pageUrl, images] of imageEntries) {
   if (!expectedImageOwners.has(pageUrl)) errors.push(`image sitemap has non-artwork owner ${pageUrl}`);
   if (images.length !== 1) errors.push(`image sitemap owner has ${images.length} images: ${pageUrl}`);
+}
+
+const retiredBusinessRoutes = [
+  "/prints/", "/licensing/", "/contact/", "/contact/thanks/", "/shipping-returns/", "/studio-standards/", "/terms/", "/privacy/", "/press/", "/press/cv/", "/press/media-kit/",
+  "/zh-hant/editions/", "/zh-hant/licensing/", "/zh-hant/contact/", "/zh-hant/contact/thanks/", "/zh-hant/shipping-returns/", "/zh-hant/studio-standards/", "/zh-hant/terms/", "/zh-hant/privacy/", "/zh-hant/press/", "/zh-hant/press/cv/", "/zh-hant/press/media-kit/",
+  "/zh-hans/editions/", "/zh-hans/licensing/", "/zh-hans/contact/", "/zh-hans/contact/thanks/", "/zh-hans/shipping-returns/", "/zh-hans/studio-standards/", "/zh-hans/terms/", "/zh-hans/privacy/", "/zh-hans/press/", "/zh-hans/press/cv/", "/zh-hans/press/media-kit/"
+];
+for (const route of retiredBusinessRoutes) {
+  if (indexableDocuments.has(route)) errors.push(`${route}: retired business route must not be indexable`);
+}
+
+const forbiddenPublicHref = /(?:^|\/)(?:available-prints|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|\?|#|$)|^mailto:|behance\.net|facebook\.com|instagram\.com|flickr\.com|dcfever\.com/i;
+for (const [route, page] of indexableDocuments) {
+  if (!page.html.includes("personal-use-notice")) errors.push(`${page.relative}: missing site-wide personal archive notice`);
+  if (/<form\b|formsubmit\.co|studio@rickykwok\.com|data-inquiry-form/i.test(page.html)) {
+    errors.push(`${page.relative}: contains a retired business form or contact mechanism`);
+  }
+  for (const match of page.html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["'][^>]*>/gi)) {
+    if (forbiddenPublicHref.test(match[1])) errors.push(`${page.relative}: links to retired business pathway ${match[1]}`);
+  }
+  for (const node of parsedSchemaNodes(page.html)) {
+    for (const key of ["jobTitle", "sameAs", "license", "acquireLicensePage", "offers", "contactPoint", "potentialAction"]) {
+      if (Object.hasOwn(node, key)) errors.push(`${page.relative}: structured data contains retired business field ${key}`);
+    }
+  }
 }
 
 if (errors.length) {

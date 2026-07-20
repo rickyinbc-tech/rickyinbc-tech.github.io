@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const ignored = new Set([".git", ".github", "assets"]);
+const ignored = new Set([".git", ".github", ".wrangler", "assets", "node_modules", "seo-status"]);
 
 async function walk(directory, predicate, ignoredDirectories = new Set()) {
   const results = [];
@@ -17,10 +17,10 @@ async function walk(directory, predicate, ignoredDirectories = new Set()) {
 }
 
 function attribute(tag, name) {
-  return tag.match(new RegExp(`\\b${name}=["']([^"']*)["']`, "i"))?.[1] || "";
+  return tag.match(new RegExp(`\\b${name}\\s*=\\s*(["'])(.*?)\\1`, "i"))?.[2] || "";
 }
 
-const htmlFiles = await walk(root, (file) => file.endsWith(`${path.sep}index.html`), ignored);
+const htmlFiles = await walk(root, (file) => file.endsWith(`${path.sep}index.html`) || file.endsWith(`${path.sep}404.html`), ignored);
 const images = new Map();
 let missingDimensions = 0;
 let missingSizes = 0;

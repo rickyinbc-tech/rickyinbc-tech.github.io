@@ -28,14 +28,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Build canonical sitemaps
-        run: node .github/scripts/build-sitemaps.mjs
-      - name: Build image and performance governance report
-        run: node .github/scripts/build-governance-report.mjs
-      - name: Validate site
-        run: node .github/scripts/validate-site.mjs
-      - name: Test edge routing and security headers
-        run: node .github/scripts/test-edge-worker.mjs
+          cache: npm
+      - name: Install build tooling
+        run: npm ci
+      - name: Build production assets, sitemaps, and governance reports
+        run: npm run build
+      - name: Validate site and edge behavior
+        run: npm test
+      - name: Remove build-only dependencies from the site artifact
+        run: rm -rf node_modules
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
