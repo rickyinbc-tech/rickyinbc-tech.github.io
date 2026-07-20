@@ -19,18 +19,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
+          cache: npm
+
+      - name: Install build tooling
+        run: npm ci
+
+      - name: Build production assets and governance data
+        run: npm run build
 
       - name: Build SEO health report
         run: node .github/scripts/build-seo-health.mjs
 
-      - name: Build image and performance governance report
-        run: node .github/scripts/build-governance-report.mjs
-
-      - name: Validate site contracts
-        run: node .github/scripts/validate-site.mjs
-
-      - name: Test edge routing and security headers
-        run: node .github/scripts/test-edge-worker.mjs
+      - name: Validate site and edge behavior
+        run: npm test
 
       - name: Upload diagnostic report
         if: always()

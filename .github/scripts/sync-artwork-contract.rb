@@ -74,7 +74,7 @@ def artwork_image_id(artwork)
 end
 
 def artwork_entity_id(artwork)
-  "#{ORIGIN}/#artwork-#{artwork.fetch("id")}" 
+  "#{ORIGIN}/#artwork-#{artwork.fetch("id")}"
 end
 
 def route_for(artwork, locale)
@@ -418,12 +418,12 @@ def convert_series_cards
       link["class"] = "work-card-link"
       link["href"] = artwork.fetch("canonicalPath")
       link["data-artwork-id"] = artwork.fetch("id")
-      link["aria-label"] = "View #{artwork.fetch("title")}" 
+      link["aria-label"] = "View #{artwork.fetch("title")}"
       card.children.to_a.each { |child| link.add_child(child.unlink) }
       zoom = Nokogiri::XML::Node.new("button", document)
       zoom["class"] = "work-zoom"
       zoom["type"] = "button"
-      zoom["aria-label"] = "Open full composition of #{artwork.fetch("title")}" 
+      zoom["aria-label"] = "Open full composition of #{artwork.fetch("title")}"
       card.attribute_nodes.each do |attribute|
         zoom[attribute.name] = attribute.value if attribute.name.start_with?("data-")
       end

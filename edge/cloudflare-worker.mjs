@@ -33,6 +33,8 @@ const wineCanonicalRedirects = new Map([
   ["/zh-hans/index.html", "/zh-hans/"]
 ]);
 const wineBottleImagePattern = /^\/assets\/wine-bottles\/[0-9A-Za-z_-]+\.(jpg|png|webp)$/;
+const topWineHost = "top.rickykwok.com";
+const topWineRawOrigin = "https://raw.githubusercontent.com/rickyinbc-tech/top.rickykwok.com/main";
 const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`,
@@ -41,10 +43,11 @@ const passThroughHosts = new Set([
 ]);
 
 const securityHeaders = {
-  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self' https://formsubmit.co; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests",
+  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; font-src 'self'; upgrade-insecure-requests",
   "cross-origin-opener-policy": "same-origin",
   "permissions-policy": "camera=(), microphone=(), geolocation=(), browsing-topics=()",
   "referrer-policy": "strict-origin-when-cross-origin",
+  "strict-transport-security": "max-age=31536000",
   "x-content-type-options": "nosniff",
   "x-frame-options": "DENY"
 };
@@ -201,11 +204,40 @@ function mappedDestination(requestUrl) {
   return exactOrTrailingSlashRedirect(hostRedirects[hostname], requestUrl.pathname);
 }
 
+async function fetchTopWineSite(request) {
+  const requestUrl = new URL(request.url);
+  const sourcePath = requestUrl.pathname.endsWith('/') ? `${requestUrl.pathname}index.html` : requestUrl.pathname;
+  const upstreamUrl = new URL(`${topWineRawOrigin}${sourcePath}`);
+  upstreamUrl.search = requestUrl.search;
+  upstreamUrl.searchParams.set('_top_version', 'main');
+  upstreamUrl.searchParams.set('_top_cache_bust', String(Date.now()));
+  const upstreamRequest = new Request(upstreamUrl, {
+    method: request.method,
+    headers: request.headers,
+    redirect: 'follow'
+  });
+  const upstream = await fetch(upstreamRequest, {
+    cf: { cacheTtl: 0, cacheEverything: false }
+  });
+  const headers = new Headers(upstream.headers);
+  const contentTypes = {
+    html: 'text/html; charset=utf-8',
+    css: 'text/css; charset=utf-8',
+    js: 'application/javascript; charset=utf-8',
+    json: 'application/json; charset=utf-8',
+    xml: 'application/xml; charset=utf-8',
+    svg: 'image/svg+xml'
+  };
+  const extension = sourcePath.split('.').pop().toLowerCase();
+  if (contentTypes[extension]) headers.set('content-type', contentTypes[extension]);
+  headers.set('cache-control', extension === 'html' ? 'no-store' : 'public, max-age=3600');
+  return new Response(upstream.body, { status: upstream.status, statusText: upstream.statusText, headers });
+}
+
 export default {
   async fetch(request, env, context) {
     const requestUrl = new URL(request.url);
     const hostname = requestUrl.hostname.toLowerCase();
-    if (hostname === wineHost) return serveWineSite(request, requestUrl);
     if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request), hostname);
 
     const destination = mappedDestination(requestUrl);

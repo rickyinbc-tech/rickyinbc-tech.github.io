@@ -1,0 +1,18 @@
+{
+  "name": "ricky-kwok-photography-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:css": "esbuild assets/site.css --minify --legal-comments=none --outfile=assets/site.min.css",
+    "build:js": "esbuild assets/site.js --minify --legal-comments=none --outfile=assets/site.min.js",
+    "build:assets": "npm run build:css && npm run build:js",
+    "build:content": "node .github/scripts/build-sitemaps.mjs && node .github/scripts/build-governance-report.mjs",
+    "build": "npm run build:assets && npm run build:content",
+    "test": "node .github/scripts/validate-site.mjs && node .github/scripts/test-edge-worker.mjs",
+    "check": "npm run build && npm test",
+    "sync:social": "node .github/scripts/sync-social-metadata.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.6"
+  }
+}

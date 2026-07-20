@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const SITE_ORIGIN = "https://rickykwok.com";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const excludedDirectories = new Set([".git", ".github", "assets"]);
+const excludedDirectories = new Set([".git", ".github", ".wrangler", "assets", "node_modules", "seo-status"]);
 
 function escapeXml(value) {
   return String(value)

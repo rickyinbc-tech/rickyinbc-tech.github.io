@@ -129,6 +129,16 @@ html[lang="zh-Hans"] .statement {
   backdrop-filter: blur(12px);
 }
 
+.personal-use-notice {
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(247, 243, 235, .14);
+  background: #111;
+  color: #f7f3eb;
+  font-size: .82rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
 .nav {
   display: flex;
   align-items: center;
@@ -153,6 +163,25 @@ html[lang="zh-Hans"] .statement {
   font-weight: 680;
   letter-spacing: .18em;
   text-transform: uppercase;
+}
+
+.nav-toggle {
+  display: none;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid rgba(247, 243, 235, .28);
+  border-radius: 8px;
+  background: rgba(247, 243, 235, .08);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 820;
+}
+
+.nav-toggle:hover,
+.nav-toggle[aria-expanded="true"] {
+  background: var(--ink);
+  color: var(--black);
 }
 
 .nav-links {
@@ -1633,8 +1662,60 @@ article.work-card {
   }
 
   .nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     padding: 8px 8px;
     font-size: 12px;
+  }
+
+  .language-switcher a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+  }
+
+  .site-header.nav-enhanced .nav {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0 14px;
+    min-height: 72px;
+    padding: 14px 0;
+  }
+
+  .site-header.nav-enhanced .brand {
+    grid-column: 1;
+    min-width: 0;
+  }
+
+  .site-header.nav-enhanced .nav-toggle {
+    display: inline-flex;
+    grid-column: 2;
+    grid-row: 1;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .site-header.nav-enhanced .nav-links,
+  .site-header.nav-enhanced .language-switcher {
+    display: none;
+  }
+
+  .site-header.nav-enhanced.is-menu-open .nav-links {
+    display: grid;
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(247, 243, 235, .14);
+  }
+
+  .site-header.nav-enhanced.is-menu-open .language-switcher {
+    display: inline-flex;
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-top: 12px;
   }
 
   .page-hero {

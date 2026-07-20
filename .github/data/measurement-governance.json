@@ -1,31 +1,14 @@
 {
   "schemaVersion": 1,
-  "scope": "Main portfolio site at rickykwok.com. The wine.rickykwok.com service has a separate GA4 configuration disclosed in the privacy notice.",
   "property": null,
   "collectionStatus": "disabled",
   "consentMode": "not-applicable",
   "privacy": {
-    "prohibitedParameters": ["name", "email", "phone", "message", "organization", "lead_id"],
-    "urlPolicy": "Remove all non-campaign query parameters and fragments before analytics collection.",
+    "prohibitedParameters": ["name", "email", "phone", "message", "organization"],
+    "urlPolicy": "No analytics collection is enabled.",
     "googleSignals": false,
     "adPersonalization": false
   },
-  "events": [
-    "contact_click",
-    "cta_click",
-    "generate_lead",
-    "inquiry_form_attempt",
-    "navigation_click",
-    "open_lightbox",
-    "portfolio_filter",
-    "select_artwork",
-    "view_artwork",
-    "view_collector_resource",
-    "view_edition",
-    "view_licensing",
-    "view_project",
-    "view_series"
-  ],
-  "conversionRule": "Event names remain documented for future governance, but the current site does not transmit analytics events.",
-  "externalReconciliation": "Submission receipt must be reconciled against the studio inbox or CRM; the public repository cannot prove inbox delivery."
+  "events": [],
+  "collectionRule": "The current site does not transmit analytics events or collect visitor information."
 }
