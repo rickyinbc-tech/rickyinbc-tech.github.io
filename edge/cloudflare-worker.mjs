@@ -52,15 +52,9 @@ const securityHeaders = {
   "x-frame-options": "DENY"
 };
 
-const wineSecurityHeaders = {
-  ...securityHeaders,
-  "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data: https://www.google-analytics.com; style-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com; font-src 'self'; upgrade-insecure-requests"
-};
-
-function withSecurityHeaders(response, hostname = canonicalHost) {
+function withSecurityHeaders(response) {
   const headers = new Headers(response.headers);
-  const selectedHeaders = hostname.toLowerCase() === wineHost ? wineSecurityHeaders : securityHeaders;
-  for (const [name, value] of Object.entries(selectedHeaders)) headers.set(name, value);
+  for (const [name, value] of Object.entries(securityHeaders)) headers.set(name, value);
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
