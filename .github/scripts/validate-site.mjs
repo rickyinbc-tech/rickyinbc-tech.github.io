@@ -3,11 +3,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ORIGIN = "https://rickykwok.com";
-const ASSET_VERSION = "20260719-site-audit-v1";
+const ASSET_VERSION = "20260726-editorial-refresh-v1";
 const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
 const SCRIPT_URL = `/assets/site.min.js?v=${ASSET_VERSION}`;
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
-const excludedDirectories = new Set([".git", ".github", ".wrangler", "assets", "node_modules", "seo-status"]);
+const excludedDirectories = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
 const errors = [];
 const artworkManifest = JSON.parse(await readFile(path.join(repoRoot, ".github/data/artwork-manifest.json"), "utf8"));
 const edgeRedirectConfig = JSON.parse(await readFile(path.join(repoRoot, "edge/redirect-map.json"), "utf8"));
@@ -20,12 +20,27 @@ const placeholderPatterns = [
   /此页提供与原页面对应/,
   /不會把中文讀者帶回英文作為後備內容/,
   /不会把中文读者带回英文作为后备内容/,
+  /<p\b[^>]*>\s*\.\s*<\/p>/i,
+  /<h3\b[^>]*>\s*<\/h3>/i,
 ];
 const implementationCommentaryPatterns = [
   /bilingual title gives the page a clear identity/i,
   /English and Chinese-name searches/i,
   /search[- ]engine (?:visibility|ranking|query)/i,
 ];
+const genericImageAltPatterns = [
+  /相關影像|相关影像|資料影像|资料影像|Artwork preview image\.?|作品預覽影像|作品预览影像|— photography by Ricky Kwok/i,
+  /^(?:郭文棣)?(?:攝影|摄影)?作品《[^》]+》(?:完整(?:構圖|构图))?$/i,
+  /^(?:相關|相关)(?:攝影|摄影)?作品《[^》]+》$/i,
+  /^(?=.{1,30}$)[^。！？：:]+代表(?:影像|圖像|图像)$/u,
+  /^《[^》]+》[，,][^，,。！？：:]{1,24}[，,]\s*\d{4}$/u,
+  /^(?:Light Encroached Homes in Mong Kok|Fishpond Harvest in Hong Kong)\.?$/i,
+  /^(?:Portrait|Documentary photograph) from Ricky Kwok(?:'s [^.]+)?\.?$/i,
+];
+
+function isGenericImageAlt(value) {
+  return genericImageAltPatterns.some((pattern) => pattern.test(value.trim()));
+}
 
 function routeFor(relativeFile) {
   return relativeFile === "index.html" ? "/" : `/${relativeFile.replace(/\/index\.html$/, "/")}`;
@@ -156,6 +171,9 @@ for (const file of await htmlFiles()) {
     for (const required of ["alt", "width", "height", "sizes"]) {
       if (!attribute(tag, required)) errors.push(`${relative}: image is missing ${required}`);
     }
+    if (!noindex && isGenericImageAlt(attribute(tag, "alt"))) {
+      errors.push(`${relative}: image uses generic placeholder alt text`);
+    }
   }
   const heroPicture = html.match(/<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>/i)?.[0] || "";
   const heroTag = heroPicture.match(/<img\b[^>]*>/i)?.[0] || "";
@@ -176,10 +194,34 @@ for (const file of await htmlFiles()) {
 
   if (!noindex) {
     if (!description) errors.push(`${relative}: missing meta description`);
+    const titleLength = Array.from(title.replaceAll("&amp;", "&")).length;
+    const descriptionLength = Array.from(description.replaceAll("&amp;", "&")).length;
+    if (!localized && titleLength > 60) errors.push(`${relative}: English title is too long for a stable search result (${titleLength} characters)`);
+    if (!localized && (descriptionLength < 100 || descriptionLength > 165)) {
+      errors.push(`${relative}: English description must be 100–165 characters (${descriptionLength})`);
+    }
+    if (localized && (descriptionLength < 40 || descriptionLength > 85)) {
+      errors.push(`${relative}: Chinese description must be 40–85 characters (${descriptionLength})`);
+    }
+    if (/(?:part of Ricky Kwok's personal, non-commercial photography archive|個人、非商業攝影檔案的一部分|个人、非商业摄影档案的一部分)/i.test(description)) {
+      errors.push(`${relative}: search description still uses the retired boilerplate formula`);
+    }
+    if (!html.includes('class="site-header nav-enhanced"')) {
+      errors.push(`${relative}: site header is not using the enhanced responsive shell`);
+    }
+    if (!/<button\b[^>]*class=["'][^"']*\bnav-toggle\b[^"']*["'][^>]*aria-controls=["'][^"']*primary-navigation[^"']*language-navigation[^"']*["'][^>]*>/i.test(html)) {
+      errors.push(`${relative}: missing static accessible mobile navigation control`);
+    }
+    if (!html.includes('id="primary-navigation"') || !html.includes('id="language-navigation"')) {
+      errors.push(`${relative}: navigation regions lack stable IDs`);
+    }
     if (canonical.replace(/\/$/, "") !== expectedCanonical.replace(/\/$/, "")) {
       errors.push(`${relative}: canonical ${canonical || "missing"} does not match ${expectedCanonical}`);
     }
     if (/edition[^<]{0,80}proposed/i.test(html)) errors.push(`${relative}: contains a proposed-edition claim`);
+    if (/archival pigment print|fine-art photography/i.test(html)) {
+      errors.push(`${relative}: contains retired print-production or professional-positioning language`);
+    }
     if (titleOwners.has(title)) errors.push(`${relative}: duplicate title with ${titleOwners.get(title)}`);
     else titleOwners.set(title, relative);
     if (descriptionOwners.has(description)) errors.push(`${relative}: duplicate description with ${descriptionOwners.get(description)}`);
@@ -189,6 +231,22 @@ for (const file of await htmlFiles()) {
     }
     for (const name of ["twitter:card", "twitter:title", "twitter:description", "twitter:image", "twitter:image:alt"]) {
       if (!metaContent(html, name)) errors.push(`${relative}: missing ${name}`);
+    }
+    if (
+      isGenericImageAlt(propertyContent(html, "og:image:alt"))
+      || isGenericImageAlt(metaContent(html, "twitter:image:alt"))
+    ) {
+      errors.push(`${relative}: social image uses generic placeholder alt text`);
+    }
+    if (relative.startsWith("zh-hans/")) {
+      const localeAlternates = [...html.matchAll(/<meta\b[^>]*\bproperty=["']og:locale:alternate["'][^>]*>/gi)]
+        .map((match) => attribute(match[0], "content"));
+      if (propertyContent(html, "og:locale") !== "zh_CN") {
+        errors.push(`${relative}: Simplified Chinese Open Graph locale must be zh_CN`);
+      }
+      if (!localeAlternates.includes("zh_HK") || localeAlternates.includes("zh_CN")) {
+        errors.push(`${relative}: Simplified Chinese Open Graph alternates must include zh_HK without duplicating zh_CN`);
+      }
     }
     if (propertyContent(html, "og:url").replace(/\/$/, "") !== expectedCanonical.replace(/\/$/, "")) {
       errors.push(`${relative}: og:url does not match the canonical URL`);
@@ -344,6 +402,12 @@ for (const artwork of artworkManifest.artworks || []) {
     if (!html.includes('data-artwork-governance="v2"')) {
       errors.push(`${relative}: artwork facts do not use governance contract v2`);
     }
+    if (!/<figure\b[^>]*class=["'][^"']*\bartwork-figure\b[^"']*["'][^>]*>[\s\S]*?\bfeature-image\b[\s\S]*?<figcaption\b[^>]*class=["'][^"']*\bartwork-caption\b[^"']*["'][^>]*>[\s\S]*?<\/figcaption>[\s\S]*?<\/figure>/i.test(html)) {
+      errors.push(`${relative}: artwork image and caption are not grouped in an artwork figure`);
+    }
+    if (/<p\b[^>]*class=["'][^"']*\bartwork-caption\b/i.test(html)) {
+      errors.push(`${relative}: artwork caption must use figcaption`);
+    }
     if (!html.includes("personal-use-notice")) errors.push(`${relative}: missing personal non-commercial archive notice`);
   }
 }
@@ -354,7 +418,15 @@ for (const [route, marker] of [
   ["/zh-hans/", "档案导览"],
 ]) {
   const page = indexableDocuments.get(route);
-  if (!page || !page.html.includes(marker)) errors.push(`${route}: missing governed archive or studio-standards content`);
+  if (!page || !page.html.includes(marker)) errors.push(`${route}: missing governed archive-guide content`);
+}
+for (const [route, marker] of [
+  ["/biography/", "This site is maintained as a personal hobby archive. It does not offer products, services, prints, commissions, licensing, paid work, financial content, or client contact."],
+  ["/zh-hant/biography/", "此網站由個人興趣維護，不提供產品、服務、印刷品、委託、授權、收費工作、財務內容或客戶聯絡。"],
+  ["/zh-hans/biography/", "此网站由个人兴趣维护，不提供产品、服务、印刷品、委托、授权、收费工作、财务内容或客户联系。"],
+]) {
+  const page = indexableDocuments.get(route);
+  if (!page?.html.includes(marker)) errors.push(`${route}: biography lacks the complete personal-hobby archive disclosure`);
 }
 
 const thematicEditIds = [
@@ -405,23 +477,33 @@ for (const marker of ["prefers-reduced-motion", "forced-colors"]) {
   if (!siteCss.includes(marker)) errors.push(`accessibility stylesheet lacks ${marker}`);
 }
 if (/\.analytics-consent/i.test(siteCss)) errors.push("stylesheet still contains the removed analytics banner");
-if (/object-fit\s*:\s*cover/i.test(siteCss)) {
-  errors.push("stylesheet must not crop photography with object-fit: cover");
-}
 for (const marker of [
   "object-fit: contain !important",
   ".hero.has-semantic-media",
   ".hero.has-semantic-media .hero-media img",
+  "body:not(.artwork-page) .hero.has-semantic-media .hero-media img",
+  ".work-card img",
 ]) {
-  if (!siteCss.includes(marker)) errors.push(`stylesheet lacks the no-crop artwork contract: ${marker}`);
+  if (!siteCss.includes(marker)) errors.push(`stylesheet lacks the governed image-fit contract: ${marker}`);
 }
-if (!/@media\s*\(max-width:\s*980px\)[\s\S]*?\.site-header\s*\{[\s\S]*?position:\s*relative/i.test(siteCss)) {
-  errors.push("responsive header must remain in normal flow so translated navigation cannot cover artwork");
+for (const match of siteCss.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+  const selector = match[1];
+  const declarations = match[2];
+  if (
+    selector.includes(".artwork-page")
+    && !selector.includes(":not(.artwork-page)")
+    && /object-fit\s*:\s*cover/i.test(declarations)
+  ) {
+    errors.push(`artwork detail pages must never crop photography (${selector.trim()})`);
+  }
+}
+if (!/\.site-header\s*\{[^}]*position:\s*sticky/i.test(siteCss)) {
+  errors.push("site header must be sticky and remain in flow so it cannot cover the archive notice");
 }
 if (!/\.hero\.has-semantic-media\s*\{[\s\S]*?padding-top:\s*0/i.test(siteCss)) {
   errors.push("responsive artwork hero must not use a fixed header-height offset");
 }
-for (const marker of ["addMobileNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel"]) {
+for (const marker of ["addMobileNavigation", "markCurrentNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel"]) {
   if (!siteJs.includes(marker)) errors.push(`accessible interaction contract lacks ${marker}`);
 }
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
@@ -501,6 +583,24 @@ for (const [hostname, expectedPaths] of Object.entries(expectedLegacyHostRedirec
     }
   }
 }
+const expectedGoneHosts = ["blog.rickykwok.com", "select.rickykwok.com"];
+const configuredGoneHosts = new Set(edgeRedirectConfig.goneHosts || []);
+for (const hostname of expectedGoneHosts) {
+  if (!configuredGoneHosts.has(hostname)) errors.push(`edge redirect map must permanently remove legacy host ${hostname}`);
+}
+if (edgeRedirectConfig.hostRedirects?.["select.rickykwok.com"]) {
+  errors.push("legacy host select.rickykwok.com must not redirect into the photography archive");
+}
+const requiredGonePrefixes = [
+  "/available-prints/", "/contact/", "/editions/", "/licensing/", "/press/", "/prints/", "/privacy/", "/shipping-returns/", "/studio-standards/", "/terms/",
+  "/zh-hant/available-prints/", "/zh-hant/contact/", "/zh-hant/editions/", "/zh-hant/licensing/", "/zh-hant/press/", "/zh-hant/prints/", "/zh-hant/privacy/", "/zh-hant/shipping-returns/", "/zh-hant/studio-standards/", "/zh-hant/terms/",
+  "/zh-hans/available-prints/", "/zh-hans/contact/", "/zh-hans/editions/", "/zh-hans/licensing/", "/zh-hans/press/", "/zh-hans/prints/", "/zh-hans/privacy/", "/zh-hans/shipping-returns/", "/zh-hans/studio-standards/", "/zh-hans/terms/",
+];
+const configuredGonePrefixes = new Set(edgeRedirectConfig.gonePathPrefixes || []);
+for (const prefix of requiredGonePrefixes) {
+  if (!configuredGonePrefixes.has(prefix)) errors.push(`edge redirect map must return Gone for retired path prefix ${prefix}`);
+  if (edgeRedirectConfig.redirects?.[prefix]) errors.push(`retired path prefix ${prefix} must not redirect to an indexable page`);
+}
 
 const sitemap = await readFile(path.join(repoRoot, "sitemap.xml"), "utf8");
 const sitemapUrls = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (match) => match[1]);
@@ -543,27 +643,46 @@ for (const [pageUrl, images] of imageEntries) {
 }
 
 const retiredBusinessRoutes = [
-  "/prints/", "/licensing/", "/contact/", "/contact/thanks/", "/shipping-returns/", "/studio-standards/", "/terms/", "/privacy/", "/press/", "/press/cv/", "/press/media-kit/",
-  "/zh-hant/editions/", "/zh-hant/licensing/", "/zh-hant/contact/", "/zh-hant/contact/thanks/", "/zh-hant/shipping-returns/", "/zh-hant/studio-standards/", "/zh-hant/terms/", "/zh-hant/privacy/", "/zh-hant/press/", "/zh-hant/press/cv/", "/zh-hant/press/media-kit/",
-  "/zh-hans/editions/", "/zh-hans/licensing/", "/zh-hans/contact/", "/zh-hans/contact/thanks/", "/zh-hans/shipping-returns/", "/zh-hans/studio-standards/", "/zh-hans/terms/", "/zh-hans/privacy/", "/zh-hans/press/", "/zh-hans/press/cv/", "/zh-hans/press/media-kit/"
+  "/available-prints/", "/editions/", "/prints/", "/licensing/", "/contact/", "/contact/thanks/", "/shipping-returns/", "/studio-standards/", "/terms/", "/privacy/", "/press/", "/press/cv/", "/press/media-kit/",
+  "/zh-hant/available-prints/", "/zh-hant/prints/", "/zh-hant/editions/", "/zh-hant/licensing/", "/zh-hant/contact/", "/zh-hant/contact/thanks/", "/zh-hant/shipping-returns/", "/zh-hant/studio-standards/", "/zh-hant/terms/", "/zh-hant/privacy/", "/zh-hant/press/", "/zh-hant/press/cv/", "/zh-hant/press/media-kit/",
+  "/zh-hans/available-prints/", "/zh-hans/prints/", "/zh-hans/editions/", "/zh-hans/licensing/", "/zh-hans/contact/", "/zh-hans/contact/thanks/", "/zh-hans/shipping-returns/", "/zh-hans/studio-standards/", "/zh-hans/terms/", "/zh-hans/privacy/", "/zh-hans/press/", "/zh-hans/press/cv/", "/zh-hans/press/media-kit/"
 ];
 for (const route of retiredBusinessRoutes) {
   if (indexableDocuments.has(route)) errors.push(`${route}: retired business route must not be indexable`);
 }
 
-const forbiddenPublicHref = /(?:^|\/)(?:available-prints|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|\?|#|$)|^mailto:|behance\.net|facebook\.com|instagram\.com|flickr\.com|dcfever\.com/i;
+const forbiddenLocalPath = /^\/(?:available-prints|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)|^\/zh-(?:hant|hans)\/(?:available-prints|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)/i;
+const forbiddenExternalHref = /^mailto:|behance\.net|facebook\.com|instagram\.com|flickr\.com|dcfever\.com/i;
 for (const [route, page] of indexableDocuments) {
   if (!page.html.includes("personal-use-notice")) errors.push(`${page.relative}: missing site-wide personal archive notice`);
-  if (!/(?:No payment, compensation, consideration, or other benefit is received or expected|沒有收取或預期任何付款、報酬、代價或其他利益|没有收取或预期任何付款、报酬、代价或其他利益)/.test(page.html)) {
-    errors.push(`${page.relative}: personal archive notice does not disclaim compensation or expected benefit`);
+  const expectedNotice = route.startsWith("/zh-hant/")
+    ? "個人、非商業攝影檔案，只供觀賞及記錄。"
+    : route.startsWith("/zh-hans/")
+      ? "个人、非商业摄影档案，只供观赏及记录。"
+      : "A personal, non-commercial photography archive, shared for viewing and documentation only.";
+  if (!page.html.includes(expectedNotice)) {
+    errors.push(`${page.relative}: personal archive notice is not the approved concise wording`);
   }
   if (/<form\b|formsubmit\.co|studio@rickykwok\.com|data-inquiry-form/i.test(page.html)) {
     errors.push(`${page.relative}: contains a retired business form or contact mechanism`);
   }
   for (const match of page.html.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["'][^>]*>/gi)) {
-    if (forbiddenPublicHref.test(match[1])) errors.push(`${page.relative}: links to retired business pathway ${match[1]}`);
+    const href = match[1];
+    let url;
+    try {
+      url = new URL(href, ORIGIN);
+    } catch {
+      continue;
+    }
+    const isSiteHost = url.hostname === "rickykwok.com" || url.hostname === "www.rickykwok.com";
+    if (forbiddenExternalHref.test(href) || (isSiteHost && forbiddenLocalPath.test(url.pathname))) {
+      errors.push(`${page.relative}: links to retired business pathway ${href}`);
+    }
   }
   for (const node of parsedSchemaNodes(page.html)) {
+    for (const type of ["Product", "Offer", "Service", "ProfessionalService", "LocalBusiness"]) {
+      if (matchesType(node, type)) errors.push(`${page.relative}: structured data contains retired commercial type ${type}`);
+    }
     for (const key of ["jobTitle", "sameAs", "license", "acquireLicensePage", "offers", "contactPoint", "potentialAction"]) {
       if (Object.hasOwn(node, key)) errors.push(`${page.relative}: structured data contains retired business field ${key}`);
     }

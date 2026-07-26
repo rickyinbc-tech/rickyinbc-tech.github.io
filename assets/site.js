@@ -35,7 +35,7 @@ function addMobileNavigation() {
   const nav = header?.querySelector(".nav");
   const navLinks = nav?.querySelector(".nav-links");
   const languageSwitcher = nav?.querySelector(".language-switcher");
-  if (!header || !nav || !navLinks || !languageSwitcher || nav.querySelector(".nav-toggle")) return;
+  if (!header || !nav || !navLinks || !languageSwitcher) return;
 
   const labels = {
     en: { open: "Menu", close: "Close menu" },
@@ -47,13 +47,13 @@ function addMobileNavigation() {
   navLinks.id ||= "primary-navigation";
   languageSwitcher.id ||= "language-navigation";
 
-  const toggle = document.createElement("button");
-  toggle.className = "nav-toggle";
+  const toggle = nav.querySelector(".nav-toggle") || document.createElement("button");
+  if (!toggle.classList.contains("nav-toggle")) toggle.className = "nav-toggle";
   toggle.type = "button";
   toggle.textContent = localizedLabels.open;
   toggle.setAttribute("aria-controls", `${navLinks.id} ${languageSwitcher.id}`);
   toggle.setAttribute("aria-expanded", "false");
-  nav.querySelector(".brand")?.after(toggle);
+  if (!toggle.isConnected) nav.querySelector(".brand")?.after(toggle);
   header.classList.add("nav-enhanced");
 
   function setMenuOpen(open) {
@@ -74,7 +74,26 @@ function addMobileNavigation() {
   });
 }
 
+function markCurrentNavigation() {
+  const sectionFor = (pathname) => {
+    const normalized = pathname.replace(/^\/(?:zh-hant|zh-hans)(?=\/|$)/, "");
+    const section = normalized.split("/").filter(Boolean)[0] || "";
+    return section === "selected-works" || section === "works" ? "works" : section;
+  };
+  const currentSection = sectionFor(window.location.pathname);
+  if (!currentSection) return;
+
+  document.querySelectorAll(".nav-links a").forEach((link) => {
+    if (sectionFor(new URL(link.href, window.location.origin).pathname) === currentSection) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
 addLanguageSwitcher();
+markCurrentNavigation();
 addMobileNavigation();
 
 const modal = document.querySelector("#artModal");

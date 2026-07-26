@@ -5,6 +5,42 @@
   "preserveQueryParameters": [
 
   ],
+  "goneHosts": [
+    "blog.rickykwok.com",
+    "select.rickykwok.com"
+  ],
+  "gonePathPrefixes": [
+    "/available-prints/",
+    "/contact/",
+    "/editions/",
+    "/licensing/",
+    "/press/",
+    "/prints/",
+    "/privacy/",
+    "/shipping-returns/",
+    "/studio-standards/",
+    "/terms/",
+    "/zh-hant/available-prints/",
+    "/zh-hant/contact/",
+    "/zh-hant/editions/",
+    "/zh-hant/licensing/",
+    "/zh-hant/press/",
+    "/zh-hant/prints/",
+    "/zh-hant/privacy/",
+    "/zh-hant/shipping-returns/",
+    "/zh-hant/studio-standards/",
+    "/zh-hant/terms/",
+    "/zh-hans/available-prints/",
+    "/zh-hans/contact/",
+    "/zh-hans/editions/",
+    "/zh-hans/licensing/",
+    "/zh-hans/press/",
+    "/zh-hans/prints/",
+    "/zh-hans/privacy/",
+    "/zh-hans/shipping-returns/",
+    "/zh-hans/studio-standards/",
+    "/zh-hans/terms/"
+  ],
   "redirects": {
     "/archive/": "/projects/",
     "/award-winning-hong-kong-photography/": "/awards-recognition/",

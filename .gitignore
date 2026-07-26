@@ -3,3 +3,4 @@ edge/.wrangler/
 .DS_Store
 .wrangler/
 node_modules/
+_site/

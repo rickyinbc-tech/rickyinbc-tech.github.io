@@ -35,14 +35,14 @@ jobs:
         run: npm run build
       - name: Validate site and edge behavior
         run: npm test
-      - name: Remove build-only dependencies from the site artifact
-        run: rm -rf node_modules
+      - name: Build public-only site artifact
+        run: npm run build:public
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
