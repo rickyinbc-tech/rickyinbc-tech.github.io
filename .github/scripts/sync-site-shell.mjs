@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ignored = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
-const assetVersion = "20260726-mobile-clarity-v2";
+const assetVersion = "20260726-mobile-clarity-v3";
 
 const localized = {
   en: {

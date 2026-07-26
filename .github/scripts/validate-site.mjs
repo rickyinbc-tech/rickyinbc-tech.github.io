@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ORIGIN = "https://rickykwok.com";
-const ASSET_VERSION = "20260726-mobile-clarity-v2";
+const ASSET_VERSION = "20260726-mobile-clarity-v3";
 const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
 const SCRIPT_URL = `/assets/site.min.js?v=${ASSET_VERSION}`;
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
