@@ -502,6 +502,8 @@ if (mobileLayoutContractIndex === -1) {
     "object-fit: contain !important",
     "object-position: center !important",
     "transform: none !important",
+    ".gallery-grid",
+    "grid-column: 1 / -1",
     ".work-card-link",
     ".series img",
     "body:not(.artwork-page) .feature-image img",
