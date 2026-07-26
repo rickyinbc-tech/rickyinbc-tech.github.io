@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ORIGIN = "https://rickykwok.com";
-const ASSET_VERSION = "20260726-editorial-refresh-v1";
+const ASSET_VERSION = "20260726-mobile-clarity-v2";
 const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
 const SCRIPT_URL = `/assets/site.min.js?v=${ASSET_VERSION}`;
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -141,6 +141,9 @@ for (const file of await htmlFiles()) {
   }
   if (html.includes("/assets/site.min.js") && !html.includes(SCRIPT_URL)) {
     errors.push(`${relative}: script cache key is not the current production version`);
+  }
+  if (/<a class=["']brand["'][^>]*\baria-label=/i.test(html)) {
+    errors.push(`${relative}: visible brand text must remain the accessible link name`);
   }
 
   if (localized && !noindex) {
@@ -485,6 +488,26 @@ for (const marker of [
   ".work-card img",
 ]) {
   if (!siteCss.includes(marker)) errors.push(`stylesheet lacks the governed image-fit contract: ${marker}`);
+}
+const mobileLayoutContract = "/* Mobile layout correctness contract.";
+const mobileLayoutContractIndex = siteCss.lastIndexOf(mobileLayoutContract);
+if (mobileLayoutContractIndex === -1) {
+  errors.push("stylesheet lacks the final mobile layout correctness contract");
+} else {
+  const mobileRules = siteCss.slice(mobileLayoutContractIndex);
+  for (const marker of [
+    "@media (max-width: 880px)",
+    "grid-template-columns: minmax(0, 1fr)",
+    "body:not(.artwork-page) .hero.has-semantic-media .hero-media img",
+    "object-fit: contain !important",
+    "object-position: center !important",
+    "transform: none !important",
+    ".work-card-link",
+    ".series img",
+    "body:not(.artwork-page) .feature-image img",
+  ]) {
+    if (!mobileRules.includes(marker)) errors.push(`final mobile layout contract lacks ${marker}`);
+  }
 }
 for (const match of siteCss.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
   const selector = match[1];

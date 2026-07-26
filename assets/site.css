@@ -1984,3 +1984,96 @@ body:not(.artwork-page) .feature-image img {
     align-items: center;
   }
 }
+
+/* Mobile layout correctness contract.
+   Keep this final: these rules intentionally outrank the desktop editorial
+   treatments above so headings and photographs cannot regress on phones. */
+@media (max-width: 880px) {
+  .section-head {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .section-head > * {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 880px) {
+  body:not(.artwork-page) .hero.has-semantic-media {
+    display: block;
+    min-height: 0;
+    overflow: visible;
+    background: #070707;
+  }
+
+  body:not(.artwork-page) .hero.has-semantic-media .hero-media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    background: #080808;
+  }
+
+  body:not(.artwork-page) .hero.has-semantic-media .hero-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    object-fit: contain !important;
+    object-position: center !important;
+    transform: none !important;
+    filter: none;
+  }
+
+  body:not(.artwork-page) .hero.has-semantic-media .hero-overlay {
+    display: none;
+  }
+
+  body:not(.artwork-page) .hero.has-semantic-media .hero-inner {
+    width: min(100% - 28px, 1220px);
+    padding: 30px 0 50px;
+  }
+
+  .work-card,
+  .work-card.wide,
+  .work-card.tall,
+  .work-card.square {
+    grid-row: auto;
+    min-height: 0;
+  }
+
+  .work-card-link {
+    position: relative;
+    inset: auto;
+  }
+
+  .work-card img,
+  .image-card img {
+    height: auto;
+    min-height: 0;
+    object-fit: contain !important;
+    transform: none !important;
+  }
+
+  .series {
+    grid-template-rows: auto auto;
+  }
+
+  .series img {
+    height: auto;
+    object-fit: contain !important;
+  }
+
+  body:not(.artwork-page) .feature-image,
+  body:not(.artwork-page) .feature-image img {
+    min-height: 0;
+  }
+
+  body:not(.artwork-page) .feature-image img {
+    height: auto;
+    object-fit: contain !important;
+  }
+}

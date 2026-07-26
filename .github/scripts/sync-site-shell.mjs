@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ignored = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
-const assetVersion = "20260726-editorial-refresh-v1";
+const assetVersion = "20260726-mobile-clarity-v2";
 
 const localized = {
   en: {
@@ -52,7 +52,8 @@ for (const file of await htmlFiles()) {
   html = html
     .replace(/<header class="site-header"(?![^>]*\bnav-enhanced\b)/g, '<header class="site-header nav-enhanced"')
     .replace(/<div class="nav-links"(?![^>]*\bid=)/g, '<div class="nav-links" id="primary-navigation"')
-    .replace(/<div class="language-switcher"(?![^>]*\bid=)/g, '<div class="language-switcher" id="language-navigation"');
+    .replace(/<div class="language-switcher"(?![^>]*\bid=)/g, '<div class="language-switcher" id="language-navigation"')
+    .replace(/(<a class="brand"[^>]*?)\s+aria-label="[^"]*"([^>]*>)/g, "$1$2");
 
   if (html.includes('class="site-header nav-enhanced"') && !html.includes('class="nav-toggle"')) {
     const brandPattern = /(<a class="brand"[\s\S]*?<\/a>)/;

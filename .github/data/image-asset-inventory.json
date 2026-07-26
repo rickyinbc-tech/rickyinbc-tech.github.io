@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "summary": {
     "pages": 181,
-    "uniquePrimarySources": 98,
+    "uniquePrimarySources": 99,
     "imageUses": 798,
     "missingDimensions": 0,
     "missingSizes": 0
@@ -657,7 +657,6 @@
     {
       "source": "/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp",
       "pages": [
-        "biography/index.html",
         "index.html",
         "selected-works/index.html",
         "series/index.html",
@@ -666,7 +665,6 @@
         "works/night-fishermen/index.html",
         "works/terraces-at-golden-hour/index.html",
         "works/village-ritual-photography/index.html",
-        "zh-hans/biography/index.html",
         "zh-hans/index.html",
         "zh-hans/series/index.html",
         "zh-hans/series/ritual/index.html",
@@ -675,7 +673,6 @@
         "zh-hans/works/night-fishermen/index.html",
         "zh-hans/works/terraces-at-golden-hour/index.html",
         "zh-hans/works/village-ritual-photography/index.html",
-        "zh-hant/biography/index.html",
         "zh-hant/index.html",
         "zh-hant/series/index.html",
         "zh-hant/series/ritual/index.html",
@@ -685,16 +682,14 @@
         "zh-hant/works/terraces-at-golden-hour/index.html",
         "zh-hant/works/village-ritual-photography/index.html"
       ],
-      "uses": 35,
+      "uses": 32,
       "altVariants": [
         "Cormorant fishermen on bamboo rafts in blue light.",
         "Cormorant fishermen on bamboo rafts under blue evening light.",
         "Cormorant fishermen on bamboo rafts under deep blue evening light.",
-        "蓝调时分，鸬鹚与渔民在河面木筏上",
         "蓝调时刻的鸬鶿渔民与竹筏",
         "蓝调暮色中，鸬鹚、渔民与暖色灯火分布在河面竹筏上。",
         "蓝调暮色中，鸬鹚渔民站在竹筏上。",
-        "藍調時分，鸕鶿與漁民在河面木筏上",
         "藍調時刻的鸕鶿漁民與竹筏",
         "藍調暮色中，鸕鶿漁民站在竹筏上。",
         "藍調暮色中，鸕鶿漁民站在竹筏上，暖燈倒映河面。"
@@ -702,9 +697,9 @@
       "declaredWidths": [
         800
       ],
-      "responsiveUses": 35,
+      "responsiveUses": 32,
       "lazyUses": 26,
-      "eagerUses": 9
+      "eagerUses": 6
     },
     {
       "source": "/assets/optimized-v2/art/boxer-ice-impact-1200.webp",
@@ -2342,6 +2337,26 @@
       "responsiveUses": 3,
       "lazyUses": 3,
       "eagerUses": 0
+    },
+    {
+      "source": "/assets/optimized-v2/projects/travel/travel-06-1800.webp",
+      "pages": [
+        "biography/index.html",
+        "zh-hans/biography/index.html",
+        "zh-hant/biography/index.html"
+      ],
+      "uses": 3,
+      "altVariants": [
+        "Fisher casting a net on a river at sunset beneath karst mountains.",
+        "夕阳下，渔民在喀斯特山峰前的河面撒网。",
+        "夕陽下，漁民在喀斯特山峰前的河面撒網。"
+      ],
+      "declaredWidths": [
+        1800
+      ],
+      "responsiveUses": 3,
+      "lazyUses": 0,
+      "eagerUses": 3
     },
     {
       "source": "/assets/optimized-v2/projects/travel/travel-07-1200.webp",
