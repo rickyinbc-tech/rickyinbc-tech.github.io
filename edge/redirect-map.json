@@ -41,6 +41,22 @@
     "/zh-hans/studio-standards/",
     "/zh-hans/terms/"
   ],
+  "blockedExactPaths": [
+    "/.gitignore",
+    "/package-lock.json",
+    "/package.json",
+    "/assets/site.css",
+    "/assets/site.js"
+  ],
+  "blockedPathPrefixes": [
+    "/.git/",
+    "/.github/",
+    "/.wrangler/",
+    "/_site/",
+    "/edge/",
+    "/node_modules/",
+    "/seo-status/"
+  ],
   "redirects": {
     "/archive/": "/projects/",
     "/award-winning-hong-kong-photography/": "/awards-recognition/",

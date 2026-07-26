@@ -18,6 +18,9 @@ retired commercial surfaces:
 * the established `blog.rickykwok.com/` and `/feed` entry points redirect to
   `/journal/`; unmatched blog paths return `410 Gone`
 * all `select.rickykwok.com` paths return `410 Gone`
+* build tooling, repository metadata, unminified site assets, and edge
+  configuration fail closed with `404 Not Found` even if an upstream cache
+  still has an older branch-based Pages deployment
 
 It does not wildcard redirect unknown `photo` paths. Those requests continue to
 the origin until an exact historical mapping has been verified. The Worker

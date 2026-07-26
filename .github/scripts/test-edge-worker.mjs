@@ -68,6 +68,28 @@ for (const path of gonePaths) {
   }
 }
 
+const blockedSourcePaths = [
+  "/package.json",
+  "/package-lock.json",
+  "/assets/site.css",
+  "/assets/site.js",
+  "/edge/redirect-map.json",
+  "/.github/scripts/validate-site.mjs",
+  "/.git/config",
+  "/node_modules/example/index.js",
+  "/_site/index.html",
+  "/seo-status/index.html"
+];
+
+for (const path of blockedSourcePaths) {
+  for (const hostname of ["rickykwok.com", "www.rickykwok.com"]) {
+    const response = await worker.fetch(new Request(`https://${hostname}${path}`));
+    check(response.status === 404, `${hostname}${path} must fail closed`);
+    check(response.headers.get("location") === null, `${hostname}${path} must not redirect`);
+    check(response.headers.get("x-robots-tag") === "noindex, nofollow", `${hostname}${path} must carry a noindex header`);
+  }
+}
+
 for (const path of ["/", "/feed", "/feed/"]) {
   const response = await worker.fetch(new Request(`https://blog.rickykwok.com${path}`));
   check(response.status === 308, `blog.rickykwok.com${path} must preserve the established journal redirect`);

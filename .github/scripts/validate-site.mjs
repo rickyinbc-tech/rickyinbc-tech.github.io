@@ -601,6 +601,30 @@ for (const prefix of requiredGonePrefixes) {
   if (!configuredGonePrefixes.has(prefix)) errors.push(`edge redirect map must return Gone for retired path prefix ${prefix}`);
   if (edgeRedirectConfig.redirects?.[prefix]) errors.push(`retired path prefix ${prefix} must not redirect to an indexable page`);
 }
+const requiredBlockedExactPaths = [
+  "/.gitignore",
+  "/package-lock.json",
+  "/package.json",
+  "/assets/site.css",
+  "/assets/site.js",
+];
+const configuredBlockedExactPaths = new Set(edgeRedirectConfig.blockedExactPaths || []);
+for (const pathname of requiredBlockedExactPaths) {
+  if (!configuredBlockedExactPaths.has(pathname)) errors.push(`edge redirect map must block build-only file ${pathname}`);
+}
+const requiredBlockedPathPrefixes = [
+  "/.git/",
+  "/.github/",
+  "/.wrangler/",
+  "/_site/",
+  "/edge/",
+  "/node_modules/",
+  "/seo-status/",
+];
+const configuredBlockedPathPrefixes = new Set(edgeRedirectConfig.blockedPathPrefixes || []);
+for (const prefix of requiredBlockedPathPrefixes) {
+  if (!configuredBlockedPathPrefixes.has(prefix)) errors.push(`edge redirect map must block build-only path prefix ${prefix}`);
+}
 
 const sitemap = await readFile(path.join(repoRoot, "sitemap.xml"), "utf8");
 const sitemapUrls = Array.from(sitemap.matchAll(/<loc>([^<]+)<\/loc>/g), (match) => match[1]);

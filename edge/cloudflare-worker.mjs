@@ -8,6 +8,14 @@ const gonePathPrefixes = (redirectConfig.gonePathPrefixes || []).map((prefix) =>
   const normalized = prefix.startsWith("/") ? prefix.toLowerCase() : `/${prefix.toLowerCase()}`;
   return normalized.endsWith("/") ? normalized : `${normalized}/`;
 });
+const blockedExactPaths = new Set((redirectConfig.blockedExactPaths || []).map((pathname) => {
+  const normalized = pathname.startsWith("/") ? pathname.toLowerCase() : `/${pathname.toLowerCase()}`;
+  return normalized.length > 1 ? normalized.replace(/\/+$/, "") : normalized;
+}));
+const blockedPathPrefixes = (redirectConfig.blockedPathPrefixes || []).map((prefix) => {
+  const normalized = prefix.startsWith("/") ? prefix.toLowerCase() : `/${prefix.toLowerCase()}`;
+  return normalized.endsWith("/") ? normalized : `${normalized}/`;
+});
 const safeQueryParameters = new Set(redirectConfig.preserveQueryParameters);
 const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
@@ -73,6 +81,22 @@ function matchesGonePath(pathname) {
   ));
 }
 
+function normalizedPathname(pathname) {
+  try {
+    return decodeURIComponent(pathname).toLowerCase();
+  } catch {
+    return pathname.toLowerCase();
+  }
+}
+
+function matchesBlockedPath(pathname) {
+  const normalizedPath = normalizedPathname(pathname);
+  const exactPath = normalizedPath.length > 1 ? normalizedPath.replace(/\/+$/, "") : normalizedPath;
+  return blockedExactPaths.has(exactPath) || blockedPathPrefixes.some((prefix) => (
+    exactPath === prefix.slice(0, -1) || normalizedPath.startsWith(prefix)
+  ));
+}
+
 function isGoneRequest(requestUrl) {
   const hostname = requestUrl.hostname.toLowerCase();
   if (goneHosts.has(hostname)) {
@@ -82,10 +106,28 @@ function isGoneRequest(requestUrl) {
   return matchesGonePath(requestUrl.pathname);
 }
 
+function isBlockedRequest(requestUrl) {
+  const hostname = requestUrl.hostname.toLowerCase();
+  if (hostname !== canonicalHost && hostname !== `www.${canonicalHost}`) return false;
+  return matchesBlockedPath(requestUrl.pathname);
+}
+
 function goneResponse(method) {
   const body = method === "HEAD" ? null : "Gone";
   return withSecurityHeaders(new Response(body, {
     status: 410,
+    headers: {
+      "cache-control": "public, max-age=86400",
+      "content-type": "text/plain; charset=utf-8",
+      "x-robots-tag": "noindex, nofollow"
+    }
+  }));
+}
+
+function notFoundResponse(method) {
+  const body = method === "HEAD" ? null : "Not found";
+  return withSecurityHeaders(new Response(body, {
+    status: 404,
     headers: {
       "cache-control": "public, max-age=86400",
       "content-type": "text/plain; charset=utf-8",
@@ -109,6 +151,7 @@ export default {
     const requestUrl = new URL(request.url);
     const hostname = requestUrl.hostname.toLowerCase();
     if (isGoneRequest(requestUrl)) return goneResponse(request.method);
+    if (isBlockedRequest(requestUrl)) return notFoundResponse(request.method);
     if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request), requestUrl);
 
     const destination = mappedDestination(requestUrl);
