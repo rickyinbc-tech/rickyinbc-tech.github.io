@@ -10,6 +10,7 @@ import {
 } from "./site-shell.mjs";
 import {
   normalizeResponsiveImages,
+  removeHiddenArtworkHeroMedia,
   removeRepeatedArtworkSourceCards,
 } from "./responsive-image-policy.mjs";
 
@@ -100,6 +101,7 @@ for (const file of await htmlFiles()) {
   });
 
   if (/<body\b[^>]*class=["'][^"']*\bartwork-page\b/i.test(html)) {
+    html = removeHiddenArtworkHeroMedia(html);
     html = removeRepeatedArtworkSourceCards(html);
     const artworkTitle = html.match(/<h1>([\s\S]*?)<\/h1>/i)?.[1]?.replace(/<[^>]+>/g, "").trim();
     if (artworkTitle && language === "zh-Hant") {

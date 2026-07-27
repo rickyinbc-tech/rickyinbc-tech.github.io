@@ -3,7 +3,13 @@
   "purpose": "Authoritative artwork-to-primary-image ownership for image discovery, structured data, artwork navigation, and multilingual pages.",
   "recordPolicy": {
     "publicModel": "One governed core record in three languages, with extended evidence modules only where verified.",
-    "requiredCore": ["identity", "artwork type", "series or project", "copyright", "related content"],
+    "requiredCore": [
+      "identity",
+      "artwork type",
+      "series or project",
+      "copyright",
+      "related content"
+    ],
     "publicUse": "Personal, non-commercial archive only. No products, services, commissions, licensing, or paid work are offered."
   },
   "rights": {
@@ -14,7 +20,12 @@
     {
       "id": "bank-of-china-light-trails",
       "canonicalPath": "/works/bank-of-china-light-trails/",
-      "primaryImage": { "url": "/assets/art/bank-of-china-light-trails.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/bank-of-china-light-trails.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Bank of China Light Trails",
       "series": "City Light",
       "seriesPath": "/series/city-light/",
@@ -24,7 +35,12 @@
     {
       "id": "blue-column",
       "canonicalPath": "/works/blue-column/",
-      "primaryImage": { "url": "/assets/art/blue-column-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/blue-column-water-study.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Blue Column",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -34,7 +50,12 @@
     {
       "id": "blue-hour-river-stage",
       "canonicalPath": "/works/blue-hour-river-stage/",
-      "primaryImage": { "url": "/assets/art/blue-hour-cormorant-fishermen.jpg", "width": 800, "height": 519, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/blue-hour-cormorant-fishermen.jpg",
+        "width": 800,
+        "height": 519,
+        "mimeType": "image/jpeg"
+      },
       "title": "Blue Hour, River Stage",
       "series": "Ritual",
       "seriesPath": "/series/ritual/",
@@ -44,7 +65,12 @@
     {
       "id": "breaking-point",
       "canonicalPath": "/works/breaking-point/",
-      "primaryImage": { "url": "/assets/art/egg-impact.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/egg-impact.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Breaking Point",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -54,7 +80,12 @@
     {
       "id": "coil-field",
       "canonicalPath": "/works/coil-field/",
-      "primaryImage": { "url": "/assets/art/coil-field-monochrome.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/coil-field-monochrome.jpg",
+        "width": 1800,
+        "height": 1169,
+        "mimeType": "image/jpeg"
+      },
       "title": "Coil Field",
       "series": "Ritual",
       "seriesPath": "/series/ritual/",
@@ -64,7 +95,12 @@
     {
       "id": "color-burst",
       "canonicalPath": "/works/color-burst/",
-      "primaryImage": { "url": "/assets/art/color-powder-fish.jpg", "width": 1280, "height": 933, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/color-powder-fish.jpg",
+        "width": 1280,
+        "height": 933,
+        "mimeType": "image/jpeg"
+      },
       "title": "Color Burst",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -74,7 +110,12 @@
     {
       "id": "cranes-and-towers",
       "canonicalPath": "/works/cranes-and-towers/",
-      "primaryImage": { "url": "/assets/art/hong-kong-cranes-monochrome.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/hong-kong-cranes-monochrome.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Cranes and Towers",
       "series": "City Light",
       "seriesPath": "/series/city-light/",
@@ -84,7 +125,12 @@
     {
       "id": "dragon-night-festival",
       "canonicalPath": "/works/dragon-night-festival/",
-      "primaryImage": { "url": "/assets/art/fire-dragon-procession.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/fire-dragon-procession.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Dragon Night Festival",
       "series": "Ritual",
       "seriesPath": "/series/ritual/",
@@ -94,7 +140,12 @@
     {
       "id": "fishpond-harvest",
       "canonicalPath": "/works/fishpond-harvest/",
-      "primaryImage": { "url": "/assets/art/fishpond-harvest.jpg", "width": 1000, "height": 649, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/fishpond-harvest.jpg",
+        "width": 1800,
+        "height": 1168,
+        "mimeType": "image/jpeg"
+      },
       "title": "Fishpond Harvest / 漁獲",
       "series": "Documentary",
       "projectPath": "/projects/hong-kong-fishpond-conservation/",
@@ -106,7 +157,12 @@
     {
       "id": "flower-impact",
       "canonicalPath": "/works/flower-impact/",
-      "primaryImage": { "url": "/assets/art/flower-impact.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/flower-impact.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Flower Impact",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -116,7 +172,12 @@
     {
       "id": "green-orb",
       "canonicalPath": "/works/green-orb/",
-      "primaryImage": { "url": "/assets/art/green-orb-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/green-orb-water-study.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Green Orb",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -126,7 +187,12 @@
     {
       "id": "ice-crown",
       "canonicalPath": "/works/ice-crown/",
-      "primaryImage": { "url": "/assets/art/boxer-ice-impact.jpg", "width": 1280, "height": 1908, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/boxer-ice-impact.jpg",
+        "width": 1280,
+        "height": 1908,
+        "mimeType": "image/jpeg"
+      },
       "title": "Ice Crown",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -136,7 +202,12 @@
     {
       "id": "light-encroached-homes",
       "canonicalPath": "/works/light-encroached-homes/",
-      "primaryImage": { "url": "/assets/art/light-encroached-homes.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/light-encroached-homes.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Light Encroached Homes / 光染民居",
       "series": "City Light",
       "seriesPath": "/series/city-light/",
@@ -150,7 +221,12 @@
     {
       "id": "magenta-collision",
       "canonicalPath": "/works/magenta-collision/",
-      "primaryImage": { "url": "/assets/art/magenta-collision-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/magenta-collision-water-study.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Magenta Collision",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -160,7 +236,12 @@
     {
       "id": "night-fishermen",
       "canonicalPath": "/works/night-fishermen/",
-      "primaryImage": { "url": "/assets/art/night-fishermen-li-river.jpg", "width": 1000, "height": 649, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/night-fishermen-li-river.jpg",
+        "width": 1800,
+        "height": 1168,
+        "mimeType": "image/jpeg"
+      },
       "title": "Night Fishermen",
       "series": "Ritual",
       "seriesPath": "/series/ritual/",
@@ -170,7 +251,12 @@
     {
       "id": "orange-droplet",
       "canonicalPath": "/works/orange-droplet/",
-      "primaryImage": { "url": "/assets/art/orange-suspension-water-study.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/orange-suspension-water-study.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Orange Droplet",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -180,7 +266,12 @@
     {
       "id": "shunkan-instant",
       "canonicalPath": "/works/shunkan-instant/",
-      "primaryImage": { "url": "/assets/art/cigarette-impact.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/cigarette-impact.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Shunkan / Instant",
       "series": "Collision",
       "seriesPath": "/series/collision/",
@@ -190,7 +281,12 @@
     {
       "id": "start-sequence",
       "canonicalPath": "/works/start-sequence/",
-      "primaryImage": { "url": "/assets/art/swimming-start-sequence.jpg", "width": 1280, "height": 1909, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/swimming-start-sequence.jpg",
+        "width": 1280,
+        "height": 1909,
+        "mimeType": "image/jpeg"
+      },
       "title": "Start Sequence",
       "series": "Motion",
       "seriesPath": "/series/motion/",
@@ -200,7 +296,12 @@
     {
       "id": "street-procession",
       "canonicalPath": "/works/street-procession/",
-      "primaryImage": { "url": "/assets/art/street-art-procession.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/street-art-procession.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Street Procession",
       "series": "City Light",
       "seriesPath": "/series/city-light/",
@@ -210,7 +311,12 @@
     {
       "id": "swimming-in-motion",
       "canonicalPath": "/works/swimming-in-motion/",
-      "primaryImage": { "url": "/assets/art/swimming-motion.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/swimming-motion.jpg",
+        "width": 1280,
+        "height": 831,
+        "mimeType": "image/jpeg"
+      },
       "title": "Swimming in Motion",
       "series": "Motion",
       "seriesPath": "/series/motion/",
@@ -220,7 +326,12 @@
     {
       "id": "terraces-at-golden-hour",
       "canonicalPath": "/works/terraces-at-golden-hour/",
-      "primaryImage": { "url": "/assets/art/rice-terraces-golden-hour.jpg", "width": 1000, "height": 649, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/rice-terraces-golden-hour.jpg",
+        "width": 1800,
+        "height": 1168,
+        "mimeType": "image/jpeg"
+      },
       "title": "Terraces at Golden Hour",
       "series": "Ritual",
       "seriesPath": "/series/ritual/",
@@ -230,7 +341,12 @@
     {
       "id": "the-pack",
       "canonicalPath": "/works/the-pack/",
-      "primaryImage": { "url": "/assets/art/horse-racing-pack.jpg", "width": 1280, "height": 831, "mimeType": "image/jpeg" },
+      "primaryImage": {
+        "url": "/assets/art/horse-racing-pack.jpg",
+        "width": 1800,
+        "height": 1169,
+        "mimeType": "image/jpeg"
+      },
       "title": "The Pack",
       "series": "Motion",
       "seriesPath": "/series/motion/",

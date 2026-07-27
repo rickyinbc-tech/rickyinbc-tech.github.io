@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "status": "pass",
   "measured": {
-    "maxHtmlBytes": 30805,
-    "siteCssBytes": 35872,
-    "siteJsBytes": 5793,
-    "largestResponsiveImageBytes": 346128,
+    "maxHtmlBytes": 31576,
+    "siteCssBytes": 35909,
+    "siteJsBytes": 6186,
+    "largestResponsiveImageBytes": 366596,
     "maxMissingImageDimensions": 0,
     "maxMissingImageSizes": 0
   },
@@ -20,46 +20,50 @@
   "largestHtml": [
     {
       "file": "projects/nepal-documentary/index.html",
-      "bytes": 30805
+      "bytes": 31576
     },
     {
       "file": "projects/travel/index.html",
-      "bytes": 29293
+      "bytes": 30064
     },
     {
       "file": "awards-recognition/index.html",
-      "bytes": 26352
+      "bytes": 28788
     },
     {
       "file": "index.html",
-      "bytes": 23716
+      "bytes": 25529
     },
     {
       "file": "zh-hant/awards/index.html",
-      "bytes": 22503
+      "bytes": 24887
     },
     {
       "file": "zh-hans/awards/index.html",
-      "bytes": 22494
+      "bytes": 24878
     },
     {
       "file": "series/collision/index.html",
-      "bytes": 21767
+      "bytes": 22608
     },
     {
       "file": "projects/infrared-hong-kong/index.html",
-      "bytes": 21270
+      "bytes": 21691
     },
     {
       "file": "zh-hant/series/collision/index.html",
-      "bytes": 20237
+      "bytes": 21078
     },
     {
       "file": "zh-hans/series/collision/index.html",
-      "bytes": 20216
+      "bytes": 21057
     }
   ],
   "largestResponsiveImages": [
+    {
+      "file": "assets/optimized-v2/art/horse-racing-pack-1800.webp",
+      "bytes": 366596
+    },
     {
       "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1800.webp",
       "bytes": 346128
@@ -67,6 +71,10 @@
     {
       "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1800.webp",
       "bytes": 330316
+    },
+    {
+      "file": "assets/optimized-v2/art/coil-field-monochrome-1800.webp",
+      "bytes": 315480
     },
     {
       "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1800.webp",
@@ -81,24 +89,16 @@
       "bytes": 285638
     },
     {
+      "file": "assets/optimized-v2/art/horse-racing-pack-1280.webp",
+      "bytes": 280696
+    },
+    {
       "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1600.webp",
       "bytes": 275712
     },
     {
       "file": "assets/optimized-v2/art/swimming-start-sequence-1280.webp",
       "bytes": 272058
-    },
-    {
-      "file": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1800.webp",
-      "bytes": 257600
-    },
-    {
-      "file": "assets/optimized-v2/projects/horse-riding/horse-riding-05-1800.webp",
-      "bytes": 257344
-    },
-    {
-      "file": "assets/optimized-v2/art/swimming-start-sequence-1280.avif",
-      "bytes": 253848
     }
   ],
   "failures": []

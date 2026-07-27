@@ -113,16 +113,30 @@ const modalTitle = document.querySelector("#modalTitle");
 const modalMeta = document.querySelector("#modalMeta");
 const modalNote = document.querySelector("#modalNote");
 const closeButton = document.querySelector(".modal-close");
+const MODAL_IMAGE_SIZES = "(max-width: 880px) calc(100vw - 56px), (max-width: 1236px) calc(100vw - 394px), 842px";
 let previousFocus = null;
 let modalInertTargets = [];
 
 function openModal(card) {
   if (!modal || !modalImage || !closeButton) return;
   previousFocus = document.activeElement;
-  modalImage.removeAttribute("srcset");
-  modalImage.removeAttribute("sizes");
-  modalImage.src = card.dataset.full;
-  modalImage.alt = card.closest(".work-card")?.querySelector("img")?.alt || "";
+  const preview = card.matches(".work-card")
+    ? card.querySelector("img")
+    : card.closest(".work-card")?.querySelector("img");
+  const responsiveSrcset = preview?.getAttribute("srcset");
+  if (responsiveSrcset) {
+    modalImage.setAttribute("srcset", responsiveSrcset);
+    modalImage.setAttribute("sizes", MODAL_IMAGE_SIZES);
+  } else {
+    modalImage.removeAttribute("srcset");
+    modalImage.removeAttribute("sizes");
+  }
+  modalImage.src = card.dataset.full || preview?.currentSrc || preview?.src || "";
+  modalImage.alt = preview?.alt || "";
+  if (preview?.width && preview?.height) {
+    modalImage.width = preview.width;
+    modalImage.height = preview.height;
+  }
   if (modalTitle) modalTitle.textContent = card.dataset.title || "Artwork";
   if (modalMeta) modalMeta.textContent = card.dataset.meta || "";
   if (modalNote) modalNote.textContent = card.dataset.note || "";

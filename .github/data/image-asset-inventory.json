@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "summary": {
     "pages": 181,
-    "uniquePrimarySources": 99,
-    "imageUses": 780,
+    "uniquePrimarySources": 69,
+    "imageUses": 714,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -15,6 +15,9 @@
         "zh-hans/awards/index.html",
         "zh-hant/awards/index.html"
       ],
+      "deliverySources": [
+        "/assets/archive/ricky-kwok-hku-light-pollution-award-2014.jpg"
+      ],
       "uses": 3,
       "altVariants": [
         "Ricky Kwok receiving the student-group champion award at the HKU light-pollution photography competition presentation.",
@@ -22,11 +25,14 @@
         "郭文棣在香港大學光污染攝影比賽頒獎典禮領取學生組冠軍獎項"
       ],
       "declaredWidths": [
-        1024
+        1920
       ],
       "responsiveUses": 0,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1920,
+      "sourceHeight": 1080
     },
     {
       "source": "/assets/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017.jpg",
@@ -34,6 +40,9 @@
         "awards-recognition/index.html",
         "zh-hans/awards/index.html",
         "zh-hant/awards/index.html"
+      ],
+      "deliverySources": [
+        "/assets/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017.jpg"
       ],
       "uses": 3,
       "altVariants": [
@@ -46,7 +55,11 @@
       ],
       "responsiveUses": 0,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "source-limited-with-display-resample",
+      "sourceWidth": 1024,
+      "sourceHeight": 1024,
+      "displayDerivative": "/assets/display-derivatives-v1/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-display-2048.webp"
     },
     {
       "source": "/assets/archive/ricky-kwok-student-award-presentation.jpg",
@@ -55,6 +68,9 @@
         "zh-hans/awards/index.html",
         "zh-hant/awards/index.html"
       ],
+      "deliverySources": [
+        "/assets/archive/ricky-kwok-student-award-presentation.jpg"
+      ],
       "uses": 3,
       "altVariants": [
         "Ricky Kwok receiving a framed certificate at a student award presentation in Hong Kong.",
@@ -62,497 +78,17 @@
         "郭文棣在香港一個學生頒獎典禮領取鑲框嘉許狀"
       ],
       "declaredWidths": [
-        1024
+        5184
       ],
       "responsiveUses": 0,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 5184,
+      "sourceHeight": 3456
     },
     {
-      "source": "/assets/art/bank-of-china-light-trails.jpg",
-      "pages": [
-        "works/bank-of-china-light-trails/index.html",
-        "zh-hans/works/bank-of-china-light-trails/index.html",
-        "zh-hant/works/bank-of-china-light-trails/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Hong Kong skyscrapers and buses with sweeping light trails at night.",
-        "香港中银大厦与巴士之间延伸出夜间交通光轨。",
-        "香港夜間高樓與巴士之間掠過彎曲的交通光軌。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/blue-column-water-study.jpg",
-      "pages": [
-        "works/blue-column/index.html",
-        "zh-hans/works/blue-column/index.html",
-        "zh-hant/works/blue-column/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A vertical blue water column and droplet suspended against a blue background.",
-        "垂直藍色水柱與水滴懸浮在藍色背景前。",
-        "蓝色背景前，一道水柱直立，水滴悬在顶端上方。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/blue-hour-cormorant-fishermen.jpg",
-      "pages": [
-        "works/blue-hour-river-stage/index.html",
-        "zh-hans/works/blue-hour-river-stage/index.html",
-        "zh-hant/works/blue-hour-river-stage/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Cormorant fishermen on a river at blue hour with warm lamps reflected in the water.",
-        "蓝调暮色中，鸬鹚、渔民与暖色灯火分布在河面竹筏上。",
-        "藍調暮色中，鸕鶿漁民站在竹筏上，暖燈倒映河面。"
-      ],
-      "declaredWidths": [
-        800
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/boxer-ice-impact.jpg",
-      "pages": [
-        "works/ice-crown/index.html",
-        "zh-hans/works/ice-crown/index.html",
-        "zh-hant/works/ice-crown/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A boxer with water exploding over his head against a dark background.",
-        "戴黑色拳套的拳手站在深色背景前，頭頂冰塊爆裂成水花。",
-        "黑色背景前，戴拳套的拳手头顶爆开一圈水花。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/cigarette-impact.jpg",
-      "pages": [
-        "works/shunkan-instant/index.html",
-        "zh-hans/works/shunkan-instant/index.html",
-        "zh-hant/works/shunkan-instant/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A cigarette breaking into ash and blue smoke against a black background.",
-        "香煙在黑色背景前碎裂，灰燼與藍煙向外散開。",
-        "黑色背景前，香烟碎裂成灰烬、碎片与蓝烟。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/coil-field-monochrome.jpg",
-      "pages": [
-        "works/coil-field/index.html",
-        "works/monochrome-documentary/index.html",
-        "zh-hans/works/coil-field/index.html",
-        "zh-hans/works/monochrome-documentary/index.html",
-        "zh-hant/works/coil-field/index.html",
-        "zh-hant/works/monochrome-documentary/index.html"
-      ],
-      "uses": 9,
-      "altVariants": [
-        "A worker among repeated coils in a monochrome industrial landscape.",
-        "Monochrome photograph of a worker surrounded by many circular coils laid out in rows.",
-        "黑白工业场景中，一名工人置身重复排列的圆形线圈。",
-        "黑白工業場景中，一名工人置身成排圓形線圈之間。",
-        "黑白工業場景中，一名工人置身重複排列的圓形線圈。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 9
-    },
-    {
-      "source": "/assets/art/color-powder-fish.jpg",
-      "pages": [
-        "works/color-burst/index.html",
-        "zh-hans/works/color-burst/index.html",
-        "zh-hant/works/color-burst/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A fish interrupted by an explosion of coloured powder against black.",
-        "三個懸掛物體受撞擊，紅、黃、綠色粉末在黑色背景前爆開。",
-        "黑色背景前，红黄绿三袋粉末受冲击后向外爆散。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/egg-impact.jpg",
-      "pages": [
-        "works/breaking-point/index.html",
-        "zh-hans/works/breaking-point/index.html",
-        "zh-hant/works/breaking-point/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "An egg cracking with shell and liquid fragments suspended against black.",
-        "雞蛋在黑色背景前破裂，蛋殼與液體碎片懸浮半空。",
-        "黑色背景前，蛋壳破裂，液体与碎片悬在空中。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/fire-dragon-procession.jpg",
-      "pages": [
-        "works/dragon-night-festival/index.html",
-        "zh-hans/works/dragon-night-festival/index.html",
-        "zh-hant/works/dragon-night-festival/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A fire dragon procession moving through a Hong Kong street at night.",
-        "煙霧中的火龍隊伍穿過香港夜間街道，四周擠滿人群。",
-        "香港夜间街道上，插满燃香的火龙龙头在人群中快速舞动。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/fishpond-harvest.jpg",
-      "pages": [
-        "works/fishpond-harvest/index.html",
-        "zh-hans/works/fishpond-harvest/index.html",
-        "zh-hant/works/fishpond-harvest/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A fishpond worker standing among nets and fish during a harvest in Hong Kong.",
-        "工人穿着防水衣物，在香港鱼塘的渔网间收鱼。",
-        "工人穿著防水衣物，在香港魚塘以漁網收魚。"
-      ],
-      "declaredWidths": [
-        1000
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/flower-impact.jpg",
-      "pages": [
-        "works/flower-impact/index.html",
-        "zh-hans/works/flower-impact/index.html",
-        "zh-hant/works/flower-impact/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A flower breaking into petals and fragments against a black background.",
-        "粉紅花朵在黑色背景前爆裂，花瓣與碎片向外飛散。",
-        "黑色背景前，粉红花朵爆裂成花瓣、碎片与粉尘。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/green-orb-water-study.jpg",
-      "pages": [
-        "artist-statement/index.html",
-        "works/green-orb/index.html",
-        "zh-hans/works/green-orb/index.html",
-        "zh-hant/works/green-orb/index.html"
-      ],
-      "uses": 7,
-      "altVariants": [
-        "A dark green water droplet hovering above a liquid surface against a bright green field.",
-        "A dark green water droplet hovering over a liquid surface.",
-        "亮绿色背景前，深绿色水滴悬在液面上方。",
-        "深綠色水滴懸於液面上方，置於明亮綠色背景前。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 7
-    },
-    {
-      "source": "/assets/art/hearth-ritual.jpg",
-      "pages": [
-        "works/village-ritual-photography/index.html",
-        "zh-hans/works/village-ritual-photography/index.html",
-        "zh-hant/works/village-ritual-photography/index.html"
-      ],
-      "uses": 3,
-      "altVariants": [
-        "Women gathered around a hearth in a dark wooden room.",
-        "女子们围坐在昏暗木屋的炉火旁。",
-        "女子們圍坐在昏暗木屋的爐火旁。"
-      ],
-      "declaredWidths": [
-        1000
-      ],
-      "responsiveUses": 0,
-      "lazyUses": 0,
-      "eagerUses": 3
-    },
-    {
-      "source": "/assets/art/hong-kong-cranes-monochrome.jpg",
-      "pages": [
-        "works/cranes-and-towers/index.html",
-        "zh-hans/works/cranes-and-towers/index.html",
-        "zh-hant/works/cranes-and-towers/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Construction cranes and Hong Kong towers seen through a foreground barrier in monochrome.",
-        "黑白影像中，香港高樓與建築吊臂隔著垂直欄杆排列。",
-        "黑白画面中，香港高楼与建筑吊臂隔着前景竖栏交错。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/horse-racing-pack.jpg",
-      "pages": [
-        "works/the-pack/index.html",
-        "zh-hans/works/the-pack/index.html",
-        "zh-hant/works/the-pack/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A tightly packed group of racehorses and riders turning at speed.",
-        "赛马与骑师在跑道弯位密集挤靠，扬起尘土。",
-        "馬群與騎師在跑道彎位密集奔馳。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/light-encroached-homes.jpg",
-      "pages": [
-        "works/light-encroached-homes/index.html",
-        "zh-hans/works/light-encroached-homes/index.html",
-        "zh-hant/works/light-encroached-homes/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Low-angle fisheye photograph of illuminated advertising signs and residential buildings around the Mong Kok night sky.",
-        "低角度魚眼影像中，旺角夜空四周是發光招牌與住宅樓宇。",
-        "低角度鱼眼影像中，旺角发光招牌与住宅楼宇围绕夜空。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/magenta-collision-water-study.jpg",
-      "pages": [
-        "works/magenta-collision/index.html",
-        "zh-hans/works/magenta-collision/index.html",
-        "zh-hant/works/magenta-collision/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A dense water collision illuminated in saturated magenta.",
-        "洋紅色液柱與細小水滴懸浮在飽和粉紅背景前。",
-        "饱和洋红背景前，液体水柱与细小水滴悬在空中。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/night-fishermen-li-river.jpg",
-      "pages": [
-        "works/night-fishermen/index.html",
-        "zh-hans/works/night-fishermen/index.html",
-        "zh-hant/works/night-fishermen/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Two fishermen holding glowing lamps beside a river at night.",
-        "兩名漁民夜間提著發光燈籠，背後是河面與暗色山影。",
-        "夜色中，两名渔民在河边举着暖色灯火，背后是暗色山峰。"
-      ],
-      "declaredWidths": [
-        1000
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/orange-suspension-water-study.jpg",
-      "pages": [
-        "works/orange-droplet/index.html",
-        "zh-hans/works/orange-droplet/index.html",
-        "zh-hant/works/orange-droplet/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "A falling orange droplet almost touching a rising peak of water.",
-        "橙色水滴懸在向上隆起的液面尖端上方。",
-        "橙色背景前，下坠水滴几乎触及升起的液体尖峰。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/rice-terraces-golden-hour.jpg",
-      "pages": [
-        "works/terraces-at-golden-hour/index.html",
-        "zh-hans/works/terraces-at-golden-hour/index.html",
-        "zh-hant/works/terraces-at-golden-hour/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Rice terraces reflecting golden light across a mountain slope.",
-        "金色天光映在山坡梯田水面上，细小行人穿行其间。",
-        "金色梯田沿山坡層疊，細小人影走過反光田面。"
-      ],
-      "declaredWidths": [
-        1000
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/sea-of-clouds.jpg",
-      "pages": [
-        "404.html"
-      ],
-      "uses": 1,
-      "altVariants": [
-        "This page is no longer here. — photography by Ricky Kwok"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 0,
-      "lazyUses": 0,
-      "eagerUses": 1
-    },
-    {
-      "source": "/assets/art/street-art-procession.jpg",
-      "pages": [
-        "works/street-procession/index.html",
-        "zh-hans/works/street-procession/index.html",
-        "zh-hant/works/street-procession/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Pedestrians walking past a wall mural whose painted figures mirror their movement.",
-        "行人走过黑白墙画，画中人物与他们同向前进。",
-        "行人走過黑白街頭壁畫，畫中人物與步伐互相呼應。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/swimming-motion.jpg",
-      "pages": [
-        "works/swimming-in-motion/index.html",
-        "zh-hans/works/swimming-in-motion/index.html",
-        "zh-hant/works/swimming-in-motion/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Swimmers blurred into layered colour and water across racing lanes.",
-        "多名泳手在泳池中化成層疊色彩與水花。",
-        "多名泳手被动态模糊化成蓝绿色泳池上的层叠色彩与水花。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/art/swimming-start-sequence.jpg",
-      "pages": [
-        "works/start-sequence/index.html",
-        "zh-hans/works/start-sequence/index.html",
-        "zh-hant/works/start-sequence/index.html"
-      ],
-      "uses": 6,
-      "altVariants": [
-        "Swimmers diving in sequence over coloured lane lines.",
-        "多名泳手依次越过彩色泳线起跳入水，形成下降序列。",
-        "多名泳手依次躍入泳道，形成垂直起跳序列。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 6
-    },
-    {
-      "source": "/assets/optimized-v2/art/ancestral-kitchen-light-1000.webp",
+      "source": "/assets/art/ancestral-kitchen-light.jpg",
       "pages": [
         "index.html",
         "series/ritual/index.html",
@@ -560,6 +96,9 @@
         "zh-hans/series/ritual/index.html",
         "zh-hant/index.html",
         "zh-hant/series/ritual/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/ancestral-kitchen-light-1000.webp"
       ],
       "uses": 6,
       "altVariants": [
@@ -571,36 +110,46 @@
         "祖屋廚房內穿過煙霧的暖光"
       ],
       "declaredWidths": [
-        1000
+        1800
       ],
       "responsiveUses": 6,
       "lazyUses": 6,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1168
     },
     {
-      "source": "/assets/optimized-v2/art/bank-of-china-light-trails-1200.webp",
+      "source": "/assets/art/bank-of-china-light-trails.jpg",
       "pages": [
         "index.html",
         "selected-works/index.html",
         "series/city-light/index.html",
         "series/index.html",
+        "works/bank-of-china-light-trails/index.html",
         "works/cranes-and-towers/index.html",
         "works/dragon-night-festival/index.html",
         "works/hong-kong-urban-light-studies/index.html",
         "zh-hans/index.html",
         "zh-hans/series/city-light/index.html",
+        "zh-hans/works/bank-of-china-light-trails/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/dragon-night-festival/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/index.html",
         "zh-hant/index.html",
         "zh-hant/series/city-light/index.html",
+        "zh-hant/works/bank-of-china-light-trails/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
         "zh-hant/works/dragon-night-festival/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
         "zh-hant/works/index.html"
       ],
-      "uses": 19,
+      "deliverySources": [
+        "/assets/art/bank-of-china-light-trails.jpg",
+        "/assets/optimized-v2/art/bank-of-china-light-trails-1200.webp"
+      ],
+      "uses": 22,
       "altVariants": [
         "Hong Kong light trails and skyscrapers at night.",
         "Hong Kong light trails at night.",
@@ -614,30 +163,40 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 19,
+      "responsiveUses": 22,
       "lazyUses": 19,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/blue-column-water-study-1200.webp",
+      "source": "/assets/art/blue-column-water-study.jpg",
       "pages": [
         "series/collision/index.html",
+        "works/blue-column/index.html",
         "works/green-orb/index.html",
         "works/magenta-collision/index.html",
         "works/orange-droplet/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/series/collision/index.html",
+        "zh-hans/works/blue-column/index.html",
         "zh-hans/works/green-orb/index.html",
         "zh-hans/works/magenta-collision/index.html",
         "zh-hans/works/orange-droplet/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/series/collision/index.html",
+        "zh-hant/works/blue-column/index.html",
         "zh-hant/works/green-orb/index.html",
         "zh-hant/works/magenta-collision/index.html",
         "zh-hant/works/orange-droplet/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 15,
+      "deliverySources": [
+        "/assets/art/blue-column-water-study.jpg",
+        "/assets/optimized-v2/art/blue-column-water-study-1200.webp"
+      ],
+      "uses": 18,
       "altVariants": [
         "A vertical blue water column and droplet suspended against a blue background.",
         "Blue water column.",
@@ -647,23 +206,28 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 15,
+      "responsiveUses": 18,
       "lazyUses": 15,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp",
+      "source": "/assets/art/blue-hour-cormorant-fishermen.jpg",
       "pages": [
         "index.html",
         "selected-works/index.html",
         "series/index.html",
         "series/ritual/index.html",
+        "works/blue-hour-river-stage/index.html",
         "works/night-fishermen/index.html",
         "works/terraces-at-golden-hour/index.html",
         "works/village-ritual-photography/index.html",
         "zh-hans/index.html",
         "zh-hans/series/index.html",
         "zh-hans/series/ritual/index.html",
+        "zh-hans/works/blue-hour-river-stage/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/night-fishermen/index.html",
         "zh-hans/works/terraces-at-golden-hour/index.html",
@@ -671,13 +235,19 @@
         "zh-hant/index.html",
         "zh-hant/series/index.html",
         "zh-hant/series/ritual/index.html",
+        "zh-hant/works/blue-hour-river-stage/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/night-fishermen/index.html",
         "zh-hant/works/terraces-at-golden-hour/index.html",
         "zh-hant/works/village-ritual-photography/index.html"
       ],
-      "uses": 29,
+      "deliverySources": [
+        "/assets/art/blue-hour-cormorant-fishermen.jpg",
+        "/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp"
+      ],
+      "uses": 32,
       "altVariants": [
+        "Cormorant fishermen on a river at blue hour with warm lamps reflected in the water.",
         "Cormorant fishermen on bamboo rafts in blue light.",
         "Cormorant fishermen on bamboo rafts under blue evening light.",
         "Cormorant fishermen on bamboo rafts under deep blue evening light.",
@@ -691,22 +261,34 @@
       "declaredWidths": [
         800
       ],
-      "responsiveUses": 29,
+      "responsiveUses": 32,
       "lazyUses": 23,
-      "eagerUses": 6
+      "eagerUses": 9,
+      "resolutionStatus": "source-limited-with-display-resample",
+      "sourceWidth": 800,
+      "sourceHeight": 519,
+      "displayDerivative": "/assets/display-derivatives-v1/art/blue-hour-cormorant-fishermen-display-1600.webp"
     },
     {
-      "source": "/assets/optimized-v2/art/boxer-ice-impact-1200.webp",
+      "source": "/assets/art/boxer-ice-impact.jpg",
       "pages": [
         "series/collision/index.html",
+        "works/ice-crown/index.html",
         "works/sport-abstraction/index.html",
         "zh-hans/series/collision/index.html",
+        "zh-hans/works/ice-crown/index.html",
         "zh-hans/works/sport-abstraction/index.html",
         "zh-hant/series/collision/index.html",
+        "zh-hant/works/ice-crown/index.html",
         "zh-hant/works/sport-abstraction/index.html"
       ],
-      "uses": 6,
+      "deliverySources": [
+        "/assets/art/boxer-ice-impact.jpg",
+        "/assets/optimized-v2/art/boxer-ice-impact-1200.webp"
+      ],
+      "uses": 9,
       "altVariants": [
+        "A boxer with water exploding over his head against a dark background.",
         "Boxer wearing gloves as water explodes over his head like a crown.",
         "Boxer with water exploding over head.",
         "戴黑色拳套的拳手站在深色背景前，頭頂冰塊爆裂成水花。",
@@ -715,16 +297,22 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 6,
+      "responsiveUses": 9,
       "lazyUses": 6,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 1908
     },
     {
-      "source": "/assets/optimized-v2/art/candle-impact-1200.webp",
+      "source": "/assets/art/candle-impact.jpg",
       "pages": [
         "series/collision/index.html",
         "zh-hans/series/collision/index.html",
         "zh-hant/series/collision/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/candle-impact-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -737,14 +325,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/chalk-impact-1200.webp",
+      "source": "/assets/art/chalk-impact.jpg",
       "pages": [
         "series/collision/index.html",
         "zh-hans/series/collision/index.html",
         "zh-hant/series/collision/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/chalk-impact-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -757,10 +351,13 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/cigarette-impact-1200.webp",
+      "source": "/assets/art/cigarette-impact.jpg",
       "pages": [
         "artist-statement/index.html",
         "index.html",
@@ -773,41 +370,54 @@
         "works/flower-impact/index.html",
         "works/ice-crown/index.html",
         "works/magenta-collision/index.html",
+        "works/shunkan-instant/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/artist-statement/index.html",
         "zh-hans/index.html",
         "zh-hans/journal/index.html",
         "zh-hans/series/collision/index.html",
+        "zh-hans/series/index.html",
         "zh-hans/works/breaking-point/index.html",
         "zh-hans/works/color-burst/index.html",
         "zh-hans/works/flower-impact/index.html",
         "zh-hans/works/ice-crown/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/magenta-collision/index.html",
+        "zh-hans/works/shunkan-instant/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/artist-statement/index.html",
         "zh-hant/index.html",
         "zh-hant/journal/index.html",
         "zh-hant/series/collision/index.html",
+        "zh-hant/series/index.html",
         "zh-hant/works/breaking-point/index.html",
         "zh-hant/works/color-burst/index.html",
         "zh-hant/works/flower-impact/index.html",
         "zh-hant/works/ice-crown/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/magenta-collision/index.html",
+        "zh-hant/works/shunkan-instant/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 43,
+      "deliverySources": [
+        "/assets/art/cigarette-impact.jpg",
+        "/assets/optimized-v2/art/cigarette-impact-1200.webp",
+        "/assets/optimized-v2/art/cigarette-impact-1280.webp"
+      ],
+      "uses": 56,
       "altVariants": [
+        "A cigarette breaking into ash and blue smoke against a black background.",
         "Ash and blue smoke exploding from cigarettes against a dark background.",
         "Cigarettes breaking apart in a blue high-speed impact photograph.",
         "Cigarettes exploding into ash and blue smoke against a black background.",
         "Cigarettes exploding into ash and blue smoke against a dark background.",
         "Cigarettes exploding into ash and blue smoke.",
         "香烟在蓝色烟雾中碎裂成灰烬",
+        "香烟在黑色背景前碎裂，灰烬与蓝烟向外散开",
         "香烟碎裂，灰烬与蓝烟在黑色背景前向外散开。",
         "香烟裂成灰烬、碎片与蓝烟的完整画面",
         "香煙在藍色煙霧中碎裂成灰燼",
+        "香煙在黑色背景前碎裂，灰燼與藍煙向外散開",
         "香煙在黑色背景前碎裂，灰燼與藍煙向外散開。",
         "香煙碎裂，灰燼與藍煙在黑色背景前向外散開。",
         "香煙裂成灰燼、碎片與藍煙的完整畫面",
@@ -816,84 +426,75 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 43,
-      "lazyUses": 43,
-      "eagerUses": 0
+      "responsiveUses": 56,
+      "lazyUses": 45,
+      "eagerUses": 11,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/cigarette-impact-1280.webp",
+      "source": "/assets/art/coil-field-monochrome.jpg",
       "pages": [
-        "series/collision/index.html",
-        "works/studio-collision-studies/index.html",
-        "zh-hans/artist-statement/index.html",
-        "zh-hans/series/collision/index.html",
-        "zh-hans/series/index.html",
-        "zh-hans/works/studio-collision-studies/index.html",
-        "zh-hant/artist-statement/index.html",
-        "zh-hant/series/collision/index.html",
-        "zh-hant/series/index.html",
-        "zh-hant/works/studio-collision-studies/index.html"
-      ],
-      "uses": 10,
-      "altVariants": [
-        "Cigarettes exploding into ash and blue smoke against a black background.",
-        "Cigarettes exploding into ash and blue smoke.",
-        "香烟在黑色背景前碎裂，灰烬与蓝烟向外散开",
-        "香烟碎裂，灰烬与蓝烟在黑色背景前向外散开。",
-        "香煙在黑色背景前碎裂，灰燼與藍煙向外散開",
-        "香煙在黑色背景前碎裂，灰燼與藍煙向外散開。",
-        "香煙碎裂，灰燼與藍煙在黑色背景前向外散開。",
-        "黑色背景前，香烟碎裂成灰烬、碎片与蓝烟。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 10,
-      "lazyUses": 2,
-      "eagerUses": 8
-    },
-    {
-      "source": "/assets/optimized-v2/art/coil-field-monochrome-1200.webp",
-      "pages": [
+        "works/coil-field/index.html",
         "works/cranes-and-towers/index.html",
         "works/monochrome-documentary/index.html",
         "works/terraces-at-golden-hour/index.html",
+        "zh-hans/works/coil-field/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
         "zh-hans/works/terraces-at-golden-hour/index.html",
+        "zh-hant/works/coil-field/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
         "zh-hant/works/monochrome-documentary/index.html",
         "zh-hant/works/terraces-at-golden-hour/index.html"
       ],
-      "uses": 9,
+      "deliverySources": [
+        "/assets/art/coil-field-monochrome.jpg",
+        "/assets/optimized-v2/art/coil-field-monochrome-1200.webp"
+      ],
+      "uses": 15,
       "altVariants": [
+        "A worker among repeated coils in a monochrome industrial landscape.",
         "Monochrome photograph of a worker surrounded by many circular coils laid out in rows.",
         "Worker among repeated circular coils in a monochrome field.",
         "黑白工业场景中，一名工人置身重复排列的圆形线圈。",
-        "黑白工業場景中，一名工人置身成排圓形線圈之間。"
+        "黑白工業場景中，一名工人置身成排圓形線圈之間。",
+        "黑白工業場景中，一名工人置身重複排列的圓形線圈。"
       ],
       "declaredWidths": [
-        1280
+        1800
       ],
-      "responsiveUses": 9,
+      "responsiveUses": 12,
       "lazyUses": 9,
-      "eagerUses": 0
+      "eagerUses": 6,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1169
     },
     {
-      "source": "/assets/optimized-v2/art/color-powder-fish-1200.webp",
+      "source": "/assets/art/color-powder-fish.jpg",
       "pages": [
         "series/collision/index.html",
+        "works/color-burst/index.html",
         "works/flower-impact/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/series/collision/index.html",
+        "zh-hans/works/color-burst/index.html",
         "zh-hans/works/flower-impact/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/series/collision/index.html",
+        "zh-hant/works/color-burst/index.html",
         "zh-hant/works/flower-impact/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 9,
+      "deliverySources": [
+        "/assets/art/color-powder-fish.jpg",
+        "/assets/optimized-v2/art/color-powder-fish-1200.webp"
+      ],
+      "uses": 12,
       "altVariants": [
+        "A fish interrupted by an explosion of coloured powder against black.",
         "Fish hit by coloured powder.",
         "Three fish-shaped forms hit by red, yellow, and green powder against black.",
         "三個懸掛物體受撞擊，紅、黃、綠色粉末在黑色背景前爆開。",
@@ -902,12 +503,15 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 9,
+      "responsiveUses": 12,
       "lazyUses": 9,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 933
     },
     {
-      "source": "/assets/optimized-v2/art/divers-motion-1200.webp",
+      "source": "/assets/art/divers-motion.jpg",
       "pages": [
         "index.html",
         "series/motion/index.html",
@@ -915,6 +519,9 @@
         "zh-hans/series/motion/index.html",
         "zh-hant/index.html",
         "zh-hant/series/motion/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/divers-motion-1200.webp"
       ],
       "uses": 6,
       "altVariants": [
@@ -930,26 +537,37 @@
       ],
       "responsiveUses": 6,
       "lazyUses": 6,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 820
     },
     {
-      "source": "/assets/optimized-v2/art/egg-impact-1200.webp",
+      "source": "/assets/art/egg-impact.jpg",
       "pages": [
         "series/collision/index.html",
+        "works/breaking-point/index.html",
         "works/color-burst/index.html",
         "works/shunkan-instant/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/series/collision/index.html",
+        "zh-hans/works/breaking-point/index.html",
         "zh-hans/works/color-burst/index.html",
         "zh-hans/works/shunkan-instant/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/series/collision/index.html",
+        "zh-hant/works/breaking-point/index.html",
         "zh-hant/works/color-burst/index.html",
         "zh-hant/works/shunkan-instant/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 12,
+      "deliverySources": [
+        "/assets/art/egg-impact.jpg",
+        "/assets/optimized-v2/art/egg-impact-1200.webp"
+      ],
+      "uses": 15,
       "altVariants": [
+        "An egg cracking with shell and liquid fragments suspended against black.",
         "Egg cracking with shell and liquid fragments suspended against black.",
         "Egg cracking.",
         "雞蛋在黑色背景前破裂，蛋殼與液體碎片懸浮半空。",
@@ -958,12 +576,15 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 12,
+      "responsiveUses": 15,
       "lazyUses": 12,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/festival-dragon-1200.webp",
+      "source": "/assets/art/festival-dragon.jpg",
       "pages": [
         "selected-works/index.html",
         "series/ritual/index.html",
@@ -971,6 +592,9 @@
         "zh-hans/works/index.html",
         "zh-hant/series/ritual/index.html",
         "zh-hant/works/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/festival-dragon-1200.webp"
       ],
       "uses": 6,
       "altVariants": [
@@ -984,26 +608,37 @@
       ],
       "responsiveUses": 6,
       "lazyUses": 6,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/fire-dragon-procession-1200.webp",
+      "source": "/assets/art/fire-dragon-procession.jpg",
       "pages": [
         "series/ritual/index.html",
+        "works/dragon-night-festival/index.html",
         "works/hong-kong-urban-light-studies/index.html",
         "works/street-procession/index.html",
         "works/village-ritual-photography/index.html",
         "zh-hans/series/ritual/index.html",
+        "zh-hans/works/dragon-night-festival/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/street-procession/index.html",
         "zh-hans/works/village-ritual-photography/index.html",
         "zh-hant/series/ritual/index.html",
+        "zh-hant/works/dragon-night-festival/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
         "zh-hant/works/street-procession/index.html",
         "zh-hant/works/village-ritual-photography/index.html"
       ],
-      "uses": 12,
+      "deliverySources": [
+        "/assets/art/fire-dragon-procession.jpg",
+        "/assets/optimized-v2/art/fire-dragon-procession-1200.webp"
+      ],
+      "uses": 15,
       "altVariants": [
+        "A fire dragon procession moving through a Hong Kong street at night.",
         "Crowded Hong Kong night festival with a fire dragon procession and smoke.",
         "Fire dragon procession in Hong Kong.",
         "煙霧中的火龍隊伍穿過香港夜間街道，四周擠滿人群。",
@@ -1012,12 +647,15 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 12,
+      "responsiveUses": 15,
       "lazyUses": 12,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/fishpond-harvest-1000.webp",
+      "source": "/assets/art/fishpond-harvest.jpg",
       "pages": [
         "awards-recognition/index.html",
         "index.html",
@@ -1025,6 +663,7 @@
         "projects/hong-kong-fishpond-conservation/index.html",
         "projects/index.html",
         "works/coil-field/index.html",
+        "works/fishpond-harvest/index.html",
         "works/monochrome-documentary/index.html",
         "works/village-ritual-photography/index.html",
         "zh-hans/awards/index.html",
@@ -1033,6 +672,7 @@
         "zh-hans/projects/hong-kong-fishpond-conservation/index.html",
         "zh-hans/projects/index.html",
         "zh-hans/works/coil-field/index.html",
+        "zh-hans/works/fishpond-harvest/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
         "zh-hans/works/village-ritual-photography/index.html",
         "zh-hant/awards/index.html",
@@ -1041,11 +681,17 @@
         "zh-hant/projects/hong-kong-fishpond-conservation/index.html",
         "zh-hant/projects/index.html",
         "zh-hant/works/coil-field/index.html",
+        "zh-hant/works/fishpond-harvest/index.html",
         "zh-hant/works/monochrome-documentary/index.html",
         "zh-hant/works/village-ritual-photography/index.html"
       ],
-      "uses": 30,
+      "deliverySources": [
+        "/assets/art/fishpond-harvest.jpg",
+        "/assets/optimized-v2/art/fishpond-harvest-1000.webp"
+      ],
+      "uses": 33,
       "altVariants": [
+        "A fishpond worker standing among nets and fish during a harvest in Hong Kong.",
         "Workers harvesting fish from a Hong Kong pond.",
         "Workers in waterproof clothing harvesting fish from a Hong Kong fishpond.",
         "Workers in waterproof clothing harvesting fish from a Hong Kong pond.",
@@ -1062,36 +708,47 @@
         "香港鱼塘收成的劳动现场"
       ],
       "declaredWidths": [
-        1000
+        1800
       ],
-      "responsiveUses": 30,
+      "responsiveUses": 33,
       "lazyUses": 27,
-      "eagerUses": 3
+      "eagerUses": 6,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1168
     },
     {
-      "source": "/assets/optimized-v2/art/flower-impact-1200.webp",
+      "source": "/assets/art/flower-impact.jpg",
       "pages": [
         "selected-works/index.html",
         "series/collision/index.html",
         "works/breaking-point/index.html",
         "works/color-burst/index.html",
+        "works/flower-impact/index.html",
         "works/shunkan-instant/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/series/collision/index.html",
         "zh-hans/works/breaking-point/index.html",
         "zh-hans/works/color-burst/index.html",
+        "zh-hans/works/flower-impact/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/shunkan-instant/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/series/collision/index.html",
         "zh-hant/works/breaking-point/index.html",
         "zh-hant/works/color-burst/index.html",
+        "zh-hant/works/flower-impact/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/shunkan-instant/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 18,
+      "deliverySources": [
+        "/assets/art/flower-impact.jpg",
+        "/assets/optimized-v2/art/flower-impact-1200.webp"
+      ],
+      "uses": 21,
       "altVariants": [
+        "A flower breaking into petals and fragments against a black background.",
         "A pink flower bursting apart with fragments moving through black space.",
         "Flower breaking apart.",
         "Pink flower bursting apart with fragments and dust against a black background.",
@@ -1101,18 +758,23 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 18,
+      "responsiveUses": 21,
       "lazyUses": 18,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/green-orb-water-study-1280.webp",
+      "source": "/assets/art/green-orb-water-study.jpg",
       "pages": [
+        "artist-statement/index.html",
         "index.html",
         "journal/index.html",
         "selected-works/index.html",
         "series/collision/index.html",
         "works/blue-column/index.html",
+        "works/green-orb/index.html",
         "works/magenta-collision/index.html",
         "works/orange-droplet/index.html",
         "works/studio-collision-studies/index.html",
@@ -1120,6 +782,7 @@
         "zh-hans/journal/index.html",
         "zh-hans/series/collision/index.html",
         "zh-hans/works/blue-column/index.html",
+        "zh-hans/works/green-orb/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/magenta-collision/index.html",
         "zh-hans/works/orange-droplet/index.html",
@@ -1128,13 +791,19 @@
         "zh-hant/journal/index.html",
         "zh-hant/series/collision/index.html",
         "zh-hant/works/blue-column/index.html",
+        "zh-hant/works/green-orb/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/magenta-collision/index.html",
         "zh-hant/works/orange-droplet/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 30,
+      "deliverySources": [
+        "/assets/art/green-orb-water-study.jpg",
+        "/assets/optimized-v2/art/green-orb-water-study-1280.webp"
+      ],
+      "uses": 34,
       "altVariants": [
+        "A dark green water droplet hovering above a liquid surface against a bright green field.",
         "A dark green water droplet hovering over a liquid surface.",
         "Dark green water droplet hovering above a liquid surface against a bright green field.",
         "Green droplet suspended above a liquid surface.",
@@ -1150,28 +819,38 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 30,
+      "responsiveUses": 33,
       "lazyUses": 30,
-      "eagerUses": 0
+      "eagerUses": 4,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/hearth-ritual-1000.webp",
+      "source": "/assets/art/hearth-ritual.jpg",
       "pages": [
         "series/index.html",
         "series/ritual/index.html",
         "works/blue-hour-river-stage/index.html",
         "works/dragon-night-festival/index.html",
         "works/night-fishermen/index.html",
+        "works/village-ritual-photography/index.html",
         "zh-hans/series/ritual/index.html",
         "zh-hans/works/blue-hour-river-stage/index.html",
         "zh-hans/works/dragon-night-festival/index.html",
         "zh-hans/works/night-fishermen/index.html",
+        "zh-hans/works/village-ritual-photography/index.html",
         "zh-hant/series/ritual/index.html",
         "zh-hant/works/blue-hour-river-stage/index.html",
         "zh-hant/works/dragon-night-festival/index.html",
-        "zh-hant/works/night-fishermen/index.html"
+        "zh-hant/works/night-fishermen/index.html",
+        "zh-hant/works/village-ritual-photography/index.html"
       ],
-      "uses": 13,
+      "deliverySources": [
+        "/assets/art/hearth-ritual.jpg",
+        "/assets/optimized-v2/art/hearth-ritual-1000.webp"
+      ],
+      "uses": 16,
       "altVariants": [
         "Women around a fire.",
         "Women cooking around a hearth in a dark wooden room.",
@@ -1180,34 +859,45 @@
         "女子們圍坐在昏暗木屋的爐火旁。"
       ],
       "declaredWidths": [
-        1000
+        1800
       ],
       "responsiveUses": 13,
       "lazyUses": 13,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1168
     },
     {
-      "source": "/assets/optimized-v2/art/hong-kong-cranes-monochrome-1200.webp",
+      "source": "/assets/art/hong-kong-cranes-monochrome.jpg",
       "pages": [
         "series/city-light/index.html",
         "works/bank-of-china-light-trails/index.html",
+        "works/cranes-and-towers/index.html",
         "works/hong-kong-urban-light-studies/index.html",
         "works/monochrome-documentary/index.html",
         "works/street-procession/index.html",
         "zh-hans/series/city-light/index.html",
         "zh-hans/works/bank-of-china-light-trails/index.html",
+        "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
         "zh-hans/works/street-procession/index.html",
         "zh-hant/series/city-light/index.html",
         "zh-hant/works/bank-of-china-light-trails/index.html",
+        "zh-hant/works/cranes-and-towers/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
         "zh-hant/works/monochrome-documentary/index.html",
         "zh-hant/works/street-procession/index.html"
       ],
-      "uses": 15,
+      "deliverySources": [
+        "/assets/art/hong-kong-cranes-monochrome.jpg",
+        "/assets/optimized-v2/art/hong-kong-cranes-monochrome-1200.webp"
+      ],
+      "uses": 18,
       "altVariants": [
         "Black-and-white view of Hong Kong skyscrapers and cranes seen through vertical bars.",
+        "Construction cranes and Hong Kong towers seen through a foreground barrier in monochrome.",
         "Hong Kong cranes through bars.",
         "黑白影像中，香港高樓與建築吊臂隔著垂直欄杆排列。",
         "黑白画面中，香港高楼与建筑吊臂隔着前景竖栏交错。"
@@ -1215,12 +905,15 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 15,
+      "responsiveUses": 18,
       "lazyUses": 15,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/hong-kong-fisheye-street-1200.webp",
+      "source": "/assets/art/hong-kong-fisheye-street.jpg",
       "pages": [
         "index.html",
         "series/city-light/index.html",
@@ -1228,6 +921,9 @@
         "zh-hans/series/city-light/index.html",
         "zh-hant/index.html",
         "zh-hant/series/city-light/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/hong-kong-fisheye-street-1200.webp"
       ],
       "uses": 6,
       "altVariants": [
@@ -1243,44 +939,58 @@
       ],
       "responsiveUses": 6,
       "lazyUses": 6,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/horse-racing-pack-1200.webp",
+      "source": "/assets/art/horse-racing-pack.jpg",
       "pages": [
         "selected-works/index.html",
         "series/motion/index.html",
         "works/sport-abstraction/index.html",
         "works/start-sequence/index.html",
         "works/swimming-in-motion/index.html",
+        "works/the-pack/index.html",
         "zh-hans/series/motion/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/sport-abstraction/index.html",
         "zh-hans/works/start-sequence/index.html",
         "zh-hans/works/swimming-in-motion/index.html",
+        "zh-hans/works/the-pack/index.html",
         "zh-hant/series/motion/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/sport-abstraction/index.html",
         "zh-hant/works/start-sequence/index.html",
-        "zh-hant/works/swimming-in-motion/index.html"
+        "zh-hant/works/swimming-in-motion/index.html",
+        "zh-hant/works/the-pack/index.html"
       ],
-      "uses": 15,
+      "deliverySources": [
+        "/assets/art/horse-racing-pack.jpg",
+        "/assets/optimized-v2/art/horse-racing-pack-1200.webp"
+      ],
+      "uses": 18,
       "altVariants": [
         "A pack of racehorses and jockeys turning tightly on a dirt track.",
         "A tightly grouped pack of racehorses turning on a track.",
+        "A tightly packed group of racehorses and riders turning at speed.",
         "Horse racing pack.",
         "赛马与骑师在跑道弯位密集挤靠，扬起尘土。",
         "馬群與騎師在跑道彎位密集奔馳。"
       ],
       "declaredWidths": [
-        1280
+        1800
       ],
-      "responsiveUses": 15,
+      "responsiveUses": 18,
       "lazyUses": 15,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1169
     },
     {
-      "source": "/assets/optimized-v2/art/light-encroached-homes-1280.webp",
+      "source": "/assets/art/light-encroached-homes.jpg",
       "pages": [
         "awards-recognition/index.html",
         "index.html",
@@ -1292,6 +1002,7 @@
         "series/index.html",
         "works/cranes-and-towers/index.html",
         "works/hong-kong-urban-light-studies/index.html",
+        "works/light-encroached-homes/index.html",
         "works/street-procession/index.html",
         "zh-hans/awards/index.html",
         "zh-hans/index.html",
@@ -1303,6 +1014,7 @@
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/index.html",
+        "zh-hans/works/light-encroached-homes/index.html",
         "zh-hans/works/street-procession/index.html",
         "zh-hant/awards/index.html",
         "zh-hant/index.html",
@@ -1314,9 +1026,14 @@
         "zh-hant/works/cranes-and-towers/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
         "zh-hant/works/index.html",
+        "zh-hant/works/light-encroached-homes/index.html",
         "zh-hant/works/street-procession/index.html"
       ],
-      "uses": 59,
+      "deliverySources": [
+        "/assets/art/light-encroached-homes.jpg",
+        "/assets/optimized-v2/art/light-encroached-homes-1280.webp"
+      ],
+      "uses": 62,
       "altVariants": [
         "Fisheye photograph of Hong Kong neon signs and residential buildings.",
         "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
@@ -1344,25 +1061,36 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 59,
+      "responsiveUses": 62,
       "lazyUses": 37,
-      "eagerUses": 22
+      "eagerUses": 25,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/magenta-collision-water-study-1200.webp",
+      "source": "/assets/art/magenta-collision-water-study.jpg",
       "pages": [
         "series/collision/index.html",
         "works/blue-column/index.html",
+        "works/magenta-collision/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/series/collision/index.html",
         "zh-hans/works/blue-column/index.html",
+        "zh-hans/works/magenta-collision/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/series/collision/index.html",
         "zh-hant/works/blue-column/index.html",
+        "zh-hant/works/magenta-collision/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 9,
+      "deliverySources": [
+        "/assets/art/magenta-collision-water-study.jpg",
+        "/assets/optimized-v2/art/magenta-collision-water-study-1200.webp"
+      ],
+      "uses": 12,
       "altVariants": [
+        "A dense water collision illuminated in saturated magenta.",
         "Magenta liquid collision.",
         "Magenta liquid column with small droplets suspended in a saturated pink field.",
         "洋紅色液柱與細小水滴懸浮在飽和粉紅背景前。",
@@ -1371,33 +1099,44 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 9,
+      "responsiveUses": 12,
       "lazyUses": 9,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/night-fishermen-li-river-1000.webp",
+      "source": "/assets/art/night-fishermen-li-river.jpg",
       "pages": [
         "index.html",
         "selected-works/index.html",
         "series/ritual/index.html",
         "works/blue-hour-river-stage/index.html",
+        "works/night-fishermen/index.html",
         "works/village-ritual-photography/index.html",
         "zh-hans/index.html",
         "zh-hans/series/ritual/index.html",
         "zh-hans/works/blue-hour-river-stage/index.html",
         "zh-hans/works/index.html",
+        "zh-hans/works/night-fishermen/index.html",
         "zh-hans/works/village-ritual-photography/index.html",
         "zh-hant/index.html",
         "zh-hant/series/ritual/index.html",
         "zh-hant/works/blue-hour-river-stage/index.html",
         "zh-hant/works/index.html",
+        "zh-hant/works/night-fishermen/index.html",
         "zh-hant/works/village-ritual-photography/index.html"
       ],
-      "uses": 15,
+      "deliverySources": [
+        "/assets/art/night-fishermen-li-river.jpg",
+        "/assets/optimized-v2/art/night-fishermen-li-river-1000.webp"
+      ],
+      "uses": 18,
       "altVariants": [
         "Two fishermen at night holding glowing lamps beside dark mountains and water.",
         "Two fishermen at night with glowing lamps and dark mountains behind them.",
+        "Two fishermen holding glowing lamps beside a river at night.",
         "Two night fishermen with lanterns.",
         "兩名漁民夜間提著發光燈籠，背後是河面與暗色山影。",
         "夜色中两名渔民手持灯火",
@@ -1405,27 +1144,38 @@
         "夜色中，两名渔民在河边举着暖色灯火，背后是暗色山峰。"
       ],
       "declaredWidths": [
-        1000
+        1800
       ],
-      "responsiveUses": 15,
+      "responsiveUses": 18,
       "lazyUses": 15,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1168
     },
     {
-      "source": "/assets/optimized-v2/art/orange-suspension-water-study-1200.webp",
+      "source": "/assets/art/orange-suspension-water-study.jpg",
       "pages": [
         "series/collision/index.html",
         "works/green-orb/index.html",
+        "works/orange-droplet/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/series/collision/index.html",
         "zh-hans/works/green-orb/index.html",
+        "zh-hans/works/orange-droplet/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/series/collision/index.html",
         "zh-hant/works/green-orb/index.html",
+        "zh-hant/works/orange-droplet/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 9,
+      "deliverySources": [
+        "/assets/art/orange-suspension-water-study.jpg",
+        "/assets/optimized-v2/art/orange-suspension-water-study-1200.webp"
+      ],
+      "uses": 12,
       "altVariants": [
+        "A falling orange droplet almost touching a rising peak of water.",
         "Orange droplet suspended above a small liquid peak against an orange background.",
         "Orange water droplet.",
         "橙色水滴懸在向上隆起的液面尖端上方。",
@@ -1434,42 +1184,59 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 9,
+      "responsiveUses": 12,
       "lazyUses": 9,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/rice-terraces-golden-hour-1000.webp",
+      "source": "/assets/art/rice-terraces-golden-hour.jpg",
       "pages": [
         "biography/index.html",
         "works/coil-field/index.html",
+        "works/terraces-at-golden-hour/index.html",
         "zh-hans/biography/index.html",
         "zh-hans/works/coil-field/index.html",
+        "zh-hans/works/terraces-at-golden-hour/index.html",
         "zh-hant/biography/index.html",
-        "zh-hant/works/coil-field/index.html"
+        "zh-hant/works/coil-field/index.html",
+        "zh-hant/works/terraces-at-golden-hour/index.html"
       ],
-      "uses": 6,
+      "deliverySources": [
+        "/assets/art/rice-terraces-golden-hour.jpg",
+        "/assets/optimized-v2/art/rice-terraces-golden-hour-1000.webp"
+      ],
+      "uses": 9,
       "altVariants": [
         "Golden rice terraces with figures walking.",
         "Golden rice terraces with small figures walking through reflective fields.",
+        "Rice terraces reflecting golden light across a mountain slope.",
         "金色天光映在山坡梯田水面上，细小行人穿行其间。",
         "金色时分的梯田与行人",
         "金色時分的梯田與行人",
         "金色梯田沿山坡層疊，細小人影走過反光田面。"
       ],
       "declaredWidths": [
-        1000
+        1800
       ],
-      "responsiveUses": 6,
+      "responsiveUses": 9,
       "lazyUses": 6,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1168
     },
     {
-      "source": "/assets/optimized-v2/art/sack-race-village-1200.webp",
+      "source": "/assets/art/sack-race-village.jpg",
       "pages": [
         "series/ritual/index.html",
         "zh-hans/series/ritual/index.html",
         "zh-hant/series/ritual/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/sack-race-village-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1482,31 +1249,64 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/street-art-procession-1200.webp",
+      "source": "/assets/art/sea-of-clouds.jpg",
+      "pages": [
+        "404.html"
+      ],
+      "deliverySources": [
+        "/assets/art/sea-of-clouds.jpg"
+      ],
+      "uses": 1,
+      "altVariants": [
+        "This page is no longer here. — photography by Ricky Kwok"
+      ],
+      "declaredWidths": [
+        1280
+      ],
+      "responsiveUses": 0,
+      "lazyUses": 0,
+      "eagerUses": 1,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
+    },
+    {
+      "source": "/assets/art/street-art-procession.jpg",
       "pages": [
         "selected-works/index.html",
         "series/city-light/index.html",
         "works/dragon-night-festival/index.html",
         "works/hong-kong-urban-light-studies/index.html",
         "works/monochrome-documentary/index.html",
+        "works/street-procession/index.html",
         "zh-hans/series/city-light/index.html",
         "zh-hans/works/dragon-night-festival/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
+        "zh-hans/works/street-procession/index.html",
         "zh-hant/series/city-light/index.html",
         "zh-hant/works/dragon-night-festival/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
         "zh-hant/works/index.html",
-        "zh-hant/works/monochrome-documentary/index.html"
+        "zh-hant/works/monochrome-documentary/index.html",
+        "zh-hant/works/street-procession/index.html"
       ],
-      "uses": 15,
+      "deliverySources": [
+        "/assets/art/street-art-procession.jpg",
+        "/assets/optimized-v2/art/street-art-procession-1200.webp"
+      ],
+      "uses": 18,
       "altVariants": [
         "Pedestrians beside street art.",
         "Pedestrians walking beside black-and-white street-art figures.",
+        "Pedestrians walking past a wall mural whose painted figures mirror their movement.",
         "People walking beside black-and-white street art figures painted on a wall.",
         "行人走过黑白墙画，画中人物与他们同向前进。",
         "行人走過黑白街頭壁畫，畫中人物與步伐互相呼應。"
@@ -1514,12 +1314,15 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 15,
+      "responsiveUses": 18,
       "lazyUses": 15,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/swimming-motion-1200.webp",
+      "source": "/assets/art/swimming-motion.jpg",
       "pages": [
         "index.html",
         "selected-works/index.html",
@@ -1528,29 +1331,40 @@
         "works/ice-crown/index.html",
         "works/sport-abstraction/index.html",
         "works/start-sequence/index.html",
+        "works/swimming-in-motion/index.html",
         "works/the-pack/index.html",
         "zh-hans/index.html",
+        "zh-hans/series/index.html",
         "zh-hans/series/motion/index.html",
         "zh-hans/works/ice-crown/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/sport-abstraction/index.html",
         "zh-hans/works/start-sequence/index.html",
+        "zh-hans/works/swimming-in-motion/index.html",
         "zh-hans/works/the-pack/index.html",
         "zh-hant/index.html",
+        "zh-hant/series/index.html",
         "zh-hant/series/motion/index.html",
         "zh-hant/works/ice-crown/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/sport-abstraction/index.html",
         "zh-hant/works/start-sequence/index.html",
+        "zh-hant/works/swimming-in-motion/index.html",
         "zh-hant/works/the-pack/index.html"
       ],
-      "uses": 31,
+      "deliverySources": [
+        "/assets/art/swimming-motion.jpg",
+        "/assets/optimized-v2/art/swimming-motion-1200.webp",
+        "/assets/optimized-v2/art/swimming-motion-1280.webp"
+      ],
+      "uses": 43,
       "altVariants": [
         "Blurred swimmers across a pool.",
         "Blurred swimmers moving across a pool.",
         "Blurred swimmers moving through a pool.",
         "Multiple swimmers blurred into painterly strokes across a pool.",
         "Multiple swimmers blurred into painterly strokes across a turquoise pool.",
+        "Swimmers blurred into layered colour and water across racing lanes.",
         "多名泳手在泳池中化成層疊色彩與水花。",
         "多名泳手被动态模糊化成泳池上的绘画般线条。",
         "多名泳手被动态模糊化成蓝绿色泳池上的层叠色彩与水花。",
@@ -1561,48 +1375,22 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 31,
-      "lazyUses": 31,
-      "eagerUses": 0
+      "responsiveUses": 43,
+      "lazyUses": 33,
+      "eagerUses": 10,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/art/swimming-motion-1280.webp",
-      "pages": [
-        "selected-works/index.html",
-        "series/motion/index.html",
-        "works/sport-abstraction/index.html",
-        "zh-hans/series/index.html",
-        "zh-hans/series/motion/index.html",
-        "zh-hans/works/sport-abstraction/index.html",
-        "zh-hant/series/index.html",
-        "zh-hant/series/motion/index.html",
-        "zh-hant/works/sport-abstraction/index.html"
-      ],
-      "uses": 9,
-      "altVariants": [
-        "Blurred swimmers across a pool.",
-        "Multiple swimmers blurred into painterly strokes across a pool.",
-        "Multiple swimmers blurred into painterly strokes across a turquoise pool.",
-        "多名泳手在泳池中化成層疊色彩與水花。",
-        "多名泳手被动态模糊化成泳池上的绘画般线条。",
-        "多名泳手被动态模糊化成蓝绿色泳池上的层叠色彩与水花。",
-        "多名泳手被動態模糊化成泳池上的繪畫般線條。"
-      ],
-      "declaredWidths": [
-        1280
-      ],
-      "responsiveUses": 9,
-      "lazyUses": 2,
-      "eagerUses": 7
-    },
-    {
-      "source": "/assets/optimized-v2/art/swimming-start-sequence-1200.webp",
+      "source": "/assets/art/swimming-start-sequence.jpg",
       "pages": [
         "index.html",
         "selected-works/index.html",
         "series/motion/index.html",
         "works/ice-crown/index.html",
         "works/sport-abstraction/index.html",
+        "works/start-sequence/index.html",
         "works/swimming-in-motion/index.html",
         "works/the-pack/index.html",
         "zh-hans/index.html",
@@ -1610,6 +1398,7 @@
         "zh-hans/works/ice-crown/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/sport-abstraction/index.html",
+        "zh-hans/works/start-sequence/index.html",
         "zh-hans/works/swimming-in-motion/index.html",
         "zh-hans/works/the-pack/index.html",
         "zh-hant/index.html",
@@ -1617,11 +1406,17 @@
         "zh-hant/works/ice-crown/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/sport-abstraction/index.html",
+        "zh-hant/works/start-sequence/index.html",
         "zh-hant/works/swimming-in-motion/index.html",
         "zh-hant/works/the-pack/index.html"
       ],
-      "uses": 21,
+      "deliverySources": [
+        "/assets/art/swimming-start-sequence.jpg",
+        "/assets/optimized-v2/art/swimming-start-sequence-1200.webp"
+      ],
+      "uses": 24,
       "altVariants": [
+        "Swimmers diving in sequence over coloured lane lines.",
         "Swimmers diving in sequence.",
         "Swimmers diving into lanes in a vertical sequence.",
         "Swimmers diving into pool lanes in a descending vertical sequence.",
@@ -1634,16 +1429,22 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 21,
+      "responsiveUses": 24,
       "lazyUses": 21,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 1909
     },
     {
-      "source": "/assets/optimized-v2/art/village-elders-laughter-1000.webp",
+      "source": "/assets/art/village-elders-laughter.jpg",
       "pages": [
         "series/ritual/index.html",
         "zh-hans/series/ritual/index.html",
         "zh-hant/series/ritual/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/village-elders-laughter-1000.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1652,14 +1453,17 @@
         "長者與孩子在鄉村場景中一同歡笑。"
       ],
       "declaredWidths": [
-        1000
+        1800
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-higher-original",
+      "sourceWidth": 1800,
+      "sourceHeight": 1168
     },
     {
-      "source": "/assets/optimized-v2/art/yellow-arc-water-study-1200.webp",
+      "source": "/assets/art/yellow-arc-water-study.jpg",
       "pages": [
         "index.html",
         "series/collision/index.html",
@@ -1667,6 +1471,9 @@
         "zh-hans/series/collision/index.html",
         "zh-hant/index.html",
         "zh-hant/series/collision/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/art/yellow-arc-water-study-1200.webp"
       ],
       "uses": 6,
       "altVariants": [
@@ -1682,14 +1489,20 @@
       ],
       "responsiveUses": 6,
       "lazyUses": 6,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1280,
+      "sourceHeight": 831
     },
     {
-      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-01-1200.webp",
+      "source": "/assets/projects/horse-riding/horse-riding-01.jpg",
       "pages": [
         "projects/horse-riding/index.html",
         "zh-hans/projects/horse-riding/index.html",
         "zh-hant/projects/horse-riding/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/horse-riding/horse-riding-01-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1702,42 +1515,29 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1200.webp",
+      "source": "/assets/projects/horse-riding/horse-riding-02.jpg",
       "pages": [
         "projects/horse-riding/index.html",
         "projects/index.html",
-        "zh-hans/projects/horse-riding/index.html",
-        "zh-hant/projects/horse-riding/index.html"
-      ],
-      "uses": 5,
-      "altVariants": [
-        "Close view of a jockey in yellow and green silks riding at speed.",
-        "Jockey in yellow and green silks riding a racehorse at speed.",
-        "穿黃綠綵衣的騎師策馬疾馳特寫。",
-        "穿黄绿彩衣的骑师策马疾驰特写。"
-      ],
-      "declaredWidths": [
-        1800
-      ],
-      "responsiveUses": 5,
-      "lazyUses": 5,
-      "eagerUses": 0
-    },
-    {
-      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1800.webp",
-      "pages": [
-        "projects/horse-riding/index.html",
         "zh-hans/projects/horse-riding/index.html",
         "zh-hans/projects/index.html",
         "zh-hant/projects/horse-riding/index.html",
         "zh-hant/projects/index.html"
       ],
-      "uses": 5,
+      "deliverySources": [
+        "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1200.webp",
+        "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1800.webp"
+      ],
+      "uses": 10,
       "altVariants": [
         "Close view of a jockey in yellow and green silks riding at speed.",
+        "Jockey in yellow and green silks riding a racehorse at speed.",
         "穿黃綠綵衣的騎師俯身策馬疾馳。",
         "穿黃綠綵衣的騎師策馬疾馳特寫。",
         "穿黄绿彩衣的骑师策马疾驰特写。"
@@ -1745,16 +1545,22 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 5,
-      "lazyUses": 2,
-      "eagerUses": 3
+      "responsiveUses": 10,
+      "lazyUses": 7,
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-03-1200.webp",
+      "source": "/assets/projects/horse-riding/horse-riding-03.jpg",
       "pages": [
         "projects/horse-riding/index.html",
         "zh-hans/projects/horse-riding/index.html",
         "zh-hant/projects/horse-riding/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/horse-riding/horse-riding-03-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1767,14 +1573,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-04-1200.webp",
+      "source": "/assets/projects/horse-riding/horse-riding-04.jpg",
       "pages": [
         "projects/horse-riding/index.html",
         "zh-hans/projects/horse-riding/index.html",
         "zh-hant/projects/horse-riding/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/horse-riding/horse-riding-04-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1787,14 +1599,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/horse-riding/horse-riding-05-1200.webp",
+      "source": "/assets/projects/horse-riding/horse-riding-05.jpg",
       "pages": [
         "projects/horse-riding/index.html",
         "zh-hans/projects/horse-riding/index.html",
         "zh-hant/projects/horse-riding/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/horse-riding/horse-riding-05-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1807,14 +1625,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-1200.webp",
+      "source": "/assets/projects/infrared-hong-kong/infrared-hong-kong-01.jpg",
       "pages": [
         "projects/infrared-hong-kong/index.html",
         "zh-hans/projects/infrared-hong-kong/index.html",
         "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1827,41 +1651,28 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1012
     },
     {
-      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1200.webp",
+      "source": "/assets/projects/infrared-hong-kong/infrared-hong-kong-02.jpg",
       "pages": [
         "projects/index.html",
-        "projects/infrared-hong-kong/index.html",
-        "zh-hans/projects/infrared-hong-kong/index.html",
-        "zh-hant/projects/infrared-hong-kong/index.html"
-      ],
-      "uses": 5,
-      "altVariants": [
-        "Hong Kong garden and temple architecture photographed in infrared colour.",
-        "Infrared view of a garden pond with red bridge and foliage.",
-        "紅外線庭園池塘，紅橋橫跨水面，四周樹葉呈淡色。",
-        "红外线庭园池塘，红桥横跨水面，四周树叶呈淡色。"
-      ],
-      "declaredWidths": [
-        1800
-      ],
-      "responsiveUses": 5,
-      "lazyUses": 5,
-      "eagerUses": 0
-    },
-    {
-      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1800.webp",
-      "pages": [
         "projects/infrared-hong-kong/index.html",
         "zh-hans/projects/index.html",
         "zh-hans/projects/infrared-hong-kong/index.html",
         "zh-hant/projects/index.html",
         "zh-hant/projects/infrared-hong-kong/index.html"
       ],
-      "uses": 5,
+      "deliverySources": [
+        "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1200.webp",
+        "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1800.webp"
+      ],
+      "uses": 10,
       "altVariants": [
+        "Hong Kong garden and temple architecture photographed in infrared colour.",
         "Infrared view of a garden pond with red bridge and foliage.",
         "紅外線庭園池塘中，紅橋橫跨水面，四周樹葉呈淡色。",
         "紅外線庭園池塘，紅橋橫跨水面，四周樹葉呈淡色。",
@@ -1871,16 +1682,22 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 5,
-      "lazyUses": 2,
-      "eagerUses": 3
+      "responsiveUses": 10,
+      "lazyUses": 7,
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1012
     },
     {
-      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1200.webp",
+      "source": "/assets/projects/infrared-hong-kong/infrared-hong-kong-03.jpg",
       "pages": [
         "projects/infrared-hong-kong/index.html",
         "zh-hans/projects/infrared-hong-kong/index.html",
         "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1893,14 +1710,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1012
     },
     {
-      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1200.webp",
+      "source": "/assets/projects/infrared-hong-kong/infrared-hong-kong-04.jpg",
       "pages": [
         "projects/infrared-hong-kong/index.html",
         "zh-hans/projects/infrared-hong-kong/index.html",
         "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1913,14 +1736,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1012
     },
     {
-      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1200.webp",
+      "source": "/assets/projects/infrared-hong-kong/infrared-hong-kong-05.jpg",
       "pages": [
         "projects/infrared-hong-kong/index.html",
         "zh-hans/projects/infrared-hong-kong/index.html",
         "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1933,14 +1762,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1012
     },
     {
-      "source": "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-1200.webp",
+      "source": "/assets/projects/infrared-hong-kong/infrared-hong-kong-06.jpg",
       "pages": [
         "projects/infrared-hong-kong/index.html",
         "zh-hans/projects/infrared-hong-kong/index.html",
         "zh-hant/projects/infrared-hong-kong/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1953,14 +1788,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1012
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-01.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1973,14 +1814,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1201
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-02.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -1993,14 +1840,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1201
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-03.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2013,14 +1866,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1201,
+      "sourceHeight": 1800
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-04.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2033,41 +1892,28 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1651
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-05.jpg",
       "pages": [
         "projects/index.html",
-        "projects/nepal-documentary/index.html",
-        "zh-hans/projects/nepal-documentary/index.html",
-        "zh-hant/projects/nepal-documentary/index.html"
-      ],
-      "uses": 5,
-      "altVariants": [
-        "Young girl in a red shawl seated beside a green-framed window.",
-        "Young girl wearing a red shawl near a window.",
-        "披紅色披肩的女孩站在窗邊。",
-        "披红色披肩的女孩站在窗边。"
-      ],
-      "declaredWidths": [
-        1800
-      ],
-      "responsiveUses": 5,
-      "lazyUses": 5,
-      "eagerUses": 0
-    },
-    {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1800.webp",
-      "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
       ],
-      "uses": 5,
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1200.webp",
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1800.webp"
+      ],
+      "uses": 10,
       "altVariants": [
+        "Young girl in a red shawl seated beside a green-framed window.",
         "Young girl wearing a red shawl near a window.",
         "披紅色披肩的女孩站在窗邊。",
         "披紅色披肩的女孩站在窗邊，望向鏡頭。",
@@ -2076,16 +1922,22 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 5,
-      "lazyUses": 2,
-      "eagerUses": 3
+      "responsiveUses": 10,
+      "lazyUses": 7,
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1201
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-06.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2098,14 +1950,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1515
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-07.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2118,14 +1976,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1197
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-08.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2138,14 +2002,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1197
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-09.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2158,14 +2028,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1197
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-10.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2178,14 +2054,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1197
     },
     {
-      "source": "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-1200.webp",
+      "source": "/assets/projects/nepal-documentary/nepal-documentary-11.jpg",
       "pages": [
         "projects/nepal-documentary/index.html",
         "zh-hans/projects/nepal-documentary/index.html",
         "zh-hant/projects/nepal-documentary/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2198,14 +2080,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1197
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-01-1200.webp",
+      "source": "/assets/projects/travel/travel-01.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-01-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2218,14 +2106,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1200,
+      "sourceHeight": 1800
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-02-1200.webp",
+      "source": "/assets/projects/travel/travel-02.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-02-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2238,14 +2132,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-03-1200.webp",
+      "source": "/assets/projects/travel/travel-03.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-03-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2258,14 +2158,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-04-1200.webp",
+      "source": "/assets/projects/travel/travel-04.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-04-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2278,14 +2184,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-05-1200.webp",
+      "source": "/assets/projects/travel/travel-05.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-05-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2298,54 +2210,53 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-06-1200.webp",
+      "source": "/assets/projects/travel/travel-06.jpg",
       "pages": [
+        "biography/index.html",
         "projects/travel/index.html",
+        "zh-hans/biography/index.html",
         "zh-hans/projects/travel/index.html",
+        "zh-hant/biography/index.html",
         "zh-hant/projects/travel/index.html"
       ],
-      "uses": 3,
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-06-1200.webp",
+        "/assets/optimized-v2/projects/travel/travel-06-1800.webp"
+      ],
+      "uses": 6,
       "altVariants": [
         "Boats on a river at dusk with karst mountains.",
+        "Fisher casting a net on a river at sunset beneath karst mountains.",
+        "夕阳下，渔民在喀斯特山峰前的河面撒网。",
+        "夕陽下，漁民在喀斯特山峰前的河面撒網。",
         "黃昏河面上的船隻，遠處是喀斯特山峰。",
         "黄昏河面上的船只，远处是喀斯特山峰。"
       ],
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 3,
+      "responsiveUses": 6,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-06-1800.webp",
-      "pages": [
-        "biography/index.html",
-        "zh-hans/biography/index.html",
-        "zh-hant/biography/index.html"
-      ],
-      "uses": 3,
-      "altVariants": [
-        "Fisher casting a net on a river at sunset beneath karst mountains.",
-        "夕阳下，渔民在喀斯特山峰前的河面撒网。",
-        "夕陽下，漁民在喀斯特山峰前的河面撒網。"
-      ],
-      "declaredWidths": [
-        1800
-      ],
-      "responsiveUses": 3,
-      "lazyUses": 0,
-      "eagerUses": 3
-    },
-    {
-      "source": "/assets/optimized-v2/projects/travel/travel-07-1200.webp",
+      "source": "/assets/projects/travel/travel-07.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-07-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2358,17 +2269,26 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-08-1200.webp",
+      "source": "/assets/projects/travel/travel-08.jpg",
       "pages": [
         "projects/index.html",
         "projects/travel/index.html",
+        "zh-hans/projects/index.html",
         "zh-hans/projects/travel/index.html",
+        "zh-hant/projects/index.html",
         "zh-hant/projects/travel/index.html"
       ],
-      "uses": 5,
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-08-1200.webp",
+        "/assets/optimized-v2/projects/travel/travel-08-1800.webp"
+      ],
+      "uses": 10,
       "altVariants": [
         "Golden rice terraces with people walking through reflective fields.",
         "Three figures walking through sunlit, water-filled rice terraces.",
@@ -2378,38 +2298,22 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 5,
-      "lazyUses": 5,
-      "eagerUses": 0
+      "responsiveUses": 10,
+      "lazyUses": 7,
+      "eagerUses": 3,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-08-1800.webp",
-      "pages": [
-        "projects/travel/index.html",
-        "zh-hans/projects/index.html",
-        "zh-hans/projects/travel/index.html",
-        "zh-hant/projects/index.html",
-        "zh-hant/projects/travel/index.html"
-      ],
-      "uses": 5,
-      "altVariants": [
-        "Golden rice terraces with people walking through reflective fields.",
-        "金色梯田倒映天光，行人穿梭田間。",
-        "金色梯田倒映天光，行人穿梭田间。"
-      ],
-      "declaredWidths": [
-        1800
-      ],
-      "responsiveUses": 5,
-      "lazyUses": 2,
-      "eagerUses": 3
-    },
-    {
-      "source": "/assets/optimized-v2/projects/travel/travel-09-1200.webp",
+      "source": "/assets/projects/travel/travel-09.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-09-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2422,14 +2326,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-10-1200.webp",
+      "source": "/assets/projects/travel/travel-10.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-10-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2442,14 +2352,20 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     },
     {
-      "source": "/assets/optimized-v2/projects/travel/travel-11-1200.webp",
+      "source": "/assets/projects/travel/travel-11.jpg",
       "pages": [
         "projects/travel/index.html",
         "zh-hans/projects/travel/index.html",
         "zh-hant/projects/travel/index.html"
+      ],
+      "deliverySources": [
+        "/assets/optimized-v2/projects/travel/travel-11-1200.webp"
       ],
       "uses": 3,
       "altVariants": [
@@ -2462,7 +2378,10 @@
       ],
       "responsiveUses": 3,
       "lazyUses": 3,
-      "eagerUses": 0
+      "eagerUses": 0,
+      "resolutionStatus": "genuine-source-adequate",
+      "sourceWidth": 1800,
+      "sourceHeight": 1200
     }
   ]
 }

@@ -1,6 +1,10 @@
 import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  PHOTO_RESOLUTION_MANIFEST,
+  photoForReference,
+} from "./responsive-image-policy.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ignored = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
@@ -32,8 +36,25 @@ for (const file of htmlFiles) {
     const tag = match[0];
     const source = attribute(tag, "src").replace(/^https:\/\/rickykwok\.com/, "");
     if (!source) continue;
-    const record = images.get(source) || { source, pages: new Set(), uses: 0, alts: new Set(), widths: new Set(), responsiveUses: 0, lazyUses: 0, eagerUses: 0 };
+    const photo = photoForReference(source);
+    const canonicalSource = photo ? `/${photo.source}` : source;
+    const record = images.get(canonicalSource) || {
+      source: canonicalSource,
+      pages: new Set(),
+      deliverySources: new Set(),
+      uses: 0,
+      alts: new Set(),
+      widths: new Set(),
+      responsiveUses: 0,
+      lazyUses: 0,
+      eagerUses: 0,
+      resolutionStatus: photo?.status || "unclassified",
+      sourceWidth: photo?.width,
+      sourceHeight: photo?.height,
+      displayDerivative: photo?.displayDerivative,
+    };
     record.pages.add(page);
+    record.deliverySources.add(source);
     record.uses += 1;
     if (attribute(tag, "alt")) record.alts.add(attribute(tag, "alt"));
     if (attribute(tag, "width")) record.widths.add(Number(attribute(tag, "width")));
@@ -42,7 +63,7 @@ for (const file of htmlFiles) {
     if (attribute(tag, "loading") === "eager") record.eagerUses += 1;
     if (!attribute(tag, "width") || !attribute(tag, "height")) missingDimensions += 1;
     if (!attribute(tag, "sizes")) missingSizes += 1;
-    images.set(source, record);
+    images.set(canonicalSource, record);
   }
 }
 
@@ -58,18 +79,28 @@ const imageInventory = {
   images: [...images.values()].sort((a, b) => a.source.localeCompare(b.source)).map((image) => ({
     source: image.source,
     pages: [...image.pages].sort(),
+    deliverySources: [...image.deliverySources].sort(),
     uses: image.uses,
     altVariants: [...image.alts].sort(),
     declaredWidths: [...image.widths].sort((a, b) => a - b),
     responsiveUses: image.responsiveUses,
     lazyUses: image.lazyUses,
-    eagerUses: image.eagerUses
+    eagerUses: image.eagerUses,
+    resolutionStatus: image.resolutionStatus,
+    sourceWidth: image.sourceWidth,
+    sourceHeight: image.sourceHeight,
+    ...(image.displayDerivative ? { displayDerivative: `/${image.displayDerivative}` } : {}),
   }))
 };
 
 const budgets = JSON.parse(await readFile(path.join(root, ".github/data/performance-budgets.json"), "utf8"));
 const htmlSizes = await Promise.all(htmlFiles.map(async (file) => ({ file: path.relative(root, file).split(path.sep).join("/"), bytes: (await stat(file)).size })));
-const responsiveImages = await walk(path.join(root, "assets/optimized-v2"), (file) => /\.(?:avif|webp|jpe?g)$/i.test(file));
+const responsiveImages = (
+  await Promise.all([
+    walk(path.join(root, "assets/optimized-v2"), (file) => /\.(?:avif|webp|jpe?g)$/i.test(file)),
+    walk(path.join(root, "assets/display-derivatives-v1"), (file) => /\.(?:avif|webp|jpe?g)$/i.test(file)),
+  ])
+).flat();
 const responsiveSizes = await Promise.all(responsiveImages.map(async (file) => ({ file: path.relative(root, file).split(path.sep).join("/"), bytes: (await stat(file)).size })));
 const measured = {
   maxHtmlBytes: Math.max(...htmlSizes.map((item) => item.bytes)),
@@ -94,4 +125,7 @@ await writeFile(path.join(root, ".github/data/image-asset-inventory.json"), `${J
 await writeFile(path.join(root, ".github/data/performance-report.json"), `${JSON.stringify(performance, null, 2)}\n`);
 
 if (failures.length) throw new Error(`Performance governance failed: ${failures.map((failure) => failure.metric).join(", ")}`);
-console.log(`Governance report: ${images.size} image sources, ${imageInventory.summary.imageUses} uses, all performance budgets passed.`);
+console.log(
+  `Governance report: ${images.size}/${PHOTO_RESOLUTION_MANIFEST.summary.canonicalSources} displayed canonical photos, `
+  + `${imageInventory.summary.imageUses} uses, all performance budgets passed.`,
+);

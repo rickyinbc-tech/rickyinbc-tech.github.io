@@ -1,0 +1,3809 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": "npm run build:images",
+  "policy": {
+    "canonicalSources": 70,
+    "originalsRetained": true,
+    "generativeEnhancementUsed": false,
+    "displayResampleMethod": {
+      "kind": "display-resampled",
+      "generative": false,
+      "algorithm": "sharp-cubic-2x",
+      "crop": false,
+      "sharpen": false,
+      "denoise": false,
+      "webpQuality": 90
+    }
+  },
+  "runtime": {
+    "sharp": "0.35.3",
+    "vips": "8.18.3",
+    "webp": "1.6.0"
+  },
+  "summary": {
+    "canonicalSources": 70,
+    "genuineHigherOriginals": 10,
+    "sourceLimitedDisplayResamples": 2,
+    "responsiveCandidates": 361
+  },
+  "photos": [
+    {
+      "source": "assets/archive/ricky-kwok-hku-light-pollution-award-2014.jpg",
+      "family": "ricky-kwok-hku-light-pollution-award-2014",
+      "kind": "archive",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 489916,
+      "sha256": "4a0a05504c66511ba675d4a1e73c43a52da725ba39b22319e8c550f0d1c7c580",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-hku-light-pollution-award-2014-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 86782,
+          "sha256": "5c41dbee3d44d573d535d8e5f5591b6ed2e61d0966459881d10015809273ade9"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-hku-light-pollution-award-2014-1800.webp",
+          "width": 1800,
+          "height": 1013,
+          "format": "webp",
+          "bytes": 100436,
+          "sha256": "6cd3cbadd9511b9488d9b3a0f45057b71c560641f436fb1f5de660c30cd39627"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-hku-light-pollution-award-2014-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "format": "webp",
+          "bytes": 110744,
+          "sha256": "0b5d51b0ddb50f8fce6082973493c925355abd1e236b91836f4ab34e6bb2080a"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-hku-light-pollution-award-2014-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "bytes": 26092,
+          "sha256": "d5a08111bc725d11c99044259c295d17c71244d7e8e3c8e0e55ef47a00416773"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-hku-light-pollution-award-2014-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 51458,
+          "sha256": "598f5778b38f19ce034a33c9e038092392c1abfe744069f13e0e30423106f94a"
+        }
+      ]
+    },
+    {
+      "source": "assets/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017.jpg",
+      "family": "ricky-kwok-ouhk-outstanding-student-deans-list-2017",
+      "kind": "archive",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 161207,
+      "sha256": "47183aa59ac5cd5f6a71f1c94c300008a80fffae217dc830893f79e234ef4d86",
+      "status": "source-limited-with-display-resample",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-1024.webp",
+          "width": 1024,
+          "height": 1024,
+          "format": "webp",
+          "bytes": 73798,
+          "sha256": "31853afe4f5404eee596d59f5faf095606323d9b31f185650cac661675107b56"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-480.webp",
+          "width": 480,
+          "height": 480,
+          "format": "webp",
+          "bytes": 21634,
+          "sha256": "34daa5bab45dd3faf4a1156d482b2cb7929a69c6b46008c60035eb2e2f529135"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-800.webp",
+          "width": 800,
+          "height": 800,
+          "format": "webp",
+          "bytes": 47252,
+          "sha256": "4ea23268a96b4e64933eb373180b7283aff962f2f35ead2b64a95c50bac9c59c"
+        }
+      ],
+      "displayDerivative": "assets/display-derivatives-v1/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-display-2048.webp"
+    },
+    {
+      "source": "assets/archive/ricky-kwok-student-award-presentation.jpg",
+      "family": "ricky-kwok-student-award-presentation",
+      "kind": "archive",
+      "width": 5184,
+      "height": 3456,
+      "bytes": 5345634,
+      "sha256": "eb504be3b0e26582dac5884f4589900bce8e2c95d8dbf20853677f7d23fe23c3",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-student-award-presentation-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 38596,
+          "sha256": "a5d0431cc0f4d93322f3e0e0c3cd7dc9870e32f0988f1577211a78cc4a8cad61"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-student-award-presentation-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 42270,
+          "sha256": "f001c9d0d31c7136ee38894183b818b5982ebaf560770c04b0c473ee82434872"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-student-award-presentation-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "format": "webp",
+          "bytes": 46496,
+          "sha256": "d61edcdf049f4e644f531a122445728f95b710d0e1c64cfa26ee98e2c031e0a5"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-student-award-presentation-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 11116,
+          "sha256": "dda213ac6d1abc52b3038fb8c38e2c78dbed433ce275dbf7bf8469fed672a500"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-student-award-presentation-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 22454,
+          "sha256": "32cb84a04e92c05b7f4e838ed39ff93431200583acdc538155521fabb266add7"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/ancestral-kitchen-light.jpg",
+      "family": "ancestral-kitchen-light",
+      "kind": "art",
+      "width": 1800,
+      "height": 1168,
+      "bytes": 414938,
+      "sha256": "f68c099a15b1593d33b27fb40e79761cb29ac6ebecfe69eb3e98d5e283738403",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/ancestral-kitchen-light-1000.webp",
+          "width": 1000,
+          "height": 649,
+          "format": "webp",
+          "bytes": 64852,
+          "sha256": "33fa76f4ef7c9985abd54c3ca6e73fe4790fef3fff97c84f7f3158f992081ac3"
+        },
+        {
+          "path": "assets/optimized-v2/art/ancestral-kitchen-light-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 81220,
+          "sha256": "8d60f12a2b5548bdd2641ebe5f3fe4887b7c3247424a863c1b8c3c61e5409f05"
+        },
+        {
+          "path": "assets/optimized-v2/art/ancestral-kitchen-light-1800.webp",
+          "width": 1800,
+          "height": 1168,
+          "format": "webp",
+          "bytes": 85384,
+          "sha256": "6c8c44db4c42c039c06686cc813db39c5bc00c79d601112eab07b959ff93c35a"
+        },
+        {
+          "path": "assets/optimized-v2/art/ancestral-kitchen-light-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 24906,
+          "sha256": "0922a52b7d6348b15dd949ff1eb4e603b3429b66cf036f76725d596b93bf0a4a"
+        },
+        {
+          "path": "assets/optimized-v2/art/ancestral-kitchen-light-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 49062,
+          "sha256": "e8e655e52d6a83a1d7f43c097cc9bd082402faa9cb1732be5c0479d3d97dc917"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/bank-of-china-light-trails.jpg",
+      "family": "bank-of-china-light-trails",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 368134,
+      "sha256": "e2789f9260bffd29d5ace9699e64b8ca29714b207bbca18ad62cdff5f1a6b32a",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-1024.avif",
+          "width": 1024,
+          "height": 664,
+          "format": "heif",
+          "bytes": 47424,
+          "sha256": "de9bae2a3df8953947ce4fb7f8b5593d9033072cdf837a1e5dffa03f26734051"
+        },
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 106582,
+          "sha256": "45e93274d10ebb8f474b8294bdc9d93c11fec20ca941e43893cf35793e8ec15e"
+        },
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-1280.avif",
+          "width": 1280,
+          "height": 831,
+          "format": "heif",
+          "bytes": 96247,
+          "sha256": "cc22ef985daded1c8517653e61d364aaa039d6770b2538cac2c9a0042d23f831"
+        },
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 120298,
+          "sha256": "be837f6b820974870ff3b5918260fa34fd42d67cdda1ae47a91c4e53ddd63dc3"
+        },
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-480.avif",
+          "width": 480,
+          "height": 312,
+          "format": "heif",
+          "bytes": 19208,
+          "sha256": "e716565fe866cd0e170728dec944227bb4f40c089872793b34eaf706f36af829"
+        },
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 26498,
+          "sha256": "08cabd885a922cd1b616e13dac6cf79f76c32f201447427e5e7715a4a8f2bbe3"
+        },
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 29405,
+          "sha256": "dbe65d866bd08bbe6d2c3cf87dbfa04594d1b460087b8a0d00e4539c1d37c798"
+        },
+        {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 58816,
+          "sha256": "f9654df8b8946fc214ec1c3431d063ae44e52e69f6a803debf2b975cff0eade4"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/blue-column-water-study.jpg",
+      "family": "blue-column-water-study",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 111624,
+      "sha256": "787c556a8b25a5ea3a0fe2b020f0d99ec4e7b5662b6d9b57d9bf9603e2d3e8d7",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/blue-column-water-study-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 11862,
+          "sha256": "c756ab221184f595f208b321aba309650408737ce40c54ba113a9615e3335d21"
+        },
+        {
+          "path": "assets/optimized-v2/art/blue-column-water-study-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 13814,
+          "sha256": "df0be92343b1fcdd54c1af5c41d4189e41d22d77c3862d784f1dc4afa83a1332"
+        },
+        {
+          "path": "assets/optimized-v2/art/blue-column-water-study-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 3446,
+          "sha256": "1d0f4e7752028670f620f610d0cd9b16fee6bd26521a56da55a5eb7454aa6508"
+        },
+        {
+          "path": "assets/optimized-v2/art/blue-column-water-study-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 6404,
+          "sha256": "71d32ab15987f0622ce94c0c9d9b1eb539c2daa4a0f87875f91c6b26ef9bf4c8"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/blue-hour-cormorant-fishermen.jpg",
+      "family": "blue-hour-cormorant-fishermen",
+      "kind": "art",
+      "width": 800,
+      "height": 519,
+      "bytes": 115633,
+      "sha256": "4159064dcae9671af02be8701ea91b7ae4a4a8903a760a8ec99cd39be88ad8d1",
+      "status": "source-limited-with-display-resample",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/blue-hour-cormorant-fishermen-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 14988,
+          "sha256": "15cf3fe20ef69aab21df1ca014b27d2c40e4b6069fa0182a8f1999a2dd1246f1"
+        },
+        {
+          "path": "assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 33158,
+          "sha256": "c5c81da365f16faf7ef6c682a60a2bd776233912b0fadc06239f5ff031aacd62"
+        }
+      ],
+      "displayDerivative": "assets/display-derivatives-v1/art/blue-hour-cormorant-fishermen-display-1600.webp"
+    },
+    {
+      "source": "assets/art/boxer-ice-impact.jpg",
+      "family": "boxer-ice-impact",
+      "kind": "art",
+      "width": 1280,
+      "height": 1908,
+      "bytes": 545481,
+      "sha256": "e8eb4c454bf5a6ba914bb054c683bf9c381160c339b31665388f44b3e4761a46",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/boxer-ice-impact-1200.webp",
+          "width": 1200,
+          "height": 1789,
+          "format": "webp",
+          "bytes": 158578,
+          "sha256": "6fa4fe2c6a41749c1a495f81c0c7ff77b85043426cac9f19fcacde35f5460753"
+        },
+        {
+          "path": "assets/optimized-v2/art/boxer-ice-impact-1280.webp",
+          "width": 1280,
+          "height": 1908,
+          "format": "webp",
+          "bytes": 183070,
+          "sha256": "6dbdbb279b26a7fbf86c42168df1733d9ec75c783d2df8bb1cc7eb8e43daebc5"
+        },
+        {
+          "path": "assets/optimized-v2/art/boxer-ice-impact-480.webp",
+          "width": 480,
+          "height": 716,
+          "format": "webp",
+          "bytes": 28288,
+          "sha256": "695d4c848d65489da721b5a11e8f575e37f8fc4d7627f2a96d16d653f0e6e89f"
+        },
+        {
+          "path": "assets/optimized-v2/art/boxer-ice-impact-800.webp",
+          "width": 800,
+          "height": 1192,
+          "format": "webp",
+          "bytes": 77260,
+          "sha256": "0cbfa9cb1c2329e96f550fb12b88020a023b62f38e15e1ea0b3e49f4bfefd57c"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/candle-impact.jpg",
+      "family": "candle-impact",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 85075,
+      "sha256": "a783768fe5e05c3006f3f800f988c202c389383eaaced46ef5c70e656dc757c4",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/candle-impact-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 17876,
+          "sha256": "4c75e1141d70850a7c053759713940e3ba4fe037a14fe3bb7de15c4596831306"
+        },
+        {
+          "path": "assets/optimized-v2/art/candle-impact-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 20184,
+          "sha256": "b99bb268b5a9bc702278165dd3faab264f66d4eb64020cce0e587bab2bcf5bd6"
+        },
+        {
+          "path": "assets/optimized-v2/art/candle-impact-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 4414,
+          "sha256": "ece241189ae88942b3f1cb04395ac5c14ba2bbfb21b1b26428e07dd9fcb0f1bf"
+        },
+        {
+          "path": "assets/optimized-v2/art/candle-impact-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 9802,
+          "sha256": "731a4ee6b485cd07af3dff671a84280d12878fb4fa0a9421f8de03b57ffe61bc"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/chalk-impact.jpg",
+      "family": "chalk-impact",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 317754,
+      "sha256": "afd64353f032d9ce5160bc84b15c5e5d33cdf40835ad472607e560be45426e2c",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/chalk-impact-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 84210,
+          "sha256": "7515ad78e749390401b658fa948bd97e86cedef77718b2a7f9c57c055cb917a3"
+        },
+        {
+          "path": "assets/optimized-v2/art/chalk-impact-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 99558,
+          "sha256": "5a87951d6d05c875c1a968342624091febe869eea5f062c5c859479fba2fe6a2"
+        },
+        {
+          "path": "assets/optimized-v2/art/chalk-impact-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 15732,
+          "sha256": "644e998b66b0d1285b6be148c720921177fb69b50b7e2ae8156eda1203a28b0a"
+        },
+        {
+          "path": "assets/optimized-v2/art/chalk-impact-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 41322,
+          "sha256": "b77eebc2d046f17a59955735ab1767535acd2bcb4fb8f4bfec9d99af1336f4bb"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/cigarette-impact.jpg",
+      "family": "cigarette-impact",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 355168,
+      "sha256": "de9905bf8e3f7aad9317bee7dd522a052f5ddb3dc96e8f42313abdc0d8ad19a8",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-1024.avif",
+          "width": 1024,
+          "height": 664,
+          "format": "heif",
+          "bytes": 43173,
+          "sha256": "ca526b52e20ba7d56e98121faa277e9e599867ca5401ddf567ee8cfb84bf99f7"
+        },
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 95876,
+          "sha256": "3745cf87fd80eb58284c2155ecd44ea7e7e81de0ca3c37710bbc094d3b0e3d20"
+        },
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-1280.avif",
+          "width": 1280,
+          "height": 831,
+          "format": "heif",
+          "bytes": 98468,
+          "sha256": "5f2030de38a7ab04d78ac89206bfa59b190cca872f23a740a4e14d4b522d6291"
+        },
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 110684,
+          "sha256": "0bf6bdc7dfa302b0ed767f15a7fcee87a11c3df2a83aef41e200e8ec55c174ae"
+        },
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-480.avif",
+          "width": 480,
+          "height": 312,
+          "format": "heif",
+          "bytes": 14755,
+          "sha256": "ab7fc40f973f704563f3360c5fbebda2ef8d1baf5acc200d1420d4ad65d0348b"
+        },
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 20332,
+          "sha256": "b34a8b7d530949e7063039f2ca57a7265627a86a5737076c5614bd08b3f1ad20"
+        },
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 24624,
+          "sha256": "44d4bf189327daea2d6dcc86e8912a6f03d9cf7a90377df1b2fa3807b5b39090"
+        },
+        {
+          "path": "assets/optimized-v2/art/cigarette-impact-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 49620,
+          "sha256": "563b73c2ecef99df49e9f4d81464ed51c7e9204f9f7977fdd35c26d46b1a0218"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/coil-field-monochrome.jpg",
+      "family": "coil-field-monochrome",
+      "kind": "art",
+      "width": 1800,
+      "height": 1169,
+      "bytes": 671379,
+      "sha256": "63e8a83a66edd427b52c32469ecbea9b385cb326a93c83421b19b45e11a233a9",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/coil-field-monochrome-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 233644,
+          "sha256": "12cc669d48c163d3e112eec9fab93eb33b518df1d7f2b97e31f7cd586620efef"
+        },
+        {
+          "path": "assets/optimized-v2/art/coil-field-monochrome-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 257580,
+          "sha256": "90010485353f3001491102f99dd1a8a2b1b09f17d07872285a66db7463c2f7ac"
+        },
+        {
+          "path": "assets/optimized-v2/art/coil-field-monochrome-1800.webp",
+          "width": 1800,
+          "height": 1169,
+          "format": "webp",
+          "bytes": 315480,
+          "sha256": "0ff31709a2242fc5fffbb89813b60979050115d1364afd57b33a0a553d6ccb58"
+        },
+        {
+          "path": "assets/optimized-v2/art/coil-field-monochrome-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 47730,
+          "sha256": "278b302eb9e13db50088f72e3927498c0cf51fee2cabe9720b4b6e16eef7b631"
+        },
+        {
+          "path": "assets/optimized-v2/art/coil-field-monochrome-800.webp",
+          "width": 800,
+          "height": 520,
+          "format": "webp",
+          "bytes": 124754,
+          "sha256": "1024c077955f765f791a1069e8c9814b799383eadc12019b7a866e3a117178e0"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/color-powder-fish.jpg",
+      "family": "color-powder-fish",
+      "kind": "art",
+      "width": 1280,
+      "height": 933,
+      "bytes": 478905,
+      "sha256": "09efc169791192397736c898f233e6e627a5a1d88787c423620ed0d1ff05d8fb",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/color-powder-fish-1200.webp",
+          "width": 1200,
+          "height": 875,
+          "format": "webp",
+          "bytes": 146286,
+          "sha256": "2e8cd1f483b673b7baf0f419e15dcad6c25725659f3ad7933c2cb4e1e1a9850b"
+        },
+        {
+          "path": "assets/optimized-v2/art/color-powder-fish-1280.webp",
+          "width": 1280,
+          "height": 933,
+          "format": "webp",
+          "bytes": 176078,
+          "sha256": "4e95ad72be3f6d74f87b0419c40094a21bf4ad6ae63d8a6c07b53f22b8b69c34"
+        },
+        {
+          "path": "assets/optimized-v2/art/color-powder-fish-480.webp",
+          "width": 480,
+          "height": 350,
+          "format": "webp",
+          "bytes": 22364,
+          "sha256": "42caf2e9e526b739306168495691a1dbc92a765267e531a1e513c7e626916c17"
+        },
+        {
+          "path": "assets/optimized-v2/art/color-powder-fish-800.webp",
+          "width": 800,
+          "height": 583,
+          "format": "webp",
+          "bytes": 65864,
+          "sha256": "be54c4d2618f14df2ee53def6d0b9a88b9c4303694015bc1863bdb7d0841e262"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/divers-motion.jpg",
+      "family": "divers-motion",
+      "kind": "art",
+      "width": 1280,
+      "height": 820,
+      "bytes": 231409,
+      "sha256": "2b0b4225e45c58801102e3be24e0e845bf35c9151a346f69afb4cff7301a455a",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/divers-motion-1200.webp",
+          "width": 1200,
+          "height": 769,
+          "format": "webp",
+          "bytes": 55678,
+          "sha256": "46ccf20f774282ed425d4a794ee40eab79c7ce3872461889718c0501d5af5ced"
+        },
+        {
+          "path": "assets/optimized-v2/art/divers-motion-1280.webp",
+          "width": 1280,
+          "height": 820,
+          "format": "webp",
+          "bytes": 61190,
+          "sha256": "6bbb0b26bffca2f62f8f22c86d2e832089a9c60aac70162d1881f3a978f20e06"
+        },
+        {
+          "path": "assets/optimized-v2/art/divers-motion-480.webp",
+          "width": 480,
+          "height": 308,
+          "format": "webp",
+          "bytes": 17480,
+          "sha256": "b0eaff0daed9b93e2f9dcbe0373c0b2413f0c0cc9c2f04e3aa074f4761883cb1"
+        },
+        {
+          "path": "assets/optimized-v2/art/divers-motion-800.webp",
+          "width": 800,
+          "height": 512,
+          "format": "webp",
+          "bytes": 33314,
+          "sha256": "28f5d0df7ea40e2b2fe5264a29efe07b836f4ac1c53b4cbc2bb1f391888d31c3"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/egg-impact.jpg",
+      "family": "egg-impact",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 378319,
+      "sha256": "e7c535d75a23fd9865f37ce2b42ca74a6f44f9f4d950b25111adaee9909b03d8",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/egg-impact-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 108166,
+          "sha256": "c7b54562bde18a9e9583ca01fd40092f0b3992b4058e05083f848d6a05ab40f1"
+        },
+        {
+          "path": "assets/optimized-v2/art/egg-impact-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 127914,
+          "sha256": "52c3794189783b8a4350f06298e680c2afe6dfecc7f83596d0bc237b4c760ff5"
+        },
+        {
+          "path": "assets/optimized-v2/art/egg-impact-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 20138,
+          "sha256": "09f7cc7ae5f386bdb8952f08863ac63df3645524e9f86e19b0248c2bf83757aa"
+        },
+        {
+          "path": "assets/optimized-v2/art/egg-impact-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 52002,
+          "sha256": "7e76eaa300ce79c78e1b5f37a1759957f7efdc940c41cc101b1599abfe701d07"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/festival-dragon.jpg",
+      "family": "festival-dragon",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 336809,
+      "sha256": "1b71e1adc0b57856070cba382d1c81095447e80efc9632e5de7802777353451e",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/festival-dragon-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 99860,
+          "sha256": "b2cc87f3474fb7be0eed7a08dc6031bac36e7d9a8f6613543e161d65b1e9f6b7"
+        },
+        {
+          "path": "assets/optimized-v2/art/festival-dragon-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 109932,
+          "sha256": "1e18ff7b86986325f7d9e8c5d695f9325b38e276558a3ff04ba04d64c5fe05d5"
+        },
+        {
+          "path": "assets/optimized-v2/art/festival-dragon-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 28606,
+          "sha256": "a3c59d0d3de5cebfc2ba8949c3bb84837a892368ad2e0a74991eb6a8ae9bc262"
+        },
+        {
+          "path": "assets/optimized-v2/art/festival-dragon-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 59434,
+          "sha256": "1510c97fca228eb47f1acd8a4c0593cfbe5b3c7e2005872a1bcc75002cd9390b"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/fire-dragon-procession.jpg",
+      "family": "fire-dragon-procession",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 267458,
+      "sha256": "4eb98a339ad6d6b96a89e51ec59678f43730e7be1fdecd79722c51aaea479d3d",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/fire-dragon-procession-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 72394,
+          "sha256": "47e2074134a5a65cea89db990389b596ba708a651706790f05fe5dac1be1aa67"
+        },
+        {
+          "path": "assets/optimized-v2/art/fire-dragon-procession-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 80822,
+          "sha256": "14011eb0177113a2c21265ae31655207ce08d480f90f975766aa6ff2b5fb6a51"
+        },
+        {
+          "path": "assets/optimized-v2/art/fire-dragon-procession-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 21104,
+          "sha256": "50fa4c27f105cb5e34d4a074e9262d313c72610e033f2910fa4ed6b5c58699ca"
+        },
+        {
+          "path": "assets/optimized-v2/art/fire-dragon-procession-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 42300,
+          "sha256": "77a83c9a839d238193a0eab47865b2e9c5da29fbfb866278643099327dcd4d41"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/fishpond-harvest.jpg",
+      "family": "fishpond-harvest",
+      "kind": "art",
+      "width": 1800,
+      "height": 1168,
+      "bytes": 589377,
+      "sha256": "3a81f38cf742915cf79b2a9db91026e8a9ba7146142bd601e614fbd853493190",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/fishpond-harvest-1000.webp",
+          "width": 1000,
+          "height": 649,
+          "format": "webp",
+          "bytes": 117870,
+          "sha256": "7ff7d58dd305ef010a8363a727128ee6062b23692ba5c3f35c93b4b35ee91c86"
+        },
+        {
+          "path": "assets/optimized-v2/art/fishpond-harvest-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 149416,
+          "sha256": "eb2d7d5ff08d33f6ae11320a7fc5f1dd7f78612697c27698cf495584cb769969"
+        },
+        {
+          "path": "assets/optimized-v2/art/fishpond-harvest-1800.webp",
+          "width": 1800,
+          "height": 1168,
+          "format": "webp",
+          "bytes": 177624,
+          "sha256": "1ef624feb397275dfc96361906555e02d3d5d6c89723ecd0cf3f7451d18b1253"
+        },
+        {
+          "path": "assets/optimized-v2/art/fishpond-harvest-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 37570,
+          "sha256": "5bd4483198b29efc72772036685af28f464139b0f95241fa9db348dee6f5acc8"
+        },
+        {
+          "path": "assets/optimized-v2/art/fishpond-harvest-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 85716,
+          "sha256": "a849e1cb2c5a9e9ec610b8ceff0c43b057f37d49d562f8be1c051a69c5ef3ac3"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/flower-impact.jpg",
+      "family": "flower-impact",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 194526,
+      "sha256": "e34f69b87ccf12e5a1540c3ea1586786fcc3e4428a70756d33c4a0138802cb51",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/flower-impact-1024.avif",
+          "width": 1024,
+          "height": 664,
+          "format": "heif",
+          "bytes": 22771,
+          "sha256": "deb4499bb1eb14758a3da50b578da67c487aadc53cea603e9997dd94bf57e7bf"
+        },
+        {
+          "path": "assets/optimized-v2/art/flower-impact-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 44930,
+          "sha256": "7c47e28c6ad5d99b02ec601cba91a2148d3e72d616f00d6342f99a887da4cc8d"
+        },
+        {
+          "path": "assets/optimized-v2/art/flower-impact-1280.avif",
+          "width": 1280,
+          "height": 831,
+          "format": "heif",
+          "bytes": 46548,
+          "sha256": "cb8aac835a8127076ed2bdc8b8afd4892123f6a4480fdb0e1d753b79c784f32a"
+        },
+        {
+          "path": "assets/optimized-v2/art/flower-impact-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 51294,
+          "sha256": "db2d1b0ae8cc08f8917356c59908ca59035951b43f7af5483a2c7cd7ceea69cd"
+        },
+        {
+          "path": "assets/optimized-v2/art/flower-impact-480.avif",
+          "width": 480,
+          "height": 312,
+          "format": "heif",
+          "bytes": 9496,
+          "sha256": "6768fdf1a64904cbf02e8faa6a18a50c4a30a5774376b0f39884ce5b45abc485"
+        },
+        {
+          "path": "assets/optimized-v2/art/flower-impact-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 11016,
+          "sha256": "a4aebf3199843763c8b78849ad29552a87638d2841a498cdd96a9a5b1192e1b9"
+        },
+        {
+          "path": "assets/optimized-v2/art/flower-impact-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 14288,
+          "sha256": "8d39d266d56a450fdcaf556c751daa87c637b6ba09ad088035710c7ffa944377"
+        },
+        {
+          "path": "assets/optimized-v2/art/flower-impact-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 24404,
+          "sha256": "13cd82a9bcf26cba988d0d58aa13bfe225176dcd6079d587bc19a957af212576"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/green-orb-water-study.jpg",
+      "family": "green-orb-water-study",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 79750,
+      "sha256": "661bdd9d5b6d717182ef7b355db8cc8a021363ff4c1cc07b67a70b50ad8cebe1",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-1024.avif",
+          "width": 1024,
+          "height": 664,
+          "format": "heif",
+          "bytes": 4531,
+          "sha256": "d0c1777c09c62bb5bc74e7a0d1d78e3f3cf6502ee5f4dc0e13fb1af6d2e50b91"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 9768,
+          "sha256": "567464168c4db045ef74de45570304910623358713cd4372a2cde891317b78e1"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-1280.avif",
+          "width": 1280,
+          "height": 831,
+          "format": "heif",
+          "bytes": 9540,
+          "sha256": "6e4e51fc48fbe019d5f16fce3dcd832be462627d9aea51ec67b491634ccb4fb8"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 11050,
+          "sha256": "394440e3defa65b84895a46a9dd366bffbf775d72c8bfe49fbb3d75434b4e465"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-480.avif",
+          "width": 480,
+          "height": 312,
+          "format": "heif",
+          "bytes": 2096,
+          "sha256": "796463878f1c713148274e416cf7cce582a90ecb259275dfa10f9ee3ba5cc59d"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 3110,
+          "sha256": "12ac907259383af2ce8515c6f7f3b2a97278c847d2495db847d16607a3169541"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 2949,
+          "sha256": "c1b7e6e380b16869d01077997775baf4ca6aeb08fa16d180c1e3eb0126792097"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 5664,
+          "sha256": "40759ee2a5c086561ac75c658a839e926ebb48d43c6f10f4e1c44e9589b1bf60"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/hearth-ritual.jpg",
+      "family": "hearth-ritual",
+      "kind": "art",
+      "width": 1800,
+      "height": 1168,
+      "bytes": 471107,
+      "sha256": "41072c76e1f1030c33c3a32c777e3948113f9cba74729236fade1ba2c6922301",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-1000.avif",
+          "width": 1000,
+          "height": 649,
+          "format": "heif",
+          "bytes": 47260,
+          "sha256": "95b51e960e0e874f566e4e91b770888389b886b0fff9f36478b11d277223d4f4"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-1000.webp",
+          "width": 1000,
+          "height": 649,
+          "format": "webp",
+          "bytes": 82288,
+          "sha256": "8f23741e17adea74d32afaa85307b84ce6a9ccecc95474c0feba6b5460eab07e"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-1200.avif",
+          "width": 1200,
+          "height": 779,
+          "format": "heif",
+          "bytes": 59129,
+          "sha256": "10b7b37b59a76852dafa67e1c2c5b216363b4dacb39850dac5053f5bb80d95df"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 101196,
+          "sha256": "391240deca5e623518807da72a026d264bea92be26524fb80221064c70ee7e39"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-1800.avif",
+          "width": 1800,
+          "height": 1168,
+          "format": "heif",
+          "bytes": 102098,
+          "sha256": "a6b23e60ee2f6e9700d39fa5ee4bcdc37d8d6dc66ff8ec9e4b06c603da8c449c"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-1800.webp",
+          "width": 1800,
+          "height": 1168,
+          "format": "webp",
+          "bytes": 113070,
+          "sha256": "b0974667908b938a3b5d6596f927b26ab7bcd1d2f17970b6f1d35e44c620d275"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-480.avif",
+          "width": 480,
+          "height": 311,
+          "format": "heif",
+          "bytes": 15563,
+          "sha256": "998c5aa6c9b81748b147fa168a6c92c66eea5fff91cb12061906240378841ccd"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 29514,
+          "sha256": "ace07ff32317ab454bd7545e2b0c87e30cdaf9645fa6b8fc778afdf115f61a43"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 29841,
+          "sha256": "018c7d9ff87cd956ff39389e0ba7936cb6138017aaa7c4cc65841f2ffdedccf1"
+        },
+        {
+          "path": "assets/optimized-v2/art/hearth-ritual-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 59974,
+          "sha256": "1e05860240ffd24e23edb6ee9f25907e38e79e8ced8b2434cb53d3a3f2d794ae"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/hong-kong-cranes-monochrome.jpg",
+      "family": "hong-kong-cranes-monochrome",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 309385,
+      "sha256": "92e694e97c09cc610f12c53b10ed5c374b890a0abff3a5bc4439be4a7c192c18",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/hong-kong-cranes-monochrome-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 97042,
+          "sha256": "b3e5c2fcac2eada403789ee23f04dec4f8a6210a05d46091fb833a58c36083f1"
+        },
+        {
+          "path": "assets/optimized-v2/art/hong-kong-cranes-monochrome-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 110478,
+          "sha256": "c442b8c4bfffff35be66d253b9f56da7778080b3051ff2bef80bf217ea80c9ef"
+        },
+        {
+          "path": "assets/optimized-v2/art/hong-kong-cranes-monochrome-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 20812,
+          "sha256": "c64c1437c94bb297d26f8477d917ff0d046281953822bab00e19024c57a57742"
+        },
+        {
+          "path": "assets/optimized-v2/art/hong-kong-cranes-monochrome-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 51418,
+          "sha256": "ef1f7c232d968ab4b61926811e752dd002d83e025b6e37ed7e9f15b63e32b9f3"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/hong-kong-fisheye-street.jpg",
+      "family": "hong-kong-fisheye-street",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 421746,
+      "sha256": "40d4a10cbbbe46327e3d45cfc0ae093aa084d3969626dea89283e710895b2288",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/hong-kong-fisheye-street-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 132444,
+          "sha256": "ded3a07e343783c05ea27170accc5c47de9f9ea2181c26b7ae72bc8ca22ea3dc"
+        },
+        {
+          "path": "assets/optimized-v2/art/hong-kong-fisheye-street-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 152090,
+          "sha256": "325a8048230343ead0b7fa2074fa06324b2cb42b8de5e331549dbe4b7c5f2246"
+        },
+        {
+          "path": "assets/optimized-v2/art/hong-kong-fisheye-street-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 28000,
+          "sha256": "405890d4b7132d4afb1c6e8ba4b753ac0cb9a90d228dc20789a4eb2696205e6d"
+        },
+        {
+          "path": "assets/optimized-v2/art/hong-kong-fisheye-street-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 68490,
+          "sha256": "55284507003d8119f8b7381f03bd9f3ed23240cf434882bad9c7bfdd5bb634eb"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/horse-racing-pack.jpg",
+      "family": "horse-racing-pack",
+      "kind": "art",
+      "width": 1800,
+      "height": 1169,
+      "bytes": 913477,
+      "sha256": "60148398cc7421675cae3340ce1bdd6cdaf49ad71e5490fa861af383eae0aa42",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/horse-racing-pack-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 247282,
+          "sha256": "1ff028f7ca2c8daee7353e3100f9cac58de514571343ed0d34af19e1418466a5"
+        },
+        {
+          "path": "assets/optimized-v2/art/horse-racing-pack-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 280696,
+          "sha256": "a725a8ab469f940063930375f4cfff63cec686e45022cae1cf9e5ff70d20d8c1"
+        },
+        {
+          "path": "assets/optimized-v2/art/horse-racing-pack-1800.webp",
+          "width": 1800,
+          "height": 1169,
+          "format": "webp",
+          "bytes": 366596,
+          "sha256": "457fb3be3f6805e69eb97ea6187e24cd693ec26647dfa6f83f76aa0aaa86c9dc"
+        },
+        {
+          "path": "assets/optimized-v2/art/horse-racing-pack-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 45020,
+          "sha256": "2fb0bb1f5544481ebc33d7962e60765acb264f5e893d664d037cc960af85d762"
+        },
+        {
+          "path": "assets/optimized-v2/art/horse-racing-pack-800.webp",
+          "width": 800,
+          "height": 520,
+          "format": "webp",
+          "bytes": 115068,
+          "sha256": "d4bc9f21322f8be326fb60bb1a2df73c84a083460cb43d98671bd635126fa8bd"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/li-river-mist.jpg",
+      "family": "li-river-mist",
+      "kind": "art",
+      "width": 1280,
+      "height": 583,
+      "bytes": 108204,
+      "sha256": "c25b076ef8d9fbe43f0e18f2d8de9b2457b6f5332cc8c317503f0073b5b58946",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/li-river-mist-1200.webp",
+          "width": 1200,
+          "height": 547,
+          "format": "webp",
+          "bytes": 21220,
+          "sha256": "e5d813e3232344cd46de309486e3f4a7c5b69bedf4207e0ea19ea126be8fc767"
+        },
+        {
+          "path": "assets/optimized-v2/art/li-river-mist-1280.webp",
+          "width": 1280,
+          "height": 583,
+          "format": "webp",
+          "bytes": 24304,
+          "sha256": "00ca7888a40c1fd8690d25fa0fe05af86e3928dc9e2093e2d96103a7a7b9f398"
+        },
+        {
+          "path": "assets/optimized-v2/art/li-river-mist-480.webp",
+          "width": 480,
+          "height": 219,
+          "format": "webp",
+          "bytes": 5262,
+          "sha256": "60a5cc7159603f80984f291ce7361291124fd4d36f9625e71ce7c3f41806e845"
+        },
+        {
+          "path": "assets/optimized-v2/art/li-river-mist-800.webp",
+          "width": 800,
+          "height": 364,
+          "format": "webp",
+          "bytes": 11432,
+          "sha256": "a42d6db56c3cad4cced3464b6d39cf305ce59bab8dae0117ef76bc4c0a81e815"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/light-encroached-homes.jpg",
+      "family": "light-encroached-homes",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 509265,
+      "sha256": "07d2e6978e642ba9e1a167dd62eea032ff2b2f9a57c927e7f11d2a031f41ae47",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-1024.avif",
+          "width": 1024,
+          "height": 664,
+          "format": "heif",
+          "bytes": 79553,
+          "sha256": "e65557b094d0f7b36c0cafecaaa5efe0e531ffe441a0de4b1e3e7d2a9b407658"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 168944,
+          "sha256": "5fc181003c1be7a3947a54ea1656023847417663af71a43c5fb4b4905ca0166d"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-1280.avif",
+          "width": 1280,
+          "height": 831,
+          "format": "heif",
+          "bytes": 164860,
+          "sha256": "af5729be68ca8001b63c688dd13d7783b48d969f569872fe9be405470830a71b"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 192124,
+          "sha256": "6d62ddcf5f06f8395f059b16cab23f50f69e852c8150d8b6ac3a098b741bea0a"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-480.avif",
+          "width": 480,
+          "height": 312,
+          "format": "heif",
+          "bytes": 23057,
+          "sha256": "8498298cce2953ed1455f508397086e56ba1bf20b8c013e8ff40c884d72a4e7d"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 39470,
+          "sha256": "af05208a08086be6057bb63703c8cc834e9496e6c02a35adb91b955a0d88c2c6"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 37353,
+          "sha256": "f4c4214e62d54a84f7eb7770f16d373df809b815d1ec001624c5d0d86bda06b5"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-800.avif",
+          "width": 800,
+          "height": 520,
+          "format": "heif",
+          "bytes": 51773,
+          "sha256": "48020707383de20e44da3412797704176c983c1616b34f19b74447915009d897"
+        },
+        {
+          "path": "assets/optimized-v2/art/light-encroached-homes-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 91222,
+          "sha256": "11a30c040cfcff1f4ea39c293a7e8cca0ce8f045e00eca09a9e84970cf6f3d4f"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/magenta-collision-water-study.jpg",
+      "family": "magenta-collision-water-study",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 113679,
+      "sha256": "725453d4d10e513fe05f2fc2e2fefe6d76eec2c7ce8830ee9dfd5a284f6f1eb8",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/magenta-collision-water-study-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 18232,
+          "sha256": "4f40afb7574f619ffdf3c4be5aca719f20772859305ffb638993bf7df24b8bd3"
+        },
+        {
+          "path": "assets/optimized-v2/art/magenta-collision-water-study-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 20222,
+          "sha256": "0de5eb4928bce27bdc7af44b9246b6591105dbe1ed6cfc8464a076bd765b3903"
+        },
+        {
+          "path": "assets/optimized-v2/art/magenta-collision-water-study-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 6052,
+          "sha256": "a5e11b15a755bc4186227094d0012a8313b9b0aeb68272d48b714d9cbb602405"
+        },
+        {
+          "path": "assets/optimized-v2/art/magenta-collision-water-study-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 11114,
+          "sha256": "f24830673ca53f7dee2c7ed14bffa62350749a0d30ccf2e665ca1c8627f39ab5"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/night-fishermen-li-river.jpg",
+      "family": "night-fishermen-li-river",
+      "kind": "art",
+      "width": 1800,
+      "height": 1168,
+      "bytes": 438828,
+      "sha256": "f5bb699755a39d379eb5330933533d31e2d542db7857f72e9d4ae05f24bbb97d",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-1000.avif",
+          "width": 1000,
+          "height": 649,
+          "format": "heif",
+          "bytes": 42624,
+          "sha256": "9af5439bb17db665ef6c21d0f46c011fa4fcfc350b6f4355e95789cefb64c246"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-1000.webp",
+          "width": 1000,
+          "height": 649,
+          "format": "webp",
+          "bytes": 73860,
+          "sha256": "c4f7a632876519c4d52ce6ecb23ef554d3a6453fdd1c4688fa300895deed841e"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-1200.avif",
+          "width": 1200,
+          "height": 779,
+          "format": "heif",
+          "bytes": 53743,
+          "sha256": "cd8db4fbd4c2e8a52ff4ab3209fa09745e6d610b18b4f945d6efeb13ac7648cb"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 91084,
+          "sha256": "31cd83ebb2793583047c7352fd0e4c7a22667afb9f67c7f725a3f51f2512f6aa"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-1800.avif",
+          "width": 1800,
+          "height": 1168,
+          "format": "heif",
+          "bytes": 90821,
+          "sha256": "2cd87118523175c30501a2453b358c31c8ebec321888ed4ce822a4d593cb308d"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-1800.webp",
+          "width": 1800,
+          "height": 1168,
+          "format": "webp",
+          "bytes": 97284,
+          "sha256": "a111d47a814d68b172a8d55dcbf1e61cdfbc77a54534c4e45dde5bb1c80b7f90"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-480.avif",
+          "width": 480,
+          "height": 311,
+          "format": "heif",
+          "bytes": 15021,
+          "sha256": "e5c3ec7c4e2db00d91ea21fc8eda2a62da5cbd96bd493ba4d2f8f1edd8194e83"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 27624,
+          "sha256": "dca9146e168b01d82e6832e1eb0089d2675d2f12cf230de76d677a5cb62977ec"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 27548,
+          "sha256": "014282c69f39262504827d798f6757b60c1fc212d65992fc9537ca2e661fe4f5"
+        },
+        {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 55842,
+          "sha256": "088145cf7ddb75f6a9558e73ee60c323cb4d0397982dff44f6ecaa86b58d304e"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/orange-suspension-water-study.jpg",
+      "family": "orange-suspension-water-study",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 51665,
+      "sha256": "2bb566a6df69995e8bd9262e63ad5ce01001967a65c277fc4bd6b8ec7152951f",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/orange-suspension-water-study-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 6666,
+          "sha256": "9ba77f839f997cb0376666450b8878914289c10f9efade858f6b04830d7fc332"
+        },
+        {
+          "path": "assets/optimized-v2/art/orange-suspension-water-study-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 7454,
+          "sha256": "1527ef738bf19efbb4ec874fa49b424353ac779b62e23526cc5e02c65f02c4ec"
+        },
+        {
+          "path": "assets/optimized-v2/art/orange-suspension-water-study-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 2144,
+          "sha256": "2a7969150a6fe97b1cc9dcdd75a5bda54e58a6070201ce9fa73f0e7e183d61da"
+        },
+        {
+          "path": "assets/optimized-v2/art/orange-suspension-water-study-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 4050,
+          "sha256": "0f455194e0b60b66ad3270fb6789faf90ccc9f7c123a3787ad942427f9762ec4"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/rice-terraces-golden-hour.jpg",
+      "family": "rice-terraces-golden-hour",
+      "kind": "art",
+      "width": 1800,
+      "height": 1168,
+      "bytes": 753045,
+      "sha256": "0f37b21a949e52858748c097ead01ff225c346e4fd0aa0887310161011fba356",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-1000.avif",
+          "width": 1000,
+          "height": 649,
+          "format": "heif",
+          "bytes": 76916,
+          "sha256": "3ca4356ee0f382ab042200b48df18e4040b5b18ddadb2b689356e8c43fa90e61"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-1000.webp",
+          "width": 1000,
+          "height": 649,
+          "format": "webp",
+          "bytes": 161128,
+          "sha256": "c05ef74cb8313baba7d0f826617db3f07fbbb756dc483a410508a5e03ca5c22d"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-1200.avif",
+          "width": 1200,
+          "height": 779,
+          "format": "heif",
+          "bytes": 101051,
+          "sha256": "4e7b6885a2de47e0a543e26977f605d5f4a0764a8dd448cd3885d1681dd7d674"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 202422,
+          "sha256": "d991f93c7f7e6dab030b27c998d43d3b2e4b603f95b8e2fe242b4d5c90ded931"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-1800.avif",
+          "width": 1800,
+          "height": 1168,
+          "format": "heif",
+          "bytes": 192018,
+          "sha256": "547591bde03509bb5c46b8605c8e414015c1b7008f1a1d98e9f94b8c64a37b63"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-1800.webp",
+          "width": 1800,
+          "height": 1168,
+          "format": "webp",
+          "bytes": 239800,
+          "sha256": "ddf66b25450898ce1337c3297c4197c9d387106a8d5f291d9b848e408d15a0d5"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-480.avif",
+          "width": 480,
+          "height": 311,
+          "format": "heif",
+          "bytes": 22364,
+          "sha256": "a89e938044a9c17ff3f9d6aa8740c466c851bde71ec740c33458b692c6424cf3"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 48124,
+          "sha256": "cb8dc076309916e24b0df2afb77d5ffffc87b849ba3eb672e2790fe6d6ddf523"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 45892,
+          "sha256": "5ad9c40049019b51eb4b1aff6a133add5aa57f5374ebce057515b6e3c079df2c"
+        },
+        {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 113874,
+          "sha256": "0e32e35b1c2182c3bd5590509e6ab2fff7bd6943f3e9df31452ea0d383b19c3a"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/sack-race-village.jpg",
+      "family": "sack-race-village",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 454128,
+      "sha256": "d4bdc68c8afde8f1589f94f0cdbb4165149691f6980564c6e6ddd220c7031858",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/sack-race-village-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 145510,
+          "sha256": "d97dd8bcdc636a9f4b237b09fa03e36d994c22b4aff21bcc3e2f714524a58725"
+        },
+        {
+          "path": "assets/optimized-v2/art/sack-race-village-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 162786,
+          "sha256": "4f6024bc05eb371b36a5c77b53f8877e307db202669f208379b5178463496988"
+        },
+        {
+          "path": "assets/optimized-v2/art/sack-race-village-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 31776,
+          "sha256": "8c4c1fe83a6959d13a60629cceeaf2eb0d7f93a095cf5d14a072c00fca158da2"
+        },
+        {
+          "path": "assets/optimized-v2/art/sack-race-village-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 77264,
+          "sha256": "25bfe877d27e122803ea309154834adc8a88187666239604bf2ab55d60fb0c46"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/sea-of-clouds.jpg",
+      "family": "sea-of-clouds",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 114981,
+      "sha256": "a49e1979fb506227c73575d388b4adc127f609e9eef230112f2218bfdc53bc52",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/sea-of-clouds-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 21948,
+          "sha256": "a0bb96b0497746dfbc8e4dcd2841ee4d7c9d42704844970a33f72f6218b773a6"
+        },
+        {
+          "path": "assets/optimized-v2/art/sea-of-clouds-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 24458,
+          "sha256": "2e30ac89b5fc6960304ee5c8dc408ecc50ddb958f28c01f4a62eba4327650d32"
+        },
+        {
+          "path": "assets/optimized-v2/art/sea-of-clouds-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 6794,
+          "sha256": "3800e5c128882a544ce2a6d38363ff734185b93019efdcf308a9012f350fb501"
+        },
+        {
+          "path": "assets/optimized-v2/art/sea-of-clouds-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 13016,
+          "sha256": "353f6ed5dbe4842eba6935197c23f7028d7b80e01382360592a34681b711b3ce"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/street-art-procession.jpg",
+      "family": "street-art-procession",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 256207,
+      "sha256": "26b02475b5b8f13e4a2e43c3a68707f563503b912fd9af40a4067faa3a82b9cf",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/street-art-procession-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 62142,
+          "sha256": "146c2d13ab9befaf84c8af8ebb79638d172f7002bc345e2434701962c1d759eb"
+        },
+        {
+          "path": "assets/optimized-v2/art/street-art-procession-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 74820,
+          "sha256": "4b8a68f8a574b658eaffc046ba89bfb513efb9289e2291a8af0b73dc892474ad"
+        },
+        {
+          "path": "assets/optimized-v2/art/street-art-procession-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 13244,
+          "sha256": "397e53f2259d8bdb437c1cf5e8ce95ca49bacaf16f51bc634d64526dc5e944b6"
+        },
+        {
+          "path": "assets/optimized-v2/art/street-art-procession-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 30200,
+          "sha256": "bf0c3492ac2a1a1ca8450764b13cf0e66878e383d1062657308ecb4cac42761f"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/swimming-motion.jpg",
+      "family": "swimming-motion",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 352223,
+      "sha256": "997d640c8e8db1c015e60328cf24741b1c0d5c3e801b0b54d2350e1390c15261",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-1024.avif",
+          "width": 1024,
+          "height": 664,
+          "format": "heif",
+          "bytes": 27320,
+          "sha256": "cac0cfd04765a4bdae4d57890a27ea187959e67e40c586a2ff9b08ea4ed4cee6"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 78410,
+          "sha256": "c0dab9068740972a1c592bc890c62df2af582672bcc33735ef0e76b90823846a"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-1280.avif",
+          "width": 1280,
+          "height": 831,
+          "format": "heif",
+          "bytes": 80518,
+          "sha256": "001aaac0f4947559d441214d76b96b4f80f9c73f4a78a9ba339f236ee83b70ea"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 94508,
+          "sha256": "cd1cd926e9f77bf1c90101ad1a510853ba7d8cdd5a723e58d02ac02e4f762cae"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-480.avif",
+          "width": 480,
+          "height": 312,
+          "format": "heif",
+          "bytes": 10702,
+          "sha256": "acde83a2a49428817cf2d59b7b2586e62b1a4d24a061aa79449f7a8a54a6b82b"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 17294,
+          "sha256": "be849a4f5b38753bd6543607409d9464e0774e9d67cf516d56fae2fbc17fceae"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-720.avif",
+          "width": 720,
+          "height": 467,
+          "format": "heif",
+          "bytes": 16031,
+          "sha256": "e0edf23b827916e8fd5690e4e40cc3a89d344767ce19044e8886cd93bc0930e3"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-motion-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 40206,
+          "sha256": "dfcffd8438bc7b129cec694665ea0139d69f27ac2d53cec8f4efaa86aaed6d34"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/swimming-start-sequence.jpg",
+      "family": "swimming-start-sequence",
+      "kind": "art",
+      "width": 1280,
+      "height": 1909,
+      "bytes": 875203,
+      "sha256": "f340e9c1e6bcb397a197c9fdb097fdac4cf0a2819f37c32e32e38b5426651570",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-1024.avif",
+          "width": 1024,
+          "height": 1527,
+          "format": "heif",
+          "bytes": 97609,
+          "sha256": "33c8a8d7d0cf361e9aa5da0e4efc479d207019c0e8cb907a6958d8e475b9fa83"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-1200.webp",
+          "width": 1200,
+          "height": 1790,
+          "format": "webp",
+          "bytes": 238128,
+          "sha256": "d6204df1b5c5697b6616cfd1c2e3086827721ccea429f22477a1fb839d6531b9"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-1280.avif",
+          "width": 1280,
+          "height": 1909,
+          "format": "heif",
+          "bytes": 253848,
+          "sha256": "bbce280e0c896082eec7ddc338263cf7fbb0e89fc7d125b9bd1839057fa920dd"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-1280.webp",
+          "width": 1280,
+          "height": 1909,
+          "format": "webp",
+          "bytes": 272058,
+          "sha256": "b18168646a7e28a84f8d1b94687735cd147fc4f82c1f3e7604c769ca2554d830"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-480.avif",
+          "width": 480,
+          "height": 716,
+          "format": "heif",
+          "bytes": 39031,
+          "sha256": "318481c114bde17c6d05c1156936601a3f37272cf47519a35b55a87f816a044d"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-480.webp",
+          "width": 480,
+          "height": 716,
+          "format": "webp",
+          "bytes": 55694,
+          "sha256": "38c62523e60267040b53e5d6b1a91616f333c874e4248b5316ee0fc3737d93cb"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-720.avif",
+          "width": 720,
+          "height": 1073,
+          "format": "heif",
+          "bytes": 59888,
+          "sha256": "308ea6de274dae10a7ccf315981a9b870978727b81ca226d6e6c6a31e1f81936"
+        },
+        {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-800.webp",
+          "width": 800,
+          "height": 1193,
+          "format": "webp",
+          "bytes": 126710,
+          "sha256": "ccadc8f8c2de5c058154ffdc07839b5cfefd3caad3fef013b8f3517a3835b333"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/village-elders-laughter.jpg",
+      "family": "village-elders-laughter",
+      "kind": "art",
+      "width": 1800,
+      "height": 1168,
+      "bytes": 667295,
+      "sha256": "4c7fa084413a241fa329ea0555a05cf1fcdae6bda4a886ca7b9f3b6e1d1e42c8",
+      "status": "genuine-higher-original",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/village-elders-laughter-1000.webp",
+          "width": 1000,
+          "height": 649,
+          "format": "webp",
+          "bytes": 135250,
+          "sha256": "3e63787ac1427ed7923f5072c00c213ac3e7d8223d684a5f2bdfa1b79f3471c1"
+        },
+        {
+          "path": "assets/optimized-v2/art/village-elders-laughter-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 167448,
+          "sha256": "5a9a356b712b1e4ab25581a55ce705d73163efd547a3b3747f509426910dc798"
+        },
+        {
+          "path": "assets/optimized-v2/art/village-elders-laughter-1800.webp",
+          "width": 1800,
+          "height": 1168,
+          "format": "webp",
+          "bytes": 185264,
+          "sha256": "3b62a076c9b64e40002da524e6b8f1d4e3e2355523342cb2d08b9f8e41faebd9"
+        },
+        {
+          "path": "assets/optimized-v2/art/village-elders-laughter-480.webp",
+          "width": 480,
+          "height": 311,
+          "format": "webp",
+          "bytes": 49456,
+          "sha256": "f5aa5bd66e41b2eea2243e094d6113eef7579eef985d69031bfac52acfb37ca4"
+        },
+        {
+          "path": "assets/optimized-v2/art/village-elders-laughter-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 102448,
+          "sha256": "42a170e71a526a6b2c8115adc4a8e4091f2eb88458c0da775e43e347850b0abb"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/yellow-arc-water-study.jpg",
+      "family": "yellow-arc-water-study",
+      "kind": "art",
+      "width": 1280,
+      "height": 831,
+      "bytes": 77737,
+      "sha256": "bb437a4120e834efb6bc9dbe533331b7293d71a9cd41f93c947578953eb4a9b3",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/art/yellow-arc-water-study-1200.webp",
+          "width": 1200,
+          "height": 779,
+          "format": "webp",
+          "bytes": 14768,
+          "sha256": "06397ef6ad01a96a6fd917ad3130ba35411a86a37806f271f286e2cc928999a9"
+        },
+        {
+          "path": "assets/optimized-v2/art/yellow-arc-water-study-1280.webp",
+          "width": 1280,
+          "height": 831,
+          "format": "webp",
+          "bytes": 16372,
+          "sha256": "ee37f9c87b8eb863a2f87192f1ea91db07d0077bab7f1fc17a68a745f35166f7"
+        },
+        {
+          "path": "assets/optimized-v2/art/yellow-arc-water-study-480.webp",
+          "width": 480,
+          "height": 312,
+          "format": "webp",
+          "bytes": 4892,
+          "sha256": "4e18479b4a617e1272a994dd93f5d48397180250b8e4eeb5025471877e6ce123"
+        },
+        {
+          "path": "assets/optimized-v2/art/yellow-arc-water-study-800.webp",
+          "width": 800,
+          "height": 519,
+          "format": "webp",
+          "bytes": 9066,
+          "sha256": "9edaf3bc23a01b00c51d57168015868c1c87a3d4b7e4c66023fdc85a7c714b5c"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/horse-riding/horse-riding-01.jpg",
+      "family": "horse-riding-01",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 734753,
+      "sha256": "bd8da026ca2c41480e4497d75ae19f42beaae8142db14f9f4ce2a3b24fd25bed",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-01-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 77890,
+          "sha256": "b9b147ba5a66f8b543dc0764b0b27fa3e18c010861625cdd415c9e1f62144dd7"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-01-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 118176,
+          "sha256": "f592aa9a60909c5eaa74adfc307cb733e55dac3b544a5c226aa7fb3df40b92e2"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-01-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 141132,
+          "sha256": "fd04d634828a4bf412bd429a51cbc1c00a72704f930982fe3e8a77632887554c"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-01-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 19090,
+          "sha256": "31cafa92a94d888acea094bf8b6b8c0314946973d97305645a63221508ea3474"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-01-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 42610,
+          "sha256": "b68c7f73a9a7c1d1adeea9be6e176d547dcf16044ed0f252fde25a49dd39885a"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/horse-riding/horse-riding-02.jpg",
+      "family": "horse-riding-02",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 553419,
+      "sha256": "0d5d5ee7bce9765fcc6302c2126e199f2ef4d8e2e66b344a3b1fffaa43765c19",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-02-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 68732,
+          "sha256": "e49acaa68954c2f7dffd4387b351270ea80dc371a151617d4e314975d4354c8c"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-02-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 100604,
+          "sha256": "acbd309e7045db534259b12530e4fcdc5112fe69f98b52cfd9460fc0af7c3d2b"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-02-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 118892,
+          "sha256": "22fdab6fd922f28a73061608b150983a78b818d0a83a9dd93de1d77165977868"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-02-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 19226,
+          "sha256": "1e8870e2b63f1b97e9dc3e2e13f813b3c52c6d5a060c2bce05c16ee1e736045e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-02-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 39442,
+          "sha256": "87934de193a9ad8aec89c05cdf1e3a67b858d7ea8ec844cc208190c9aba644b2"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/horse-riding/horse-riding-03.jpg",
+      "family": "horse-riding-03",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 635956,
+      "sha256": "91aa4f88c4cc11076ae405d11e80d2548015a80a0f242e5d6e6fc76a5035b105",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-03-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 67732,
+          "sha256": "ff30f99347d6b4e338f84c68fb02a3829a1d868eb75313947469bd33502bbcdf"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-03-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 100080,
+          "sha256": "bf53176a127b1dfbad025945c844abd3afc2422d60a263bc478165866c721a5f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-03-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 117680,
+          "sha256": "50e337c7159ac0e8ec17a4a3347139d57a3359d338c05d63a16cdd06c7b540cf"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-03-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 18836,
+          "sha256": "3f8b3634c353007090b6226700be4f76f3886fbd33c5861f5be675d05f21e64e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-03-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 38850,
+          "sha256": "a1afb4504af1197d8eeda8ec330010edefc6d0c664b26cc664507bfbbd16d4b5"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/horse-riding/horse-riding-04.jpg",
+      "family": "horse-riding-04",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 728805,
+      "sha256": "847559d4928491be648a23a3ef0dca6b2d4e0c0112766738134031dc161268e7",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-04-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 77990,
+          "sha256": "85e14976315f2cd05a441646d6d0b423d33d9436c57d862b7b2dc7c165e399b6"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-04-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 117144,
+          "sha256": "a51b9e6dd45c21710bc520c217bb16d921c6f0c6a3842192ec99af90e5e899c8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-04-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 145206,
+          "sha256": "683192d4e14689e0c3ccff0b7679ae1dae1d8e74ccdf385bea3c4ee6b2fd60e7"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-04-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 23052,
+          "sha256": "2fbc6f9cb915aac520a762f8f122808f25379099e1e8ad920ac0950c44e35bfe"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-04-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 46146,
+          "sha256": "aaa509a1e2a07c270009295523d7c0e3c79c2fe3d66a1218921d86924d506cb2"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/horse-riding/horse-riding-05.jpg",
+      "family": "horse-riding-05",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 927308,
+      "sha256": "557b19e84960284c08988b31cd6a5b2567833c17f1a41e0637ea8619c2fd8906",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-05-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 107186,
+          "sha256": "10031a33776744761d526435c0bb45c71b6e78969df569d7069a48a46c1df93c"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-05-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 186100,
+          "sha256": "f775c8b8cc8b855dae605c2e761c80b03b2b43383c05acdcb7ff06ab6efbe178"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-05-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 257344,
+          "sha256": "9ae797cc1e6caeb80f79754cbabd23d33655f2fefec3c8011904500203be9b1e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-05-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 23610,
+          "sha256": "28346abf09bdf3f1f52125ad7c0a094ea39724512855a94123a7b63538c12835"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-05-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 54306,
+          "sha256": "c339d45a0130ad269d27765f315565855c45409fb47437cdd544b1cc6707b479"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/infrared-hong-kong/infrared-hong-kong-01.jpg",
+      "family": "infrared-hong-kong-01",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1012,
+      "bytes": 876541,
+      "sha256": "6b6c2567e987469f0d6df0ee29b1b37d9356dc8f8d00242a7790284eb931c5ef",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 150638,
+          "sha256": "71d4b8811c5d6d2009c72f93db25b6d7fd716c359c6206d5bc97155e2af68221"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 237628,
+          "sha256": "d248418032015ea9ba19a406330c2a0898f9bb92621df72b42bf6c48a2d92919"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-1800.webp",
+          "width": 1800,
+          "height": 1012,
+          "format": "webp",
+          "bytes": 285638,
+          "sha256": "5993191f3e72335ee8e7819a7e2adc32eba5d3a39e72d025aed19b6aae8d901d"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "bytes": 28998,
+          "sha256": "027d0afa7a90d3cb4779931a520307544b5090a76f887317a273f5f9d95cfa0e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 74142,
+          "sha256": "b2a7eedb01905c85c1846e9b8916f73d831edcb423b98afa815cd089e0bb0909"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/infrared-hong-kong/infrared-hong-kong-02.jpg",
+      "family": "infrared-hong-kong-02",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1012,
+      "bytes": 813168,
+      "sha256": "e9a857059341f0dd36b86f40e281ccd44649530e98e06e275731b3b28707dc3e",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 143784,
+          "sha256": "6831cccfae850e8820b6521fb461c59d51dd6bcf61eec4c8afbdd583547226d0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 217324,
+          "sha256": "a3e7c608508c54eade5c132421bf21dcba082373053cf878d6f8635ef34f77ef"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1800.webp",
+          "width": 1800,
+          "height": 1012,
+          "format": "webp",
+          "bytes": 257600,
+          "sha256": "6fee335edf7dffa0ffa0ab61bed2ea6dbe6ed98e7c54d2b402ca363092252e59"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "bytes": 31110,
+          "sha256": "e0f20965e3139e163c6ec7dcef9fb75ea9842f6e92e62c732634b7bae877ce08"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 73862,
+          "sha256": "01492721e5c479ca18675c69387686e651f47fa5c1cbbb199575a9747d6cf587"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/infrared-hong-kong/infrared-hong-kong-03.jpg",
+      "family": "infrared-hong-kong-03",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1012,
+      "bytes": 887181,
+      "sha256": "4b4e1a61d73eaf82f03adc3163257728df8ad19b575e468abb4d49e8d63137f5",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 151048,
+          "sha256": "c648b2163ba864acfe2e73d324d640c03e00b917abdd2e91aec904fa276161cd"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 234626,
+          "sha256": "bfba29fe9e09915e1dde4e6dd2dffff8c254bccdb1862175182a46f1c6288cb8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-1800.webp",
+          "width": 1800,
+          "height": 1012,
+          "format": "webp",
+          "bytes": 290516,
+          "sha256": "60cdc3cdecae272dfa2da27e90a085541a081aaa83cd38ee35ddc701b6c9357d"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "bytes": 29738,
+          "sha256": "b9f868ec9f95b5d54da7719822ec3d7a578933011960e90437811d7c35473d93"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 75458,
+          "sha256": "db543f25a542ba825bb37ec417ba65327777b9361f2d823f17dd2e41c31df537"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/infrared-hong-kong/infrared-hong-kong-04.jpg",
+      "family": "infrared-hong-kong-04",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1012,
+      "bytes": 996788,
+      "sha256": "02c858e21eccd0379f7809aceafee6d506d647c1d1ac0974ebf78d8f750ae1a3",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 178930,
+          "sha256": "a8d004e50e5ecacf54acc1a7faa441e94463ccd1f07b58bacc459023ebc11213"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 275712,
+          "sha256": "fe55be1604522be5eee3d344d2a886579b48ebee518e8adc8c43d08937c1db9a"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-1800.webp",
+          "width": 1800,
+          "height": 1012,
+          "format": "webp",
+          "bytes": 330316,
+          "sha256": "b2d05da9020aedef663a71ddb16b9ceedeca868d7c4320725cb698d675a2385d"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "bytes": 37240,
+          "sha256": "bf849443b2a41ee865fb31bbafa7fd76a34788c31e7ac1f69ec15279b99f18e4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 92680,
+          "sha256": "2e0088379521f6edd1d22ec16f84ae628239c2d14a5cc35abe50ec425c402569"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/infrared-hong-kong/infrared-hong-kong-05.jpg",
+      "family": "infrared-hong-kong-05",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1012,
+      "bytes": 1026579,
+      "sha256": "ba9a7d818e06666ca4be3db24fb16094fd59d86773cd33fbe11cfb7e6267ad61",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 188510,
+          "sha256": "ce671a0f2eb56ac574b6dee26e214bc0a53c573096f2e798fab3ea356272235f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 289440,
+          "sha256": "6d046930140eb3f22b1bcf7fcd63156dbd1545f8541ab13a866c3f0ce270c01e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-1800.webp",
+          "width": 1800,
+          "height": 1012,
+          "format": "webp",
+          "bytes": 346128,
+          "sha256": "4adf94e223057e44aa23cf1bb266207abed9b747d4b4f79508fce64c40e488ca"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "bytes": 38008,
+          "sha256": "18f2f0fc3f67cdfece87859398ec4e8ef51302333e9e226819a133febdc4310a"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 96894,
+          "sha256": "41f0d4383edc6dc3cc08925ba5c5c3284688b5f34c6529496ae0577359e0d732"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/infrared-hong-kong/infrared-hong-kong-06.jpg",
+      "family": "infrared-hong-kong-06",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1012,
+      "bytes": 663330,
+      "sha256": "55389f178dcc32ed37ac4d5a33ae384986db7e783b57e9fcf833348ffe567c6f",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-1200.webp",
+          "width": 1200,
+          "height": 675,
+          "format": "webp",
+          "bytes": 99022,
+          "sha256": "430a755bf4e08d327d6c9971f443f444180836bef224c13c7eeda62a9df632df"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "format": "webp",
+          "bytes": 148378,
+          "sha256": "4f240441ad5478dd998e1971796c0375a1d6f670a24d29d0884f335053bed798"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-1800.webp",
+          "width": 1800,
+          "height": 1012,
+          "format": "webp",
+          "bytes": 178900,
+          "sha256": "108c74eada45002d5ce1a6550dca85b6efc6fee8e5703b7cd1d986b99296d79a"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-480.webp",
+          "width": 480,
+          "height": 270,
+          "format": "webp",
+          "bytes": 21400,
+          "sha256": "170aba6547a6fdd71634d67ecdb2715821cf1e801a13442df328449a3376e084"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-800.webp",
+          "width": 800,
+          "height": 450,
+          "format": "webp",
+          "bytes": 51872,
+          "sha256": "71ced5e46a668b1a950c178d41d5b087d856a031f856911d6fefaf946578cbac"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-01.jpg",
+      "family": "nepal-documentary-01",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1201,
+      "bytes": 574728,
+      "sha256": "81d4db7e27354702ba14439142164496a93791393bbdd64c46eed0a3c6266ea2",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-1200.webp",
+          "width": 1200,
+          "height": 801,
+          "format": "webp",
+          "bytes": 57778,
+          "sha256": "92bcaf3d6b390f9374638c659eaf19f8274017ab02f0a3cd8abaa76fb2128c4b"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-1600.webp",
+          "width": 1600,
+          "height": 1068,
+          "format": "webp",
+          "bytes": 84656,
+          "sha256": "1d4a2235d44e0ca018f313350e4af30de5ca26bb15b77fc440c658934a9700f8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-1800.webp",
+          "width": 1800,
+          "height": 1201,
+          "format": "webp",
+          "bytes": 100006,
+          "sha256": "8cd983e8d0730f5f777dbcfcd61120dc21a8ab954e32fcba24cf9ae4dd866c7e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 16592,
+          "sha256": "dff735569fad5d34fba016245a09d0cd8525931bf46f65c539e882a8f64b83b5"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-800.webp",
+          "width": 800,
+          "height": 534,
+          "format": "webp",
+          "bytes": 33794,
+          "sha256": "f981854419f5c70d1ad92afad3376bc4cd351435c38904b8607c49712de32fa0"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-02.jpg",
+      "family": "nepal-documentary-02",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1201,
+      "bytes": 590132,
+      "sha256": "0a3fbbf8bfcc65192a18116b9445712af21c7a84523b5c01b0a7428bc8162ed8",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-1200.webp",
+          "width": 1200,
+          "height": 801,
+          "format": "webp",
+          "bytes": 69424,
+          "sha256": "b5874e928a1505672494fa9fecb780bc754002c4bd4494fd516442498b43f2ab"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-1600.webp",
+          "width": 1600,
+          "height": 1068,
+          "format": "webp",
+          "bytes": 99976,
+          "sha256": "dc3f47ca00b7f2ae43ab4651aed60ca1822fd6423c5aa4de25b38099cb9d3824"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-1800.webp",
+          "width": 1800,
+          "height": 1201,
+          "format": "webp",
+          "bytes": 119426,
+          "sha256": "7156c4e7c7aaf064a042519c656092bb69608a72b0f94b13cdfe2d7d7d36357c"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 19056,
+          "sha256": "c0a456fee3d09e34a5ab93ce56f37d047a861c35ff032ea44d40b382c2ac7a4d"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-800.webp",
+          "width": 800,
+          "height": 534,
+          "format": "webp",
+          "bytes": 40350,
+          "sha256": "f439f0db3c6833abf60f55854332037e2f5885e9c4e5386e43ec0681b8e1d4c4"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-03.jpg",
+      "family": "nepal-documentary-03",
+      "kind": "projects",
+      "width": 1201,
+      "height": 1800,
+      "bytes": 765252,
+      "sha256": "2ed7368db61a170db8ecafbd514f8203e56601a58b4860f1979cbcdce726acfe",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-1200.webp",
+          "width": 1200,
+          "height": 1799,
+          "format": "webp",
+          "bytes": 181724,
+          "sha256": "ae08a0bbbb3d4179bdc04358b6a79a718b23dffcba634547935bd9b4ce35e4eb"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-1201.webp",
+          "width": 1201,
+          "height": 1800,
+          "format": "webp",
+          "bytes": 183550,
+          "sha256": "1b3d11d5b723912bc17ca616a192b0023d42a5a501a6b10de795f7fc7a142409"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-480.webp",
+          "width": 480,
+          "height": 719,
+          "format": "webp",
+          "bytes": 48288,
+          "sha256": "d8120c3a02f466e4ab97d25d94d23c06be3575ed6c65225df5de73ef0ce53c21"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-800.webp",
+          "width": 800,
+          "height": 1199,
+          "format": "webp",
+          "bytes": 103566,
+          "sha256": "1d6e9acb8efafb00d50c3a4f33ff80ba15a197e0435195b8298f379fed16e5e6"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-04.jpg",
+      "family": "nepal-documentary-04",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1651,
+      "bytes": 982292,
+      "sha256": "5788bd2ce70c6897ef6cb718c748467618f8549fc2ba43fca2d0f953cacf9870",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-1200.webp",
+          "width": 1200,
+          "height": 1101,
+          "format": "webp",
+          "bytes": 109270,
+          "sha256": "b65b5f936f7b0a2f0f9fae9bf9717cd7dcbe44b0017bea4fdf2ef66f9168f0a0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-1600.webp",
+          "width": 1600,
+          "height": 1468,
+          "format": "webp",
+          "bytes": 163418,
+          "sha256": "6b2a2b86c26a0ff11292f59d85ce0ea48db66c47e8bc50273721b1b35f447e94"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-1800.webp",
+          "width": 1800,
+          "height": 1651,
+          "format": "webp",
+          "bytes": 190168,
+          "sha256": "8ff54b3ec198ef5ecc5d9ffa6f238bb872ed6821849b403aca6322cba260d18b"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-480.webp",
+          "width": 480,
+          "height": 440,
+          "format": "webp",
+          "bytes": 29466,
+          "sha256": "b161ba819267b9356dc71874fef86e52dabf9da48edd35646dd411e8d21f316b"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-800.webp",
+          "width": 800,
+          "height": 734,
+          "format": "webp",
+          "bytes": 61948,
+          "sha256": "47e006f8ac64c60d4222b1974c3ced8d9b247683c8ed562061ba9aa8992cb008"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-05.jpg",
+      "family": "nepal-documentary-05",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1201,
+      "bytes": 633451,
+      "sha256": "266c540bf11e68b6b3d54ad35fcb29983533c77346764cddbef19fde2e041b3e",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1200.webp",
+          "width": 1200,
+          "height": 801,
+          "format": "webp",
+          "bytes": 47402,
+          "sha256": "68991c109bafa87990e7ec2a09182fbd1dd8ea6143ba76908e46060f6e7542d4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1600.webp",
+          "width": 1600,
+          "height": 1068,
+          "format": "webp",
+          "bytes": 76702,
+          "sha256": "78b3e0c62fb67bdcd3b0eac5aa45c52776705ce457abdcba594c116a115df357"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1800.webp",
+          "width": 1800,
+          "height": 1201,
+          "format": "webp",
+          "bytes": 99198,
+          "sha256": "c50fc40d1dfa5e3c4e83f32b2db503d10fd4d7af724b0fd4843c67b3aacae3a9"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 11308,
+          "sha256": "d18926f21c7e5e88092c1e9122d9bd8d0befda9e7f9e04302700064dd9cab7d0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-800.webp",
+          "width": 800,
+          "height": 534,
+          "format": "webp",
+          "bytes": 24706,
+          "sha256": "8f14da390f6d340c839f331e640d66544473bdaa9d1e9b70656cc902ea023d0a"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-06.jpg",
+      "family": "nepal-documentary-06",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1515,
+      "bytes": 860420,
+      "sha256": "5578860e904cfae5405b1e18dd65406ba6fd418e608afba03d00ec0eb365a694",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-1200.webp",
+          "width": 1200,
+          "height": 1010,
+          "format": "webp",
+          "bytes": 102750,
+          "sha256": "a1f5007460543d43edfcb8796e278f59f92c64f721cce508aaf4a2d57e98601a"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-1600.webp",
+          "width": 1600,
+          "height": 1347,
+          "format": "webp",
+          "bytes": 147850,
+          "sha256": "f1268141b0897c51a1c92cb98509ef33c397b6c53fb742c5c8672b7e419ba853"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-1800.webp",
+          "width": 1800,
+          "height": 1515,
+          "format": "webp",
+          "bytes": 172146,
+          "sha256": "e2cdda40dc6b5d88a941dc6f7a4a2f09a4646ca70a1aa24f12eac229ca7e77c1"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-480.webp",
+          "width": 480,
+          "height": 404,
+          "format": "webp",
+          "bytes": 27166,
+          "sha256": "ab377e5b5cb311a671ceaff1eadd76ebbbe57fa79b2d7c5dc3df2ed69e6637a9"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-800.webp",
+          "width": 800,
+          "height": 673,
+          "format": "webp",
+          "bytes": 58694,
+          "sha256": "055102f9bb20b83d52cb4546ef72fdfbf21aae33a76692b2216ded7a071e6fc5"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-07.jpg",
+      "family": "nepal-documentary-07",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1197,
+      "bytes": 558520,
+      "sha256": "e6700e63443aa90d1c2dcf71d0b6fccec6fe5025d7419128215e1e141cf641c5",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-1200.webp",
+          "width": 1200,
+          "height": 798,
+          "format": "webp",
+          "bytes": 63848,
+          "sha256": "d0ab9bd59395f28d23684108d3bb7194fae1923dbacc6846223e5ed40189d75f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-1600.webp",
+          "width": 1600,
+          "height": 1064,
+          "format": "webp",
+          "bytes": 92018,
+          "sha256": "0cfaf1784046cf3d48b4e9368282431ea7df60efbf282b90980b0b6244ae4702"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-1800.webp",
+          "width": 1800,
+          "height": 1197,
+          "format": "webp",
+          "bytes": 106852,
+          "sha256": "db1303772f4f46b1b1334db893852ab7b48654cd3017c9eb207f7721f3f50b25"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-480.webp",
+          "width": 480,
+          "height": 319,
+          "format": "webp",
+          "bytes": 20722,
+          "sha256": "03f6eb6a3abeb0fd599a923bb99a497e65646f643de46697ae4268a914a75481"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-800.webp",
+          "width": 800,
+          "height": 532,
+          "format": "webp",
+          "bytes": 39594,
+          "sha256": "379ee9d450c7fab8e864b428c1e43ff25cf357c6e6e09ca1234652cb396015db"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-08.jpg",
+      "family": "nepal-documentary-08",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1197,
+      "bytes": 529752,
+      "sha256": "e2515ea7339b52101bafa4bb01206334245e9db906f8dad45dd86f23a95c3b9c",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-1200.webp",
+          "width": 1200,
+          "height": 798,
+          "format": "webp",
+          "bytes": 47614,
+          "sha256": "fd24b28b58a1a5fb41dd829ffb721ce501747419d83965cccecbd94fd57bb1e4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-1600.webp",
+          "width": 1600,
+          "height": 1064,
+          "format": "webp",
+          "bytes": 70298,
+          "sha256": "619ca357d18857a3f9ec7ecb6dcef73da47036cd599257a509ca627dc4ece4c8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-1800.webp",
+          "width": 1800,
+          "height": 1197,
+          "format": "webp",
+          "bytes": 81796,
+          "sha256": "445d2d71376560b4872af445f3605e3ec625ba393bbf2e38d208a93ae2520d80"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-480.webp",
+          "width": 480,
+          "height": 319,
+          "format": "webp",
+          "bytes": 12938,
+          "sha256": "f05e18fec225e7773fa05cf155d834ca49155a6b2c44a1c1de932fc99c5a3e45"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-800.webp",
+          "width": 800,
+          "height": 532,
+          "format": "webp",
+          "bytes": 27572,
+          "sha256": "554bb1b3b2a15a36a8f0707d1bfe7facee92e6fb2000ac299f4112317b8fe25f"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-09.jpg",
+      "family": "nepal-documentary-09",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1197,
+      "bytes": 634777,
+      "sha256": "4263951970293682824c28fd03ff64e1640d4c2c0d0f8605d2027d5f5aefae75",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-1200.webp",
+          "width": 1200,
+          "height": 798,
+          "format": "webp",
+          "bytes": 77558,
+          "sha256": "609824a36adf249b4f0ce669bca239cf0c497ef0e792ca261f00c44bd6bf7743"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-1600.webp",
+          "width": 1600,
+          "height": 1064,
+          "format": "webp",
+          "bytes": 112364,
+          "sha256": "8b5bb54fa801ac1edb31cbdb0a87e102b38e430a1ae6e672513930faa8e98958"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-1800.webp",
+          "width": 1800,
+          "height": 1197,
+          "format": "webp",
+          "bytes": 132952,
+          "sha256": "d83497842c49f16aa6fe3da0cae8fe2d41d4b72357dced85c1f148422836952e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-480.webp",
+          "width": 480,
+          "height": 319,
+          "format": "webp",
+          "bytes": 21548,
+          "sha256": "8220b6edd7d90b4d5693ebaec96d46ed79b14dbc12bbae4331614aaa7b780197"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-800.webp",
+          "width": 800,
+          "height": 532,
+          "format": "webp",
+          "bytes": 44886,
+          "sha256": "dae3ee8b5f626bc629baf9a9833ed92d2acb50ac3759e88e4ee7567c14bda8ae"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-10.jpg",
+      "family": "nepal-documentary-10",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1197,
+      "bytes": 343913,
+      "sha256": "68c5991d1c5292c75c1085998ac4db66260329db410bf116447e843c1c8b7fe9",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-1200.webp",
+          "width": 1200,
+          "height": 798,
+          "format": "webp",
+          "bytes": 31414,
+          "sha256": "bb037395e3c6ef5a69d8bbec5fd277cc9706624d52ee64b17ec68da2aeec939a"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-1600.webp",
+          "width": 1600,
+          "height": 1064,
+          "format": "webp",
+          "bytes": 44692,
+          "sha256": "b5ff95b044e6d1e9be5b2a3d0ddeea133155410235db3433d121434ccdd99bfc"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-1800.webp",
+          "width": 1800,
+          "height": 1197,
+          "format": "webp",
+          "bytes": 52550,
+          "sha256": "ab0f1b980177127e6204dcf0566f321f95045e2f4fe11b9bd379c21eb8751f70"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-480.webp",
+          "width": 480,
+          "height": 319,
+          "format": "webp",
+          "bytes": 10254,
+          "sha256": "d4eac06ce32573d0a018ec34054685c2189bd7d776e640a2cf947e2186c2d142"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-800.webp",
+          "width": 800,
+          "height": 532,
+          "format": "webp",
+          "bytes": 19406,
+          "sha256": "1a032397458fc61c10fd9102896b31783e0efc4b53648a3085f2c543a2a34ae3"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/nepal-documentary/nepal-documentary-11.jpg",
+      "family": "nepal-documentary-11",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1197,
+      "bytes": 506668,
+      "sha256": "d2431212f492c4a7f9e69b56b56d888e4b918b556ca4c7543b17ba370363d5dc",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-1200.webp",
+          "width": 1200,
+          "height": 798,
+          "format": "webp",
+          "bytes": 40168,
+          "sha256": "bb85b586873f1d5ee67556b28ef605679ff1cb422eecc9981569cf6239a11e3f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-1600.webp",
+          "width": 1600,
+          "height": 1064,
+          "format": "webp",
+          "bytes": 60020,
+          "sha256": "5732ab8a6db5c3e5b47945996a59dd349ccfaa738e3d9f96577d04d277c7ed72"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-1800.webp",
+          "width": 1800,
+          "height": 1197,
+          "format": "webp",
+          "bytes": 72010,
+          "sha256": "87de3db06fd200929a319fb3d7b7a9db7d76f9176d2090b54cca939f76eceabb"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-480.webp",
+          "width": 480,
+          "height": 319,
+          "format": "webp",
+          "bytes": 11694,
+          "sha256": "625ae06858b4745d39afb363a0715bdcd1d6749d862e2c555e8a8f472e36e6f4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-800.webp",
+          "width": 800,
+          "height": 532,
+          "format": "webp",
+          "bytes": 23594,
+          "sha256": "43b293ec50be28cc74e62f79d74f3e99434936a519c88ad60b8200480ae1757d"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-01.jpg",
+      "family": "travel-01",
+      "kind": "projects",
+      "width": 1200,
+      "height": 1800,
+      "bytes": 308433,
+      "sha256": "a0a2b5b6f88db33a7f33ae3b68726bc97cc0302fff7db615ccb1d258b67e09d4",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-01-1200.webp",
+          "width": 1200,
+          "height": 1800,
+          "format": "webp",
+          "bytes": 46060,
+          "sha256": "990a084eef4ebadd491f4ab1c43288db2ef6951740f4d55d19798118be0c7604"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-01-480.webp",
+          "width": 480,
+          "height": 720,
+          "format": "webp",
+          "bytes": 14072,
+          "sha256": "a7a7c4edac73ad39c80219ad92f80b0909e81c5e37ad556294bb777a4c6aa9a4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-01-800.webp",
+          "width": 800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 26524,
+          "sha256": "98763439829aa3025178cb41f4797a31e32af22390f421d519940902d5f71f6b"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-02.jpg",
+      "family": "travel-02",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 605440,
+      "sha256": "175f309537e128a8bff2b30f4244f3a454068be91b2391ebb076b10f365b8258",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-02-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 73044,
+          "sha256": "e6698503ef9d8dc02bcb832420ca07272d7efdfbe544e4e1df75f427a1508a27"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-02-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 107828,
+          "sha256": "39af3158482010a0c2822827bdb4891418ba5ba41b6a04b131ea5b1ffa76ba8e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-02-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 130926,
+          "sha256": "044c7b931636b0f9f9a10db6a5c424bda26a0cfa19fa3e5d5a9d85f147afb237"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-02-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 18752,
+          "sha256": "1e947c37e8c26513fcf524511eaefb613cd80e7e6240943dd1b7294ba0b9dc6a"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-02-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 41758,
+          "sha256": "f988533b6996f6df1ebaae905692abf09cfb30efadb950d27d240bf0b395021d"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-03.jpg",
+      "family": "travel-03",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 847730,
+      "sha256": "424625780c2fe5372681000437f2b3b0a2563da14a44d6d5fcd8f7981d7ea762",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-03-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 131836,
+          "sha256": "0953ff3baa1c444d2a0ab8f088d852949fca00fd00b5f29917faa9f447cc9b40"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-03-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 199632,
+          "sha256": "7994405217b93cbe2891ef0dda2dd7f2fa9f7ef5ac44a7a3d9a38a8a58e94fb8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-03-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 246674,
+          "sha256": "c182178957540903ca8ce1f836e8d7b3c74ad1734499afe1fab1056819d42abc"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-03-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 29850,
+          "sha256": "22a14396e0ff7e06703b5cd4f76b706f30bb3de2996444eff66161f287b610e8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-03-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 73700,
+          "sha256": "5b9c2dcb4af948f5762c33882ac3b1871bac63de431e41b56c5e055e61cb0658"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-04.jpg",
+      "family": "travel-04",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 772859,
+      "sha256": "a2fbd2a8974ae38e38f17e64c0c4084ee4460c1cecb86674a0d2b07d47122563",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-04-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 106182,
+          "sha256": "8c9cc5f016cd7a5940ea047fcdf1c34573f8203d9d97d32f894437bc03826b9f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-04-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 162022,
+          "sha256": "d3d8fe415d9c00ac5e82050d3bba3b6e81e1de5397594203bc227f28d176f37f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-04-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 193532,
+          "sha256": "85ee14e33ce18bc5c0aa797d385c2d6c8c444e51d7281516319bf170e6cdfea0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-04-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 23502,
+          "sha256": "d4e38b2d619fc03bd810348cd160f6710a34f5248825e331ada4d2713509062f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-04-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 55802,
+          "sha256": "e993ecf66e9d088115ef0e40a86742f62e6a9dc2113ba93f071d3319a5e19e33"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-05.jpg",
+      "family": "travel-05",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 454229,
+      "sha256": "e90eae2045ce5dedb418e62565df279dcb9e2e4cfd8907beb58bea12c767079b",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-05-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 45366,
+          "sha256": "ccbcdf3cf9f06f3e26ebc5b776df6939ecb47671d9f3df53022d6ad04b9fb3f4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-05-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 66032,
+          "sha256": "dc76eefd276ec5ca02a4f6ba857805737f10e0a1ffaa077516a60798af370495"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-05-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 78902,
+          "sha256": "4bf8cfa06e505cb151d724283fc9e32989d514eb9e5fcc81e46b790fb795417d"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-05-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 13504,
+          "sha256": "6ecefa411894e3c68bb72f5ca76541d9af4a0720db0af153bcd0254c6fa1650d"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-05-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 27382,
+          "sha256": "d71cad7af1edd35cd9fe889b7dae09e93a57ef27c2d8c6b4d162e7d83cb4afd5"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-06.jpg",
+      "family": "travel-06",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 471537,
+      "sha256": "128bafcbd9b59195b43e344af36a21708afe1490c294f157e9e77ca283fd37c0",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-06-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 47940,
+          "sha256": "040c079a689187e1bb8159a9a3a4b78343f464e881027d1c5d81dccde350eea0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-06-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 70266,
+          "sha256": "65ae6f94f8c4d3e6adbdba5c3fe16f976c52e65a563ac5979bca841a6963bb32"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-06-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 83390,
+          "sha256": "10acb1cc2ea4230200546aa4791b38fbc6df09cd811e5219eb7a5a745058a194"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-06-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 13490,
+          "sha256": "9177c2b63175d272414d12f27ab47c287639df16e6c6811f41e2a51db94d6243"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-06-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 28392,
+          "sha256": "7a168644a3017fa0071c44f18003aa02360e696955e1d204745652bdf39049ea"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-07.jpg",
+      "family": "travel-07",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 401364,
+      "sha256": "19b9f35fe2e81c7890844ebd25d920127ceebcef9b55076017461ff6a1bdb93b",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-07-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 42382,
+          "sha256": "fa452d13c44645d25add2e05489b5e902a345224105228b29fd66a47ae1950d1"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-07-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 61524,
+          "sha256": "c59a991e025b939b6a724c49a6e7875c75f6cca477f7655b2f8f8a1d658e3377"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-07-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 72710,
+          "sha256": "df87add46a0962bf4e10ace3f504bb6696f180408dcbb3735373fe70dfd14b17"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-07-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 12330,
+          "sha256": "6c7818663f4ca9d658fdb88904a10cc54be00190ed62d3090a5f1151b23a0caf"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-07-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 25514,
+          "sha256": "b7b154069b403eb7a315bae976d26d03f751f007cd420dd880ee21c78f1419d5"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-08.jpg",
+      "family": "travel-08",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 764020,
+      "sha256": "26912c643d47eb1f8760530c9463ac96ad24a1340545f743a67287f207e8813e",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-08-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 95322,
+          "sha256": "3495bca5af97c88876fee52f7fc993b502d3dd73e94e234e14db05df10bbee48"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-08-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 144212,
+          "sha256": "afdaae2dabaeb22d8d03dd76c1f7f3a20e3f7949a0446f485e2e670b253a434e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-08-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 175182,
+          "sha256": "9c9a8169ff913088703beea780bd92cdb4594e14c22e71f7eb35c3cd0f4c9eac"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-08-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 24700,
+          "sha256": "66eb252322cea53ce60623a670b54a73d872f1e33808b67423308eacaf9ac3b4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-08-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 55136,
+          "sha256": "0fe1fdf2089d25877fa81d429c16b0e53293ee7d40223d9d3c1e1ee223291c68"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-09.jpg",
+      "family": "travel-09",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 445040,
+      "sha256": "f124b78bbb74899b60b12de5ffdc166d4f20a898ae8cda6a186c83dfdfff4259",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-09-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 48614,
+          "sha256": "7967795ce2eef8f8094d46afa5eb7afcfeb1436a30e22700fe69ebec392b59f0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-09-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 70856,
+          "sha256": "2f1ed999091b7e3a9e32113cc5d9e57b36e8daff0a7e0997cb2afaef412248ec"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-09-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 82814,
+          "sha256": "4e10dd1fb41503855e236628873e2f2237a58eff7d850f37c3d7a702d76501b2"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-09-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 14542,
+          "sha256": "ad031b0b0d12938eef46336fc1b4a5e131abec6390598d845e2b775a8a0e367e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-09-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 29948,
+          "sha256": "1ce76776c425b4151075813f652b670e3363973868740cf4d2d32e4cceee3bb1"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-10.jpg",
+      "family": "travel-10",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 388312,
+      "sha256": "11550df72e630b3d9fe9e7030d54581796fe04c119e7268ae875ec17ca48a983",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-10-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 38054,
+          "sha256": "35509cda2f17eaf2507033251497c3f54ce745f7c59f00848c735cbf13c96b14"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-10-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 53854,
+          "sha256": "7ca0d7b1a8cab5c110a3dc64ac6688be6df86f9471788b92f1e86645d7400ab5"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-10-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 63706,
+          "sha256": "1161ae8f9eaa6c7db1ffb3e4483f5fd1bd6d58b498c8c16e47a4da110ca94eb0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-10-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 11332,
+          "sha256": "3fa48e445b8bea333d4d28d7db7c8209df669cce77c1b599366db00b0d10509f"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-10-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 22512,
+          "sha256": "d63b94891315a7faee0027279fa1b49a1b037c64adfbcf2a9d057647a548f0b4"
+        }
+      ]
+    },
+    {
+      "source": "assets/projects/travel/travel-11.jpg",
+      "family": "travel-11",
+      "kind": "projects",
+      "width": 1800,
+      "height": 1200,
+      "bytes": 650248,
+      "sha256": "678dbf64a03895047da0c1081f5799d2629ab97180daf5af417ae1480dab2ad9",
+      "status": "genuine-source-adequate",
+      "responsiveCandidates": [
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-11-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "format": "webp",
+          "bytes": 83292,
+          "sha256": "603672d5602196b67f5d68f9b58d8ac2cf9467ceee8f1e0865fd269b8d2ef4aa"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-11-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "format": "webp",
+          "bytes": 119066,
+          "sha256": "f4f3d07c27f0ff88260d8fcdbef747cedad45e7815f66c4ac91cf7cd3f37f6a8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-11-1800.webp",
+          "width": 1800,
+          "height": 1200,
+          "format": "webp",
+          "bytes": 141530,
+          "sha256": "3b56a1128e2870fbd9096e096f3b016b09387475358d86ba4e8adb3cacc20ec4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-11-480.webp",
+          "width": 480,
+          "height": 320,
+          "format": "webp",
+          "bytes": 25590,
+          "sha256": "0472f6c5b87df6e2b2aee7eaf280d8e48c5b2e1e309af05bbc6841f837e6b9a8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-11-800.webp",
+          "width": 800,
+          "height": 533,
+          "format": "webp",
+          "bytes": 51446,
+          "sha256": "54f96aee7c184757116a17ba3c2fef765f241cc4b3a53411d409ab98b826516c"
+        }
+      ]
+    }
+  ],
+  "displayDerivatives": [
+    {
+      "kind": "display-resampled",
+      "generative": false,
+      "algorithm": "sharp-cubic-2x",
+      "crop": false,
+      "sharpen": false,
+      "denoise": false,
+      "webpQuality": 90,
+      "source": {
+        "path": "assets/art/blue-hour-cormorant-fishermen.jpg",
+        "sha256": "4159064dcae9671af02be8701ea91b7ae4a4a8903a760a8ec99cd39be88ad8d1",
+        "width": 800,
+        "height": 519
+      },
+      "output": {
+        "path": "assets/display-derivatives-v1/art/blue-hour-cormorant-fishermen-display-1600.webp",
+        "width": 1600,
+        "height": 1038,
+        "format": "webp",
+        "bytes": 173728,
+        "sha256": "7a893d2d43f86e6a709d895b48ba2e6e802f670625d31dcaf87fbc252376e556"
+      }
+    },
+    {
+      "kind": "display-resampled",
+      "generative": false,
+      "algorithm": "sharp-cubic-2x",
+      "crop": false,
+      "sharpen": false,
+      "denoise": false,
+      "webpQuality": 90,
+      "source": {
+        "path": "assets/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017.jpg",
+        "sha256": "47183aa59ac5cd5f6a71f1c94c300008a80fffae217dc830893f79e234ef4d86",
+        "width": 1024,
+        "height": 1024
+      },
+      "output": {
+        "path": "assets/display-derivatives-v1/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-display-2048.webp",
+        "width": 2048,
+        "height": 2048,
+        "format": "webp",
+        "bytes": 196966,
+        "sha256": "60b93bc3f283ab237fbdfd23989de057253b78f76df4e7f214df1ed6eb241515"
+      }
+    }
+  ]
+}

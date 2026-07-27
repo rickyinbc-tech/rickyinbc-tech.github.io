@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20260726-production-acceptance-v6";
+export const ASSET_VERSION = "20260727-image-resolution-v1";
 export const SHELL_VERSION = "20260726-noncommercial-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];

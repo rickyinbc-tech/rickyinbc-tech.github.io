@@ -2,10 +2,16 @@ import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  ARCHIVE_IMAGE_SIZES,
   FEATURE_IMAGE_SIZES,
   HERO_IMAGE_SIZES,
+  MODAL_IMAGE_SIZES,
   NATURAL_WIDTH_AVIF_FAMILIES,
+  PHOTO_RESOLUTION_MANIFEST,
+  SUPPORT_CARD_IMAGE_SIZES,
+  WORK_CARD_IMAGE_SIZES,
   featureImageTags,
+  photoForReference,
   repeatedArtworkSourceCards,
 } from "./responsive-image-policy.mjs";
 import { ASSET_VERSION, SHELL_VERSION } from "./site-shell.mjs";
@@ -191,12 +197,42 @@ for (const file of await htmlFiles()) {
           errors.push(`${relative}: hero image sizes does not match the rendered split layout`);
         }
       }
-      if (/<img\b[^>]*\bwidth=["']800["']/i.test(heroPicture) && !/\bsource-cap-800\b/i.test(heroPicture)) {
+      const heroReference = heroPicture.match(/<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1] || "";
+      const heroPhoto = photoForReference(heroReference);
+      if (
+        /<img\b[^>]*\bwidth=["']800["']/i.test(heroPicture)
+        && !heroPhoto?.displayDerivative
+        && !/\bsource-cap-800\b/i.test(heroPicture)
+      ) {
         errors.push(`${relative}: 800px hero is missing its honest intrinsic-width cap`);
       }
+      if (heroPhoto?.displayDerivative && /\bsource-cap-800\b/i.test(heroPicture)) {
+        errors.push(`${relative}: governed display derivative is incorrectly capped to the smaller canonical width`);
+      }
     }
-  } else if (repeatedArtworkSourceCards(html).length) {
-    errors.push(`${relative}: related cards visibly repeat the primary artwork`);
+  } else {
+    if (repeatedArtworkSourceCards(html).length) {
+      errors.push(`${relative}: related cards visibly repeat the primary artwork`);
+    }
+    if (/<picture\b[^>]*class=["'][^"']*\bhero-media\b/i.test(html)) {
+      errors.push(`${relative}: hidden artwork hero media duplicates the visible primary photograph`);
+    }
+  }
+  for (const match of html.matchAll(/<(?:article|a|button)\b[^>]*class=["'][^"']*\bwork-card\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
+    const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    if (attribute(tag, "sizes") !== WORK_CARD_IMAGE_SIZES) errors.push(`${relative}: work-card image sizes is stale`);
+  }
+  for (const match of html.matchAll(/<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
+    const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    if (attribute(tag, "sizes") !== SUPPORT_CARD_IMAGE_SIZES) errors.push(`${relative}: support-card image sizes is stale`);
+  }
+  for (const match of html.matchAll(/<figure\b[^>]*class=["'][^"']*\barchive-photo\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
+    const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    if (attribute(tag, "sizes") !== ARCHIVE_IMAGE_SIZES) errors.push(`${relative}: archive image sizes is stale`);
+  }
+  const modalImageTag = html.match(/<img\b[^>]*\bid=["']modalImage["'][^>]*>/i)?.[0] || "";
+  if (modalImageTag && attribute(modalImageTag, "sizes") !== MODAL_IMAGE_SIZES) {
+    errors.push(`${relative}: modal image sizes is stale`);
   }
   for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
     const tag = match[0];
@@ -332,8 +368,7 @@ for (const file of await htmlFiles()) {
   }
 }
 
-for (const { family, width } of NATURAL_WIDTH_AVIF_FAMILIES) {
-  const relative = `assets/optimized-v2/art/${family}-${width}.avif`;
+for (const { relative } of NATURAL_WIDTH_AVIF_FAMILIES) {
   if (!await exists(path.join(repoRoot, relative))) {
     errors.push(`${relative}: required natural-width AVIF variant is missing`);
   }
@@ -425,9 +460,6 @@ for (const artwork of artworkManifest.artworks || []) {
       continue;
     }
     const { html, relative } = page;
-    if (heroImageSource(html) !== primaryImage.url) {
-      errors.push(`${relative}: hero primary image does not match artwork manifest for ${id}`);
-    }
     if (featureImageSource(html) !== primaryImage.url) {
       errors.push(`${relative}: feature primary image does not match artwork manifest for ${id}`);
     }
@@ -578,7 +610,7 @@ if (!/\.site-header\s*\{[^}]*position:\s*sticky/i.test(siteCss)) {
 if (!/\.hero\.has-semantic-media\s*\{[\s\S]*?padding-top:\s*0/i.test(siteCss)) {
   errors.push("responsive artwork hero must not use a fixed header-height offset");
 }
-for (const marker of ["addMobileNavigation", "markCurrentNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel"]) {
+for (const marker of ["addMobileNavigation", "markCurrentNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel", "MODAL_IMAGE_SIZES", "responsiveSrcset"]) {
   if (!siteJs.includes(marker)) errors.push(`accessible interaction contract lacks ${marker}`);
 }
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
@@ -591,6 +623,18 @@ for (const eventName of implementedEvents) {
 if (imageInventory.summary?.missingDimensions !== 0 || imageInventory.summary?.missingSizes !== 0 || imageInventory.summary?.imageUses !== validatedImageUses) {
   errors.push("image inventory is stale or violates the complete image-attribute contract");
 }
+if (
+  PHOTO_RESOLUTION_MANIFEST.schemaVersion !== 1
+  || PHOTO_RESOLUTION_MANIFEST.policy?.generativeEnhancementUsed !== false
+  || PHOTO_RESOLUTION_MANIFEST.summary?.canonicalSources !== 70
+  || PHOTO_RESOLUTION_MANIFEST.summary?.genuineHigherOriginals !== 10
+  || PHOTO_RESOLUTION_MANIFEST.summary?.sourceLimitedDisplayResamples !== 2
+) {
+  errors.push("photo-resolution manifest does not match the governed 70-source integrity policy");
+}
+if (imageInventory.summary?.uniquePrimarySources !== 69) {
+  errors.push("image inventory must group the 69 displayed photographs by canonical family");
+}
 if (performanceReport.status !== "pass" || performanceReport.measured?.maxMissingImageDimensions !== 0 || performanceReport.measured?.maxMissingImageSizes !== 0) {
   errors.push("performance governance report does not pass");
 }
@@ -602,8 +646,12 @@ for (const header of ["content-security-policy", "permissions-policy", "referrer
 
 for (const [route, page] of indexableDocuments) {
   const hasHero = /<[^>]+class=["'][^"']*\bhero\b[^"']*["'][^>]*>/i.test(page.html);
-  if (hasHero && !heroImageSource(page.html)) {
+  const isArtworkPage = /<body\b[^>]*class=["'][^"']*\bartwork-page\b/i.test(page.html);
+  if (hasHero && !isArtworkPage && !heroImageSource(page.html)) {
     errors.push(`${page.relative}: visual hero lacks semantic responsive image media`);
+  }
+  if (isArtworkPage && !featureImageSource(page.html)) {
+    errors.push(`${page.relative}: artwork page lacks its visible semantic primary photograph`);
   }
   if (hasHero && /--hero-image/i.test(page.html)) {
     errors.push(`${page.relative}: visual hero still relies on CSS-only image media`);

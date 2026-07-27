@@ -1,12 +1,19 @@
+import { createHash } from "node:crypto";
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import {
+  ARCHIVE_IMAGE_SIZES,
   FEATURE_IMAGE_SIZES,
   HERO_IMAGE_SIZES,
+  MODAL_IMAGE_SIZES,
   NATURAL_WIDTH_AVIF_FAMILIES,
+  PHOTO_RESOLUTION_MANIFEST,
+  SUPPORT_CARD_IMAGE_SIZES,
+  WORK_CARD_IMAGE_SIZES,
   featureImageTags,
+  photoForReference,
   repeatedArtworkSourceCards,
 } from "./responsive-image-policy.mjs";
 import {
@@ -127,6 +134,12 @@ async function metadataFor(relative) {
     bitmapMetadata.set(relative, await sharp(path.join(artifactRoot, relative)).metadata());
   }
   return bitmapMetadata.get(relative);
+}
+
+async function sha256For(relative) {
+  return createHash("sha256")
+    .update(await readFile(path.join(artifactRoot, relative)))
+    .digest("hex");
 }
 
 async function resolveArtifactTarget(url) {
@@ -368,12 +381,42 @@ for (const document of documents.values()) {
           errors.push(`${relative}: hero image sizes differs from the responsive-image policy`);
         }
       }
-      if (/<img\b[^>]*\bwidth=["']800["']/i.test(heroPicture) && !/\bsource-cap-800\b/i.test(heroPicture)) {
+      const heroReference = heroPicture.match(/<img\b[^>]*\bsrc=["']([^"']+)["']/i)?.[1] || "";
+      const heroPhoto = photoForReference(heroReference);
+      if (
+        /<img\b[^>]*\bwidth=["']800["']/i.test(heroPicture)
+        && !heroPhoto?.displayDerivative
+        && !/\bsource-cap-800\b/i.test(heroPicture)
+      ) {
         errors.push(`${relative}: 800px hero is missing its intrinsic-width cap`);
       }
+      if (heroPhoto?.displayDerivative && /\bsource-cap-800\b/i.test(heroPicture)) {
+        errors.push(`${relative}: governed display derivative is incorrectly capped to the smaller canonical width`);
+      }
     }
-  } else if (repeatedArtworkSourceCards(html).length) {
-    errors.push(`${relative}: related cards visibly repeat the primary artwork`);
+  } else {
+    if (repeatedArtworkSourceCards(html).length) {
+      errors.push(`${relative}: related cards visibly repeat the primary artwork`);
+    }
+    if (/<picture\b[^>]*class=["'][^"']*\bhero-media\b/i.test(html)) {
+      errors.push(`${relative}: hidden artwork hero media duplicates the visible primary photograph`);
+    }
+  }
+  for (const match of html.matchAll(/<(?:article|a|button)\b[^>]*class=["'][^"']*\bwork-card\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
+    const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    if (attribute(tag, "sizes") !== WORK_CARD_IMAGE_SIZES) errors.push(`${relative}: work-card image sizes is stale`);
+  }
+  for (const match of html.matchAll(/<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
+    const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    if (attribute(tag, "sizes") !== SUPPORT_CARD_IMAGE_SIZES) errors.push(`${relative}: support-card image sizes is stale`);
+  }
+  for (const match of html.matchAll(/<figure\b[^>]*class=["'][^"']*\barchive-photo\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
+    const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    if (attribute(tag, "sizes") !== ARCHIVE_IMAGE_SIZES) errors.push(`${relative}: archive image sizes is stale`);
+  }
+  const modalImageTag = html.match(/<img\b[^>]*\bid=["']modalImage["'][^>]*>/i)?.[0] || "";
+  if (modalImageTag && attribute(modalImageTag, "sizes") !== MODAL_IMAGE_SIZES) {
+    errors.push(`${relative}: modal image sizes is stale`);
   }
 
   for (const match of html.matchAll(/<a\b[^>]*>/gi)) {
@@ -419,6 +462,9 @@ for (const document of documents.values()) {
       }
     }
   }
+  for (const match of html.matchAll(/\bdata-full=(["'])([^"']+)\1/gi)) {
+    imageReferences.push(match[2]);
+  }
   for (const reference of imageReferences) {
     if (/^(?:data:|https?:\/\/)/i.test(reference)) {
       const url = new URL(reference, canonicalUrl);
@@ -450,12 +496,91 @@ for (const document of documents.values()) {
         }
       }
     }
+    if (targetRelative.startsWith("assets/display-derivatives-v1/")) {
+      const governed = (PHOTO_RESOLUTION_MANIFEST.displayDerivatives || [])
+        .find((record) => record.output.path === targetRelative);
+      if (!governed) {
+        errors.push(`${relative}: ${reference} is an ungoverned enlarged display derivative`);
+      } else if (metadata.width !== governed.output.width || metadata.height !== governed.output.height) {
+        errors.push(`${relative}: ${reference} differs from its governed display-resample geometry`);
+      }
+    }
   }
 }
 
-for (const { family, width } of NATURAL_WIDTH_AVIF_FAMILIES) {
-  const relative = `assets/optimized-v2/art/${family}-${width}.avif`;
+for (const { relative } of NATURAL_WIDTH_AVIF_FAMILIES) {
   if (!await fileExists(relative)) errors.push(`${relative}: required natural-width AVIF is absent from artifact`);
+}
+
+if (
+  PHOTO_RESOLUTION_MANIFEST.schemaVersion !== 1
+  || PHOTO_RESOLUTION_MANIFEST.policy?.generativeEnhancementUsed !== false
+  || PHOTO_RESOLUTION_MANIFEST.summary?.canonicalSources !== 70
+  || PHOTO_RESOLUTION_MANIFEST.summary?.genuineHigherOriginals !== 10
+  || PHOTO_RESOLUTION_MANIFEST.summary?.sourceLimitedDisplayResamples !== 2
+) {
+  errors.push("photo-resolution manifest does not match the governed 70-source integrity policy");
+}
+
+for (const photo of PHOTO_RESOLUTION_MANIFEST.photos || []) {
+  if (!await fileExists(photo.source)) {
+    errors.push(`${photo.source}: governed canonical photograph is absent from artifact`);
+    continue;
+  }
+  const sourceMetadata = await metadataFor(photo.source);
+  if (sourceMetadata.width !== photo.width || sourceMetadata.height !== photo.height) {
+    errors.push(`${photo.source}: canonical dimensions differ from the photo-resolution manifest`);
+  }
+  if (await sha256For(photo.source) !== photo.sha256) {
+    errors.push(`${photo.source}: canonical hash differs from the photo-resolution manifest`);
+  }
+  for (const candidate of photo.responsiveCandidates || []) {
+    if (!await fileExists(candidate.path)) {
+      errors.push(`${candidate.path}: governed responsive candidate is absent from artifact`);
+      continue;
+    }
+    const metadata = await metadataFor(candidate.path);
+    if (metadata.width !== candidate.width || metadata.height !== candidate.height) {
+      errors.push(`${candidate.path}: responsive geometry differs from the photo-resolution manifest`);
+    }
+    if (await sha256For(candidate.path) !== candidate.sha256) {
+      errors.push(`${candidate.path}: responsive hash differs from the photo-resolution manifest`);
+    }
+    if (metadata.width > sourceMetadata.width || metadata.height > sourceMetadata.height) {
+      errors.push(`${candidate.path}: optimized candidate exceeds genuine source ${photo.source}`);
+    }
+  }
+}
+
+for (const derivative of PHOTO_RESOLUTION_MANIFEST.displayDerivatives || []) {
+  const source = derivative.source;
+  const output = derivative.output;
+  if (
+    derivative.kind !== "display-resampled"
+    || derivative.generative !== false
+    || derivative.algorithm !== "sharp-cubic-2x"
+    || derivative.crop !== false
+    || derivative.sharpen !== false
+    || derivative.denoise !== false
+  ) {
+    errors.push(`${output.path}: display derivative has an unsafe or incomplete provenance policy`);
+  }
+  if (!await fileExists(source.path) || !await fileExists(output.path)) continue;
+  if (await sha256For(source.path) !== source.sha256 || await sha256For(output.path) !== output.sha256) {
+    errors.push(`${output.path}: display derivative provenance hash mismatch`);
+  }
+  const sourceMetadata = await metadataFor(source.path);
+  const outputMetadata = await metadataFor(output.path);
+  if (
+    sourceMetadata.width !== source.width
+    || sourceMetadata.height !== source.height
+    || outputMetadata.width !== output.width
+    || outputMetadata.height !== output.height
+    || output.width !== source.width * 2
+    || output.height !== source.height * 2
+  ) {
+    errors.push(`${output.path}: display derivative does not preserve governed exact 2x geometry`);
+  }
 }
 
 const notFoundHtml = await readFile(path.join(artifactRoot, "404.html"), "utf8");

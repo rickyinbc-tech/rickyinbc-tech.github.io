@@ -785,6 +785,10 @@ article.work-card {
   background: #fffaf1;
 }
 
+.archive-photo picture {
+  display: block;
+}
+
 .archive-photo img {
   width: 100%;
   aspect-ratio: 4 / 3;
