@@ -29,6 +29,32 @@ export function featureImageTags(html) {
     .filter(Boolean);
 }
 
+export function imageFamilyFromTag(tag) {
+  const source = tag.match(/\bsrcset=(["'])([^"']+)\1/i)?.[2]?.split(",")[0]?.trim()?.split(/\s+/)[0]
+    || tag.match(/\bsrc=(["'])([^"']+)\1/i)?.[2]
+    || "";
+  const basename = source.split("/").pop()?.split("?")[0]?.replace(/\.(?:avif|webp|jpe?g)$/i, "") || "";
+  return basename.replace(/-\d+$/, "");
+}
+
+export function repeatedArtworkSourceCards(html) {
+  const featureTag = featureImageTags(html)[0] || "";
+  const primaryFamily = imageFamilyFromTag(featureTag);
+  if (!primaryFamily) return [];
+  return [...html.matchAll(/<article\b[^>]*class=["'][^"']*\bsource-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi)]
+    .map((match) => match[0])
+    .filter((block) => imageFamilyFromTag(block.match(/<img\b[^>]*>/i)?.[0] || "") === primaryFamily);
+}
+
+export function removeRepeatedArtworkSourceCards(html) {
+  const repeated = new Set(repeatedArtworkSourceCards(html));
+  if (!repeated.size) return html;
+  return html.replace(
+    /<article\b[^>]*class=["'][^"']*\bsource-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi,
+    (block) => repeated.has(block) ? "" : block,
+  );
+}
+
 export function normalizeResponsiveImages(html) {
   let normalized = html.replace(FEATURE_IMAGE_BLOCK, (block) => block.replace(
     /\bsizes=(["'])[^"']*\1/i,

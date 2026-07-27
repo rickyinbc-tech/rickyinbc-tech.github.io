@@ -6,6 +6,7 @@ import {
   HERO_IMAGE_SIZES,
   NATURAL_WIDTH_AVIF_FAMILIES,
   featureImageTags,
+  repeatedArtworkSourceCards,
 } from "./responsive-image-policy.mjs";
 import { ASSET_VERSION, SHELL_VERSION } from "./site-shell.mjs";
 
@@ -194,6 +195,8 @@ for (const file of await htmlFiles()) {
         errors.push(`${relative}: 800px hero is missing its honest intrinsic-width cap`);
       }
     }
+  } else if (repeatedArtworkSourceCards(html).length) {
+    errors.push(`${relative}: related cards visibly repeat the primary artwork`);
   }
   for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
     const tag = match[0];

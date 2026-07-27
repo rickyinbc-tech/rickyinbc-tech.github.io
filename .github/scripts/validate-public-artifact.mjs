@@ -7,6 +7,7 @@ import {
   HERO_IMAGE_SIZES,
   NATURAL_WIDTH_AVIF_FAMILIES,
   featureImageTags,
+  repeatedArtworkSourceCards,
 } from "./responsive-image-policy.mjs";
 import {
   ASSET_VERSION,
@@ -371,6 +372,8 @@ for (const document of documents.values()) {
         errors.push(`${relative}: 800px hero is missing its intrinsic-width cap`);
       }
     }
+  } else if (repeatedArtworkSourceCards(html).length) {
+    errors.push(`${relative}: related cards visibly repeat the primary artwork`);
   }
 
   for (const match of html.matchAll(/<a\b[^>]*>/gi)) {
