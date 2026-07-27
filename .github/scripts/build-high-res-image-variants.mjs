@@ -30,6 +30,16 @@ function normalized(relative) {
   return relative.split(path.sep).join("/");
 }
 
+const previousResolutionManifest = JSON.parse(
+  await readFile(absolute(RESOLUTION_MANIFEST_RELATIVE), "utf8").catch(() => "{}"),
+);
+const previousPhotoBySource = new Map(
+  (previousResolutionManifest.photos || []).map((photo) => [photo.source, photo]),
+);
+const previousDisplayDerivativeByOutput = new Map(
+  (previousResolutionManifest.displayDerivatives || []).map((record) => [record.output.path, record]),
+);
+
 async function filesWithin(relativeDirectory, predicate = () => true) {
   const directory = absolute(relativeDirectory);
   const files = [];
@@ -54,6 +64,20 @@ async function writeIfChanged(relative, buffer) {
   return true;
 }
 
+async function governedVariantIsCurrent(sourceRelative, outputRelative, width) {
+  const previousPhoto = previousPhotoBySource.get(sourceRelative);
+  const previousCandidate = previousPhoto?.responsiveCandidates?.find(
+    (candidate) => candidate.path === outputRelative && candidate.width === width,
+  );
+  if (!previousCandidate) return false;
+
+  const [sourceHash, outputHash] = await Promise.all([
+    sha256File(sourceRelative),
+    sha256File(outputRelative).catch(() => ""),
+  ]);
+  return sourceHash === previousPhoto.sha256 && outputHash === previousCandidate.sha256;
+}
+
 async function renderVariant(sourceRelative, outputRelative, width) {
   const extension = path.extname(outputRelative).toLowerCase();
   let pipeline = sharp(absolute(sourceRelative))
@@ -75,11 +99,11 @@ async function renderVariant(sourceRelative, outputRelative, width) {
 async function ensureVariant(sourceRelative, outputRelative, width, { refresh = false } = {}) {
   const target = absolute(outputRelative);
   const existing = await sharp(target).metadata().catch(() => null);
-  if (existing && !refresh) {
+  if (existing) {
     if (existing.width !== width) {
       throw new Error(`${outputRelative}: expected ${width}px candidate, found ${existing.width}px`);
     }
-    return false;
+    if (!refresh || await governedVariantIsCurrent(sourceRelative, outputRelative, width)) return false;
   }
   return renderVariant(sourceRelative, outputRelative, width);
 }
@@ -203,17 +227,25 @@ for (const derivative of DISPLAY_RESAMPLES) {
     throw new Error(`${derivative.source}: display-resample source does not match its governed dimensions and hash`);
   }
 
-  const output = await sharp(absolute(derivative.source))
-    .rotate()
-    .resize({ width: derivative.outputWidth, kernel: sharp.kernel.cubic })
-    .toColourspace("srgb")
-    .webp({
-      quality: DISPLAY_RESAMPLE_METHOD.webpQuality,
-      smartSubsample: true,
-      effort: 6,
-    })
-    .toBuffer();
-  if (await writeIfChanged(derivative.output, output)) generated += 1;
+  const previousDerivative = previousDisplayDerivativeByOutput.get(derivative.output);
+  const currentOutputHash = await sha256File(derivative.output).catch(() => "");
+  const derivativeIsCurrent = previousDerivative
+    && previousDerivative.source.sha256 === sourceHash
+    && previousDerivative.output.sha256 === currentOutputHash;
+
+  if (!derivativeIsCurrent) {
+    const output = await sharp(absolute(derivative.source))
+      .rotate()
+      .resize({ width: derivative.outputWidth, kernel: sharp.kernel.cubic })
+      .toColourspace("srgb")
+      .webp({
+        quality: DISPLAY_RESAMPLE_METHOD.webpQuality,
+        smartSubsample: true,
+        effort: 6,
+      })
+      .toBuffer();
+    if (await writeIfChanged(derivative.output, output)) generated += 1;
+  }
 
   const outputMetadata = await sharp(absolute(derivative.output)).metadata();
   if (
