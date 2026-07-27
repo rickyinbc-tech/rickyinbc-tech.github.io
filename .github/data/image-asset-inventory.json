@@ -85,8 +85,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/blue-column-water-study.jpg",
@@ -105,8 +105,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/blue-hour-cormorant-fishermen.jpg",
@@ -125,8 +125,8 @@
         800
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/boxer-ice-impact.jpg",
@@ -145,8 +145,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/cigarette-impact.jpg",
@@ -165,8 +165,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/coil-field-monochrome.jpg",
@@ -190,8 +190,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 6
+      "lazyUses": 0,
+      "eagerUses": 9
     },
     {
       "source": "/assets/art/color-powder-fish.jpg",
@@ -210,8 +210,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/egg-impact.jpg",
@@ -230,8 +230,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/fire-dragon-procession.jpg",
@@ -250,8 +250,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/fishpond-harvest.jpg",
@@ -270,8 +270,8 @@
         1000
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/flower-impact.jpg",
@@ -290,8 +290,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/green-orb-water-study.jpg",
@@ -312,8 +312,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 4
+      "lazyUses": 0,
+      "eagerUses": 7
     },
     {
       "source": "/assets/art/hearth-ritual.jpg",
@@ -352,8 +352,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/horse-racing-pack.jpg",
@@ -372,8 +372,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/light-encroached-homes.jpg",
@@ -392,8 +392,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/magenta-collision-water-study.jpg",
@@ -412,8 +412,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/night-fishermen-li-river.jpg",
@@ -432,8 +432,8 @@
         1000
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/orange-suspension-water-study.jpg",
@@ -452,8 +452,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/rice-terraces-golden-hour.jpg",
@@ -472,8 +472,8 @@
         1000
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/sea-of-clouds.jpg",
@@ -508,8 +508,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/swimming-motion.jpg",
@@ -528,8 +528,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/art/swimming-start-sequence.jpg",
@@ -548,8 +548,8 @@
         1280
       ],
       "responsiveUses": 3,
-      "lazyUses": 3,
-      "eagerUses": 3
+      "lazyUses": 0,
+      "eagerUses": 6
     },
     {
       "source": "/assets/optimized-v2/art/ancestral-kitchen-light-1000.webp",

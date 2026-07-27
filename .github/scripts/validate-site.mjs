@@ -3,7 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ORIGIN = "https://rickykwok.com";
-const ASSET_VERSION = "20260726-mobile-clarity-v3";
+const ASSET_VERSION = "20260726-gallery-first-v4";
 const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
 const SCRIPT_URL = `/assets/site.min.js?v=${ASSET_VERSION}`;
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -132,6 +132,8 @@ for (const file of await htmlFiles()) {
   const noindex = isNoindex(html);
   const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1]?.trim() || "";
   const description = metaContent(html, "description");
+  const ogUpdatedTime = propertyContent(html, "og:updated_time");
+  const schemaModifiedTime = html.match(/"dateModified":"([^"]+)"/)?.[1] || "";
   const h1Count = (html.match(/<h1\b/gi) || []).length;
   const canonical = canonicalFrom(html);
   const localized = relative.startsWith("zh-hant/") || relative.startsWith("zh-hans/");
@@ -186,6 +188,12 @@ for (const file of await htmlFiles()) {
 
   if (!title) errors.push(`${relative}: missing title`);
   if (!noindex && h1Count !== 1) errors.push(`${relative}: expected one H1, found ${h1Count}`);
+  if (ogUpdatedTime && schemaModifiedTime && ogUpdatedTime !== schemaModifiedTime) {
+    errors.push(`${relative}: Open Graph and structured-data modification dates disagree`);
+  }
+  if (/>Open artwork<\/a>|>查看相關作品<\/a>|>查看相关作品<\/a>/.test(html)) {
+    errors.push(`${relative}: related-card link text is generic rather than destination-specific`);
+  }
 
   for (const match of html.matchAll(/<script\s+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     try {
@@ -416,12 +424,13 @@ for (const artwork of artworkManifest.artworks || []) {
 }
 
 for (const [route, marker] of [
-  ["/", "Archive Guide"],
-  ["/zh-hant/", "檔案導覽"],
-  ["/zh-hans/", "档案导览"],
+  ["/", "Selected Works"],
+  ["/zh-hant/", "精選作品"],
+  ["/zh-hans/", "精选作品"],
 ]) {
   const page = indexableDocuments.get(route);
-  if (!page || !page.html.includes(marker)) errors.push(`${route}: missing governed archive-guide content`);
+  if (!page || !page.html.includes(marker)) errors.push(`${route}: homepage does not lead into selected work`);
+  if (page?.html.includes("archive-guide")) errors.push(`${route}: homepage restored the retired duplicate archive guide`);
 }
 for (const [route, marker] of [
   ["/biography/", "This site is maintained as a personal hobby archive. It does not offer products, services, prints, commissions, licensing, paid work, financial content, or client contact."],
@@ -480,35 +489,32 @@ for (const marker of ["prefers-reduced-motion", "forced-colors"]) {
   if (!siteCss.includes(marker)) errors.push(`accessibility stylesheet lacks ${marker}`);
 }
 if (/\.analytics-consent/i.test(siteCss)) errors.push("stylesheet still contains the removed analytics banner");
-for (const marker of [
-  "object-fit: contain !important",
-  ".hero.has-semantic-media",
-  ".hero.has-semantic-media .hero-media img",
-  "body:not(.artwork-page) .hero.has-semantic-media .hero-media img",
-  ".work-card img",
-]) {
-  if (!siteCss.includes(marker)) errors.push(`stylesheet lacks the governed image-fit contract: ${marker}`);
-}
-const mobileLayoutContract = "/* Mobile layout correctness contract.";
-const mobileLayoutContractIndex = siteCss.lastIndexOf(mobileLayoutContract);
-if (mobileLayoutContractIndex === -1) {
-  errors.push("stylesheet lacks the final mobile layout correctness contract");
+const visualSystemContract = "/* Gallery-first visual system contract.";
+const visualSystemContractIndex = siteCss.lastIndexOf(visualSystemContract);
+if (visualSystemContractIndex === -1) {
+  errors.push("stylesheet lacks the final gallery-first visual system contract");
 } else {
-  const mobileRules = siteCss.slice(mobileLayoutContractIndex);
+  const visualRules = siteCss.slice(visualSystemContractIndex);
   for (const marker of [
-    "@media (max-width: 880px)",
-    "grid-template-columns: minmax(0, 1fr)",
+    "@media (min-width: 980px)",
+    "@media (max-width: 640px)",
     "body:not(.artwork-page) .hero.has-semantic-media .hero-media img",
-    "object-fit: contain !important",
-    "object-position: center !important",
-    "transform: none !important",
+    "object-fit: contain",
+    "object-position: center",
+    "transform: none",
     ".gallery-grid",
-    "grid-column: 1 / -1",
+    "columns: 3",
     ".work-card-link",
+    ".work-caption",
+    "position: static",
     ".series img",
-    "body:not(.artwork-page) .feature-image img",
+    ".artwork-page .hero.page-hero .hero-media",
+    "body.menu-open",
   ]) {
-    if (!mobileRules.includes(marker)) errors.push(`final mobile layout contract lacks ${marker}`);
+    if (!visualRules.includes(marker)) errors.push(`final gallery-first visual system contract lacks ${marker}`);
+  }
+  if (/object-fit\s*:\s*cover|transform\s*:\s*scale\(/i.test(visualRules)) {
+    errors.push("final gallery-first visual system contract must not crop or scale photography");
   }
 }
 for (const match of siteCss.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
@@ -705,12 +711,45 @@ const forbiddenExternalHref = /^mailto:|behance\.net|facebook\.com|instagram\.co
 for (const [route, page] of indexableDocuments) {
   if (!page.html.includes("personal-use-notice")) errors.push(`${page.relative}: missing site-wide personal archive notice`);
   const expectedNotice = route.startsWith("/zh-hant/")
-    ? "個人、非商業攝影檔案，只供觀賞及記錄。"
+    ? "個人、非商業攝影檔案。"
     : route.startsWith("/zh-hans/")
-      ? "个人、非商业摄影档案，只供观赏及记录。"
-      : "A personal, non-commercial photography archive, shared for viewing and documentation only.";
+      ? "个人、非商业摄影档案。"
+      : "Personal, non-commercial photography archive.";
   if (!page.html.includes(expectedNotice)) {
     errors.push(`${page.relative}: personal archive notice is not the approved concise wording`);
+  }
+  if (/Written permission is required for reproduction|書面許可|书面许可/i.test(page.html)) {
+    errors.push(`${page.relative}: copyright copy implies a permission or licensing pathway`);
+  }
+  if (/香港藝術及紀實攝影|香港艺术及纪实摄影/.test(page.html)) {
+    errors.push(`${page.relative}: homepage metadata uses the retired art-market framing`);
+  }
+  if (
+    /\/zh-hant\/works\/|\/zh-hans\/works\//.test(route)
+    && /<strong>(?:藝術家|艺术家):<\/strong>/.test(page.html)
+  ) {
+    errors.push(`${page.relative}: artwork facts must identify Ricky as photographer, not artist`);
+  }
+  if (
+    route.startsWith("/zh-hant/works/")
+    && page.html.includes('class="artwork-figure"')
+    && !/<figcaption class="artwork-caption">[^<]*郭文棣攝影/.test(page.html)
+  ) {
+    errors.push(`${page.relative}: Traditional Chinese artwork caption is not localized`);
+  }
+  if (
+    route.startsWith("/zh-hans/works/")
+    && page.html.includes('class="artwork-figure"')
+    && !/<figcaption class="artwork-caption">[^<]*郭文棣摄影/.test(page.html)
+  ) {
+    errors.push(`${page.relative}: Simplified Chinese artwork caption is not localized`);
+  }
+  if (page.html.includes('class="artwork-figure"')) {
+    const figure = page.html.match(/<figure class="artwork-figure">[\s\S]*?<\/figure>/i)?.[0] || "";
+    const figureImage = figure.match(/<img\b[^>]*>/i)?.[0] || "";
+    if (attribute(figureImage, "loading") !== "eager" || attribute(figureImage, "fetchpriority") !== "high") {
+      errors.push(`${page.relative}: sole artwork presentation must load eagerly with high priority`);
+    }
   }
   if (/<form\b|formsubmit\.co|studio@rickykwok\.com|data-inquiry-form/i.test(page.html)) {
     errors.push(`${page.relative}: contains a retired business form or contact mechanism`);

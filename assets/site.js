@@ -58,6 +58,7 @@ function addMobileNavigation() {
 
   function setMenuOpen(open) {
     header.classList.toggle("is-menu-open", open);
+    document.body.classList.toggle("menu-open", open && window.matchMedia("(max-width: 900px)").matches);
     toggle.setAttribute("aria-expanded", String(open));
     toggle.textContent = open ? localizedLabels.close : localizedLabels.open;
   }
@@ -70,6 +71,16 @@ function addMobileNavigation() {
     if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
       setMenuOpen(false);
       toggle.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (toggle.getAttribute("aria-expanded") === "true" && !header.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  });
+  window.addEventListener("resize", () => {
+    if (!window.matchMedia("(max-width: 900px)").matches && toggle.getAttribute("aria-expanded") === "true") {
+      setMenuOpen(false);
     }
   });
 }
@@ -145,6 +156,11 @@ modal?.addEventListener("click", (event) => {
   if (event.target === modal) closeModal();
 });
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Tab" && modal?.classList.contains("is-open")) {
+    event.preventDefault();
+    closeButton?.focus();
+    return;
+  }
   if (event.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
 });
 
