@@ -1,6 +1,13 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import sharp from "sharp";
+import {
+  FEATURE_IMAGE_SIZES,
+  HERO_IMAGE_SIZES,
+  NATURAL_WIDTH_AVIF_FAMILIES,
+  featureImageTags,
+} from "./responsive-image-policy.mjs";
 import {
   ASSET_VERSION,
   SHELL_VERSION,
@@ -20,6 +27,7 @@ import {
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const artifactRoot = path.join(repoRoot, "_site");
 const errors = [];
+const bitmapMetadata = new Map();
 
 function normalized(relative) {
   return relative.split(path.sep).join("/");
@@ -111,6 +119,13 @@ async function fileExists(relative) {
   } catch {
     return false;
   }
+}
+
+async function metadataFor(relative) {
+  if (!bitmapMetadata.has(relative)) {
+    bitmapMetadata.set(relative, await sharp(path.join(artifactRoot, relative)).metadata());
+  }
+  return bitmapMetadata.get(relative);
 }
 
 async function resolveArtifactTarget(url) {
@@ -339,6 +354,24 @@ for (const document of documents.values()) {
   if (!html.includes(`data-shell-version="${SHELL_VERSION}"`)) errors.push(`${relative}: current shell version marker is missing`);
   if (!html.includes(`/assets/site.min.css?v=${ASSET_VERSION}`)) errors.push(`${relative}: current stylesheet cache key is missing`);
   if (!html.includes(`/assets/site.min.js?v=${ASSET_VERSION}`)) errors.push(`${relative}: current script cache key is missing`);
+  for (const tag of featureImageTags(html)) {
+    if (attribute(tag, "sizes") !== FEATURE_IMAGE_SIZES) {
+      errors.push(`${relative}: feature image sizes differs from the responsive-image policy`);
+    }
+  }
+  if (!/<body\b[^>]*class=["'][^"']*\bartwork-page\b/i.test(html)) {
+    const heroPicture = html.match(/<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>/i)?.[0] || "";
+    if (heroPicture) {
+      for (const match of heroPicture.matchAll(/<(?:source|img)\b[^>]*>/gi)) {
+        if (attribute(match[0], "sizes") !== HERO_IMAGE_SIZES) {
+          errors.push(`${relative}: hero image sizes differs from the responsive-image policy`);
+        }
+      }
+      if (/<img\b[^>]*\bwidth=["']800["']/i.test(heroPicture) && !/\bsource-cap-800\b/i.test(heroPicture)) {
+        errors.push(`${relative}: 800px hero is missing its intrinsic-width cap`);
+      }
+    }
+  }
 
   for (const match of html.matchAll(/<a\b[^>]*>/gi)) {
     const href = attribute(match[0], "href");
@@ -371,12 +404,16 @@ for (const document of documents.values()) {
   }
 
   const imageReferences = [];
+  const responsiveCandidates = [];
   for (const match of html.matchAll(/<(?:img|source)\b[^>]*>/gi)) {
     const src = attribute(match[0], "src");
     if (src) imageReferences.push(src);
     for (const candidate of attribute(match[0], "srcset").split(",")) {
-      const value = candidate.trim().split(/\s+/)[0];
-      if (value) imageReferences.push(value);
+      const [value, descriptor = ""] = candidate.trim().split(/\s+/);
+      if (value) {
+        imageReferences.push(value);
+        responsiveCandidates.push({ reference: value, descriptor });
+      }
     }
   }
   for (const reference of imageReferences) {
@@ -388,6 +425,34 @@ for (const document of documents.values()) {
     const targetRelative = routeFile(url.pathname);
     if (!await fileExists(targetRelative)) errors.push(`${relative}: internal image is absent from artifact ${reference}`);
   }
+  for (const { reference, descriptor } of responsiveCandidates) {
+    if (!/^\d+w$/i.test(descriptor)) continue;
+    const url = new URL(reference, canonicalUrl);
+    if (url.origin !== SITE_ORIGIN) continue;
+    const targetRelative = routeFile(url.pathname);
+    if (!await fileExists(targetRelative)) continue;
+    const metadata = await metadataFor(targetRelative);
+    const declaredWidth = Number.parseInt(descriptor, 10);
+    if (metadata.width !== declaredWidth) {
+      errors.push(`${relative}: ${reference} declares ${descriptor} but encodes ${metadata.width}px`);
+    }
+    if (targetRelative.startsWith("assets/optimized-v2/")) {
+      const originalRelative = targetRelative
+        .replace(/^assets\/optimized-v2\//, "assets/")
+        .replace(/-\d+\.(?:avif|webp)$/i, ".jpg");
+      if (await fileExists(originalRelative)) {
+        const originalMetadata = await metadataFor(originalRelative);
+        if (metadata.width > originalMetadata.width || metadata.height > originalMetadata.height) {
+          errors.push(`${relative}: ${reference} is larger than its genuine source image`);
+        }
+      }
+    }
+  }
+}
+
+for (const { family, width } of NATURAL_WIDTH_AVIF_FAMILIES) {
+  const relative = `assets/optimized-v2/art/${family}-${width}.avif`;
+  if (!await fileExists(relative)) errors.push(`${relative}: required natural-width AVIF is absent from artifact`);
 }
 
 const notFoundHtml = await readFile(path.join(artifactRoot, "404.html"), "utf8");

@@ -2062,6 +2062,19 @@ body:not(.artwork-page) .feature-image img {
   }
 }
 
+/* Never enlarge a lower-resolution hero beyond its encoded CSS width.
+   Higher-density screens still receive the largest honest source available. */
+body:not(.artwork-page) .hero.has-semantic-media .hero-media.source-cap-800 {
+  display: grid;
+  place-items: center;
+}
+
+body:not(.artwork-page) .hero.has-semantic-media .hero-media.source-cap-800 img {
+  width: min(100%, 800px);
+  height: auto;
+  max-height: 100%;
+}
+
 /* Mobile layout correctness contract.
    Keep this final: these rules intentionally outrank the desktop editorial
    treatments above so headings and photographs cannot regress on phones. */

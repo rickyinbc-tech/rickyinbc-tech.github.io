@@ -6,16 +6,18 @@
     "build:css": "esbuild assets/site.css --minify --legal-comments=none --outfile=assets/site.min.css",
     "build:js": "esbuild assets/site.js --minify --legal-comments=none --outfile=assets/site.min.js",
     "build:assets": "npm run build:css && npm run build:js",
+    "build:images": "node .github/scripts/build-high-res-image-variants.mjs",
     "build:shell": "node .github/scripts/sync-site-shell.mjs",
     "build:content": "npm run build:shell && node .github/scripts/build-sitemaps.mjs && node .github/scripts/build-governance-report.mjs",
     "build:public": "node .github/scripts/build-public-site.mjs",
     "validate:public": "node .github/scripts/validate-public-artifact.mjs",
-    "build": "npm run build:assets && npm run build:content",
+    "build": "npm run build:assets && npm run build:images && npm run build:content",
     "test": "node .github/scripts/validate-site.mjs && node .github/scripts/test-edge-worker.mjs",
     "check": "npm run build && npm test && npm run build:public && npm run validate:public",
     "sync:social": "node .github/scripts/sync-social-metadata.mjs"
   },
   "devDependencies": {
-    "esbuild": "0.25.6"
+    "esbuild": "0.25.6",
+    "sharp": "0.35.3"
   }
 }

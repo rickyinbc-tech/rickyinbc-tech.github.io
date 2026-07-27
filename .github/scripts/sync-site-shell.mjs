@@ -8,6 +8,7 @@ import {
   renderFooter,
   renderHeaderAndNotice,
 } from "./site-shell.mjs";
+import { normalizeResponsiveImages } from "./responsive-image-policy.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ignored = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
@@ -31,6 +32,7 @@ for (const file of await htmlFiles()) {
   const language = normalizeLanguage(source.match(/<html\b[^>]*\blang=["']([^"']+)["']/i)?.[1]);
   const relative = path.relative(root, file).split(path.sep).join("/");
   let html = source.replaceAll(/\d{8}-[a-z0-9-]+-v\d+/gi, ASSET_VERSION);
+  html = normalizeResponsiveImages(html);
 
   if (/<header\b[^>]*class=["'][^"']*\bsite-header\b/i.test(html)) {
     const languageLinks = extractLanguageLinks(html);

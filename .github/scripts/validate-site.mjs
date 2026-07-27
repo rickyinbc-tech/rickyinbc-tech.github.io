@@ -1,6 +1,12 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  FEATURE_IMAGE_SIZES,
+  HERO_IMAGE_SIZES,
+  NATURAL_WIDTH_AVIF_FAMILIES,
+  featureImageTags,
+} from "./responsive-image-policy.mjs";
 import { ASSET_VERSION, SHELL_VERSION } from "./site-shell.mjs";
 
 const ORIGIN = "https://rickykwok.com";
@@ -171,6 +177,24 @@ for (const file of await htmlFiles()) {
   }
 
   if (/<\/source>/i.test(html)) errors.push(`${relative}: contains an invalid closing source tag`);
+  for (const tag of featureImageTags(html)) {
+    if (attribute(tag, "sizes") !== FEATURE_IMAGE_SIZES) {
+      errors.push(`${relative}: feature image sizes does not match the rendered split layout`);
+    }
+  }
+  if (!/<body\b[^>]*class=["'][^"']*\bartwork-page\b/i.test(html)) {
+    const heroPicture = html.match(/<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>/i)?.[0] || "";
+    if (heroPicture) {
+      for (const match of heroPicture.matchAll(/<(?:source|img)\b[^>]*>/gi)) {
+        if (attribute(match[0], "sizes") !== HERO_IMAGE_SIZES) {
+          errors.push(`${relative}: hero image sizes does not match the rendered split layout`);
+        }
+      }
+      if (/<img\b[^>]*\bwidth=["']800["']/i.test(heroPicture) && !/\bsource-cap-800\b/i.test(heroPicture)) {
+        errors.push(`${relative}: 800px hero is missing its honest intrinsic-width cap`);
+      }
+    }
+  }
   for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
     const tag = match[0];
     validatedImageUses += 1;
@@ -302,6 +326,13 @@ for (const file of await htmlFiles()) {
     }
     if (url.origin !== ORIGIN) continue;
     if (!await exists(routeToFile(url.pathname))) errors.push(`${relative}: missing local target ${url.pathname}`);
+  }
+}
+
+for (const { family, width } of NATURAL_WIDTH_AVIF_FAMILIES) {
+  const relative = `assets/optimized-v2/art/${family}-${width}.avif`;
+  if (!await exists(path.join(repoRoot, relative))) {
+    errors.push(`${relative}: required natural-width AVIF variant is missing`);
   }
 }
 
