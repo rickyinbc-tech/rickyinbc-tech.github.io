@@ -3,7 +3,7 @@
   "summary": {
     "pages": 181,
     "uniquePrimarySources": 99,
-    "imageUses": 798,
+    "imageUses": 780,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -584,26 +584,23 @@
         "selected-works/index.html",
         "series/city-light/index.html",
         "series/index.html",
-        "works/bank-of-china-light-trails/index.html",
         "works/cranes-and-towers/index.html",
         "works/dragon-night-festival/index.html",
         "works/hong-kong-urban-light-studies/index.html",
         "zh-hans/index.html",
         "zh-hans/series/city-light/index.html",
-        "zh-hans/works/bank-of-china-light-trails/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/dragon-night-festival/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/index.html",
         "zh-hant/index.html",
         "zh-hant/series/city-light/index.html",
-        "zh-hant/works/bank-of-china-light-trails/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
         "zh-hant/works/dragon-night-festival/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
         "zh-hant/works/index.html"
       ],
-      "uses": 22,
+      "uses": 19,
       "altVariants": [
         "Hong Kong light trails and skyscrapers at night.",
         "Hong Kong light trails at night.",
@@ -617,8 +614,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 22,
-      "lazyUses": 22,
+      "responsiveUses": 19,
+      "lazyUses": 19,
       "eagerUses": 0
     },
     {
@@ -661,14 +658,12 @@
         "selected-works/index.html",
         "series/index.html",
         "series/ritual/index.html",
-        "works/blue-hour-river-stage/index.html",
         "works/night-fishermen/index.html",
         "works/terraces-at-golden-hour/index.html",
         "works/village-ritual-photography/index.html",
         "zh-hans/index.html",
         "zh-hans/series/index.html",
         "zh-hans/series/ritual/index.html",
-        "zh-hans/works/blue-hour-river-stage/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/night-fishermen/index.html",
         "zh-hans/works/terraces-at-golden-hour/index.html",
@@ -676,13 +671,12 @@
         "zh-hant/index.html",
         "zh-hant/series/index.html",
         "zh-hant/series/ritual/index.html",
-        "zh-hant/works/blue-hour-river-stage/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/night-fishermen/index.html",
         "zh-hant/works/terraces-at-golden-hour/index.html",
         "zh-hant/works/village-ritual-photography/index.html"
       ],
-      "uses": 32,
+      "uses": 29,
       "altVariants": [
         "Cormorant fishermen on bamboo rafts in blue light.",
         "Cormorant fishermen on bamboo rafts under blue evening light.",
@@ -697,8 +691,8 @@
       "declaredWidths": [
         800
       ],
-      "responsiveUses": 32,
-      "lazyUses": 26,
+      "responsiveUses": 29,
+      "lazyUses": 23,
       "eagerUses": 6
     },
     {
@@ -779,7 +773,6 @@
         "works/flower-impact/index.html",
         "works/ice-crown/index.html",
         "works/magenta-collision/index.html",
-        "works/shunkan-instant/index.html",
         "works/studio-collision-studies/index.html",
         "zh-hans/artist-statement/index.html",
         "zh-hans/index.html",
@@ -791,7 +784,6 @@
         "zh-hans/works/ice-crown/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/magenta-collision/index.html",
-        "zh-hans/works/shunkan-instant/index.html",
         "zh-hans/works/studio-collision-studies/index.html",
         "zh-hant/artist-statement/index.html",
         "zh-hant/index.html",
@@ -803,10 +795,9 @@
         "zh-hant/works/ice-crown/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/magenta-collision/index.html",
-        "zh-hant/works/shunkan-instant/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 46,
+      "uses": 43,
       "altVariants": [
         "Ash and blue smoke exploding from cigarettes against a dark background.",
         "Cigarettes breaking apart in a blue high-speed impact photograph.",
@@ -825,8 +816,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 46,
-      "lazyUses": 46,
+      "responsiveUses": 43,
+      "lazyUses": 43,
       "eagerUses": 0
     },
     {
@@ -864,20 +855,17 @@
     {
       "source": "/assets/optimized-v2/art/coil-field-monochrome-1200.webp",
       "pages": [
-        "works/coil-field/index.html",
         "works/cranes-and-towers/index.html",
         "works/monochrome-documentary/index.html",
         "works/terraces-at-golden-hour/index.html",
-        "zh-hans/works/coil-field/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
         "zh-hans/works/terraces-at-golden-hour/index.html",
-        "zh-hant/works/coil-field/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
         "zh-hant/works/monochrome-documentary/index.html",
         "zh-hant/works/terraces-at-golden-hour/index.html"
       ],
-      "uses": 12,
+      "uses": 9,
       "altVariants": [
         "Monochrome photograph of a worker surrounded by many circular coils laid out in rows.",
         "Worker among repeated circular coils in a monochrome field.",
@@ -887,8 +875,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 12,
-      "lazyUses": 12,
+      "responsiveUses": 9,
+      "lazyUses": 9,
       "eagerUses": 0
     },
     {
@@ -1125,7 +1113,6 @@
         "selected-works/index.html",
         "series/collision/index.html",
         "works/blue-column/index.html",
-        "works/green-orb/index.html",
         "works/magenta-collision/index.html",
         "works/orange-droplet/index.html",
         "works/studio-collision-studies/index.html",
@@ -1133,7 +1120,6 @@
         "zh-hans/journal/index.html",
         "zh-hans/series/collision/index.html",
         "zh-hans/works/blue-column/index.html",
-        "zh-hans/works/green-orb/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/magenta-collision/index.html",
         "zh-hans/works/orange-droplet/index.html",
@@ -1142,13 +1128,12 @@
         "zh-hant/journal/index.html",
         "zh-hant/series/collision/index.html",
         "zh-hant/works/blue-column/index.html",
-        "zh-hant/works/green-orb/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/magenta-collision/index.html",
         "zh-hant/works/orange-droplet/index.html",
         "zh-hant/works/studio-collision-studies/index.html"
       ],
-      "uses": 33,
+      "uses": 30,
       "altVariants": [
         "A dark green water droplet hovering over a liquid surface.",
         "Dark green water droplet hovering above a liquid surface against a bright green field.",
@@ -1165,8 +1150,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 33,
-      "lazyUses": 33,
+      "responsiveUses": 30,
+      "lazyUses": 30,
       "eagerUses": 0
     },
     {
@@ -1543,7 +1528,6 @@
         "works/ice-crown/index.html",
         "works/sport-abstraction/index.html",
         "works/start-sequence/index.html",
-        "works/swimming-in-motion/index.html",
         "works/the-pack/index.html",
         "zh-hans/index.html",
         "zh-hans/series/motion/index.html",
@@ -1551,7 +1535,6 @@
         "zh-hans/works/index.html",
         "zh-hans/works/sport-abstraction/index.html",
         "zh-hans/works/start-sequence/index.html",
-        "zh-hans/works/swimming-in-motion/index.html",
         "zh-hans/works/the-pack/index.html",
         "zh-hant/index.html",
         "zh-hant/series/motion/index.html",
@@ -1559,10 +1542,9 @@
         "zh-hant/works/index.html",
         "zh-hant/works/sport-abstraction/index.html",
         "zh-hant/works/start-sequence/index.html",
-        "zh-hant/works/swimming-in-motion/index.html",
         "zh-hant/works/the-pack/index.html"
       ],
-      "uses": 34,
+      "uses": 31,
       "altVariants": [
         "Blurred swimmers across a pool.",
         "Blurred swimmers moving across a pool.",
@@ -1579,8 +1561,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 34,
-      "lazyUses": 34,
+      "responsiveUses": 31,
+      "lazyUses": 31,
       "eagerUses": 0
     },
     {
