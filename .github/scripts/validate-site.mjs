@@ -1,9 +1,9 @@
 import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { ASSET_VERSION, SHELL_VERSION } from "./site-shell.mjs";
 
 const ORIGIN = "https://rickykwok.com";
-const ASSET_VERSION = "20260726-gallery-first-v4";
 const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
 const SCRIPT_URL = `/assets/site.min.js?v=${ASSET_VERSION}`;
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -12,6 +12,7 @@ const errors = [];
 const artworkManifest = JSON.parse(await readFile(path.join(repoRoot, ".github/data/artwork-manifest.json"), "utf8"));
 const edgeRedirectConfig = JSON.parse(await readFile(path.join(repoRoot, "edge/redirect-map.json"), "utf8"));
 const translationGovernance = JSON.parse(await readFile(path.join(repoRoot, ".github/data/translation-governance.json"), "utf8"));
+const sourceLedger = await readFile(path.join(repoRoot, ".github/data/source-ledger.csv"), "utf8");
 const measurementGovernance = JSON.parse(await readFile(path.join(repoRoot, ".github/data/measurement-governance.json"), "utf8"));
 const imageInventory = JSON.parse(await readFile(path.join(repoRoot, ".github/data/image-asset-inventory.json"), "utf8"));
 const performanceReport = JSON.parse(await readFile(path.join(repoRoot, ".github/data/performance-report.json"), "utf8"));
@@ -219,6 +220,9 @@ for (const file of await htmlFiles()) {
     }
     if (!html.includes('class="site-header nav-enhanced"')) {
       errors.push(`${relative}: site header is not using the enhanced responsive shell`);
+    }
+    if (!html.includes(`data-shell-version="${SHELL_VERSION}"`)) {
+      errors.push(`${relative}: page is not using the current authoritative shell version`);
     }
     if (!/<button\b[^>]*class=["'][^"']*\bnav-toggle\b[^"']*["'][^>]*aria-controls=["'][^"']*primary-navigation[^"']*language-navigation[^"']*["'][^>]*>/i.test(html)) {
       errors.push(`${relative}: missing static accessible mobile navigation control`);
@@ -433,9 +437,9 @@ for (const [route, marker] of [
   if (page?.html.includes("archive-guide")) errors.push(`${route}: homepage restored the retired duplicate archive guide`);
 }
 for (const [route, marker] of [
-  ["/biography/", "This site is maintained as a personal hobby archive. It does not offer products, services, prints, commissions, licensing, paid work, financial content, or client contact."],
-  ["/zh-hant/biography/", "此網站由個人興趣維護，不提供產品、服務、印刷品、委託、授權、收費工作、財務內容或客戶聯絡。"],
-  ["/zh-hans/biography/", "此网站由个人兴趣维护，不提供产品、服务、印刷品、委托、授权、收费工作、财务内容或客户联系。"],
+  ["/biography/", "This site is maintained as a personal hobby archive for viewing and documentation only."],
+  ["/zh-hant/biography/", "此網站由個人興趣維護，只供觀賞與記錄。"],
+  ["/zh-hans/biography/", "此网站由个人兴趣维护，只供观赏与记录。"],
 ]) {
   const page = indexableDocuments.get(route);
   if (!page?.html.includes(marker)) errors.push(`${route}: biography lacks the complete personal-hobby archive disclosure`);
@@ -465,6 +469,12 @@ for (const [language, prefix] of [["en", ""], ["zh-Hant", "/zh-hant"], ["zh-Hans
 
 if (translationGovernance.schemaVersion !== 1 || translationGovernance.identity?.displayName !== "Ricky Kwok 郭文棣") {
   errors.push("translation governance is missing the approved identity contract");
+}
+if (translationGovernance.rightsTerms?.acquisition || translationGovernance.rightsTerms?.licensing) {
+  errors.push("translation governance retains retired acquisition or licensing fields");
+}
+if (/(?:Image Licensing|Media Kit|Studio Standards)/i.test(sourceLedger)) {
+  errors.push("source ledger retains dormant commercial page classifications");
 }
 for (const series of ["ritual", "collision", "motion", "city-light"]) {
   for (const locale of ["en", "zh-Hant", "zh-Hans"]) {

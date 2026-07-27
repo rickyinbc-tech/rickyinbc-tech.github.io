@@ -132,8 +132,9 @@ check(photoRoot.status === 308, "the verified photo hostname root redirect must 
 check(photoRoot.headers.get("location") === "https://rickykwok.com/", "the photo hostname root must retain its canonical destination");
 
 const unknownPhotoPath = await worker.fetch(new Request("https://photo.rickykwok.com/unverified-legacy-path/"));
-check(unknownPhotoPath.status === 200, "unverified photo paths must retain the existing origin pass-through behavior");
+check(unknownPhotoPath.status === 410, "unverified photo paths must be permanently gone");
 check(unknownPhotoPath.headers.get("location") === null, "unverified photo paths must not be wildcard redirected");
+check(unknownPhotoPath.headers.get("x-robots-tag") === "noindex, nofollow", "unverified photo paths must carry a noindex header");
 
 if (checks.length) throw new Error(`Edge worker tests failed:\n${checks.join("\n")}`);
 console.log("Edge worker redirects, permanent-gone routes, and security headers passed.");

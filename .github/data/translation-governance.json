@@ -25,8 +25,6 @@
     "city-light": { "en": "City Light", "zh-Hant": "城市之光", "zh-Hans": "城市之光" }
   },
   "rightsTerms": {
-    "acquisition": { "en": "Acquisition", "zh-Hant": "收藏", "zh-Hans": "收藏" },
-    "licensing": { "en": "Licensing", "zh-Hant": "授權", "zh-Hans": "授权" },
     "exhibition": { "en": "Exhibition", "zh-Hant": "展覽", "zh-Hans": "展览" },
     "copyright": { "en": "Copyright", "zh-Hant": "版權", "zh-Hans": "版权" }
   },

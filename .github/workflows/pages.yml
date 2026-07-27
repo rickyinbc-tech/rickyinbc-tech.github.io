@@ -37,6 +37,8 @@ jobs:
         run: npm test
       - name: Build public-only site artifact
         run: npm run build:public
+      - name: Validate exact public deployment artifact
+        run: npm run validate:public
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

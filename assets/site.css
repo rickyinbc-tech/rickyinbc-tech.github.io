@@ -616,12 +616,6 @@ article.work-card {
   object-fit: contain;
   background: #080808;
   transform: scale(1);
-  transition: filter .7s ease;
-}
-
-.work-card:hover img,
-.work-card:focus-visible img {
-  filter: saturate(1.08) contrast(1.06);
 }
 
 .work-caption {

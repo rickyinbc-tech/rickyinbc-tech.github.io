@@ -21,8 +21,7 @@ const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
 const passThroughHosts = new Set([
   canonicalHost,
-  `www.${canonicalHost}`,
-  "photo.rickykwok.com"
+  `www.${canonicalHost}`
 ]);
 
 const securityHeaders = {

@@ -11,7 +11,8 @@ retired commercial surfaces:
 
 * `rickykwok.com` legacy aliases to their canonical site pages
 * `www.rickykwok.com` to the canonical host, without adding a second hop
-* `photo.rickykwok.com/` to the canonical homepage
+* `photo.rickykwok.com/` to the canonical homepage; every other path on that
+  retired host returns `410 Gone` with `X-Robots-Tag: noindex, nofollow`
 * retired main-domain contact, print, edition, licensing, press, policy, and
   studio paths (including Traditional and Simplified Chinese variants) return
   `410 Gone` with an HTTP `X-Robots-Tag: noindex, nofollow`
@@ -22,10 +23,11 @@ retired commercial surfaces:
   configuration fail closed with `404 Not Found` even if an upstream cache
   still has an older branch-based Pages deployment
 
-It does not wildcard redirect unknown `photo` paths. Those requests continue to
-the origin until an exact historical mapping has been verified. The Worker
-returns a genuine 404 for unrelated or unknown subdomains instead of forwarding
-or serving them.
+It does not wildcard redirect unknown `photo` paths into unrelated canonical
+content. Those paths fail closed with a permanent removal response, so a stale
+or accidentally re-enabled origin cannot serve the former commercial site.
+The Worker returns a genuine 404 for unrelated or unknown subdomains instead of
+forwarding or serving them.
 
 Before attaching this Worker:
 

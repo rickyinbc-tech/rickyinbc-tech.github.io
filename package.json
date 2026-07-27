@@ -9,9 +9,10 @@
     "build:shell": "node .github/scripts/sync-site-shell.mjs",
     "build:content": "npm run build:shell && node .github/scripts/build-sitemaps.mjs && node .github/scripts/build-governance-report.mjs",
     "build:public": "node .github/scripts/build-public-site.mjs",
+    "validate:public": "node .github/scripts/validate-public-artifact.mjs",
     "build": "npm run build:assets && npm run build:content",
     "test": "node .github/scripts/validate-site.mjs && node .github/scripts/test-edge-worker.mjs",
-    "check": "npm run build && npm test",
+    "check": "npm run build && npm test && npm run build:public && npm run validate:public",
     "sync:social": "node .github/scripts/sync-social-metadata.mjs"
   },
   "devDependencies": {

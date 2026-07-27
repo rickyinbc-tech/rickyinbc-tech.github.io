@@ -1,28 +1,16 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  ASSET_VERSION,
+  extractLanguageLinks,
+  normalizeLanguage,
+  renderFooter,
+  renderHeaderAndNotice,
+} from "./site-shell.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ignored = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
-const assetVersion = "20260726-gallery-first-v4";
-
-const localized = {
-  en: {
-    footer: "Personal, non-commercial photography archive",
-    menu: "Menu",
-    notice: "Personal, non-commercial photography archive.",
-  },
-  "zh-Hant": {
-    footer: "個人、非商業攝影檔案",
-    menu: "選單",
-    notice: "個人、非商業攝影檔案。",
-  },
-  "zh-Hans": {
-    footer: "个人、非商业摄影档案",
-    menu: "菜单",
-    notice: "个人、非商业摄影档案。",
-  },
-};
 
 async function htmlFiles(directory = root) {
   const files = [];
@@ -36,39 +24,30 @@ async function htmlFiles(directory = root) {
 }
 
 let changed = 0;
-let enhancedHeaders = 0;
+let synchronizedShells = 0;
 
 for (const file of await htmlFiles()) {
   const source = await readFile(file, "utf8");
-  const language = source.match(/<html\b[^>]*\blang=["']([^"']+)["']/i)?.[1] || "en";
-  const copy = localized[language] || localized.en;
-  let html = source.replaceAll(/202607\d{2}-[a-z0-9-]+-v\d+/gi, assetVersion);
+  const language = normalizeLanguage(source.match(/<html\b[^>]*\blang=["']([^"']+)["']/i)?.[1]);
+  const relative = path.relative(root, file).split(path.sep).join("/");
+  let html = source.replaceAll(/\d{8}-[a-z0-9-]+-v\d+/gi, ASSET_VERSION);
 
-  html = html.replace(
-    /<div class="personal-use-notice" role="note">[\s\S]*?<\/div>/g,
-    `<div class="personal-use-notice" role="note">${copy.notice}</div>`,
-  );
+  if (/<header\b[^>]*class=["'][^"']*\bsite-header\b/i.test(html)) {
+    const languageLinks = extractLanguageLinks(html);
+    const shell = renderHeaderAndNotice({
+      language,
+      languageLinks,
+      markCurrentLanguage: relative !== "404.html",
+    });
+    const headerPattern = /<header\b[^>]*class=["'][^"']*\bsite-header\b[^"']*["'][^>]*>[\s\S]*?<\/header>(?:\s*<div\b[^>]*class=["'][^"']*\bpersonal-use-notice\b[^"']*["'][^>]*>[\s\S]*?<\/div>)?/i;
+    if (!headerPattern.test(html)) throw new Error(`Could not replace the complete shared shell in ${relative}`);
+    html = html.replace(headerPattern, shell);
+    synchronizedShells += 1;
 
-  html = html
-    .replace(/<header class="site-header"(?![^>]*\bnav-enhanced\b)/g, '<header class="site-header nav-enhanced"')
-    .replace(/<div class="nav-links"(?![^>]*\bid=)/g, '<div class="nav-links" id="primary-navigation"')
-    .replace(/<div class="language-switcher"(?![^>]*\bid=)/g, '<div class="language-switcher" id="language-navigation"')
-    .replace(/(<a class="brand"[^>]*?)\s+aria-label="[^"]*"([^>]*>)/g, "$1$2");
-
-  if (html.includes('class="site-header nav-enhanced"') && !html.includes('class="nav-toggle"')) {
-    const brandPattern = /(<a class="brand"[\s\S]*?<\/a>)/;
-    if (!brandPattern.test(html)) throw new Error(`Could not locate the brand link in ${path.relative(root, file)}`);
-    html = html.replace(
-      brandPattern,
-      `$1<button class="nav-toggle" type="button" aria-controls="primary-navigation language-navigation" aria-expanded="false">${copy.menu}</button>`,
-    );
-    enhancedHeaders += 1;
+    const footerPattern = /<footer\b[^>]*class=["'][^"']*\bsite-footer\b[^"']*["'][^>]*>[\s\S]*?<\/footer>/i;
+    if (!footerPattern.test(html)) throw new Error(`Could not replace the shared footer in ${relative}`);
+    html = html.replace(footerPattern, renderFooter(language));
   }
-
-  html = html
-    .replace(/<span>Personal Photography Archive<\/span>/g, `<span>${copy.footer}</span>`)
-    .replace(/<span>個人攝影檔案<\/span>/g, `<span>${copy.footer}</span>`)
-    .replace(/<span>个人摄影档案<\/span>/g, `<span>${copy.footer}</span>`);
 
   html = html
     .replaceAll("<strong>藝術家:</strong>", "<strong>攝影者:</strong>")
@@ -158,4 +137,4 @@ for (const file of await htmlFiles()) {
   }
 }
 
-console.log(`Synchronized ${changed} HTML files; added ${enhancedHeaders} static mobile menu controls.`);
+console.log(`Synchronized ${changed} HTML files from one shared source; rendered ${synchronizedShells} complete site shells.`);
