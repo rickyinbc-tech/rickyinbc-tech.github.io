@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import {
   ARCHIVE_IMAGE_SIZES,
+  adjacentRepeatedSourceCardFamilies,
   FEATURE_IMAGE_SIZES,
   HERO_IMAGE_SIZES,
   MODAL_IMAGE_SIZES,
@@ -337,6 +338,9 @@ for (const relative of artifactHtmlFiles) {
 
 for (const document of documents.values()) {
   const { canonicalUrl, html, language, relative } = document;
+  if (adjacentRepeatedSourceCardFamilies(html).length) {
+    errors.push(`${relative}: adjacent related cards visibly repeat the same photograph`);
+  }
   const alternates = alternateLinks(html);
   for (const alternateLanguage of [...SUPPORTED_LANGUAGES, "x-default"]) {
     if (!alternates.has(alternateLanguage)) errors.push(`${relative}: missing ${alternateLanguage} hreflang`);

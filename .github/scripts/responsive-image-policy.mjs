@@ -221,6 +221,7 @@ const HERO_PICTURE_BLOCK = /<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*[
 const WORK_CARD_IMAGE_BLOCK = /<(?:article|a|button)\b[^>]*class=["'][^"']*\bwork-card\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const SUPPORT_CARD_IMAGE_BLOCK = /<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const ARCHIVE_CARD_IMAGE_BLOCK = /<figure\b[^>]*class=["'][^"']*\barchive-photo\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
+const SOURCE_CARD_BLOCK = /<article\b[^>]*class=["'][^"']*\bsource-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi;
 
 export function featureImageTags(html) {
   return [...html.matchAll(FEATURE_IMAGE_BLOCK)]
@@ -239,16 +240,24 @@ export function repeatedArtworkSourceCards(html) {
   const featureTag = featureImageTags(html)[0] || "";
   const primaryFamily = imageFamilyFromTag(featureTag);
   if (!primaryFamily) return [];
-  return [...html.matchAll(/<article\b[^>]*class=["'][^"']*\bsource-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi)]
+  return [...html.matchAll(SOURCE_CARD_BLOCK)]
     .map((match) => match[0])
     .filter((block) => imageFamilyFromTag(block.match(/<img\b[^>]*>/i)?.[0] || "") === primaryFamily);
+}
+
+export function adjacentRepeatedSourceCardFamilies(html) {
+  const families = [...html.matchAll(SOURCE_CARD_BLOCK)]
+    .map((match) => imageFamilyFromTag(match[0].match(/<img\b[^>]*>/i)?.[0] || ""));
+  return families
+    .slice(1)
+    .filter((family, index) => family && family === families[index]);
 }
 
 export function removeRepeatedArtworkSourceCards(html) {
   const repeated = new Set(repeatedArtworkSourceCards(html));
   if (!repeated.size) return html;
   return html.replace(
-    /<article\b[^>]*class=["'][^"']*\bsource-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi,
+    SOURCE_CARD_BLOCK,
     (block) => repeated.has(block) ? "" : block,
   );
 }

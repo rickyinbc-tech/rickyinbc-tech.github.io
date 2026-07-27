@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   ARCHIVE_IMAGE_SIZES,
+  adjacentRepeatedSourceCardFamilies,
   FEATURE_IMAGE_SIZES,
   HERO_IMAGE_SIZES,
   MODAL_IMAGE_SIZES,
@@ -152,6 +153,9 @@ for (const file of await htmlFiles()) {
   const canonical = canonicalFrom(html);
   const localized = relative.startsWith("zh-hant/") || relative.startsWith("zh-hans/");
 
+  if (adjacentRepeatedSourceCardFamilies(html).length) {
+    errors.push(`${relative}: adjacent related cards visibly repeat the same photograph`);
+  }
   if (html.includes("/assets/site.min.css") && !html.includes(STYLESHEET_URL)) {
     errors.push(`${relative}: stylesheet cache key is not the current production version`);
   }

@@ -515,18 +515,30 @@
       "pages": [
         "index.html",
         "series/motion/index.html",
+        "works/ice-crown/index.html",
+        "works/start-sequence/index.html",
+        "works/the-pack/index.html",
         "zh-hans/index.html",
         "zh-hans/series/motion/index.html",
+        "zh-hans/works/ice-crown/index.html",
+        "zh-hans/works/start-sequence/index.html",
+        "zh-hans/works/the-pack/index.html",
         "zh-hant/index.html",
-        "zh-hant/series/motion/index.html"
+        "zh-hant/series/motion/index.html",
+        "zh-hant/works/ice-crown/index.html",
+        "zh-hant/works/start-sequence/index.html",
+        "zh-hant/works/the-pack/index.html"
       ],
       "deliverySources": [
         "/assets/optimized-v2/art/divers-motion-1200.webp"
       ],
-      "uses": 6,
+      "uses": 15,
       "altVariants": [
         "Divers entering a pool.",
         "Divers streaking in motion over a swimming pool.",
+        "Swimmers diving in sequence through spray and motion blur.",
+        "多名泳手依次跃入水中，在水花与动态模糊中形成斜向节奏。",
+        "多名泳手依次躍入水中，在水花與動態模糊中形成斜向節奏。",
         "多名跳水者躍向泳池，動態模糊形成層疊軌跡。",
         "跳水者以动态模糊轨迹依次落向蓝色泳池。",
         "跳水者在泳池上留下动态轨迹",
@@ -535,8 +547,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 6,
-      "lazyUses": 6,
+      "responsiveUses": 15,
+      "lazyUses": 15,
       "eagerUses": 0,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -1328,7 +1340,6 @@
         "selected-works/index.html",
         "series/index.html",
         "series/motion/index.html",
-        "works/ice-crown/index.html",
         "works/sport-abstraction/index.html",
         "works/start-sequence/index.html",
         "works/swimming-in-motion/index.html",
@@ -1336,7 +1347,6 @@
         "zh-hans/index.html",
         "zh-hans/series/index.html",
         "zh-hans/series/motion/index.html",
-        "zh-hans/works/ice-crown/index.html",
         "zh-hans/works/index.html",
         "zh-hans/works/sport-abstraction/index.html",
         "zh-hans/works/start-sequence/index.html",
@@ -1345,7 +1355,6 @@
         "zh-hant/index.html",
         "zh-hant/series/index.html",
         "zh-hant/series/motion/index.html",
-        "zh-hant/works/ice-crown/index.html",
         "zh-hant/works/index.html",
         "zh-hant/works/sport-abstraction/index.html",
         "zh-hant/works/start-sequence/index.html",
@@ -1357,11 +1366,10 @@
         "/assets/optimized-v2/art/swimming-motion-1200.webp",
         "/assets/optimized-v2/art/swimming-motion-1280.webp"
       ],
-      "uses": 43,
+      "uses": 34,
       "altVariants": [
         "Blurred swimmers across a pool.",
         "Blurred swimmers moving across a pool.",
-        "Blurred swimmers moving through a pool.",
         "Multiple swimmers blurred into painterly strokes across a pool.",
         "Multiple swimmers blurred into painterly strokes across a turquoise pool.",
         "Swimmers blurred into layered colour and water across racing lanes.",
@@ -1375,8 +1383,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 43,
-      "lazyUses": 33,
+      "responsiveUses": 34,
+      "lazyUses": 24,
       "eagerUses": 10,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
