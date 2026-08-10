@@ -498,18 +498,18 @@ for (const artwork of artworkManifest.artworks || []) {
 }
 
 for (const [route, marker] of [
-  ["/", "Selected Works"],
-  ["/zh-hant/", "精選作品"],
-  ["/zh-hans/", "精选作品"],
+  ["/", "Contact sheet"],
+  ["/zh-hant/", "接觸印樣"],
+  ["/zh-hans/", "接触印样"],
 ]) {
   const page = indexableDocuments.get(route);
   if (!page || !page.html.includes(marker)) errors.push(`${route}: homepage does not lead into selected work`);
   if (page?.html.includes("archive-guide")) errors.push(`${route}: homepage restored the retired duplicate archive guide`);
 }
 for (const [route, marker] of [
-  ["/biography/", "This site is maintained as a personal hobby archive for viewing and documentation only."],
-  ["/zh-hant/biography/", "此網站由個人興趣維護，只供觀賞與記錄。"],
-  ["/zh-hans/biography/", "此网站由个人兴趣维护，只供观赏与记录。"],
+  ["/biography/", "This site is maintained as a personal hobby archive for viewing and documentation only. It is not operated as a business."],
+  ["/zh-hant/biography/", "此網站由個人興趣維護，只供觀賞與記錄，並非商業經營。"],
+  ["/zh-hans/biography/", "此网站由个人兴趣维护，只供观赏与记录，并非商业经营。"],
 ]) {
   const page = indexableDocuments.get(route);
   if (!page?.html.includes(marker)) errors.push(`${route}: biography lacks the complete personal-hobby archive disclosure`);
@@ -794,15 +794,15 @@ for (const [pageUrl, images] of imageEntries) {
 }
 
 const retiredBusinessRoutes = [
-  "/available-prints/", "/editions/", "/prints/", "/licensing/", "/contact/", "/contact/thanks/", "/shipping-returns/", "/studio-standards/", "/terms/", "/privacy/", "/press/", "/press/cv/", "/press/media-kit/",
-  "/zh-hant/available-prints/", "/zh-hant/prints/", "/zh-hant/editions/", "/zh-hant/licensing/", "/zh-hant/contact/", "/zh-hant/contact/thanks/", "/zh-hant/shipping-returns/", "/zh-hant/studio-standards/", "/zh-hant/terms/", "/zh-hant/privacy/", "/zh-hant/press/", "/zh-hant/press/cv/", "/zh-hant/press/media-kit/",
-  "/zh-hans/available-prints/", "/zh-hans/prints/", "/zh-hans/editions/", "/zh-hans/licensing/", "/zh-hans/contact/", "/zh-hans/contact/thanks/", "/zh-hans/shipping-returns/", "/zh-hans/studio-standards/", "/zh-hans/terms/", "/zh-hans/privacy/", "/zh-hans/press/", "/zh-hans/press/cv/", "/zh-hans/press/media-kit/"
+  "/available-prints/", "/collect/", "/editions/", "/prints/", "/licensing/", "/contact/", "/contact/thanks/", "/shipping-returns/", "/studio-standards/", "/terms/", "/privacy/", "/press/", "/press/cv/", "/press/media-kit/",
+  "/zh-hant/available-prints/", "/zh-hant/collect/", "/zh-hant/prints/", "/zh-hant/editions/", "/zh-hant/licensing/", "/zh-hant/contact/", "/zh-hant/contact/thanks/", "/zh-hant/shipping-returns/", "/zh-hant/studio-standards/", "/zh-hant/terms/", "/zh-hant/privacy/", "/zh-hant/press/", "/zh-hant/press/cv/", "/zh-hant/press/media-kit/",
+  "/zh-hans/available-prints/", "/zh-hans/collect/", "/zh-hans/prints/", "/zh-hans/editions/", "/zh-hans/licensing/", "/zh-hans/contact/", "/zh-hans/contact/thanks/", "/zh-hans/shipping-returns/", "/zh-hans/studio-standards/", "/zh-hans/terms/", "/zh-hans/privacy/", "/zh-hans/press/", "/zh-hans/press/cv/", "/zh-hans/press/media-kit/"
 ];
 for (const route of retiredBusinessRoutes) {
   if (indexableDocuments.has(route)) errors.push(`${route}: retired business route must not be indexable`);
 }
 
-const forbiddenLocalPath = /^\/(?:available-prints|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)|^\/zh-(?:hant|hans)\/(?:available-prints|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)/i;
+const forbiddenLocalPath = /^\/(?:available-prints|collect|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)|^\/zh-(?:hant|hans)\/(?:available-prints|collect|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)/i;
 const forbiddenExternalHref = /^mailto:|behance\.net|facebook\.com|instagram\.com|flickr\.com|dcfever\.com/i;
 for (const [route, page] of indexableDocuments) {
   if (!page.html.includes("personal-use-notice")) errors.push(`${page.relative}: missing site-wide personal archive notice`);

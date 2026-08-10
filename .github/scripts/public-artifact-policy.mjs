@@ -15,6 +15,7 @@ export const EXCLUDED_TOP_LEVEL = new Set([
 
 export const RETIRED_PREFIXES = [
   "available-prints",
+  "collect",
   "contact",
   "editions",
   "licensing",
@@ -25,6 +26,7 @@ export const RETIRED_PREFIXES = [
   "studio-standards",
   "terms",
   "zh-hant/available-prints",
+  "zh-hant/collect",
   "zh-hant/contact",
   "zh-hant/editions",
   "zh-hant/licensing",
@@ -35,6 +37,7 @@ export const RETIRED_PREFIXES = [
   "zh-hant/studio-standards",
   "zh-hant/terms",
   "zh-hans/available-prints",
+  "zh-hans/collect",
   "zh-hans/contact",
   "zh-hans/editions",
   "zh-hans/licensing",

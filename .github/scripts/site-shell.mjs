@@ -1,61 +1,61 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20260727-image-resolution-v1";
-export const SHELL_VERSION = "20260726-noncommercial-v1";
+export const ASSET_VERSION = "20260810-artist-notebook-v1";
+export const SHELL_VERSION = "20260810-artist-notebook-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 
 export const SHELL_COPY = {
   en: {
     brandHref: "/",
-    brandSubtitle: "Personal Photography Archive",
+    brandSubtitle: "Personal Visual Notebook",
     headerLabel: "Primary",
     navLabel: "Sections",
     languageLabel: "Language",
     menu: "Menu",
     notice: "Personal, non-commercial photography archive.",
-    footer: "Personal, non-commercial photography archive",
+    footer: "Personal archive · no commercial or paid activity",
     navigation: [
-      ["/selected-works/", "Works"],
+      ["/selected-works/", "Gallery"],
       ["/series/", "Series"],
-      ["/projects/", "Projects"],
-      ["/journal/", "Journal"],
-      ["/awards-recognition/", "Awards"],
+      ["/projects/", "Studies"],
+      ["/journal/", "Notebook"],
+      ["/awards-recognition/", "Record"],
       ["/biography/", "About"],
     ],
   },
   "zh-Hant": {
     brandHref: "/zh-hant/",
-    brandSubtitle: "個人攝影檔案",
+    brandSubtitle: "個人影像札記",
     headerLabel: "主要導覽",
     navLabel: "網站部分",
     languageLabel: "語言選擇",
     menu: "選單",
     notice: "個人、非商業攝影檔案。",
-    footer: "個人、非商業攝影檔案",
+    footer: "個人攝影檔案 · 不涉及商業或有償活動",
     navigation: [
       ["/zh-hant/works/", "作品"],
       ["/zh-hant/series/", "系列"],
-      ["/zh-hant/projects/", "項目"],
+      ["/zh-hant/projects/", "專題"],
       ["/zh-hant/journal/", "札記"],
-      ["/zh-hant/awards/", "獎項"],
+      ["/zh-hant/awards/", "紀錄"],
       ["/zh-hant/biography/", "關於"],
     ],
   },
   "zh-Hans": {
     brandHref: "/zh-hans/",
-    brandSubtitle: "个人摄影档案",
+    brandSubtitle: "个人影像札记",
     headerLabel: "主要导览",
     navLabel: "网站部分",
     languageLabel: "语言选择",
     menu: "菜单",
     notice: "个人、非商业摄影档案。",
-    footer: "个人、非商业摄影档案",
+    footer: "个人摄影档案 · 不涉及商业或有偿活动",
     navigation: [
       ["/zh-hans/works/", "作品"],
       ["/zh-hans/series/", "系列"],
-      ["/zh-hans/projects/", "项目"],
+      ["/zh-hans/projects/", "专题"],
       ["/zh-hans/journal/", "札记"],
-      ["/zh-hans/awards/", "奖项"],
+      ["/zh-hans/awards/", "记录"],
       ["/zh-hans/biography/", "关于"],
     ],
   },
