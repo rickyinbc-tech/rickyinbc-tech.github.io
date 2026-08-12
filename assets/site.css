@@ -3404,3 +3404,317 @@ html[lang="zh-Hans"] .home .work-caption strong {
     gap: 8px;
   }
 }
+
+/* Artwork catalogue leaf v2 — keep final.
+   Each record reads as a mounted plate with a quiet colophon and numbered
+   related works, never as a product page. */
+
+.artwork-page,
+.artwork-page main {
+  color: var(--studio-ink);
+  background: var(--studio-paper);
+}
+
+.artwork-page .hero.page-hero {
+  display: block;
+  min-height: 0;
+  color: var(--studio-ink);
+  border-bottom: 1px solid var(--studio-ink);
+  background: var(--studio-paper);
+}
+
+.artwork-page .hero.page-hero .hero-inner {
+  width: min(1220px, calc(100% - 40px));
+  padding: clamp(42px, 6vw, 76px) 0 clamp(38px, 5vw, 64px);
+}
+
+.artwork-page .hero.page-hero h1 {
+  max-width: 1000px;
+  margin-bottom: 18px;
+  color: var(--studio-ink);
+  font-size: clamp(54px, 7vw, 94px);
+  font-weight: 400;
+  letter-spacing: -.055em;
+  line-height: .88;
+}
+
+.artwork-page .hero-copy {
+  max-width: 620px;
+  color: rgba(17, 17, 15, .7);
+  font-size: clamp(17px, 1.7vw, 22px);
+}
+
+.artwork-page .hero + .section {
+  padding-block: clamp(42px, 6vw, 80px);
+  color: var(--studio-ink);
+  background: var(--studio-paper);
+}
+
+.artwork-page .hero + .section > .wrap.split.start {
+  align-items: start;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+.artwork-page .artwork-figure {
+  margin: 0;
+}
+
+.artwork-page .artwork-figure .feature-image {
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: clamp(8px, 1.3vw, 16px);
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: var(--studio-ink);
+}
+
+.artwork-page .artwork-figure .feature-image img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: 82svh;
+  border-radius: 0;
+  object-fit: contain;
+  transform: none;
+  filter: none;
+}
+
+.artwork-page .artwork-caption {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 14px;
+  max-width: none;
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--studio-hairline);
+  color: rgba(17, 17, 15, .64);
+  font-family: var(--studio-mono);
+  font-size: 9px;
+  letter-spacing: .06em;
+  line-height: 1.5;
+}
+
+.artwork-page .artwork-caption::before {
+  content: "PLATE 01";
+  color: var(--studio-red);
+  font-weight: 760;
+  letter-spacing: .12em;
+}
+
+html[lang="zh-Hant"] .artwork-page .artwork-caption::before,
+html[lang="zh-Hans"] .artwork-page .artwork-caption::before {
+  content: "作品 01";
+}
+
+.artwork-page .hero + .section .split > :last-child:not(.artwork-figure) {
+  padding-top: 16px;
+  border-top: 1px solid var(--studio-ink);
+}
+
+.artwork-page .hero + .section .split > :last-child > h2 {
+  font-size: clamp(30px, 3.3vw, 44px);
+  font-weight: 500;
+  letter-spacing: -.03em;
+}
+
+.artwork-page .artwork-meta {
+  gap: 0;
+  margin: 26px 0 32px;
+  border-top: 1px solid var(--studio-hairline);
+}
+
+.artwork-page .artwork-meta li {
+  display: grid;
+  grid-template-columns: minmax(92px, .34fr) minmax(0, 1fr);
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--studio-hairline);
+  color: rgba(17, 17, 15, .72);
+  font-family: var(--studio-mono);
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.artwork-page .artwork-meta strong {
+  color: var(--studio-cobalt);
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.artwork-page .artwork-meta a {
+  text-decoration-color: var(--studio-red);
+}
+
+.artwork-page .hero + .section .split > :last-child > .prose {
+  max-width: 38rem;
+  color: rgba(17, 17, 15, .76);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.artwork-page .hero + .section + .section {
+  color: var(--studio-ink);
+  border-top: 1px solid var(--studio-ink);
+  background: var(--studio-paper-deep);
+}
+
+.artwork-page .hero + .section + .section .lead {
+  color: rgba(17, 17, 15, .66);
+}
+
+.artwork-page .source-grid {
+  counter-reset: related-plate;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(26px, 3.5vw, 50px);
+}
+
+.artwork-page .source-card {
+  counter-increment: related-plate;
+  display: grid;
+  grid-template-rows: auto auto;
+  overflow: visible;
+  border: 0;
+  border-top: 1px solid var(--studio-ink);
+  border-radius: 0;
+  background: transparent;
+}
+
+.artwork-page .source-card > img {
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+  border-radius: 0;
+  background: var(--studio-ink);
+  object-fit: contain;
+  transform: none;
+  filter: none;
+}
+
+.artwork-page .source-body,
+.artwork-page .section-warm .source-body {
+  padding: 14px 0 0;
+  color: var(--studio-ink);
+  background: transparent;
+}
+
+.artwork-page .source-body::before {
+  content: "RELATED / " counter(related-plate, decimal-leading-zero);
+  display: block;
+  margin-bottom: 10px;
+  color: var(--studio-red);
+  font-family: var(--studio-mono);
+  font-size: 8px;
+  font-weight: 760;
+  letter-spacing: .13em;
+}
+
+html[lang="zh-Hant"] .artwork-page .source-body::before {
+  content: "相關 / " counter(related-plate, decimal-leading-zero);
+}
+
+html[lang="zh-Hans"] .artwork-page .source-body::before {
+  content: "相关 / " counter(related-plate, decimal-leading-zero);
+}
+
+.artwork-page .source-body h3 {
+  font-size: clamp(25px, 2.6vw, 36px);
+  font-weight: 500;
+  line-height: .98;
+}
+
+.artwork-page .source-body p,
+.artwork-page .section-warm .source-body p {
+  color: rgba(17, 17, 15, .66);
+}
+
+.artwork-page .link-list {
+  margin-top: 16px;
+}
+
+.artwork-page .link-list a,
+.artwork-page .section-warm .link-list a {
+  min-height: 44px;
+  padding: 12px 0 9px;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  color: var(--studio-ink);
+  background: transparent;
+  font-family: var(--studio-mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.artwork-page .link-list a::after {
+  content: "  \2192";
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--studio-red);
+}
+
+.artwork-page .link-list a:hover,
+.artwork-page .section-warm .link-list a:hover {
+  color: var(--studio-cobalt);
+  background: transparent;
+}
+
+@media (max-width: 880px) {
+  .artwork-page .source-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .artwork-page .hero.page-hero .hero-inner {
+    width: min(100% - 28px, 1220px);
+    padding: 30px 0 34px;
+  }
+
+  .artwork-page .hero.page-hero h1 {
+    font-size: clamp(46px, 14vw, 62px);
+    line-height: .9;
+  }
+
+  .artwork-page .hero + .section {
+    padding: 0 0 56px;
+  }
+
+  .artwork-page .hero + .section > .wrap.split.start {
+    gap: 28px;
+  }
+
+  .artwork-page .artwork-figure {
+    margin-inline: -14px;
+  }
+
+  .artwork-page .artwork-figure .feature-image {
+    padding: 9px;
+  }
+
+  .artwork-page .artwork-figure .feature-image img {
+    max-height: none;
+  }
+
+  .artwork-page .artwork-caption {
+    margin-inline: 14px;
+  }
+
+  .artwork-page .hero + .section .split > :last-child:not(.artwork-figure) {
+    padding-top: 14px;
+  }
+
+  .artwork-page .artwork-meta li {
+    grid-template-columns: minmax(84px, .32fr) minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .artwork-page .source-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

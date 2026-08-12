@@ -14,6 +14,8 @@ import {
   featureImageTags,
   photoForReference,
   repeatedArtworkSourceCards,
+  repeatedSourceCardFamilies,
+  sourceCardFamilies,
 } from "./responsive-image-policy.mjs";
 import { ASSET_VERSION, SHELL_VERSION } from "./site-shell.mjs";
 
@@ -155,6 +157,9 @@ for (const file of await htmlFiles()) {
 
   if (adjacentRepeatedSourceCardFamilies(html).length) {
     errors.push(`${relative}: adjacent related cards visibly repeat the same photograph`);
+  }
+  if (repeatedSourceCardFamilies(html).length) {
+    errors.push(`${relative}: related cards reuse the same photograph`);
   }
   if (html.includes("/assets/site.min.css") && !html.includes(STYLESHEET_URL)) {
     errors.push(`${relative}: stylesheet cache key is not the current production version`);
@@ -455,6 +460,7 @@ for (const artwork of artworkManifest.artworks || []) {
   const expectedImageUrl = new URL(primaryImage.url, ORIGIN).href;
   const expectedImageId = `${expectedImageUrl}#image`;
   const expectedEntityId = `${ORIGIN}/#artwork-${id}`;
+  let expectedRelatedFamilies = null;
 
   for (const [language, prefix] of [["en", ""], ["zh-Hant", "/zh-hant"], ["zh-Hans", "/zh-hans"]]) {
     const route = `${prefix}${canonicalPath}`.replace(/\/\//g, "/");
@@ -464,6 +470,11 @@ for (const artwork of artworkManifest.artworks || []) {
       continue;
     }
     const { html, relative } = page;
+    const relatedFamilies = sourceCardFamilies(html).filter(Boolean);
+    if (expectedRelatedFamilies === null) expectedRelatedFamilies = relatedFamilies;
+    else if (JSON.stringify(relatedFamilies) !== JSON.stringify(expectedRelatedFamilies)) {
+      errors.push(`${relative}: related-card image sequence differs across languages for ${id}`);
+    }
     if (featureImageSource(html) !== primaryImage.url) {
       errors.push(`${relative}: feature primary image does not match artwork manifest for ${id}`);
     }

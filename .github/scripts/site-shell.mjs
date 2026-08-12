@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20260810-artist-notebook-v1";
+export const ASSET_VERSION = "20260812-artwork-record-v2";
 export const SHELL_VERSION = "20260810-artist-notebook-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];

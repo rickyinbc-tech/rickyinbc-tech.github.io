@@ -16,6 +16,7 @@ import {
   featureImageTags,
   photoForReference,
   repeatedArtworkSourceCards,
+  repeatedSourceCardFamilies,
 } from "./responsive-image-policy.mjs";
 import {
   ASSET_VERSION,
@@ -345,6 +346,9 @@ for (const document of documents.values()) {
   const { canonicalUrl, html, language, relative } = document;
   if (adjacentRepeatedSourceCardFamilies(html).length) {
     errors.push(`${relative}: adjacent related cards visibly repeat the same photograph`);
+  }
+  if (repeatedSourceCardFamilies(html).length) {
+    errors.push(`${relative}: related cards reuse the same photograph`);
   }
   const alternates = alternateLinks(html);
   for (const alternateLanguage of [...SUPPORTED_LANGUAGES, "x-default"]) {

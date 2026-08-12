@@ -3,7 +3,7 @@
   "summary": {
     "pages": 181,
     "uniquePrimarySources": 69,
-    "imageUses": 714,
+    "imageUses": 715,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -308,23 +308,29 @@
       "source": "/assets/art/candle-impact.jpg",
       "pages": [
         "series/collision/index.html",
+        "works/flower-impact/index.html",
         "zh-hans/series/collision/index.html",
-        "zh-hant/series/collision/index.html"
+        "zh-hans/works/flower-impact/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/flower-impact/index.html"
       ],
       "deliverySources": [
         "/assets/optimized-v2/art/candle-impact-1200.webp"
       ],
-      "uses": 3,
+      "uses": 6,
       "altVariants": [
+        "Candle flame and wax erupting into fragments against black.",
         "Candle struck with water.",
+        "烛火与蜡在黑色背景前爆裂成碎片。",
         "燃燒的紅色蠟燭旁，水花與兩段粉紅色圓柱在黑色背景前凝結。",
+        "燭火與蠟在黑色背景前爆裂成碎片。",
         "黑色背景前，折断的红蜡烛撞向燃烧的蜡烛，水花四散。"
       ],
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 3,
-      "lazyUses": 3,
+      "responsiveUses": 6,
+      "lazyUses": 6,
       "eagerUses": 0,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -334,23 +340,29 @@
       "source": "/assets/art/chalk-impact.jpg",
       "pages": [
         "series/collision/index.html",
+        "works/breaking-point/index.html",
         "zh-hans/series/collision/index.html",
-        "zh-hant/series/collision/index.html"
+        "zh-hans/works/breaking-point/index.html",
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/breaking-point/index.html"
       ],
       "deliverySources": [
         "/assets/optimized-v2/art/chalk-impact-1200.webp"
       ],
-      "uses": 3,
+      "uses": 6,
       "altVariants": [
         "Chalk exploding.",
+        "White chalk bursting into fragments and blue dust against black.",
         "白色粉笔在黑色背景前碎裂，碎块与蓝色粉尘向右飞散。",
-        "白色粉筆在黑色背景前碎裂，碎片與粉塵向右飛散。"
+        "白色粉笔在黑色背景前碎裂，碎片与蓝色粉尘向外飞散。",
+        "白色粉筆在黑色背景前碎裂，碎片與粉塵向右飛散。",
+        "白色粉筆在黑色背景前碎裂，碎片與藍色粉塵向外飛散。"
       ],
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 3,
-      "lazyUses": 3,
+      "responsiveUses": 6,
+      "lazyUses": 6,
       "eagerUses": 0,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -404,7 +416,7 @@
         "/assets/optimized-v2/art/cigarette-impact-1200.webp",
         "/assets/optimized-v2/art/cigarette-impact-1280.webp"
       ],
-      "uses": 56,
+      "uses": 50,
       "altVariants": [
         "A cigarette breaking into ash and blue smoke against a black background.",
         "Ash and blue smoke exploding from cigarettes against a dark background.",
@@ -426,8 +438,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 56,
-      "lazyUses": 45,
+      "responsiveUses": 50,
+      "lazyUses": 39,
       "eagerUses": 11,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -811,14 +823,14 @@
       ],
       "deliverySources": [
         "/assets/art/green-orb-water-study.jpg",
+        "/assets/optimized-v2/art/green-orb-water-study-1200.webp",
         "/assets/optimized-v2/art/green-orb-water-study-1280.webp"
       ],
-      "uses": 34,
+      "uses": 28,
       "altVariants": [
         "A dark green water droplet hovering above a liquid surface against a bright green field.",
         "A dark green water droplet hovering over a liquid surface.",
         "Dark green water droplet hovering above a liquid surface against a bright green field.",
-        "Green droplet suspended above a liquid surface.",
         "Green water droplet.",
         "Green water form suspended against a dark background in a high-speed photographic study.",
         "亮绿色背景前，深绿色水滴悬在液面上方。",
@@ -831,8 +843,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 33,
-      "lazyUses": 30,
+      "responsiveUses": 27,
+      "lazyUses": 24,
       "eagerUses": 4,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -1012,6 +1024,7 @@
         "selected-works/index.html",
         "series/city-light/index.html",
         "series/index.html",
+        "works/bank-of-china-light-trails/index.html",
         "works/cranes-and-towers/index.html",
         "works/hong-kong-urban-light-studies/index.html",
         "works/light-encroached-homes/index.html",
@@ -1043,15 +1056,17 @@
       ],
       "deliverySources": [
         "/assets/art/light-encroached-homes.jpg",
+        "/assets/optimized-v2/art/light-encroached-homes-1200.webp",
         "/assets/optimized-v2/art/light-encroached-homes-1280.webp"
       ],
-      "uses": 62,
+      "uses": 63,
       "altVariants": [
         "Fisheye photograph of Hong Kong neon signs and residential buildings.",
         "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
         "Hong Kong neon signs and residential buildings surrounding a dark sky.",
         "Hong Kong neon signs surrounding dark sky.",
         "Illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
+        "Illuminated Mong Kok signboards and residential buildings surrounding the night sky.",
         "Light Encroached Homes, photographed among Mong Kok signboards in 2014.",
         "Low-angle fisheye photograph of Hong Kong neon signs and residential buildings around a dark sky.",
         "Low-angle fisheye photograph of illuminated advertising signs and residential buildings around the Mong Kok night sky.",
@@ -1073,8 +1088,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 62,
-      "lazyUses": 37,
+      "responsiveUses": 63,
+      "lazyUses": 38,
       "eagerUses": 25,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -1475,28 +1490,37 @@
       "pages": [
         "index.html",
         "series/collision/index.html",
+        "works/blue-column/index.html",
+        "works/orange-droplet/index.html",
         "zh-hans/index.html",
         "zh-hans/series/collision/index.html",
+        "zh-hans/works/blue-column/index.html",
+        "zh-hans/works/orange-droplet/index.html",
         "zh-hant/index.html",
-        "zh-hant/series/collision/index.html"
+        "zh-hant/series/collision/index.html",
+        "zh-hant/works/blue-column/index.html",
+        "zh-hant/works/orange-droplet/index.html"
       ],
       "deliverySources": [
         "/assets/optimized-v2/art/yellow-arc-water-study-1200.webp"
       ],
-      "uses": 6,
+      "uses": 12,
       "altVariants": [
         "Yellow water arc with droplets suspended mid-air.",
         "Yellow water arc.",
+        "Yellow water column and droplets suspended against a luminous yellow field.",
+        "明亮黄色背景前，黄色水柱与多颗水滴悬在空中。",
         "黃色水弧與多顆水滴懸浮在深色背景前。",
         "黃色水弧與懸浮水滴",
+        "黃色水柱與多顆水滴懸浮在明亮黃色背景前。",
         "黄色水弧与悬浮水滴",
         "黄色背景前，弧形水流与数颗水滴悬在空中。"
       ],
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 6,
-      "lazyUses": 6,
+      "responsiveUses": 12,
+      "lazyUses": 12,
       "eagerUses": 0,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,

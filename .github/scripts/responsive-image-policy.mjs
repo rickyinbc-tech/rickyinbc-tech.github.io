@@ -245,12 +245,27 @@ export function repeatedArtworkSourceCards(html) {
     .filter((block) => imageFamilyFromTag(block.match(/<img\b[^>]*>/i)?.[0] || "") === primaryFamily);
 }
 
-export function adjacentRepeatedSourceCardFamilies(html) {
-  const families = [...html.matchAll(SOURCE_CARD_BLOCK)]
+export function sourceCardFamilies(html) {
+  return [...html.matchAll(SOURCE_CARD_BLOCK)]
     .map((match) => imageFamilyFromTag(match[0].match(/<img\b[^>]*>/i)?.[0] || ""));
+}
+
+export function adjacentRepeatedSourceCardFamilies(html) {
+  const families = sourceCardFamilies(html);
   return families
     .slice(1)
     .filter((family, index) => family && family === families[index]);
+}
+
+export function repeatedSourceCardFamilies(html) {
+  const seen = new Set();
+  const repeated = new Set();
+  for (const family of sourceCardFamilies(html)) {
+    if (!family) continue;
+    if (seen.has(family)) repeated.add(family);
+    seen.add(family);
+  }
+  return [...repeated];
 }
 
 export function removeRepeatedArtworkSourceCards(html) {
