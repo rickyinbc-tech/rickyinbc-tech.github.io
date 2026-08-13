@@ -3,7 +3,7 @@
   "summary": {
     "pages": 181,
     "uniquePrimarySources": 69,
-    "imageUses": 715,
+    "imageUses": 721,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -448,28 +448,46 @@
     {
       "source": "/assets/art/coil-field-monochrome.jpg",
       "pages": [
+        "awards-recognition/index.html",
+        "index.html",
+        "selected-works/index.html",
+        "series/ritual/index.html",
         "works/coil-field/index.html",
         "works/cranes-and-towers/index.html",
         "works/monochrome-documentary/index.html",
         "works/terraces-at-golden-hour/index.html",
+        "zh-hans/awards/index.html",
+        "zh-hans/index.html",
+        "zh-hans/series/ritual/index.html",
         "zh-hans/works/coil-field/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
+        "zh-hans/works/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
         "zh-hans/works/terraces-at-golden-hour/index.html",
+        "zh-hant/awards/index.html",
+        "zh-hant/index.html",
+        "zh-hant/series/ritual/index.html",
         "zh-hant/works/coil-field/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
+        "zh-hant/works/index.html",
         "zh-hant/works/monochrome-documentary/index.html",
         "zh-hant/works/terraces-at-golden-hour/index.html"
       ],
       "deliverySources": [
         "/assets/art/coil-field-monochrome.jpg",
-        "/assets/optimized-v2/art/coil-field-monochrome-1200.webp"
+        "/assets/optimized-v2/art/coil-field-monochrome-1200.webp",
+        "/assets/optimized-v2/art/coil-field-monochrome-1800.webp"
       ],
-      "uses": 15,
+      "uses": 27,
       "altVariants": [
         "A worker among repeated coils in a monochrome industrial landscape.",
+        "A worker bends among repeating circular coils in Ricky Kwok’s award-winning photograph 整整有條.",
+        "A worker bends among repeating circular coils in the award-winning photograph 整整有條.",
+        "A worker bends among rows of repeating circular coils in the award-winning photograph 整整有條.",
         "Monochrome photograph of a worker surrounded by many circular coils laid out in rows.",
         "Worker among repeated circular coils in a monochrome field.",
+        "獲獎作品《整整有條》：一名工人在成排圓形線圈之間俯身工作。",
+        "获奖作品《整整有條》：一名工人在成排圆形线圈之间俯身工作。",
         "黑白工业场景中，一名工人置身重复排列的圆形线圈。",
         "黑白工業場景中，一名工人置身成排圓形線圈之間。",
         "黑白工業場景中，一名工人置身重複排列的圓形線圈。"
@@ -477,9 +495,9 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 12,
-      "lazyUses": 9,
-      "eagerUses": 6,
+      "responsiveUses": 24,
+      "lazyUses": 18,
+      "eagerUses": 9,
       "resolutionStatus": "genuine-higher-original",
       "sourceWidth": 1800,
       "sourceHeight": 1169
@@ -1059,7 +1077,7 @@
         "/assets/optimized-v2/art/light-encroached-homes-1200.webp",
         "/assets/optimized-v2/art/light-encroached-homes-1280.webp"
       ],
-      "uses": 63,
+      "uses": 60,
       "altVariants": [
         "Fisheye photograph of Hong Kong neon signs and residential buildings.",
         "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
@@ -1088,9 +1106,9 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 63,
+      "responsiveUses": 60,
       "lazyUses": 38,
-      "eagerUses": 25,
+      "eagerUses": 22,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
       "sourceHeight": 831
@@ -1306,7 +1324,6 @@
     {
       "source": "/assets/art/street-art-procession.jpg",
       "pages": [
-        "selected-works/index.html",
         "series/city-light/index.html",
         "works/dragon-night-festival/index.html",
         "works/hong-kong-urban-light-studies/index.html",
@@ -1315,13 +1332,11 @@
         "zh-hans/series/city-light/index.html",
         "zh-hans/works/dragon-night-festival/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
-        "zh-hans/works/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
         "zh-hans/works/street-procession/index.html",
         "zh-hant/series/city-light/index.html",
         "zh-hant/works/dragon-night-festival/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
-        "zh-hant/works/index.html",
         "zh-hant/works/monochrome-documentary/index.html",
         "zh-hant/works/street-procession/index.html"
       ],
@@ -1329,10 +1344,9 @@
         "/assets/art/street-art-procession.jpg",
         "/assets/optimized-v2/art/street-art-procession-1200.webp"
       ],
-      "uses": 18,
+      "uses": 15,
       "altVariants": [
         "Pedestrians beside street art.",
-        "Pedestrians walking beside black-and-white street-art figures.",
         "Pedestrians walking past a wall mural whose painted figures mirror their movement.",
         "People walking beside black-and-white street art figures painted on a wall.",
         "行人走过黑白墙画，画中人物与他们同向前进。",
@@ -1341,8 +1355,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 18,
-      "lazyUses": 15,
+      "responsiveUses": 15,
+      "lazyUses": 12,
       "eagerUses": 3,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
