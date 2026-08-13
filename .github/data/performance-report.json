@@ -24,23 +24,31 @@
     },
     {
       "file": "projects/travel/index.html",
-      "bytes": 30066
+      "bytes": 30216
     },
     {
       "file": "awards-recognition/index.html",
-      "bytes": 28790
+      "bytes": 30175
     },
     {
       "file": "index.html",
-      "bytes": 25234
-    },
-    {
-      "file": "zh-hant/awards/index.html",
-      "bytes": 24907
+      "bytes": 27392
     },
     {
       "file": "zh-hans/awards/index.html",
-      "bytes": 24898
+      "bytes": 25778
+    },
+    {
+      "file": "zh-hant/awards/index.html",
+      "bytes": 25778
+    },
+    {
+      "file": "zh-hans/index.html",
+      "bytes": 23618
+    },
+    {
+      "file": "zh-hant/index.html",
+      "bytes": 23612
     },
     {
       "file": "series/collision/index.html",
@@ -49,14 +57,6 @@
     {
       "file": "projects/infrared-hong-kong/index.html",
       "bytes": 21693
-    },
-    {
-      "file": "zh-hant/series/collision/index.html",
-      "bytes": 21098
-    },
-    {
-      "file": "zh-hans/series/collision/index.html",
-      "bytes": 21077
     }
   ],
   "largestResponsiveImages": [
