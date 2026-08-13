@@ -7,7 +7,7 @@ export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 export const SHELL_COPY = {
   en: {
     brandHref: "/",
-    brandSubtitle: "Personal Visual Notebook",
+    brandSubtitle: "Photography Archive",
     headerLabel: "Primary",
     navLabel: "Sections",
     languageLabel: "Language",
@@ -25,7 +25,7 @@ export const SHELL_COPY = {
   },
   "zh-Hant": {
     brandHref: "/zh-hant/",
-    brandSubtitle: "個人影像札記",
+    brandSubtitle: "攝影作品檔案",
     headerLabel: "主要導覽",
     navLabel: "網站部分",
     languageLabel: "語言選擇",
@@ -43,7 +43,7 @@ export const SHELL_COPY = {
   },
   "zh-Hans": {
     brandHref: "/zh-hans/",
-    brandSubtitle: "个人影像札记",
+    brandSubtitle: "摄影作品档案",
     headerLabel: "主要导览",
     navLabel: "网站部分",
     languageLabel: "语言选择",
