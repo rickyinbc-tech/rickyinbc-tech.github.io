@@ -426,6 +426,7 @@ for (const [route, page] of indexableDocuments) {
   if (!hasPageSchema) errors.push(`${page.relative}: structured data has no page-level schema type for ${route}`);
 }
 
+let awardsItemUrlBaseline = null;
 for (const route of ["/awards-recognition/", "/zh-hant/awards/", "/zh-hans/awards/"]) {
   const page = indexableDocuments.get(route);
   if (!page) {
@@ -436,28 +437,56 @@ for (const route of ["/awards-recognition/", "/zh-hant/awards/", "/zh-hans/award
   const resultList = collection?.mainEntity;
   const items = Array.isArray(resultList?.itemListElement) ? resultList.itemListElement : [];
   const positions = items.map((item) => Number(item.position));
-  if (Number(resultList?.numberOfItems) !== 31 || items.length !== 31) {
-    errors.push(`${page.relative}: awards ItemList must contain exactly 31 competition results`);
+  const itemUrls = items.map((item) => item.url || "").sort();
+  if (Number(resultList?.numberOfItems) !== 35 || items.length !== 35) {
+    errors.push(`${page.relative}: awards ItemList must contain exactly 35 supported competition results`);
   }
   if (positions.some((position, index) => position !== index + 1)) {
-    errors.push(`${page.relative}: awards ItemList positions must run consecutively from 1 to 31`);
+    errors.push(`${page.relative}: awards ItemList positions must run consecutively from 1 to 35`);
+  }
+  if (awardsItemUrlBaseline === null) awardsItemUrlBaseline = itemUrls;
+  else if (JSON.stringify(itemUrls) !== JSON.stringify(awardsItemUrlBaseline)) {
+    errors.push(`${page.relative}: awards ItemList sources must remain semantically aligned across locales`);
   }
   if (items.some((item) => /Associate of the Royal Photographic Society|ARPS/i.test(item.name || ""))) {
-    errors.push(`${page.relative}: ARPS must remain outside the 31 competition-result ItemList`);
+    errors.push(`${page.relative}: ARPS must remain outside the 35-result ItemList`);
   }
-  const provisionalHsbc = items.find((item) => Number(item.position) === 21);
-  if (!/(?:grade C|C 級|C 级)/.test(provisionalHsbc?.name || "") || provisionalHsbc?.url !== `${ORIGIN}${route}#expanded-record`) {
-    errors.push(`${page.relative}: provisional HSBC result must retain its C-grade caveat and internal evidence URL`);
+  const hsbc = items.find((item) => Number(item.position) === 21);
+  if (!/(?:Children and Youth|兒童及青少年|儿童及青少年)/.test(hsbc?.name || "") || hsbc?.url !== "https://www.facebook.com/hsbcssphighlights/posts/892595200799004/") {
+    errors.push(`${page.relative}: HSBC result must use the recovered 2015 organizer post and exact group`);
   }
   const coreSection = page.html.match(/<section\b[^>]*\bid=["']core-record["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
   const expandedSection = page.html.match(/<section\b[^>]*\bid=["']expanded-record["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
+  const newlyVerifiedSection = page.html.match(/<section\b[^>]*\bid=["']newly-verified["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
   if ((coreSection.match(/<li\b/gi) || []).length !== 17) {
     errors.push(`${page.relative}: visible core record must contain 17 results`);
   }
   if ((expandedSection.match(/<li\b/gi) || []).length !== 14) {
     errors.push(`${page.relative}: visible expanded record must contain 14 results`);
   }
-  for (const id of ["record-overview", "evidence-method", "wording-corrections", "not-counted"]) {
+  if ((newlyVerifiedSection.match(/<li\b/gi) || []).length !== 4) {
+    errors.push(`${page.relative}: newly verified record must contain 4 results`);
+  }
+  const visibleSupported = `${coreSection}${expandedSection}${newlyVerifiedSection}`;
+  const aCount = (visibleSupported.match(/data-evidence=["']A["']/gi) || []).length;
+  const bCount = (visibleSupported.match(/data-evidence=["']B["']/gi) || []).length;
+  if (aCount !== 25 || bCount !== 10) {
+    errors.push(`${page.relative}: visible evidence split must be exactly 25 A-grade and 10 B-grade results`);
+  }
+  if ((page.html.match(/data-open-lead=/gi) || []).length !== 8) {
+    errors.push(`${page.relative}: open-lead register must contain exactly 8 claims`);
+  }
+  if ((page.html.match(/data-unresolved-label(?:\s|>)/gi) || []).length !== 3) {
+    errors.push(`${page.relative}: unresolved-label register must contain exactly 3 entries`);
+  }
+  if ((page.html.match(/data-exclusion(?:\s|>)/gi) || []).length !== 8) {
+    errors.push(`${page.relative}: exclusion register must contain exactly 8 entries`);
+  }
+  for (const source of ["https://px3.fr/winners/hm/2015/1-49287-15", "https://px3.fr/winners/hm/2015/1-49288-15", "https://px3.fr/winners/hm/2015/1-49289-15", "https://www.photofvm.com/-ditions-pr-c-dentes", "https://www.hkycac.org/s_file/picture/pdf_599_4n4i.pdf"]) {
+    if (!page.html.includes(source) || !items.some((item) => item.url === source)) errors.push(`${page.relative}: missing supported source in visible copy or ItemList: ${source}`);
+  }
+  if (!page.html.includes("Man Tai Kwok")) errors.push(`${page.relative}: missing FVM-supported name variant Man Tai Kwok`);
+  for (const id of ["record-overview", "evidence-method", "newly-verified", "wording-corrections", "open-leads", "unresolved-labels", "not-counted"]) {
     if (!page.html.includes(`id="${id}"`)) errors.push(`${page.relative}: missing awards evidence section #${id}`);
   }
 }
@@ -853,7 +882,9 @@ const forbiddenLocalPath = /^\/(?:available-prints|collect|prints|editions|licen
 const forbiddenExternalHref = /^mailto:|behance\.net|facebook\.com|instagram\.com|flickr\.com|dcfever\.com/i;
 const allowedEvidenceExternalHrefs = new Set([
   "https://www.facebook.com/HuaweimobileHK/photos/%E5%B0%88%E6%A5%AD%E8%A9%95%E5%AF%A9%E7%8D%8E%E9%83%AD%E6%96%87%E6%A3%A3/877264475683513/",
+  "https://www.facebook.com/hsbcssphighlights/posts/892595200799004/",
   "https://www.dcfever.com/column/read.php?id=3442",
+  "https://www.dcfever.com/column/read.php?id=3146",
 ]);
 for (const [route, page] of indexableDocuments) {
   if (!page.html.includes("personal-use-notice")) errors.push(`${page.relative}: missing site-wide personal archive notice`);
