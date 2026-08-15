@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20260812-artwork-record-v2";
-export const SHELL_VERSION = "20260810-artist-notebook-v1";
+export const ASSET_VERSION = "20260815-awards-evidence-v1";
+export const SHELL_VERSION = "20260815-awards-nav-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 
@@ -19,7 +19,7 @@ export const SHELL_COPY = {
       ["/series/", "Series"],
       ["/projects/", "Studies"],
       ["/journal/", "Notebook"],
-      ["/awards-recognition/", "Record"],
+      ["/awards-recognition/", "Awards"],
       ["/biography/", "About"],
     ],
   },
@@ -37,7 +37,7 @@ export const SHELL_COPY = {
       ["/zh-hant/series/", "系列"],
       ["/zh-hant/projects/", "專題"],
       ["/zh-hant/journal/", "札記"],
-      ["/zh-hant/awards/", "紀錄"],
+      ["/zh-hant/awards/", "獎項"],
       ["/zh-hant/biography/", "關於"],
     ],
   },
@@ -55,7 +55,7 @@ export const SHELL_COPY = {
       ["/zh-hans/series/", "系列"],
       ["/zh-hans/projects/", "专题"],
       ["/zh-hans/journal/", "札记"],
-      ["/zh-hans/awards/", "记录"],
+      ["/zh-hans/awards/", "奖项"],
       ["/zh-hans/biography/", "关于"],
     ],
   },

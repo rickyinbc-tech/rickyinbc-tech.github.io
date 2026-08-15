@@ -1768,6 +1768,36 @@ body:not(.artwork-page) .feature-image img {
 
 }
 
+/* Awards evidence register */
+.awards-page .section:not(.section-warm) .section-label {
+  color: #91a0ff;
+}
+
+.awards-page .evidence-mark {
+  margin-right: .45em;
+  color: #8a3d21;
+  font: 800 10px var(--studio-mono);
+}
+
+.awards-page .section:not(.section-warm) .evidence-mark {
+  color: #ffb39b;
+}
+
+.awards-page :is(.record-meta, .correction-grid, #evidence-method) .note {
+  min-height: 0;
+}
+
+.awards-page .record-details details {
+  border-bottom: 1px solid var(--paper-line);
+  padding: 14px 0;
+}
+
+@media (min-width: 901px) {
+  .awards-page .correction-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 640px) {
   .wrap,
   .hero-inner {

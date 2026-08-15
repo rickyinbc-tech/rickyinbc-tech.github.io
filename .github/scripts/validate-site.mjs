@@ -426,6 +426,42 @@ for (const [route, page] of indexableDocuments) {
   if (!hasPageSchema) errors.push(`${page.relative}: structured data has no page-level schema type for ${route}`);
 }
 
+for (const route of ["/awards-recognition/", "/zh-hant/awards/", "/zh-hans/awards/"]) {
+  const page = indexableDocuments.get(route);
+  if (!page) {
+    errors.push(`${route}: awards evidence register is missing`);
+    continue;
+  }
+  const collection = parsedSchemaNodes(page.html).find((node) => matchesType(node, "CollectionPage"));
+  const resultList = collection?.mainEntity;
+  const items = Array.isArray(resultList?.itemListElement) ? resultList.itemListElement : [];
+  const positions = items.map((item) => Number(item.position));
+  if (Number(resultList?.numberOfItems) !== 31 || items.length !== 31) {
+    errors.push(`${page.relative}: awards ItemList must contain exactly 31 competition results`);
+  }
+  if (positions.some((position, index) => position !== index + 1)) {
+    errors.push(`${page.relative}: awards ItemList positions must run consecutively from 1 to 31`);
+  }
+  if (items.some((item) => /Associate of the Royal Photographic Society|ARPS/i.test(item.name || ""))) {
+    errors.push(`${page.relative}: ARPS must remain outside the 31 competition-result ItemList`);
+  }
+  const provisionalHsbc = items.find((item) => Number(item.position) === 21);
+  if (!/(?:grade C|C 級|C 级)/.test(provisionalHsbc?.name || "") || provisionalHsbc?.url !== `${ORIGIN}${route}#expanded-record`) {
+    errors.push(`${page.relative}: provisional HSBC result must retain its C-grade caveat and internal evidence URL`);
+  }
+  const coreSection = page.html.match(/<section\b[^>]*\bid=["']core-record["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
+  const expandedSection = page.html.match(/<section\b[^>]*\bid=["']expanded-record["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
+  if ((coreSection.match(/<li\b/gi) || []).length !== 17) {
+    errors.push(`${page.relative}: visible core record must contain 17 results`);
+  }
+  if ((expandedSection.match(/<li\b/gi) || []).length !== 14) {
+    errors.push(`${page.relative}: visible expanded record must contain 14 results`);
+  }
+  for (const id of ["record-overview", "evidence-method", "wording-corrections", "not-counted"]) {
+    if (!page.html.includes(`id="${id}"`)) errors.push(`${page.relative}: missing awards evidence section #${id}`);
+  }
+}
+
 function matchesType(node, type) {
   return node?.["@type"] === type || (Array.isArray(node?.["@type"]) && node["@type"].includes(type));
 }
@@ -815,6 +851,10 @@ for (const route of retiredBusinessRoutes) {
 
 const forbiddenLocalPath = /^\/(?:available-prints|collect|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)|^\/zh-(?:hant|hans)\/(?:available-prints|collect|prints|editions|licensing|contact|shipping-returns|studio-standards|terms|privacy|press)(?:\/|$)/i;
 const forbiddenExternalHref = /^mailto:|behance\.net|facebook\.com|instagram\.com|flickr\.com|dcfever\.com/i;
+const allowedEvidenceExternalHrefs = new Set([
+  "https://www.facebook.com/HuaweimobileHK/photos/%E5%B0%88%E6%A5%AD%E8%A9%95%E5%AF%A9%E7%8D%8E%E9%83%AD%E6%96%87%E6%A3%A3/877264475683513/",
+  "https://www.dcfever.com/column/read.php?id=3442",
+]);
 for (const [route, page] of indexableDocuments) {
   if (!page.html.includes("personal-use-notice")) errors.push(`${page.relative}: missing site-wide personal archive notice`);
   const expectedNotice = route.startsWith("/zh-hant/")
@@ -870,7 +910,7 @@ for (const [route, page] of indexableDocuments) {
       continue;
     }
     const isSiteHost = url.hostname === "rickykwok.com" || url.hostname === "www.rickykwok.com";
-    if (forbiddenExternalHref.test(href) || (isSiteHost && forbiddenLocalPath.test(url.pathname))) {
+    if ((forbiddenExternalHref.test(href) && !allowedEvidenceExternalHrefs.has(href)) || (isSiteHost && forbiddenLocalPath.test(url.pathname))) {
       errors.push(`${page.relative}: links to retired business pathway ${href}`);
     }
   }
