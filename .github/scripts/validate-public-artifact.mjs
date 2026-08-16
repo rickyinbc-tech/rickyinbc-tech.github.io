@@ -196,7 +196,30 @@ const prohibitedTerms = [
   ["Simplified Chinese transactional term", /收藏|收购|购买|价格|售价|授权|商业使用|委托|预约|工作室|客户|查询|版画出售|版本价格|联络工作室|展览查询/u],
 ];
 
-function isAllowedCommercialContext(label, segment) {
+const commonsLicensedArtworkPages = new Set([
+  "works/coil-field/index.html",
+  "works/light-encroached-homes/index.html",
+  "zh-hant/works/coil-field/index.html",
+  "zh-hant/works/light-encroached-homes/index.html",
+  "zh-hans/works/coil-field/index.html",
+  "zh-hans/works/light-encroached-homes/index.html",
+]);
+
+function isAllowedCommercialContext(relative, label, segment) {
+  if (commonsLicensedArtworkPages.has(relative)) {
+    if (
+      label === "licensing"
+      && /(?:This photograph is licensed under the|Creative Commons Attribution-ShareAlike 4\.0 International licence \(CC BY-SA 4\.0\))/u.test(segment)
+    ) {
+      return true;
+    }
+    if (
+      /Chinese transactional term/.test(label)
+      && /(?:版權及授權：.*本照片以|知識共享署名—相同方式共享 4\.0 國際授權條款（CC BY-SA 4\.0）|版权及许可：.*本照片以|知识共享署名—相同方式共享 4\.0 国际许可协议（CC BY-SA 4\.0）)/u.test(segment)
+    ) {
+      return true;
+    }
+  }
   if (
     /Chinese transactional term/.test(label)
     && /本網站不授權複製或再使用|本网站不授权复制或再使用/u.test(segment)
@@ -268,7 +291,7 @@ function validateCommercialContent(scope, relative, html) {
   }
   for (const segment of visibleSegments(html)) {
     for (const [label, pattern] of prohibitedTerms) {
-      if (pattern.test(segment) && !isAllowedCommercialContext(label, segment)) {
+      if (pattern.test(segment) && !isAllowedCommercialContext(relative, label, segment)) {
         errors.push(`${labelPrefix}: prohibited ${label} context: “${segment.slice(0, 220)}”`);
       }
     }
