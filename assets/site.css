@@ -2666,6 +2666,10 @@ p,
   backdrop-filter: none;
 }
 
+html {
+  scroll-padding-top: 82px;
+}
+
 .nav {
   min-height: 82px;
 }
@@ -3384,6 +3388,10 @@ html[lang="zh-Hans"] .home .work-caption strong {
 }
 
 @media (max-width: 640px) {
+  html {
+    scroll-padding-top: 66px;
+  }
+
   .site-header.nav-enhanced .nav {
     min-height: 66px;
     padding: 9px 0;
