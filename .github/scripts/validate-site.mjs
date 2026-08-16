@@ -439,7 +439,7 @@ for (const route of ["/awards-recognition/", "/zh-hant/awards/", "/zh-hans/award
   const positions = items.map((item) => Number(item.position));
   const itemUrls = items.map((item) => item.url || "").sort();
   if (Number(resultList?.numberOfItems) !== 35 || items.length !== 35) {
-    errors.push(`${page.relative}: awards ItemList must contain exactly 35 supported competition results`);
+    errors.push(`${page.relative}: awards ItemList must contain exactly 35 documented competition results`);
   }
   if (positions.some((position, index) => position !== index + 1)) {
     errors.push(`${page.relative}: awards ItemList positions must run consecutively from 1 to 35`);
@@ -473,21 +473,47 @@ for (const route of ["/awards-recognition/", "/zh-hant/awards/", "/zh-hans/award
   if (aCount !== 25 || bCount !== 10) {
     errors.push(`${page.relative}: visible evidence split must be exactly 25 A-grade and 10 B-grade results`);
   }
-  if ((page.html.match(/data-open-lead=/gi) || []).length !== 8) {
-    errors.push(`${page.relative}: open-lead register must contain exactly 8 claims`);
+  for (const removedAttribute of ["data-open-lead", "data-unresolved-label", "data-exclusion"]) {
+    if (page.html.includes(removedAttribute)) errors.push(`${page.relative}: removed public audit attribute remains: ${removedAttribute}`);
   }
-  if ((page.html.match(/data-unresolved-label(?:\s|>)/gi) || []).length !== 3) {
-    errors.push(`${page.relative}: unresolved-label register must contain exactly 3 entries`);
-  }
-  if ((page.html.match(/data-exclusion(?:\s|>)/gi) || []).length !== 8) {
-    errors.push(`${page.relative}: exclusion register must contain exactly 8 entries`);
+  if (/class=["'][^"']*\bevidence-mark\b/i.test(page.html)) {
+    errors.push(`${page.relative}: internal evidence grades must not appear as public badges`);
   }
   for (const source of ["https://px3.fr/winners/hm/2015/1-49287-15", "https://px3.fr/winners/hm/2015/1-49288-15", "https://px3.fr/winners/hm/2015/1-49289-15", "https://www.photofvm.com/-ditions-pr-c-dentes", "https://www.hkycac.org/s_file/picture/pdf_599_4n4i.pdf"]) {
     if (!page.html.includes(source) || !items.some((item) => item.url === source)) errors.push(`${page.relative}: missing supported source in visible copy or ItemList: ${source}`);
   }
   if (!page.html.includes("Man Tai Kwok")) errors.push(`${page.relative}: missing FVM-supported name variant Man Tai Kwok`);
-  for (const id of ["record-overview", "evidence-method", "newly-verified", "wording-corrections", "open-leads", "unresolved-labels", "not-counted"]) {
-    if (!page.html.includes(`id="${id}"`)) errors.push(`${page.relative}: missing awards evidence section #${id}`);
+  for (const id of ["record-overview", "core-record", "expanded-record", "newly-verified", "distinction"]) {
+    if (!page.html.includes(`id="${id}"`)) errors.push(`${page.relative}: missing positive awards section #${id}`);
+  }
+  for (const removedId of ["wording-corrections", "open-leads", "unresolved-labels", "not-counted"]) {
+    if (page.html.includes(`id="${removedId}"`)) errors.push(`${page.relative}: removed public audit section remains: #${removedId}`);
+  }
+  if ((page.html.match(/<figure\b[^>]*class=["'][^"']*\barchive-photo\b/gi) || []).length !== 1) {
+    errors.push(`${page.relative}: awards page must retain only the documented HKU presentation photograph`);
+  }
+}
+
+const positiveAwardsRoutes = [
+  "/awards-recognition/", "/zh-hant/awards/", "/zh-hans/awards/",
+  "/", "/zh-hant/", "/zh-hans/",
+  "/biography/", "/zh-hant/biography/", "/zh-hans/biography/",
+  "/works/coil-field/", "/zh-hant/works/coil-field/", "/zh-hans/works/coil-field/",
+];
+const publicAuditPhrases = [
+  "open lead", "100+ awards", "unverified", "unrecovered", "not recovered", "not currently available",
+  "not shown", "unresolved", "unmatched", "excluded", "unable", "cannot audit", "partial support", "legacy claim",
+  "not winner", "not champion", "not an official ranking", "no duplicate", "at least 35", "evidence-graded",
+  "待補", "待补", "待核", "未核", "未能", "未明", "未顯示", "未显示", "未配對", "未配对",
+  "不計入", "不计入", "未找到", "尚未", "舊自述", "旧自述", "無法證實", "无法证实",
+  "並非不同賽事", "并非不同赛事", "至少 35", "證據分級", "证据分级",
+];
+for (const route of positiveAwardsRoutes) {
+  const page = indexableDocuments.get(route);
+  if (!page) continue;
+  const normalized = page.html.toLowerCase();
+  for (const phrase of publicAuditPhrases) {
+    if (normalized.includes(phrase.toLowerCase())) errors.push(`${page.relative}: public awards copy contains removed audit wording: ${phrase}`);
   }
 }
 
@@ -712,8 +738,8 @@ if (
 ) {
   errors.push("photo-resolution manifest does not match the governed 70-source integrity policy");
 }
-if (imageInventory.summary?.uniquePrimarySources !== 69) {
-  errors.push("image inventory must group the 69 displayed photographs by canonical family");
+if (imageInventory.summary?.uniquePrimarySources !== 67) {
+  errors.push("image inventory must group the 67 displayed photographs by canonical family");
 }
 if (performanceReport.status !== "pass" || performanceReport.measured?.maxMissingImageDimensions !== 0 || performanceReport.measured?.maxMissingImageSizes !== 0) {
   errors.push("performance governance report does not pass");

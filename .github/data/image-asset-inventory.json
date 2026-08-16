@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "summary": {
     "pages": 181,
-    "uniquePrimarySources": 69,
-    "imageUses": 721,
+    "uniquePrimarySources": 67,
+    "imageUses": 715,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -33,59 +33,6 @@
       "resolutionStatus": "genuine-higher-original",
       "sourceWidth": 1920,
       "sourceHeight": 1080
-    },
-    {
-      "source": "/assets/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017.jpg",
-      "pages": [
-        "awards-recognition/index.html",
-        "zh-hans/awards/index.html",
-        "zh-hant/awards/index.html"
-      ],
-      "deliverySources": [
-        "/assets/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017.jpg"
-      ],
-      "uses": 3,
-      "altVariants": [
-        "Ricky Kwok receiving a certificate at the Open University of Hong Kong Outstanding Students Award and Dean's List ceremony.",
-        "郭文棣在香港公开大学优异生颁奖暨院长嘉许名单典礼领取证书",
-        "郭文棣在香港公開大學優異生頒獎暨院長嘉許名單典禮領取證書"
-      ],
-      "declaredWidths": [
-        1024
-      ],
-      "responsiveUses": 0,
-      "lazyUses": 3,
-      "eagerUses": 0,
-      "resolutionStatus": "source-limited-with-display-resample",
-      "sourceWidth": 1024,
-      "sourceHeight": 1024,
-      "displayDerivative": "/assets/display-derivatives-v1/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-display-2048.webp"
-    },
-    {
-      "source": "/assets/archive/ricky-kwok-student-award-presentation.jpg",
-      "pages": [
-        "awards-recognition/index.html",
-        "zh-hans/awards/index.html",
-        "zh-hant/awards/index.html"
-      ],
-      "deliverySources": [
-        "/assets/archive/ricky-kwok-student-award-presentation.jpg"
-      ],
-      "uses": 3,
-      "altVariants": [
-        "Ricky Kwok receiving a framed certificate at a student award presentation in Hong Kong.",
-        "郭文棣在香港一个学生颁奖典礼领取镶框嘉许状",
-        "郭文棣在香港一個學生頒獎典禮領取鑲框嘉許狀"
-      ],
-      "declaredWidths": [
-        5184
-      ],
-      "responsiveUses": 0,
-      "lazyUses": 3,
-      "eagerUses": 0,
-      "resolutionStatus": "genuine-higher-original",
-      "sourceWidth": 5184,
-      "sourceHeight": 3456
     },
     {
       "source": "/assets/art/ancestral-kitchen-light.jpg",

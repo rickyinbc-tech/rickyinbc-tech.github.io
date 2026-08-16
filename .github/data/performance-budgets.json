@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "budgets": {
-    "maxHtmlBytes": 55000,
+    "maxHtmlBytes": 50000,
     "siteCssBytes": 56000,
     "siteJsBytes": 50000,
     "largestResponsiveImageBytes": 375000,
