@@ -198,10 +198,13 @@ const prohibitedTerms = [
 
 const commonsLicensedArtworkPages = new Set([
   "works/coil-field/index.html",
+  "works/fishpond-harvest/index.html",
   "works/light-encroached-homes/index.html",
   "zh-hant/works/coil-field/index.html",
+  "zh-hant/works/fishpond-harvest/index.html",
   "zh-hant/works/light-encroached-homes/index.html",
   "zh-hans/works/coil-field/index.html",
+  "zh-hans/works/fishpond-harvest/index.html",
   "zh-hans/works/light-encroached-homes/index.html",
 ]);
 
@@ -209,13 +212,13 @@ function isAllowedCommercialContext(relative, label, segment) {
   if (commonsLicensedArtworkPages.has(relative)) {
     if (
       label === "licensing"
-      && /(?:This photograph is licensed under the|Creative Commons Attribution-ShareAlike 4\.0 International licence \(CC BY-SA 4\.0\))/u.test(segment)
+      && /(?:This photograph is licensed under the|Creative Commons Attribution-ShareAlike 4\.0 International licence \(CC BY-SA 4\.0\)|This licence grant is permanent and applies to the full-resolution photograph identified on this page)/u.test(segment)
     ) {
       return true;
     }
     if (
       /Chinese transactional term/.test(label)
-      && /(?:版權及授權：.*本照片以|知識共享署名—相同方式共享 4\.0 國際授權條款（CC BY-SA 4\.0）|版权及许可：.*本照片以|知识共享署名—相同方式共享 4\.0 国际许可协议（CC BY-SA 4\.0）)/u.test(segment)
+      && /(?:版權及授權：.*本照片以|知識共享署名—相同方式共享 4\.0 國際授權條款（CC BY-SA 4\.0）|永久發布；授權涵蓋本頁所識別的全解像度照片|版权及许可：.*本照片以|知识共享署名—相同方式共享 4\.0 国际许可协议（CC BY-SA 4\.0）|永久发布；许可涵盖本页所识别的全分辨率照片)/u.test(segment)
     ) {
       return true;
     }
