@@ -197,6 +197,8 @@ const prohibitedTerms = [
 ];
 
 const commonsLicensedArtworkPages = new Set([
+  "projects/horse-riding/index.html",
+  "projects/travel/index.html",
   "works/bank-of-china-light-trails/index.html",
   "works/coil-field/index.html",
   "works/fishpond-harvest/index.html",
