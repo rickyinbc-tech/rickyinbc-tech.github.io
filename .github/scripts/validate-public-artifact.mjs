@@ -197,12 +197,15 @@ const prohibitedTerms = [
 ];
 
 const commonsLicensedArtworkPages = new Set([
+  "works/bank-of-china-light-trails/index.html",
   "works/coil-field/index.html",
   "works/fishpond-harvest/index.html",
   "works/light-encroached-homes/index.html",
+  "zh-hant/works/bank-of-china-light-trails/index.html",
   "zh-hant/works/coil-field/index.html",
   "zh-hant/works/fishpond-harvest/index.html",
   "zh-hant/works/light-encroached-homes/index.html",
+  "zh-hans/works/bank-of-china-light-trails/index.html",
   "zh-hans/works/coil-field/index.html",
   "zh-hans/works/fishpond-harvest/index.html",
   "zh-hans/works/light-encroached-homes/index.html",
