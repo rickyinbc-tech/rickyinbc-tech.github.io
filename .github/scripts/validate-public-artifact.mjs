@@ -3,6 +3,7 @@ import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
+import { photographyScopeFindings } from "./photography-scope-policy.mjs";
 import {
   ARCHIVE_IMAGE_SIZES,
   adjacentRepeatedSourceCardFamilies,
@@ -290,6 +291,9 @@ function validateStructuredData(relative, html) {
 
 function validateCommercialContent(scope, relative, html) {
   const labelPrefix = `${scope}:${relative}`;
+  for (const finding of photographyScopeFindings(html)) {
+    errors.push(`${labelPrefix}: outside photography-only scope: ${finding}`);
+  }
   if (/<form\b/i.test(html)) errors.push(`${labelPrefix}: contains a form`);
   if (/\bhref=["']mailto:/i.test(html)) errors.push(`${labelPrefix}: contains an email pathway`);
   if (/(?:ask about acquisition|request image licen[cs]ing|propose an exhibition|collector inquiry|studio offer|price and availability|work with ricky|聯絡工作室|联络工作室|收藏查詢|收藏查询)/iu.test(

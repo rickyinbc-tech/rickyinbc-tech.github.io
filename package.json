@@ -12,7 +12,7 @@
     "build:public": "node .github/scripts/build-public-site.mjs",
     "validate:public": "node .github/scripts/validate-public-artifact.mjs",
     "build": "npm run build:assets && npm run build:images && npm run build:content",
-    "test": "node .github/scripts/validate-site.mjs && node .github/scripts/test-edge-worker.mjs",
+    "test": "node --test .github/scripts/test-photography-scope-policy.mjs && node .github/scripts/validate-site.mjs && node .github/scripts/test-edge-worker.mjs",
     "check": "npm run build && npm test && npm run build:public && npm run validate:public",
     "sync:social": "node .github/scripts/sync-social-metadata.mjs"
   },

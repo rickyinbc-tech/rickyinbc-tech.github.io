@@ -18,6 +18,7 @@ import {
   sourceCardFamilies,
 } from "./responsive-image-policy.mjs";
 import { ASSET_VERSION, SHELL_VERSION } from "./site-shell.mjs";
+import { photographyScopeFindings } from "./photography-scope-policy.mjs";
 
 const ORIGIN = "https://rickykwok.com";
 const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
@@ -913,6 +914,9 @@ const allowedEvidenceExternalHrefs = new Set([
   "https://www.dcfever.com/column/read.php?id=3146",
 ]);
 for (const [route, page] of indexableDocuments) {
+  for (const finding of photographyScopeFindings(page.html)) {
+    errors.push(`${page.relative}: outside photography-only scope: ${finding}`);
+  }
   if (!page.html.includes("personal-use-notice")) errors.push(`${page.relative}: missing site-wide personal archive notice`);
   const expectedNotice = route.startsWith("/zh-hant/")
     ? "個人、非商業攝影檔案。"
