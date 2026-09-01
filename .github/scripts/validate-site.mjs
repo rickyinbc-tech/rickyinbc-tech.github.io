@@ -303,6 +303,9 @@ for (const file of await htmlFiles()) {
     if (!html.includes('id="primary-navigation"') || !html.includes('id="language-navigation"')) {
       errors.push(`${relative}: navigation regions lack stable IDs`);
     }
+    if (!html.includes("data-no-js-navigation")) {
+      errors.push(`${relative}: mobile navigation lacks a no-JavaScript fallback`);
+    }
     if (canonical.replace(/\/$/, "") !== expectedCanonical.replace(/\/$/, "")) {
       errors.push(`${relative}: canonical ${canonical || "missing"} does not match ${expectedCanonical}`);
     }
@@ -720,6 +723,9 @@ if (!/\.hero\.has-semantic-media\s*\{[\s\S]*?padding-top:\s*0/i.test(siteCss)) {
 for (const marker of ["addMobileNavigation", "markCurrentNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel", "MODAL_IMAGE_SIZES", "responsiveSrcset"]) {
   if (!siteJs.includes(marker)) errors.push(`accessible interaction contract lacks ${marker}`);
 }
+for (const marker of ["--studio-cobalt-ink", "--studio-cobalt-light"]) {
+  if (!siteCss.includes(marker)) errors.push(`resilient accessibility stylesheet lacks ${marker}`);
+}
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
 for (const eventName of measurementGovernance.events || []) {
   if (!implementedEvents.has(eventName)) errors.push(`measurement governance event is not implemented: ${eventName}`);
@@ -738,6 +744,21 @@ if (
   || PHOTO_RESOLUTION_MANIFEST.summary?.sourceLimitedDisplayResamples !== 2
 ) {
   errors.push("photo-resolution manifest does not match the governed 70-source integrity policy");
+}
+for (const photo of PHOTO_RESOLUTION_MANIFEST.photos || []) {
+  const mobileCandidate = photo.responsiveCandidates?.find(
+    (candidate) => candidate.format === "webp" && candidate.width === 720,
+  );
+  if (
+    photo.width >= 720
+    && (
+      !mobileCandidate
+      || mobileCandidate.encoderQuality !== 76
+      || mobileCandidate.encoderRevision !== 1
+    )
+  ) {
+    errors.push(`${photo.source}: responsive image family lacks the governed 720px mobile candidate`);
+  }
 }
 if (imageInventory.summary?.uniquePrimarySources !== 67) {
   errors.push("image inventory must group the 67 displayed photographs by canonical family");

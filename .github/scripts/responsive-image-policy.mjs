@@ -8,7 +8,7 @@ export const FEATURE_IMAGE_SIZES = [
 ].join(", ");
 
 export const HERO_IMAGE_SIZES = [
-  "(max-width: 979px) 100vw",
+  "(max-width: 979px) calc(100vw - 36px)",
   "(max-width: 1027px) calc(100vw - 360px)",
   "65vw",
 ].join(", ");

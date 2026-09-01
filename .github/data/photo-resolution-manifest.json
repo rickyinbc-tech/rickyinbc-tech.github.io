@@ -5,6 +5,13 @@
     "canonicalSources": 70,
     "originalsRetained": true,
     "generativeEnhancementUsed": false,
+    "responsiveMobileWebp": {
+      "width": 720,
+      "quality": 76,
+      "encoderRevision": 1,
+      "smartSubsample": true,
+      "effort": 6
+    },
     "displayResampleMethod": {
       "kind": "display-resampled",
       "generative": false,
@@ -24,7 +31,7 @@
     "canonicalSources": 70,
     "genuineHigherOriginals": 10,
     "sourceLimitedDisplayResamples": 2,
-    "responsiveCandidates": 361
+    "responsiveCandidates": 431
   },
   "photos": [
     {
@@ -70,6 +77,16 @@
           "sha256": "d5a08111bc725d11c99044259c295d17c71244d7e8e3c8e0e55ef47a00416773"
         },
         {
+          "path": "assets/optimized-v2/archive/ricky-kwok-hku-light-pollution-award-2014-720.webp",
+          "width": 720,
+          "height": 405,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 27588,
+          "sha256": "05782bb2af142ce4e15bd639cd2038b3d48938e0929555eeee605337f6e4d0ba"
+        },
+        {
           "path": "assets/optimized-v2/archive/ricky-kwok-hku-light-pollution-award-2014-800.webp",
           "width": 800,
           "height": 450,
@@ -104,6 +121,16 @@
           "format": "webp",
           "bytes": 21634,
           "sha256": "34daa5bab45dd3faf4a1156d482b2cb7929a69c6b46008c60035eb2e2f529135"
+        },
+        {
+          "path": "assets/optimized-v2/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-720.webp",
+          "width": 720,
+          "height": 720,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 20344,
+          "sha256": "0cc8c4607f1920e5cd62513b33d66a8490b1e2b65af8b45518d24e2f74ffc2e6"
         },
         {
           "path": "assets/optimized-v2/archive/ricky-kwok-ouhk-outstanding-student-deans-list-2017-800.webp",
@@ -159,6 +186,16 @@
           "sha256": "dda213ac6d1abc52b3038fb8c38e2c78dbed433ce275dbf7bf8469fed672a500"
         },
         {
+          "path": "assets/optimized-v2/archive/ricky-kwok-student-award-presentation-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 10672,
+          "sha256": "f879548c31e97abefa484fcc4174217833322e8780c421f5b28c5f47e9f1c8d3"
+        },
+        {
           "path": "assets/optimized-v2/archive/ricky-kwok-student-award-presentation-800.webp",
           "width": 800,
           "height": 533,
@@ -209,6 +246,16 @@
           "format": "webp",
           "bytes": 24906,
           "sha256": "0922a52b7d6348b15dd949ff1eb4e603b3429b66cf036f76725d596b93bf0a4a"
+        },
+        {
+          "path": "assets/optimized-v2/art/ancestral-kitchen-light-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 23134,
+          "sha256": "593115947e461b899a261cd9486d451eeb1c42cf24aa2f1b7383078f487fb7aa"
         },
         {
           "path": "assets/optimized-v2/art/ancestral-kitchen-light-800.webp",
@@ -287,6 +334,16 @@
           "sha256": "dbe65d866bd08bbe6d2c3cf87dbfa04594d1b460087b8a0d00e4539c1d37c798"
         },
         {
+          "path": "assets/optimized-v2/art/bank-of-china-light-trails-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 58568,
+          "sha256": "66abbd952fe7c832c1bf7310940c73079dcc2e684861d8138ccd4e309b215818"
+        },
+        {
           "path": "assets/optimized-v2/art/bank-of-china-light-trails-800.webp",
           "width": 800,
           "height": 519,
@@ -331,6 +388,16 @@
           "sha256": "1d0f4e7752028670f620f610d0cd9b16fee6bd26521a56da55a5eb7454aa6508"
         },
         {
+          "path": "assets/optimized-v2/art/blue-column-water-study-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 6792,
+          "sha256": "429b4c7d6e93a01065e7383f548ff38321917b694e9c93890b6afa164a0acbcb"
+        },
+        {
           "path": "assets/optimized-v2/art/blue-column-water-study-800.webp",
           "width": 800,
           "height": 519,
@@ -357,6 +424,16 @@
           "format": "webp",
           "bytes": 14988,
           "sha256": "15cf3fe20ef69aab21df1ca014b27d2c40e4b6069fa0182a8f1999a2dd1246f1"
+        },
+        {
+          "path": "assets/optimized-v2/art/blue-hour-cormorant-fishermen-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 34298,
+          "sha256": "e658f85b76ded1082e56b109f4d3f08e35f21034800536168230fa0ebed9d460"
         },
         {
           "path": "assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp",
@@ -404,6 +481,16 @@
           "sha256": "695d4c848d65489da721b5a11e8f575e37f8fc4d7627f2a96d16d653f0e6e89f"
         },
         {
+          "path": "assets/optimized-v2/art/boxer-ice-impact-720.webp",
+          "width": 720,
+          "height": 1073,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 73412,
+          "sha256": "af3fdff928960839aeb8367be3224a1a8427367edbe62e19f9fc158c9d6b283f"
+        },
+        {
           "path": "assets/optimized-v2/art/boxer-ice-impact-800.webp",
           "width": 800,
           "height": 1192,
@@ -448,6 +535,16 @@
           "sha256": "ece241189ae88942b3f1cb04395ac5c14ba2bbfb21b1b26428e07dd9fcb0f1bf"
         },
         {
+          "path": "assets/optimized-v2/art/candle-impact-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 9704,
+          "sha256": "4f22f563262bacfac3f32da4b5a229e2f6068d64bf603898cc05a0c8e8f9bcc1"
+        },
+        {
           "path": "assets/optimized-v2/art/candle-impact-800.webp",
           "width": 800,
           "height": 519,
@@ -490,6 +587,16 @@
           "format": "webp",
           "bytes": 15732,
           "sha256": "644e998b66b0d1285b6be148c720921177fb69b50b7e2ae8156eda1203a28b0a"
+        },
+        {
+          "path": "assets/optimized-v2/art/chalk-impact-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 39732,
+          "sha256": "b54310da587942bd2c3ac1ba036a8a6013a4ca177ba6977e5b6a8d92a68a773d"
         },
         {
           "path": "assets/optimized-v2/art/chalk-impact-800.webp",
@@ -568,6 +675,16 @@
           "sha256": "44d4bf189327daea2d6dcc86e8912a6f03d9cf7a90377df1b2fa3807b5b39090"
         },
         {
+          "path": "assets/optimized-v2/art/cigarette-impact-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 49192,
+          "sha256": "9ba7576ee70659edf5b4e9c9403074a7545f89ac535b152055c6dfab700f2dd7"
+        },
+        {
           "path": "assets/optimized-v2/art/cigarette-impact-800.webp",
           "width": 800,
           "height": 519,
@@ -620,6 +737,16 @@
           "sha256": "278b302eb9e13db50088f72e3927498c0cf51fee2cabe9720b4b6e16eef7b631"
         },
         {
+          "path": "assets/optimized-v2/art/coil-field-monochrome-720.webp",
+          "width": 720,
+          "height": 468,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 68538,
+          "sha256": "fb82950b0e8a741bc22df637029cacb1b3d0820fc9f0c8e90b1f235f3560f0c5"
+        },
+        {
           "path": "assets/optimized-v2/art/coil-field-monochrome-800.webp",
           "width": 800,
           "height": 520,
@@ -662,6 +789,16 @@
           "format": "webp",
           "bytes": 22364,
           "sha256": "42caf2e9e526b739306168495691a1dbc92a765267e531a1e513c7e626916c17"
+        },
+        {
+          "path": "assets/optimized-v2/art/color-powder-fish-720.webp",
+          "width": 720,
+          "height": 525,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 64078,
+          "sha256": "8bb055447958cd7b213cd8aee9d77167e22c3d495203d336bf92f22996abafc9"
         },
         {
           "path": "assets/optimized-v2/art/color-powder-fish-800.webp",
@@ -708,6 +845,16 @@
           "sha256": "b0eaff0daed9b93e2f9dcbe0373c0b2413f0c0cc9c2f04e3aa074f4761883cb1"
         },
         {
+          "path": "assets/optimized-v2/art/divers-motion-720.webp",
+          "width": 720,
+          "height": 461,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 33692,
+          "sha256": "15b722ec4fd0e20533306d67559e4666ed3dbe495ce60d883964d89e8b0c74db"
+        },
+        {
           "path": "assets/optimized-v2/art/divers-motion-800.webp",
           "width": 800,
           "height": 512,
@@ -750,6 +897,16 @@
           "format": "webp",
           "bytes": 20138,
           "sha256": "09f7cc7ae5f386bdb8952f08863ac63df3645524e9f86e19b0248c2bf83757aa"
+        },
+        {
+          "path": "assets/optimized-v2/art/egg-impact-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 50966,
+          "sha256": "85367610ccee6ec789d4b00bc5b2c080cd097bf1622b66f433610ce4820d0820"
         },
         {
           "path": "assets/optimized-v2/art/egg-impact-800.webp",
@@ -796,6 +953,16 @@
           "sha256": "a3c59d0d3de5cebfc2ba8949c3bb84837a892368ad2e0a74991eb6a8ae9bc262"
         },
         {
+          "path": "assets/optimized-v2/art/festival-dragon-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 61362,
+          "sha256": "e1af99d9de4fe732b5296af838e173d3b9f32c52386ca493d15dd55391c9a7f9"
+        },
+        {
           "path": "assets/optimized-v2/art/festival-dragon-800.webp",
           "width": 800,
           "height": 519,
@@ -838,6 +1005,16 @@
           "format": "webp",
           "bytes": 21104,
           "sha256": "50fa4c27f105cb5e34d4a074e9262d313c72610e033f2910fa4ed6b5c58699ca"
+        },
+        {
+          "path": "assets/optimized-v2/art/fire-dragon-procession-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 43262,
+          "sha256": "047dcdd4277887f20e1299cd1b4a51bd202c1e8cef2891bd4fdeb5a51d9e6f22"
         },
         {
           "path": "assets/optimized-v2/art/fire-dragon-procession-800.webp",
@@ -890,6 +1067,16 @@
           "format": "webp",
           "bytes": 37570,
           "sha256": "5bd4483198b29efc72772036685af28f464139b0f95241fa9db348dee6f5acc8"
+        },
+        {
+          "path": "assets/optimized-v2/art/fishpond-harvest-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 41066,
+          "sha256": "d3e965ac25c7cc07a64df6c54b677132ecdf7b0f1c63d7cd86fdef69bf1f5fbe"
         },
         {
           "path": "assets/optimized-v2/art/fishpond-harvest-800.webp",
@@ -968,6 +1155,16 @@
           "sha256": "8d39d266d56a450fdcaf556c751daa87c637b6ba09ad088035710c7ffa944377"
         },
         {
+          "path": "assets/optimized-v2/art/flower-impact-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 24638,
+          "sha256": "8f685bab02dc38721e6f553a9e42b5ac209b739cb4f634bd6738e6d0b0446b0f"
+        },
+        {
           "path": "assets/optimized-v2/art/flower-impact-800.webp",
           "width": 800,
           "height": 519,
@@ -1042,6 +1239,16 @@
           "format": "heif",
           "bytes": 2949,
           "sha256": "c1b7e6e380b16869d01077997775baf4ca6aeb08fa16d180c1e3eb0126792097"
+        },
+        {
+          "path": "assets/optimized-v2/art/green-orb-water-study-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 5962,
+          "sha256": "5c436797c6d5d4e94979f984762785edfb50060314dee69416570f354cc07c9b"
         },
         {
           "path": "assets/optimized-v2/art/green-orb-water-study-800.webp",
@@ -1136,6 +1343,16 @@
           "sha256": "018c7d9ff87cd956ff39389e0ba7936cb6138017aaa7c4cc65841f2ffdedccf1"
         },
         {
+          "path": "assets/optimized-v2/art/hearth-ritual-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 29884,
+          "sha256": "2a21f6837d7c15a197de115a2ab34506ca086aa41c952eefca1f4d01ac35e4d1"
+        },
+        {
           "path": "assets/optimized-v2/art/hearth-ritual-800.webp",
           "width": 800,
           "height": 519,
@@ -1180,6 +1397,16 @@
           "sha256": "c64c1437c94bb297d26f8477d917ff0d046281953822bab00e19024c57a57742"
         },
         {
+          "path": "assets/optimized-v2/art/hong-kong-cranes-monochrome-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 47610,
+          "sha256": "512514eacd8cc8f19ff9be661e49cd82a142c45408f900d990f2729139357bf6"
+        },
+        {
           "path": "assets/optimized-v2/art/hong-kong-cranes-monochrome-800.webp",
           "width": 800,
           "height": 519,
@@ -1222,6 +1449,16 @@
           "format": "webp",
           "bytes": 28000,
           "sha256": "405890d4b7132d4afb1c6e8ba4b753ac0cb9a90d228dc20789a4eb2696205e6d"
+        },
+        {
+          "path": "assets/optimized-v2/art/hong-kong-fisheye-street-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 70712,
+          "sha256": "877539cf1a4cd2acc94187596a594930bf9d3e17ace0cb90775e74611f07bc77"
         },
         {
           "path": "assets/optimized-v2/art/hong-kong-fisheye-street-800.webp",
@@ -1276,6 +1513,16 @@
           "sha256": "2fb0bb1f5544481ebc33d7962e60765acb264f5e893d664d037cc960af85d762"
         },
         {
+          "path": "assets/optimized-v2/art/horse-racing-pack-720.webp",
+          "width": 720,
+          "height": 468,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 53316,
+          "sha256": "6a0fa36a7eef0017a7b9dbbd1dc5f6656df09847321e490da6c5e0623eb9d951"
+        },
+        {
           "path": "assets/optimized-v2/art/horse-racing-pack-800.webp",
           "width": 800,
           "height": 520,
@@ -1318,6 +1565,16 @@
           "format": "webp",
           "bytes": 5262,
           "sha256": "60a5cc7159603f80984f291ce7361291124fd4d36f9625e71ce7c3f41806e845"
+        },
+        {
+          "path": "assets/optimized-v2/art/li-river-mist-720.webp",
+          "width": 720,
+          "height": 328,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 11276,
+          "sha256": "3a7ae39cf046dec66ef85798beff5acbf6f445e4b87b9b6d788590b259a29a17"
         },
         {
           "path": "assets/optimized-v2/art/li-river-mist-800.webp",
@@ -1396,6 +1653,16 @@
           "sha256": "f4c4214e62d54a84f7eb7770f16d373df809b815d1ec001624c5d0d86bda06b5"
         },
         {
+          "path": "assets/optimized-v2/art/light-encroached-homes-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 90556,
+          "sha256": "e280c61fa50036375769ed8423e7c02440ec1cf1c55ce42baadc88df8eba71d0"
+        },
+        {
           "path": "assets/optimized-v2/art/light-encroached-homes-800.avif",
           "width": 800,
           "height": 520,
@@ -1446,6 +1713,16 @@
           "format": "webp",
           "bytes": 6052,
           "sha256": "a5e11b15a755bc4186227094d0012a8313b9b0aeb68272d48b714d9cbb602405"
+        },
+        {
+          "path": "assets/optimized-v2/art/magenta-collision-water-study-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 12484,
+          "sha256": "8857ea47508a689fcac4f16ea1d254a7c2981171bb95ab7d67a261b90c5b5f04"
         },
         {
           "path": "assets/optimized-v2/art/magenta-collision-water-study-800.webp",
@@ -1540,6 +1817,16 @@
           "sha256": "014282c69f39262504827d798f6757b60c1fc212d65992fc9537ca2e661fe4f5"
         },
         {
+          "path": "assets/optimized-v2/art/night-fishermen-li-river-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 26866,
+          "sha256": "e3ff953425e8722106df1e80f948a742885562b593e99a43f0642496879c7bbf"
+        },
+        {
           "path": "assets/optimized-v2/art/night-fishermen-li-river-800.webp",
           "width": 800,
           "height": 519,
@@ -1582,6 +1869,16 @@
           "format": "webp",
           "bytes": 2144,
           "sha256": "2a7969150a6fe97b1cc9dcdd75a5bda54e58a6070201ce9fa73f0e7e183d61da"
+        },
+        {
+          "path": "assets/optimized-v2/art/orange-suspension-water-study-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 4062,
+          "sha256": "ccc1ea0870f54c63852220e804c44686a5531b4d177ff5a5e8ecb4d55cdfbbd2"
         },
         {
           "path": "assets/optimized-v2/art/orange-suspension-water-study-800.webp",
@@ -1676,6 +1973,16 @@
           "sha256": "5ad9c40049019b51eb4b1aff6a133add5aa57f5374ebce057515b6e3c079df2c"
         },
         {
+          "path": "assets/optimized-v2/art/rice-terraces-golden-hour-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 55460,
+          "sha256": "2b6ea3c318f6f0da3bc06e0e0247f2fbc5df3cbfb4403b1ab6aa792c788fa66b"
+        },
+        {
           "path": "assets/optimized-v2/art/rice-terraces-golden-hour-800.webp",
           "width": 800,
           "height": 519,
@@ -1718,6 +2025,16 @@
           "format": "webp",
           "bytes": 31776,
           "sha256": "8c4c1fe83a6959d13a60629cceeaf2eb0d7f93a095cf5d14a072c00fca158da2"
+        },
+        {
+          "path": "assets/optimized-v2/art/sack-race-village-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 77190,
+          "sha256": "63f2a6096e6b17cd8affeb27a2e1770fa585dd5d7422fa3049d43d9c575599cf"
         },
         {
           "path": "assets/optimized-v2/art/sack-race-village-800.webp",
@@ -1764,6 +2081,16 @@
           "sha256": "3800e5c128882a544ce2a6d38363ff734185b93019efdcf308a9012f350fb501"
         },
         {
+          "path": "assets/optimized-v2/art/sea-of-clouds-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 13088,
+          "sha256": "a2f1c99ecdc837a413426c5db5a288060f5908211a6718a2aa9c5ce2501cb765"
+        },
+        {
           "path": "assets/optimized-v2/art/sea-of-clouds-800.webp",
           "width": 800,
           "height": 519,
@@ -1806,6 +2133,16 @@
           "format": "webp",
           "bytes": 13244,
           "sha256": "397e53f2259d8bdb437c1cf5e8ce95ca49bacaf16f51bc634d64526dc5e944b6"
+        },
+        {
+          "path": "assets/optimized-v2/art/street-art-procession-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 28394,
+          "sha256": "cfa9f39302c741a0b50d18eb86e6ebfe03e04cd96589f8587559637e75885f85"
         },
         {
           "path": "assets/optimized-v2/art/street-art-procession-800.webp",
@@ -1884,6 +2221,16 @@
           "sha256": "e0edf23b827916e8fd5690e4e40cc3a89d344767ce19044e8886cd93bc0930e3"
         },
         {
+          "path": "assets/optimized-v2/art/swimming-motion-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 39342,
+          "sha256": "eb077d8fcdb1010b0a4a8bb26648b70b7ff9fbd7e53400b1096f809d00ec067b"
+        },
+        {
           "path": "assets/optimized-v2/art/swimming-motion-800.webp",
           "width": 800,
           "height": 519,
@@ -1960,6 +2307,16 @@
           "sha256": "308ea6de274dae10a7ccf315981a9b870978727b81ca226d6e6c6a31e1f81936"
         },
         {
+          "path": "assets/optimized-v2/art/swimming-start-sequence-720.webp",
+          "width": 720,
+          "height": 1074,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 127020,
+          "sha256": "550ae63f4a5242a420956cb63b8757425844e766cffe8561dde2cb7029e6dd6a"
+        },
+        {
           "path": "assets/optimized-v2/art/swimming-start-sequence-800.webp",
           "width": 800,
           "height": 1193,
@@ -2012,6 +2369,16 @@
           "sha256": "f5aa5bd66e41b2eea2243e094d6113eef7579eef985d69031bfac52acfb37ca4"
         },
         {
+          "path": "assets/optimized-v2/art/village-elders-laughter-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 51792,
+          "sha256": "0a882672acc948f71134c01d569545b34d69e4b633bd27bb7cf67b9520b75040"
+        },
+        {
           "path": "assets/optimized-v2/art/village-elders-laughter-800.webp",
           "width": 800,
           "height": 519,
@@ -2054,6 +2421,16 @@
           "format": "webp",
           "bytes": 4892,
           "sha256": "4e18479b4a617e1272a994dd93f5d48397180250b8e4eeb5025471877e6ce123"
+        },
+        {
+          "path": "assets/optimized-v2/art/yellow-arc-water-study-720.webp",
+          "width": 720,
+          "height": 467,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 9308,
+          "sha256": "093e3b3e5dbca3f029c7738f0f74282b28657728fc03604ea45eb006bde552e8"
         },
         {
           "path": "assets/optimized-v2/art/yellow-arc-water-study-800.webp",
@@ -2108,6 +2485,16 @@
           "sha256": "31cafa92a94d888acea094bf8b6b8c0314946973d97305645a63221508ea3474"
         },
         {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-01-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 43696,
+          "sha256": "ccc2dce6e6580af5f2476b43e0dc807fde2d84ece719f5d00ffbc08bf5fd27e2"
+        },
+        {
           "path": "assets/optimized-v2/projects/horse-riding/horse-riding-01-800.webp",
           "width": 800,
           "height": 533,
@@ -2158,6 +2545,16 @@
           "format": "webp",
           "bytes": 19226,
           "sha256": "1e8870e2b63f1b97e9dc3e2e13f813b3c52c6d5a060c2bce05c16ee1e736045e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-02-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 39802,
+          "sha256": "63acf7ea992ea5e2486b1bc521cd98f55dda6aee23b695352a5c0a2d639bd6ba"
         },
         {
           "path": "assets/optimized-v2/projects/horse-riding/horse-riding-02-800.webp",
@@ -2212,6 +2609,16 @@
           "sha256": "3f8b3634c353007090b6226700be4f76f3886fbd33c5861f5be675d05f21e64e"
         },
         {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-03-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 39980,
+          "sha256": "20772e1a9678f103810dc70210d7a534ca40ec3c5f46eab320d573b1158cd95a"
+        },
+        {
           "path": "assets/optimized-v2/projects/horse-riding/horse-riding-03-800.webp",
           "width": 800,
           "height": 533,
@@ -2262,6 +2669,16 @@
           "format": "webp",
           "bytes": 23052,
           "sha256": "2fbc6f9cb915aac520a762f8f122808f25379099e1e8ad920ac0950c44e35bfe"
+        },
+        {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-04-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 47018,
+          "sha256": "32c3c5a78bfdb3fdb85f44588e0af2f3858c67ea5cad6e363bbac26e85c74264"
         },
         {
           "path": "assets/optimized-v2/projects/horse-riding/horse-riding-04-800.webp",
@@ -2316,6 +2733,16 @@
           "sha256": "28346abf09bdf3f1f52125ad7c0a094ea39724512855a94123a7b63538c12835"
         },
         {
+          "path": "assets/optimized-v2/projects/horse-riding/horse-riding-05-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 53936,
+          "sha256": "93c347cd54bd1affe50f745271debdff1ad537d770768bd3037440a65c9fbcf9"
+        },
+        {
           "path": "assets/optimized-v2/projects/horse-riding/horse-riding-05-800.webp",
           "width": 800,
           "height": 533,
@@ -2366,6 +2793,16 @@
           "format": "webp",
           "bytes": 28998,
           "sha256": "027d0afa7a90d3cb4779931a520307544b5090a76f887317a273f5f9d95cfa0e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-720.webp",
+          "width": 720,
+          "height": 405,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 73274,
+          "sha256": "4b9421ac85b25512965708f7b489e72eaff854e7bbb82706e693a19a0ac3d076"
         },
         {
           "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-01-800.webp",
@@ -2420,6 +2857,16 @@
           "sha256": "e0f20965e3139e163c6ec7dcef9fb75ea9842f6e92e62c732634b7bae877ce08"
         },
         {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-720.webp",
+          "width": 720,
+          "height": 405,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 73938,
+          "sha256": "fe621b412c12812decebcb54fb314100ca049d25abae99fdd09c687f0db5ef8f"
+        },
+        {
           "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-800.webp",
           "width": 800,
           "height": 450,
@@ -2470,6 +2917,16 @@
           "format": "webp",
           "bytes": 29738,
           "sha256": "b9f868ec9f95b5d54da7719822ec3d7a578933011960e90437811d7c35473d93"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-720.webp",
+          "width": 720,
+          "height": 405,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 75138,
+          "sha256": "2d5f65a8dc4d9f19ab8711809d530626309325668d487eb347c36b7ed58396e3"
         },
         {
           "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-03-800.webp",
@@ -2524,6 +2981,16 @@
           "sha256": "bf849443b2a41ee865fb31bbafa7fd76a34788c31e7ac1f69ec15279b99f18e4"
         },
         {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-720.webp",
+          "width": 720,
+          "height": 405,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 93500,
+          "sha256": "f97a3afe7752faf1be8c951ea992ecb23b31f358f6ba103fc5db853f30438563"
+        },
+        {
           "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-04-800.webp",
           "width": 800,
           "height": 450,
@@ -2574,6 +3041,16 @@
           "format": "webp",
           "bytes": 38008,
           "sha256": "18f2f0fc3f67cdfece87859398ec4e8ef51302333e9e226819a133febdc4310a"
+        },
+        {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-720.webp",
+          "width": 720,
+          "height": 405,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 99018,
+          "sha256": "933c330cb0fc811596ca12002e10c2ecad98fe17ecb5c17a3ab728d00014eb95"
         },
         {
           "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-05-800.webp",
@@ -2628,6 +3105,16 @@
           "sha256": "170aba6547a6fdd71634d67ecdb2715821cf1e801a13442df328449a3376e084"
         },
         {
+          "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-720.webp",
+          "width": 720,
+          "height": 405,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 51596,
+          "sha256": "db53fe2aa734da1758cd6bed61761d0270d47cfde14e3f295a35b456b75d0966"
+        },
+        {
           "path": "assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-06-800.webp",
           "width": 800,
           "height": 450,
@@ -2678,6 +3165,16 @@
           "format": "webp",
           "bytes": 16592,
           "sha256": "dff735569fad5d34fba016245a09d0cd8525931bf46f65c539e882a8f64b83b5"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 34432,
+          "sha256": "1ebb2d017b76a6723f1b040fd451b74266486f478aeb45f57edbe1438aa9a4aa"
         },
         {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-01-800.webp",
@@ -2732,6 +3229,16 @@
           "sha256": "c0a456fee3d09e34a5ab93ce56f37d047a861c35ff032ea44d40b382c2ac7a4d"
         },
         {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 40492,
+          "sha256": "3e67d5cb4cbb14af37233373ca71a3c194ce2a435d979aed05d152521d9bedc2"
+        },
+        {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-02-800.webp",
           "width": 800,
           "height": 534,
@@ -2774,6 +3281,16 @@
           "format": "webp",
           "bytes": 48288,
           "sha256": "d8120c3a02f466e4ab97d25d94d23c06be3575ed6c65225df5de73ef0ce53c21"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-720.webp",
+          "width": 720,
+          "height": 1079,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 106618,
+          "sha256": "9489dd7190ea9de5e2edd707bbbaf1a6158702661f3d5f6220554079e19d4608"
         },
         {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-03-800.webp",
@@ -2828,6 +3345,16 @@
           "sha256": "b161ba819267b9356dc71874fef86e52dabf9da48edd35646dd411e8d21f316b"
         },
         {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-720.webp",
+          "width": 720,
+          "height": 660,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 62536,
+          "sha256": "418a9a5b57c00173295271db813c180c4a6feb9de53965c3a681230b182fcfef"
+        },
+        {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-04-800.webp",
           "width": 800,
           "height": 734,
@@ -2878,6 +3405,16 @@
           "format": "webp",
           "bytes": 11308,
           "sha256": "d18926f21c7e5e88092c1e9122d9bd8d0befda9e7f9e04302700064dd9cab7d0"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 25276,
+          "sha256": "42906cfd084403ebde29997d4eb8d1f29c00cbbef4407f41e1512d071e9ad8f7"
         },
         {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-800.webp",
@@ -2932,6 +3469,16 @@
           "sha256": "ab377e5b5cb311a671ceaff1eadd76ebbbe57fa79b2d7c5dc3df2ed69e6637a9"
         },
         {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-720.webp",
+          "width": 720,
+          "height": 606,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 59254,
+          "sha256": "1193fb24ba0451ff422c998726997ada99474f2d725e5cce1531fa69a58a891a"
+        },
+        {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-06-800.webp",
           "width": 800,
           "height": 673,
@@ -2982,6 +3529,16 @@
           "format": "webp",
           "bytes": 20722,
           "sha256": "03f6eb6a3abeb0fd599a923bb99a497e65646f643de46697ae4268a914a75481"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-720.webp",
+          "width": 720,
+          "height": 479,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 41216,
+          "sha256": "f5d28d5ef50e7d311f57a5a17505694609a57446369b88b13ca25342472aa4ee"
         },
         {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-07-800.webp",
@@ -3036,6 +3593,16 @@
           "sha256": "f05e18fec225e7773fa05cf155d834ca49155a6b2c44a1c1de932fc99c5a3e45"
         },
         {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-720.webp",
+          "width": 720,
+          "height": 479,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 28102,
+          "sha256": "ac81c776d43dd92abaac0c589f27359cae19bb2e989ccc7a56e03bc2c1ccac2f"
+        },
+        {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-08-800.webp",
           "width": 800,
           "height": 532,
@@ -3086,6 +3653,16 @@
           "format": "webp",
           "bytes": 21548,
           "sha256": "8220b6edd7d90b4d5693ebaec96d46ed79b14dbc12bbae4331614aaa7b780197"
+        },
+        {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-720.webp",
+          "width": 720,
+          "height": 479,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 45338,
+          "sha256": "a8a4060368150a103adf99bdaece569f2cb00adf86007f9a8a56751036574893"
         },
         {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-09-800.webp",
@@ -3140,6 +3717,16 @@
           "sha256": "d4eac06ce32573d0a018ec34054685c2189bd7d776e640a2cf947e2186c2d142"
         },
         {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-720.webp",
+          "width": 720,
+          "height": 479,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 20014,
+          "sha256": "1def598873693b4ee18e7e955175faee3813af3f2f40a12959a7cab5a3cc1d47"
+        },
+        {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-10-800.webp",
           "width": 800,
           "height": 532,
@@ -3192,6 +3779,16 @@
           "sha256": "625ae06858b4745d39afb363a0715bdcd1d6749d862e2c555e8a8f472e36e6f4"
         },
         {
+          "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-720.webp",
+          "width": 720,
+          "height": 479,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 23770,
+          "sha256": "213bcf45493b5571befafac955956094d192074d714b1ba07f83bd5451fcb21a"
+        },
+        {
           "path": "assets/optimized-v2/projects/nepal-documentary/nepal-documentary-11-800.webp",
           "width": 800,
           "height": 532,
@@ -3226,6 +3823,16 @@
           "format": "webp",
           "bytes": 14072,
           "sha256": "a7a7c4edac73ad39c80219ad92f80b0909e81c5e37ad556294bb777a4c6aa9a4"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-01-720.webp",
+          "width": 720,
+          "height": 1080,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 27434,
+          "sha256": "b1cddf1da09fd6bcdaf901e7b921ef236b3a197945dbcfac5a54fe5e9f9014b3"
         },
         {
           "path": "assets/optimized-v2/projects/travel/travel-01-800.webp",
@@ -3280,6 +3887,16 @@
           "sha256": "1e947c37e8c26513fcf524511eaefb613cd80e7e6240943dd1b7294ba0b9dc6a"
         },
         {
+          "path": "assets/optimized-v2/projects/travel/travel-02-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 41410,
+          "sha256": "749baacad8cadedd1b9b7f83994872c8f34ca9d1761fd7c22cb0db46b2359bab"
+        },
+        {
           "path": "assets/optimized-v2/projects/travel/travel-02-800.webp",
           "width": 800,
           "height": 533,
@@ -3330,6 +3947,16 @@
           "format": "webp",
           "bytes": 29850,
           "sha256": "22a14396e0ff7e06703b5cd4f76b706f30bb3de2996444eff66161f287b610e8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-03-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 69308,
+          "sha256": "a6cac3f5aeb168be1e105a09f6a2b41cb896dd337f9d5b79e4a4a7d564f6432c"
         },
         {
           "path": "assets/optimized-v2/projects/travel/travel-03-800.webp",
@@ -3384,6 +4011,16 @@
           "sha256": "d4e38b2d619fc03bd810348cd160f6710a34f5248825e331ada4d2713509062f"
         },
         {
+          "path": "assets/optimized-v2/projects/travel/travel-04-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 55412,
+          "sha256": "f922a0837abb72439b2727f640b420e11672a4385b4386b537656d6a937dd7ba"
+        },
+        {
           "path": "assets/optimized-v2/projects/travel/travel-04-800.webp",
           "width": 800,
           "height": 533,
@@ -3434,6 +4071,16 @@
           "format": "webp",
           "bytes": 13504,
           "sha256": "6ecefa411894e3c68bb72f5ca76541d9af4a0720db0af153bcd0254c6fa1650d"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-05-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 28346,
+          "sha256": "0e729b3dd9cf8bfe501301bcbff64c2800bae4e86d53b61329141c8613016d7b"
         },
         {
           "path": "assets/optimized-v2/projects/travel/travel-05-800.webp",
@@ -3488,6 +4135,16 @@
           "sha256": "9177c2b63175d272414d12f27ab47c287639df16e6c6811f41e2a51db94d6243"
         },
         {
+          "path": "assets/optimized-v2/projects/travel/travel-06-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 29002,
+          "sha256": "b077bd071f39243bda315fae1790aede59db1f72d796bab30489abd48ecf5dde"
+        },
+        {
           "path": "assets/optimized-v2/projects/travel/travel-06-800.webp",
           "width": 800,
           "height": 533,
@@ -3538,6 +4195,16 @@
           "format": "webp",
           "bytes": 12330,
           "sha256": "6c7818663f4ca9d658fdb88904a10cc54be00190ed62d3090a5f1151b23a0caf"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-07-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 27108,
+          "sha256": "bc2cca62dc255d7ec9cb0e5d9fa2d98bc0cb5abffc356404561178e601cd9aeb"
         },
         {
           "path": "assets/optimized-v2/projects/travel/travel-07-800.webp",
@@ -3592,6 +4259,16 @@
           "sha256": "66eb252322cea53ce60623a670b54a73d872f1e33808b67423308eacaf9ac3b4"
         },
         {
+          "path": "assets/optimized-v2/projects/travel/travel-08-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 56386,
+          "sha256": "955e7a0cf1b25c67c20abaddc7da5afceb3d3e12273a6f856ff19ebe9f844850"
+        },
+        {
           "path": "assets/optimized-v2/projects/travel/travel-08-800.webp",
           "width": 800,
           "height": 533,
@@ -3642,6 +4319,16 @@
           "format": "webp",
           "bytes": 14542,
           "sha256": "ad031b0b0d12938eef46336fc1b4a5e131abec6390598d845e2b775a8a0e367e"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-09-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 30310,
+          "sha256": "9a2e9e16b1c4edbee14d67dd9c1358065e2f825ac41721ce07eec481df3bd802"
         },
         {
           "path": "assets/optimized-v2/projects/travel/travel-09-800.webp",
@@ -3696,6 +4383,16 @@
           "sha256": "3fa48e445b8bea333d4d28d7db7c8209df669cce77c1b599366db00b0d10509f"
         },
         {
+          "path": "assets/optimized-v2/projects/travel/travel-10-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 23334,
+          "sha256": "8bba29a1512cf1a0e0dc3422647a3db439ecedf04b66b2b1e019337490391ebc"
+        },
+        {
           "path": "assets/optimized-v2/projects/travel/travel-10-800.webp",
           "width": 800,
           "height": 533,
@@ -3746,6 +4443,16 @@
           "format": "webp",
           "bytes": 25590,
           "sha256": "0472f6c5b87df6e2b2aee7eaf280d8e48c5b2e1e309af05bbc6841f837e6b9a8"
+        },
+        {
+          "path": "assets/optimized-v2/projects/travel/travel-11-720.webp",
+          "width": 720,
+          "height": 480,
+          "format": "webp",
+          "encoderQuality": 76,
+          "encoderRevision": 1,
+          "bytes": 52990,
+          "sha256": "9f9c3e392c1609c71abb7a0f6c85d4855873bd5246adec367d4f39a761dee728"
         },
         {
           "path": "assets/optimized-v2/projects/travel/travel-11-800.webp",

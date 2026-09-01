@@ -409,7 +409,7 @@ for (const document of documents.values()) {
 
   const languageLinks = extractLanguageLinks(html);
   const expectedShell = renderHeaderAndNotice({ language, languageLinks });
-  const actualShell = html.match(/<header\b[^>]*class=["'][^"']*\bsite-header\b[^"']*["'][^>]*>[\s\S]*?<\/header>\s*<div\b[^>]*class=["'][^"']*\bpersonal-use-notice\b[^"']*["'][^>]*>[\s\S]*?<\/div>/i)?.[0] || "";
+  const actualShell = html.match(/<header\b[^>]*class=["'][^"']*\bsite-header\b[^"']*["'][^>]*>[\s\S]*?<\/header>\s*<div\b[^>]*class=["'][^"']*\bpersonal-use-notice\b[^"']*["'][^>]*>[\s\S]*?<\/div>\s*<noscript\b[^>]*data-no-js-navigation[^>]*>[\s\S]*?<\/noscript>/i)?.[0] || "";
   if (actualShell !== expectedShell) errors.push(`${relative}: shared header/notice differs from the authoritative ${language} renderer`);
   const actualFooter = html.match(/<footer\b[^>]*class=["'][^"']*\bsite-footer\b[^"']*["'][^>]*>[\s\S]*?<\/footer>/i)?.[0] || "";
   if (actualFooter !== renderFooter(language)) errors.push(`${relative}: shared footer differs from the authoritative ${language} renderer`);
@@ -638,7 +638,7 @@ const expectedNotFoundShell = renderHeaderAndNotice({
   languageLinks: notFoundLanguageLinks,
   markCurrentLanguage: false,
 });
-const actualNotFoundShell = notFoundHtml.match(/<header\b[^>]*class=["'][^"']*\bsite-header\b[^"']*["'][^>]*>[\s\S]*?<\/header>\s*<div\b[^>]*class=["'][^"']*\bpersonal-use-notice\b[^"']*["'][^>]*>[\s\S]*?<\/div>/i)?.[0] || "";
+const actualNotFoundShell = notFoundHtml.match(/<header\b[^>]*class=["'][^"']*\bsite-header\b[^"']*["'][^>]*>[\s\S]*?<\/header>\s*<div\b[^>]*class=["'][^"']*\bpersonal-use-notice\b[^"']*["'][^>]*>[\s\S]*?<\/div>\s*<noscript\b[^>]*data-no-js-navigation[^>]*>[\s\S]*?<\/noscript>/i)?.[0] || "";
 if (actualNotFoundShell !== expectedNotFoundShell) errors.push("404.html: shared shell differs from the authoritative renderer");
 if (notFoundHtml.match(/<footer\b[^>]*class=["'][^"']*\bsite-footer\b[^"']*["'][^>]*>[\s\S]*?<\/footer>/i)?.[0] !== renderFooter("en")) {
   errors.push("404.html: shared footer differs from the authoritative renderer");
