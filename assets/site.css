@@ -315,7 +315,7 @@ html[lang="zh-Hans"] .statement {
 }
 
 .section-warm .section-label {
-  color: #9a4a20;
+  color: #924218;
 }
 
 h1 {
@@ -2652,6 +2652,8 @@ p,
   --studio-paper-deep: #d9d0c0;
   --studio-ink: #11110f;
   --studio-cobalt: #2447ff;
+  --studio-cobalt-ink: #1f3fdf;
+  --studio-cobalt-light: #91a0ff;
   --studio-red: #e94b32;
   --studio-hairline: rgba(17, 17, 15, .3);
   --studio-mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
@@ -3155,7 +3157,7 @@ html[lang="zh-Hans"] .home .work-caption strong {
 }
 
 .home .work-caption small {
-  color: rgba(17, 17, 15, .58);
+  color: rgba(17, 17, 15, .62);
 }
 
 .home .work-card:hover .work-caption,
@@ -3271,7 +3273,15 @@ html[lang="zh-Hans"] .home .work-caption strong {
 }
 
 .home .section-record .recognition-list time {
-  color: var(--studio-cobalt);
+  color: var(--studio-cobalt-ink);
+}
+
+.home .section-record .section-label {
+  color: var(--studio-cobalt-ink);
+}
+
+body:not(.home):not(.artwork-page) main > .section:not(.section-warm) .section-label {
+  color: var(--studio-cobalt-light);
 }
 
 @media (min-width: 980px) {

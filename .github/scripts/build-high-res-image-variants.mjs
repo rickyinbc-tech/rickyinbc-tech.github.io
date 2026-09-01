@@ -19,6 +19,9 @@ import {
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const canonicalRoots = ["assets/archive", "assets/art", "assets/projects"];
+const MOBILE_WEBP_WIDTH = 720;
+const MOBILE_WEBP_QUALITY = 76;
+const MOBILE_WEBP_ENCODER_REVISION = 1;
 const upgradedCanonicalPaths = new Set(GENUINE_SOURCE_UPGRADES.map(({ canonical }) => canonical));
 const authenticArchivePaths = new Set(AUTHENTIC_ARCHIVE_SOURCES.map(({ canonical }) => canonical));
 
@@ -70,6 +73,13 @@ async function governedVariantIsCurrent(sourceRelative, outputRelative, width) {
     (candidate) => candidate.path === outputRelative && candidate.width === width,
   );
   if (!previousCandidate) return false;
+  if (
+    width === MOBILE_WEBP_WIDTH
+    && (
+      previousCandidate.encoderQuality !== MOBILE_WEBP_QUALITY
+      || previousCandidate.encoderRevision !== MOBILE_WEBP_ENCODER_REVISION
+    )
+  ) return false;
 
   const [sourceHash, outputHash] = await Promise.all([
     sha256File(sourceRelative),
@@ -86,7 +96,8 @@ async function renderVariant(sourceRelative, outputRelative, width) {
     .toColourspace("srgb");
 
   if (extension === ".webp") {
-    pipeline = pipeline.webp({ quality: width >= 1600 ? 80 : 88, smartSubsample: true, effort: 6 });
+    const quality = width === MOBILE_WEBP_WIDTH ? MOBILE_WEBP_QUALITY : width >= 1600 ? 80 : 88;
+    pipeline = pipeline.webp({ quality, smartSubsample: true, effort: 6 });
   } else if (extension === ".avif") {
     pipeline = pipeline.avif({ quality: 60, effort: 6, chromaSubsampling: "4:4:4" });
   } else {
@@ -115,6 +126,12 @@ async function variantMetadata(relative) {
     width: metadata.width,
     height: metadata.height,
     format: metadata.format,
+    ...(metadata.format === "webp" && metadata.width === MOBILE_WEBP_WIDTH
+      ? {
+        encoderQuality: MOBILE_WEBP_QUALITY,
+        encoderRevision: MOBILE_WEBP_ENCODER_REVISION,
+      }
+      : {}),
     bytes: (await stat(absolute(relative))).size,
     sha256: await sha256File(relative),
   };
@@ -173,13 +190,16 @@ for (const sourceRelative of canonicalFiles) {
   })) generated += 1;
 
   if (kind === "archive") {
-    const archiveWidths = [...new Set([480, 800, 1200, 1800, maximumResponsiveWidth])]
+    const archiveWidths = [...new Set([480, 720, 800, 1200, 1800, maximumResponsiveWidth])]
       .filter((width) => width <= maximumResponsiveWidth)
       .sort((a, b) => a - b);
     for (const width of archiveWidths) {
       const output = `assets/optimized-v2/${familyRelative}-${width}.webp`;
       if (await ensureVariant(sourceRelative, output, width, { refresh: true })) generated += 1;
     }
+  } else if (maximumResponsiveWidth >= 720) {
+    const output = `assets/optimized-v2/${familyRelative}-720.webp`;
+    if (await ensureVariant(sourceRelative, output, 720, { refresh: true })) generated += 1;
   }
 
   if (upgradedCanonicalPaths.has(sourceRelative)) {
@@ -317,6 +337,13 @@ const manifest = {
     canonicalSources: canonicalRecords.length,
     originalsRetained: true,
     generativeEnhancementUsed: false,
+    responsiveMobileWebp: {
+      width: MOBILE_WEBP_WIDTH,
+      quality: MOBILE_WEBP_QUALITY,
+      encoderRevision: MOBILE_WEBP_ENCODER_REVISION,
+      smartSubsample: true,
+      effort: 6,
+    },
     displayResampleMethod: DISPLAY_RESAMPLE_METHOD,
   },
   runtime: {
