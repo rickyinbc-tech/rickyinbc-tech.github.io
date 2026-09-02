@@ -16,6 +16,17 @@ check(canonical.status === 200, "canonical origin must pass through");
 for (const header of ["content-security-policy", "permissions-policy", "referrer-policy", "strict-transport-security", "x-content-type-options", "x-frame-options"]) {
   check(Boolean(canonical.headers.get(header)), `canonical response lacks ${header}`);
 }
+const contentSecurityPolicy = canonical.headers.get("content-security-policy") || "";
+for (const analyticsOrigin of [
+  "https://www.googletagmanager.com",
+  "https://*.google-analytics.com",
+  "https://*.analytics.google.com",
+]) {
+  check(contentSecurityPolicy.includes(analyticsOrigin), `content security policy blocks consented analytics origin ${analyticsOrigin}`);
+}
+for (const advertisingOrigin of ["doubleclick.net", "googlesyndication.com", "googleadservices.com"]) {
+  check(!contentSecurityPolicy.includes(advertisingOrigin), `content security policy must not enable advertising origin ${advertisingOrigin}`);
+}
 const versionedCss = await worker.fetch(new Request("https://rickykwok.com/assets/site.min.css?v=20260726-editorial-refresh-v1"));
 check(versionedCss.headers.get("cache-control") === "public, max-age=31536000, immutable", "versioned production CSS must use immutable browser caching");
 const optimizedImage = await worker.fetch(new Request("https://rickykwok.com/assets/optimized-v2/art/light-encroached-homes-800.webp"));

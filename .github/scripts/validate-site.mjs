@@ -662,19 +662,39 @@ const siteJs = await readFile(path.join(repoRoot, "assets/site.js"), "utf8");
 const siteCss = await readFile(path.join(repoRoot, "assets/site.css"), "utf8");
 const minifiedSiteJs = await readFile(path.join(repoRoot, "assets/site.min.js"), "utf8");
 const minifiedSiteCss = await readFile(path.join(repoRoot, "assets/site.min.css"), "utf8");
-if (!siteJs.includes("const ANALYTICS_DISABLED = true;") || /googletagmanager|google-analytics|data-analytics-choice|analytics-consent/i.test(siteJs)) {
-  errors.push("analytics must remain disabled without a consent banner or Google loader");
+for (const marker of [
+  'const ANALYTICS_MEASUREMENT_ID = "G-07PQV08YPD";',
+  'ANALYTICS_STORAGE_KEY',
+  'analytics_storage: "granted"',
+  'ad_storage: "denied"',
+  'ad_user_data: "denied"',
+  'ad_personalization: "denied"',
+  'allow_google_signals: false',
+  'allow_ad_personalization_signals: false',
+  'data-google-analytics="true"',
+  'analytics-choices',
+]) {
+  if (!siteJs.includes(marker)) errors.push(`analytics implementation lacks ${marker}`);
+}
+if (siteJs.indexOf('setAnalyticsPreference("granted")') > siteJs.indexOf("allowAnalytics();")) {
+  errors.push("analytics preference must be granted before the Google loader is invoked");
 }
 if (minifiedSiteJs.length >= siteJs.length * 0.9 || minifiedSiteCss.length >= siteCss.length * 0.9) {
   errors.push("production CSS and JavaScript assets must remain minified");
 }
-if (measurementGovernance.collectionStatus !== "disabled" || measurementGovernance.property !== null) {
-  errors.push("measurement governance must declare analytics disabled");
+if (
+  measurementGovernance.collectionStatus !== "enabled-with-explicit-opt-in"
+  || measurementGovernance.property !== "G-07PQV08YPD"
+  || measurementGovernance.consentMode !== "explicit-opt-in-before-loader"
+) {
+  errors.push("measurement governance must declare the consent-gated GA4 property");
 }
 for (const marker of ["prefers-reduced-motion", "forced-colors"]) {
   if (!siteCss.includes(marker)) errors.push(`accessibility stylesheet lacks ${marker}`);
 }
-if (/\.analytics-consent/i.test(siteCss)) errors.push("stylesheet still contains the removed analytics banner");
+for (const marker of [".analytics-consent", ".analytics-consent-actions", ".analytics-choices"]) {
+  if (!siteCss.includes(marker)) errors.push(`stylesheet lacks ${marker}`);
+}
 const visualSystemContract = "/* Gallery-first visual system contract.";
 const visualSystemContractIndex = siteCss.lastIndexOf(visualSystemContract);
 if (visualSystemContractIndex === -1) {

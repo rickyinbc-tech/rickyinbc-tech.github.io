@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "property": null,
-  "collectionStatus": "disabled",
-  "consentMode": "not-applicable",
+  "property": "G-07PQV08YPD",
+  "collectionStatus": "enabled-with-explicit-opt-in",
+  "consentMode": "explicit-opt-in-before-loader",
   "privacy": {
     "prohibitedParameters": ["name", "email", "phone", "message", "organization"],
-    "urlPolicy": "No analytics collection is enabled.",
+    "urlPolicy": "The Google tag loads only after a visitor grants analytics consent. Page-view URLs may then be sent to the configured GA4 property; advertising signals stay disabled.",
     "googleSignals": false,
     "adPersonalization": false
   },
   "events": [],
-  "collectionRule": "The current site does not transmit analytics events or collect visitor information."
+  "collectionRule": "Do not load Google Analytics until the visitor explicitly allows it. Declining must keep collection disabled, and the footer must provide a persistent way to revisit the choice."
 }

@@ -3766,3 +3766,24 @@ html[lang="zh-Hans"] .artwork-page .source-body::before {
     gap: 40px;
   }
 }
+.analytics-consent {
+  position: fixed;
+  z-index: 1000;
+  inset: auto 10px 10px;
+  margin: auto;
+  padding: 12px;
+  background: #111;
+}
+
+.analytics-consent-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.analytics-choices {
+  color: inherit;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+}
