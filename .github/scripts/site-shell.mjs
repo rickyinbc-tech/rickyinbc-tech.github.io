@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20260901-quality-v1";
+export const ASSET_VERSION = "20260902-seo-measurement-v1";
 export const SHELL_VERSION = "20260901-no-js-nav-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
