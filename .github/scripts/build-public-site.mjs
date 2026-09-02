@@ -35,7 +35,7 @@ for (const entry of await readdir(root, { withFileTypes: true })) {
   await copyPublicEntry(path.join(root, entry.name), entry.name);
 }
 
-for (const relative of ["index.html", "404.html", "CNAME", "robots.txt", "sitemap.xml", "image-sitemap.xml", "assets/site.min.css", "assets/site.min.js"]) {
+for (const relative of ["index.html", "404.html", "CNAME", "robots.txt", "sitemap.xml", "image-sitemap.xml", "1552ab306b5b68d0132850bb49568a38.txt", "assets/site.min.css", "assets/site.min.js"]) {
   await access(path.join(output, relative));
 }
 for (const relative of [
