@@ -115,6 +115,9 @@
     },
     "photo.rickykwok.com": {
       "/": "/"
+    },
+    "select.rickykwok.com": {
+      "/": "/"
     }
   },
   "forwardedHosts": [

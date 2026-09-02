@@ -18,7 +18,9 @@ retired commercial surfaces:
   `410 Gone` with an HTTP `X-Robots-Tag: noindex, nofollow`
 * the established `blog.rickykwok.com/` and `/feed` entry points redirect to
   `/journal/`; unmatched blog paths return `410 Gone`
-* all `select.rickykwok.com` paths return `410 Gone`
+* `select.rickykwok.com/` redirects to the canonical homepage so the retired
+  homepage's search and link signals consolidate there; every other path on the
+  retired host returns `410 Gone`
 * build tooling, repository metadata, unminified site assets, and edge
   configuration fail closed with `404 Not Found` even if an upstream cache
   still has an older branch-based Pages deployment

@@ -835,7 +835,8 @@ if (edgeRedirectConfig.canonicalOrigin !== ORIGIN) {
 }
 const expectedLegacyHostRedirects = {
   "blog.rickykwok.com": { "/": "/journal/", "/feed": "/journal/" },
-  "photo.rickykwok.com": { "/": "/" }
+  "photo.rickykwok.com": { "/": "/" },
+  "select.rickykwok.com": { "/": "/" }
 };
 for (const [hostname, expectedPaths] of Object.entries(expectedLegacyHostRedirects)) {
   const hostMap = edgeRedirectConfig.hostRedirects?.[hostname];
@@ -858,9 +859,6 @@ const expectedGoneHosts = ["blog.rickykwok.com", "select.rickykwok.com"];
 const configuredGoneHosts = new Set(edgeRedirectConfig.goneHosts || []);
 for (const hostname of expectedGoneHosts) {
   if (!configuredGoneHosts.has(hostname)) errors.push(`edge redirect map must permanently remove legacy host ${hostname}`);
-}
-if (edgeRedirectConfig.hostRedirects?.["select.rickykwok.com"]) {
-  errors.push("legacy host select.rickykwok.com must not redirect into the photography archive");
 }
 const requiredGonePrefixes = [
   "/available-prints/", "/contact/", "/editions/", "/licensing/", "/press/", "/prints/", "/privacy/", "/shipping-returns/", "/studio-standards/", "/terms/",

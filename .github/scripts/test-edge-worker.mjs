@@ -113,7 +113,11 @@ for (const path of ["/unverified-legacy-path/", "/old-post/"]) {
   check(response.headers.get("location") === null, `blog.rickykwok.com${path} must not redirect into the photography site`);
 }
 
-for (const path of ["/", "/feed", "/unverified-legacy-path/"]) {
+const selectRoot = await worker.fetch(new Request("https://select.rickykwok.com/"));
+check(selectRoot.status === 308, "select.rickykwok.com/ must redirect to the canonical homepage");
+check(selectRoot.headers.get("location") === "https://rickykwok.com/", "select.rickykwok.com/ must consolidate into the canonical homepage");
+
+for (const path of ["/feed", "/unverified-legacy-path/"]) {
   const response = await worker.fetch(new Request(`https://select.rickykwok.com${path}`));
   check(response.status === 410, `select.rickykwok.com${path} must remain permanently gone`);
   check(response.headers.get("location") === null, `select.rickykwok.com${path} must not redirect into the photography site`);
