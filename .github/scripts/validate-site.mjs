@@ -21,6 +21,10 @@ import { ASSET_VERSION, SHELL_VERSION } from "./site-shell.mjs";
 import { photographyScopeFindings } from "./photography-scope-policy.mjs";
 
 const ORIGIN = "https://rickykwok.com";
+const VERIFIED_PERSON_PROFILES = new Set([
+  "https://www.wikidata.org/wiki/Q141163341",
+  "https://commons.wikimedia.org/wiki/Category:Ricky_Kwok",
+]);
 const STYLESHEET_URL = `/assets/site.min.css?v=${ASSET_VERSION}`;
 const SCRIPT_URL = `/assets/site.min.js?v=${ASSET_VERSION}`;
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
@@ -535,8 +539,8 @@ function featureImageSource(html) {
 
 const manifestIds = new Set();
 const manifestCanonicalPaths = new Set();
-if (artworkManifest.schemaVersion !== 2 || !artworkManifest.recordPolicy) {
-  errors.push("artwork manifest must declare the governed v2 record policy");
+if (artworkManifest.schemaVersion !== 2 || !artworkManifest.recordPolicy || !artworkManifest.imageSitemapPolicy) {
+  errors.push("artwork manifest must declare the governed v2 record and image-sitemap policies");
 }
 if (!Array.isArray(artworkManifest.artworks) || !artworkManifest.artworks.length) {
   errors.push("artwork manifest has no artwork records");
@@ -601,6 +605,85 @@ for (const artwork of artworkManifest.artworks || []) {
     }
     if (!html.includes("personal-use-notice")) errors.push(`${relative}: missing personal non-commercial archive notice`);
   }
+}
+
+const imageSitemapOwnerImages = new Map((artworkManifest.artworks || []).map((artwork) => [
+  new URL(artwork.canonicalPath, ORIGIN).href,
+  [new URL(artwork.primaryImage.url, ORIGIN).href]
+]));
+const governedImageIds = new Set(manifestIds);
+const governedImageUrls = new Set(Array.from(imageSitemapOwnerImages.values()).flat());
+const imageResolutionBySource = new Map((PHOTO_RESOLUTION_MANIFEST.photos || []).map((photo) => [
+  `/${photo.source}`,
+  photo
+]));
+const imageSitemapCollectionIds = new Set();
+if (!Array.isArray(artworkManifest.imageSitemapCollections)) {
+  errors.push("artwork manifest image-sitemap collections must be an array");
+}
+for (const collectionRecord of artworkManifest.imageSitemapCollections || []) {
+  const { id, canonicalPath, images } = collectionRecord;
+  if (!id || !canonicalPath || !Array.isArray(images) || !images.length) {
+    errors.push(`image-sitemap collection is incomplete: ${id || "unknown"}`);
+    continue;
+  }
+  if (imageSitemapCollectionIds.has(id)) errors.push(`image-sitemap collection duplicate id: ${id}`);
+  imageSitemapCollectionIds.add(id);
+  if (!canonicalPath.startsWith("/projects/")) {
+    errors.push(`${id}: image-sitemap collection must use a canonical project page`);
+  }
+  if (manifestCanonicalPaths.has(canonicalPath)) {
+    errors.push(`${id}: image-sitemap collection duplicates canonical owner ${canonicalPath}`);
+  }
+  manifestCanonicalPaths.add(canonicalPath);
+
+  const page = indexableDocuments.get(canonicalPath);
+  if (!page) {
+    errors.push(`${id}: missing indexable image-sitemap owner page ${canonicalPath}`);
+    continue;
+  }
+  const ownerUrl = new URL(canonicalPath, ORIGIN).href;
+  const collectionNode = parsedSchemaNodes(page.html).find((node) => matchesType(node, "CollectionPage") && node.url === ownerUrl);
+  const schemaImages = Array.isArray(collectionNode?.hasPart) ? collectionNode.hasPart : [];
+  if (!collectionNode) errors.push(`${page.relative}: image-sitemap owner lacks matching CollectionPage schema`);
+
+  const expectedImages = [];
+  for (const image of images) {
+    const { id: imageId, url, width, height, mimeType, title } = image || {};
+    if (!imageId || !url || !width || !height || !mimeType || !title) {
+      errors.push(`${id}: image-sitemap record is incomplete: ${imageId || "unknown"}`);
+      continue;
+    }
+    if (governedImageIds.has(imageId)) errors.push(`image-sitemap duplicate image id: ${imageId}`);
+    governedImageIds.add(imageId);
+    if (!url.startsWith(`/assets/projects/${id}/`) || mimeType !== "image/jpeg") {
+      errors.push(`${imageId}: image-sitemap collection URL or MIME type is outside its governed project source folder`);
+    }
+    const imageUrl = new URL(url, ORIGIN).href;
+    if (governedImageUrls.has(imageUrl)) errors.push(`image-sitemap duplicate image URL: ${imageUrl}`);
+    governedImageUrls.add(imageUrl);
+    expectedImages.push(imageUrl);
+
+    if (!page.html.includes(`data-full="${url}"`)) {
+      errors.push(`${page.relative}: image-sitemap source is not visibly published in the project gallery: ${imageId}`);
+    }
+    const resolution = imageResolutionBySource.get(url);
+    if (!resolution || Number(resolution.width) !== Number(width) || Number(resolution.height) !== Number(height)) {
+      errors.push(`${imageId}: image-sitemap dimensions do not match the canonical source manifest`);
+    }
+    const schemaImage = schemaImages.find((node) => matchesType(node, "ImageObject") && node.contentUrl === imageUrl);
+    if (
+      !schemaImage
+      || schemaImage.name !== title
+      || schemaImage.creator?.["@id"] !== `${ORIGIN}/#person`
+      || schemaImage.creditText !== artworkManifest.rights?.creditText
+      || schemaImage.copyrightNotice !== artworkManifest.rights?.copyrightNotice
+      || schemaImage.copyrightHolder?.["@id"] !== `${ORIGIN}/#person`
+    ) {
+      errors.push(`${page.relative}: image-sitemap ownership metadata is incomplete or inconsistent for ${imageId}`);
+    }
+  }
+  imageSitemapOwnerImages.set(ownerUrl, expectedImages);
 }
 
 for (const [route, marker] of [
@@ -917,23 +1000,20 @@ const imageEntries = new Map(imageBlocks.map((block) => [
   block[1],
   Array.from(block[2].matchAll(/<image:loc>([^<]+)<\/image:loc>/g), (match) => match[1])
 ]));
-const expectedImageOwners = new Map((artworkManifest.artworks || []).map((artwork) => [
-  new URL(artwork.canonicalPath, ORIGIN).href,
-  new URL(artwork.primaryImage.url, ORIGIN).href
-]));
+const expectedImageOwners = imageSitemapOwnerImages;
 if (imageEntries.size !== expectedImageOwners.size) {
-  errors.push(`image sitemap ownership parity failed: ${imageEntries.size} entries vs ${expectedImageOwners.size} artwork records`);
+  errors.push(`image sitemap ownership parity failed: ${imageEntries.size} entries vs ${expectedImageOwners.size} governed owner pages`);
 }
-for (const [pageUrl, imageUrl] of expectedImageOwners) {
+for (const [pageUrl, expectedImages] of expectedImageOwners) {
   const actualImages = imageEntries.get(pageUrl) || [];
-  if (actualImages.length !== 1 || actualImages[0] !== imageUrl) {
-    errors.push(`image sitemap does not assign exactly one declared primary image to ${pageUrl}`);
+  if (JSON.stringify(actualImages) !== JSON.stringify(expectedImages)) {
+    errors.push(`image sitemap images do not match the governed manifest sequence for ${pageUrl}`);
   }
 }
-for (const [pageUrl, images] of imageEntries) {
-  if (!expectedImageOwners.has(pageUrl)) errors.push(`image sitemap has non-artwork owner ${pageUrl}`);
-  if (images.length !== 1) errors.push(`image sitemap owner has ${images.length} images: ${pageUrl}`);
+for (const [pageUrl] of imageEntries) {
+  if (!expectedImageOwners.has(pageUrl)) errors.push(`image sitemap has undeclared owner ${pageUrl}`);
 }
+if (/<image:title>/i.test(imageSitemap)) errors.push("image sitemap uses deprecated image:title metadata");
 
 const retiredBusinessRoutes = [
   "/available-prints/", "/collect/", "/editions/", "/prints/", "/licensing/", "/contact/", "/contact/thanks/", "/shipping-returns/", "/studio-standards/", "/terms/", "/privacy/", "/press/", "/press/cv/", "/press/media-kit/",
@@ -1018,8 +1098,20 @@ for (const [route, page] of indexableDocuments) {
     for (const type of ["Product", "Offer", "Service", "ProfessionalService", "LocalBusiness"]) {
       if (matchesType(node, type)) errors.push(`${page.relative}: structured data contains retired commercial type ${type}`);
     }
-    for (const key of ["jobTitle", "sameAs", "license", "acquireLicensePage", "offers", "contactPoint", "potentialAction"]) {
+    for (const key of ["jobTitle", "license", "acquireLicensePage", "offers", "contactPoint", "potentialAction"]) {
       if (Object.hasOwn(node, key)) errors.push(`${page.relative}: structured data contains retired business field ${key}`);
+    }
+    if (Object.hasOwn(node, "sameAs")) {
+      const profiles = node.sameAs;
+      const isGovernedPersonIdentity = matchesType(node, "Person")
+        && node["@id"] === `${ORIGIN}/#person`
+        && Array.isArray(profiles)
+        && profiles.length > 0
+        && profiles.length === new Set(profiles).size
+        && profiles.every((profile) => VERIFIED_PERSON_PROFILES.has(profile));
+      if (!isGovernedPersonIdentity) {
+        errors.push(`${page.relative}: structured data contains an ungoverned sameAs identity`);
+      }
     }
   }
 }

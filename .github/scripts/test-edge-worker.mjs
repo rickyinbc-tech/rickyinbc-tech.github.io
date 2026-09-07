@@ -37,6 +37,17 @@ const legacy = await worker.fetch(new Request("https://rickykwok.com/series/wate
 check(legacy.status === 308, "legacy route must redirect permanently");
 check(legacy.headers.get("location") === "https://rickykwok.com/series/collision/", "redirect must discard query parameters");
 
+for (const [source, destination] of [
+  ["https://rickykwok.com/index.html", "https://rickykwok.com/"],
+  ["https://rickykwok.com/biography/index.html", "https://rickykwok.com/biography/"],
+  ["https://www.rickykwok.com/index.html", "https://rickykwok.com/"],
+  ["https://www.rickykwok.com/zh-hant/works/index.html", "https://rickykwok.com/zh-hant/works/"]
+]) {
+  const response = await worker.fetch(new Request(source));
+  check(response.status === 308, `${source} must redirect permanently to its canonical clean URL`);
+  check(response.headers.get("location") === destination, `${source} must redirect directly to ${destination}`);
+}
+
 const gonePaths = [
   "/contact/",
   "/contact/thanks/",
