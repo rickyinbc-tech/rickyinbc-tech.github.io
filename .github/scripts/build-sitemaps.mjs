@@ -59,11 +59,13 @@ try {
 }
 
 const pages = [];
+const indexablePageHtml = new Map();
 for (const file of await htmlFiles()) {
   const relative = path.relative(repoRoot, file).split(path.sep).join("/");
   const url = new URL(pagePath(relative), SITE_ORIGIN).href;
   const html = await readFile(file, "utf8");
   if (!isIndexable(html, url)) continue;
+  indexablePageHtml.set(url, html);
   const fileDate = (await stat(file)).mtime.toISOString().slice(0, 10);
   pages.push({
     lastmod: modificationDate(html, existingDates.get(url) || fileDate),
@@ -79,9 +81,9 @@ ${pages.map((page) => `  <url>\n    <loc>${escapeXml(page.url)}</loc>\n    <last
 </urlset>
 `;
 
-// Image discovery is deliberately artwork-owned, not DOM-order-owned. A work can
-// appear as a thumbnail or related image on many pages; none of those appearances
-// may take ownership of its canonical image-sitemap entry.
+// Image discovery is deliberately manifest-owned, not DOM-order-owned. An image
+// can appear on many pages or in many responsive forms; only a governed canonical
+// owner page may contribute its original image URL to the image sitemap.
 const manifestPath = path.join(repoRoot, ".github/data/artwork-manifest.json");
 const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
 const artworks = manifest.artworks;
@@ -89,18 +91,48 @@ if (!Array.isArray(artworks) || !artworks.length) {
   throw new Error("Artwork manifest must contain a non-empty artworks array.");
 }
 
-const manifestIds = new Set();
+const manifestImageIds = new Set();
+const manifestImageUrls = new Set();
 const manifestPages = new Set();
 const indexablePageUrls = new Set(pages.map((page) => page.url));
+
+async function validateImageRecord(id, image, requiredPathPrefix = "/assets/") {
+  if (!id || !image?.url || !image?.width || !image?.height || !image?.mimeType || !image?.title) {
+    throw new Error(`Image-sitemap manifest record is incomplete: ${id || "unknown"}`);
+  }
+  if (manifestImageIds.has(id)) throw new Error(`Image-sitemap manifest has duplicate image id: ${id}`);
+  manifestImageIds.add(id);
+
+  const imageUrl = new URL(image.url, SITE_ORIGIN);
+  if (imageUrl.origin !== SITE_ORIGIN || !imageUrl.pathname.startsWith(requiredPathPrefix)) {
+    throw new Error(`Image-sitemap manifest image must be a local ${requiredPathPrefix} asset: ${id}`);
+  }
+  if (manifestImageUrls.has(imageUrl.href)) {
+    throw new Error(`Image-sitemap manifest assigns the same image URL more than once: ${imageUrl.href}`);
+  }
+  manifestImageUrls.add(imageUrl.href);
+  try {
+    await access(path.join(repoRoot, decodeURIComponent(imageUrl.pathname).replace(/^\//, "")));
+  } catch {
+    throw new Error(`Image-sitemap manifest image is missing from the repository: ${id} (${image.url})`);
+  }
+  return imageUrl.href;
+}
+
+const imagePages = new Map();
+function claimImageOwner(pageUrl, image) {
+  const images = imagePages.get(pageUrl) || [];
+  images.push(image);
+  imagePages.set(pageUrl, images);
+}
+
 for (const artwork of artworks) {
   const id = artwork?.id;
   const canonicalPath = artwork?.canonicalPath;
   const image = artwork?.primaryImage;
-  if (!id || !canonicalPath || !image?.url || !image?.width || !image?.height || !image?.mimeType) {
+  if (!id || !canonicalPath) {
     throw new Error(`Artwork manifest record is incomplete: ${id || "unknown"}`);
   }
-  if (manifestIds.has(id)) throw new Error(`Artwork manifest has duplicate id: ${id}`);
-  manifestIds.add(id);
 
   const pageUrl = new URL(canonicalPath, SITE_ORIGIN).href;
   if (manifestPages.has(pageUrl)) throw new Error(`Artwork manifest has duplicate canonical URL: ${pageUrl}`);
@@ -109,29 +141,48 @@ for (const artwork of artworks) {
     throw new Error(`Artwork manifest URL is not an indexable canonical page: ${pageUrl}`);
   }
 
-  const imageUrl = new URL(image.url, SITE_ORIGIN);
-  if (imageUrl.origin !== SITE_ORIGIN || !imageUrl.pathname.startsWith("/assets/")) {
-    throw new Error(`Artwork manifest image must be a local public asset: ${id}`);
+  const imageUrl = await validateImageRecord(id, { ...image, title: artwork.title });
+  claimImageOwner(pageUrl, { title: artwork.title, url: imageUrl });
+}
+
+if (!manifest.imageSitemapPolicy || !Array.isArray(manifest.imageSitemapCollections)) {
+  throw new Error("Artwork manifest must declare its image-sitemap policy and collections.");
+}
+const collectionIds = new Set();
+for (const collection of manifest.imageSitemapCollections) {
+  const id = collection?.id;
+  const canonicalPath = collection?.canonicalPath;
+  const images = collection?.images;
+  if (!id || !canonicalPath || !Array.isArray(images) || !images.length) {
+    throw new Error(`Image-sitemap collection is incomplete: ${id || "unknown"}`);
   }
-  try {
-    await access(path.join(repoRoot, decodeURIComponent(imageUrl.pathname).replace(/^\//, "")));
-  } catch {
-    throw new Error(`Artwork manifest image is missing from the repository: ${id} (${image.url})`);
+  if (collectionIds.has(id)) throw new Error(`Image-sitemap collection has duplicate id: ${id}`);
+  collectionIds.add(id);
+  if (!canonicalPath.startsWith("/projects/")) {
+    throw new Error(`Image-sitemap collection must use a canonical project page: ${id}`);
+  }
+
+  const pageUrl = new URL(canonicalPath, SITE_ORIGIN).href;
+  if (manifestPages.has(pageUrl)) throw new Error(`Image-sitemap manifest has duplicate canonical URL: ${pageUrl}`);
+  manifestPages.add(pageUrl);
+  if (!indexablePageUrls.has(pageUrl)) {
+    throw new Error(`Image-sitemap collection URL is not an indexable canonical page: ${pageUrl}`);
+  }
+  const ownerHtml = indexablePageHtml.get(pageUrl) || "";
+  for (const image of images) {
+    const imageUrl = await validateImageRecord(image?.id, image, "/assets/projects/");
+    if (!ownerHtml.includes(image.url)) {
+      throw new Error(`Image-sitemap collection page does not visibly reference ${image.id}: ${canonicalPath}`);
+    }
+    claimImageOwner(pageUrl, { title: image.title, url: imageUrl });
   }
 }
 
-const imagePages = artworks
-  .map((artwork) => ({
-    image: {
-      title: artwork.title,
-      url: new URL(artwork.primaryImage.url, SITE_ORIGIN).href,
-    },
-    url: new URL(artwork.canonicalPath, SITE_ORIGIN).href,
-  }))
+const imageOwners = Array.from(imagePages, ([url, images]) => ({ images, url }))
   .sort((a, b) => a.url.localeCompare(b.url));
 const imageSitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${imagePages.map((page) => `  <url>\n    <loc>${escapeXml(page.url)}</loc>\n    <image:image>\n      <image:loc>${escapeXml(page.image.url)}</image:loc>\n      <image:title>${escapeXml(page.image.title)}</image:title>\n    </image:image>\n  </url>`).join("\n")}
+${imageOwners.map((page) => `  <url>\n    <loc>${escapeXml(page.url)}</loc>\n${page.images.map((image) => `    <image:image>\n      <image:loc>${escapeXml(image.url)}</image:loc>\n    </image:image>`).join("\n")}\n  </url>`).join("\n")}
 </urlset>
 `;
 
@@ -140,4 +191,4 @@ await Promise.all([
   writeFile(path.join(repoRoot, "image-sitemap.xml"), imageSitemap),
 ]);
 
-console.log(`Generated ${pages.length} canonical pages and ${imagePages.length} artwork-owned image records.`);
+console.log(`Generated ${pages.length} canonical pages and ${manifestImageUrls.size} governed images across ${imageOwners.length} owner pages.`);

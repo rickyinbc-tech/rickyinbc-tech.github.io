@@ -11,6 +11,7 @@ retired commercial surfaces:
 
 * `rickykwok.com` legacy aliases to their canonical site pages
 * `www.rickykwok.com` to the canonical host, without adding a second hop
+* canonical `/index.html` URL variants to their clean trailing-slash URLs
 * `photo.rickykwok.com/` to the canonical homepage; every other path on that
   retired host returns `410 Gone` with `X-Robots-Tag: noindex, nofollow`
 * retired main-domain contact, print, edition, licensing, press, policy, and

@@ -73,6 +73,11 @@ function exactOrTrailingSlashRedirect(map, pathname) {
   return map[alternatePath] || null;
 }
 
+function canonicalIndexRedirect(pathname) {
+  const match = pathname.match(/^(.*\/)index\.html$/i);
+  return match ? (match[1] || "/") : null;
+}
+
 function matchesGonePath(pathname) {
   const normalizedPath = pathname.toLowerCase();
   return gonePathPrefixes.some((prefix) => (
@@ -137,9 +142,14 @@ function notFoundResponse(method) {
 
 function mappedDestination(requestUrl) {
   const hostname = requestUrl.hostname.toLowerCase();
-  if (hostname === canonicalHost) return exactOrTrailingSlashRedirect(redirects, requestUrl.pathname);
+  if (hostname === canonicalHost) {
+    return exactOrTrailingSlashRedirect(redirects, requestUrl.pathname)
+      || canonicalIndexRedirect(requestUrl.pathname);
+  }
   if (hostname === `www.${canonicalHost}`) {
-    return exactOrTrailingSlashRedirect(redirects, requestUrl.pathname) || requestUrl.pathname;
+    return exactOrTrailingSlashRedirect(redirects, requestUrl.pathname)
+      || canonicalIndexRedirect(requestUrl.pathname)
+      || requestUrl.pathname;
   }
   if (forwardedHosts.has(hostname)) return "/";
   return exactOrTrailingSlashRedirect(hostRedirects[hostname], requestUrl.pathname);

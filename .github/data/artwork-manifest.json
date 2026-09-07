@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "purpose": "Authoritative artwork-to-primary-image ownership for image discovery, structured data, artwork navigation, and multilingual pages.",
+  "purpose": "Authoritative artwork and owned collection-image governance for image discovery, structured data, artwork navigation, and multilingual pages.",
   "recordPolicy": {
     "publicModel": "One governed core record in three languages, with extended evidence modules only where verified.",
     "requiredCore": [
@@ -15,6 +15,17 @@
   "rights": {
     "copyrightNotice": "Copyright Ricky Kwok",
     "creditText": "Ricky Kwok"
+  },
+  "imageSitemapPolicy": {
+    "eligibility": "Original photography visibly published on an indexable canonical page and identified there as Ricky Kwok's work through ImageObject creator, credit, and copyright metadata.",
+    "ownership": "Each original image URL is assigned to one English-language canonical owner page; translated and repeated appearances do not create duplicate sitemap entries.",
+    "excluded": [
+      "interface and decorative imagery",
+      "press, award, and reference assets",
+      "responsive derivatives",
+      "unused assets",
+      "images without matching creator and copyright evidence on the owner page"
+    ]
   },
   "artworks": [
     {
@@ -352,6 +363,296 @@
       "seriesPath": "/series/motion/",
       "alt": "A tightly packed group of racehorses and riders turning at speed.",
       "caption": "The Pack, Motion series. © Ricky Kwok."
+    }
+  ],
+  "imageSitemapCollections": [
+    {
+      "id": "horse-riding",
+      "canonicalPath": "/projects/horse-riding/",
+      "images": [
+        {
+          "id": "horse-riding-01",
+          "url": "/assets/projects/horse-riding/horse-riding-01.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "The Pack Opens"
+        },
+        {
+          "id": "horse-riding-02",
+          "url": "/assets/projects/horse-riding/horse-riding-02.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Silks at Speed"
+        },
+        {
+          "id": "horse-riding-03",
+          "url": "/assets/projects/horse-riding/horse-riding-03.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Screen and Track"
+        },
+        {
+          "id": "horse-riding-04",
+          "url": "/assets/projects/horse-riding/horse-riding-04.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Blue Rider"
+        },
+        {
+          "id": "horse-riding-05",
+          "url": "/assets/projects/horse-riding/horse-riding-05.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Into the Turn"
+        }
+      ]
+    },
+    {
+      "id": "infrared-hong-kong",
+      "canonicalPath": "/projects/infrared-hong-kong/",
+      "images": [
+        {
+          "id": "infrared-hong-kong-01",
+          "url": "/assets/projects/infrared-hong-kong/infrared-hong-kong-01.jpg",
+          "width": 1800,
+          "height": 1012,
+          "mimeType": "image/jpeg",
+          "title": "Infrared Pavilion I"
+        },
+        {
+          "id": "infrared-hong-kong-02",
+          "url": "/assets/projects/infrared-hong-kong/infrared-hong-kong-02.jpg",
+          "width": 1800,
+          "height": 1012,
+          "mimeType": "image/jpeg",
+          "title": "Red Bridge Garden"
+        },
+        {
+          "id": "infrared-hong-kong-03",
+          "url": "/assets/projects/infrared-hong-kong/infrared-hong-kong-03.jpg",
+          "width": 1800,
+          "height": 1012,
+          "mimeType": "image/jpeg",
+          "title": "Garden Path"
+        },
+        {
+          "id": "infrared-hong-kong-04",
+          "url": "/assets/projects/infrared-hong-kong/infrared-hong-kong-04.jpg",
+          "width": 1800,
+          "height": 1012,
+          "mimeType": "image/jpeg",
+          "title": "Temple Roofs"
+        },
+        {
+          "id": "infrared-hong-kong-05",
+          "url": "/assets/projects/infrared-hong-kong/infrared-hong-kong-05.jpg",
+          "width": 1800,
+          "height": 1012,
+          "mimeType": "image/jpeg",
+          "title": "Gold and White Garden"
+        },
+        {
+          "id": "infrared-hong-kong-06",
+          "url": "/assets/projects/infrared-hong-kong/infrared-hong-kong-06.jpg",
+          "width": 1800,
+          "height": 1012,
+          "mimeType": "image/jpeg",
+          "title": "Pagoda and Sky"
+        }
+      ]
+    },
+    {
+      "id": "nepal-documentary",
+      "canonicalPath": "/projects/nepal-documentary/",
+      "images": [
+        {
+          "id": "nepal-documentary-01",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-01.jpg",
+          "width": 1800,
+          "height": 1201,
+          "mimeType": "image/jpeg",
+          "title": "Open Kitchen"
+        },
+        {
+          "id": "nepal-documentary-02",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-02.jpg",
+          "width": 1800,
+          "height": 1201,
+          "mimeType": "image/jpeg",
+          "title": "Children on the Steps"
+        },
+        {
+          "id": "nepal-documentary-03",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-03.jpg",
+          "width": 1201,
+          "height": 1800,
+          "mimeType": "image/jpeg",
+          "title": "Mother and Child"
+        },
+        {
+          "id": "nepal-documentary-04",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-04.jpg",
+          "width": 1800,
+          "height": 1651,
+          "mimeType": "image/jpeg",
+          "title": "Quiet Embrace"
+        },
+        {
+          "id": "nepal-documentary-05",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-05.jpg",
+          "width": 1800,
+          "height": 1201,
+          "mimeType": "image/jpeg",
+          "title": "Red Shawl Portrait"
+        },
+        {
+          "id": "nepal-documentary-06",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-06.jpg",
+          "width": 1800,
+          "height": 1515,
+          "mimeType": "image/jpeg",
+          "title": "Girl in the Yard"
+        },
+        {
+          "id": "nepal-documentary-07",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-07.jpg",
+          "width": 1800,
+          "height": 1197,
+          "mimeType": "image/jpeg",
+          "title": "Market Weight"
+        },
+        {
+          "id": "nepal-documentary-08",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-08.jpg",
+          "width": 1800,
+          "height": 1197,
+          "mimeType": "image/jpeg",
+          "title": "Wall Portrait"
+        },
+        {
+          "id": "nepal-documentary-09",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-09.jpg",
+          "width": 1800,
+          "height": 1197,
+          "mimeType": "image/jpeg",
+          "title": "Road Walker"
+        },
+        {
+          "id": "nepal-documentary-10",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-10.jpg",
+          "width": 1800,
+          "height": 1197,
+          "mimeType": "image/jpeg",
+          "title": "Street Shave"
+        },
+        {
+          "id": "nepal-documentary-11",
+          "url": "/assets/projects/nepal-documentary/nepal-documentary-11.jpg",
+          "width": 1800,
+          "height": 1197,
+          "mimeType": "image/jpeg",
+          "title": "Elder in Pink"
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "canonicalPath": "/projects/travel/",
+      "images": [
+        {
+          "id": "travel-01",
+          "url": "/assets/projects/travel/travel-01.jpg",
+          "width": 1200,
+          "height": 1800,
+          "mimeType": "image/jpeg",
+          "title": "Red Threshold"
+        },
+        {
+          "id": "travel-02",
+          "url": "/assets/projects/travel/travel-02.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Fishpond Harvest"
+        },
+        {
+          "id": "travel-03",
+          "url": "/assets/projects/travel/travel-03.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "整整有條"
+        },
+        {
+          "id": "travel-04",
+          "url": "/assets/projects/travel/travel-04.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Basket Makers"
+        },
+        {
+          "id": "travel-05",
+          "url": "/assets/projects/travel/travel-05.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Foundry Light"
+        },
+        {
+          "id": "travel-06",
+          "url": "/assets/projects/travel/travel-06.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "River at Dusk"
+        },
+        {
+          "id": "travel-07",
+          "url": "/assets/projects/travel/travel-07.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Night Fishermen"
+        },
+        {
+          "id": "travel-08",
+          "url": "/assets/projects/travel/travel-08.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Terraces at Golden Hour"
+        },
+        {
+          "id": "travel-09",
+          "url": "/assets/projects/travel/travel-09.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Hearth Ritual"
+        },
+        {
+          "id": "travel-10",
+          "url": "/assets/projects/travel/travel-10.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Ancestral Kitchen Light"
+        },
+        {
+          "id": "travel-11",
+          "url": "/assets/projects/travel/travel-11.jpg",
+          "width": 1800,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "title": "Village Laughter"
+        }
+      ]
     }
   ]
 }
