@@ -3,7 +3,7 @@
   "summary": {
     "pages": 181,
     "uniquePrimarySources": 67,
-    "imageUses": 715,
+    "imageUses": 717,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -1000,6 +1000,7 @@
         "zh-hans/projects/hong-kong-light-pollution/index.html",
         "zh-hans/projects/index.html",
         "zh-hans/series/city-light/index.html",
+        "zh-hans/series/index.html",
         "zh-hans/works/bank-of-china-light-trails/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
@@ -1012,6 +1013,7 @@
         "zh-hant/projects/hong-kong-light-pollution/index.html",
         "zh-hant/projects/index.html",
         "zh-hant/series/city-light/index.html",
+        "zh-hant/series/index.html",
         "zh-hant/works/bank-of-china-light-trails/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
         "zh-hant/works/hong-kong-urban-light-studies/index.html",
@@ -1024,7 +1026,7 @@
         "/assets/optimized-v2/art/light-encroached-homes-1200.webp",
         "/assets/optimized-v2/art/light-encroached-homes-1280.webp"
       ],
-      "uses": 60,
+      "uses": 62,
       "altVariants": [
         "Fisheye photograph of Hong Kong neon signs and residential buildings.",
         "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
@@ -1053,8 +1055,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 60,
-      "lazyUses": 38,
+      "responsiveUses": 62,
+      "lazyUses": 40,
       "eagerUses": 22,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -1500,8 +1502,8 @@
       "uses": 3,
       "altVariants": [
         "Racehorses rounding a green turf track in a dense pack.",
-        "馬群在綠色草地跑道上密集轉彎。",
-        "马群在绿色草地跑道上密集转弯。"
+        "密集馬群沿綠色草地賽道轉彎。",
+        "密集马群沿绿色草地赛道转弯。"
       ],
       "declaredWidths": [
         1800
@@ -1533,7 +1535,9 @@
         "Jockey in yellow and green silks riding a racehorse at speed.",
         "穿黃綠綵衣的騎師俯身策馬疾馳。",
         "穿黃綠綵衣的騎師策馬疾馳特寫。",
-        "穿黄绿彩衣的骑师策马疾驰特写。"
+        "穿黄绿彩衣的骑师策马疾驰特写。",
+        "身穿黃綠彩衣的騎師伏身策騎，近距離呈現速度。",
+        "身穿黄绿彩衣的骑师伏身策骑，近距离呈现速度。"
       ],
       "declaredWidths": [
         1800
@@ -1558,8 +1562,8 @@
       "uses": 3,
       "altVariants": [
         "Racehorses passing below a large screen at a Hong Kong racecourse.",
-        "賽馬在香港馬場的大型屏幕下方奔過。",
-        "赛马在香港马场的大型屏幕下方奔过。"
+        "香港賽場上的馬匹從大型屏幕下方跑過。",
+        "香港赛场上的马匹从大型屏幕下方跑过。"
       ],
       "declaredWidths": [
         1800
@@ -1584,8 +1588,8 @@
       "uses": 3,
       "altVariants": [
         "Jockey in blue silks leaning low over a horse in a racing pack.",
-        "穿蓝色彩衣的骑师俯身策马，置身密集马群。",
-        "穿藍色綵衣的騎師俯身策馬，置身密集馬群。"
+        "蓝衣骑师在马群中压低身体，紧贴马背。",
+        "藍衣騎師在馬群中壓低身體，緊貼馬背。"
       ],
       "declaredWidths": [
         1800
@@ -1610,8 +1614,8 @@
       "uses": 3,
       "altVariants": [
         "Racehorses entering a turn on a dark track surface.",
-        "賽馬在深色跑道上進入彎位。",
-        "赛马在深色跑道上进入弯位。"
+        "馬群沿深色跑道進入彎位，馬頭與欄杆形成弧線。",
+        "马群沿深色跑道进入弯位，马头与栏杆形成弧线。"
       ],
       "declaredWidths": [
         1800
@@ -1636,8 +1640,8 @@
       "uses": 3,
       "altVariants": [
         "Infrared photograph of a pavilion framed by trees.",
-        "紅外線影像，涼亭由樹木環抱。",
-        "红外线影像，凉亭由树木环抱。"
+        "紅外線影像中的亭台被樹木環繞。",
+        "红外线影像中的亭台被树木环绕。"
       ],
       "declaredWidths": [
         1800
@@ -1669,8 +1673,10 @@
         "Infrared view of a garden pond with red bridge and foliage.",
         "紅外線庭園池塘中，紅橋橫跨水面，四周樹葉呈淡色。",
         "紅外線庭園池塘，紅橋橫跨水面，四周樹葉呈淡色。",
+        "紅橋跨過園林池塘，周圍葉片呈現紅外線色彩。",
         "红外线庭园池塘中，红桥横跨水面，四周树叶呈淡色。",
-        "红外线庭园池塘，红桥横跨水面，四周树叶呈淡色。"
+        "红外线庭园池塘，红桥横跨水面，四周树叶呈淡色。",
+        "红桥跨过园林池塘，周围叶片呈现红外线色彩。"
       ],
       "declaredWidths": [
         1800
@@ -1695,8 +1701,8 @@
       "uses": 3,
       "altVariants": [
         "Infrared garden path with pavilion and person.",
-        "紅外線庭園小徑，遠處有涼亭與行人。",
-        "红外线庭园小径，远处有凉亭与行人。"
+        "一名人物走在园林小径上，亭台与浅色叶片构成背景。",
+        "一名人物走在園林小徑上，亭台與淺色葉片構成背景。"
       ],
       "declaredWidths": [
         1800
@@ -1721,8 +1727,8 @@
       "uses": 3,
       "altVariants": [
         "Infrared photograph of temple roofs and trees.",
-        "紅外線影像，寺廟屋頂掩映於樹木之間。",
-        "红外线影像，寺庙屋顶掩映于树木之间。"
+        "寺庙屋顶与树木在红外线影像中形成层次。",
+        "寺廟屋頂與樹木在紅外線影像中形成層次。"
       ],
       "declaredWidths": [
         1800
@@ -1747,8 +1753,8 @@
       "uses": 3,
       "altVariants": [
         "Infrared view of ornate garden architecture and pale trees.",
-        "紅外線庭園建築，華麗屋頂與淡色樹木並列。",
-        "红外线庭园建筑，华丽屋顶与淡色树木并列。"
+        "园林建筑细节与浅色树叶，在红外线色彩中互相映照。",
+        "園林建築細節與淺色樹葉，在紅外線色彩中互相映照。"
       ],
       "declaredWidths": [
         1800
@@ -1773,8 +1779,8 @@
       "uses": 3,
       "altVariants": [
         "Infrared photograph of a pagoda under blue sky.",
-        "紅外線影像，藍天下的寶塔。",
-        "红外线影像，蓝天下的宝塔。"
+        "宝塔立于蓝天下，周围树叶呈现红外线色调。",
+        "寶塔立於藍天下，周圍樹葉呈現紅外線色調。"
       ],
       "declaredWidths": [
         1800
@@ -1799,8 +1805,8 @@
       "uses": 3,
       "altVariants": [
         "Man cooking skewers in a small kitchen.",
-        "一名男子在狭小厨房内烹调肉串。",
-        "一名男子在狹小廚房內烹調肉串。"
+        "男子在小厨房中烹调串烧，抬头望向镜头。",
+        "男子在小廚房中烹調串燒，抬頭望向鏡頭。"
       ],
       "declaredWidths": [
         1800
@@ -1825,8 +1831,8 @@
       "uses": 3,
       "altVariants": [
         "Children sitting on concrete steps.",
-        "一群孩子坐在水泥台阶上。",
-        "一群孩子坐在水泥梯級上。"
+        "孩子们坐在水泥台阶上，彼此靠近。",
+        "孩子們坐在水泥台階上，彼此靠近。"
       ],
       "declaredWidths": [
         1800
@@ -1851,8 +1857,8 @@
       "uses": 3,
       "altVariants": [
         "Mother holding a crying child outdoors.",
-        "一名母亲在户外抱着哭泣的孩子。",
-        "一名母親在戶外抱著哭泣的孩子。"
+        "母亲在户外抱着哭泣的孩子。",
+        "母親在戶外抱著哭泣的孩子。"
       ],
       "declaredWidths": [
         1201
@@ -1877,8 +1883,8 @@
       "uses": 3,
       "altVariants": [
         "Woman holding a child close outdoors.",
-        "一名女子在戶外緊抱孩子。",
-        "一名女子在户外紧抱孩子。"
+        "女子在柔和光線中把孩子擁在懷裡。",
+        "女子在柔和光线中把孩子拥在怀里。"
       ],
       "declaredWidths": [
         1800
@@ -1910,7 +1916,8 @@
         "Young girl wearing a red shawl near a window.",
         "披紅色披肩的女孩站在窗邊。",
         "披紅色披肩的女孩站在窗邊，望向鏡頭。",
-        "披红色披肩的女孩站在窗边。"
+        "披红色披肩的女孩站在窗边。",
+        "披红色披肩的女孩站在窗边，望向镜头。"
       ],
       "declaredWidths": [
         1800
@@ -1935,8 +1942,8 @@
       "uses": 3,
       "altVariants": [
         "Child standing in an open yard near buildings.",
-        "一名孩子站在建筑物旁的空旷院子。",
-        "一名孩子站在建築物旁的空曠院子。"
+        "孩子站在建筑物旁的空地上。",
+        "孩子站在建築物旁的空地上。"
       ],
       "declaredWidths": [
         1800
@@ -1961,8 +1968,8 @@
       "uses": 3,
       "altVariants": [
         "Man working with a suspended sack at a market.",
-        "一名男子在市场处理悬挂的麻袋。",
-        "一名男子在市場處理懸掛的麻袋。"
+        "市场工人处理悬起的袋子，呈现重量与平衡。",
+        "市場工人處理懸起的袋子，呈現重量與平衡。"
       ],
       "declaredWidths": [
         1800
@@ -1987,8 +1994,8 @@
       "uses": 3,
       "altVariants": [
         "Woman seated against a weathered wall.",
-        "一名女子靠着斑驳墙壁坐下。",
-        "一名女子靠著斑駁牆壁坐下。"
+        "女子坐在斑駁牆面前，紅色衣物與灰色背景形成對比。",
+        "女子坐在斑驳墙面前，红色衣物与灰色背景形成对比。"
       ],
       "declaredWidths": [
         1800
@@ -2013,8 +2020,8 @@
       "uses": 3,
       "altVariants": [
         "Elderly person using a walker on a road.",
-        "一名長者在道路上使用助行器。",
-        "一名长者在道路上使用助行器。"
+        "長者使用助行架沿道路前行。",
+        "长者使用助行架沿道路前行。"
       ],
       "declaredWidths": [
         1800
@@ -2039,8 +2046,8 @@
       "uses": 3,
       "altVariants": [
         "A boy shaving a seated man outdoors.",
-        "一名男孩在戶外替坐著的男子剃鬚。",
-        "一名男孩在户外替坐着的男子剃须。"
+        "男孩在戶外為坐著的男子剃鬚。",
+        "男孩在户外为坐着的男子剃须。"
       ],
       "declaredWidths": [
         1800
@@ -2065,8 +2072,8 @@
       "uses": 3,
       "altVariants": [
         "Elderly woman in pink clothing looking toward the camera.",
-        "穿粉紅衣服的年長女子望向鏡頭。",
-        "穿粉红衣服的年长女子望向镜头。"
+        "穿粉紅色衣服的年長女子回望鏡頭。",
+        "穿粉红色衣服的年长女子回望镜头。"
       ],
       "declaredWidths": [
         1800
@@ -2091,8 +2098,8 @@
       "uses": 3,
       "altVariants": [
         "Person standing by a red doorway in a dim interior.",
-        "一人站在昏暗室內的紅色門旁。",
-        "一人站在昏暗室内的红色门旁。"
+        "人物站在昏暗室內的紅色門邊。",
+        "人物站在昏暗室内的红色门边。"
       ],
       "declaredWidths": [
         1200
@@ -2117,8 +2124,8 @@
       "uses": 3,
       "altVariants": [
         "Workers harvesting fish from a pond.",
-        "工人在魚塘收魚。",
-        "工人在鱼塘收鱼。"
+        "渔塘工人在水中收鱼，渔网与工作台连结劳动动作。",
+        "漁塘工人在水中收魚，漁網與工作台連結勞動動作。"
       ],
       "declaredWidths": [
         1800
@@ -2143,8 +2150,8 @@
       "uses": 3,
       "altVariants": [
         "Black-and-white view of circular coils drying in rows with a worker.",
-        "黑白影像，一名工人在成排圆形线圈之间工作。",
-        "黑白影像，一名工人在成排圓形線圈之間工作。"
+        "黑白画面中，工人置身一排排晾晒的圆形线圈之间。",
+        "黑白畫面中，工人置身一排排晾曬的圓形線圈之間。"
       ],
       "declaredWidths": [
         1800
@@ -2169,8 +2176,8 @@
       "uses": 3,
       "altVariants": [
         "Two people sitting among many woven baskets.",
-        "两人坐在大量编织篮子之间。",
-        "兩人坐在大量編織籃子之間。"
+        "两人坐在大量编织竹篮之间。",
+        "兩人坐在大量編織竹籃之間。"
       ],
       "declaredWidths": [
         1800
@@ -2195,8 +2202,8 @@
       "uses": 3,
       "altVariants": [
         "Workers and fire inside a dark industrial foundry.",
-        "工人在昏暗的工业铸造场内，旁边有火光。",
-        "工人在昏暗的工業鑄造場內，旁邊有火光。"
+        "工人与火光出现在昏暗的铸造工场。",
+        "工人與火光出現在昏暗的鑄造工場。"
       ],
       "declaredWidths": [
         1800
@@ -2228,8 +2235,8 @@
         "Fisher casting a net on a river at sunset beneath karst mountains.",
         "夕阳下，渔民在喀斯特山峰前的河面撒网。",
         "夕陽下，漁民在喀斯特山峰前的河面撒網。",
-        "黃昏河面上的船隻，遠處是喀斯特山峰。",
-        "黄昏河面上的船只，远处是喀斯特山峰。"
+        "黃昏河面上的船隻，背後是喀斯特山巒。",
+        "黄昏河面上的船只，背后是喀斯特山峦。"
       ],
       "declaredWidths": [
         1800
@@ -2254,8 +2261,8 @@
       "uses": 3,
       "altVariants": [
         "Two fishermen at night holding lanterns beside water.",
-        "两名渔民夜间在水边提着灯笼。",
-        "兩名漁民夜間在水邊提著燈籠。"
+        "两名渔人在夜间水边提着灯笼。",
+        "兩名漁人在夜間水邊提著燈籠。"
       ],
       "declaredWidths": [
         1800
@@ -2286,7 +2293,9 @@
         "Golden rice terraces with people walking through reflective fields.",
         "Three figures walking through sunlit, water-filled rice terraces.",
         "金色梯田倒映天光，行人穿梭田間。",
-        "金色梯田倒映天光，行人穿梭田间。"
+        "金色梯田倒映天光，行人穿梭田间。",
+        "金色梯田反射光線，小小人物穿行田間。",
+        "金色梯田反射光线，小小人物穿行田间。"
       ],
       "declaredWidths": [
         1800
@@ -2311,8 +2320,8 @@
       "uses": 3,
       "altVariants": [
         "Women cooking around a hearth in a dark wooden room.",
-        "女子在昏暗木屋內圍著爐火煮食。",
-        "女子在昏暗木屋内围着炉火烹煮。"
+        "女子在昏暗木屋中围着炉火煮食。",
+        "女子在昏暗木屋中圍著爐火煮食。"
       ],
       "declaredWidths": [
         1800
@@ -2337,8 +2346,8 @@
       "uses": 3,
       "altVariants": [
         "Warm shaft of light and smoke in a rustic kitchen.",
-        "暖色光束与烟雾照进朴素厨房。",
-        "暖色光束與煙霧照進樸素廚房。"
+        "温暖光束穿过乡村厨房中的烟雾。",
+        "溫暖光束穿過鄉村廚房中的煙霧。"
       ],
       "declaredWidths": [
         1800
@@ -2363,8 +2372,8 @@
       "uses": 3,
       "altVariants": [
         "Elders and children laughing in a village setting.",
-        "長者與孩子在鄉村場景中一同歡笑。",
-        "长者与孩子在乡村场景中一同欢笑。"
+        "長者與孩子在村落中一同歡笑。",
+        "长者与孩子在村落中一同欢笑。"
       ],
       "declaredWidths": [
         1800
