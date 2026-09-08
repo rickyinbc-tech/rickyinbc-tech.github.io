@@ -4,11 +4,32 @@
   "collectionStatus": "enabled-with-explicit-opt-in",
   "consentMode": "explicit-opt-in-before-loader",
   "privacy": {
-    "prohibitedParameters": ["name", "email", "phone", "message", "organization"],
-    "urlPolicy": "The Google tag loads only after a visitor grants analytics consent. Page-view URLs may then be sent to the configured GA4 property; advertising signals stay disabled.",
+    "prohibitedParameters": [
+      "name",
+      "email",
+      "phone",
+      "message",
+      "organization"
+    ],
+    "urlPolicy": "The Google tag loads only after a visitor grants analytics consent on the production hostname. Configured page location and referrer omit query strings and fragments. Custom events send only public artwork IDs, series slugs and language codes; advertising signals stay disabled.",
     "googleSignals": false,
     "adPersonalization": false
   },
-  "events": [],
-  "collectionRule": "Do not load Google Analytics until the visitor explicitly allows it. Declining must keep collection disabled, and the footer must provide a persistent way to revisit the choice."
+  "events": [
+    "artwork_open",
+    "gallery_filter",
+    "language_switch"
+  ],
+  "collectionRule": "Do not load Google Analytics until the visitor explicitly allows it. Declining must keep collection disabled, and the footer must provide a persistent way to revisit the choice. Version 2 asks visitors to consent again to the expanded page-view and gallery-interaction measurement.",
+  "eventParameters": [
+    "artwork_id",
+    "series",
+    "content_language"
+  ],
+  "qualityControls": [
+    "One config/page view per document, even after repeated consent or withdrawal and re-consent.",
+    "No collection on localhost or preview hosts.",
+    "Consent withdrawal disables custom events immediately, including across tabs."
+  ],
+  "consentPreferenceVersion": 2
 }
