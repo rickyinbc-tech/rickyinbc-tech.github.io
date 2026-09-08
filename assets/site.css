@@ -530,11 +530,6 @@ h3 {
   margin-top: 18px;
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 10px;
-}
 
 .work-card {
   position: relative;
@@ -1011,21 +1006,20 @@ article.work-card {
 }
 
 .filter-button {
-  min-height: 38px;
   padding: 9px 13px;
-  border: 1px solid rgba(247, 243, 235, .22);
+  border: 1px solid currentColor;
   border-radius: 8px;
   background: transparent;
-  color: var(--ink);
+  color: inherit;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .filter-button.is-active,
 .filter-button:hover {
-  background: var(--ink);
-  color: var(--black);
+  background: var(--studio-ink);
+  color: var(--studio-paper);
 }
 
 .link-list {
@@ -3787,3 +3781,5 @@ html[lang="zh-Hans"] .artwork-page .source-body::before {
   border: 0;
   text-decoration: underline;
 }
+
+.work-card[hidden] { display: none !important; }

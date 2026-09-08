@@ -1,5 +1,28 @@
 const ANALYTICS_MEASUREMENT_ID = "G-07PQV08YPD";
-const ANALYTICS_STORAGE_KEY = "rickykwok.analytics-consent.v1";
+const ANALYTICS_STORAGE_KEY = "rickykwok.analytics-consent.v2";
+const ANALYTICS_PRODUCTION_HOSTS = new Set(["rickykwok.com", "www.rickykwok.com"]);
+const ANALYTICS_EVENTS = new Set(["artwork_open", "gallery_filter", "language_switch"]);
+let analyticsEnabled = false;
+let analyticsInitialized = false;
+
+function cleanAnalyticsUrl(value) {
+  try {
+    const url = new URL(value);
+    return /^https?:$/.test(url.protocol) ? `${url.origin}${url.pathname}` : "";
+  } catch {
+    return "";
+  }
+}
+
+function trackEvent(name, parameters = {}) {
+  if (!analyticsEnabled || !ANALYTICS_EVENTS.has(name)) return;
+  const safeParameters = { send_to: ANALYTICS_MEASUREMENT_ID };
+  for (const key of ["artwork_id", "series", "content_language"]) {
+    const value = parameters[key];
+    if (typeof value === "string" && /^[a-z0-9-]{1,80}$/.test(value)) safeParameters[key] = value;
+  }
+  googleTag("event", name, safeParameters);
+}
 
 function analyticsPreference() {
   try {
@@ -23,17 +46,25 @@ function googleTag() {
 }
 
 function allowAnalytics() {
+  // Preview visits must never become production traffic.
+  if (!ANALYTICS_PRODUCTION_HOSTS.has(window.location.hostname) || analyticsEnabled) return;
+  analyticsEnabled = true;
   window[`ga-disable-${ANALYTICS_MEASUREMENT_ID}`] = false;
-  googleTag("consent", "default", {
+  googleTag("consent", analyticsInitialized ? "update" : "default", {
     ad_storage: "denied",
     ad_user_data: "denied",
     ad_personalization: "denied",
     analytics_storage: "granted"
   });
+  // Config sends a page view; initialize just once, including after re-consent.
+  if (analyticsInitialized) return;
+  analyticsInitialized = true;
   googleTag("js", new Date());
   googleTag("config", ANALYTICS_MEASUREMENT_ID, {
     allow_google_signals: false,
-    allow_ad_personalization_signals: false
+    allow_ad_personalization_signals: false,
+    page_location: cleanAnalyticsUrl(window.location.href),
+    page_referrer: cleanAnalyticsUrl(document.referrer)
   });
 
   if (!document.querySelector('script[data-google-analytics="true"]')) {
@@ -46,6 +77,7 @@ function allowAnalytics() {
 }
 
 function declineAnalytics() {
+  analyticsEnabled = false;
   window[`ga-disable-${ANALYTICS_MEASUREMENT_ID}`] = true;
   if (window.dataLayer) {
     googleTag("consent", "update", {
@@ -60,21 +92,21 @@ function declineAnalytics() {
 const analyticsCopy = {
   en: {
     label: "Optional analytics",
-    message: "Allow privacy-conscious Google Analytics page-view measurement to help improve this archive? Advertising signals stay off.",
+    message: "Allow privacy-conscious Google Analytics page views and gallery interactions to help improve this archive? Advertising signals stay off.",
     allow: "Allow analytics",
     decline: "Decline",
     choices: "Analytics choices"
   },
   "zh-hant": {
     label: "自選瀏覽統計",
-    message: "是否允許以注重私隱的 Google Analytics 頁面瀏覽統計協助改善本檔案？廣告訊號會保持關閉。",
+    message: "是否允許以注重私隱的 Google Analytics 頁面瀏覽及作品互動統計協助改善本檔案？廣告訊號會保持關閉。",
     allow: "允許統計",
     decline: "拒絕",
     choices: "瀏覽統計選擇"
   },
   "zh-hans": {
     label: "自选浏览统计",
-    message: "是否允许以注重隐私的 Google Analytics 页面浏览统计协助改善本档案？广告信号会保持关闭。",
+    message: "是否允许以注重隐私的 Google Analytics 页面浏览及作品互动统计协助改善本档案？广告信号会保持关闭。",
     allow: "允许统计",
     decline: "拒绝",
     choices: "浏览统计选择"
@@ -149,6 +181,35 @@ const storedAnalyticsPreference = analyticsPreference();
 if (storedAnalyticsPreference === "granted") allowAnalytics();
 else if (storedAnalyticsPreference === "denied") declineAnalytics();
 else showAnalyticsConsent();
+
+// Honor withdrawal in another tab without loading a tag in an unconsented tab.
+window.addEventListener("storage", (event) => {
+  if (event.key !== ANALYTICS_STORAGE_KEY && event.key !== null) return;
+  if (analyticsPreference() !== "granted") {
+    declineAnalytics();
+    closeAnalyticsConsent();
+  }
+});
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest?.("a[href]");
+  if (!link) return;
+  const destination = new URL(link.href, window.location.origin);
+  if (destination.origin !== window.location.origin) return;
+  if (link.closest(".language-switcher")) {
+    if (link.getAttribute("aria-current") !== "page") {
+      trackEvent("language_switch", { content_language: (link.lang || "").toLowerCase() });
+    }
+    return;
+  }
+  const artwork = destination.pathname.match(/^\/(?:zh-hant\/|zh-hans\/)?works\/([a-z0-9-]+)\/$/);
+  if (artwork && link.closest(".work-card")) {
+    trackEvent("artwork_open", {
+      artwork_id: artwork[1],
+      content_language: document.documentElement.lang.toLowerCase()
+    });
+  }
+});
 
 const year = document.querySelector("#year");
 if (year) year.textContent = new Date().getFullYear();
@@ -361,5 +422,6 @@ filterButtons.forEach((button) => {
       if (visible) visibleCount += 1;
     });
     if (filterStatus) filterStatus.textContent = filterStatusLabel(visibleCount);
+    trackEvent("gallery_filter", { series: filter, content_language: document.documentElement.lang.toLowerCase() });
   });
 });
