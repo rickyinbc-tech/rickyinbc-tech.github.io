@@ -282,6 +282,18 @@ for (const file of await htmlFiles()) {
   }
 
   if (!noindex) {
+    // Every language's series index must let readers reach all four collections.
+    // A valid canonical or a link in the shared navigation cannot satisfy this.
+    if (/^(?:\/zh-h(?:ant|ans))?\/series\/$/.test(route)) {
+      const languagePrefix = route.replace(/\/series\/$/, "");
+      const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/i)?.[1] || "";
+      const mainLinks = new Set(Array.from(main.matchAll(/<a\b[^>]*\bhref=["']([^"']+)["']/gi), (match) => match[1]));
+      for (const series of ["city-light", "ritual", "motion", "collision"]) {
+        if (!mainLinks.has(`${languagePrefix}/series/${series}/`)) {
+          errors.push(`${relative}: series index is missing a content link to ${series}`);
+        }
+      }
+    }
     if (!description) errors.push(`${relative}: missing meta description`);
     const titleLength = Array.from(title.replaceAll("&amp;", "&")).length;
     const descriptionLength = Array.from(description.replaceAll("&amp;", "&")).length;
