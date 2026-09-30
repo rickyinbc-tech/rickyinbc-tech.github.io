@@ -1,9 +1,13 @@
 import worker from "../../edge/cloudflare-worker.mjs";
 
-globalThis.fetch = async (request) => new Response(`origin:${new URL(request.url).pathname}`, {
+const originRequests = [];
+globalThis.fetch = async (request, options) => {
+  originRequests.push({ request, options });
+  return new Response(`origin:${new URL(request.url).pathname}`, {
   status: 200,
   headers: { "content-type": "text/html; charset=utf-8" }
 });
+};
 
 const checks = [];
 
@@ -13,6 +17,17 @@ function check(condition, message) {
 
 const canonical = await worker.fetch(new Request("https://rickykwok.com/"));
 check(canonical.status === 200, "canonical origin must pass through");
+check(originRequests.at(-1).request.url === "https://rickyinbc-tech.github.io/", "origin must use GitHub's managed HTTPS hostname");
+check(originRequests.at(-1).options.redirect === "manual", "origin redirects must never be followed into a loop");
+const httpHomepage = await worker.fetch(new Request("http://rickykwok.com/"));
+check(httpHomepage.status === 308 && httpHomepage.headers.get("location") === "https://rickykwok.com/", "public HTTP must upgrade directly to HTTPS");
+await worker.fetch(new Request("https://rickykwok.com/biography/?page=2", { headers: { cookie: "private=test", authorization: "Bearer private", range: "bytes=0-99" } }));
+const publicOriginRequest = originRequests.at(-1).request;
+check(publicOriginRequest.url === "https://rickyinbc-tech.github.io/biography/?page=2", "origin must preserve the requested public path and query");
+check(!publicOriginRequest.headers.has("cookie") && !publicOriginRequest.headers.has("authorization"), "visitor credentials must not reach the public GitHub origin");
+check(publicOriginRequest.headers.get("range") === "bytes=0-99", "origin must preserve range requests");
+await worker.fetch(new Request("https://rickykwok.com//untrusted.example/path"));
+check(originRequests.at(-1).request.url === "https://rickyinbc-tech.github.io//untrusted.example/path", "a double-slash path must never change the fixed origin hostname");
 for (const header of ["content-security-policy", "permissions-policy", "referrer-policy", "strict-transport-security", "x-content-type-options", "x-frame-options"]) {
   check(Boolean(canonical.headers.get(header)), `canonical response lacks ${header}`);
 }
@@ -161,6 +176,36 @@ const unknownPhotoPath = await worker.fetch(new Request("https://photo.rickykwok
 check(unknownPhotoPath.status === 410, "unverified photo paths must be permanently gone");
 check(unknownPhotoPath.headers.get("location") === null, "unverified photo paths must not be wildcard redirected");
 check(unknownPhotoPath.headers.get("x-robots-tag") === "noindex, nofollow", "unverified photo paths must carry a noindex header");
+
+const normalFetch = globalThis.fetch;
+let fallbackCalls = 0;
+const fallbackEnv = { FALLBACK_ASSETS: { async fetch(request) {
+  fallbackCalls++;
+  return new Response(request.method === "HEAD" ? null : "validated-public-backup", { status: 200 });
+} } };
+globalThis.fetch = async () => new Response("expired origin certificate", { status: 526 });
+const recovered = await worker.fetch(new Request("https://rickykwok.com/"), fallbackEnv);
+check(recovered.status === 200 && await recovered.text() === "validated-public-backup", "origin SSL failures must serve the validated backup");
+check(recovered.headers.get("x-site-source") === "cloudflare-backup", "failover must remain detectable by monitoring");
+check(Boolean(recovered.headers.get("strict-transport-security")), "failover must retain HTTPS protections");
+const headRecovery = await worker.fetch(new Request("https://rickykwok.com/", { method: "HEAD" }), fallbackEnv);
+check(await headRecovery.text() === "", "backup HEAD responses must not contain a body");
+const fallbackBeforeRetired = fallbackCalls;
+const stillGone = await worker.fetch(new Request("https://rickykwok.com/contact/"), fallbackEnv);
+check(stillGone.status === 410 && fallbackCalls === fallbackBeforeRetired, "failover must never revive retired content");
+globalThis.fetch = async () => { throw new Error("origin network outage"); };
+check((await worker.fetch(new Request("https://rickykwok.com/"), fallbackEnv)).status === 200, "network outages must trigger the backup");
+globalThis.fetch = async () => Response.redirect("https://rickykwok.com/", 301);
+check((await worker.fetch(new Request("https://rickykwok.com/"), fallbackEnv)).status === 200, "cached custom-domain redirects must trigger the backup instead of looping");
+globalThis.fetch = async () => new Response("Not found", { status: 404 });
+const fallbackBefore404 = fallbackCalls;
+check((await worker.fetch(new Request("https://rickykwok.com/missing/"), fallbackEnv)).status === 404 && fallbackCalls === fallbackBefore404, "real origin 404s must stay 404");
+globalThis.fetch = async () => Response.redirect("https://rickyinbc-tech.github.io/biography/", 301);
+const directoryRedirect = await worker.fetch(new Request("https://rickykwok.com/biography"), fallbackEnv);
+check(directoryRedirect.headers.get("location") === "https://rickykwok.com/biography/", "GitHub directory redirects must preserve the public hostname");
+const postResponse = await worker.fetch(new Request("https://rickykwok.com/", { method: "POST", body: "private" }), fallbackEnv);
+check(postResponse.status === 405, "a static site must not forward form bodies to the origin");
+globalThis.fetch = normalFetch;
 
 if (checks.length) throw new Error(`Edge worker tests failed:\n${checks.join("\n")}`);
 console.log("Edge worker redirects, permanent-gone routes, and security headers passed.");

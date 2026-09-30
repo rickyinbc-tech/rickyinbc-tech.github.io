@@ -19,6 +19,7 @@ const blockedPathPrefixes = (redirectConfig.blockedPathPrefixes || []).map((pref
 const safeQueryParameters = new Set(redirectConfig.preserveQueryParameters);
 const canonicalOrigin = new URL(redirectConfig.canonicalOrigin);
 const canonicalHost = canonicalOrigin.hostname.toLowerCase();
+const pagesOrigin = new URL("https://rickyinbc-tech.github.io");
 const passThroughHosts = new Set([
   canonicalHost,
   `www.${canonicalHost}`
@@ -155,20 +156,62 @@ function mappedDestination(requestUrl) {
   return exactOrTrailingSlashRedirect(hostRedirects[hostname], requestUrl.pathname);
 }
 
+async function websiteResponse(request, env, requestUrl) {
+  const originUrl = new URL(pagesOrigin);
+  originUrl.pathname = requestUrl.pathname;
+  originUrl.search = requestUrl.search;
+  const headers = new Headers();
+  // This is a public static site: don't forward visitor cookies or credentials.
+  for (const name of ["accept", "accept-encoding", "if-none-match", "if-modified-since", "range", "if-range"]) {
+    if (request.headers.has(name)) headers.set(name, request.headers.get(name));
+  }
+  let response;
+  try {
+    response = await fetch(new Request(originUrl, { method: request.method, headers }), {
+      redirect: "manual",
+      signal: AbortSignal.timeout(10000)
+    });
+  } catch (error) {
+    if (!env?.FALLBACK_ASSETS) throw error;
+  }
+  const location = response?.headers.get("location");
+  const target = location ? new URL(location, originUrl) : null;
+  // A cached custom-domain redirect must not loop while Pages updates its config.
+  const loopsToPublicSite = target?.hostname === canonicalHost || target?.hostname === `www.${canonicalHost}`;
+  if ((!response || response.status >= 500 || loopsToPublicSite) && env?.FALLBACK_ASSETS) {
+    response = await env.FALLBACK_ASSETS.fetch(request);
+    const fallbackHeaders = new Headers(response.headers);
+    fallbackHeaders.set("x-site-source", "cloudflare-backup");
+    fallbackHeaders.set("cache-control", "no-store");
+    return withSecurityHeaders(new Response(response.body, { status: response.status, headers: fallbackHeaders }), requestUrl);
+  }
+  const publicHeaders = new Headers(response.headers);
+  publicHeaders.set("x-site-source", "github-pages");
+  if (target?.hostname === pagesOrigin.hostname) {
+    target.protocol = canonicalOrigin.protocol;
+    target.host = canonicalOrigin.host;
+    publicHeaders.set("location", target.toString());
+  }
+  return withSecurityHeaders(new Response(response.body, { status: response.status, statusText: response.statusText, headers: publicHeaders }), requestUrl);
+}
+
 export default {
   async fetch(request, env, context) {
     const requestUrl = new URL(request.url);
     const hostname = requestUrl.hostname.toLowerCase();
     if (isGoneRequest(requestUrl)) return goneResponse(request.method);
     if (isBlockedRequest(requestUrl)) return notFoundResponse(request.method);
-    if (request.method !== "GET" && request.method !== "HEAD") return withSecurityHeaders(await fetch(request), requestUrl);
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      return withSecurityHeaders(new Response("Method not allowed", { status: 405, headers: { allow: "GET, HEAD" } }));
+    }
 
-    const destination = mappedDestination(requestUrl);
+    const destination = mappedDestination(requestUrl)
+      || (hostname === canonicalHost && requestUrl.protocol === "http:" ? requestUrl.pathname : null);
     if (!destination) {
       if (hostname.endsWith(`.${canonicalHost}`) && !passThroughHosts.has(hostname)) {
         return withSecurityHeaders(new Response("Not found", { status: 404, headers: { "content-type": "text/plain; charset=utf-8" } }), requestUrl);
       }
-      return withSecurityHeaders(await fetch(request), requestUrl);
+      return websiteResponse(request, env, requestUrl);
     }
 
     return withSecurityHeaders(Response.redirect(redirectDestination(requestUrl, destination).toString(), redirectConfig.status), requestUrl);

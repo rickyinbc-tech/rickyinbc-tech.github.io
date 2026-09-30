@@ -4,6 +4,13 @@
   "main": "cloudflare-worker.mjs",
   "compatibility_date": "2026-07-11",
   "workers_dev": false,
+  "assets": {
+    "directory": "../_site",
+    "binding": "FALLBACK_ASSETS",
+    "run_worker_first": true,
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  },
   "routes": [
     { "pattern": "rickykwok.com/*", "zone_name": "rickykwok.com" },
     { "pattern": "*.rickykwok.com/*", "zone_name": "rickykwok.com" }
