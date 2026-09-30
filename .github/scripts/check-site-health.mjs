@@ -28,9 +28,11 @@ async function get(url, options = {}) {
   throw error;
 }
 
-function originCertificate(ip, servername = originHostname) {
+function certificateConnection(ip, servername) {
   return new Promise((resolve, reject) => {
-    const socket = tls.connect({ host: ip, port: 443, servername, rejectUnauthorized: true });
+    // GitHub-hosted runners do not consistently have a usable IPv6 route.
+    // HTTPS fetch checks still verify actual browser-facing availability.
+    const socket = tls.connect({ host: ip, port: 443, servername, family: 4, rejectUnauthorized: true });
     socket.setTimeout(15000, () => socket.destroy(new Error("TLS connection timed out")));
     socket.once("error", reject);
     socket.once("secureConnect", () => {
@@ -42,6 +44,18 @@ function originCertificate(ip, servername = originHostname) {
       } else resolve(`valid until ${certificate.valid_to} (${remaining.toFixed(1)} days)`);
     });
   });
+}
+
+async function originCertificate(ip, servername = originHostname) {
+  let error;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try { return await certificateConnection(ip, servername); }
+    catch (caught) { error = caught; }
+  }
+  if (error instanceof AggregateError) {
+    throw new Error(error.errors.map(cause => `${cause.code || "TLS"}: ${cause.message}`).join("; "));
+  }
+  throw error;
 }
 
 await Promise.all([
