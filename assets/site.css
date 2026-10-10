@@ -380,43 +380,11 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 12px 17px;
-  border: 1px solid rgba(247, 243, 235, .36);
-  border-radius: 8px;
-  background: rgba(247, 243, 235, .09);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 850;
   line-height: 1;
 }
 
 .button:hover {
-  background: var(--ink);
-  color: var(--black);
   text-decoration: none;
-}
-
-.button.dark {
-  border-color: rgba(32, 27, 22, .2);
-  background: #201b16;
-  color: #fff;
-}
-
-.button.dark:hover {
-  background: #9a4a20;
-  color: #fff;
-}
-
-.button.ghost-dark {
-  border-color: rgba(32, 27, 22, .22);
-  background: transparent;
-  color: #201b16;
-}
-
-.button.ghost-dark:hover {
-  background: #201b16;
-  color: #fff;
 }
 
 .hero-stat {
@@ -1470,18 +1438,6 @@ body:not(.artwork-page) .hero.has-semantic-media .hero-media img {
   letter-spacing: .02em;
 }
 
-.button {
-  min-height: 48px;
-  padding: 13px 18px;
-  border-radius: 999px;
-  background: rgba(247, 243, 235, .12);
-  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
-}
-
-.button:hover {
-  transform: translateY(-1px);
-}
-
 .series-jump {
   gap: 12px;
   margin-top: 38px;
@@ -2235,10 +2191,6 @@ p,
 
 .section-blue {
   background: #0d1215;
-}
-
-.button {
-  border-radius: 3px;
 }
 
 .series,
@@ -3765,14 +3717,67 @@ html[lang="zh-Hans"] .artwork-page .source-body::before {
   z-index: 1000;
   inset: auto 10px 10px;
   margin: auto;
-  padding: 12px;
+  max-width: 760px;
+  max-height: calc(100dvh - 20px);
+  overflow-y: auto;
+  padding: 16px 18px;
   background: #111;
+  color: #f7f3eb;
+}
+
+.analytics-consent-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.analytics-consent p {
+  margin: 6px 0 0;
+  color: inherit;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 .analytics-consent-actions {
   display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-top: 8px;
+}
+
+.analytics-consent .button {
+  padding: 10px 12px;
+  border: 1px solid currentColor;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.analytics-consent .button::after {
+  content: none;
+}
+
+.analytics-consent .button:hover {
+  background: #292929;
+  color: #fff;
+}
+
+.analytics-consent .button:focus-visible {
+  outline-color: #fff;
+}
+
+.prose a {
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+@media (max-width: 640px) {
+  .analytics-consent-content {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 .analytics-choices {
