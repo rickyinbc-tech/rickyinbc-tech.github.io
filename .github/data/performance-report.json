@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "status": "pass",
   "measured": {
-    "maxHtmlBytes": 40349,
-    "siteCssBytes": 56444,
+    "maxHtmlBytes": 40425,
+    "siteCssBytes": 56481,
     "siteJsBytes": 12310,
     "largestResponsiveImageBytes": 366596,
     "maxMissingImageDimensions": 0,
@@ -20,43 +20,43 @@
   "largestHtml": [
     {
       "file": "awards-recognition/index.html",
-      "bytes": 40349
+      "bytes": 40425
     },
     {
       "file": "zh-hant/awards/index.html",
-      "bytes": 36763
+      "bytes": 36838
     },
     {
       "file": "zh-hans/awards/index.html",
-      "bytes": 36636
+      "bytes": 36711
     },
     {
       "file": "projects/travel/index.html",
-      "bytes": 34393
+      "bytes": 34469
     },
     {
       "file": "projects/nepal-documentary/index.html",
-      "bytes": 34083
+      "bytes": 34159
     },
     {
       "file": "index.html",
-      "bytes": 31091
+      "bytes": 31167
     },
     {
       "file": "zh-hans/index.html",
-      "bytes": 25311
+      "bytes": 25386
     },
     {
       "file": "zh-hant/index.html",
-      "bytes": 25255
+      "bytes": 25330
     },
     {
       "file": "series/collision/index.html",
-      "bytes": 23930
+      "bytes": 24006
     },
     {
       "file": "projects/infrared-hong-kong/index.html",
-      "bytes": 23465
+      "bytes": 23541
     }
   ],
   "largestResponsiveImages": [

@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20260908-gallery-measurement-v2";
-export const SHELL_VERSION = "20260901-no-js-nav-v1";
+export const ASSET_VERSION = "20261010-readable-consent-v1";
+export const SHELL_VERSION = "20261010-accessible-navigation-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 
@@ -144,11 +144,11 @@ export function renderHeaderAndNotice({ language, languageLinks, markCurrentLang
   <nav class="nav wrap">
     <a class="brand" href="${copy.brandHref}"><span>Ricky Kwok 郭文棣</span><small>${copy.brandSubtitle}</small></a>
     <button class="nav-toggle" type="button" aria-controls="primary-navigation language-navigation" aria-expanded="false">${copy.menu}</button>
-    <div class="nav-links" id="primary-navigation" aria-label="${copy.navLabel}">${navigation}</div>
-    <div class="language-switcher" id="language-navigation" aria-label="${copy.languageLabel}">${switcher}</div>
+    <div class="nav-links" id="primary-navigation" role="group" aria-label="${copy.navLabel}">${navigation}</div>
+    <div class="language-switcher" id="language-navigation" role="group" aria-label="${copy.languageLabel}">${switcher}</div>
   </nav>
 </header>
-<div class="personal-use-notice" role="note">${copy.notice}</div>
+<div class="personal-use-notice" role="region" aria-label="${copy.brandSubtitle}">${copy.notice}</div>
 <noscript data-no-js-navigation><style>
 @media (max-width:900px){.site-header.nav-enhanced{position:relative}.site-header.nav-enhanced .nav-toggle{display:none}.site-header.nav-enhanced .nav-links{display:grid;grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr))}.site-header.nav-enhanced .language-switcher{display:inline-flex;grid-column:1/-1;justify-self:start}}
 </style></noscript>`;
