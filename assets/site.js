@@ -324,7 +324,7 @@ const modalTitle = document.querySelector("#modalTitle");
 const modalMeta = document.querySelector("#modalMeta");
 const modalNote = document.querySelector("#modalNote");
 const closeButton = document.querySelector(".modal-close");
-const MODAL_IMAGE_SIZES = "(max-width: 880px) calc(100vw - 56px), (max-width: 1236px) calc(100vw - 394px), 842px";
+const MODAL_IMAGE_SIZES = "(max-width: 900px) calc(100vw - 56px), (max-width: 1236px) calc(100vw - 360px), 876px";
 let previousFocus = null;
 let modalInertTargets = [];
 
@@ -389,39 +389,155 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
 });
 
-const filterButtons = document.querySelectorAll("[data-filter]");
-const filterItems = document.querySelectorAll("[data-series]");
-const filterStatusLabels = {
-  en: (count) => `${count} ${count === 1 ? "work" : "works"} shown.`,
-  "zh-hant": (count) => `顯示 ${count} 件作品。`,
-  "zh-hans": (count) => `显示 ${count} 件作品。`
-};
-const filterStatusLabel = filterStatusLabels[document.documentElement.lang.toLowerCase()] || filterStatusLabels.en;
-const filterRow = document.querySelector(".filter-row");
-const filterStatus = filterRow && filterButtons.length ? Object.assign(document.createElement("p"), { className: "sr-only" }) : null;
-
-if (filterStatus) {
-  filterStatus.setAttribute("role", "status");
-  filterStatus.setAttribute("aria-live", "polite");
-  filterRow.append(filterStatus);
+// Browse the gallery without losing the chosen series when following a work
+// and returning. Search text stays in this page and is never sent to Analytics.
+function enhanceGallery() {
+  const filterButtons = [...document.querySelectorAll("[data-filter]")];
+  const filterItems = [...document.querySelectorAll("[data-series]")];
+  const filterRow = document.querySelector(".filter-row");
+  const grid = document.querySelector(".gallery-grid");
+  if (!filterRow || !grid || !filterButtons.length) return;
+  const copy = {
+    en: { search: "Find a photograph", placeholder: "Search titles, subjects or series", empty: "No photographs match this search.", reset: "Show all photographs", count: n => `${n} ${n === 1 ? "photograph" : "photographs"} shown` },
+    "zh-hant": { search: "尋找作品", placeholder: "搜尋作品名稱、主題或系列", empty: "沒有符合搜尋條件的作品。", reset: "顯示所有作品", count: n => `顯示 ${n} 件作品` },
+    "zh-hans": { search: "查找作品", placeholder: "搜索作品名称、主题或系列", empty: "没有符合搜索条件的作品。", reset: "显示所有作品", count: n => `显示 ${n} 件作品` }
+  }[analyticsLanguage] || { search: "Find a photograph", placeholder: "Search photographs", empty: "No photographs match.", reset: "Show all photographs", count: n => `${n} photographs shown` };
+  const search = document.createElement("div");
+  search.className = "gallery-search";
+  const label = document.createElement("label");
+  label.htmlFor = "gallery-search";
+  label.textContent = copy.search;
+  const input = document.createElement("input");
+  input.id = "gallery-search";
+  input.type = "search";
+  input.placeholder = copy.placeholder;
+  input.autocomplete = "off";
+  input.setAttribute("aria-controls", "gallery-results");
+  grid.id = "gallery-results";
+  search.append(label, input);
+  filterRow.before(search);
+  const status = document.createElement("p");
+  status.className = "gallery-status";
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  status.setAttribute("aria-atomic", "true");
+  filterRow.append(status);
+  const empty = document.createElement("div");
+  empty.className = "gallery-empty";
+  empty.hidden = true;
+  const message = document.createElement("p");
+  message.textContent = copy.empty;
+  const reset = document.createElement("button");
+  reset.type = "button";
+  reset.textContent = copy.reset;
+  empty.append(message, reset);
+  grid.after(empty);
+  const normalize = value => value.normalize("NFKC").toLocaleLowerCase().trim();
+  const searchable = filterItems.map(item => normalize(`${item.textContent} ${item.querySelector("img")?.alt || ""} ${item.dataset.series}`));
+  const validFilters = new Set(filterButtons.map(button => button.dataset.filter));
+  const fromHash = () => validFilters.has(window.location.hash.slice(1)) ? window.location.hash.slice(1) : "all";
+  let selected = fromHash();
+  const filterStatusLabel = copy.count;
+  function applyFilter() {
+    const terms = normalize(input.value).split(/\s+/).filter(Boolean);
+    let count = 0;
+    filterItems.forEach((item, index) => {
+      const visible = (selected === "all" || item.dataset.series === selected) && terms.every(term => searchable[index].includes(term));
+      item.hidden = !visible;
+      if (visible) count++;
+    });
+    filterButtons.forEach(button => {
+      const active = button.dataset.filter === selected;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+    status.textContent = filterStatusLabel(count);
+    empty.hidden = count !== 0;
+  }
+  function updateHash() {
+    const url = new URL(window.location.href);
+    url.hash = selected === "all" ? "" : selected;
+    if (url.href !== window.location.href) window.history.pushState(null, "", url);
+  }
+  filterButtons.forEach(button => button.addEventListener("click", () => {
+    selected = button.dataset.filter;
+    updateHash();
+    applyFilter();
+    trackEvent("gallery_filter", { series: selected, content_language: analyticsLanguage });
+  }));
+  input.addEventListener("input", applyFilter);
+  reset.addEventListener("click", () => {
+    selected = "all";
+    input.value = "";
+    updateHash();
+    applyFilter();
+    input.focus();
+  });
+  window.addEventListener("popstate", () => { selected = fromHash(); applyFilter(); });
+  window.addEventListener("hashchange", () => { selected = fromHash(); applyFilter(); });
+  window.addEventListener("pageshow", applyFilter);
+  applyFilter();
 }
 
-filterButtons.forEach((button) => {
-  button.setAttribute("aria-pressed", String(button.classList.contains("is-active")));
-  button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-    filterButtons.forEach((item) => {
-      const active = item === button;
-      item.classList.toggle("is-active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-    let visibleCount = 0;
-    filterItems.forEach((item) => {
-      const visible = filter === "all" || item.dataset.series === filter;
-      item.hidden = !visible;
-      if (visible) visibleCount += 1;
-    });
-    if (filterStatus) filterStatus.textContent = filterStatusLabel(visibleCount);
-    trackEvent("gallery_filter", { series: filter, content_language: document.documentElement.lang.toLowerCase() });
+// Native dialog provides focus containment, Escape dismissal and background
+// inertness. The original static image remains available without JavaScript.
+function enhanceArtworkViewer() {
+  const figure = document.querySelector(".artwork-figure");
+  const photo = figure?.querySelector(".feature-image img");
+  if (!photo) return;
+  const dialog = document.createElement("dialog");
+  if (typeof dialog.showModal !== "function") return;
+  const copy = {
+    en: { open: "View larger", close: "Close", label: "Enlarged photograph" },
+    "zh-hant": { open: "放大觀看", close: "關閉", label: "放大作品" },
+    "zh-hans": { open: "放大查看", close: "关闭", label: "放大作品" }
+  }[analyticsLanguage] || { open: "View larger", close: "Close", label: "Enlarged photograph" };
+  dialog.className = "image-viewer";
+  dialog.setAttribute("aria-label", copy.label);
+  const toolbar = document.createElement("div");
+  toolbar.className = "viewer-toolbar";
+  const title = document.createElement("p");
+  title.textContent = document.querySelector("h1")?.textContent || copy.label;
+  const close = document.createElement("button");
+  close.type = "button";
+  close.className = "viewer-close";
+  close.textContent = copy.close;
+  toolbar.append(title, close);
+  const enlarged = document.createElement("img");
+  enlarged.alt = photo.alt;
+  enlarged.decoding = "async";
+  enlarged.width = Number(photo.getAttribute("width"));
+  enlarged.height = Number(photo.getAttribute("height"));
+  dialog.append(toolbar, enlarged);
+  document.body.append(dialog);
+  const trigger = document.createElement("button");
+  trigger.type = "button";
+  trigger.className = "artwork-enlarge";
+  trigger.setAttribute("aria-haspopup", "dialog");
+  trigger.setAttribute("aria-label", `${copy.open}: ${title.textContent}`);
+  photo.before(trigger);
+  const hint = document.createElement("span");
+  hint.className = "artwork-enlarge-label";
+  hint.textContent = copy.open;
+  trigger.append(photo, hint);
+  trigger.addEventListener("click", () => {
+    enlarged.sizes = "calc(100vw - 68px)";
+    enlarged.srcset = photo.getAttribute("srcset") || "";
+    enlarged.src = photo.src;
+    dialog.showModal();
+    document.body.classList.add("viewer-open");
+    close.focus();
   });
-});
+  close.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("keydown", event => {
+    if (event.key === "Tab") { event.preventDefault(); close.focus(); }
+  });
+  dialog.addEventListener("click", event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener("close", () => {
+    document.body.classList.remove("viewer-open");
+    trigger.focus({ preventScroll: true });
+  });
+}
+
+enhanceGallery();
+enhanceArtworkViewer();

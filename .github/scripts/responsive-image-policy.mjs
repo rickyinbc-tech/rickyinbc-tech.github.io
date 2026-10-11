@@ -1,44 +1,11 @@
 import { readFileSync } from "node:fs";
 
-export const FEATURE_IMAGE_SIZES = [
-  "(max-width: 640px) calc(100vw - 28px)",
-  "(max-width: 880px) calc(100vw - 40px)",
-  "(max-width: 1260px) calc(46.24vw - 37.92px)",
-  "545px",
-].join(", ");
-
-export const HERO_IMAGE_SIZES = [
-  "(max-width: 979px) calc(100vw - 36px)",
-  "(max-width: 1027px) calc(100vw - 360px)",
-  "65vw",
-].join(", ");
-
-export const WORK_CARD_IMAGE_SIZES = [
-  "(max-width: 640px) calc(100vw - 28px)",
-  "(max-width: 1099px) calc((100vw - 58px) / 2)",
-  "(max-width: 1259px) calc((100vw - 76px) / 3)",
-  "394.67px",
-].join(", ");
-
-export const SUPPORT_CARD_IMAGE_SIZES = [
-  "(max-width: 640px) calc(100vw - 28px)",
-  "(max-width: 880px) calc((100vw - 56px) / 2)",
-  "(max-width: 1259px) calc((100vw - 88px) / 4)",
-  "293px",
-].join(", ");
-
-export const ARCHIVE_IMAGE_SIZES = [
-  "(max-width: 640px) calc(100vw - 28px)",
-  "(max-width: 880px) calc((100vw - 58px) / 2)",
-  "(max-width: 1259px) calc((100vw - 76px) / 3)",
-  "394.67px",
-].join(", ");
-
-export const MODAL_IMAGE_SIZES = [
-  "(max-width: 880px) calc(100vw - 56px)",
-  "(max-width: 1236px) calc(100vw - 394px)",
-  "842px",
-].join(", ");
+export const FEATURE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1284px) 60vw, 735px";
+export const HERO_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1464px) calc(66vw - 69px), 860px";
+export const WORK_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
+export const SUPPORT_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
+export const ARCHIVE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 900px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
+export const MODAL_IMAGE_SIZES = "(max-width: 900px) calc(100vw - 56px), (max-width: 1236px) calc(100vw - 360px), 876px";
 
 export const PHOTO_RESOLUTION_MANIFEST = JSON.parse(
   readFileSync(new URL("../data/photo-resolution-manifest.json", import.meta.url), "utf8"),

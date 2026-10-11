@@ -3,7 +3,7 @@
   "summary": {
     "pages": 181,
     "uniquePrimarySources": 67,
-    "imageUses": 717,
+    "imageUses": 708,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -69,7 +69,6 @@
     {
       "source": "/assets/art/bank-of-china-light-trails.jpg",
       "pages": [
-        "index.html",
         "selected-works/index.html",
         "series/city-light/index.html",
         "series/index.html",
@@ -77,14 +76,12 @@
         "works/cranes-and-towers/index.html",
         "works/dragon-night-festival/index.html",
         "works/hong-kong-urban-light-studies/index.html",
-        "zh-hans/index.html",
         "zh-hans/series/city-light/index.html",
         "zh-hans/works/bank-of-china-light-trails/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/dragon-night-festival/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/index.html",
-        "zh-hant/index.html",
         "zh-hant/series/city-light/index.html",
         "zh-hant/works/bank-of-china-light-trails/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
@@ -96,22 +93,20 @@
         "/assets/art/bank-of-china-light-trails.jpg",
         "/assets/optimized-v2/art/bank-of-china-light-trails-1200.webp"
       ],
-      "uses": 22,
+      "uses": 19,
       "altVariants": [
         "Hong Kong light trails and skyscrapers at night.",
         "Hong Kong light trails at night.",
         "Hong Kong skyscrapers and buses with sweeping light trails at night.",
         "Hong Kong skyscrapers and traffic light trails at night.",
-        "中銀大廈與夜間交通光軌",
-        "中银大厦与夜间交通光轨",
         "香港中银大厦与巴士之间延伸出夜间交通光轨。",
         "香港夜間高樓與巴士之間掠過彎曲的交通光軌。"
       ],
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 22,
-      "lazyUses": 19,
+      "responsiveUses": 19,
+      "lazyUses": 16,
       "eagerUses": 3,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -163,7 +158,6 @@
     {
       "source": "/assets/art/blue-hour-cormorant-fishermen.jpg",
       "pages": [
-        "index.html",
         "selected-works/index.html",
         "series/index.html",
         "series/ritual/index.html",
@@ -171,7 +165,6 @@
         "works/night-fishermen/index.html",
         "works/terraces-at-golden-hour/index.html",
         "works/village-ritual-photography/index.html",
-        "zh-hans/index.html",
         "zh-hans/series/index.html",
         "zh-hans/series/ritual/index.html",
         "zh-hans/works/blue-hour-river-stage/index.html",
@@ -179,7 +172,6 @@
         "zh-hans/works/night-fishermen/index.html",
         "zh-hans/works/terraces-at-golden-hour/index.html",
         "zh-hans/works/village-ritual-photography/index.html",
-        "zh-hant/index.html",
         "zh-hant/series/index.html",
         "zh-hant/series/ritual/index.html",
         "zh-hant/works/blue-hour-river-stage/index.html",
@@ -192,24 +184,22 @@
         "/assets/art/blue-hour-cormorant-fishermen.jpg",
         "/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp"
       ],
-      "uses": 32,
+      "uses": 29,
       "altVariants": [
         "Cormorant fishermen on a river at blue hour with warm lamps reflected in the water.",
         "Cormorant fishermen on bamboo rafts in blue light.",
         "Cormorant fishermen on bamboo rafts under blue evening light.",
         "Cormorant fishermen on bamboo rafts under deep blue evening light.",
-        "蓝调时刻的鸬鶿渔民与竹筏",
         "蓝调暮色中，鸬鹚、渔民与暖色灯火分布在河面竹筏上。",
         "蓝调暮色中，鸬鹚渔民站在竹筏上。",
-        "藍調時刻的鸕鶿漁民與竹筏",
         "藍調暮色中，鸕鶿漁民站在竹筏上。",
         "藍調暮色中，鸕鶿漁民站在竹筏上，暖燈倒映河面。"
       ],
       "declaredWidths": [
         800
       ],
-      "responsiveUses": 32,
-      "lazyUses": 23,
+      "responsiveUses": 29,
+      "lazyUses": 20,
       "eagerUses": 9,
       "resolutionStatus": "source-limited-with-display-resample",
       "sourceWidth": 800,
@@ -1026,7 +1016,7 @@
         "/assets/optimized-v2/art/light-encroached-homes-1200.webp",
         "/assets/optimized-v2/art/light-encroached-homes-1280.webp"
       ],
-      "uses": 62,
+      "uses": 59,
       "altVariants": [
         "Fisheye photograph of Hong Kong neon signs and residential buildings.",
         "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
@@ -1055,8 +1045,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 62,
-      "lazyUses": 40,
+      "responsiveUses": 59,
+      "lazyUses": 37,
       "eagerUses": 22,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
