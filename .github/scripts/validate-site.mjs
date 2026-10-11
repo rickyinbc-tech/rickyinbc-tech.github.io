@@ -699,9 +699,9 @@ for (const collectionRecord of artworkManifest.imageSitemapCollections || []) {
 }
 
 for (const [route, marker] of [
-  ["/", "Contact sheet"],
-  ["/zh-hant/", "接觸印樣"],
-  ["/zh-hans/", "接触印样"],
+  ["/", 'class="section section-gallery"'],
+  ["/zh-hant/", 'class="section section-gallery"'],
+  ["/zh-hans/", 'class="section section-gallery"'],
 ]) {
   const page = indexableDocuments.get(route);
   if (!page || !page.html.includes(marker)) errors.push(`${route}: homepage does not lead into selected work`);
@@ -804,7 +804,7 @@ if (visualSystemContractIndex === -1) {
     "object-position: center",
     "transform: none",
     ".gallery-grid",
-    "columns: 3",
+    "grid-template-columns: repeat(3, minmax(0, 1fr))",
     ".work-card-link",
     ".work-caption",
     "position: static",
@@ -838,7 +838,7 @@ if (!/\.hero\.has-semantic-media\s*\{[\s\S]*?padding-top:\s*0/i.test(siteCss)) {
 for (const marker of ["addMobileNavigation", "markCurrentNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel", "MODAL_IMAGE_SIZES", "responsiveSrcset"]) {
   if (!siteJs.includes(marker)) errors.push(`accessible interaction contract lacks ${marker}`);
 }
-for (const marker of ["--studio-cobalt-ink", "--studio-cobalt-light"]) {
+for (const marker of ["--accent: #27666b", "--muted: #516268"]) {
   if (!siteCss.includes(marker)) errors.push(`resilient accessibility stylesheet lacks ${marker}`);
 }
 const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));

@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20261010-readable-consent-v1";
-export const SHELL_VERSION = "20261010-accessible-navigation-v1";
+export const ASSET_VERSION = "20261011-gallery-experience-v1";
+export const SHELL_VERSION = "20261011-gallery-experience-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 
@@ -156,7 +156,8 @@ export function renderHeaderAndNotice({ language, languageLinks, markCurrentLang
 
 export function renderFooter(language) {
   const copy = SHELL_COPY[normalizeLanguage(language)];
+  const footerLinks = [copy.navigation[0], copy.navigation[3], copy.navigation[5]].map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
   return `<footer class="site-footer" data-shell-version="${SHELL_VERSION}">
-  <div class="wrap footer-row"><span>© <span id="year">2026</span> Ricky Kwok 郭文棣, ARPS.</span><span>${copy.footer}</span></div>
+  <div class="wrap footer-row"><nav class="footer-links" aria-label="${copy.navLabel}">${footerLinks}</nav><span>© <span id="year">2026</span> Ricky Kwok 郭文棣, ARPS.</span><span>${copy.footer}</span></div>
 </footer>`;
 }
