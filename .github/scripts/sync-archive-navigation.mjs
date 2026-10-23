@@ -63,7 +63,7 @@ for (const language of ['en', 'zh-hant', 'zh-hans']) {
     html = html.replace(/(<a class="button" data-archive-return href="[^"]+">)[\s\S]*?<\/a>/, `$1${copy.back}</a>`);
     const figure = html.indexOf('<figure class="artwork-figure">');
     const sectionEnd = html.indexOf('</section>', figure) + '</section>'.length;
-    html = `${html.slice(0, sectionEnd)}\n${navigation}${html.slice(sectionEnd)}`;
+    html = `${html.slice(0, sectionEnd)}\n${navigation}${html.slice(sectionEnd).replace(/^\s*/, "\n\n")}`;
     await writeFile(path.join(root, current.href, 'index.html'), html);
   }
 }
