@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20261011-gallery-experience-v1";
-export const SHELL_VERSION = "20261011-gallery-experience-v1";
+export const ASSET_VERSION = "20261022-archive-browsing-v1";
+export const SHELL_VERSION = "20261022-archive-browsing-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 
@@ -17,8 +17,8 @@ export const SHELL_COPY = {
     navigation: [
       ["/selected-works/", "Gallery"],
       ["/series/", "Series"],
-      ["/projects/", "Studies"],
-      ["/journal/", "Notebook"],
+      ["/projects/", "Projects"],
+      ["/journal/", "Journal"],
       ["/awards-recognition/", "Awards"],
       ["/biography/", "About"],
     ],
@@ -140,7 +140,7 @@ export function renderHeaderAndNotice({ language, languageLinks, markCurrentLang
     })
     .join("");
 
-  return `<header class="site-header nav-enhanced" data-shell-version="${SHELL_VERSION}" data-shell-language="${normalizedLanguage}" aria-label="${copy.headerLabel}">
+  return `<header class="site-header" data-shell-version="${SHELL_VERSION}" data-shell-language="${normalizedLanguage}" aria-label="${copy.headerLabel}">
   <nav class="nav wrap">
     <a class="brand" href="${copy.brandHref}"><span>Ricky Kwok 郭文棣</span><small>${copy.brandSubtitle}</small></a>
     <button class="nav-toggle" type="button" aria-controls="primary-navigation language-navigation" aria-expanded="false">${copy.menu}</button>

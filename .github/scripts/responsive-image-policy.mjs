@@ -1,7 +1,8 @@
 import { readFileSync } from "node:fs";
 
-export const FEATURE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1284px) 60vw, 735px";
+export const FEATURE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1284px) 64vw, 773px";
 export const HERO_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1464px) calc(66vw - 69px), 860px";
+export const GALLERY_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1284px) calc((100vw - 96px) / 2), 594px";
 export const WORK_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
 export const SUPPORT_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
 export const ARCHIVE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 900px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
@@ -269,7 +270,7 @@ export function normalizeResponsiveImages(html) {
   });
 
   normalized = normalizeContextSizes(normalized, FEATURE_IMAGE_BLOCK, FEATURE_IMAGE_SIZES);
-  normalized = normalizeContextSizes(normalized, WORK_CARD_IMAGE_BLOCK, WORK_CARD_IMAGE_SIZES);
+  normalized = normalizeContextSizes(normalized, WORK_CARD_IMAGE_BLOCK, /class="gallery-page"/.test(normalized) ? GALLERY_IMAGE_SIZES : WORK_CARD_IMAGE_SIZES);
   normalized = normalizeContextSizes(normalized, SUPPORT_CARD_IMAGE_BLOCK, SUPPORT_CARD_IMAGE_SIZES);
   normalized = normalizeContextSizes(normalized, ARCHIVE_CARD_IMAGE_BLOCK, ARCHIVE_IMAGE_SIZES);
   normalized = normalized.replace(/<img\b[^>]*\bid=["']modalImage["'][^>]*>/gi, (tag) => (

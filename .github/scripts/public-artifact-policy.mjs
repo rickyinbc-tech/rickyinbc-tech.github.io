@@ -11,6 +11,7 @@ export const EXCLUDED_TOP_LEVEL = new Set([
   "package-lock.json",
   "package.json",
   "seo-status",
+  "README.md",
 ]);
 
 export const RETIRED_PREFIXES = [

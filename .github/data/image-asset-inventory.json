@@ -3,7 +3,7 @@
   "summary": {
     "pages": 181,
     "uniquePrimarySources": 67,
-    "imageUses": 708,
+    "imageUses": 689,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -184,7 +184,7 @@
         "/assets/art/blue-hour-cormorant-fishermen.jpg",
         "/assets/optimized-v2/art/blue-hour-cormorant-fishermen-800.webp"
       ],
-      "uses": 29,
+      "uses": 26,
       "altVariants": [
         "Cormorant fishermen on a river at blue hour with warm lamps reflected in the water.",
         "Cormorant fishermen on bamboo rafts in blue light.",
@@ -198,8 +198,8 @@
       "declaredWidths": [
         800
       ],
-      "responsiveUses": 29,
-      "lazyUses": 20,
+      "responsiveUses": 26,
+      "lazyUses": 17,
       "eagerUses": 9,
       "resolutionStatus": "source-limited-with-display-resample",
       "sourceWidth": 800,
@@ -353,7 +353,7 @@
         "/assets/optimized-v2/art/cigarette-impact-1200.webp",
         "/assets/optimized-v2/art/cigarette-impact-1280.webp"
       ],
-      "uses": 50,
+      "uses": 47,
       "altVariants": [
         "A cigarette breaking into ash and blue smoke against a black background.",
         "Ash and blue smoke exploding from cigarettes against a dark background.",
@@ -375,8 +375,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 50,
-      "lazyUses": 39,
+      "responsiveUses": 47,
+      "lazyUses": 36,
       "eagerUses": 11,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -433,8 +433,8 @@
         1800
       ],
       "responsiveUses": 24,
-      "lazyUses": 18,
-      "eagerUses": 9,
+      "lazyUses": 15,
+      "eagerUses": 12,
       "resolutionStatus": "genuine-higher-original",
       "sourceWidth": 1800,
       "sourceHeight": 1169
@@ -1016,7 +1016,7 @@
         "/assets/optimized-v2/art/light-encroached-homes-1200.webp",
         "/assets/optimized-v2/art/light-encroached-homes-1280.webp"
       ],
-      "uses": 59,
+      "uses": 54,
       "altVariants": [
         "Fisheye photograph of Hong Kong neon signs and residential buildings.",
         "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
@@ -1045,9 +1045,9 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 59,
-      "lazyUses": 37,
-      "eagerUses": 22,
+      "responsiveUses": 54,
+      "lazyUses": 34,
+      "eagerUses": 20,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
       "sourceHeight": 831
@@ -1334,7 +1334,7 @@
         "/assets/optimized-v2/art/swimming-motion-1200.webp",
         "/assets/optimized-v2/art/swimming-motion-1280.webp"
       ],
-      "uses": 34,
+      "uses": 30,
       "altVariants": [
         "Blurred swimmers across a pool.",
         "Blurred swimmers moving across a pool.",
@@ -1351,9 +1351,9 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 34,
-      "lazyUses": 24,
-      "eagerUses": 10,
+      "responsiveUses": 30,
+      "lazyUses": 21,
+      "eagerUses": 9,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
       "sourceHeight": 831
@@ -1519,7 +1519,7 @@
         "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1200.webp",
         "/assets/optimized-v2/projects/horse-riding/horse-riding-02-1800.webp"
       ],
-      "uses": 10,
+      "uses": 9,
       "altVariants": [
         "Close view of a jockey in yellow and green silks riding at speed.",
         "Jockey in yellow and green silks riding a racehorse at speed.",
@@ -1532,8 +1532,8 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 10,
-      "lazyUses": 7,
+      "responsiveUses": 9,
+      "lazyUses": 6,
       "eagerUses": 3,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1800,
@@ -1657,7 +1657,7 @@
         "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1200.webp",
         "/assets/optimized-v2/projects/infrared-hong-kong/infrared-hong-kong-02-1800.webp"
       ],
-      "uses": 10,
+      "uses": 9,
       "altVariants": [
         "Hong Kong garden and temple architecture photographed in infrared colour.",
         "Infrared view of a garden pond with red bridge and foliage.",
@@ -1671,8 +1671,8 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 10,
-      "lazyUses": 7,
+      "responsiveUses": 9,
+      "lazyUses": 6,
       "eagerUses": 3,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1800,
@@ -1900,7 +1900,7 @@
         "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1200.webp",
         "/assets/optimized-v2/projects/nepal-documentary/nepal-documentary-05-1800.webp"
       ],
-      "uses": 10,
+      "uses": 9,
       "altVariants": [
         "Young girl in a red shawl seated beside a green-framed window.",
         "Young girl wearing a red shawl near a window.",
@@ -1912,8 +1912,8 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 10,
-      "lazyUses": 7,
+      "responsiveUses": 9,
+      "lazyUses": 6,
       "eagerUses": 3,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1800,
@@ -2278,7 +2278,7 @@
         "/assets/optimized-v2/projects/travel/travel-08-1200.webp",
         "/assets/optimized-v2/projects/travel/travel-08-1800.webp"
       ],
-      "uses": 10,
+      "uses": 9,
       "altVariants": [
         "Golden rice terraces with people walking through reflective fields.",
         "Three figures walking through sunlit, water-filled rice terraces.",
@@ -2290,8 +2290,8 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 10,
-      "lazyUses": 7,
+      "responsiveUses": 9,
+      "lazyUses": 6,
       "eagerUses": 3,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1800,

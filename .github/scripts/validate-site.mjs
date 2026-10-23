@@ -5,6 +5,7 @@ import {
   ARCHIVE_IMAGE_SIZES,
   adjacentRepeatedSourceCardFamilies,
   FEATURE_IMAGE_SIZES,
+  GALLERY_IMAGE_SIZES,
   HERO_IMAGE_SIZES,
   MODAL_IMAGE_SIZES,
   NATURAL_WIDTH_AVIF_FAMILIES,
@@ -234,7 +235,7 @@ for (const file of await htmlFiles()) {
   }
   for (const match of html.matchAll(/<(?:article|a|button)\b[^>]*class=["'][^"']*\bwork-card\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
     const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
-    if (attribute(tag, "sizes") !== WORK_CARD_IMAGE_SIZES) errors.push(`${relative}: work-card image sizes is stale`);
+    if (attribute(tag, "sizes") !== (/class="gallery-page"/.test(html) ? GALLERY_IMAGE_SIZES : WORK_CARD_IMAGE_SIZES)) errors.push(`${relative}: work-card image sizes is stale`);
   }
   for (const match of html.matchAll(/<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
     const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
@@ -307,8 +308,8 @@ for (const file of await htmlFiles()) {
     if (/(?:part of Ricky Kwok's personal, non-commercial photography archive|個人、非商業攝影檔案的一部分|个人、非商业摄影档案的一部分)/i.test(description)) {
       errors.push(`${relative}: search description still uses the retired boilerplate formula`);
     }
-    if (!html.includes('class="site-header nav-enhanced"')) {
-      errors.push(`${relative}: site header is not using the enhanced responsive shell`);
+    if (!html.includes('class="site-header"') || html.includes('class="site-header nav-enhanced"')) {
+      errors.push(`${relative}: site header must expose navigation before JavaScript enhancement`);
     }
     if (!html.includes(`data-shell-version="${SHELL_VERSION}"`)) {
       errors.push(`${relative}: page is not using the current authoritative shell version`);
@@ -841,7 +842,7 @@ for (const marker of ["addMobileNavigation", "markCurrentNavigation", "aria-expa
 for (const marker of ["--accent: #27666b", "--muted: #516268"]) {
   if (!siteCss.includes(marker)) errors.push(`resilient accessibility stylesheet lacks ${marker}`);
 }
-const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\("([a-z0-9_]+)"/g), (match) => match[1]));
+const implementedEvents = new Set(Array.from(siteJs.matchAll(/trackEvent\(["']([a-z0-9_]+)["']/g), (match) => match[1]));
 for (const eventName of measurementGovernance.events || []) {
   if (!implementedEvents.has(eventName)) errors.push(`measurement governance event is not implemented: ${eventName}`);
 }
