@@ -216,6 +216,7 @@ if (year) year.textContent = new Date().getFullYear();
 
 function canonicalLanguagePath(language) {
   const raw = window.location.pathname.replace(/^\/(?:zh-hant|zh-hans)(?=\/|$)/, "") || "/";
+  if (raw === "/works/" || raw === "/selected-works/") return language === "en" ? "/selected-works/" : `/${language}/works/`;
   if (language === "en") return raw;
   return `/${language}${raw}`.replace(/\/\/$/, "/");
 }
@@ -234,6 +235,7 @@ function addLanguageSwitcher() {
     const link = document.createElement("a");
     link.href = canonicalLanguagePath(code);
     link.textContent = label;
+    link.lang = code;
     if (currentLanguage === code) link.setAttribute("aria-current", "page");
     switcher.append(link);
   });
@@ -275,7 +277,7 @@ function addMobileNavigation() {
   }
 
   toggle.addEventListener("click", () => setMenuOpen(toggle.getAttribute("aria-expanded") !== "true"));
-  navLinks.addEventListener("click", (event) => {
+  for (const region of [navLinks, languageSwitcher]) region.addEventListener("click", (event) => {
     if (event.target.closest("a")) setMenuOpen(false);
   });
   document.addEventListener("keydown", (event) => {
@@ -318,226 +320,341 @@ addLanguageSwitcher();
 markCurrentNavigation();
 addMobileNavigation();
 
-const modal = document.querySelector("#artModal");
-const modalImage = document.querySelector("#modalImage");
-const modalTitle = document.querySelector("#modalTitle");
-const modalMeta = document.querySelector("#modalMeta");
-const modalNote = document.querySelector("#modalNote");
-const closeButton = document.querySelector(".modal-close");
-const MODAL_IMAGE_SIZES = "(max-width: 900px) calc(100vw - 56px), (max-width: 1236px) calc(100vw - 360px), 876px";
-let previousFocus = null;
-let modalInertTargets = [];
-
-function openModal(card) {
-  if (!modal || !modalImage || !closeButton) return;
-  previousFocus = document.activeElement;
-  const preview = card.matches(".work-card")
-    ? card.querySelector("img")
-    : card.closest(".work-card")?.querySelector("img");
-  const responsiveSrcset = preview?.getAttribute("srcset");
-  if (responsiveSrcset) {
-    modalImage.setAttribute("srcset", responsiveSrcset);
-    modalImage.setAttribute("sizes", MODAL_IMAGE_SIZES);
-  } else {
-    modalImage.removeAttribute("srcset");
-    modalImage.removeAttribute("sizes");
-  }
-  modalImage.src = card.dataset.full || preview?.currentSrc || preview?.src || "";
-  modalImage.alt = preview?.alt || "";
-  if (preview?.width && preview?.height) {
-    modalImage.width = preview.width;
-    modalImage.height = preview.height;
-  }
-  if (modalTitle) modalTitle.textContent = card.dataset.title || "Artwork";
-  if (modalMeta) modalMeta.textContent = card.dataset.meta || "";
-  if (modalNote) modalNote.textContent = card.dataset.note || "";
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  modalInertTargets = Array.from(document.body.children).filter((element) => element !== modal && element.tagName !== "SCRIPT" && !element.inert);
-  modalInertTargets.forEach((element) => { element.inert = true; });
-  document.body.style.overflow = "hidden";
-  closeButton.focus();
+// URL state is shareable; scroll and focus are private to this browser tab.
+const GALLERY_FILTERS = new Set(['all', 'ritual', 'collision', 'motion', 'city-light']);
+const normalizeSearch = value => String(value).normalize('NFKC').toLocaleLowerCase().trim();
+const galleryPath = language => language === 'en' ? '/selected-works/' : `/${language}/works/`;
+function readGalleryState(value) {
+  const url = new URL(value, window.location.origin);
+  const filter = url.hash.slice(1);
+  return { filter: GALLERY_FILTERS.has(filter) ? filter : 'all', query: url.searchParams.get('q') || '' };
 }
-
-function closeModal() {
-  if (!modal) return;
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-  modalInertTargets.forEach((element) => { element.inert = false; });
-  modalInertTargets = [];
-  document.body.style.overflow = "";
-  previousFocus?.focus();
+function matchesGallery(item, state) {
+  const terms = normalizeSearch(state.query).split(/\s+/).filter(Boolean);
+  return (state.filter === 'all' || normalizeSearch(item.series) === state.filter)
+    && terms.every(term => normalizeSearch(item.search).includes(term));
 }
+function safeCollection(value) {
+  if (!value) return null;
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.origin !== window.location.origin) return null;
+    if (!/^\/(?:zh-hant\/|zh-hans\/)?(?:selected-works\/|works\/|series\/(?:ritual|collision|motion|city-light)\/)$/.test(url.pathname)) return null;
+    const state = readGalleryState(url);
+    url.search = '';
+    if (state.query) url.searchParams.set('q', state.query);
+    url.hash = state.filter === 'all' ? '' : state.filter;
+    return url;
+  } catch { return null; }
+}
+function localizeCollection(value, language) {
+  const url = safeCollection(value);
+  if (!url) return null;
+  const section = url.pathname.replace(/^\/(?:zh-hant|zh-hans)(?=\/)/, '');
+  url.pathname = section === '/selected-works/' || section === '/works/'
+    ? galleryPath(language)
+    : `${language === 'en' ? '' : `/${language}`}${section}`;
+  return `${url.pathname}${url.search}${url.hash}`;
+}
+const contextKey = url => `rickykwok.browse.v1:${url.pathname}${url.search}${url.hash}`;
+function savedContext(url) {
+  try { return JSON.parse(window.sessionStorage.getItem(contextKey(url)) || 'null'); }
+  catch { return null; }
+}
+function saveContext(url, value) {
+  try { window.sessionStorage.setItem(contextKey(url), JSON.stringify(value)); }
+  catch { /* Navigation still works when browser storage is blocked. */ }
+}
+const browseCopy = {
+  en: { search: 'Find a photograph', placeholder: 'Search titles, subjects or series', empty: 'No photographs match these filters.', reset: 'Clear search and filters', count: n => `${n} of 12 photographs`, back: 'Back to gallery', seriesBack: 'Back to series', previous: 'Previous photograph', next: 'Next photograph', sequence: 'Browse photographs', selected: 'Selected photographs', open: 'View larger', close: 'Close', viewer: 'Enlarged photograph', detail: 'View artwork record', position: (n, total) => `${n} of ${total}` },
+  'zh-hant': { search: '尋找作品', placeholder: '搜尋作品名稱、主題或系列', empty: '沒有符合篩選條件的作品。', reset: '清除搜尋與篩選', count: n => `12 件作品中顯示 ${n} 件`, back: '返回作品選輯', seriesBack: '返回系列', previous: '上一張作品', next: '下一張作品', sequence: '瀏覽作品', selected: '精選作品', open: '放大觀看', close: '關閉', viewer: '放大作品', detail: '查看作品記錄', position: (n, total) => `第 ${n} 張，共 ${total} 張` },
+  'zh-hans': { search: '查找作品', placeholder: '搜索作品名称、主题或系列', empty: '没有符合筛选条件的作品。', reset: '清除搜索与筛选', count: n => `12 件作品中显示 ${n} 件`, back: '返回作品选辑', seriesBack: '返回系列', previous: '上一张作品', next: '下一张作品', sequence: '浏览作品', selected: '精选作品', open: '放大查看', close: '关闭', viewer: '放大作品', detail: '查看作品记录', position: (n, total) => `第 ${n} 张，共 ${total} 张` }
+};
+const uiCopy = browseCopy[analyticsLanguage] || browseCopy.en;
 
-document.querySelectorAll(".work-zoom, button.work-card[data-full]").forEach((card) => {
-  card.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    openModal(card);
-  });
-});
-closeButton?.addEventListener("click", closeModal);
-modal?.addEventListener("click", (event) => {
-  if (event.target === modal) closeModal();
-});
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Tab" && modal?.classList.contains("is-open")) {
-    event.preventDefault();
-    closeButton?.focus();
-    return;
-  }
-  if (event.key === "Escape" && modal?.classList.contains("is-open")) closeModal();
-});
-
-// Browse the gallery without losing the chosen series when following a work
-// and returning. Search text stays in this page and is never sent to Analytics.
 function enhanceGallery() {
-  const filterButtons = [...document.querySelectorAll("[data-filter]")];
-  const filterItems = [...document.querySelectorAll("[data-series]")];
-  const filterRow = document.querySelector(".filter-row");
-  const grid = document.querySelector(".gallery-grid");
-  if (!filterRow || !grid || !filterButtons.length) return;
-  const copy = {
-    en: { search: "Find a photograph", placeholder: "Search titles, subjects or series", empty: "No photographs match this search.", reset: "Show all photographs", count: n => `${n} ${n === 1 ? "photograph" : "photographs"} shown` },
-    "zh-hant": { search: "尋找作品", placeholder: "搜尋作品名稱、主題或系列", empty: "沒有符合搜尋條件的作品。", reset: "顯示所有作品", count: n => `顯示 ${n} 件作品` },
-    "zh-hans": { search: "查找作品", placeholder: "搜索作品名称、主题或系列", empty: "没有符合搜索条件的作品。", reset: "显示所有作品", count: n => `显示 ${n} 件作品` }
-  }[analyticsLanguage] || { search: "Find a photograph", placeholder: "Search photographs", empty: "No photographs match.", reset: "Show all photographs", count: n => `${n} photographs shown` };
-  const search = document.createElement("div");
-  search.className = "gallery-search";
-  const label = document.createElement("label");
-  label.htmlFor = "gallery-search";
-  label.textContent = copy.search;
-  const input = document.createElement("input");
-  input.id = "gallery-search";
-  input.type = "search";
-  input.placeholder = copy.placeholder;
-  input.autocomplete = "off";
-  input.setAttribute("aria-controls", "gallery-results");
-  grid.id = "gallery-results";
+  const grid = document.querySelector('.gallery-page .gallery-grid');
+  const filterRow = document.querySelector('.filter-row');
+  if (!grid || !filterRow) return;
+  document.body.classList.add('gallery-enhanced');
+  const filterButtons = [...filterRow.querySelectorAll('[data-filter]')];
+  const filterItems = [...grid.children];
+  const search = document.createElement('div');
+  search.className = 'gallery-search';
+  const label = document.createElement('label');
+  label.htmlFor = 'gallery-search';
+  label.textContent = uiCopy.search;
+  const input = document.createElement('input');
+  Object.assign(input, { id: 'gallery-search', type: 'search', placeholder: uiCopy.placeholder, autocomplete: 'off' });
+  input.setAttribute('aria-controls', 'gallery-results');
+  grid.id = 'gallery-results';
   search.append(label, input);
   filterRow.before(search);
-  const status = document.createElement("p");
-  status.className = "gallery-status";
-  status.setAttribute("role", "status");
-  status.setAttribute("aria-live", "polite");
-  status.setAttribute("aria-atomic", "true");
-  filterRow.append(status);
-  const empty = document.createElement("div");
-  empty.className = "gallery-empty";
-  empty.hidden = true;
-  const message = document.createElement("p");
-  message.textContent = copy.empty;
-  const reset = document.createElement("button");
-  reset.type = "button";
-  reset.textContent = copy.reset;
+  const status = document.createElement('p');
+  status.className = 'gallery-status';
+  status.setAttribute('role', 'status');
+  status.setAttribute('aria-live', 'polite');
+  status.setAttribute('aria-atomic', 'true');
+  filterRow.after(status);
+  const empty = document.createElement('div');
+  empty.className = 'gallery-empty';
+  const message = document.createElement('p');
+  message.textContent = uiCopy.empty;
+  const reset = document.createElement('button');
+  reset.type = 'button';
+  reset.textContent = uiCopy.reset;
   empty.append(message, reset);
   grid.after(empty);
-  const normalize = value => value.normalize("NFKC").toLocaleLowerCase().trim();
-  const searchable = filterItems.map(item => normalize(`${item.textContent} ${item.querySelector("img")?.alt || ""} ${item.dataset.series}`));
-  const validFilters = new Set(filterButtons.map(button => button.dataset.filter));
-  const fromHash = () => validFilters.has(window.location.hash.slice(1)) ? window.location.hash.slice(1) : "all";
-  let selected = fromHash();
-  const filterStatusLabel = copy.count;
+  let state = readGalleryState(window.location.href);
+  input.value = state.query;
+  const searchable = filterItems.map(item => ({ series: item.dataset.series, search: item.dataset.search || `${item.querySelector('.work-caption')?.textContent || ''} ${item.querySelector('img')?.alt || ''} ${item.dataset.series}` }));
+  const filterStatusLabel = uiCopy.count;
   function applyFilter() {
-    const terms = normalize(input.value).split(/\s+/).filter(Boolean);
     let count = 0;
     filterItems.forEach((item, index) => {
-      const visible = (selected === "all" || item.dataset.series === selected) && terms.every(term => searchable[index].includes(term));
-      item.hidden = !visible;
-      if (visible) count++;
+      item.hidden = !matchesGallery(searchable[index], state);
+      if (!item.hidden) count++;
     });
     filterButtons.forEach(button => {
-      const active = button.dataset.filter === selected;
-      button.classList.toggle("is-active", active);
-      button.setAttribute("aria-pressed", String(active));
+      const active = button.dataset.filter === state.filter;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
     });
     status.textContent = filterStatusLabel(count);
     empty.hidden = count !== 0;
+    refreshCollectionLinks();
+    refreshLanguageLinks();
   }
-  function updateHash() {
+  function updateUrl(push) {
     const url = new URL(window.location.href);
-    url.hash = selected === "all" ? "" : selected;
-    if (url.href !== window.location.href) window.history.pushState(null, "", url);
+    if (state.query) url.searchParams.set('q', state.query); else url.searchParams.delete('q');
+    url.hash = state.filter === 'all' ? '' : state.filter;
+    if (url.href !== window.location.href) window.history[push ? 'pushState' : 'replaceState'](null, '', url);
+    applyFilter();
   }
-  filterButtons.forEach(button => button.addEventListener("click", () => {
-    selected = button.dataset.filter;
-    updateHash();
-    applyFilter();
-    trackEvent("gallery_filter", { series: selected, content_language: analyticsLanguage });
+  filterButtons.forEach(button => button.addEventListener('click', () => {
+    state.filter = button.dataset.filter;
+    updateUrl(true);
+    trackEvent('gallery_filter', { series: state.filter, content_language: analyticsLanguage });
   }));
-  input.addEventListener("input", applyFilter);
-  reset.addEventListener("click", () => {
-    selected = "all";
-    input.value = "";
-    updateHash();
-    applyFilter();
-    input.focus();
+  input.addEventListener('input', () => { state.query = input.value; updateUrl(false); });
+  reset.addEventListener('click', () => {
+    state = { filter: 'all', query: '' }; input.value = ''; updateUrl(true); input.focus();
   });
-  window.addEventListener("popstate", () => { selected = fromHash(); applyFilter(); });
-  window.addEventListener("hashchange", () => { selected = fromHash(); applyFilter(); });
-  window.addEventListener("pageshow", applyFilter);
+  const fromUrl = () => { state = readGalleryState(window.location.href); input.value = state.query; applyFilter(); };
+  window.addEventListener('popstate', fromUrl);
+  window.addEventListener('hashchange', fromUrl);
+  window.addEventListener('pageshow', fromUrl);
   applyFilter();
 }
 
-// Native dialog provides focus containment, Escape dismissal and background
-// inertness. The original static image remains available without JavaScript.
-function enhanceArtworkViewer() {
-  const figure = document.querySelector(".artwork-figure");
-  const photo = figure?.querySelector(".feature-image img");
-  if (!photo) return;
-  const dialog = document.createElement("dialog");
-  if (typeof dialog.showModal !== "function") return;
-  const copy = {
-    en: { open: "View larger", close: "Close", label: "Enlarged photograph" },
-    "zh-hant": { open: "放大觀看", close: "關閉", label: "放大作品" },
-    "zh-hans": { open: "放大查看", close: "关闭", label: "放大作品" }
-  }[analyticsLanguage] || { open: "View larger", close: "Close", label: "Enlarged photograph" };
-  dialog.className = "image-viewer";
-  dialog.setAttribute("aria-label", copy.label);
-  const toolbar = document.createElement("div");
-  toolbar.className = "viewer-toolbar";
-  const title = document.createElement("p");
-  title.textContent = document.querySelector("h1")?.textContent || copy.label;
-  const close = document.createElement("button");
-  close.type = "button";
-  close.className = "viewer-close";
-  close.textContent = copy.close;
-  toolbar.append(title, close);
-  const enlarged = document.createElement("img");
-  enlarged.alt = photo.alt;
-  enlarged.decoding = "async";
-  enlarged.width = Number(photo.getAttribute("width"));
-  enlarged.height = Number(photo.getAttribute("height"));
-  dialog.append(toolbar, enlarged);
-  document.body.append(dialog);
-  const trigger = document.createElement("button");
-  trigger.type = "button";
-  trigger.className = "artwork-enlarge";
-  trigger.setAttribute("aria-haspopup", "dialog");
-  trigger.setAttribute("aria-label", `${copy.open}: ${title.textContent}`);
-  photo.before(trigger);
-  const hint = document.createElement("span");
-  hint.className = "artwork-enlarge-label";
-  hint.textContent = copy.open;
-  trigger.append(photo, hint);
-  trigger.addEventListener("click", () => {
-    enlarged.sizes = "calc(100vw - 68px)";
-    enlarged.srcset = photo.getAttribute("srcset") || "";
-    enlarged.src = photo.src;
-    dialog.showModal();
-    document.body.classList.add("viewer-open");
-    close.focus();
-  });
-  close.addEventListener("click", () => dialog.close());
-  dialog.addEventListener("keydown", event => {
-    if (event.key === "Tab") { event.preventDefault(); close.focus(); }
-  });
-  dialog.addEventListener("click", event => { if (event.target === dialog) dialog.close(); });
-  dialog.addEventListener("close", () => {
-    document.body.classList.remove("viewer-open");
-    trigger.focus({ preventScroll: true });
+function refreshLanguageLinks() {
+  document.querySelectorAll('.language-switcher a').forEach(link => {
+    const url = new URL(link.href, window.location.origin);
+    const language = (link.lang || 'en').toLowerCase();
+    if (document.querySelector('.gallery-page')) {
+      const state = readGalleryState(window.location.href);
+      if (state.query) url.searchParams.set('q', state.query); else url.searchParams.delete('q');
+      url.hash = state.filter === 'all' ? '' : state.filter;
+    }
+    const from = localizeCollection(new URL(window.location.href).searchParams.get('from'), language);
+    if (from) url.searchParams.set('from', from);
+    link.href = `${url.pathname}${url.search}${url.hash}`;
   });
 }
+function collectionItems() {
+  return [...document.querySelectorAll('main .gallery-grid a[href]')]
+    .filter(link => !link.closest('[hidden]') && /\/works\/[a-z0-9-]+\/$/.test(link.pathname))
+    .map(link => ({ href: link.pathname, title: link.querySelector('strong')?.textContent || link.textContent.trim() }));
+}
+function refreshCollectionLinks() {
+  const from = safeCollection(window.location.href);
+  if (!from) return;
+  document.querySelectorAll('main .gallery-grid a[href]').forEach(link => {
+    if (!/\/works\/[a-z0-9-]+\/$/.test(link.pathname)) return;
+    const url = new URL(link.href);
+    url.searchParams.set('from', `${from.pathname}${from.search}${from.hash}`);
+    link.href = `${url.pathname}${url.search}${url.hash}`;
+  });
+}
+function enhanceCollectionReturn() {
+  const collection = safeCollection(window.location.href);
+  if (collection) {
+    const remember = focus => saveContext(new URL(window.location.href), { y: window.scrollY, focus, items: collectionItems() });
+    document.querySelectorAll('main .gallery-grid a[href]').forEach(link => {
+      link.addEventListener('click', () => remember(link.pathname));
+    });
+    window.addEventListener('pagehide', () => {
+      const previous = savedContext(new URL(window.location.href));
+      remember(previous?.focus || '');
+    });
+    const restore = event => {
+      let returning = event?.persisted || window.performance?.getEntriesByType('navigation')[0]?.type === 'back_forward';
+      try { returning ||= /\/works\/[a-z0-9-]+\/$/.test(new URL(document.referrer).pathname); } catch { /* Direct visit. */ }
+      const saved = savedContext(new URL(window.location.href));
+      if (!returning || !saved || !Number.isFinite(saved.y)) return;
+      window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+        const link = [...document.querySelectorAll('main .gallery-grid a[href]')].find(item => item.pathname === saved.focus && !item.closest('[hidden]'));
+        link?.focus({ preventScroll: true });
+        window.scrollTo({ top: saved.y, behavior: 'instant' });
+      }));
+    };
+    window.addEventListener('pageshow', restore);
+    refreshCollectionLinks();
+  }
+  const data = document.querySelector('#archive-navigation');
+  const pagination = document.querySelector('.artwork-pagination');
+  if (!data || !pagination) return;
+  const model = JSON.parse(data.textContent);
+  const from = safeCollection(new URL(window.location.href).searchParams.get('from'));
+  const back = document.querySelector('[data-archive-return]');
+  if (from && back) {
+    back.href = `${from.pathname}${from.search}${from.hash}`;
+    back.textContent = from.pathname.includes('/series/') ? uiCopy.seriesBack : uiCopy.back;
+  }
+  let items = model.series;
+  let label = model.seriesName;
+  if (from) {
+    if (from.pathname === galleryPath(analyticsLanguage)) {
+      items = model.gallery.filter(item => matchesGallery(item, readGalleryState(from)));
+      label = uiCopy.selected;
+    } else if (from.pathname === model.seriesPath) {
+      items = model.series;
+    } else {
+      const saved = savedContext(from);
+      if (Array.isArray(saved?.items)) items = saved.items;
+    }
+  }
+  const index = items.findIndex(item => item.href === window.location.pathname);
+  if (index < 0) return;
+  pagination.replaceChildren();
+  const description = document.createElement('p');
+  description.className = 'sequence-label';
+  description.textContent = `${label} · ${uiCopy.position(index + 1, items.length)}`;
+  pagination.append(description);
+  for (const [offset, text] of [[-1, uiCopy.previous], [1, uiCopy.next]]) {
+    const item = items[index + offset];
+    if (!item) continue;
+    const url = new URL(item.href, window.location.origin);
+    if (from) url.searchParams.set('from', `${from.pathname}${from.search}${from.hash}`);
+    const link = document.createElement('a');
+    link.href = `${url.pathname}${url.search}`;
+    link.className = offset < 0 ? 'sequence-previous' : 'sequence-next';
+    link.rel = offset < 0 ? 'prev' : 'next';
+    const small = document.createElement('small'); small.textContent = text;
+    const title = document.createElement('span'); title.textContent = item.title;
+    link.append(small, title); pagination.append(link);
+  }
+}
 
+// One native dialog serves gallery, series, project and artwork photographs.
+function enhanceImageViewer() {
+  if (!document.querySelector('.work-card, .artwork-figure, .archive-photo')) return;
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  document.body.classList.add('viewer-ready');
+  dialog.className = 'image-viewer';
+  dialog.setAttribute('aria-label', uiCopy.viewer);
+  const toolbar = document.createElement('div'); toolbar.className = 'viewer-toolbar';
+  const title = document.createElement('p'); title.id = 'viewer-title';
+  const close = document.createElement('button'); close.type = 'button'; close.className = 'viewer-close'; close.textContent = uiCopy.close;
+  toolbar.append(title, close);
+  const stage = document.createElement('div'); stage.className = 'viewer-stage';
+  const enlarged = document.createElement('img'); enlarged.decoding = 'async'; stage.append(enlarged);
+  const controls = document.createElement('div'); controls.className = 'viewer-controls';
+  const previous = document.createElement('button'); previous.type = 'button'; previous.textContent = uiCopy.previous;
+  const position = document.createElement('p'); position.setAttribute('role', 'status'); position.setAttribute('aria-live', 'polite');
+  const next = document.createElement('button'); next.type = 'button'; next.textContent = uiCopy.next;
+  const detail = document.createElement('a'); detail.textContent = uiCopy.detail;
+  controls.append(previous, position, next, detail);
+  dialog.append(toolbar, stage, controls); document.body.append(dialog);
+  let opener, sequence = [], index = 0;
+  const records = [];
+  function show() {
+    const record = sequence[index];
+    title.textContent = record.title;
+    enlarged.alt = record.photo.alt;
+    enlarged.width = Number(record.photo.getAttribute('width'));
+    enlarged.height = Number(record.photo.getAttribute('height'));
+    const responsiveSrcset = record.photo.closest('picture')?.querySelector('source[type="image/webp"]')?.srcset || record.photo.getAttribute('srcset');
+    const MODAL_IMAGE_SIZES = 'calc(100vw - 48px)';
+    if (responsiveSrcset) { enlarged.srcset = responsiveSrcset; enlarged.sizes = MODAL_IMAGE_SIZES; }
+    else { enlarged.removeAttribute('srcset'); enlarged.removeAttribute('sizes'); }
+    enlarged.src = record.full || record.photo.src;
+    position.textContent = uiCopy.position(index + 1, sequence.length);
+    previous.hidden = next.hidden = position.hidden = sequence.length < 2;
+    previous.disabled = index === 0; next.disabled = index === sequence.length - 1;
+    detail.hidden = !record.link;
+    if (record.link) detail.href = record.link.href;
+  }
+  function step(offset) {
+    const nextIndex = index + offset;
+    if (nextIndex < 0 || nextIndex >= sequence.length) return;
+    index = nextIndex; show();
+  }
+  function register(trigger, photo, container, name, full, link) {
+    const group = container.closest('.gallery-grid, .archive-photo-grid') || container;
+    const record = { trigger, photo, container, group, title: name || photo.alt, full, link };
+    records.push(record);
+    trigger.setAttribute('aria-haspopup', 'dialog');
+    trigger.setAttribute('aria-label', `${uiCopy.open}: ${record.title}`);
+    trigger.addEventListener('click', event => {
+      event.preventDefault();
+      opener = trigger;
+      sequence = records.filter(item => item.group === group && !item.container.closest('[hidden]'));
+      index = sequence.indexOf(record); show();
+      dialog.showModal(); document.body.classList.add('viewer-open'); close.focus();
+    });
+  }
+  document.querySelectorAll('a.work-card:not([data-full])').forEach(link => {
+    const wrapper = document.createElement('article'); wrapper.className = 'work-card';
+    if (link.dataset.series) wrapper.dataset.series = link.dataset.series;
+    if (link.dataset.search) wrapper.dataset.search = link.dataset.search;
+    link.before(wrapper); wrapper.append(link);
+    link.classList.remove('work-card'); link.classList.add('work-card-link');
+    link.removeAttribute('data-series');
+  });
+  document.querySelectorAll('.work-card').forEach(card => {
+    const photo = card.querySelector('img'); if (!photo) return;
+    const link = card.querySelector('a.work-card-link');
+    let trigger = card.matches('button, a[data-full]') ? card : card.querySelector('.work-zoom');
+    if (!trigger) { trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'work-zoom'; card.append(trigger); }
+    if (trigger !== card) trigger.textContent = uiCopy.open;
+    register(trigger, photo, card, card.querySelector('strong')?.textContent || card.dataset.title, trigger.dataset.full || card.dataset.full, link);
+  });
+  document.querySelectorAll('.artwork-figure, .archive-photo').forEach(figure => {
+    const photo = figure.querySelector('img'); if (!photo) return;
+    const target = photo.closest('picture') || photo;
+    const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'artwork-enlarge';
+    target.before(trigger); trigger.append(target);
+    const hint = document.createElement('span'); hint.className = 'artwork-enlarge-label'; hint.textContent = uiCopy.open; trigger.append(hint);
+    register(trigger, photo, figure, figure.querySelector('figcaption strong')?.textContent || document.querySelector('h1')?.textContent, figure.dataset.full, null);
+  });
+  close.addEventListener('click', () => dialog.close());
+  previous.addEventListener('click', () => step(-1)); next.addEventListener('click', () => step(1));
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('keydown', event => {
+    if (event.key === 'Tab') {
+      const targets = [...dialog.querySelectorAll('button:not([disabled]), a[href]')].filter(node => !node.hidden && node.getClientRects().length);
+      const first = targets[0], last = targets.at(-1);
+      if ((event.shiftKey && document.activeElement === first) || (!event.shiftKey && document.activeElement === last)) {
+        event.preventDefault(); (event.shiftKey ? last : first)?.focus();
+      }
+    }
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); step(event.key === 'ArrowLeft' ? -1 : 1); }
+  });
+  let touch;
+  stage.addEventListener('pointerdown', event => { if (event.pointerType === 'touch') touch = { x: event.clientX, y: event.clientY }; });
+  stage.addEventListener('pointercancel', () => { touch = null; });
+  stage.addEventListener('pointerup', event => {
+    if (!touch) return;
+    const dx = event.clientX - touch.x, dy = event.clientY - touch.y; touch = null;
+    if (Math.abs(dx) > 55 && Math.abs(dy) < 80) step(dx < 0 ? 1 : -1);
+  });
+  dialog.addEventListener('close', () => { document.body.classList.remove('viewer-open'); opener?.focus({ preventScroll: true }); });
+}
+
+enhanceImageViewer();
 enhanceGallery();
-enhanceArtworkViewer();
+enhanceCollectionReturn();
+refreshLanguageLinks();
