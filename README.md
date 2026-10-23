@@ -21,7 +21,8 @@ http://127.0.0.1:4173/selected-works/ for the gallery. Stop the preview with Ctr
 
 The preview serves the validated public artifact in `_site/`. After changing
 source files, run `npm run check` to rebuild it, then refresh the browser.
-Production deployment is separate; this implementation has not been published.
+The production site is https://rickykwok.com/. Releases use GitHub Pages and
+the existing Cloudflare edge worker; local preview does not publish changes.
 
 ## Editing
 
