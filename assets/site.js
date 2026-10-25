@@ -92,21 +92,21 @@ function declineAnalytics() {
 const analyticsCopy = {
   en: {
     label: "Optional analytics",
-    message: "Allow privacy-conscious Google Analytics page views and gallery interactions to help improve this archive? Advertising signals stay off.",
+    message: "Allow Google Analytics page and gallery statistics? Advertising stays off.",
     allow: "Allow analytics",
     decline: "Decline",
     choices: "Analytics choices"
   },
   "zh-hant": {
     label: "自選瀏覽統計",
-    message: "是否允許以注重私隱的 Google Analytics 頁面瀏覽及作品互動統計協助改善本檔案？廣告訊號會保持關閉。",
+    message: "是否允許 Google Analytics 頁面及作品瀏覽統計？廣告訊號保持關閉。",
     allow: "允許統計",
     decline: "拒絕",
     choices: "瀏覽統計選擇"
   },
   "zh-hans": {
     label: "自选浏览统计",
-    message: "是否允许以注重隐私的 Google Analytics 页面浏览及作品互动统计协助改善本档案？广告信号会保持关闭。",
+    message: "是否允许 Google Analytics 页面及作品浏览统计？广告信号保持关闭。",
     allow: "允许统计",
     decline: "拒绝",
     choices: "浏览统计选择"
@@ -395,7 +395,11 @@ function enhanceGallery() {
   status.setAttribute('role', 'status');
   status.setAttribute('aria-live', 'polite');
   status.setAttribute('aria-atomic', 'true');
-  filterRow.after(status);
+  const summary = document.createElement('div');
+  summary.className = 'gallery-summary';
+  const clear = document.createElement('button');
+  clear.type = 'button'; clear.className = 'gallery-reset'; clear.textContent = uiCopy.reset;
+  summary.append(status, clear); filterRow.after(summary);
   const empty = document.createElement('div');
   empty.className = 'gallery-empty';
   const message = document.createElement('p');
@@ -421,6 +425,7 @@ function enhanceGallery() {
       button.setAttribute('aria-pressed', String(active));
     });
     status.textContent = filterStatusLabel(count);
+    clear.hidden = count === 0 || (state.filter === 'all' && !state.query);
     empty.hidden = count !== 0;
     refreshCollectionLinks();
     refreshLanguageLinks();
@@ -438,9 +443,11 @@ function enhanceGallery() {
     trackEvent('gallery_filter', { series: state.filter, content_language: analyticsLanguage });
   }));
   input.addEventListener('input', () => { state.query = input.value; updateUrl(false); });
-  reset.addEventListener('click', () => {
+  function resetGallery() {
     state = { filter: 'all', query: '' }; input.value = ''; updateUrl(true); input.focus();
-  });
+  }
+  reset.addEventListener('click', resetGallery);
+  clear.addEventListener('click', resetGallery);
   const fromUrl = () => { state = readGalleryState(window.location.href); input.value = state.query; applyFilter(); };
   window.addEventListener('popstate', fromUrl);
   window.addEventListener('hashchange', fromUrl);
@@ -549,7 +556,7 @@ function enhanceCollectionReturn() {
 
 // One native dialog serves gallery, series, project and artwork photographs.
 function enhanceImageViewer() {
-  if (!document.querySelector('.work-card, .artwork-figure, .archive-photo')) return;
+  if (!document.querySelector('.work-card, .artwork-figure, .archive-photo, .home-feature')) return;
   const dialog = document.createElement('dialog');
   if (typeof dialog.showModal !== 'function') return;
   document.body.classList.add('viewer-ready');
@@ -621,6 +628,16 @@ function enhanceImageViewer() {
     if (!trigger) { trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'work-zoom'; card.append(trigger); }
     if (trigger !== card) trigger.textContent = uiCopy.open;
     register(trigger, photo, card, card.querySelector('strong')?.textContent || card.dataset.title, trigger.dataset.full || card.dataset.full, link);
+  });
+  document.querySelectorAll('.home-feature').forEach(figure => {
+    const photo = figure.querySelector('img');
+    const link = figure.querySelector('.home-feature-link');
+    const caption = figure.querySelector('figcaption');
+    if (!photo || !link || !caption) return;
+    const trigger = document.createElement('button');
+    trigger.type = 'button'; trigger.className = 'home-zoom'; trigger.textContent = uiCopy.open;
+    caption.append(trigger);
+    register(trigger, photo, figure, caption.querySelector('a')?.textContent, null, link);
   });
   document.querySelectorAll('.artwork-figure, .archive-photo').forEach(figure => {
     const photo = figure.querySelector('img'); if (!photo) return;

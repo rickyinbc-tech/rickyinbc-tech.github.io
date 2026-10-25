@@ -11,8 +11,10 @@ function browser(...args) {
   return result.data;
 }
 const evaluate = source => browser('eval', source).result;
-const open = path => browser('open', `${base}${path}`);
-const click = selector => browser('click', selector);
+// Navigation may finish parsing before the deferred enhancement script runs.
+const ready = () => browser('wait', '--fn', 'document.querySelector(".site-header.nav-enhanced") !== null');
+const open = path => { const result = browser('open', `${base}${path}`); ready(); return result; };
+const click = selector => { const result = browser('click', selector); ready(); return result; };
 const wait = source => browser('wait', '--fn', source);
 const check = (name, callback) => { callback(); results.push(name); console.log(`PASS ${name}`); };
 try {
@@ -50,6 +52,14 @@ try {
       assert.equal(evaluate('document.querySelector(".gallery-empty").hidden'), false);
       assert.equal(evaluate('document.querySelector(".gallery-status").textContent'), '0 of 12 photographs');
       click('.gallery-empty button');
+      assert.equal(evaluate('document.querySelectorAll(".gallery-grid > :not([hidden])").length'), 12);
+      assert.equal(evaluate('document.activeElement.id'), 'gallery-search');
+      click('[data-filter="motion"]');
+      assert.equal(evaluate('document.querySelector(".gallery-reset").hidden'), false);
+      browser('fill', '#gallery-search', 'swimming');
+      click('.gallery-reset');
+      assert.equal(evaluate('location.search + location.hash'), '');
+      assert.equal(evaluate('document.querySelector(".gallery-reset").hidden'), true);
       assert.equal(evaluate('document.querySelectorAll(".gallery-grid > :not([hidden])").length'), 12);
       assert.equal(evaluate('document.activeElement.id'), 'gallery-search');
     });
@@ -98,6 +108,30 @@ try {
         assert.ok(evaluate('location.pathname').endsWith('/works/night-fishermen/'));
         assert.ok(evaluate('document.querySelector("[data-archive-return]").href').includes('q=night#ritual'));
       }
+    });
+    check('Opening photographs have a translated viewer, record link and series shortcut', () => {
+      for (const [path, language] of [['/', 'en'], ['/zh-hant/', 'zh-Hant'], ['/zh-hans/', 'zh-Hans']]) {
+        open(path);
+        const prefix = language === 'en' ? '' : `/${language.toLowerCase()}`;
+        assert.equal(evaluate('document.querySelector(".home-feature-link").pathname'), `${prefix}/works/light-encroached-homes/`);
+        click('.home-zoom');
+        assert.equal(evaluate('document.querySelector("dialog").open'), true);
+        assert.equal(evaluate('document.querySelector(".viewer-controls a").pathname'), `${prefix}/works/light-encroached-homes/`);
+        assert.equal(evaluate('document.querySelector(".viewer-controls button").hidden'), true);
+        browser('press', 'Escape');
+        assert.equal(evaluate('document.activeElement.className'), 'home-zoom');
+        click('.hero a[href="#home-series"]');
+        assert.equal(evaluate('location.hash'), '#home-series');
+        assert.ok(evaluate('document.querySelector("#home-series .series") !== null'));
+        assert.equal(evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
+      }
+    });
+    check('The full opening photograph fits short desktop viewports', () => {
+      browser('set', 'viewport', '1280', '633');
+      open('/');
+      assert.equal(evaluate('document.querySelector(".home-feature").getBoundingClientRect().bottom <= innerHeight'), true);
+      assert.equal(evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
+      browser('set', 'viewport', '390', '844');
     });
     check('Mobile menu supports keyboard opening, Escape and focus restoration', () => {
       open('/');
