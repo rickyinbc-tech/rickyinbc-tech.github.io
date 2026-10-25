@@ -44,10 +44,16 @@ sitemaps and governance inventories. `npm run build:public` produces `_site/`.
 
 ## Browsing contract
 
+The homepage photograph has a caption, a link to its artwork record and an
+optional enlarged view. The series shortcut jumps to the four principal series.
+The opening image preserves its composition and scales with the viewport height.
+
 The gallery is a selection of twelve photographs, rather than the entire
 archive. Its four filter hashes (`#ritual`, `#collision`, `#motion`,
 `#city-light`) remain compatible. Search uses `?q=...` and intersects the filter.
 Documented titles and image descriptions provide cross-language search aliases.
+An active search or series filter has a single clear-all control that restores
+the full selection and returns focus to the search field.
 
 Artwork links carry a validated local `from` collection URL. Scroll and focus
 are saved only in this browser tab's session storage. Both the explicit return
