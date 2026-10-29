@@ -17,6 +17,18 @@ import {
 
 const PROJECT_RECORD_PAGE = /^(?:zh-han[st]\/)?projects\/[a-z0-9-]+\/index\.html$/;
 
+// Search engines read each page's structured data on its own, so a bare #person
+// reference parses as an untyped Thing. Carry the type and name with the same @id.
+const BARE_PERSON_REFERENCE = '{"@id":"https://rickykwok.com/#person"}';
+const TYPED_PERSON_REFERENCE = '{"@type":"Person","@id":"https://rickykwok.com/#person","name":"Ricky Kwok"}';
+
+function typePersonReferences(html) {
+  return html.replace(
+    /(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi,
+    (block, open, json, close) => `${open}${json.replaceAll(BARE_PERSON_REFERENCE, TYPED_PERSON_REFERENCE)}${close}`,
+  );
+}
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ignored = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
 
@@ -135,6 +147,7 @@ for (const file of await htmlFiles()) {
   }
 
   if (PROJECT_RECORD_PAGE.test(relative)) html = removeRepeatedProjectHeroMedia(html);
+  html = typePersonReferences(html);
 
   const dateModified = html.match(/"dateModified":"([^"]+)"/)?.[1];
   if (dateModified) {

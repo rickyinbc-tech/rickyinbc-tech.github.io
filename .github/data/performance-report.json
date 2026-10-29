@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "status": "pass",
   "measured": {
-    "maxHtmlBytes": 40928,
+    "maxHtmlBytes": 41051,
     "siteCssBytes": 26000,
     "siteJsBytes": 23839,
     "largestResponsiveImageBytes": 366596,
@@ -20,39 +20,39 @@
   "largestHtml": [
     {
       "file": "awards-recognition/index.html",
-      "bytes": 40928
+      "bytes": 41051
     },
     {
       "file": "zh-hant/awards/index.html",
-      "bytes": 37359
+      "bytes": 37482
     },
     {
       "file": "zh-hans/awards/index.html",
-      "bytes": 37232
+      "bytes": 37355
     },
     {
       "file": "projects/travel/index.html",
-      "bytes": 34077
+      "bytes": 34114
     },
     {
       "file": "projects/nepal-documentary/index.html",
-      "bytes": 33919
+      "bytes": 33956
     },
     {
       "file": "index.html",
-      "bytes": 26094
+      "bytes": 26168
     },
     {
       "file": "selected-works/index.html",
-      "bytes": 24167
+      "bytes": 24204
     },
     {
       "file": "zh-hans/works/index.html",
-      "bytes": 23939
+      "bytes": 23976
     },
     {
       "file": "zh-hant/works/index.html",
-      "bytes": 23837
+      "bytes": 23874
     },
     {
       "file": "series/collision/index.html",

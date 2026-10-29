@@ -1119,6 +1119,13 @@ for (const [route, page] of indexableDocuments) {
     for (const type of ["Product", "Offer", "Service", "ProfessionalService", "LocalBusiness"]) {
       if (matchesType(node, type)) errors.push(`${page.relative}: structured data contains retired commercial type ${type}`);
     }
+    if (node["@id"] === `${ORIGIN}/#person` && !node["@type"]) {
+      errors.push(`${page.relative}: structured data references the person without a type, which parses as Thing`);
+    }
+    if ((matchesType(node, "ImageObject") || matchesType(node, "VisualArtwork")) && node.creator
+      && (!matchesType(node.creator, "Person") || !node.creator.name)) {
+      errors.push(`${page.relative}: ${node["@type"]} creator must be a named Person`);
+    }
     for (const key of ["jobTitle", "license", "acquireLicensePage", "offers", "contactPoint", "potentialAction"]) {
       if (Object.hasOwn(node, key)) errors.push(`${page.relative}: structured data contains retired business field ${key}`);
     }
