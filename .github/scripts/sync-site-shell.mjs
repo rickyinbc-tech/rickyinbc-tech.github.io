@@ -12,7 +12,10 @@ import {
   normalizeResponsiveImages,
   removeHiddenArtworkHeroMedia,
   removeRepeatedArtworkSourceCards,
+  removeRepeatedProjectHeroMedia,
 } from "./responsive-image-policy.mjs";
+
+const PROJECT_RECORD_PAGE = /^(?:zh-han[st]\/)?projects\/[a-z0-9-]+\/index\.html$/;
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const ignored = new Set([".git", ".github", ".wrangler", "_site", "assets", "node_modules", "seo-status"]);
@@ -130,6 +133,8 @@ for (const file of await htmlFiles()) {
       html = `${beforeFigure}${figure}${afterFigure}`;
     }
   }
+
+  if (PROJECT_RECORD_PAGE.test(relative)) html = removeRepeatedProjectHeroMedia(html);
 
   const dateModified = html.match(/"dateModified":"([^"]+)"/)?.[1];
   if (dateModified) {

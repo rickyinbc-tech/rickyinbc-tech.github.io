@@ -3,7 +3,7 @@
   "summary": {
     "pages": 181,
     "uniquePrimarySources": 67,
-    "imageUses": 689,
+    "imageUses": 680,
     "missingDimensions": 0,
     "missingSizes": 0
   },
@@ -668,7 +668,7 @@
         "/assets/art/fishpond-harvest.jpg",
         "/assets/optimized-v2/art/fishpond-harvest-1000.webp"
       ],
-      "uses": 33,
+      "uses": 30,
       "altVariants": [
         "A fishpond worker standing among nets and fish during a harvest in Hong Kong.",
         "Workers harvesting fish from a Hong Kong pond.",
@@ -689,8 +689,8 @@
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 33,
-      "lazyUses": 27,
+      "responsiveUses": 30,
+      "lazyUses": 24,
       "eagerUses": 6,
       "resolutionStatus": "genuine-higher-original",
       "sourceWidth": 1800,
@@ -1016,7 +1016,7 @@
         "/assets/optimized-v2/art/light-encroached-homes-1200.webp",
         "/assets/optimized-v2/art/light-encroached-homes-1280.webp"
       ],
-      "uses": 54,
+      "uses": 48,
       "altVariants": [
         "Fisheye photograph of Hong Kong neon signs and residential buildings.",
         "Fisheye view of illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
@@ -1024,14 +1024,12 @@
         "Hong Kong neon signs surrounding dark sky.",
         "Illuminated Hong Kong signboards and residential buildings surrounding the night sky.",
         "Illuminated Mong Kok signboards and residential buildings surrounding the night sky.",
-        "Light Encroached Homes, photographed among Mong Kok signboards in 2014.",
         "Low-angle fisheye photograph of Hong Kong neon signs and residential buildings around a dark sky.",
         "Low-angle fisheye photograph of illuminated advertising signs and residential buildings around the Mong Kok night sky.",
         "Low-angle fisheye photograph of illuminated signs and residential buildings in Mong Kok at night.",
         "Low-angle fisheye view of illuminated signs and residential buildings around the Mong Kok night sky.",
         "《光染民居》完整构图：旺角招牌与住宅围绕夜空",
         "《光染民居》：旺角住宅与夜间招牌环绕天空",
-        "《光染民居》：旺角霓虹招牌与住宅",
         "低角度魚眼影像中，旺角夜空四周是發光招牌與住宅樓宇。",
         "低角度魚眼影像中，旺角發光招牌與住宅樓宇圍繞夜空。",
         "低角度魚眼影像，旺角夜空四周是發光廣告招牌與住宅樓宇。",
@@ -1039,14 +1037,13 @@
         "低角度鱼眼影像，旺角夜空四周是发光广告招牌与住宅楼宇。",
         "旺角住宅與夜間招牌在魚眼視角中環繞天空。",
         "旺角招牌与住宅围绕夜空的鱼眼影像",
-        "旺角招牌與住宅圍繞夜空的魚眼影像",
-        "旺角霓虹招牌與住宅樓宇在魚眼視角中圍繞深色夜空。"
+        "旺角招牌與住宅圍繞夜空的魚眼影像"
       ],
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 54,
-      "lazyUses": 34,
+      "responsiveUses": 48,
+      "lazyUses": 28,
       "eagerUses": 20,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,

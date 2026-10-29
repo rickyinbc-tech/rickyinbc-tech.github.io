@@ -258,6 +258,41 @@ export function removeHiddenArtworkHeroMedia(html) {
     );
 }
 
+const HERO_PICTURE = /<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>/i;
+
+// True when the photograph after the hero is the same image family as the hero itself.
+export function heroRepeatsLeadPhotograph(html) {
+  const hero = html.match(HERO_PICTURE);
+  if (!hero) return false;
+  const heroFamily = imageFamilyFromTag(hero[0].match(/<img\b[^>]*>/i)?.[0] || "");
+  const nextTag = html.slice(hero.index + hero[0].length).match(/<img\b[^>]*>/i)?.[0] || "";
+  return Boolean(heroFamily) && heroFamily === imageFamilyFromTag(nextTag);
+}
+
+// A project page whose record photograph immediately repeats the hero keeps only the
+// captioned record photograph, which then becomes the eager, high-priority image.
+export function removeRepeatedProjectHeroMedia(html) {
+  if (!heroRepeatsLeadPhotograph(html)) return html;
+  const withoutHero = html
+    .replace(
+      /(<section\b[^>]*class=["'][^"']*\bhero\b[^"']*["'][^>]*>)\s*<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>\s*(?:<span\b[^>]*class=["'][^"']*\bhero-overlay\b[^"']*["'][^>]*><\/span>)?/i,
+      "$1",
+    )
+    .replace(
+      /(<section\b[^>]*class=["'][^"']*)\s+has-semantic-media([^"']*["'][^>]*>)/i,
+      "$1$2",
+    );
+  const mainStart = withoutHero.search(/<main\b/i);
+  const leadTag = withoutHero.slice(mainStart).match(/<img\b[^>]*>/i);
+  if (mainStart === -1 || !leadTag) return withoutHero;
+  const promoted = leadTag[0]
+    .replace(/\s+loading=["'][^"']*["']/i, "")
+    .replace(/\s+fetchpriority=["'][^"']*["']/i, "")
+    .replace(/<img\b/i, '<img loading="eager" fetchpriority="high"');
+  const leadIndex = mainStart + leadTag.index;
+  return `${withoutHero.slice(0, leadIndex)}${promoted}${withoutHero.slice(leadIndex + leadTag[0].length)}`;
+}
+
 export function normalizeResponsiveImages(html) {
   let normalized = html.replace(/<(?:img|source|link)\b[^>]*>/gi, (tag) => {
     const withSrcset = normalizeTagSrcset(tag);

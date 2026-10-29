@@ -13,6 +13,7 @@ import {
   SUPPORT_CARD_IMAGE_SIZES,
   WORK_CARD_IMAGE_SIZES,
   featureImageTags,
+  heroRepeatsLeadPhotograph,
   photoForReference,
   repeatedArtworkSourceCards,
   repeatedSourceCardFamilies,
@@ -891,8 +892,15 @@ for (const header of ["content-security-policy", "permissions-policy", "referrer
 for (const [route, page] of indexableDocuments) {
   const hasHero = /<[^>]+class=["'][^"']*\bhero\b[^"']*["'][^>]*>/i.test(page.html);
   const isArtworkPage = /<body\b[^>]*class=["'][^"']*\bartwork-page\b/i.test(page.html);
-  if (hasHero && !isArtworkPage && !heroImageSource(page.html)) {
+  const isProjectRecord = /^\/(?:zh-han[st]\/)?projects\/[a-z0-9-]+\/$/.test(route);
+  const mainHtml = page.html.slice(Math.max(0, page.html.search(/<main\b/i)));
+  const leadTag = mainHtml.match(/<img\b[^>]*>/i)?.[0] || "";
+  const leadsWithEagerPhotograph = attribute(leadTag, "loading") === "eager" && attribute(leadTag, "fetchpriority") === "high";
+  if (hasHero && !isArtworkPage && !heroImageSource(page.html) && !(isProjectRecord && leadsWithEagerPhotograph)) {
     errors.push(`${page.relative}: visual hero lacks semantic responsive image media`);
+  }
+  if (isProjectRecord && heroRepeatsLeadPhotograph(page.html)) {
+    errors.push(`${page.relative}: project hero repeats the record photograph that immediately follows it`);
   }
   if (isArtworkPage && !featureImageSource(page.html)) {
     errors.push(`${page.relative}: artwork page lacks its visible semantic primary photograph`);

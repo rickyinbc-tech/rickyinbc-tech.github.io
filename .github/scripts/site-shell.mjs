@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20261025-photography-presentation-v1";
-export const SHELL_VERSION = "20261025-photography-presentation-v1";
+export const ASSET_VERSION = "20261029-browsing-controls-v1";
+export const SHELL_VERSION = "20261029-browsing-controls-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 
@@ -65,6 +65,13 @@ const LANGUAGE_LABELS = {
   en: "English",
   "zh-Hant": "繁中",
   "zh-Hans": "简体",
+};
+
+// Visible compact labels for the mobile header; the full label stays the accessible name.
+const LANGUAGE_SHORT_LABELS = {
+  en: "EN",
+  "zh-Hant": "繁",
+  "zh-Hans": "简",
 };
 
 const LANGUAGE_ROOTS = {
@@ -136,7 +143,7 @@ export function renderHeaderAndNotice({ language, languageLinks, markCurrentLang
     .map((itemLanguage) => {
       const href = escapeAttribute(languageLinks.get(itemLanguage) || LANGUAGE_ROOTS[itemLanguage]);
       const current = markCurrentLanguage && itemLanguage === normalizedLanguage ? ' aria-current="page"' : "";
-      return `<a href="${href}" lang="${itemLanguage}"${current}>${LANGUAGE_LABELS[itemLanguage]}</a>`;
+      return `<a href="${href}" lang="${itemLanguage}"${current}><span class="language-full">${LANGUAGE_LABELS[itemLanguage]}</span><span class="language-short" aria-hidden="true">${LANGUAGE_SHORT_LABELS[itemLanguage]}</span></a>`;
     })
     .join("");
 

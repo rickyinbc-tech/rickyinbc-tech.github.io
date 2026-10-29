@@ -567,12 +567,12 @@ function enhanceImageViewer() {
   const close = document.createElement('button'); close.type = 'button'; close.className = 'viewer-close'; close.textContent = uiCopy.close;
   toolbar.append(title, close);
   const stage = document.createElement('div'); stage.className = 'viewer-stage';
-  const enlarged = document.createElement('img'); enlarged.decoding = 'async'; stage.append(enlarged);
+  const enlarged = document.createElement('img'); enlarged.decoding = 'async'; enlarged.alt = ''; stage.append(enlarged);
   const controls = document.createElement('div'); controls.className = 'viewer-controls';
-  const previous = document.createElement('button'); previous.type = 'button'; previous.textContent = uiCopy.previous;
-  const position = document.createElement('p'); position.setAttribute('role', 'status'); position.setAttribute('aria-live', 'polite');
-  const next = document.createElement('button'); next.type = 'button'; next.textContent = uiCopy.next;
-  const detail = document.createElement('a'); detail.textContent = uiCopy.detail;
+  const previous = document.createElement('button'); previous.type = 'button'; previous.className = 'viewer-previous'; previous.textContent = uiCopy.previous; previous.setAttribute('aria-keyshortcuts', 'ArrowLeft');
+  const position = document.createElement('p'); position.className = 'viewer-position'; position.setAttribute('role', 'status'); position.setAttribute('aria-live', 'polite');
+  const next = document.createElement('button'); next.type = 'button'; next.className = 'viewer-next'; next.textContent = uiCopy.next; next.setAttribute('aria-keyshortcuts', 'ArrowRight');
+  const detail = document.createElement('a'); detail.className = 'viewer-detail'; detail.textContent = uiCopy.detail;
   controls.append(previous, position, next, detail);
   dialog.append(toolbar, stage, controls); document.body.append(dialog);
   let opener, sequence = [], index = 0;
@@ -590,6 +590,7 @@ function enhanceImageViewer() {
     enlarged.src = record.full || record.photo.src;
     position.textContent = uiCopy.position(index + 1, sequence.length);
     previous.hidden = next.hidden = position.hidden = sequence.length < 2;
+    controls.classList.toggle('is-single', sequence.length < 2);
     previous.disabled = index === 0; next.disabled = index === sequence.length - 1;
     detail.hidden = !record.link;
     if (record.link) detail.href = record.link.href;

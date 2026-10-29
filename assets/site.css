@@ -46,6 +46,7 @@ html[lang^="zh"] :is(h1,h2,h3,.statement) { line-height: 1.4; letter-spacing: .0
 .nav-links, .language-switcher { display: flex; align-items: center; gap: 3px; }
 .nav-links a, .language-switcher a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 10px; font-size: 14px; white-space: nowrap; }
 .language-switcher a { min-width: 44px; padding-inline: 7px; font-size: 13px; }
+.language-short { display: none; }
 .nav-links a[aria-current="page"], .language-switcher a[aria-current="page"] { color: var(--accent); text-decoration: underline; text-decoration-thickness: 2px; }
 .nav-toggle { display: none; min-height: 44px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); }
 .nav-toggle:hover, .nav-toggle[aria-expanded="true"] { background: var(--mist); }
@@ -234,7 +235,19 @@ body.viewer-open { overflow: hidden; }
   .site-header { max-height: 100dvh; overflow-y: auto; }
   .site-header.nav-enhanced .nav { display: grid; grid-template-columns: minmax(0,1fr) auto; min-height: 76px; padding-block: 12px; gap: 10px; }
   .site-header.nav-enhanced .nav-toggle { display: block; }
-  .site-header.nav-enhanced .nav-links, .site-header.nav-enhanced .language-switcher { display: none; }
+  .site-header.nav-enhanced .nav-links { display: none; }
+  /* Closed menu: the three languages stay visible after Menu as a compact segmented control.
+     Visual order (brand, Menu, languages) matches DOM and keyboard order. */
+  .site-header.nav-enhanced .nav { grid-template-columns: minmax(0,1fr) auto auto; }
+  .site-header.nav-enhanced .brand { grid-column: 1; grid-row: 1; min-width: 0; }
+  .site-header.nav-enhanced .nav-toggle { grid-column: 2; grid-row: 1; }
+  .site-header.nav-enhanced:not(.is-menu-open) .language-switcher { grid-column: 3; grid-row: 1; gap: 0; border: 1px solid var(--line); border-radius: 4px; }
+  .site-header.nav-enhanced.is-menu-open .nav-toggle { grid-column: 2 / -1; justify-self: end; }
+  .site-header.nav-enhanced:not(.is-menu-open) .language-switcher a { position: relative; min-width: 36px; padding: 8px 6px; font-size: 14px; }
+  .site-header.nav-enhanced:not(.is-menu-open) .language-switcher a + a { border-left: 1px solid var(--line); }
+  .site-header.nav-enhanced:not(.is-menu-open) .language-switcher a[aria-current="page"] { background: var(--mist); text-decoration: none; font-weight: 600; }
+  .site-header.nav-enhanced:not(.is-menu-open) .language-full { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .site-header.nav-enhanced:not(.is-menu-open) .language-short { display: inline; }
   .site-header.nav-enhanced.is-menu-open .nav-links { display: grid; grid-column: 1/-1; grid-template-columns: repeat(2,minmax(0,1fr)); padding-top: 14px; border-top: 1px solid var(--line); }
   .site-header.nav-enhanced.is-menu-open .language-switcher { display: flex; grid-column: 1/-1; border-top: 1px solid var(--line); padding-block: 8px; }
   .site-header.nav-enhanced.is-menu-open .nav-links a { justify-content: flex-start; padding: 10px; }
@@ -276,10 +289,13 @@ body.viewer-open { overflow: hidden; }
   .image-viewer { width: calc(100% - 16px); padding: 12px; }
   .viewer-toolbar { align-items: flex-start; }
   .image-viewer img { max-height: calc(100dvh - 180px); }
-  .analytics-consent { padding: 12px 14px; inset: auto 10px 10px; width: calc(100% - 20px); }
-  .analytics-consent-content { align-items: flex-start; flex-direction: column; gap: 12px; }
-  .analytics-consent-actions { width: 100%; }
-  .analytics-consent .button { flex: 1; }
+  /* A slimmer bottom sheet: same wording and two equal choices, less of the photograph covered. */
+  .analytics-consent { padding: 10px 12px; inset: auto 8px 8px; width: calc(100% - 16px); }
+  .analytics-consent-content { align-items: stretch; flex-direction: column; gap: 8px; }
+  .analytics-consent-content strong { font-size: 13px; }
+  .analytics-consent p { font-size: 13px; line-height: 1.4; }
+  .analytics-consent-actions { width: 100%; flex-wrap: nowrap; }
+  .analytics-consent .button { flex: 1; min-height: 44px; padding-block: 8px; font-size: 13px; }
   .footer-row { display: grid; gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -319,15 +335,28 @@ a.work-card[data-full] { cursor: zoom-in; }
 .sequence-next { grid-column: 2; text-align: right; }
 /* The photograph has its own stage; controls never cover the composition. */
 .image-viewer { width: min(1800px, calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 16px 20px; border-radius: 3px; }
-.viewer-stage { height: calc(100dvh - 180px); display: grid; place-items: center; min-height: 100px; touch-action: pan-y pinch-zoom; }
-.image-viewer .viewer-stage img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
+/* The open viewer is a column: toolbar and controls keep their size, the stage takes the rest,
+   and the photograph is fitted inside the stage so it can never run under the controls. */
+.image-viewer[open] { display: flex; flex-direction: column; height: calc(100dvh - 24px); }
+.viewer-toolbar, .viewer-controls { flex: none; }
+.viewer-stage { position: relative; flex: 1 1 auto; min-height: 100px; overflow: hidden; touch-action: pan-y pinch-zoom; }
+.image-viewer .viewer-stage img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; object-fit: contain; }
 .viewer-toolbar { gap: 16px; }
 .viewer-toolbar p { line-height: 1.4; }
-.viewer-controls { background: #fff; display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 8px 22px; margin-top: 10px; }
-.viewer-controls p { margin: 0; color: var(--muted); font-size: 13px; }
-.viewer-controls button, .viewer-controls a { min-height: 44px; padding: 8px 10px; border: 0; background: transparent; color: var(--accent); font-size: 14px; text-decoration: underline; }
-.viewer-controls button:disabled { opacity: .45; cursor: default; text-decoration: none; }
-.viewer-controls a { margin-left: auto; }
+/* Sequence controls read as buttons: bordered, at least 48px tall, with direction cues. */
+.viewer-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto; align-items: center; gap: 8px 16px; margin-top: 10px; background: #fff; }
+.viewer-controls p { margin: 0; color: var(--muted); font-size: 13px; text-align: center; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.viewer-controls button, .viewer-controls a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 10px 18px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); font-size: 14px; line-height: 1.3; text-decoration: none; }
+.viewer-controls button:hover:not(:disabled), .viewer-controls a:hover { border-color: var(--accent); background: var(--mist); color: var(--ink); text-decoration: none; }
+.viewer-controls button:disabled { opacity: .4; cursor: default; }
+.viewer-previous { justify-self: end; }
+.viewer-next { justify-self: start; }
+.viewer-previous::before { content: "←" / ""; }
+.viewer-next::after { content: "→" / ""; }
+.viewer-controls .viewer-detail { justify-self: end; border-color: var(--accent); color: var(--accent); }
+.viewer-detail::after { content: "↗" / ""; }
+.viewer-controls.is-single { grid-template-columns: minmax(0, 1fr); }
+.viewer-controls.is-single .viewer-detail { justify-self: center; }
 @media (max-width: 900px) {
   .artwork-page .hero + .section .split { grid-template-columns: minmax(0, 1fr); }
 }
@@ -340,11 +369,12 @@ a.work-card[data-full] { cursor: zoom-in; }
   .gallery-page .filter-row { gap: 6px; }
   .gallery-page .filter-button { padding-inline: 12px; }
   .image-viewer { width: calc(100% - 12px); padding: 12px; }
-  .viewer-stage { height: calc(100dvh - 215px); }
   .viewer-toolbar p { font-size: 14px; }
-  .viewer-controls { gap: 4px 8px; }
-  .viewer-controls button, .viewer-controls a { padding-inline: 5px; font-size: 13px; }
-  .viewer-controls a { width: 100%; margin: 0; text-align: center; }
+  /* Phone layout: previous / position / next in one thumb-reachable row, record link below. */
+  .viewer-controls { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; }
+  .viewer-controls button, .viewer-controls a { padding-inline: 10px; font-size: 14px; }
+  .viewer-previous, .viewer-next { justify-self: stretch; }
+  .viewer-controls .viewer-detail { grid-column: 1 / -1; justify-self: stretch; }
   .artwork-pagination span { font-size: 20px; }
   .sequence-wrap { padding-bottom: 40px; }
 }
@@ -359,3 +389,18 @@ body:not(.viewer-ready) .work-zoom, .gallery-page:not(.gallery-enhanced) .filter
   .site-header:not(.nav-enhanced) .nav-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-header:not(.nav-enhanced) .nav-links a { justify-content: flex-start; }
 }
+/* The name never breaks; narrower phones keep languages inside the menu rather than crowding it. */
+.brand > span { white-space: nowrap; }
+@media (max-width: 379px) {
+  .site-header.nav-enhanced:not(.is-menu-open) .language-switcher { display: none; }
+  .site-header.nav-enhanced .nav-toggle { grid-column: 2 / -1; justify-self: end; }
+}
+
+/* Journal reading cards name their destination type and offer full-height link targets. */
+.note-kind { margin: 0 0 4px; color: var(--accent); font-size: 12px; font-weight: 600; letter-spacing: .02em; }
+.note h3 { margin-bottom: 6px; }
+.note h3 a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: .2em; }
+
+/* The homepage project note reads as text; its photograph already opens the page. */
+.home .section-project .split.text-only { grid-template-columns: minmax(0, 1fr); }
+.home .section-project .split.text-only > div { max-width: 68ch; }
