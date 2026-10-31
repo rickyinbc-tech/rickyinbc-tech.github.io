@@ -6,12 +6,19 @@ const manifest = JSON.parse(await readFile(path.join(root, '.github/data/artwork
 const read = relative => readFile(path.join(root, relative.replace(/^\//, ''), 'index.html'), 'utf8');
 const text = value => value.replace(/<[^>]+>/g, '').trim();
 const escape = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+// Search-only terms; preserve the documented artwork titles on the page.
+const extraSearchAliases = new Map([
+  ['coil-field', '整整有条'],
+  ['shunkan-instant', 'Shunkan'],
+  ['start-sequence', 'swimming pool diving 游泳 泳池 跳水'],
+  ['swimming-in-motion', 'swimming pool 游泳 泳池']
+]);
 const searchAliases = new Map(await Promise.all(manifest.artworks.map(async artwork => {
   const aliases = await Promise.all(['', '/zh-hant', '/zh-hans'].map(async prefix => {
     const html = await read(`${prefix}/works/${artwork.id}/`);
     return `${text(html.match(/<h1>([\s\S]*?)<\/h1>/i)[1])} ${html.match(/<div class="feature-image"><img[^>]*alt="([^"]*)"/)?.[1] || ''}`;
   }));
-  return [artwork.id, aliases.join(' ')];
+  return [artwork.id, `${aliases.join(' ')} ${extraSearchAliases.get(artwork.id) || ''}`];
 })));
 const copies = {
   en: { back: 'Back to gallery', previous: 'Previous photograph', next: 'Next photograph', sequence: 'Browse photographs', position: (n, total) => `${n} of ${total}` },

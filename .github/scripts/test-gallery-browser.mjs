@@ -12,7 +12,7 @@ function browser(...args) {
 }
 const evaluate = source => browser('eval', source).result;
 // Navigation may finish parsing before the deferred enhancement script runs.
-const ready = () => browser('wait', '--fn', 'document.querySelector(".site-header.nav-enhanced") !== null');
+const ready = () => browser('wait', '--fn', 'window.siteReady === true');
 const open = path => { const result = browser('open', `${base}${path}`); ready(); return result; };
 const click = selector => { const result = browser('click', selector); ready(); return result; };
 const wait = source => browser('wait', '--fn', source);
@@ -78,6 +78,22 @@ try {
       assert.equal(evaluate('document.querySelector("dialog").open'), false);
       assert.equal(evaluate('document.activeElement.getAttribute("aria-label")'), 'View larger: 整整有條');
     });
+    check('Viewer artwork links return to the originating collection and card', () => {
+      for (const returnMethod of ['link', 'back']) {
+        open('/selected-works/?q=night#ritual');
+        evaluate("document.querySelector('a[href*=\"/works/night-fishermen/\"]').scrollIntoView({block:'center',behavior:'instant'})");
+        const y = evaluate('scrollY');
+        click('.gallery-grid .work-card:not([hidden]) .work-zoom');
+        click('.viewer-detail');
+        if (returnMethod === 'link') click('[data-archive-return]');
+        else browser('back');
+        wait("document.activeElement.pathname?.endsWith('/works/night-fishermen/')");
+        assert.equal(evaluate('document.querySelector("dialog").open'), false);
+        assert.equal(evaluate('document.querySelector("#gallery-search").value'), 'night');
+        assert.equal(evaluate('location.hash'), '#ritual');
+        assert.ok(Math.abs(evaluate('scrollY') - y) < 4);
+      }
+    });
     check('Series navigation follows collection order and retains its return path', () => {
       open('/series/ritual/');
       click('a.work-card-link[href*="/works/night-fishermen/"]');
@@ -107,6 +123,15 @@ try {
         click('.nav-toggle'); click(`.language-switcher a[lang="${language}"]`);
         assert.ok(evaluate('location.pathname').endsWith('/works/night-fishermen/'));
         assert.ok(evaluate('document.querySelector("[data-archive-return]").href').includes('q=night#ritual'));
+      }
+    });
+    check('Search accepts shared Chinese and English aliases in every gallery', () => {
+      for (const path of ['/selected-works/', '/zh-hant/works/', '/zh-hans/works/']) {
+        open(path);
+        for (const [query, expected] of [['整整有条', 1], ['游泳', 2], ['跳水', 1], ['pool', 2], ['Shunkan', 1]]) {
+          browser('fill', '#gallery-search', query);
+          assert.equal(evaluate('document.querySelectorAll(".gallery-grid > :not([hidden])").length'), expected, `${path}: ${query}`);
+        }
       }
     });
     check('Opening photographs have a translated viewer, record link and series shortcut', () => {
@@ -142,6 +167,14 @@ try {
       browser('press', 'Escape');
       assert.equal(evaluate('document.activeElement.className'), 'nav-toggle');
       assert.equal(evaluate('document.querySelector(".nav-toggle").getAttribute("aria-expanded")'), 'false');
+    });
+    check('Navigation stays available if the early menu script fails', () => {
+      browser('network', 'route', '**/assets/navigation.js*', '--abort');
+      open('/');
+      assert.equal(evaluate('document.querySelector(".site-header").classList.contains("nav-enhanced")'), false);
+      assert.equal(evaluate('getComputedStyle(document.querySelector(".nav-links")).display !== "none"'), true);
+      assert.equal(evaluate('getComputedStyle(document.querySelector(".nav-toggle")).display'), 'none');
+      browser('network', 'unroute');
     });
   }
   console.log(JSON.stringify({ passed: results.length, base, tests: results }, null, 2));

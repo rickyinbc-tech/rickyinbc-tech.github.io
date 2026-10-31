@@ -243,60 +243,6 @@ function addLanguageSwitcher() {
   nav.append(switcher);
 }
 
-function addMobileNavigation() {
-  const header = document.querySelector(".site-header");
-  const nav = header?.querySelector(".nav");
-  const navLinks = nav?.querySelector(".nav-links");
-  const languageSwitcher = nav?.querySelector(".language-switcher");
-  if (!header || !nav || !navLinks || !languageSwitcher) return;
-
-  const labels = {
-    en: { open: "Menu", close: "Close menu" },
-    "zh-hant": { open: "選單", close: "關閉選單" },
-    "zh-hans": { open: "菜单", close: "关闭菜单" }
-  };
-  const localizedLabels = labels[document.documentElement.lang.toLowerCase()] || labels.en;
-
-  navLinks.id ||= "primary-navigation";
-  languageSwitcher.id ||= "language-navigation";
-
-  const toggle = nav.querySelector(".nav-toggle") || document.createElement("button");
-  if (!toggle.classList.contains("nav-toggle")) toggle.className = "nav-toggle";
-  toggle.type = "button";
-  toggle.textContent = localizedLabels.open;
-  toggle.setAttribute("aria-controls", `${navLinks.id} ${languageSwitcher.id}`);
-  toggle.setAttribute("aria-expanded", "false");
-  if (!toggle.isConnected) nav.querySelector(".brand")?.after(toggle);
-  header.classList.add("nav-enhanced");
-
-  function setMenuOpen(open) {
-    header.classList.toggle("is-menu-open", open);
-    document.body.classList.toggle("menu-open", open && window.matchMedia("(max-width: 900px)").matches);
-    toggle.setAttribute("aria-expanded", String(open));
-    toggle.textContent = open ? localizedLabels.close : localizedLabels.open;
-  }
-
-  toggle.addEventListener("click", () => setMenuOpen(toggle.getAttribute("aria-expanded") !== "true"));
-  for (const region of [navLinks, languageSwitcher]) region.addEventListener("click", (event) => {
-    if (event.target.closest("a")) setMenuOpen(false);
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
-      setMenuOpen(false);
-      toggle.focus();
-    }
-  });
-  document.addEventListener("click", (event) => {
-    if (toggle.getAttribute("aria-expanded") === "true" && !header.contains(event.target)) {
-      setMenuOpen(false);
-    }
-  });
-  window.addEventListener("resize", () => {
-    if (!window.matchMedia("(max-width: 900px)").matches && toggle.getAttribute("aria-expanded") === "true") {
-      setMenuOpen(false);
-    }
-  });
-}
 
 function markCurrentNavigation() {
   const sectionFor = (pathname) => {
@@ -318,7 +264,6 @@ function markCurrentNavigation() {
 
 addLanguageSwitcher();
 markCurrentNavigation();
-addMobileNavigation();
 
 // URL state is shareable; scroll and focus are private to this browser tab.
 const GALLERY_FILTERS = new Set(['all', 'ritual', 'collision', 'motion', 'city-light']);
@@ -500,13 +445,17 @@ function enhanceCollectionReturn() {
       try { returning ||= /\/works\/[a-z0-9-]+\/$/.test(new URL(document.referrer).pathname); } catch { /* Direct visit. */ }
       const saved = savedContext(new URL(window.location.href));
       if (!returning || !saved || !Number.isFinite(saved.y)) return;
-      window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+      const applyReturn = () => {
         const link = [...document.querySelectorAll('main .gallery-grid a[href]')].find(item => item.pathname === saved.focus && !item.closest('[hidden]'));
         link?.focus({ preventScroll: true });
         window.scrollTo({ top: saved.y, behavior: 'instant' });
-      }));
+      };
+      applyReturn();
     };
     window.addEventListener('pageshow', restore);
+    // Restore as soon as the collection is ready as well as on pageshow;
+    // unrelated slow resources should not delay the return to the artwork.
+    restore();
     refreshCollectionLinks();
   }
   const data = document.querySelector('#archive-navigation');
@@ -572,7 +521,7 @@ function enhanceImageViewer() {
   const previous = document.createElement('button'); previous.type = 'button'; previous.className = 'viewer-previous'; previous.textContent = uiCopy.previous; previous.setAttribute('aria-keyshortcuts', 'ArrowLeft');
   const position = document.createElement('p'); position.className = 'viewer-position'; position.setAttribute('role', 'status'); position.setAttribute('aria-live', 'polite');
   const next = document.createElement('button'); next.type = 'button'; next.className = 'viewer-next'; next.textContent = uiCopy.next; next.setAttribute('aria-keyshortcuts', 'ArrowRight');
-  const detail = document.createElement('a'); detail.className = 'viewer-detail'; detail.textContent = uiCopy.detail;
+  const detail = document.createElement('a'); detail.className = 'viewer-detail'; detail.href = '#'; detail.hidden = true; detail.textContent = uiCopy.detail;
   controls.append(previous, position, next, detail);
   dialog.append(toolbar, stage, controls); document.body.append(dialog);
   let opener, sequence = [], index = 0;
@@ -649,6 +598,21 @@ function enhanceImageViewer() {
     register(trigger, photo, figure, figure.querySelector('figcaption strong')?.textContent || document.querySelector('h1')?.textContent, figure.dataset.full, null);
   });
   close.addEventListener('click', () => dialog.close());
+  detail.addEventListener('click', () => {
+    // A viewer link bypasses the collection-card click handler. Save the
+    // original card and close the dialog so either return path restores the
+    // collection instead of a stale modal or lost keyboard focus.
+    const collection = safeCollection(window.location.href);
+    if (collection) {
+      const cardLink = opener?.closest('.work-card')?.querySelector('a.work-card-link');
+      saveContext(new URL(window.location.href), {
+        y: window.scrollY,
+        focus: cardLink?.pathname || '',
+        items: collectionItems()
+      });
+    }
+    dialog.close();
+  });
   previous.addEventListener('click', () => step(-1)); next.addEventListener('click', () => step(1));
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
   dialog.addEventListener('keydown', event => {
@@ -676,3 +640,4 @@ enhanceImageViewer();
 enhanceGallery();
 enhanceCollectionReturn();
 refreshLanguageLinks();
+window.siteReady = true;
