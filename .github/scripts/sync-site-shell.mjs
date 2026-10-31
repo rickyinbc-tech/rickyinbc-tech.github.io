@@ -60,7 +60,7 @@ for (const file of await htmlFiles()) {
       languageLinks,
       markCurrentLanguage: relative !== "404.html",
     });
-    const headerPattern = /<header\b[^>]*class=["'][^"']*\bsite-header\b[^"']*["'][^>]*>[\s\S]*?<\/header>(?:\s*<div\b[^>]*class=["'][^"']*\bpersonal-use-notice\b[^"']*["'][^>]*>[\s\S]*?<\/div>)?(?:\s*<noscript\b[^>]*data-no-js-navigation[^>]*>[\s\S]*?<\/noscript>)*/i;
+    const headerPattern = /<header\b[^>]*class=["'][^"']*\bsite-header\b[^"']*["'][^>]*>[\s\S]*?<\/header>(?:\s*(?:<script\b[^>]*src=["']\/assets\/navigation\.js\?v=[^"']+["'][^>]*><\/script>|<div\b[^>]*class=["'][^"']*\bpersonal-use-notice\b[^"']*["'][^>]*>[\s\S]*?<\/div>|<noscript\b[^>]*data-no-js-navigation[^>]*>[\s\S]*?<\/noscript>))*/i;
     if (!headerPattern.test(html)) throw new Error(`Could not replace the complete shared shell in ${relative}`);
     html = html.replace(headerPattern, shell);
     synchronizedShells += 1;

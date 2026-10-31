@@ -756,6 +756,7 @@ for (const series of ["ritual", "collision", "motion", "city-light"]) {
 }
 
 const siteJs = await readFile(path.join(repoRoot, "assets/site.js"), "utf8");
+const navigationJs = await readFile(path.join(repoRoot, "assets/navigation.js"), "utf8");
 const siteCss = await readFile(path.join(repoRoot, "assets/site.css"), "utf8");
 const minifiedSiteJs = await readFile(path.join(repoRoot, "assets/site.min.js"), "utf8");
 const minifiedSiteCss = await readFile(path.join(repoRoot, "assets/site.min.css"), "utf8");
@@ -838,7 +839,7 @@ if (!/\.hero\.has-semantic-media\s*\{[\s\S]*?padding-top:\s*0/i.test(siteCss)) {
   errors.push("responsive artwork hero must not use a fixed header-height offset");
 }
 for (const marker of ["addMobileNavigation", "markCurrentNavigation", "aria-expanded", "is-menu-open", "aria-pressed", "filterStatusLabel", "MODAL_IMAGE_SIZES", "responsiveSrcset"]) {
-  if (!siteJs.includes(marker)) errors.push(`accessible interaction contract lacks ${marker}`);
+  if (!(siteJs + navigationJs).includes(marker)) errors.push(`accessible interaction contract lacks ${marker}`);
 }
 for (const marker of ["--accent: #27666b", "--muted: #516268"]) {
   if (!siteCss.includes(marker)) errors.push(`resilient accessibility stylesheet lacks ${marker}`);
