@@ -668,10 +668,9 @@
         "/assets/art/fishpond-harvest.jpg",
         "/assets/optimized-v2/art/fishpond-harvest-1000.webp"
       ],
-      "uses": 30,
+      "uses": 27,
       "altVariants": [
         "A fishpond worker standing among nets and fish during a harvest in Hong Kong.",
-        "Workers harvesting fish from a Hong Kong pond.",
         "Workers in waterproof clothing harvesting fish from a Hong Kong fishpond.",
         "Workers in waterproof clothing harvesting fish from a Hong Kong pond.",
         "Workers in waterproof clothing harvesting fish from a pond.",
@@ -682,15 +681,13 @@
         "工人穿著防水衣物，在香港魚塘以漁網收魚。",
         "工人穿著防水衣物，在香港魚塘收魚。",
         "香港魚塘內工人收魚的完整場景",
-        "香港魚塘收成的勞動現場",
-        "香港鱼塘内工人收鱼的完整场景",
-        "香港鱼塘收成的劳动现场"
+        "香港鱼塘内工人收鱼的完整场景"
       ],
       "declaredWidths": [
         1800
       ],
-      "responsiveUses": 30,
-      "lazyUses": 24,
+      "responsiveUses": 27,
+      "lazyUses": 21,
       "eagerUses": 6,
       "resolutionStatus": "genuine-higher-original",
       "sourceWidth": 1800,
@@ -850,18 +847,21 @@
     {
       "source": "/assets/art/hong-kong-cranes-monochrome.jpg",
       "pages": [
+        "index.html",
         "series/city-light/index.html",
         "works/bank-of-china-light-trails/index.html",
         "works/cranes-and-towers/index.html",
         "works/hong-kong-urban-light-studies/index.html",
         "works/monochrome-documentary/index.html",
         "works/street-procession/index.html",
+        "zh-hans/index.html",
         "zh-hans/series/city-light/index.html",
         "zh-hans/works/bank-of-china-light-trails/index.html",
         "zh-hans/works/cranes-and-towers/index.html",
         "zh-hans/works/hong-kong-urban-light-studies/index.html",
         "zh-hans/works/monochrome-documentary/index.html",
         "zh-hans/works/street-procession/index.html",
+        "zh-hant/index.html",
         "zh-hant/series/city-light/index.html",
         "zh-hant/works/bank-of-china-light-trails/index.html",
         "zh-hant/works/cranes-and-towers/index.html",
@@ -873,7 +873,7 @@
         "/assets/art/hong-kong-cranes-monochrome.jpg",
         "/assets/optimized-v2/art/hong-kong-cranes-monochrome-1200.webp"
       ],
-      "uses": 18,
+      "uses": 21,
       "altVariants": [
         "Black-and-white view of Hong Kong skyscrapers and cranes seen through vertical bars.",
         "Construction cranes and Hong Kong towers seen through a foreground barrier in monochrome.",
@@ -884,8 +884,8 @@
       "declaredWidths": [
         1280
       ],
-      "responsiveUses": 18,
-      "lazyUses": 15,
+      "responsiveUses": 21,
+      "lazyUses": 18,
       "eagerUses": 3,
       "resolutionStatus": "genuine-source-adequate",
       "sourceWidth": 1280,
@@ -1245,7 +1245,7 @@
       ],
       "uses": 1,
       "altVariants": [
-        "This page is no longer here. — photography by Ricky Kwok"
+        "A rolling sea of clouds beneath a pale blue and peach sky."
       ],
       "declaredWidths": [
         1280
