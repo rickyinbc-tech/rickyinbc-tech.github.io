@@ -192,6 +192,9 @@ body.viewer-open { overflow: hidden; }
 .footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 6px 22px; }
 .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
+.not-found-alternate { margin-top: 20px; font-size: 16px; }
+.not-found-alternate + .not-found-alternate { margin-top: 6px; }
+.not-found-alternate a { text-decoration: underline; text-underline-offset: 3px; }
 .redirect-page { min-height: 100svh; display: grid; place-items: center; padding: 24px; }
 .redirect-card { max-width: 620px; padding: 32px; background: var(--mist); border-radius: 6px; }
 .redirect-card h1 { font-size: 44px; }
