@@ -637,6 +637,10 @@ for (const artwork of artworkManifest.artworks || []) {
     if (artwork.contentLocation && !hasFactRow(["Location", "地點", "地点"])) {
       errors.push(`${relative}: governed location is missing from the artwork facts for ${id}`);
     }
+    // The Li River location is unconfirmed; it may return only once the manifest records it.
+    if (!/Li River|[漓灕]江/i.test(artwork.contentLocation || "") && /Li River|[漓灕]江/i.test(html)) {
+      errors.push(`${relative}: states an unconfirmed Li River location for ${id}`);
+    }
   }
 }
 
