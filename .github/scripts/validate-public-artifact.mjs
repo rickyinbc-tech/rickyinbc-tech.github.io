@@ -14,6 +14,7 @@ import {
   NATURAL_WIDTH_AVIF_FAMILIES,
   PHOTO_RESOLUTION_MANIFEST,
   SUPPORT_CARD_IMAGE_SIZES,
+  HOME_SERIES_IMAGE_SIZES,
   WORK_CARD_IMAGE_SIZES,
   featureImageTags,
   photoForReference,
@@ -459,7 +460,8 @@ for (const document of documents.values()) {
   }
   for (const match of html.matchAll(/<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
     const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
-    if (attribute(tag, "sizes") !== SUPPORT_CARD_IMAGE_SIZES) errors.push(`${relative}: support-card image sizes is stale`);
+    const homeSeries = /<body\b[^>]*class=["'][^"']*\bhome\b/i.test(html) && /^<a\b[^>]*class=["']series["']/i.test(match[0]);
+    if (attribute(tag, "sizes") !== (homeSeries ? HOME_SERIES_IMAGE_SIZES : SUPPORT_CARD_IMAGE_SIZES)) errors.push(`${relative}: support-card image sizes is stale`);
   }
   for (const match of html.matchAll(/<figure\b[^>]*class=["'][^"']*\barchive-photo\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
     const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";

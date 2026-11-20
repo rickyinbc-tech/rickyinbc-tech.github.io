@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20261109-footer-navigation-v1";
-export const SHELL_VERSION = "20261109-footer-navigation-v1";
+export const ASSET_VERSION = "20261119-darkroom-v1";
+export const SHELL_VERSION = "20261119-darkroom-v1";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
 

@@ -3,6 +3,8 @@ import { readFileSync } from "node:fs";
 export const FEATURE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1284px) 64vw, 773px";
 export const HERO_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1464px) calc(66vw - 69px), 860px";
 export const GALLERY_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1284px) calc((100vw - 96px) / 2), 594px";
+// Homepage series frames render two per row (one per row on phones).
+export const HOME_SERIES_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1284px) calc((100vw - 96px) / 2), 594px";
 export const WORK_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
 export const SUPPORT_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
 export const ARCHIVE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 900px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
@@ -188,6 +190,7 @@ const FEATURE_IMAGE_BLOCK = /<div\b[^>]*class=["'][^"']*\bfeature-image\b[^"']*[
 const HERO_PICTURE_BLOCK = /<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>/gi;
 const WORK_CARD_IMAGE_BLOCK = /<(?:article|a|button)\b[^>]*class=["'][^"']*\bwork-card\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const SUPPORT_CARD_IMAGE_BLOCK = /<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
+const HOME_SERIES_IMAGE_BLOCK = /<a\b[^>]*class=["']series["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const ARCHIVE_CARD_IMAGE_BLOCK = /<figure\b[^>]*class=["'][^"']*\barchive-photo\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const SOURCE_CARD_BLOCK = /<article\b[^>]*class=["'][^"']*\bsource-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi;
 
@@ -307,6 +310,9 @@ export function normalizeResponsiveImages(html) {
   normalized = normalizeContextSizes(normalized, FEATURE_IMAGE_BLOCK, FEATURE_IMAGE_SIZES);
   normalized = normalizeContextSizes(normalized, WORK_CARD_IMAGE_BLOCK, /class="gallery-page"/.test(normalized) ? GALLERY_IMAGE_SIZES : WORK_CARD_IMAGE_SIZES);
   normalized = normalizeContextSizes(normalized, SUPPORT_CARD_IMAGE_BLOCK, SUPPORT_CARD_IMAGE_SIZES);
+  if (/<body\b[^>]*class=["'][^"']*\bhome\b/i.test(normalized)) {
+    normalized = normalizeContextSizes(normalized, HOME_SERIES_IMAGE_BLOCK, HOME_SERIES_IMAGE_SIZES);
+  }
   normalized = normalizeContextSizes(normalized, ARCHIVE_CARD_IMAGE_BLOCK, ARCHIVE_IMAGE_SIZES);
   normalized = normalized.replace(/<img\b[^>]*\bid=["']modalImage["'][^>]*>/gi, (tag) => (
     setAttribute(tag, "sizes", MODAL_IMAGE_SIZES)

@@ -636,8 +636,24 @@ function enhanceImageViewer() {
   dialog.addEventListener('close', () => { document.body.classList.remove('viewer-open'); opener?.focus({ preventScroll: true }); });
 }
 
+// Justified rows: each photograph's width follows its own aspect ratio, so a
+// row shares one height and portrait and landscape frames are never letterboxed
+// or cropped. Without this enhancement the static grid remains.
+function justifyPhotoRows() {
+  document.querySelectorAll('.home .gallery-grid, .gallery-page .gallery-grid').forEach(grid => {
+    let measured = 0;
+    [...grid.children].forEach(item => {
+      const photo = item.querySelector('img');
+      const width = Number(photo?.getAttribute('width')), height = Number(photo?.getAttribute('height'));
+      if (width > 0 && height > 0) { item.style.setProperty('--ar', (width / height).toFixed(4)); measured += 1; }
+    });
+    if (measured === grid.children.length) grid.classList.add('is-justified');
+  });
+}
+
 enhanceImageViewer();
 enhanceGallery();
+justifyPhotoRows();
 enhanceCollectionReturn();
 refreshLanguageLinks();
 window.siteReady = true;

@@ -1,6 +1,13 @@
 /* Gallery-first visual system contract.
    The photographs retain their complete composition. One shared, responsive
    system serves all three languages without layered historical overrides. */
+@font-face {
+  font-family: "Newsreader Display";
+  src: url("/assets/fonts/newsreader-display-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   color-scheme: light;
   --ink: #16323b;
@@ -9,7 +16,13 @@
   --mist: #f2f6f5;
   --accent: #27666b;
   --line: #d5dfe0;
-  --display: Georgia, "Times New Roman", serif;
+  --darkroom: #0f1d21;
+  --darkroom-line: #2b4249;
+  --on-dark: #e9f0ef;
+  --on-dark-muted: #a9bdbd;
+  --on-dark-accent: #9fd3cf;
+  --latin-display: "Newsreader Display", Georgia, "Times New Roman", serif;
+  --display: var(--latin-display);
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 * { box-sizing: border-box; }
@@ -29,7 +42,7 @@ h1 { margin-bottom: 22px; font-size: clamp(38px, 4.6vw, 68px); line-height: 1.12
 h2 { margin-bottom: 22px; font-size: clamp(30px, 3.1vw, 46px); line-height: 1.2; letter-spacing: -.025em; }
 h3 { margin-bottom: 12px; font-size: 21px; font-weight: 600; line-height: 1.35; }
 p { text-wrap: pretty; }
-html[lang^="zh"] { --sans: -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif; --display: "Songti TC", "Songti SC", "Noto Serif CJK TC", Georgia, serif; }
+html[lang^="zh"] { --sans: -apple-system, BlinkMacSystemFont, "PingFang HK", "PingFang TC", "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif; --display: "Newsreader Display", "Songti TC", "Songti SC", "Noto Serif CJK TC", Georgia, serif; }
 html[lang^="zh"] :is(h1,h2,h3,.statement) { line-height: 1.4; letter-spacing: .015em; overflow-wrap: anywhere; }
 .wrap { width: min(1220px, calc(100% - 64px)); margin-inline: auto; }
 .skip-link { position: fixed; z-index: 100; top: 12px; left: 20px; padding: 12px 18px; background: var(--ink); color: #fff; transform: translateY(-200%); }
@@ -65,7 +78,7 @@ body:not(.artwork-page) .hero.has-semantic-media .hero-media img { width: 100%; 
 .credential a { text-decoration: underline; }
 .hero-title-primary, .hero-title-secondary { display: block; }
 .hero-title-secondary { margin-top: 14px; font-family: "Songti TC", "Songti SC", Georgia, serif; font-size: .48em; letter-spacing: .06em; }
-html[lang^="zh"] .hero-title-secondary { font-family: Georgia, serif; letter-spacing: -.02em; }
+html[lang^="zh"] .hero-title-secondary { font-family: var(--latin-display); letter-spacing: -.01em; }
 .home .hero { background: #fff; }
 .home .hero h1 { font-size: clamp(44px, 4.5vw, 64px); }
 .home-feature { min-width: 0; width: min(100%, calc(60svh * 1280 / 831), 924px); margin: 0; justify-self: end; }
@@ -407,3 +420,109 @@ body:not(.viewer-ready) .work-zoom, .gallery-page:not(.gallery-enhanced) .filter
 /* The homepage project note reads as text; its photograph already opens the page. */
 .home .section-project .split.text-only { grid-template-columns: minmax(0, 1fr); }
 .home .section-project .split.text-only > div { max-width: 68ch; }
+
+/* Darkroom and passe-partout refinement (November 2026).
+   One bold move: photographs are viewed on a deep darkroom ground (homepage
+   opening, artwork stage, enlarged viewer) while browsing and reading stay on
+   paper. Nothing is cropped; every frame keeps its full composition. */
+h1 { letter-spacing: -.02em; }
+h2 { letter-spacing: -.012em; }
+
+/* Homepage opening: the photograph on a darkroom wall. */
+.home .hero { background: var(--darkroom); color: var(--on-dark); }
+.home .hero-media, .home .hero .hero-media { background: transparent; }
+.home .hero h1 { color: #fff; }
+.home .hero-title-secondary { font-size: .6em; color: var(--on-dark); }
+.home .hero .eyebrow { color: var(--on-dark-muted); }
+.home .hero-copy { color: #c8d6d5; }
+.home .hero .button { color: #fff; }
+.home .hero .button:hover { color: var(--on-dark-accent); }
+.home .hero .button:first-child { background: #fff; border-color: #fff; color: var(--ink); }
+.home .hero .button:first-child:hover { background: #dcecea; border-color: #dcecea; color: var(--ink); }
+.home .hero a:hover { color: var(--on-dark-accent); }
+.home .hero :focus-visible { outline-color: var(--on-dark-accent); }
+.home-feature figcaption a { color: #fff; }
+.home-feature figcaption span { color: var(--on-dark-muted); }
+.home-zoom { color: var(--on-dark-accent); }
+.home .section-gallery { border-top: 0; }
+
+/* Recognition: four documented facts, each linked to its evidence. */
+.credentials { background: #fff; border-bottom: 1px solid var(--line); }
+.credential-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.credential-list li { min-width: 0; }
+.credential-list li + li { border-left: 1px solid var(--line); }
+.credential-list a { display: flex; flex-direction: column; gap: 6px; height: 100%; padding: 28px 24px 26px; }
+.credential-list li:first-child a { padding-left: 0; }
+.credential-list strong { font: 400 23px/1.25 var(--display); color: var(--ink); text-wrap: balance; }
+.credential-list span { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.credential-list a:hover { text-decoration: none; }
+.credential-list a:hover strong { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
+
+/* Justified rows: one shared height per row, widths follow each frame. */
+.gallery-grid.is-justified { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 40px 24px; }
+.gallery-grid.is-justified > * { flex: var(--ar, 1.5) 1 calc(var(--ar, 1.5) * 20%); max-width: calc(var(--ar, 1.5) * 48%); }
+.home .gallery-grid.is-justified .work-card img, .gallery-page .gallery-grid.is-justified .work-card img { aspect-ratio: auto; background: transparent; }
+.gallery-page .gallery-grid.is-justified > * { flex-basis: calc(var(--ar, 1.5) * 27%); }
+
+/* The enlarge control sits on the caption line as a compact icon. */
+.work-card { position: relative; }
+.work-card:has(> .work-zoom) .work-caption { padding-right: 52px; }
+.work-zoom { position: absolute; right: -10px; bottom: 0; display: grid; place-items: center; width: 44px; height: 44px; min-height: 44px; margin: 0; padding: 0; border-radius: 50%; font-size: 0; text-decoration: none; }
+.work-zoom::before { content: ""; width: 18px; height: 18px; background: currentColor; -webkit-mask: var(--icon-enlarge) center / contain no-repeat; mask: var(--icon-enlarge) center / contain no-repeat; }
+.work-zoom:hover { background: var(--mist); }
+:root { --icon-enlarge: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7'/%3E%3C/svg%3E"); }
+
+/* Homepage series: two large frames per row so the photographs lead. */
+.home .series-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 32px; }
+.home .series-body h3 { font-size: 30px; }
+.home .series-body p { max-width: 52ch; }
+
+/* Artwork pages: the photograph sits on a darkroom mat beside its record. */
+.artwork-figure .feature-image { padding: clamp(10px, 1.6vw, 22px); background: var(--darkroom); }
+.artwork-enlarge-label { background: var(--darkroom); color: var(--on-dark-accent); }
+.artwork-enlarge:hover .artwork-enlarge-label { color: #fff; text-decoration: underline; }
+.artwork-enlarge:focus-visible { outline-offset: 3px; }
+
+/* Enlarged viewer: a darkroom stage with quiet controls. */
+.image-viewer { background: var(--darkroom); color: var(--on-dark); }
+.image-viewer::backdrop { background: rgba(6, 13, 15, .94); }
+.image-viewer :focus-visible { outline-color: var(--on-dark-accent); }
+.viewer-toolbar p { color: var(--on-dark); }
+.viewer-controls { background: transparent; }
+.viewer-controls p { color: var(--on-dark-muted); }
+.viewer-close, .viewer-controls button, .viewer-controls a { border-color: var(--darkroom-line); background: transparent; color: var(--on-dark); }
+.viewer-close:hover, .viewer-controls button:hover:not(:disabled), .viewer-controls a:hover { border-color: var(--on-dark-accent); background: #16292e; color: #fff; }
+.viewer-controls .viewer-detail { border-color: var(--on-dark-accent); color: var(--on-dark-accent); }
+
+@media (min-width: 980px) {
+  .home-feature { width: min(100%, calc(70svh * 1280 / 831), 1000px); }
+  .home:not(.artwork-page) .hero.has-semantic-media .hero-media img { max-height: min(70svh, 680px); }
+  .home .hero.has-semantic-media { padding: 40px max(32px, calc((100vw - 1400px) / 2)) 48px max(32px, calc((100vw - 1220px) / 2)); }
+}
+@media (min-width: 901px) {
+  .artwork-page .artwork-figure { position: sticky; top: 92px; }
+  .artwork-figure .feature-image img { max-height: calc(100svh - 240px); }
+}
+@media (max-width: 1099px) {
+  .credential-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .credential-list li:nth-child(3) { border-left: 0; }
+  .credential-list li:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .credential-list li:nth-child(odd) a { padding-left: 0; }
+  .home .gallery-grid.is-justified > * { flex-basis: calc(var(--ar, 1.5) * 27%); }
+}
+@media (max-width: 640px) {
+  .home .hero-title-secondary { margin-left: 12px; }
+  .credential-list { grid-template-columns: minmax(0, 1fr); }
+  .credential-list li + li { border-left: 0; border-top: 1px solid var(--line); }
+  .credential-list a, .credential-list li:first-child a { padding: 18px 0; }
+  .credential-list strong { font-size: 21px; }
+  .gallery-grid.is-justified { gap: 32px; }
+  .gallery-grid.is-justified > *, .gallery-page .gallery-grid.is-justified > *, .home .gallery-grid.is-justified > * { flex: 1 1 100%; max-width: none; }
+  .home .series-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .home .series-body h3 { font-size: 26px; }
+  .artwork-figure .feature-image { padding: 8px; }
+}
+@media (forced-colors: active) {
+  .work-zoom::before { background: ButtonText; }
+  .credential-list li + li { border-color: CanvasText; }
+}

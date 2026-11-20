@@ -27,7 +27,12 @@ the existing Cloudflare edge worker; local preview does not publish changes.
 ## Editing
 
 - `assets/site.css` and `assets/site.js`: visual system, gallery browsing, menu,
-  optional analytics and the shared native-dialog image viewer.
+  optional analytics and the shared native-dialog image viewer. Photographs are
+  viewed on a darkroom ground (homepage opening, artwork stage, viewer); the
+  homepage selection and gallery use justified rows set from each image's own
+  width and height, so frames are never letterboxed or cropped.
+- `assets/fonts/`: self-hosted Newsreader display face (SIL OFL 1.1, licence
+  alongside) used for Latin headings; system fonts remain the body text.
 - `.github/scripts/site-shell.mjs`: common navigation, language links and footer.
 - `.github/scripts/sync-archive-navigation.mjs`: multilingual search aliases,
   artwork sequence data and static previous/next links. It derives titles from
