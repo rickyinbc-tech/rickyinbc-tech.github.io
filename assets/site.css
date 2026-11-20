@@ -494,14 +494,42 @@ h2 { letter-spacing: -.012em; }
 .viewer-close:hover, .viewer-controls button:hover:not(:disabled), .viewer-controls a:hover { border-color: var(--on-dark-accent); background: #16292e; color: #fff; }
 .viewer-controls .viewer-detail { border-color: var(--on-dark-accent); color: var(--on-dark-accent); }
 
+/* Inner photographic openings share the darkroom ground and the site grid. */
+.page-hero.has-semantic-media { background: var(--darkroom); color: var(--on-dark); }
+.page-hero.has-semantic-media .hero-media { background: transparent; }
+.page-hero.has-semantic-media h1 { color: #fff; font-size: clamp(32px, 3vw, 46px); line-height: 1.15; }
+html[lang^="zh"] .page-hero.has-semantic-media h1 { line-height: 1.35; }
+.page-hero.has-semantic-media .eyebrow { color: var(--on-dark-muted); }
+.page-hero.has-semantic-media .hero-copy { color: #c8d6d5; }
+.page-hero.has-semantic-media a { color: #fff; }
+.page-hero.has-semantic-media a:hover { color: var(--on-dark-accent); }
+.page-hero.has-semantic-media :focus-visible { outline-color: var(--on-dark-accent); }
+.page-hero.has-semantic-media .hero-inner .button-row { display: inline-flex; margin-right: 24px; vertical-align: top; }
+
+/* Homepage project note: heading and text side by side, no empty half. */
+.home .section-project .split.text-only > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(32px, 5vw, 72px); max-width: none; }
+.home .section-project .split.text-only > div > .section-label { grid-column: 1; grid-row: 1; }
+.home .section-project .split.text-only > div > h2 { grid-column: 1; grid-row: 2 / span 3; align-self: start; }
+.home .section-project .split.text-only > div > .lead { grid-column: 2; grid-row: 2; }
+.home .section-project .split.text-only > div > .prose { grid-column: 2; grid-row: 3; }
+.home .section-project .split.text-only > div > .button-row { grid-column: 2; grid-row: 4; }
+
+/* A single related note reads as a note, not a stranded tile. */
+.notes-grid > :only-child { grid-column: 1 / span 2; max-width: 640px; }
+
 @media (min-width: 980px) {
   .home-feature { width: min(100%, calc(70svh * 1280 / 831), 1000px); }
   .home:not(.artwork-page) .hero.has-semantic-media .hero-media img { max-height: min(70svh, 680px); }
   .home .hero.has-semantic-media { padding: 40px max(32px, calc((100vw - 1400px) / 2)) 48px max(32px, calc((100vw - 1220px) / 2)); }
+  .page-hero.has-semantic-media { grid-template-columns: minmax(320px, 1fr) minmax(0, 1.45fr); padding: 44px max(32px, calc((100vw - 1400px) / 2)) 48px max(32px, calc((100vw - 1220px) / 2)); }
 }
 @media (min-width: 901px) {
   .artwork-page .artwork-figure { position: sticky; top: 92px; }
   .artwork-figure .feature-image img { max-height: calc(100svh - 240px); }
+}
+@media (max-width: 900px) {
+  .home .section-project .split.text-only > div { display: block; }
+  .home .section-project .split.text-only > div > h2 { margin-bottom: 22px; }
 }
 @media (max-width: 1099px) {
   .credential-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -519,6 +547,7 @@ h2 { letter-spacing: -.012em; }
   .gallery-grid.is-justified { gap: 32px; }
   .gallery-grid.is-justified > *, .gallery-page .gallery-grid.is-justified > *, .home .gallery-grid.is-justified > * { flex: 1 1 100%; max-width: none; }
   .home .series-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .notes-grid > :only-child { grid-column: auto; }
   .home .series-body h3 { font-size: 26px; }
   .artwork-figure .feature-image { padding: 8px; }
 }

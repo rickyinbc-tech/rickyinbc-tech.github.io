@@ -3,7 +3,7 @@
   "status": "pass",
   "measured": {
     "maxHtmlBytes": 41178,
-    "siteCssBytes": 32035,
+    "siteCssBytes": 33755,
     "siteJsBytes": 22886,
     "largestResponsiveImageBytes": 366596,
     "maxMissingImageDimensions": 0,
@@ -40,7 +40,7 @@
     },
     {
       "file": "index.html",
-      "bytes": 26455
+      "bytes": 26391
     },
     {
       "file": "selected-works/index.html",
