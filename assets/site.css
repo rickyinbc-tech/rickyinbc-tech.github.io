@@ -518,8 +518,10 @@ html[lang^="zh"] .page-hero.has-semantic-media h1 { line-height: 1.35; }
 .notes-grid > :only-child { grid-column: 1 / span 2; max-width: 640px; }
 
 @media (min-width: 980px) {
-  .home-feature { width: min(100%, calc(70svh * 1280 / 831), 1000px); }
-  .home:not(.artwork-page) .hero.has-semantic-media .hero-media img { max-height: min(70svh, 680px); }
+  /* 70svh on typical screens; on short ones the photograph and caption still fit below
+     the header, notice and hero padding (209px together, plus a little room). */
+  .home-feature { width: min(100%, calc(min(70svh, 100svh - 216px) * 1280 / 831), 1000px); }
+  .home:not(.artwork-page) .hero.has-semantic-media .hero-media img { max-height: min(70svh, 100svh - 216px, 680px); }
   .home .hero.has-semantic-media { padding: 40px max(32px, calc((100vw - 1400px) / 2)) 48px max(32px, calc((100vw - 1220px) / 2)); }
   .page-hero.has-semantic-media { grid-template-columns: minmax(320px, 1fr) minmax(0, 1.45fr); padding: 44px max(32px, calc((100vw - 1400px) / 2)) 48px max(32px, calc((100vw - 1220px) / 2)); }
 }
