@@ -620,6 +620,16 @@ for (const artwork of artworkManifest.artworks || []) {
       errors.push(`${relative}: artwork caption must use figcaption`);
     }
     if (!html.includes("personal-use-notice")) errors.push(`${relative}: missing personal non-commercial archive notice`);
+    // Governed date and place facts must be visible in every language, not only English.
+    const factRows = html.match(/<ul\b[^>]*data-artwork-governance=["']v2["'][^>]*>([\s\S]*?)<\/ul>/i)?.[1] || "";
+    const hasFactRow = (labels, value) => [...factRows.matchAll(/<strong>\s*([^<:：]+)\s*[:：]?\s*<\/strong>([\s\S]*?)<\/li>/gi)]
+      .some(([, label, body]) => labels.includes(label.trim()) && (!value || body.includes(value)));
+    if (artwork.dateCreated && !hasFactRow(["Year", "Competition record", "年份", "比賽紀錄", "比赛记录"], String(artwork.dateCreated))) {
+      errors.push(`${relative}: governed year ${artwork.dateCreated} is missing from the artwork facts for ${id}`);
+    }
+    if (artwork.contentLocation && !hasFactRow(["Location", "地點", "地点"])) {
+      errors.push(`${relative}: governed location is missing from the artwork facts for ${id}`);
+    }
   }
 }
 
