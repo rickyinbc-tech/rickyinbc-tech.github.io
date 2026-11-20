@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "status": "pass",
   "measured": {
-    "maxHtmlBytes": 41178,
-    "siteCssBytes": 33790,
+    "maxHtmlBytes": 42198,
+    "siteCssBytes": 33849,
     "siteJsBytes": 22886,
     "largestResponsiveImageBytes": 366596,
     "maxMissingImageDimensions": 0,
@@ -20,15 +20,15 @@
   "largestHtml": [
     {
       "file": "awards-recognition/index.html",
-      "bytes": 41178
+      "bytes": 42198
     },
     {
       "file": "zh-hant/awards/index.html",
-      "bytes": 37619
+      "bytes": 38753
     },
     {
       "file": "zh-hans/awards/index.html",
-      "bytes": 37492
+      "bytes": 38635
     },
     {
       "file": "projects/travel/index.html",

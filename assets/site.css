@@ -156,6 +156,8 @@ html[lang^="zh"] .hero-title-secondary { font-family: var(--latin-display); lett
 .recognition-list time, .award-list time { color: var(--accent); font-size: 14px; font-weight: 600; }
 .award-list small { display: inline-block; margin-top: 8px; color: var(--muted); font-size: 14px; }
 .award-list a { text-decoration: underline; }
+/* Source citations are standalone links; give them a comfortable tap height. */
+.award-list small a { display: inline-block; padding-block: 4px; }
 .artwork-index-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 32px; list-style: none; margin: 0; padding: 0; }
 .artwork-index-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 18px 0; border-bottom: 1px solid var(--line); }
 .artwork-index-list span { font-size: 13px; color: var(--muted); }

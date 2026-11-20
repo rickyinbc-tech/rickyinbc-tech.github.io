@@ -479,6 +479,13 @@ for (const route of ["/awards-recognition/", "/zh-hant/awards/", "/zh-hans/award
   if (!/(?:Children and Youth|兒童及青少年|儿童及青少年)/.test(hsbc?.name || "") || hsbc?.url !== "https://www.facebook.com/hsbcssphighlights/posts/892595200799004/") {
     errors.push(`${page.relative}: HSBC result must use the recovered 2015 organizer post and exact group`);
   }
+  // A citation that names a page of a document must link to that document, not stand as plain text.
+  for (const [, citation] of page.html.matchAll(/<small>([\s\S]*?)<\/small>/gi)) {
+    const unlinked = citation.replace(/<a\b[^>]*>[\s\S]*?<\/a>/gi, "");
+    if (/(?:\bp\.\s*\d+|第\s*\d+\s*[頁页])/i.test(unlinked)) {
+      errors.push(`${page.relative}: page-specific citation is not linked: ${unlinked.replace(/<[^>]+>/g, "").trim()}`);
+    }
+  }
   const coreSection = page.html.match(/<section\b[^>]*\bid=["']core-record["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
   const expandedSection = page.html.match(/<section\b[^>]*\bid=["']expanded-record["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
   const newlyVerifiedSection = page.html.match(/<section\b[^>]*\bid=["']newly-verified["'][^>]*>[\s\S]*?<\/section>/i)?.[0] || "";
@@ -903,6 +910,10 @@ for (const header of ["content-security-policy", "permissions-policy", "referrer
 }
 
 for (const [route, page] of indexableDocuments) {
+  // Browsers now warn before or block plain-HTTP navigations, so citations must use HTTPS.
+  for (const [, href] of page.html.matchAll(/<a\b[^>]*\bhref=["'](http:\/\/[^"']+)["']/gi)) {
+    errors.push(`${page.relative}: link uses insecure HTTP: ${href}`);
+  }
   const hasHero = /<[^>]+class=["'][^"']*\bhero\b[^"']*["'][^>]*>/i.test(page.html);
   const isArtworkPage = /<body\b[^>]*class=["'][^"']*\bartwork-page\b/i.test(page.html);
   const isProjectRecord = /^\/(?:zh-han[st]\/)?projects\/[a-z0-9-]+\/$/.test(route);
