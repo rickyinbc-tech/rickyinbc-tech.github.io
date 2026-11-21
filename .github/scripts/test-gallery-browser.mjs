@@ -103,8 +103,23 @@ try {
       click('.sequence-next');
       assert.equal(evaluate('document.querySelector("[data-archive-return]").pathname'), '/series/ritual/');
     });
+    check('Arrivals from a collection get a contextual return beside the heading', () => {
+      for (const [gallery, prefix] of [['/selected-works/#motion', ''], ['/zh-hant/works/#motion', '/zh-hant'], ['/zh-hans/works/#motion', '/zh-hans']]) {
+        open(gallery);
+        click('a.work-card-link[href*="/works/start-sequence/"]');
+        const top = evaluate('JSON.stringify([document.querySelector(".artwork-context-return")?.getAttribute("href"), document.querySelector("[data-archive-return]").getAttribute("href"), document.querySelector(".artwork-context-return").textContent === document.querySelector("[data-archive-return]").textContent])');
+        assert.deepEqual(JSON.parse(top), [`${prefix}${prefix ? '/works/' : '/selected-works/'}#motion`, `${prefix}${prefix ? '/works/' : '/selected-works/'}#motion`, true]);
+        assert.ok(evaluate('document.querySelector(".artwork-context-return").getBoundingClientRect().bottom < document.querySelector("main h1").getBoundingClientRect().top + 1'));
+        // Keyboard order: the return is the first stop inside main.
+        assert.equal(evaluate('document.querySelector("main").querySelector("a[href], button").className'), 'artwork-context-return');
+        click('.artwork-context-return');
+        wait("document.activeElement.pathname?.endsWith('/works/start-sequence/')");
+        assert.equal(evaluate('location.hash'), '#motion');
+      }
+    });
     check('Direct artwork links have static navigation and a sensible gallery return', () => {
       open('/works/night-fishermen/');
+      assert.equal(evaluate('document.querySelector(".artwork-context-return")'), null);
       assert.equal(evaluate('document.querySelector("[data-archive-return]").pathname'), '/selected-works/');
       assert.ok(evaluate('document.querySelectorAll(".artwork-pagination a").length') > 0);
       click('.artwork-enlarge'); browser('press', 'Escape');
@@ -134,7 +149,7 @@ try {
         }
       }
     });
-    check('Opening photographs have a translated viewer, record link and series shortcut', () => {
+    check('Opening photographs have a translated viewer and record link, with the selection next', () => {
       for (const [path, language] of [['/', 'en'], ['/zh-hant/', 'zh-Hant'], ['/zh-hans/', 'zh-Hans']]) {
         open(path);
         const prefix = language === 'en' ? '' : `/${language.toLowerCase()}`;
@@ -145,9 +160,12 @@ try {
         assert.equal(evaluate('document.querySelector(".viewer-controls button").hidden'), true);
         browser('press', 'Escape');
         assert.equal(evaluate('document.activeElement.className'), 'home-zoom');
-        click('.hero a[href="#home-series"]');
-        assert.equal(evaluate('location.hash'), '#home-series');
-        assert.ok(evaluate('document.querySelector("#home-series .series") !== null'));
+        // The selection follows the opening plate; recognition sits with the milestone.
+        assert.equal(evaluate('document.querySelector(".hero").nextElementSibling.classList.contains("section-gallery")'), true);
+        assert.equal(evaluate('document.querySelector(".hero a[href*=\'series\']")'), null);
+        assert.equal(evaluate('document.querySelector(".selection-onward a[href$=\'/series/\']").pathname'), `${prefix}/series/`);
+        assert.equal(evaluate('document.querySelectorAll(".section-milestone .credential-list a[href*=\'/awards\']").length'), 4);
+        assert.equal(evaluate('[...document.querySelectorAll(".section-gallery .work-card")].length'), 6);
         assert.equal(evaluate('document.documentElement.scrollWidth <= innerWidth'), true);
       }
     });

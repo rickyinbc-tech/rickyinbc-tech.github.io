@@ -6,6 +6,21 @@ export const GALLERY_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-
 // Homepage series frames render two per row (one per row on phones).
 export const HOME_SERIES_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1284px) calc((100vw - 96px) / 2), 594px";
 export const WORK_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
+// Homepage selection: an editorial sequence whose card roles set the rendered
+// width (lead plates ~70%, the portrait ~30%, collision pair half-width on phones).
+export const HOME_PLATE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1284px) calc((100vw - 88px) * 0.7), 834px";
+export const HOME_PORTRAIT_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1284px) calc((100vw - 88px) * 0.31), 364px";
+export const HOME_PAIR_IMAGE_SIZES = "(max-width: 379px) calc(100vw - 36px), (max-width: 640px) calc((100vw - 52px) / 2), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
+export function workCardImageSizes(html, block) {
+  if (/class="gallery-page"/.test(html)) return GALLERY_IMAGE_SIZES;
+  if (/<body\b[^>]*class=["'][^"']*\bhome\b/i.test(html)) {
+    const classes = block.match(/\bclass=["']([^"']*)["']/i)?.[1] || "";
+    if (/\bplate\b/.test(classes)) return HOME_PLATE_IMAGE_SIZES;
+    if (/\bportrait\b/.test(classes)) return HOME_PORTRAIT_IMAGE_SIZES;
+    if (/\bpair\b/.test(classes)) return HOME_PAIR_IMAGE_SIZES;
+  }
+  return WORK_CARD_IMAGE_SIZES;
+}
 export const SUPPORT_CARD_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1099px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
 export const ARCHIVE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 900px) calc((100vw - 88px) / 2), (max-width: 1284px) calc((100vw - 112px) / 3), 391px";
 export const MODAL_IMAGE_SIZES = "(max-width: 900px) calc(100vw - 56px), (max-width: 1236px) calc(100vw - 360px), 876px";
@@ -308,7 +323,13 @@ export function normalizeResponsiveImages(html) {
   });
 
   normalized = normalizeContextSizes(normalized, FEATURE_IMAGE_BLOCK, FEATURE_IMAGE_SIZES);
-  normalized = normalizeContextSizes(normalized, WORK_CARD_IMAGE_BLOCK, /class="gallery-page"/.test(normalized) ? GALLERY_IMAGE_SIZES : WORK_CARD_IMAGE_SIZES);
+  {
+    const page = normalized;
+    normalized = normalized.replace(WORK_CARD_IMAGE_BLOCK, (block) => block.replace(
+      /<img\b[^>]*>/i,
+      (tag) => setAttribute(tag, "sizes", workCardImageSizes(page, block)),
+    ));
+  }
   normalized = normalizeContextSizes(normalized, SUPPORT_CARD_IMAGE_BLOCK, SUPPORT_CARD_IMAGE_SIZES);
   if (/<body\b[^>]*class=["'][^"']*\bhome\b/i.test(normalized)) {
     normalized = normalizeContextSizes(normalized, HOME_SERIES_IMAGE_BLOCK, HOME_SERIES_IMAGE_SIZES);

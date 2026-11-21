@@ -559,3 +559,57 @@ html[lang^="zh"] .page-hero.has-semantic-media h1 { line-height: 1.35; }
   .work-zoom::before { background: ButtonText; }
   .credential-list li + li { border-color: CanvasText; }
 }
+
+/* Homepage selection: an exhibition sequence after the opening plate.
+   Roles come from the work itself: a lead plate shares one height with the
+   portrait Start Sequence, a trio follows, and a closing plate sits beside the
+   way onward. Every frame keeps its own aspect ratio; nothing is cropped. */
+.home .section-gallery .gallery-grid { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 48px 24px; }
+.home .section-gallery .gallery-grid > * { flex: 0 0 calc((100% - 49px) / 3); }
+.home .section-gallery .gallery-grid > .plate { flex-basis: calc((100% - 24px) * .6965); }
+.home .section-gallery .gallery-grid > .portrait { flex-basis: calc((100% - 24px) * .3030); }
+.home .section-gallery .gallery-grid .work-card img { aspect-ratio: auto; object-fit: initial; background: transparent; }
+.home .section-gallery .gallery-grid > .plate:first-child .work-caption strong { font: 400 24px/1.25 var(--display); }
+/* The way onward is the grid's last item: beside the closing plate on wide
+   screens, aligned to its foot, and below it once the row is too narrow. */
+.home .section-gallery .gallery-grid > .selection-onward { flex: 1 1 calc((100% - 24px) * .3030); flex-direction: column; align-items: flex-start; align-self: flex-end; gap: 4px; min-width: min(100%, 16em); margin: 0; padding-bottom: 14px; }
+.home .selection-head { display: block; margin-bottom: 32px; }
+.home .selection-head h2 { margin-bottom: 10px; }
+.home .selection-head .lead { margin: 0; }
+@media (min-width: 641px) and (max-width: 1099px) {
+  .home .section-gallery .gallery-grid > :not(.plate:first-child):not(.portrait):not(.selection-onward) { flex-basis: calc((100% - 25px) / 2); }
+  .home .section-gallery .gallery-grid > .selection-onward { flex-basis: 100%; flex-direction: row; gap: 12px 28px; padding-bottom: 0; }
+}
+@media (max-width: 640px) {
+  .home .section-gallery .gallery-grid { gap: 36px 16px; }
+  .home .section-gallery .gallery-grid > *, .home .section-gallery .gallery-grid > .plate, .home .section-gallery .gallery-grid > .portrait, .home .section-gallery .gallery-grid > .selection-onward { flex-basis: 100%; }
+  .home .section-gallery .gallery-grid > .selection-onward { padding-bottom: 0; }
+  .home .section-gallery { padding-top: 40px; }
+  .home .selection-head { margin-bottom: 24px; }
+  .home .section-gallery .gallery-grid > .plate:first-child .work-caption strong { font-size: 22px; }
+}
+@media (min-width: 380px) and (max-width: 640px) {
+  .home .section-gallery .gallery-grid > .pair { flex-basis: calc((100% - 17px) / 2); }
+  .home .section-gallery .gallery-grid > .pair .work-caption strong { font-size: 15px; }
+}
+
+/* Recognition as context beneath the milestone photograph: same four links,
+   set as a compact reference band rather than a headline strip. */
+.milestone-recognition { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); }
+.milestone-recognition .section-label { margin-bottom: 6px; }
+.milestone-recognition .credential-list a, .milestone-recognition .credential-list li:first-child a { gap: 4px; padding: 12px 20px 8px; }
+.milestone-recognition .credential-list li:first-child a { padding-left: 0; }
+.milestone-recognition .credential-list strong { font-size: 19px; }
+@media (max-width: 1099px) {
+  .milestone-recognition .credential-list li:nth-child(odd) a { padding-left: 0; }
+}
+@media (max-width: 640px) {
+  .milestone-recognition { margin-top: 40px; }
+  .milestone-recognition .credential-list a, .milestone-recognition .credential-list li:first-child a { padding: 12px 0; }
+  .milestone-recognition .credential-list strong { font-size: 18px; }
+}
+
+/* Contextual return above an artwork heading (only when arriving from a collection). */
+.artwork-context-return { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; margin: -10px 0 4px; color: var(--accent); font-size: 13px; font-weight: 600; text-decoration: underline; text-underline-offset: .25em; text-decoration-thickness: 1px; }
+.artwork-context-return::before { content: "←"; text-decoration: none; }
+.artwork-context-return + .eyebrow, .artwork-context-return + h1 { margin-top: 0; }

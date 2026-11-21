@@ -467,6 +467,18 @@ function enhanceCollectionReturn() {
   if (from && back) {
     back.href = `${from.pathname}${from.search}${from.hash}`;
     back.textContent = from.pathname.includes('/series/') ? uiCopy.seriesBack : uiCopy.back;
+    // Visitors arriving from a collection also get the same return beside the
+    // heading, so tall photographs never hide the way back. The closing link
+    // stays as the static fallback for direct visits and no-JS readers.
+    const heading = document.querySelector('main h1');
+    if (heading && !document.querySelector('.artwork-context-return')) {
+      const contextual = document.createElement('a');
+      contextual.className = 'artwork-context-return';
+      contextual.setAttribute('href', back.getAttribute('href'));
+      contextual.textContent = back.textContent;
+      const anchor = heading.previousElementSibling?.matches('.eyebrow') ? heading.previousElementSibling : heading;
+      anchor.before(contextual);
+    }
   }
   let items = model.series;
   let label = model.seriesName;
@@ -564,11 +576,11 @@ function enhanceImageViewer() {
     });
   }
   document.querySelectorAll('a.work-card:not([data-full])').forEach(link => {
-    const wrapper = document.createElement('article'); wrapper.className = 'work-card';
+    const wrapper = document.createElement('article'); wrapper.className = link.className;
     if (link.dataset.series) wrapper.dataset.series = link.dataset.series;
     if (link.dataset.search) wrapper.dataset.search = link.dataset.search;
     link.before(wrapper); wrapper.append(link);
-    link.classList.remove('work-card'); link.classList.add('work-card-link');
+    link.className = 'work-card-link';
     link.removeAttribute('data-series');
   });
   document.querySelectorAll('.work-card').forEach(card => {
@@ -638,9 +650,10 @@ function enhanceImageViewer() {
 
 // Justified rows: each photograph's width follows its own aspect ratio, so a
 // row shares one height and portrait and landscape frames are never letterboxed
-// or cropped. Without this enhancement the static grid remains.
+// or cropped. Without this enhancement the static grid remains. The homepage
+// selection is laid out as a curated sequence in CSS instead.
 function justifyPhotoRows() {
-  document.querySelectorAll('.home .gallery-grid, .gallery-page .gallery-grid').forEach(grid => {
+  document.querySelectorAll('.gallery-page .gallery-grid').forEach(grid => {
     let measured = 0;
     [...grid.children].forEach(item => {
       const photo = item.querySelector('img');

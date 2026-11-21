@@ -16,6 +16,7 @@ import {
   SUPPORT_CARD_IMAGE_SIZES,
   HOME_SERIES_IMAGE_SIZES,
   WORK_CARD_IMAGE_SIZES,
+  workCardImageSizes,
   featureImageTags,
   photoForReference,
   repeatedArtworkSourceCards,
@@ -456,7 +457,7 @@ for (const document of documents.values()) {
   }
   for (const match of html.matchAll(/<(?:article|a|button)\b[^>]*class=["'][^"']*\bwork-card\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
     const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
-    if (attribute(tag, "sizes") !== (/class="gallery-page"/.test(html) ? GALLERY_IMAGE_SIZES : WORK_CARD_IMAGE_SIZES)) errors.push(`${relative}: work-card image sizes is stale`);
+    if (attribute(tag, "sizes") !== workCardImageSizes(html, match[0])) errors.push(`${relative}: work-card image sizes is stale`);
   }
   for (const match of html.matchAll(/<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi)) {
     const tag = match[0].match(/<img\b[^>]*>/i)?.[0] || "";
