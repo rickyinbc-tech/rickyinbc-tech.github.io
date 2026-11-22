@@ -35,7 +35,9 @@ for (const language of ['en', 'zh-hant', 'zh-hans']) {
     const href = `${match[2]} ${match[3]}`.match(/href="([^"]*\/works\/([a-z0-9-]+)\/)"/);
     const series = match[2].match(/data-series="([^"]+)"/)?.[1];
     if (!href || !series) return null;
-    return { ...entry(href[2]), series, search: `${text(match[3].match(/<span class="work-caption">([\s\S]*?)<\/span>/)?.[1] || '')} ${match[3].match(/\balt="([^"]+)"/)?.[1] || ''} ${series} ${searchAliases.get(href[2])}` };
+    // Language-marked spans would end the lazy caption match early, so unwrap them first.
+    const card = match[3].replace(/<span lang="[^"]*">([\s\S]*?)<\/span>/g, '$1');
+    return { ...entry(href[2]), series, search: `${text(card.match(/<span class="work-caption">([\s\S]*?)<\/span>/)?.[1] || '')} ${match[3].match(/\balt="([^"]+)"/)?.[1] || ''} ${series} ${searchAliases.get(href[2])}` };
   }).filter(Boolean);
   if (gallery.length !== 12) throw new Error(`${language}: expected twelve curated works, found ${gallery.length}`);
   galleryHtml = galleryHtml.replace(/<(a|article)\b([^>]*class="work-card(?:\s[^"']*)?"[^>]*)>([\s\S]*?)<\/\1>/g, (block, tag, attributes, content) => {

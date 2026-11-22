@@ -33,3 +33,8 @@ test('blocked or malformed session storage leaves URL navigation usable', () => 
   assert.doesNotThrow(() => run("saveContext(new URL('https://rickykwok.com/selected-works/'), {y:100})"));
   assert.equal(run("savedContext(new URL('https://rickykwok.com/selected-works/'))"), null);
 });
+test('gallery search text keeps full captions when titles carry lang markup', async () => {
+  const gallery = await readFile(new URL('../../selected-works/index.html', import.meta.url), 'utf8');
+  const coil = gallery.match(/data-search="([^"]*coil[^"]*|[^"]*整整有條[^"]*)"/i)?.[1] || '';
+  assert.match(coil, /Nat Geo/);
+});
