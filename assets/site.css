@@ -196,7 +196,7 @@ body.viewer-open { overflow: hidden; }
 .filter-button.is-active, .filter-button:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
 .gallery-search { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
 .gallery-search label { font-size: 14px; font-weight: 600; }
-.gallery-search input { min-height: 46px; width: min(100%, 340px); padding: 10px 14px; border: 1px solid #91a7ab; border-radius: 4px; background: #fff; color: var(--ink); }
+.gallery-search input { min-height: 46px; width: min(100%, 340px); padding: 10px 14px; border: 1px solid #6f8a8f; border-radius: 4px; background: #fff; color: var(--ink); }
 .gallery-search input::placeholder { color: var(--muted); }
 .gallery-status { width: 100%; margin: 8px 0 0; color: var(--muted); font-size: 14px; }
 .gallery-empty { padding: 28px; background: var(--mist); border-radius: 6px; }
@@ -484,6 +484,7 @@ h2 { letter-spacing: -.012em; }
 .artwork-enlarge-label { background: var(--darkroom); color: var(--on-dark-accent); }
 .artwork-enlarge:hover .artwork-enlarge-label { color: #fff; text-decoration: underline; }
 .artwork-enlarge:focus-visible { outline-offset: 3px; }
+.artwork-figure .feature-image :focus-visible { outline-color: var(--on-dark-accent); }
 
 /* Enlarged viewer: a darkroom stage with quiet controls. */
 .image-viewer { background: var(--darkroom); color: var(--on-dark); }

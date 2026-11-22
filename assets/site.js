@@ -76,9 +76,23 @@ function allowAnalytics() {
   }
 }
 
+function clearAnalyticsCookies() {
+  // Remove Google Analytics cookies (_ga, _ga_<id>) left from an earlier consent.
+  const names = document.cookie.split(";").map((part) => part.split("=")[0].trim()).filter((name) => /^_ga(_|$)/.test(name));
+  if (!names.length) return;
+  const host = window.location.hostname;
+  const domains = ["", host, `.${host}`, `.${host.replace(/^www\./, "")}`];
+  for (const name of names) {
+    for (const domain of domains) {
+      document.cookie = `${name}=; Max-Age=0; path=/${domain ? `; domain=${domain}` : ""}; SameSite=Lax`;
+    }
+  }
+}
+
 function declineAnalytics() {
   analyticsEnabled = false;
   window[`ga-disable-${ANALYTICS_MEASUREMENT_ID}`] = true;
+  try { clearAnalyticsCookies(); } catch {}
   if (window.dataLayer) {
     googleTag("consent", "update", {
       ad_storage: "denied",

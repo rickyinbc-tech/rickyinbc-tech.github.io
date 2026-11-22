@@ -13,6 +13,9 @@ export const SHELL_COPY = {
     languageLabel: "Language",
     menu: "Menu",
     notice: "Personal, non-commercial photography archive.",
+    noticeLabel: "Site notice",
+    siteNotesLabel: "Site notes",
+    siteNotesHref: "/site-notes/",
     footer: "Personal archive · no commercial or paid activity",
     navigation: [
       ["/selected-works/", "Gallery"],
@@ -31,6 +34,9 @@ export const SHELL_COPY = {
     languageLabel: "語言選擇",
     menu: "選單",
     notice: "個人、非商業攝影檔案。",
+    noticeLabel: "網站提示",
+    siteNotesLabel: "網站說明",
+    siteNotesHref: "/zh-hant/site-notes/",
     footer: "個人攝影檔案 · 不涉及商業或有償活動",
     navigation: [
       ["/zh-hant/works/", "作品"],
@@ -49,6 +55,9 @@ export const SHELL_COPY = {
     languageLabel: "语言选择",
     menu: "菜单",
     notice: "个人、非商业摄影档案。",
+    noticeLabel: "网站提示",
+    siteNotesLabel: "网站说明",
+    siteNotesHref: "/zh-hans/site-notes/",
     footer: "个人摄影档案 · 不涉及商业或有偿活动",
     navigation: [
       ["/zh-hans/works/", "作品"],
@@ -149,14 +158,14 @@ export function renderHeaderAndNotice({ language, languageLinks, markCurrentLang
 
   return `<header class="site-header" data-shell-version="${SHELL_VERSION}" data-shell-language="${normalizedLanguage}" aria-label="${copy.headerLabel}">
   <nav class="nav wrap">
-    <a class="brand" href="${copy.brandHref}"><span>Ricky Kwok 郭文棣</span><small>${copy.brandSubtitle}</small></a>
+    <a class="brand" href="${copy.brandHref}"><span>Ricky Kwok 郭文棣</span> <small>${copy.brandSubtitle}</small></a>
     <button class="nav-toggle" type="button" aria-controls="primary-navigation language-navigation" aria-expanded="false">${copy.menu}</button>
     <div class="nav-links" id="primary-navigation" role="group" aria-label="${copy.navLabel}">${navigation}</div>
     <div class="language-switcher" id="language-navigation" role="group" aria-label="${copy.languageLabel}">${switcher}</div>
   </nav>
 </header>
 <script src="/assets/navigation.js?v=${ASSET_VERSION}"></script>
-<div class="personal-use-notice" role="region" aria-label="${copy.brandSubtitle}">${copy.notice}</div>
+<div class="personal-use-notice" role="region" aria-label="${copy.noticeLabel}">${copy.notice}</div>
 <noscript data-no-js-navigation><style>
 @media (max-width:900px){.site-header.nav-enhanced{position:relative}.site-header.nav-enhanced .nav-toggle{display:none}.site-header.nav-enhanced .nav-links{display:grid;grid-column:1/-1;grid-template-columns:repeat(2,minmax(0,1fr))}.site-header.nav-enhanced .language-switcher{display:inline-flex;grid-column:1/-1;justify-self:start}}
 </style></noscript>`;
@@ -164,7 +173,7 @@ export function renderHeaderAndNotice({ language, languageLinks, markCurrentLang
 
 export function renderFooter(language) {
   const copy = SHELL_COPY[normalizeLanguage(language)];
-  const footerLinks = copy.navigation.map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
+  const footerLinks = [...copy.navigation, [copy.siteNotesHref, copy.siteNotesLabel]].map(([href, label]) => `<a href="${href}">${label}</a>`).join("");
   return `<footer class="site-footer" data-shell-version="${SHELL_VERSION}">
   <div class="wrap footer-row"><nav class="footer-links" aria-label="${copy.navLabel}">${footerLinks}</nav><span>© <span id="year">2026</span> Ricky Kwok 郭文棣, ARPS.</span><span>${copy.footer}</span></div>
 </footer>`;
