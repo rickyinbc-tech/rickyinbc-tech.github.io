@@ -51,6 +51,19 @@ function withSecurityHeaders(response, requestUrl = null) {
   ) {
     headers.set("cache-control", "public, max-age=31536000, immutable");
   }
+  if (
+    /^text\/html\b/i.test(headers.get("content-type") || "")
+    && !(requestUrl && requestUrl.pathname.toLowerCase().startsWith("/assets/"))
+  ) {
+    // `public, no-transform` stops Cloudflare's edge from injecting its Web
+    // Analytics beacon. That unconsented script is blocked by the CSP above and
+    // logs a console error, which costs the Lighthouse Best Practices score.
+    const directives = (headers.get("cache-control") || "max-age=600")
+      .split(",").map((value) => value.trim()).filter(Boolean)
+      .filter((value) => !/^(?:public|no-transform)$/i.test(value));
+    const isPrivate = directives.some((value) => /^(?:private|no-store)$/i.test(value));
+    headers.set("cache-control", [...(isPrivate ? [] : ["public"]), ...directives, "no-transform"].join(", "));
+  }
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,

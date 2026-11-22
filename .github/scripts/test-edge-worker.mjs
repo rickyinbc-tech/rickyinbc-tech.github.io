@@ -47,6 +47,8 @@ check(versionedCss.headers.get("cache-control") === "public, max-age=31536000, i
 const optimizedImage = await worker.fetch(new Request("https://rickykwok.com/assets/optimized-v2/art/light-encroached-homes-800.webp"));
 check(optimizedImage.headers.get("cache-control") === "public, max-age=31536000, immutable", "optimized images must use immutable browser caching");
 check(canonical.headers.get("cache-control") !== "public, max-age=31536000, immutable", "HTML must not use immutable browser caching");
+check(/\bno-transform\b/.test(canonical.headers.get("cache-control") || ""), "HTML must carry no-transform so the edge cannot inject unconsented scripts");
+check(!/\bno-transform\b/.test(optimizedImage.headers.get("cache-control") || ""), "no-transform must apply only to HTML documents");
 
 const legacy = await worker.fetch(new Request("https://rickykwok.com/series/water-studies/?utm_source=a&private=b"));
 check(legacy.status === 308, "legacy route must redirect permanently");
