@@ -1,5 +1,5 @@
 export const SITE_ORIGIN = "https://rickykwok.com";
-export const ASSET_VERSION = "20261119-darkroom-v2";
+export const ASSET_VERSION = "20261125-signboard-v1";
 export const SHELL_VERSION = "20261119-darkroom-v2";
 
 export const SUPPORTED_LANGUAGES = ["en", "zh-Hant", "zh-Hans"];
