@@ -617,8 +617,8 @@ html[lang^="zh"] .page-hero.has-semantic-media h1 { line-height: 1.35; }
 
 /* Signboard layer (2026-11). Hong Kong after dark, printed on silver paper.
    Palette: silver-gelatin paper, harbour-night darkroom, signboard red, and
-   sodium-lamp amber for focus on dark ground. The single bold gesture is the
-   artist's Chinese name hung as a vertical neon signboard in the opening.
+   sodium-lamp amber for focus on dark ground. The artist's Chinese name is set
+   vertically beside the Latin name, as on a Hong Kong shopfront.
    Photographs are never cropped, scaled or filtered; mats are drawn with
    box-shadow so justified rows keep their exact geometry. */
 :root {
@@ -651,13 +651,10 @@ a:hover { color: var(--accent); }
 .home .hero.has-semantic-media .hero-inner { position: relative; padding-left: 104px; }
 html[lang="en"] .home .hero-title-secondary,
 html[lang^="zh"] .home .hero-title-primary {
-  position: absolute; top: 20px; left: 0; display: block; margin: 0; padding: 18px 13px 20px;
+  position: absolute; top: 20px; left: 0; display: block; margin: 0; padding: 4px 0;
   writing-mode: vertical-rl; text-orientation: upright;
   font: 400 46px/1 "Songti TC", "Songti SC", "Noto Serif CJK TC", "Noto Serif CJK SC", serif; letter-spacing: .18em; white-space: nowrap;
-  color: #fff6ea; background: var(--sign); border-radius: 3px;
-  box-shadow: 0 0 0 3px var(--darkroom), 0 0 0 4px rgba(255, 140, 140, .55), 0 0 34px 4px var(--sign-glow), 0 40px 70px -20px rgba(215, 38, 46, .45);
-  text-shadow: 0 0 8px rgba(255, 220, 200, .7);
-  animation: sign-on 1.6s steps(1, end) .25s both;
+  color: #e4ecea; background: none; padding-inline: 0; border-right: 1px solid rgba(233, 240, 239, .3); padding-right: 18px;
 }
 html[lang^="zh"] .home .hero-title-secondary { margin-top: 10px; font-family: var(--latin-display); font-size: .5em; letter-spacing: -.01em; color: var(--on-dark); }
 html[lang^="zh"] .home .hero h1 { min-height: 0; }
@@ -667,9 +664,6 @@ html[lang^="zh"] .home .hero h1 { min-height: 0; }
 .home .hero .button:first-child { border-radius: 2px; }
 .home .hero .button:first-child:hover { background: var(--sign); border-color: var(--sign); color: #fff; }
 .home .hero :focus-visible, .page-hero.has-semantic-media :focus-visible { outline-color: var(--on-dark-accent); }
-@keyframes sign-on {
-  0% { opacity: .15; } 8% { opacity: 1; } 12% { opacity: .25; } 20% { opacity: 1; } 24% { opacity: .5; } 30%, 100% { opacity: 1; }
-}
 
 /* Photographs hang as matted prints on the paper wall. */
 .home .section-gallery .gallery-grid .work-card img,
@@ -710,19 +704,18 @@ html[lang^="zh"] .home .hero h1 { min-height: 0; }
 @media (max-width: 979px) {
   .home .hero.has-semantic-media .hero-inner { padding-left: 84px; min-height: 210px; }
   html[lang="en"] .home .hero-title-secondary,
-  html[lang^="zh"] .home .hero-title-primary { top: 22px; margin: 0; padding: 14px 10px 16px; font-size: 38px; }
+  html[lang^="zh"] .home .hero-title-primary { top: 22px; margin: 0; padding: 4px 14px 4px 0; font-size: 36px; }
   html[lang^="zh"] .home .hero-title-secondary { display: block; margin: 8px 0 0; font-size: .5em; }
 }
 @media (max-width: 640px) {
   .home .hero.has-semantic-media .hero-inner { padding-left: 70px; min-height: 176px; }
   .home .hero h1 { font-size: 44px; }
   html[lang="en"] .home .hero-title-secondary,
-  html[lang^="zh"] .home .hero-title-primary { top: 20px; padding: 11px 8px 13px; font-size: 30px; letter-spacing: .14em; }
+  html[lang^="zh"] .home .hero-title-primary { top: 20px; padding: 2px 12px 2px 0; font-size: 28px; letter-spacing: .14em; }
   .home .hero-copy { font-size: 19px; }
   .home .section-gallery .gallery-grid .work-card img,
   .gallery-page .gallery-grid .work-card img,
   .archive-photo img { box-shadow: 0 0 0 6px var(--print), 0 0 0 7px rgba(26, 34, 38, .08), 0 16px 26px -16px rgba(13, 34, 40, .5); }
 }
 @media (forced-colors: active) {
-  html[lang="en"] .home .hero-title-secondary, html[lang^="zh"] .home .hero-title-primary { border: 2px solid CanvasText; }
 }

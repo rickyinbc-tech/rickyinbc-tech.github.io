@@ -3,7 +3,7 @@
   "status": "pass",
   "measured": {
     "maxHtmlBytes": 43124,
-    "siteCssBytes": 42062,
+    "siteCssBytes": 41644,
     "siteJsBytes": 23540,
     "largestResponsiveImageBytes": 366596,
     "maxMissingImageDimensions": 0,
