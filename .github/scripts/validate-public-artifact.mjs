@@ -18,6 +18,7 @@ import {
   WORK_CARD_IMAGE_SIZES,
   workCardImageSizes,
   featureImageTags,
+  featureImageSizes,
   photoForReference,
   repeatedArtworkSourceCards,
   repeatedSourceCardFamilies,
@@ -422,7 +423,7 @@ for (const document of documents.values()) {
   if (!html.includes(`/assets/site.min.css?v=${ASSET_VERSION}`)) errors.push(`${relative}: current stylesheet cache key is missing`);
   if (!html.includes(`/assets/site.min.js?v=${ASSET_VERSION}`)) errors.push(`${relative}: current script cache key is missing`);
   for (const tag of featureImageTags(html)) {
-    if (attribute(tag, "sizes") !== FEATURE_IMAGE_SIZES) {
+    if (attribute(tag, "sizes") !== featureImageSizes(html, tag)) {
       errors.push(`${relative}: feature image sizes differs from the responsive-image policy`);
     }
   }

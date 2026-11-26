@@ -15,6 +15,7 @@ import {
   WORK_CARD_IMAGE_SIZES,
   workCardImageSizes,
   featureImageTags,
+  featureImageSizes,
   heroRepeatsLeadPhotograph,
   photoForReference,
   repeatedArtworkSourceCards,
@@ -203,7 +204,7 @@ for (const file of await htmlFiles()) {
 
   if (/<\/source>/i.test(html)) errors.push(`${relative}: contains an invalid closing source tag`);
   for (const tag of featureImageTags(html)) {
-    if (attribute(tag, "sizes") !== FEATURE_IMAGE_SIZES) {
+    if (attribute(tag, "sizes") !== featureImageSizes(html, tag)) {
       errors.push(`${relative}: feature image sizes does not match the rendered split layout`);
     }
   }
@@ -1082,6 +1083,15 @@ const allowedEvidenceExternalHrefs = new Set([
   "https://www.dcfever.com/column/read.php?id=3442",
   "https://www.dcfever.com/column/read.php?id=3146",
 ]);
+// An artwork record heading may be visually hidden only when it repeats the
+// page title exactly; a distinct heading (e.g. "Artwork record") stays visible.
+for (const [, page] of indexableDocuments) {
+  const plain = value => value.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+  const title = plain(page.html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "");
+  for (const [, hidden] of page.html.matchAll(/<h2 class="sr-only">([\s\S]*?)<\/h2>/gi)) {
+    if (plain(hidden) !== title) errors.push(`${page.relative}: hidden heading "${plain(hidden)}" is not a repeat of the title "${title}"; remove class="sr-only" so it stays visible`);
+  }
+}
 for (const [route, page] of indexableDocuments) {
   for (const finding of photographyScopeFindings(page.html)) {
     errors.push(`${page.relative}: outside photography-only scope: ${finding}`);

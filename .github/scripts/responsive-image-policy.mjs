@@ -1,6 +1,9 @@
 import { readFileSync } from "node:fs";
 
 export const FEATURE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1284px) 64vw, 773px";
+// Artwork pages stage the photograph across the content width, fitted to the
+// viewport height (landscape frames are at most ~1.6:1, so height bounds width).
+export const ARTWORK_FIGURE_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 60px), (max-width: 900px) calc(96vw - 64px), min(calc(96vw - 64px), 1164px, calc((100vh - 380px) * 1.6))";
 export const HERO_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 979px) calc(100vw - 64px), (max-width: 1464px) calc(66vw - 69px), 860px";
 export const GALLERY_IMAGE_SIZES = "(max-width: 640px) calc(100vw - 36px), (max-width: 1284px) calc((100vw - 96px) / 2), 594px";
 // Homepage series frames render two per row (one per row on phones).
@@ -202,12 +205,23 @@ export const NATURAL_WIDTH_AVIF_FAMILIES = photos.flatMap((photo) => {
 });
 
 const FEATURE_IMAGE_BLOCK = /<div\b[^>]*class=["'][^"']*\bfeature-image\b[^"']*["'][^>]*>\s*<img\b[^>]*>/gi;
+const ARTWORK_FIGURE_IMAGE_BLOCK = /<figure\b[^>]*class=["'][^"']*\bartwork-figure\b[^"']*["'][^>]*>\s*<div\b[^>]*class=["'][^"']*\bfeature-image\b[^"']*["'][^>]*>\s*<img\b[^>]*>/gi;
 const HERO_PICTURE_BLOCK = /<picture\b[^>]*class=["'][^"']*\bhero-media\b[^"']*["'][^>]*>[\s\S]*?<\/picture>/gi;
 const WORK_CARD_IMAGE_BLOCK = /<(?:article|a|button)\b[^>]*class=["'][^"']*\bwork-card\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const SUPPORT_CARD_IMAGE_BLOCK = /<(?:article|a|figure|div)\b[^>]*class=["'][^"']*\b(?:source-card|proof-card|series)\b(?!-)[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const HOME_SERIES_IMAGE_BLOCK = /<a\b[^>]*class=["']series["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const ARCHIVE_CARD_IMAGE_BLOCK = /<figure\b[^>]*class=["'][^"']*\barchive-photo\b[^"']*["'][^>]*>[\s\S]*?<img\b[^>]*>/gi;
 const SOURCE_CARD_BLOCK = /<article\b[^>]*class=["'][^"']*\bsource-card\b[^"']*["'][^>]*>[\s\S]*?<\/article>/gi;
+
+export function artworkFigureImageTags(html) {
+  return [...html.matchAll(ARTWORK_FIGURE_IMAGE_BLOCK)]
+    .map((match) => match[0].match(/<img\b[^>]*>/i)?.[0])
+    .filter(Boolean);
+}
+
+export function featureImageSizes(html, tag) {
+  return artworkFigureImageTags(html).includes(tag) ? ARTWORK_FIGURE_IMAGE_SIZES : FEATURE_IMAGE_SIZES;
+}
 
 export function featureImageTags(html) {
   return [...html.matchAll(FEATURE_IMAGE_BLOCK)]
@@ -323,6 +337,7 @@ export function normalizeResponsiveImages(html) {
   });
 
   normalized = normalizeContextSizes(normalized, FEATURE_IMAGE_BLOCK, FEATURE_IMAGE_SIZES);
+  normalized = normalizeContextSizes(normalized, ARTWORK_FIGURE_IMAGE_BLOCK, ARTWORK_FIGURE_IMAGE_SIZES);
   {
     const page = normalized;
     normalized = normalized.replace(WORK_CARD_IMAGE_BLOCK, (block) => block.replace(
